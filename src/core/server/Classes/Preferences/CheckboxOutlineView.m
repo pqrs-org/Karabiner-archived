@@ -1,5 +1,6 @@
 #import "CheckboxCellView.h"
 #import "CheckboxOutlineView.h"
+#import "XMLCompiler.h"
 
 @interface CheckboxOutlineView ()
 @property(weak) CheckboxCellView* mouseDownCheckboxCellView;
@@ -24,7 +25,22 @@
     CheckboxCellView* view = [self viewAtColumn:0 row:row makeIfNecessary:NO];
     if (self.mouseDownCheckboxCellView == view) {
       // clicked
-      [view toggle];
+      XMLCompilerTree* item = [self itemAtRow:row];
+      if ([self isExpandable:item]) {
+        if ([self isItemExpanded:item]) {
+          if ([self selectedRow] == row) {
+            [self collapseItem:item];
+          } else {
+            [self selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
+          }
+        } else {
+          [self selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
+          [self expandItem:item];
+        }
+      } else {
+        [view toggle];
+      }
+      [[self window] makeFirstResponder:self];
     }
   }
   self.mouseDownCheckboxCellView = nil;

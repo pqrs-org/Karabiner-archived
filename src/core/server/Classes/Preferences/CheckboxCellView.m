@@ -68,37 +68,6 @@
                                                           forName:self.settingIdentifier
                                                        tellToKext:YES
                                              notificationUserInfo:notificationUserInfo];
-  } else {
-    [self selectSelf];
-    [self expandOrCollapseTree];
-  }
-
-  // Call makeFirstResponder via dispatch_async for safe.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [[self.checkboxOutlineViewDelegate.outlineView window] makeFirstResponder:self.checkboxOutlineViewDelegate.outlineView];
-  });
-}
-
-- (void)selectSelf {
-  NSInteger row = [self.checkboxOutlineViewDelegate.outlineView rowForView:self];
-  if (row == -1) return;
-
-  [self.checkboxOutlineViewDelegate.outlineView selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
-}
-
-- (void)expandOrCollapseTree {
-  NSInteger row = [self.checkboxOutlineViewDelegate.outlineView rowForView:self];
-  if (row == -1) return;
-
-  XMLCompilerTree* item = [self.checkboxOutlineViewDelegate.outlineView itemAtRow:row];
-  if (![self.checkboxOutlineViewDelegate.outlineView isExpandable:item]) {
-    return;
-  }
-
-  if ([self.checkboxOutlineViewDelegate.outlineView isItemExpanded:item]) {
-    [self.checkboxOutlineViewDelegate.outlineView collapseItem:item];
-  } else {
-    [self.checkboxOutlineViewDelegate.outlineView expandItem:item];
   }
 }
 
