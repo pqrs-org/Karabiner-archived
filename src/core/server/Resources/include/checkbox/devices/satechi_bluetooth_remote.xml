@@ -2,9 +2,9 @@
 <root>
 
   <item>
-    <name>For Satechi Bluetooth Remote</name>
+    <name>For Satechi Bluetooth Remote and Satechi Media Button</name>
     <item>
-      <name>Configure Satechi Bluetooth Remote for EyeTV</name>
+      <name>Configure Satechi devices for EyeTV</name>
       <identifier>remap.device_SatechiMediaKeysForEyeTV</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -17,7 +17,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::KEY_0, ModifierFlag::COMMAND_L</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote for Safari</name>
+      <name>Configure Satechi devices for Safari</name>
       <identifier>remap.device_SatechiMediaKeysForSafari</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -30,7 +30,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote for Safari Plugins</name>
+      <name>Configure Satechi devices for Safari Plugins</name>
       <identifier>remap.device_SatechiMediaKeysForSafariPlugins</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -43,7 +43,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::ESCAPE</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote for Chrome</name>
+      <name>Configure Satechi devices for Chrome</name>
       <identifier>remap.device_SatechiMediaKeysForChrome</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -56,7 +56,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote for Firefox</name>
+      <name>Configure Satechi devices for Firefox</name>
       <identifier>remap.device_SatechiMediaKeysForFirefox</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -69,7 +69,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote for iTunes</name>
+      <name>Configure Satechi devices for iTunes</name>
       <identifier>remap.device_SatechiMediaKeysForiTunes</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -79,7 +79,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote for QuickTime</name>
+      <name>Configure Satechi devices for QuickTime</name>
       <identifier>remap.device_SatechiMediaKeysForQuickTime</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -89,7 +89,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::F, ModifierFlag::COMMAND_L, ModifierFlag::CONTROL_L</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote for VLC</name>
+      <name>Configure Satechi devices for VLC</name>
       <identifier>remap.device_SatechiMediaKeysForVLC</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
@@ -99,7 +99,7 @@
       <autogen>__KeyToKey__ ConsumerKeyCode::RawValue::0x0e, KeyCode::KEY_3, ModifierFlag::COMMAND_L</autogen><!-- Keyboard button -->
     </item>
     <item>
-      <name>Configure Satechi Bluetooth Remote (global settings)</name>
+      <name>Configure Satechi devices (global settings)</name>
       <identifier>remap.device_SatechiMediaKeysGlobally</identifier>
       <device_only>
         DeviceVendor::Satechi, DeviceProduct::Satechi_Bluetooth_Remote,
