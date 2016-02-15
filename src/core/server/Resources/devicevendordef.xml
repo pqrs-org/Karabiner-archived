@@ -132,6 +132,11 @@
   </devicevendordef>
 
   <devicevendordef>
+    <vendorname>Broadcom</vendorname>
+    <vendorid>0x0a5c</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
     <vendorname>Kinesis</vendorname>
     <vendorid>0x05f3</vendorid>
   </devicevendordef>

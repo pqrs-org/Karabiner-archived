@@ -367,6 +367,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Satechi_Media_Button</productname>
+    <productid>0x4502</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>Advantage_MPC</productname>
     <productid>0x0007</productid>
   </deviceproductdef>
