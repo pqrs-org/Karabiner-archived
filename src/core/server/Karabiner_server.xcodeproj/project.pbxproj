@@ -58,6 +58,8 @@
 		34B682EA1AC845AD00915847 /* StatusMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B682E91AC845AD00915847 /* StatusMessageManager.m */; };
 		34B893FF128E448C00BC955A /* WorkSpaceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B893FC128E448C00BC955A /* WorkSpaceData.m */; };
 		34C157581C70146A00E6E81B /* ParameterDiffCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C157571C70146A00E6E81B /* ParameterDiffCellView.m */; };
+		34C1575B1C72317E00E6E81B /* ProfileTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C1575A1C72317E00E6E81B /* ProfileTableView.m */; };
+		34C1575E1C7235B200E6E81B /* ProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C1575D1C7235B200E6E81B /* ProfileCellView.m */; };
 		34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */; };
 		34CD9CCD1BA1E67A004F0218 /* checkbox-omitted.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */; };
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
@@ -177,6 +179,10 @@
 		34B893FC128E448C00BC955A /* WorkSpaceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkSpaceData.m; path = Classes/WorkSpaceData.m; sourceTree = "<group>"; };
 		34C157561C70146A00E6E81B /* ParameterDiffCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParameterDiffCellView.h; path = Classes/Preferences/ParameterDiffCellView.h; sourceTree = "<group>"; };
 		34C157571C70146A00E6E81B /* ParameterDiffCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParameterDiffCellView.m; path = Classes/Preferences/ParameterDiffCellView.m; sourceTree = "<group>"; };
+		34C157591C72317E00E6E81B /* ProfileTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileTableView.h; path = Classes/Preferences/ProfileTableView.h; sourceTree = "<group>"; };
+		34C1575A1C72317E00E6E81B /* ProfileTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableView.m; path = Classes/Preferences/ProfileTableView.m; sourceTree = "<group>"; };
+		34C1575C1C7235B200E6E81B /* ProfileCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileCellView.h; path = Classes/Preferences/ProfileCellView.h; sourceTree = "<group>"; };
+		34C1575D1C7235B200E6E81B /* ProfileCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileCellView.m; path = Classes/Preferences/ProfileCellView.m; sourceTree = "<group>"; };
 		34CB2F2E19565E2B00A6E0E3 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
 		34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
 		34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "checkbox-omitted.xml"; path = "Resources/checkbox-omitted.xml"; sourceTree = "<group>"; };
@@ -386,6 +392,10 @@
 				34E917051C6B4A1900C014BD /* ParameterValueCellView.m */,
 				3406F70F1668ED7B00FE1E80 /* PreferencesController.h */,
 				3406F7101668ED7B00FE1E80 /* PreferencesController.m */,
+				34C1575C1C7235B200E6E81B /* ProfileCellView.h */,
+				34C1575D1C7235B200E6E81B /* ProfileCellView.m */,
+				34C157591C72317E00E6E81B /* ProfileTableView.h */,
+				34C1575A1C72317E00E6E81B /* ProfileTableView.m */,
 				34207C031666209F00E7FD08 /* TableView_configlist.h */,
 				34207C041666209F00E7FD08 /* TableView_configlist.m */,
 			);
@@ -590,6 +600,7 @@
 				34E917031C6B481200C014BD /* ParameterOutlineView.m in Sources */,
 				342A42D81A8EE7EE0007D37E /* IOHIDPostEventWrapper.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
+				34C1575E1C7235B200E6E81B /* ProfileCellView.m in Sources */,
 				34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */,
 				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
 				3416745C1AFE5201005D6E58 /* SessionObserver.m in Sources */,
@@ -613,6 +624,7 @@
 				34E917091C6B947000C014BD /* ParameterOutlineViewDelegate.m in Sources */,
 				34B682EA1AC845AD00915847 /* StatusMessageManager.m in Sources */,
 				34A5573116EA10B4000E5399 /* StatusMessageView_nano.m in Sources */,
+				34C1575B1C72317E00E6E81B /* ProfileTableView.m in Sources */,
 				346E2B5C1C5129A500719E5E /* CheckboxBackgroundView.m in Sources */,
 				34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */,
 				3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */,
