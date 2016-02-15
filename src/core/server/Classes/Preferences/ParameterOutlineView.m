@@ -32,10 +32,14 @@
       // clicked
       XMLCompilerTree* item = [self itemAtRow:row];
       if ([self isExpandable:item]) {
-        [self selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
         if ([self isItemExpanded:item]) {
-          [self collapseItem:item];
+          if ([self selectedRow] == row) {
+            [self collapseItem:item];
+          } else {
+            [self selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
+          }
         } else {
+          [self selectRowIndexes:[NSIndexSet indexSetWithIndex:(NSUInteger)(row)] byExtendingSelection:NO];
           [self expandItem:item];
         }
         [[self window] makeFirstResponder:self];
