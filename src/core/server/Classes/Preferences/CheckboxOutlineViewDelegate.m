@@ -49,7 +49,7 @@
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   XMLCompilerTree* tree = (XMLCompilerTree*)(item);
-  CheckboxItem* checkboxItem = [tree castNodeToCheckboxItem];
+  CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
   NSString* name = [checkboxItem getName];
   NSString* style = [checkboxItem getStyle];
   NSString* identifier = [checkboxItem getIdentifier];
@@ -127,7 +127,7 @@
 
 - (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
   XMLCompilerTree* tree = (XMLCompilerTree*)(item);
-  CheckboxItem* checkboxItem = [tree castNodeToCheckboxItem];
+  CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
   if (!checkboxItem) {
     return [outlineView rowHeight];
   }

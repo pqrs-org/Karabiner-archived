@@ -4,9 +4,14 @@
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 @class ClientForKernelspace;
+@class CheckboxItem;
+@class ParameterItem;
 
 @interface XMLCompilerItem : NSObject
 @property(readonly) NSNumber* id;
+
+- (CheckboxItem*)castToCheckboxItem;
+- (ParameterItem*)castToParameterItem;
 @end
 
 @interface CheckboxItem : XMLCompilerItem
@@ -30,9 +35,6 @@
 @interface XMLCompilerTree : NSObject
 @property XMLCompilerItem* node;
 @property NSArray* children;
-
-- (CheckboxItem*)castNodeToCheckboxItem;
-- (ParameterItem*)castNodeToParameterItem;
 @end
 
 @interface XMLCompiler : NSObject {

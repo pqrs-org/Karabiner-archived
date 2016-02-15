@@ -122,7 +122,7 @@
   int count = 0;
 
   if (tree) {
-    CheckboxItem* checkboxItem = [tree castNodeToCheckboxItem];
+    CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
     NSString* identifier = [checkboxItem getIdentifier];
     if ([identifier length] > 0) {
       if ([changed[identifier] intValue] != 0) {

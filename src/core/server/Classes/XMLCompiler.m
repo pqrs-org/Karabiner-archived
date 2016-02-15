@@ -63,6 +63,14 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   }
 }
 
+- (CheckboxItem*)castToCheckboxItem {
+  return [self isKindOfClass:[CheckboxItem class]] ? (CheckboxItem*)(self) : nil;
+}
+
+- (ParameterItem*)castToParameterItem {
+  return [self isKindOfClass:[ParameterItem class]] ? (ParameterItem*)(self) : nil;
+}
+
 @end
 
 @implementation CheckboxItem
@@ -164,15 +172,6 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 @end
 
 @implementation XMLCompilerTree
-
-- (CheckboxItem*)castNodeToCheckboxItem {
-  return [self.node isKindOfClass:[CheckboxItem class]] ? (CheckboxItem*)(self.node) : nil;
-}
-
-- (ParameterItem*)castNodeToParameterItem {
-  return [self.node isKindOfClass:[ParameterItem class]] ? (ParameterItem*)(self.node) : nil;
-}
-
 @end
 
 @interface XMLCompiler () {

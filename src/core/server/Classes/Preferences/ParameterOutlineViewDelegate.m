@@ -8,7 +8,7 @@
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
   XMLCompilerTree* tree = (XMLCompilerTree*)(item);
-  ParameterItem* parameterItem = [tree castNodeToParameterItem];
+  ParameterItem* parameterItem = [tree.node castToParameterItem];
 
   if ([tableColumn.identifier isEqualToString:@"ParameterNameColumn"]) {
     NSTableCellView* result = [outlineView makeViewWithIdentifier:@"ParameterNameCellView" owner:self];
