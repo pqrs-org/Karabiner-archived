@@ -1,11 +1,19 @@
 #import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
-#import "CheckboxOutlineViewDelegate.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
-#import "XMLCompiler.h"
 
 @implementation CheckboxCellView
+
+- (void)prepareForReuse {
+  [super prepareForReuse];
+
+  [self.backgroundView removeFromSuperview];
+  self.backgroundView = nil;
+
+  [self.checkbox removeFromSuperview];
+  self.checkbox = nil;
+}
 
 - (void)addLayoutConstraint:(NSView*)subview top:(CGFloat)top bottom:(CGFloat)bottom leading:(CGFloat)leading trailing:(CGFloat)trailing {
   [self addConstraint:[NSLayoutConstraint constraintWithItem:subview
@@ -41,16 +49,6 @@
                                                     constant:trailing]];
 }
 
-- (void)prepareForReuse {
-  [super prepareForReuse];
-
-  [self.backgroundView removeFromSuperview];
-  self.backgroundView = nil;
-
-  [self.checkbox removeFromSuperview];
-  self.checkbox = nil;
-}
-
 - (void)toggle {
   [self.checkbox setNextState];
   [self valueChanged:self];
@@ -64,10 +62,10 @@
       kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
     };
 
-    [self.checkboxOutlineViewDelegate.preferencesManager setValue:value
-                                                          forName:self.settingIdentifier
-                                                       tellToKext:YES
-                                             notificationUserInfo:notificationUserInfo];
+    [self.preferencesManager setValue:value
+                              forName:self.settingIdentifier
+                           tellToKext:YES
+                 notificationUserInfo:notificationUserInfo];
   }
 }
 
