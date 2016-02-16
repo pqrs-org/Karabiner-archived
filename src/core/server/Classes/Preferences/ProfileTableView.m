@@ -6,4 +6,10 @@
   return YES;
 }
 
+- (void)mouseDown:(NSEvent*)theEvent {
+}
+
+- (void)mouseUp:(NSEvent*)theEvent {
+}
+
 @end
