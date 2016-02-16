@@ -4,6 +4,11 @@
 #import "PreferencesManager.h"
 #import "XMLCompiler.h"
 
+@interface ParameterOutlineViewDelegate ()
+@property(weak) IBOutlet NSOutlineView* outlineView;
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@end
+
 @implementation ParameterOutlineViewDelegate
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
