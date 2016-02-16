@@ -415,6 +415,9 @@
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
   if (!md) return;
+  if ([md[@"name"] isEqualToString:name]) {
+    return;
+  }
   md[@"name"] = name;
 
   NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
