@@ -18,7 +18,6 @@
 		340D08821AC8463A006DD5ED /* StatusMessageNormalWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 340D08811AC8463A006DD5ED /* StatusMessageNormalWindow.xib */; };
 		3416745C1AFE5201005D6E58 /* SessionObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3416745B1AFE5201005D6E58 /* SessionObserver.m */; };
 		34192A8618FEC13000AC2390 /* modifierdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34192A8518FEC13000AC2390 /* modifierdef.xml */; };
-		34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 34207C041666209F00E7FD08 /* TableView_configlist.m */; };
 		3429B706171A990000C7DB64 /* EnvironmentChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3429B705171A990000C7DB64 /* EnvironmentChecker.m */; };
 		342A42D81A8EE7EE0007D37E /* IOHIDPostEventWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 342A42D71A8EE7EE0007D37E /* IOHIDPostEventWrapper.m */; };
 		3431D7CB19E1395D00AE3219 /* icon.statusbar.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3431D7CA19E1395D00AE3219 /* icon.statusbar.tif */; };
@@ -60,6 +59,8 @@
 		34C157581C70146A00E6E81B /* ParameterDiffCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C157571C70146A00E6E81B /* ParameterDiffCellView.m */; };
 		34C1575B1C72317E00E6E81B /* ProfileTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C1575A1C72317E00E6E81B /* ProfileTableView.m */; };
 		34C1575E1C7235B200E6E81B /* ProfileCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C1575D1C7235B200E6E81B /* ProfileCellView.m */; };
+		34C157631C72EAE200E6E81B /* ProfileTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C157601C72EAE200E6E81B /* ProfileTableViewDataSource.m */; };
+		34C157641C72EAE200E6E81B /* ProfileTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C157621C72EAE200E6E81B /* ProfileTableViewDelegate.m */; };
 		34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */; };
 		34CD9CCD1BA1E67A004F0218 /* checkbox-omitted.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */; };
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
@@ -123,8 +124,6 @@
 		3416745A1AFE5201005D6E58 /* SessionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionObserver.h; path = ../../share/SessionObserver.h; sourceTree = "<group>"; };
 		3416745B1AFE5201005D6E58 /* SessionObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionObserver.m; path = ../../share/SessionObserver.m; sourceTree = "<group>"; };
 		34192A8518FEC13000AC2390 /* modifierdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = modifierdef.xml; path = Resources/modifierdef.xml; sourceTree = "<group>"; };
-		34207C031666209F00E7FD08 /* TableView_configlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TableView_configlist.h; path = Classes/Preferences/TableView_configlist.h; sourceTree = "<group>"; };
-		34207C041666209F00E7FD08 /* TableView_configlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableView_configlist.m; path = Classes/Preferences/TableView_configlist.m; sourceTree = "<group>"; };
 		3429B704171A990000C7DB64 /* EnvironmentChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnvironmentChecker.h; path = Classes/EnvironmentChecker.h; sourceTree = "<group>"; };
 		3429B705171A990000C7DB64 /* EnvironmentChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnvironmentChecker.m; path = Classes/EnvironmentChecker.m; sourceTree = "<group>"; };
 		342A42D61A8EE7EE0007D37E /* IOHIDPostEventWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IOHIDPostEventWrapper.h; path = ../../share/IOHIDPostEventWrapper.h; sourceTree = "<group>"; };
@@ -183,6 +182,10 @@
 		34C1575A1C72317E00E6E81B /* ProfileTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableView.m; path = Classes/Preferences/ProfileTableView.m; sourceTree = "<group>"; };
 		34C1575C1C7235B200E6E81B /* ProfileCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileCellView.h; path = Classes/Preferences/ProfileCellView.h; sourceTree = "<group>"; };
 		34C1575D1C7235B200E6E81B /* ProfileCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileCellView.m; path = Classes/Preferences/ProfileCellView.m; sourceTree = "<group>"; };
+		34C1575F1C72EAE200E6E81B /* ProfileTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileTableViewDataSource.h; path = Classes/Preferences/ProfileTableViewDataSource.h; sourceTree = "<group>"; };
+		34C157601C72EAE200E6E81B /* ProfileTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableViewDataSource.m; path = Classes/Preferences/ProfileTableViewDataSource.m; sourceTree = "<group>"; };
+		34C157611C72EAE200E6E81B /* ProfileTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileTableViewDelegate.h; path = Classes/Preferences/ProfileTableViewDelegate.h; sourceTree = "<group>"; };
+		34C157621C72EAE200E6E81B /* ProfileTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileTableViewDelegate.m; path = Classes/Preferences/ProfileTableViewDelegate.m; sourceTree = "<group>"; };
 		34CB2F2E19565E2B00A6E0E3 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
 		34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
 		34CD9CCC1BA1E67A004F0218 /* checkbox-omitted.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "checkbox-omitted.xml"; path = "Resources/checkbox-omitted.xml"; sourceTree = "<group>"; };
@@ -396,8 +399,10 @@
 				34C1575D1C7235B200E6E81B /* ProfileCellView.m */,
 				34C157591C72317E00E6E81B /* ProfileTableView.h */,
 				34C1575A1C72317E00E6E81B /* ProfileTableView.m */,
-				34207C031666209F00E7FD08 /* TableView_configlist.h */,
-				34207C041666209F00E7FD08 /* TableView_configlist.m */,
+				34C1575F1C72EAE200E6E81B /* ProfileTableViewDataSource.h */,
+				34C157601C72EAE200E6E81B /* ProfileTableViewDataSource.m */,
+				34C157611C72EAE200E6E81B /* ProfileTableViewDelegate.h */,
+				34C157621C72EAE200E6E81B /* ProfileTableViewDelegate.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -600,6 +605,7 @@
 				34E917031C6B481200C014BD /* ParameterOutlineView.m in Sources */,
 				342A42D81A8EE7EE0007D37E /* IOHIDPostEventWrapper.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
+				34C157631C72EAE200E6E81B /* ProfileTableViewDataSource.m in Sources */,
 				34C1575E1C7235B200E6E81B /* ProfileCellView.m in Sources */,
 				34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */,
 				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
@@ -614,11 +620,11 @@
 				34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */,
 				3493C43D1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m in Sources */,
 				34F3FF5A1C4E9E4200B9B82C /* CheckboxOutlineViewDelegate.m in Sources */,
-				34207C081666209F00E7FD08 /* TableView_configlist.m in Sources */,
 				34E917061C6B4A1900C014BD /* ParameterValueCellView.m in Sources */,
 				3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */,
 				34F3FF541C4E9C9300B9B82C /* CheckboxCellView.m in Sources */,
 				34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */,
+				34C157641C72EAE200E6E81B /* ProfileTableViewDelegate.m in Sources */,
 				34D542D41C5FA44200B23979 /* CheckboxOutlineView.m in Sources */,
 				34A5572F16EA075E000E5399 /* StatusMessageView.m in Sources */,
 				34E917091C6B947000C014BD /* ParameterOutlineViewDelegate.m in Sources */,

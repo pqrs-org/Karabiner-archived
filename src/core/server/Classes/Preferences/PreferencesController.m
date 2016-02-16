@@ -1,13 +1,16 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
+#import "CheckboxOutlineView.h"
 #import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxOutlineViewDelegate.h"
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
+#import "ParameterOutlineView.h"
 #import "ParameterOutlineViewDataSource.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "ProfileTableView.h"
 #import "XMLCompiler.h"
 
 #include <sys/types.h>
@@ -16,8 +19,9 @@
 @interface PreferencesController ()
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
 @property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
-@property(weak) IBOutlet NSOutlineView* checkboxOutlineView;
-@property(weak) IBOutlet NSOutlineView* parameterOutlineView;
+@property(weak) IBOutlet CheckboxOutlineView* checkboxOutlineView;
+@property(weak) IBOutlet ParameterOutlineView* parameterOutlineView;
+@property(weak) IBOutlet ProfileTableView* profileTableView;
 @property(weak) IBOutlet NSSearchField* checkboxSearchText;
 @property(weak) IBOutlet NSSegmentedControl* checkboxFontSegmentedControl;
 @property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
@@ -39,6 +43,7 @@
     }
 
     [self.parameterOutlineView reloadData];
+    [self.profileTableView reloadData];
   });
 }
 
@@ -229,6 +234,18 @@
 
 - (IBAction)collapseParameterOutlineView:(id)sender {
   [self.parameterOutlineView collapseItem:nil collapseChildren:YES];
+}
+
+- (IBAction)addNewProfile:(id)sender {
+  [preferencesManager_ configlist_append];
+}
+
+- (IBAction)sortProfilesByName:(id)sender {
+  [preferencesManager_ configlist_sortByName];
+}
+
+- (IBAction)sortProfilesByCreated:(id)sender {
+  [preferencesManager_ configlist_sortByAppendIndex];
 }
 
 - (IBAction)openURL:(id)sender {
