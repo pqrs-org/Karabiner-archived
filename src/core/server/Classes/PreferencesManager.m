@@ -442,7 +442,7 @@
   NSString* identifier = [NSString stringWithFormat:@"config_%ld_%ld", (time_t)(tm.tv_sec), (time_t)(tm.tv_usec)];
 
   NSMutableDictionary* md = [NSMutableDictionary dictionaryWithCapacity:0];
-  md[@"name"] = @"NewItem";
+  md[@"name"] = @"New Profile";
   md[@"identify"] = identifier;
   md[@"appendIndex"] = @([self configlist_maxAppendIndex] + 1);
 
