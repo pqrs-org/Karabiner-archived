@@ -5,7 +5,6 @@
 #import "XMLCompiler.h"
 
 @interface ParameterOutlineViewDelegate ()
-@property(weak) IBOutlet NSOutlineView* outlineView;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @end
 
