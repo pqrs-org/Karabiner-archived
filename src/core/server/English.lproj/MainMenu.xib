@@ -1228,44 +1228,58 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
-                                            <rect key="frame" x="15" y="525" width="292" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Show profile name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1389">
+                                            <rect key="frame" x="15" y="490" width="260" height="51"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1390">
                                                 <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="sendConfigListChangedNotification:" target="592" id="1187"/>
-                                                <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
-                                            </connections>
-                                        </button>
-                                        <box autoresizesSubviews="NO" title="Profiles" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="695">
-                                            <rect key="frame" x="14" y="13" width="726" height="495"/>
-                                            <view key="contentView" id="gKU-xd-mya">
-                                                <rect key="frame" x="1" y="1" width="724" height="479"/>
+                                                <string key="title">You can make multiple profiles.
+Click '+', and then rename it. (eg 'Games').
+Choose a profile from menu bar.</string>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <box title="Configuration" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="a4O-4U-ALG">
+                                            <rect key="frame" x="14" y="430" width="726" height="50"/>
+                                            <view key="contentView" id="LcT-HM-770">
+                                                <rect key="frame" x="1" y="1" width="724" height="34"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1389">
-                                                        <rect key="frame" x="15" y="383" width="694" height="85"/>
-                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" alignment="left" id="1390">
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="694">
+                                                        <rect key="frame" x="15" y="8" width="292" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Show profile name in menu bar (Default: Off)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="708">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
-                                                            <string key="title">You can make multiple profiles.
-Click '+', and then rename it. (eg 'Games').
-Choose a profile from menu bar.
-
-Note: You cannot delete a profile that is in use (in the menu bar).</string>
-                                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        </textFieldCell>
-                                                    </textField>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="sendConfigListChangedNotification:" target="592" id="1187"/>
+                                                            <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="694" firstAttribute="leading" secondItem="LcT-HM-770" secondAttribute="leading" constant="17" id="ADp-kC-csV"/>
+                                                    <constraint firstAttribute="bottom" secondItem="694" secondAttribute="bottom" constant="10" id="efR-0L-sSM"/>
+                                                    <constraint firstItem="694" firstAttribute="top" secondItem="LcT-HM-770" secondAttribute="top" constant="10" id="tiS-Tt-RHn"/>
+                                                </constraints>
+                                            </view>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </box>
+                                        <box autoresizesSubviews="NO" title="Profiles" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="695">
+                                            <rect key="frame" x="14" y="13" width="726" height="411"/>
+                                            <view key="contentView" id="gKU-xd-mya">
+                                                <rect key="frame" x="1" y="1" width="724" height="395"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
                                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="700">
-                                                        <rect key="frame" x="17" y="44" width="690" height="330"/>
+                                                        <rect key="frame" x="17" y="44" width="690" height="341"/>
                                                         <clipView key="contentView" id="XEC-4K-dD2">
-                                                            <rect key="frame" x="1" y="1" width="688" height="328"/>
+                                                            <rect key="frame" x="1" y="1" width="688" height="339"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" id="703">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="328"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="339"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1349,9 +1363,9 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="700" firstAttribute="top" secondItem="gKU-xd-mya" secondAttribute="top" constant="10" id="6Mo-sY-zw2"/>
                                                     <constraint firstAttribute="bottom" secondItem="699" secondAttribute="bottom" constant="10" id="8Qa-fN-04D"/>
                                                     <constraint firstItem="698" firstAttribute="width" secondItem="699" secondAttribute="width" id="DLK-hp-yx4"/>
-                                                    <constraint firstAttribute="trailing" secondItem="1389" secondAttribute="trailing" constant="17" id="FI9-lq-QvI"/>
                                                     <constraint firstItem="699" firstAttribute="leading" secondItem="gKU-xd-mya" secondAttribute="leading" constant="17" id="Fa6-E3-ifC"/>
                                                     <constraint firstAttribute="trailing" secondItem="700" secondAttribute="trailing" constant="17" id="H75-uk-560"/>
                                                     <constraint firstItem="JBN-HF-WTq" firstAttribute="leading" secondItem="ZYB-aW-UwD" secondAttribute="trailing" constant="10" id="KUO-gi-7lp"/>
@@ -1361,11 +1375,8 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                                     <constraint firstItem="698" firstAttribute="leading" secondItem="699" secondAttribute="trailing" id="Tgi-Zx-sHz"/>
                                                     <constraint firstItem="ZYB-aW-UwD" firstAttribute="leading" secondItem="698" secondAttribute="trailing" constant="30" id="Y6I-NW-cZg"/>
                                                     <constraint firstItem="JBN-HF-WTq" firstAttribute="centerY" secondItem="699" secondAttribute="centerY" id="jPu-n2-Y2W"/>
-                                                    <constraint firstItem="1389" firstAttribute="leading" secondItem="gKU-xd-mya" secondAttribute="leading" constant="17" id="mT6-nZ-b1l"/>
                                                     <constraint firstItem="698" firstAttribute="centerY" secondItem="699" secondAttribute="centerY" id="qI2-Z4-Rq7"/>
                                                     <constraint firstItem="698" firstAttribute="height" secondItem="699" secondAttribute="height" id="tGd-4A-kFf"/>
-                                                    <constraint firstItem="700" firstAttribute="top" secondItem="1389" secondAttribute="bottom" constant="10" id="tht-di-J82"/>
-                                                    <constraint firstItem="1389" firstAttribute="top" secondItem="gKU-xd-mya" secondAttribute="top" constant="10" id="vXJ-VW-GK9"/>
                                                 </constraints>
                                             </view>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -1373,12 +1384,15 @@ Note: You cannot delete a profile that is in use (in the menu bar).</string>
                                         </box>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="695" firstAttribute="top" secondItem="693" secondAttribute="top" constant="50" id="4hF-gc-viP"/>
-                                        <constraint firstItem="694" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="BxI-vx-rFv"/>
+                                        <constraint firstItem="a4O-4U-ALG" firstAttribute="leading" secondItem="1389" secondAttribute="leading" id="9I6-TK-R82"/>
+                                        <constraint firstAttribute="trailing" secondItem="a4O-4U-ALG" secondAttribute="trailing" constant="17" id="ACq-cL-Y45"/>
                                         <constraint firstAttribute="trailing" secondItem="695" secondAttribute="trailing" constant="17" id="Lab-5q-0Dp"/>
                                         <constraint firstItem="695" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="Tfx-Hi-UTk"/>
-                                        <constraint firstItem="694" firstAttribute="top" secondItem="693" secondAttribute="top" constant="17" id="jWn-xQ-nnu"/>
+                                        <constraint firstItem="695" firstAttribute="top" secondItem="a4O-4U-ALG" secondAttribute="bottom" constant="10" id="lFD-3x-NO9"/>
+                                        <constraint firstItem="1389" firstAttribute="leading" secondItem="693" secondAttribute="leading" constant="17" id="nmY-TQ-RM8"/>
                                         <constraint firstAttribute="bottom" secondItem="695" secondAttribute="bottom" constant="17" id="tWa-zY-qlJ"/>
+                                        <constraint firstItem="a4O-4U-ALG" firstAttribute="top" secondItem="1389" secondAttribute="bottom" constant="10" id="yiF-qc-MLW"/>
+                                        <constraint firstItem="1389" firstAttribute="top" secondItem="693" secondAttribute="top" constant="17" id="zNJ-CP-M3E"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
