@@ -404,6 +404,10 @@
 }
 
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
+  [self configlist_setName:rowIndex name:name notificationUserInfo:nil];
+}
+
+- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name notificationUserInfo:(NSDictionary*)notificationUserInfo {
   if ([name length] == 0) return;
 
   NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
@@ -426,7 +430,7 @@
 
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil userInfo:notificationUserInfo];
 }
 
 - (void)configlist_append {

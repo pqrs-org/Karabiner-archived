@@ -5,7 +5,12 @@
 @implementation ProfileCellView
 
 - (IBAction)nameChanged:(id)sender {
-  [self.preferencesManager configlist_setName:self.profileIndex name:self.textField.stringValue];
+  NSDictionary* notificationUserInfo = @{
+    kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
+  };
+  [self.preferencesManager configlist_setName:self.profileIndex
+                                         name:self.textField.stringValue
+                         notificationUserInfo:notificationUserInfo];
 }
 
 - (IBAction)deleteProfile:(id)sender {

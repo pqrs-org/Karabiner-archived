@@ -43,7 +43,12 @@
     }
 
     [self.parameterOutlineView reloadData];
-    [self.profileTableView reloadData];
+
+    if (notification.userInfo && notification.userInfo[kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI]) {
+      // do nothing
+    } else {
+      [self.profileTableView reloadData];
+    }
   });
 }
 
