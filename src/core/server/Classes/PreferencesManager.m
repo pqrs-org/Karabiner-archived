@@ -99,7 +99,7 @@
 
       // add new item
       [self configlist_append];
-      [self configlist_setName:0 name:@"Default"];
+      [self configlist_setName:0 name:@"Default Profile"];
       [self configlist_select:0];
     }
   }
