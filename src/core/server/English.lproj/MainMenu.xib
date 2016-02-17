@@ -2000,6 +2000,12 @@ Debug Mode Guide</string>
             </connections>
             <point key="canvasLocation" x="747" y="371"/>
         </window>
+        <customObject id="IVB-c7-TsL" customClass="ServerObjects">
+            <connections>
+                <outlet property="preferencesManager" destination="592" id="BOL-JN-afJ"/>
+                <outlet property="xmlCompiler" destination="591" id="SQx-uN-mJn"/>
+            </connections>
+        </customObject>
         <customObject id="606" customClass="StatusMessageManager"/>
         <customObject id="1181" customClass="PreferencesController">
             <connections>

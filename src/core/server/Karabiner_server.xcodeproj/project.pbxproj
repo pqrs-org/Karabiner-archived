@@ -69,6 +69,7 @@
 		34D542D41C5FA44200B23979 /* CheckboxOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D542D31C5FA44200B23979 /* CheckboxOutlineView.m */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
 		34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94448193217A80062E422 /* StartAtLoginUtilities.m */; };
+		34DB980D1C74C29E00D90368 /* ServerObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB980C1C74C29E00D90368 /* ServerObjects.m */; };
 		34E917031C6B481200C014BD /* ParameterOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E917021C6B481200C014BD /* ParameterOutlineView.m */; };
 		34E917061C6B4A1900C014BD /* ParameterValueCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E917051C6B4A1900C014BD /* ParameterValueCellView.m */; };
 		34E917091C6B947000C014BD /* ParameterOutlineViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E917081C6B947000C014BD /* ParameterOutlineViewDelegate.m */; };
@@ -198,6 +199,8 @@
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
 		34D94447193217A80062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		34D94448193217A80062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
+		34DB980B1C74C29E00D90368 /* ServerObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerObjects.h; path = Classes/ServerObjects.h; sourceTree = "<group>"; };
+		34DB980C1C74C29E00D90368 /* ServerObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerObjects.m; path = Classes/ServerObjects.m; sourceTree = "<group>"; };
 		34E917011C6B481200C014BD /* ParameterOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParameterOutlineView.h; path = Classes/Preferences/ParameterOutlineView.h; sourceTree = "<group>"; };
 		34E917021C6B481200C014BD /* ParameterOutlineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParameterOutlineView.m; path = Classes/Preferences/ParameterOutlineView.m; sourceTree = "<group>"; };
 		34E917041C6B4A1900C014BD /* ParameterValueCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParameterValueCellView.h; path = Classes/Preferences/ParameterValueCellView.h; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 				34FB9591128F985A0088B235 /* PreferencesManager.m */,
 				3401D0D41657A18C00CF962F /* ServerForUserspace.h */,
 				3401D0D51657A18C00CF962F /* ServerForUserspace.m */,
+				34DB980B1C74C29E00D90368 /* ServerObjects.h */,
+				34DB980C1C74C29E00D90368 /* ServerObjects.m */,
 				34D944401932164F0062E422 /* share */,
 				348C6A2C128E4504005F516D /* StatusBar.h */,
 				348C6A2D128E4504005F516D /* StatusBar.m */,
@@ -608,6 +613,7 @@
 				34C157631C72EAE200E6E81B /* ProfileTableViewDataSource.m in Sources */,
 				34C1575E1C7235B200E6E81B /* ProfileCellView.m in Sources */,
 				34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */,
+				34DB980D1C74C29E00D90368 /* ServerObjects.m in Sources */,
 				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
 				3416745C1AFE5201005D6E58 /* SessionObserver.m in Sources */,
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */,
