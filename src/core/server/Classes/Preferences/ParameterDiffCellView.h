@@ -2,10 +2,10 @@
 
 @import Cocoa;
 
-@class PreferencesManager;
+@class ServerObjects;
 
 @interface ParameterDiffCellView : NSTableCellView
-@property(weak) PreferencesManager* preferencesManager;
+@property(weak) ServerObjects* serverObjects;
 @property NSString* settingIdentifier;
 @property NSInteger defaultValue;
 

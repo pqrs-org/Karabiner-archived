@@ -1,6 +1,7 @@
 #import "NotificationKeys.h"
 #import "ParameterValueCellView.h"
 #import "PreferencesManager.h"
+#import "ServerObjects.h"
 
 @interface ParameterValueCellView ()
 @end
@@ -12,10 +13,10 @@
     kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
   };
 
-  [self.preferencesManager setValue:self.stepper.intValue
-                            forName:self.settingIdentifier
-                         tellToKext:YES
-               notificationUserInfo:notificationUserInfo];
+  [self.serverObjects.preferencesManager setValue:self.stepper.intValue
+                                          forName:self.settingIdentifier
+                                       tellToKext:YES
+                             notificationUserInfo:notificationUserInfo];
 }
 
 - (IBAction)valueChangedByStepper:(id)sender {

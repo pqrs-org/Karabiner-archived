@@ -2130,8 +2130,7 @@ Debug Mode Guide</string>
         <userDefaultsController representsSharedInstance="YES" id="1176"/>
         <customObject id="Vvy-Zk-dMA" customClass="CheckboxOutlineViewDataSource">
             <connections>
-                <outlet property="preferencesManager" destination="592" id="OJc-yw-DAn"/>
-                <outlet property="xmlCompiler" destination="591" id="Fnu-Ro-xJu"/>
+                <outlet property="serverObjects" destination="IVB-c7-TsL" id="akd-No-tJ0"/>
             </connections>
         </customObject>
         <customObject id="nHm-UC-8X2" customClass="CheckboxOutlineViewDelegate">
@@ -2142,8 +2141,7 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="s9s-xO-cMU" customClass="ParameterOutlineViewDataSource">
             <connections>
-                <outlet property="preferencesManager" destination="592" id="DpC-kJ-MhG"/>
-                <outlet property="xmlCompiler" destination="591" id="MyH-uY-R2d"/>
+                <outlet property="serverObjects" destination="IVB-c7-TsL" id="2aI-Pb-lNj"/>
             </connections>
         </customObject>
         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="400" id="s09-5a-Znl">
@@ -2158,17 +2156,17 @@ Debug Mode Guide</string>
         </textField>
         <customObject id="azx-Mg-L29" customClass="ParameterOutlineViewDelegate">
             <connections>
-                <outlet property="preferencesManager" destination="592" id="ZQv-mH-exw"/>
+                <outlet property="serverObjects" destination="IVB-c7-TsL" id="zB6-Rc-T4e"/>
             </connections>
         </customObject>
         <customObject id="2GT-K4-ZxB" customClass="ProfileTableViewDataSource">
             <connections>
-                <outlet property="preferencesManager" destination="592" id="3bN-LY-leR"/>
+                <outlet property="serverObjects" destination="IVB-c7-TsL" id="Tku-jx-ANp"/>
             </connections>
         </customObject>
         <customObject id="vk9-l6-h5y" customClass="ProfileTableViewDelegate">
             <connections>
-                <outlet property="preferencesManager" destination="592" id="NNf-cz-UtS"/>
+                <outlet property="serverObjects" destination="IVB-c7-TsL" id="nvl-oE-VUO"/>
             </connections>
         </customObject>
     </objects>

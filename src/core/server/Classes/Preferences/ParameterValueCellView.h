@@ -2,10 +2,10 @@
 
 @import Cocoa;
 
-@class PreferencesManager;
+@class ServerObjects;
 
 @interface ParameterValueCellView : NSTableCellView
 @property(weak) IBOutlet NSStepper* stepper;
-@property(weak) PreferencesManager* preferencesManager;
+@property(weak) ServerObjects* serverObjects;
 @property NSString* settingIdentifier;
 @end

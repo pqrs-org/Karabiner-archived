@@ -1,14 +1,15 @@
 #import "PreferencesManager.h"
 #import "ProfileTableViewDataSource.h"
+#import "ServerObjects.h"
 
 @interface ProfileTableViewDataSource ()
-@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet ServerObjects* serverObjects;
 @end
 
 @implementation ProfileTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)aTableView {
-  return (NSInteger)([self.preferencesManager configlist_count]);
+  return (NSInteger)([self.serverObjects.preferencesManager configlist_count]);
 }
 
 @end

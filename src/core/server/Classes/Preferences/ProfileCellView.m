@@ -1,6 +1,7 @@
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
 #import "ProfileCellView.h"
+#import "ServerObjects.h"
 
 @implementation ProfileCellView
 
@@ -8,14 +9,14 @@
   NSDictionary* notificationUserInfo = @{
     kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
   };
-  [self.preferencesManager configlist_setName:self.profileIndex
-                                         name:self.textField.stringValue
-                         notificationUserInfo:notificationUserInfo];
+  [self.serverObjects.preferencesManager configlist_setName:self.profileIndex
+                                                       name:self.textField.stringValue
+                                       notificationUserInfo:notificationUserInfo];
 }
 
 - (IBAction)deleteProfile:(id)sender {
-  if (self.profileIndex != [self.preferencesManager configlist_selectedIndex]) {
-    [self.preferencesManager configlist_delete:self.profileIndex];
+  if (self.profileIndex != [self.serverObjects.preferencesManager configlist_selectedIndex]) {
+    [self.serverObjects.preferencesManager configlist_delete:self.profileIndex];
   }
 }
 
