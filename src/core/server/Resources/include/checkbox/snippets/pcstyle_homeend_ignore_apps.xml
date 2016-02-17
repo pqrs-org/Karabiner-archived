@@ -45,6 +45,7 @@
       PhpStorm,
       RubyMine,
       JetBrainsApps,
+      ANDROID_STUDIO,
     </only>
     <autogen>__KeyToKey__ FROMKEYCODE_HOME, KeyCode::HOME</autogen>
     <autogen>__KeyToKey__ FROMKEYCODE_END,  KeyCode::END</autogen>
