@@ -2,6 +2,7 @@
 #import "CheckboxCellView.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
+#import "ServerObjects.h"
 
 @implementation CheckboxCellView
 
@@ -62,10 +63,10 @@
       kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
     };
 
-    [self.preferencesManager setValue:value
-                              forName:self.settingIdentifier
-                           tellToKext:YES
-                 notificationUserInfo:notificationUserInfo];
+    [self.serverObjects.preferencesManager setValue:value
+                                            forName:self.settingIdentifier
+                                         tellToKext:YES
+                               notificationUserInfo:notificationUserInfo];
   }
 }
 
