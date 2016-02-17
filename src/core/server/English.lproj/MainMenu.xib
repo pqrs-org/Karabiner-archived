@@ -1278,7 +1278,7 @@ Choose a profile from menu bar.</string>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" viewBased="YES" id="703" customClass="ProfileTableView">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="359"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="0.0"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
