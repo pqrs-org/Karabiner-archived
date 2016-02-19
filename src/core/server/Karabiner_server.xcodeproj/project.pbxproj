@@ -13,7 +13,6 @@
 		3401D0D61657A18C00CF962F /* ServerForUserspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0D51657A18C00CF962F /* ServerForUserspace.m */; };
 		3401D0DA1657CE6A00CF962F /* Updater.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0D91657CE6A00CF962F /* Updater.m */; };
 		3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */; };
-		3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3406F7101668ED7B00FE1E80 /* PreferencesController.m */; };
 		340B7E3F1545090D00FB3237 /* InputSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 340B7E3E1545090D00FB3237 /* InputSource.m */; };
 		340D08821AC8463A006DD5ED /* StatusMessageNormalWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 340D08811AC8463A006DD5ED /* StatusMessageNormalWindow.xib */; };
 		3416745C1AFE5201005D6E58 /* SessionObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 3416745B1AFE5201005D6E58 /* SessionObserver.m */; };
@@ -31,6 +30,7 @@
 		345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */ = {isa = PBXBuildFile; fileRef = 345647351346A7AF00FD0C38 /* UserClient_userspace.m */; };
 		345647421346AE1700FD0C38 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 345647411346AE1700FD0C38 /* IOKit.framework */; };
 		34568415109F350100125F91 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34568414109F350100125F91 /* Carbon.framework */; };
+		346A2F261C77778300E32362 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346A2F251C77778300E32362 /* PreferencesWindowController.m */; };
 		346E2B5C1C5129A500719E5E /* CheckboxBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 346E2B5B1C5129A500719E5E /* CheckboxBackgroundView.m */; };
 		34738785192589CC00F605BD /* windownamedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34738784192589CC00F605BD /* windownamedef.xml */; };
 		347828F613EE5F3400D50AB1 /* karabiner_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* karabiner_pub.pem */; };
@@ -117,8 +117,6 @@
 		3401D0DE16586C0700CF962F /* KarabinerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerProtocol.h; path = ../../share/KarabinerProtocol.h; sourceTree = "<group>"; };
 		3401D0FB1658718100CF962F /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationKeys.h; path = Classes/NotificationKeys.h; sourceTree = "<group>"; };
 		3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
-		3406F70F1668ED7B00FE1E80 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = Classes/Preferences/PreferencesController.h; sourceTree = "<group>"; };
-		3406F7101668ED7B00FE1E80 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = Classes/Preferences/PreferencesController.m; sourceTree = "<group>"; };
 		340B7E3D1545090D00FB3237 /* InputSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputSource.h; path = Classes/InputSource.h; sourceTree = "<group>"; };
 		340B7E3E1545090D00FB3237 /* InputSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InputSource.m; path = Classes/InputSource.m; sourceTree = "<group>"; };
 		340D08811AC8463A006DD5ED /* StatusMessageNormalWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatusMessageNormalWindow.xib; path = Resources/StatusMessageNormalWindow.xib; sourceTree = "<group>"; };
@@ -142,6 +140,8 @@
 		345647411346AE1700FD0C38 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		34568414109F350100125F91 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		34597768128DBFAE003398BD /* bridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridge.h; path = ../../bridge/include/bridge.h; sourceTree = SOURCE_ROOT; };
+		346A2F241C77778300E32362 /* PreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesWindowController.h; path = Classes/Preferences/PreferencesWindowController.h; sourceTree = "<group>"; };
+		346A2F251C77778300E32362 /* PreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesWindowController.m; path = Classes/Preferences/PreferencesWindowController.m; sourceTree = "<group>"; };
 		346E2B5A1C5129A500719E5E /* CheckboxBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxBackgroundView.h; path = Classes/Preferences/CheckboxBackgroundView.h; sourceTree = "<group>"; };
 		346E2B5B1C5129A500719E5E /* CheckboxBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxBackgroundView.m; path = Classes/Preferences/CheckboxBackgroundView.m; sourceTree = "<group>"; };
 		34738784192589CC00F605BD /* windownamedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = windownamedef.xml; path = Resources/windownamedef.xml; sourceTree = "<group>"; };
@@ -398,8 +398,8 @@
 				34E917081C6B947000C014BD /* ParameterOutlineViewDelegate.m */,
 				34E917041C6B4A1900C014BD /* ParameterValueCellView.h */,
 				34E917051C6B4A1900C014BD /* ParameterValueCellView.m */,
-				3406F70F1668ED7B00FE1E80 /* PreferencesController.h */,
-				3406F7101668ED7B00FE1E80 /* PreferencesController.m */,
+				346A2F241C77778300E32362 /* PreferencesWindowController.h */,
+				346A2F251C77778300E32362 /* PreferencesWindowController.m */,
 				34C1575C1C7235B200E6E81B /* ProfileCellView.h */,
 				34C1575D1C7235B200E6E81B /* ProfileCellView.m */,
 				34C157591C72317E00E6E81B /* ProfileTableView.h */,
@@ -624,10 +624,10 @@
 				3401D0DA1657CE6A00CF962F /* Updater.m in Sources */,
 				3401D0DD1657DD4800CF962F /* ClientForKernelspace.m in Sources */,
 				34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */,
+				346A2F261C77778300E32362 /* PreferencesWindowController.m in Sources */,
 				3493C43D1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m in Sources */,
 				34F3FF5A1C4E9E4200B9B82C /* CheckboxOutlineViewDelegate.m in Sources */,
 				34E917061C6B4A1900C014BD /* ParameterValueCellView.m in Sources */,
-				3406F7111668ED7B00FE1E80 /* PreferencesController.m in Sources */,
 				34F3FF541C4E9C9300B9B82C /* CheckboxCellView.m in Sources */,
 				34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */,
 				34C157641C72EAE200E6E81B /* ProfileTableViewDelegate.m in Sources */,

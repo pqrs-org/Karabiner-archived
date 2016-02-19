@@ -7,9 +7,9 @@
 #import "NotificationKeys.h"
 #import "ParameterOutlineView.h"
 #import "ParameterOutlineViewDataSource.h"
-#import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesWindowController.h"
 #import "ProfileTableView.h"
 #import "XMLCompiler.h"
 
