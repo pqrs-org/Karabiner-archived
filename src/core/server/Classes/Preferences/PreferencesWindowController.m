@@ -11,31 +11,45 @@
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
 #import "ProfileTableView.h"
+#import "ServerObjects.h"
 #import "XMLCompiler.h"
 
 #include <sys/types.h>
 #include <sys/sysctl.h>
 
-@interface PreferencesController ()
+@interface PreferencesWindowController ()
+@property(weak) IBOutlet CheckboxOutlineView* checkboxOutlineView;
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
 @property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
-@property(weak) IBOutlet CheckboxOutlineView* checkboxOutlineView;
-@property(weak) IBOutlet ParameterOutlineView* parameterOutlineView;
-@property(weak) IBOutlet ProfileTableView* profileTableView;
+@property(weak) IBOutlet NSButton* checkbox_showEnabledOnly;
 @property(weak) IBOutlet NSSearchField* checkboxSearchText;
 @property(weak) IBOutlet NSSegmentedControl* checkboxFontSegmentedControl;
+@property(weak) IBOutlet NSStepper* delayUntilRepeatStepper;
+@property(weak) IBOutlet NSStepper* keyRepeatStepper;
+@property(weak) IBOutlet NSTabView* keyRepeatParameters;
+@property(weak) IBOutlet NSTabView* tabView;
+@property(weak) IBOutlet NSTextField* debugModeGuideTextField;
+@property(weak) IBOutlet NSTextField* delayUntilRepeatLabel;
+@property(weak) IBOutlet NSTextField* delayUntilRepeatTextField;
+@property(weak) IBOutlet NSTextField* keyRepeatLabel;
+@property(weak) IBOutlet NSTextField* keyRepeatTextField;
+@property(weak) IBOutlet NSTextField* versionText;
+@property(weak) IBOutlet NSWindow* preferencesWindow;
+@property(weak) IBOutlet ParameterOutlineView* parameterOutlineView;
 @property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
+@property(weak) IBOutlet ProfileTableView* profileTableView;
+@property(weak) IBOutlet ServerObjects* serverObjects;
 @property NSTimer* resizeTimer;
 @end
 
-@implementation PreferencesController
+@implementation PreferencesWindowController
 
 - (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
     [self refreshKeyRepeatTab:nil];
 
-    if ([checkbox_showEnabledOnly_ state] == NSOnState) {
+    if ([self.checkbox_showEnabledOnly state] == NSOnState) {
       [self.checkboxOutlineViewDataSource clearFilterCondition];
       [self filterCheckboxOutlineView:self];
     } else {
@@ -113,18 +127,18 @@
 /* ---------------------------------------------------------------------- */
 - (void)drawVersion {
   NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
-  [versionText_ setStringValue:version];
+  [self.versionText setStringValue:version];
 }
 
 - (void)drawEnabledCount {
   // Calculating enabled_count is a bit heavy.
   // So, we skip this calculation if the preferences window was invisible.
-  if (![preferencesWindow_ isVisible]) return;
+  if (![self.preferencesWindow isVisible]) return;
 
-  int count = [self enabled_count:xmlCompiler_.preferencepane_checkbox
-                          changed:[preferencesManager_ changed]];
+  int count = [self enabled_count:self.serverObjects.xmlCompiler.preferencepane_checkbox
+                          changed:[self.serverObjects.preferencesManager changed]];
 
-  [checkbox_showEnabledOnly_ setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items" : @"item"]];
+  [self.checkbox_showEnabledOnly setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items" : @"item"]];
 }
 
 /* ---------------------------------------------------------------------- */
@@ -165,7 +179,7 @@
   [self drawEnabledCount];
   [self refreshKeyRepeatTab:nil];
   [self updateDebugModeGuide];
-  [self sendStatusWindowPreferencesNotification:[[tabView_ selectedTabViewItem] identifier]];
+  [self sendStatusWindowPreferencesNotification:[[self.tabView selectedTabViewItem] identifier]];
 }
 
 - (void)windowWillClose:(NSNotification*)notification {
@@ -197,16 +211,16 @@
 
 /* ---------------------------------------------------------------------- */
 - (void)show {
-  [preferencesWindow_ makeKeyAndOrderFront:self];
+  [self.preferencesWindow makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
 }
 
 - (IBAction)reloadXML:(id)sender {
-  [xmlCompiler_ reload];
+  [self.serverObjects.xmlCompiler reload];
 }
 
 - (IBAction)filterCheckboxOutlineView:(id)sender {
-  BOOL isEnabledOnly = ([checkbox_showEnabledOnly_ state] == NSOnState);
+  BOOL isEnabledOnly = ([self.checkbox_showEnabledOnly state] == NSOnState);
   NSString* string = [self.checkboxSearchText stringValue];
   if ([self.checkboxOutlineViewDataSource filterDataSource:isEnabledOnly string:string]) {
     [self.checkboxOutlineView reloadData];
@@ -242,15 +256,15 @@
 }
 
 - (IBAction)addNewProfile:(id)sender {
-  [preferencesManager_ configlist_append];
+  [self.serverObjects.preferencesManager configlist_append];
 }
 
 - (IBAction)sortProfilesByName:(id)sender {
-  [preferencesManager_ configlist_sortByName];
+  [self.serverObjects.preferencesManager configlist_sortByName];
 }
 
 - (IBAction)sortProfilesByCreated:(id)sender {
-  [preferencesManager_ configlist_sortByAppendIndex];
+  [self.serverObjects.preferencesManager configlist_sortByAppendIndex];
 }
 
 - (IBAction)openURL:(id)sender {
@@ -266,25 +280,25 @@
   BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat];
 
   if (enabled) {
-    [keyRepeatParameters_ selectTabViewItemAtIndex:1];
+    [self.keyRepeatParameters selectTabViewItemAtIndex:1];
   } else {
-    [keyRepeatParameters_ selectTabViewItemAtIndex:0];
+    [self.keyRepeatParameters selectTabViewItemAtIndex:0];
   }
 
-  [delayUntilRepeatTextField_ setEnabled:enabled];
-  [delayUntilRepeatStepper_ setEnabled:enabled];
-  [keyRepeatTextField_ setEnabled:enabled];
-  [keyRepeatStepper_ setEnabled:enabled];
+  [self.delayUntilRepeatTextField setEnabled:enabled];
+  [self.delayUntilRepeatStepper setEnabled:enabled];
+  [self.keyRepeatTextField setEnabled:enabled];
+  [self.keyRepeatStepper setEnabled:enabled];
 
-  int delayUntilRepeat = [preferencesManager_ value:@"repeat.initial_wait"];
-  int keyRepeat = [preferencesManager_ value:@"repeat.wait"];
+  int delayUntilRepeat = [self.serverObjects.preferencesManager value:@"repeat.initial_wait"];
+  int keyRepeat = [self.serverObjects.preferencesManager value:@"repeat.wait"];
 
-  [delayUntilRepeatLabel_ setStringValue:[NSString stringWithFormat:@"%d milliseconds", delayUntilRepeat]];
-  [delayUntilRepeatTextField_ setIntegerValue:delayUntilRepeat];
-  [delayUntilRepeatStepper_ setIntegerValue:delayUntilRepeat];
-  [keyRepeatLabel_ setStringValue:[NSString stringWithFormat:@"%d milliseconds", keyRepeat]];
-  [keyRepeatTextField_ setIntegerValue:keyRepeat];
-  [keyRepeatStepper_ setIntegerValue:keyRepeat];
+  [self.delayUntilRepeatLabel setStringValue:[NSString stringWithFormat:@"%d milliseconds", delayUntilRepeat]];
+  [self.delayUntilRepeatTextField setIntegerValue:delayUntilRepeat];
+  [self.delayUntilRepeatStepper setIntegerValue:delayUntilRepeat];
+  [self.keyRepeatLabel setStringValue:[NSString stringWithFormat:@"%d milliseconds", keyRepeat]];
+  [self.keyRepeatTextField setIntegerValue:keyRepeat];
+  [self.keyRepeatStepper setIntegerValue:keyRepeat];
 }
 
 - (IBAction)openSystemPreferencesKeyboard:(id)sender {
@@ -292,12 +306,12 @@
 }
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
-  [preferencesManager_ setValue:[sender intValue] forName:@"repeat.initial_wait"];
+  [self.serverObjects.preferencesManager setValue:[sender intValue] forName:@"repeat.initial_wait"];
   [self refreshKeyRepeatTab:sender];
 }
 
 - (IBAction)changeKeyRepeat:(id)sender {
-  [preferencesManager_ setValue:[sender intValue] forName:@"repeat.wait"];
+  [self.serverObjects.preferencesManager setValue:[sender intValue] forName:@"repeat.wait"];
   [self refreshKeyRepeatTab:sender];
 }
 
@@ -307,7 +321,7 @@
 
 - (IBAction)toggleDebugMode:(id)sender {
   if ([self isDebugMode]) {
-    [clientForKernelspace_ unset_debug_flags];
+    [self.serverObjects.clientForKernelspace unset_debug_flags];
   } else {
     [[[NSAppleScript alloc] initWithSource:@"do shell script \"/usr/sbin/sysctl -w karabiner.debug=1\" with administrator privileges"] executeAndReturnError:nil];
   }
@@ -323,23 +337,23 @@
 
 - (void)updateDebugModeGuide {
   if ([self isDebugMode]) {
-    [debugModeGuideTextField_ setStringValue:@"Debug Mode is enabled.\nDo not type sensitive information such as password.\nYour key input are saved into system.log."];
+    [self.debugModeGuideTextField setStringValue:@"Debug Mode is enabled.\nDo not type sensitive information such as password.\nYour key input are saved into system.log."];
     // #a94442
-    [debugModeGuideTextField_ setTextColor:[NSColor colorWithCalibratedRed:(0xa9 * 1.0 / 255)
-                                                                     green:(0x44 * 1.0 / 255)
-                                                                      blue:(0x42 * 1.0 / 255)
-                                                                     alpha:1.0]];
+    [self.debugModeGuideTextField setTextColor:[NSColor colorWithCalibratedRed:(0xa9 * 1.0 / 255)
+                                                                         green:(0x44 * 1.0 / 255)
+                                                                          blue:(0x42 * 1.0 / 255)
+                                                                         alpha:1.0]];
     // #f2dede
-    [debugModeGuideTextField_ setBackgroundColor:[NSColor colorWithCalibratedRed:(0xf2 * 1.0 / 255)
-                                                                           green:(0xde * 1.0 / 255)
-                                                                            blue:(0xde * 1.0 / 255)
-                                                                           alpha:1.0]];
-    debugModeGuideTextField_.drawsBackground = YES;
+    [self.debugModeGuideTextField setBackgroundColor:[NSColor colorWithCalibratedRed:(0xf2 * 1.0 / 255)
+                                                                               green:(0xde * 1.0 / 255)
+                                                                                blue:(0xde * 1.0 / 255)
+                                                                               alpha:1.0]];
+    self.debugModeGuideTextField.drawsBackground = YES;
 
   } else {
-    [debugModeGuideTextField_ setStringValue:@"Debug Mode is disabled.\nAdministrator privileges are required to enable Debug Mode."];
-    [debugModeGuideTextField_ setTextColor:[NSColor textColor]];
-    debugModeGuideTextField_.drawsBackground = NO;
+    [self.debugModeGuideTextField setStringValue:@"Debug Mode is disabled.\nAdministrator privileges are required to enable Debug Mode."];
+    [self.debugModeGuideTextField setTextColor:[NSColor textColor]];
+    self.debugModeGuideTextField.drawsBackground = NO;
   }
 }
 

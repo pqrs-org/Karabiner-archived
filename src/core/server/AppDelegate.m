@@ -35,6 +35,9 @@
 
   SessionObserver* sessionObserver_;
 }
+
+@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
+
 @end
 
 @implementation AppDelegate
@@ -362,7 +365,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
         [StartAtLoginUtilities setStartAtLogin:YES];
 
         if (!isDescendantProcess) {
-          [preferencesController_ show];
+          [self.preferencesWindowController show];
         }
       }
     }
@@ -370,7 +373,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag {
-  [preferencesController_ show];
+  [self.preferencesWindowController show];
   return YES;
 }
 
@@ -500,7 +503,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (IBAction)openPreferences:(id)sender {
-  [preferencesController_ show];
+  [self.preferencesWindowController show];
 }
 
 - (IBAction)openPrivateXML:(id)sender {

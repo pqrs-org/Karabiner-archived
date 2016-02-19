@@ -2,10 +2,12 @@
 
 @import Cocoa;
 
+@class ClientForKernelspace;
 @class PreferencesManager;
 @class XMLCompiler;
 
 @interface ServerObjects : NSObject
+@property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @end

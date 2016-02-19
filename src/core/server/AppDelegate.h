@@ -4,7 +4,6 @@
 #include "bridge.h"
 
 @class ClientForKernelspace;
-@class PreferencesController;
 @class PreferencesManager;
 @class ServerForUserspace;
 @class StatusBar;
@@ -15,7 +14,6 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
   IBOutlet ClientForKernelspace* __weak clientForKernelspace;
-  IBOutlet PreferencesController* preferencesController_;
   IBOutlet PreferencesManager* preferencesManager_;
   IBOutlet ServerForUserspace* serverForUserspace_;
   IBOutlet StatusBar* statusbar_;

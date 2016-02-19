@@ -773,11 +773,11 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             </tabViewItem>
                                                             <tabViewItem label="Overwrite" identifier="2" id="4d3-g2-gch">
                                                                 <view key="view" id="CKs-yN-9K4">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="690" height="259"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="690" height="218"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IfG-cq-Oel">
-                                                                            <rect key="frame" x="-2" y="242" width="114" height="17"/>
+                                                                            <rect key="frame" x="-2" y="201" width="114" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Delay until repeat:" id="szL-tx-dNN">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -785,7 +785,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1eU-LB-0AH">
-                                                                            <rect key="frame" x="120" y="240" width="80" height="22"/>
+                                                                            <rect key="frame" x="120" y="199" width="80" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="80" id="j9Q-xS-ceG"/>
                                                                             </constraints>
@@ -803,14 +803,14 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </connections>
                                                                         </textField>
                                                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EYw-oz-bOf">
-                                                                            <rect key="frame" x="202" y="237" width="19" height="27"/>
+                                                                            <rect key="frame" x="202" y="196" width="19" height="27"/>
                                                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="100" maxValue="999999" id="xwa-ff-Gv7"/>
                                                                             <connections>
                                                                                 <action selector="changeDelayUntilRepeat:" target="1181" id="Kma-UI-D6l"/>
                                                                             </connections>
                                                                         </stepper>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ezZ-cp-jez">
-                                                                            <rect key="frame" x="39" y="215" width="73" height="17"/>
+                                                                            <rect key="frame" x="39" y="174" width="73" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Key repeat:" id="kgp-CP-Oi4">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -818,7 +818,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="l8l-Vo-9k0">
-                                                                            <rect key="frame" x="120" y="213" width="80" height="22"/>
+                                                                            <rect key="frame" x="120" y="172" width="80" height="22"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="80" id="kqU-nU-gH9"/>
                                                                             </constraints>
@@ -836,14 +836,14 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </connections>
                                                                         </textField>
                                                                         <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yow-Uc-UYf">
-                                                                            <rect key="frame" x="202" y="210" width="19" height="27"/>
+                                                                            <rect key="frame" x="202" y="169" width="19" height="27"/>
                                                                             <stepperCell key="cell" continuous="YES" alignment="left" increment="10" maxValue="999999" id="c9w-T2-NNw"/>
                                                                             <connections>
                                                                                 <action selector="changeKeyRepeat:" target="1181" id="ZYP-pI-OVE"/>
                                                                             </connections>
                                                                         </stepper>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="D3U-w3-x1r">
-                                                                            <rect key="frame" x="221" y="216" width="79" height="17"/>
+                                                                            <rect key="frame" x="221" y="175" width="79" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="milliseconds" id="1Dv-mz-Lix">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -851,7 +851,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="V5B-Os-C8O">
-                                                                            <rect key="frame" x="221" y="243" width="79" height="17"/>
+                                                                            <rect key="frame" x="221" y="202" width="79" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="milliseconds" id="YLk-L8-HEF">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -2002,43 +2002,42 @@ Debug Mode Guide</string>
         </window>
         <customObject id="IVB-c7-TsL" customClass="ServerObjects">
             <connections>
+                <outlet property="clientForKernelspace" destination="600" id="cmc-G2-qVS"/>
                 <outlet property="preferencesManager" destination="592" id="BOL-JN-afJ"/>
                 <outlet property="xmlCompiler" destination="591" id="SQx-uN-mJn"/>
             </connections>
         </customObject>
         <customObject id="606" customClass="StatusMessageManager"/>
-        <customObject id="1181" customClass="PreferencesController">
+        <customObject id="1181" customClass="PreferencesWindowController">
             <connections>
                 <outlet property="checkboxFontSegmentedControl" destination="Dc9-R1-qWB" id="Lm7-GV-t8d"/>
                 <outlet property="checkboxOutlineView" destination="672" id="Nbb-sr-GBa"/>
                 <outlet property="checkboxOutlineViewDataSource" destination="Vvy-Zk-dMA" id="13k-YF-65z"/>
                 <outlet property="checkboxOutlineViewDelegate" destination="nHm-UC-8X2" id="tsK-Pt-rFy"/>
                 <outlet property="checkboxSearchText" destination="666" id="obf-yN-FKd"/>
-                <outlet property="checkbox_showEnabledOnly_" destination="663" id="1182"/>
-                <outlet property="clientForKernelspace_" destination="600" id="Jdv-ip-9F0"/>
-                <outlet property="debugModeGuideTextField_" destination="8Yy-Qp-aKZ" id="zwU-CW-I3e"/>
-                <outlet property="delayUntilRepeatLabel_" destination="UdG-LD-xC9" id="XYU-JU-otK"/>
-                <outlet property="delayUntilRepeatStepper_" destination="EYw-oz-bOf" id="eAc-eN-ga4"/>
-                <outlet property="delayUntilRepeatTextField_" destination="1eU-LB-0AH" id="DBx-1Z-TR3"/>
-                <outlet property="keyRepeatLabel_" destination="gyI-dt-Yze" id="Pf0-TZ-J0E"/>
-                <outlet property="keyRepeatParameters_" destination="FoC-hs-Aq9" id="k6s-6I-ou6"/>
-                <outlet property="keyRepeatStepper_" destination="yow-Uc-UYf" id="MwO-Y9-eHs"/>
-                <outlet property="keyRepeatTextField_" destination="l8l-Vo-9k0" id="knm-Rf-uNb"/>
+                <outlet property="checkbox_showEnabledOnly" destination="663" id="JVL-9i-iw1"/>
+                <outlet property="debugModeGuideTextField" destination="8Yy-Qp-aKZ" id="df5-P7-OO3"/>
+                <outlet property="delayUntilRepeatLabel" destination="UdG-LD-xC9" id="DHi-9R-fp3"/>
+                <outlet property="delayUntilRepeatStepper" destination="EYw-oz-bOf" id="z1y-Rh-ApQ"/>
+                <outlet property="delayUntilRepeatTextField" destination="1eU-LB-0AH" id="qhv-zB-6pr"/>
+                <outlet property="keyRepeatLabel" destination="gyI-dt-Yze" id="Seh-hL-2cs"/>
+                <outlet property="keyRepeatParameters" destination="FoC-hs-Aq9" id="3d7-At-YUw"/>
+                <outlet property="keyRepeatStepper" destination="yow-Uc-UYf" id="kYu-E6-lG8"/>
+                <outlet property="keyRepeatTextField" destination="l8l-Vo-9k0" id="qjK-lN-VDO"/>
                 <outlet property="parameterOutlineView" destination="678" id="7AI-dn-e1M"/>
                 <outlet property="parameterOutlineViewDataSource" destination="s9s-xO-cMU" id="pfm-i0-iHr"/>
-                <outlet property="preferencesManager_" destination="592" id="1185"/>
-                <outlet property="preferencesWindow_" destination="628" id="1206"/>
+                <outlet property="preferencesWindow" destination="628" id="Hsa-Cg-hyL"/>
                 <outlet property="profileTableView" destination="703" id="AGS-5x-VP5"/>
-                <outlet property="tabView_" destination="630" id="1292"/>
-                <outlet property="versionText_" destination="640" id="1183"/>
-                <outlet property="xmlCompiler_" destination="591" id="1184"/>
+                <outlet property="serverObjects" destination="IVB-c7-TsL" id="Uj9-Fy-BnN"/>
+                <outlet property="tabView" destination="630" id="a5f-2t-AXB"/>
+                <outlet property="versionText" destination="640" id="kfy-PG-lGt"/>
             </connections>
         </customObject>
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="clientForKernelspace" destination="600" id="621"/>
-                <outlet property="preferencesController_" destination="1181" id="1207"/>
                 <outlet property="preferencesManager_" destination="592" id="608"/>
+                <outlet property="preferencesWindowController" destination="1181" id="zIj-9f-dID"/>
                 <outlet property="serverForUserspace_" destination="593" id="627"/>
                 <outlet property="statusMessageManager_" destination="606" id="607"/>
                 <outlet property="statusbar_" destination="552" id="561"/>

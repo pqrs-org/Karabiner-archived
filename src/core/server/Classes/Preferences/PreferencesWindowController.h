@@ -4,24 +4,7 @@
 @class PreferencesManager;
 @class XMLCompiler;
 
-@interface PreferencesController : NSObject <NSWindowDelegate, NSTabViewDelegate> {
-  IBOutlet ClientForKernelspace* clientForKernelspace_;
-  IBOutlet NSButton* checkbox_showEnabledOnly_;
-  IBOutlet NSTabView* tabView_;
-  IBOutlet NSTextField* versionText_;
-  IBOutlet NSWindow* preferencesWindow_;
-  IBOutlet PreferencesManager* preferencesManager_;
-  IBOutlet XMLCompiler* xmlCompiler_;
-
-  IBOutlet NSTabView* keyRepeatParameters_;
-  IBOutlet NSTextField* delayUntilRepeatLabel_;
-  IBOutlet NSTextField* keyRepeatLabel_;
-  IBOutlet NSTextField* delayUntilRepeatTextField_;
-  IBOutlet NSTextField* keyRepeatTextField_;
-  IBOutlet NSStepper* delayUntilRepeatStepper_;
-  IBOutlet NSStepper* keyRepeatStepper_;
-  IBOutlet NSTextField* debugModeGuideTextField_;
-}
+@interface PreferencesWindowController : NSObject <NSWindowDelegate, NSTabViewDelegate>
 
 - (void)show;
 - (IBAction)openURL:(id)sender;
