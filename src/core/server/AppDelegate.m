@@ -1,5 +1,7 @@
 #import <Carbon/Carbon.h>
+#import "AXNotifierManager.h"
 #import "AppDelegate.h"
+#import "AppLauncher.h"
 #import "ClientForKernelspace.h"
 #import "KarabinerKeys.h"
 #import "MigrationUtilities.h"
@@ -9,6 +11,7 @@
 #import "PreferencesWindowController.h"
 #import "Relauncher.h"
 #import "ServerForUserspace.h"
+#import "ServerObjects.h"
 #import "SessionObserver.h"
 #import "StartAtLoginUtilities.h"
 #import "StatusBar.h"
@@ -26,8 +29,6 @@
   IONotificationPortRef notifyport_;
   CFRunLoopSourceRef loopsource_;
 
-  dispatch_queue_t axnotifierManagerQueue_;
-
   NSArray* workspaceAppIds_;
   NSArray* workspaceWindowNameIds_;
   NSNumber* workspaceUIElementRoleId_;
@@ -36,7 +37,9 @@
   SessionObserver* sessionObserver_;
 }
 
-@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
+@property(weak) IBOutlet ServerObjects* serverObjects;
+@property(weak) IBOutlet Updater* updater;
+@property PreferencesWindowController* preferencesWindowController;
 
 @end
 
@@ -249,6 +252,17 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 // ------------------------------------------------------------
+- (void)observer_NSWindowWillCloseNotification:(NSNotification*)notification {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    NSWindow* window = [notification object];
+    if (self.preferencesWindowController &&
+        self.preferencesWindowController.window == window) {
+      self.preferencesWindowController = nil;
+    }
+  });
+}
+
+// ------------------------------------------------------------
 #define kDescendantProcess @"org_pqrs_Karabiner_DescendantProcess"
 
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
@@ -280,8 +294,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     ProcessSerialNumber psn = {0, kCurrentProcess};
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
   }
-
-  axnotifierManagerQueue_ = dispatch_queue_create("org.pqrs.Karabiner.axnotifierManagerQueue_", NULL);
 
   [preferencesManager_ load];
 
@@ -322,14 +334,19 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                name:kConfigXMLReloadedNotification
                                              object:nil];
 
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(observer_NSWindowWillCloseNotification:)
+                                               name:NSWindowWillCloseNotification
+                                             object:nil];
+
   // ------------------------------------------------------------
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
-  [updater_ checkForUpdatesInBackground:nil];
+  [self.updater checkForUpdatesInBackground];
 
   // ------------------------------------------------------------
-  [self manageAXNotifier:self];
+  [AXNotifierManager restartAXNotifier];
 
   // ------------------------------------------------------------
   // Send kKarabinerServerDidLaunchNotification after launching AXNotifier.
@@ -365,7 +382,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
         [StartAtLoginUtilities setStartAtLogin:YES];
 
         if (!isDescendantProcess) {
-          [self.preferencesWindowController show];
+          [self openPreferences:self];
         }
       }
     }
@@ -373,7 +390,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag {
-  [self.preferencesWindowController show];
+  [self openPreferences:self];
   return YES;
 }
 
@@ -431,90 +448,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 }
 
-// ------------------------------------------------------------
-- (NSString*)AXNotifierPath {
-  return @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
-}
-
-- (void)launchNewAXNotifier {
-  dispatch_sync(axnotifierManagerQueue_, ^{
-    NSString* path = [self AXNotifierPath];
-    NSURL* url = [NSURL fileURLWithPath:path];
-    // Set NSWorkspaceLaunchNewInstance because
-    // AXNotifier might be running (terminating) immediately after terminateAXNotifier.
-    NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault | NSWorkspaceLaunchNewInstance;
-    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
-                                                  options:options
-                                            configuration:@{}
-                                                    error:nil];
-  });
-}
-
-- (void)terminateAXNotifiers {
-  dispatch_sync(axnotifierManagerQueue_, ^{
-    NSString* path = [self AXNotifierPath];
-    NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
-
-    // If Karabiner has been moved into /Applications/Utilities, bundleIdentifier will be nil.
-
-    if (bundleIdentifier) {
-      NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
-      for (NSRunningApplication* runningApplication in applications) {
-        [runningApplication terminate];
-      }
-    }
-  });
-}
-
-- (IBAction)restartAXNotifier:(id)sender {
-  if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
-    NSAlert* alert = [NSAlert new];
-    [alert setMessageText:@"Karabiner Alert"];
-    [alert addButtonWithTitle:@"Close"];
-    [alert setInformativeText:@"AXNotifier is disabled.\nPlease enable AXNotifier if you want to start."];
-    [alert runModal];
-    return;
-  }
-
-  [self terminateAXNotifiers];
-  [self launchNewAXNotifier];
-}
-
-- (IBAction)manageAXNotifier:(id)sender {
-  [self terminateAXNotifiers];
-
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
-    [self launchNewAXNotifier];
-  }
-}
-
-- (IBAction)launchEventViewer:(id)sender {
-  NSString* path = @"/Applications/Karabiner.app/Contents/Applications/EventViewer.app";
-  [[NSWorkspace sharedWorkspace] launchApplication:path];
-}
-
-- (IBAction)launchMultiTouchExtension:(id)sender {
-  [[NSWorkspace sharedWorkspace] launchApplication:@"/Applications/Karabiner.app/Contents/Applications/Karabiner_multitouchextension.app"];
-}
-
-- (IBAction)launchUninstaller:(id)sender {
-  NSString* path = @"/Library/Application Support/org.pqrs/Karabiner/uninstaller.applescript";
-  [[[NSAppleScript alloc] initWithContentsOfURL:[NSURL fileURLWithPath:path] error:nil] executeAndReturnError:nil];
-}
-
-- (IBAction)openPreferences:(id)sender {
-  [self.preferencesWindowController show];
-}
-
-- (IBAction)openPrivateXML:(id)sender {
-  // Open a directory which contains private.xml.
-  NSString* path = [XMLCompiler get_private_xml_path];
-  if ([path length] > 0) {
-    [[NSWorkspace sharedWorkspace] openFile:[path stringByDeletingLastPathComponent]];
-  }
-}
-
-- (IBAction)quit:(id)sender {
++ (void)quitWithConfirmation {
   NSAlert* alert = [NSAlert new];
   alert.messageText = @"Are you sure you want to quit Karabiner?";
   alert.informativeText = @"The changed key will be restored after Karabiner is quit.";
@@ -528,8 +462,24 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [NSApp terminate:nil];
 }
 
-- (IBAction)relaunch:(id)sender {
-  [Relauncher relaunch];
+// ------------------------------------------------------------
+- (IBAction)launchEventViewer:(id)sender {
+  [AppLauncher openEventViewer];
+}
+
+- (IBAction)openPreferences:(id)sender {
+  if (self.preferencesWindowController == nil) {
+    self.preferencesWindowController = [[PreferencesWindowController alloc] initWithServerObjects:@"PreferencesWindow" serverObjects:self.serverObjects];
+  }
+  [self.preferencesWindowController show];
+}
+
+- (IBAction)checkForUpdatesStableOnly:(id)sender {
+  [self.updater checkForUpdatesStableOnly];
+}
+
+- (IBAction)quit:(id)sender {
+  [AppDelegate quitWithConfirmation];
 }
 
 @end

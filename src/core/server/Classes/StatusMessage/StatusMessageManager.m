@@ -19,21 +19,21 @@
 // ------------------------------------------------------------
 - (void)observer_NSApplicationDidChangeScreenParametersNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [self refresh:self];
+    [self refresh];
   });
 }
 
 - (void)observer_StatusWindowPreferencesOpened:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     statusWindowPreferencesOpened_ = YES;
-    [self refresh:self];
+    [self refresh];
   });
 }
 
 - (void)observer_StatusWindowPreferencesClosed:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     statusWindowPreferencesOpened_ = NO;
-    [self refresh:self];
+    [self refresh];
   });
 }
 
@@ -200,7 +200,7 @@
 }
 
 // ------------------------------------------------------------
-- (IBAction)refresh:(id)sender;
+- (void)refresh
 {
   [self updateWindows];
 
@@ -302,12 +302,12 @@
     lines_[i] = @"";
   }
 
-  [self refresh:self];
+  [self refresh];
 }
 
 - (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message {
   lines_[lineIndex] = message;
-  [self refresh:self];
+  [self refresh];
 }
 
 @end

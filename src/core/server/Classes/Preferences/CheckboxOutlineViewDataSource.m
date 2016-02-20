@@ -1,5 +1,6 @@
 #import "CheckboxOutlineViewDataSource.h"
 #import "PreferencesManager.h"
+#import "PreferencesWindowController.h"
 #import "ServerObjects.h"
 #import "XMLCompiler.h"
 
@@ -48,9 +49,11 @@
 @end
 
 @interface CheckboxOutlineViewDataSource ()
-@property(weak) IBOutlet ServerObjects* serverObjects;
+
+@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
 @property XMLCompilerTree* dataSource;
 @property FilterCondition* filterCondition;
+
 @end
 
 @implementation CheckboxOutlineViewDataSource
@@ -64,7 +67,7 @@
   }
 
   if (!self.dataSource) {
-    self.dataSource = self.serverObjects.xmlCompiler.preferencepane_checkbox;
+    self.dataSource = self.preferencesWindowController.serverObjects.xmlCompiler.preferencepane_checkbox;
     self.filterCondition = nil;
   }
 }
@@ -130,7 +133,7 @@
     if ([identifier length] == 0) {
       return nil;
     }
-    if (![self.serverObjects.preferencesManager value:identifier]) {
+    if (![self.preferencesWindowController.serverObjects.preferencesManager value:identifier]) {
       return nil;
     }
   }

@@ -2,11 +2,14 @@
 #import "ParameterOutlineViewDelegate.h"
 #import "ParameterValueCellView.h"
 #import "PreferencesManager.h"
+#import "PreferencesWindowController.h"
 #import "ServerObjects.h"
 #import "XMLCompiler.h"
 
 @interface ParameterOutlineViewDelegate ()
-@property(weak) IBOutlet ServerObjects* serverObjects;
+
+@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
+
 @end
 
 @implementation ParameterOutlineViewDelegate
@@ -32,7 +35,7 @@
       return result;
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterValueColumn"]) {
-      int value = [self.serverObjects.preferencesManager value:identifier];
+      int value = [self.preferencesWindowController.serverObjects.preferencesManager value:identifier];
       ParameterValueCellView* result = [outlineView makeViewWithIdentifier:@"ParameterValueCellView" owner:self];
       result.textField.stringValue = [NSString stringWithFormat:@"%d", value];
       result.stepper.integerValue = value;
@@ -41,7 +44,7 @@
       result.stepper.increment = [parameterItem getStep];
       result.stepper.autorepeat = YES;
       result.stepper.valueWraps = NO;
-      result.serverObjects = self.serverObjects;
+      result.serverObjects = self.preferencesWindowController.serverObjects;
       result.settingIdentifier = identifier;
       return result;
 
@@ -52,7 +55,7 @@
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterDiffColumn"]) {
       ParameterDiffCellView* result = [outlineView makeViewWithIdentifier:@"ParameterDiffCellView" owner:self];
-      result.serverObjects = self.serverObjects;
+      result.serverObjects = self.preferencesWindowController.serverObjects;
       result.settingIdentifier = identifier;
       result.defaultValue = [parameterItem getDefaultValue];
       [result setObserver];

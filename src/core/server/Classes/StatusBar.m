@@ -18,6 +18,12 @@
   });
 }
 
+- (void)observer_StatusBarConfigurationChangedNotification:(NSNotification*)notification {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self refresh];
+  });
+}
+
 - (id)init {
   self = [super init];
 
@@ -25,6 +31,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigListChanged:)
                                                  name:kConfigListChangedNotification
+                                               object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_StatusBarConfigurationChangedNotification:)
+                                                 name:kStatusBarConfigurationChangedNotification
                                                object:nil];
   }
 

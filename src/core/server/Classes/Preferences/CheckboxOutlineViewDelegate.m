@@ -1,9 +1,10 @@
 #import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
 #import "CheckboxOutlineViewDelegate.h"
-#import "ServerObjects.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesWindowController.h"
+#import "ServerObjects.h"
 #import "XMLCompiler.h"
 
 #define kLabelLeadingSpaceWithCheckbox 24
@@ -14,8 +15,8 @@
 @interface CheckboxOutlineViewDelegate () {
   dispatch_queue_t textsHeightQueue_;
 }
+@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
-@property(weak) IBOutlet ServerObjects* serverObjects;
 @property NSFont* font;
 @property NSMutableDictionary* heightCache;
 @end
@@ -57,7 +58,7 @@
   NSString* identifier = [checkboxItem getIdentifier];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
-  result.serverObjects = self.serverObjects;
+  result.serverObjects = self.preferencesWindowController.serverObjects;
   result.settingIdentifier = identifier;
 
   result.textField.stringValue = name;
@@ -78,7 +79,7 @@
     result.checkbox.imagePosition = NSImageOnly;
     result.checkbox.target = result;
     result.checkbox.action = @selector(valueChanged:);
-    if ([self.serverObjects.preferencesManager value:identifier]) {
+    if ([self.preferencesWindowController.serverObjects.preferencesManager value:identifier]) {
       result.checkbox.state = NSOnState;
     } else {
       result.checkbox.state = NSOffState;

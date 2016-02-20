@@ -1,5 +1,8 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
+#import "AXNotifierManager.h"
+#import "AppDelegate.h"
+#import "AppLauncher.h"
 #import "CheckboxOutlineView.h"
 #import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxOutlineViewDelegate.h"
@@ -7,11 +10,17 @@
 #import "NotificationKeys.h"
 #import "ParameterOutlineView.h"
 #import "ParameterOutlineViewDataSource.h"
+#import "ParameterOutlineViewDelegate.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
 #import "ProfileTableView.h"
+#import "ProfileTableViewDataSource.h"
+#import "ProfileTableViewDelegate.h"
+#import "Relauncher.h"
 #import "ServerObjects.h"
+#import "StatusMessageManager.h"
+#import "Updater.h"
 #import "XMLCompiler.h"
 
 #include <sys/types.h>
@@ -34,11 +43,12 @@
 @property(weak) IBOutlet NSTextField* keyRepeatLabel;
 @property(weak) IBOutlet NSTextField* keyRepeatTextField;
 @property(weak) IBOutlet NSTextField* versionText;
-@property(weak) IBOutlet NSWindow* preferencesWindow;
 @property(weak) IBOutlet ParameterOutlineView* parameterOutlineView;
+@property(weak) IBOutlet ParameterOutlineViewDelegate* parameterOutlineViewDelegate;
 @property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
 @property(weak) IBOutlet ProfileTableView* profileTableView;
-@property(weak) IBOutlet ServerObjects* serverObjects;
+@property(weak) IBOutlet ProfileTableViewDataSource* profileTableViewDataSource;
+@property(weak) IBOutlet ProfileTableViewDelegate* profileTableViewDelegate;
 @property NSTimer* resizeTimer;
 @end
 
@@ -97,10 +107,12 @@
   });
 }
 
-- (id)init {
-  self = [super init];
+- (instancetype)initWithServerObjects:(NSString*)windowNibName serverObjects:(ServerObjects*)serverObjects {
+  self = [super initWithWindowNibName:windowNibName];
 
   if (self) {
+    self.serverObjects = serverObjects;
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigListChanged:)
                                                  name:kConfigListChangedNotification
@@ -125,6 +137,11 @@
 }
 
 /* ---------------------------------------------------------------------- */
+- (void)windowDidLoad {
+  [self expandParameterOutlineView:self];
+}
+
+/* ---------------------------------------------------------------------- */
 - (void)drawVersion {
   NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   [self.versionText setStringValue:version];
@@ -133,7 +150,7 @@
 - (void)drawEnabledCount {
   // Calculating enabled_count is a bit heavy.
   // So, we skip this calculation if the preferences window was invisible.
-  if (![self.preferencesWindow isVisible]) return;
+  if (![self.window isVisible]) return;
 
   int count = [self enabled_count:self.serverObjects.xmlCompiler.preferencepane_checkbox
                           changed:[self.serverObjects.preferencesManager changed]];
@@ -211,7 +228,7 @@
 
 /* ---------------------------------------------------------------------- */
 - (void)show {
-  [self.preferencesWindow makeKeyAndOrderFront:self];
+  [self.window makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
 }
 
@@ -247,12 +264,20 @@
   [self.checkboxOutlineView reloadData];
 }
 
+- (IBAction)quit:(id)sender {
+  [AppDelegate quitWithConfirmation];
+}
+
 - (IBAction)expandParameterOutlineView:(id)sender {
   [self.parameterOutlineView expandItem:nil expandChildren:YES];
 }
 
 - (IBAction)collapseParameterOutlineView:(id)sender {
   [self.parameterOutlineView collapseItem:nil collapseChildren:YES];
+}
+
+- (IBAction)updateStatusBar:(id)sender {
+  [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarConfigurationChangedNotification object:nil];
 }
 
 - (IBAction)addNewProfile:(id)sender {
@@ -302,7 +327,7 @@
 }
 
 - (IBAction)openSystemPreferencesKeyboard:(id)sender {
-  [[NSWorkspace sharedWorkspace] openFile:@"/System/Library/PreferencePanes/Keyboard.prefPane"];
+  [AppLauncher openSystemPreferencesKeyboard];
 }
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
@@ -315,8 +340,57 @@
   [self refreshKeyRepeatTab:sender];
 }
 
+- (IBAction)refreshStatusMessage:(id)sender {
+  [self.serverObjects.statusMessageManager refresh];
+}
+
+- (IBAction)restartAXNotifier:(id)sender {
+  if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
+    NSAlert* alert = [NSAlert new];
+    [alert setMessageText:@"Karabiner Alert"];
+    [alert addButtonWithTitle:@"Close"];
+    [alert setInformativeText:@"AXNotifier is disabled.\nPlease enable AXNotifier if you want to start."];
+    [alert runModal];
+    return;
+  }
+
+  [AXNotifierManager restartAXNotifier];
+}
+
+- (IBAction)restartAXNotifierWithoutAlert:(id)sender {
+  [AXNotifierManager restartAXNotifier];
+}
+
+- (IBAction)checkForUpdatesStableOnly:(id)sender {
+  [self.serverObjects.updater checkForUpdatesStableOnly];
+}
+
+- (IBAction)checkForUpdatesWithBetaVersion:(id)sender {
+  [self.serverObjects.updater checkForUpdatesWithBetaVersion];
+}
+
+- (IBAction)launchUninstaller:(id)sender {
+  [AppLauncher openUninstaller];
+}
+
+- (IBAction)openPrivateXML:(id)sender {
+  [AppLauncher openPrivateXMLDirectory];
+}
+
+- (IBAction)launchEventViewer:(id)sender {
+  [AppLauncher openEventViewer];
+}
+
+- (IBAction)launchMultiTouchExtension:(id)sender {
+  [AppLauncher openMultiTouchExtension];
+}
+
 - (IBAction)openConsoleApp:(id)sender {
   [[NSWorkspace sharedWorkspace] openFile:@"/Applications/Utilities/Console.app"];
+}
+
+- (IBAction)relaunch:(id)sender {
+  [Relauncher relaunch];
 }
 
 - (IBAction)toggleDebugMode:(id)sender {

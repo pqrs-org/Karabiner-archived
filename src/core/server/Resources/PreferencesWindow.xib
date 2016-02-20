@@ -24,9 +24,13 @@
                 <outlet property="keyRepeatTextField" destination="l8l-Vo-9k0" id="2ik-Ot-w2P"/>
                 <outlet property="parameterOutlineView" destination="678" id="mME-GG-3k3"/>
                 <outlet property="parameterOutlineViewDataSource" destination="s9s-xO-cMU" id="lR4-Zl-WOl"/>
+                <outlet property="parameterOutlineViewDelegate" destination="azx-Mg-L29" id="Vrf-44-hYY"/>
                 <outlet property="profileTableView" destination="703" id="uYW-0t-vhY"/>
+                <outlet property="profileTableViewDataSource" destination="2GT-K4-ZxB" id="yJF-Wf-akC"/>
+                <outlet property="profileTableViewDelegate" destination="vk9-l6-h5y" id="QAY-L4-1oo"/>
                 <outlet property="tabView" destination="630" id="ywZ-QD-hU8"/>
                 <outlet property="versionText" destination="640" id="o9J-1H-z0O"/>
+                <outlet property="window" destination="628" id="04I-uk-lhc"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -306,6 +310,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="quit:" target="-2" id="pbA-Gz-ScD"/>
+                                            </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cA4-9j-dKU">
                                             <rect key="frame" x="531" y="30" width="208" height="14"/>
@@ -939,6 +946,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="jNX-EI-zDw"/>
                                                             <binding destination="1176" name="value" keyPath="values.isStatusWindowEnabled" id="1255"/>
                                                         </connections>
                                                     </button>
@@ -949,6 +957,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="lMG-7D-PMr"/>
                                                             <binding destination="1176" name="value" keyPath="values.isStatusWindowShowCapsLock" id="CAy-g3-pDK"/>
                                                         </connections>
                                                     </button>
@@ -959,6 +968,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="lBU-j2-iWb"/>
                                                             <binding destination="1176" name="value" keyPath="values.isStatusWindowShowStickyModifier" id="1319"/>
                                                         </connections>
                                                     </button>
@@ -969,6 +979,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="uUE-z3-gb3"/>
                                                             <binding destination="1176" name="value" keyPath="values.isStatusWindowShowPointingButtonLock" id="1329"/>
                                                         </connections>
                                                     </button>
@@ -1036,6 +1047,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="KAD-4R-Kzv"/>
                                                             <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowTheme" id="1298"/>
                                                         </connections>
                                                     </popUpButton>
@@ -1054,6 +1066,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </constraints>
                                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="20" maxValue="100" doubleValue="20" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1250"/>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="Gc9-pK-JfC"/>
                                                             <binding destination="1176" name="value" keyPath="values.statusWindowOpacity" id="1261"/>
                                                         </connections>
                                                     </slider>
@@ -1107,6 +1120,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="RuW-tg-7ap"/>
                                                             <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowFontSize" id="1312"/>
                                                         </connections>
                                                     </popUpButton>
@@ -1133,6 +1147,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="03f-xB-Vx6"/>
                                                             <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowType" id="1412"/>
                                                         </connections>
                                                     </popUpButton>
@@ -1200,6 +1215,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
+                                                            <action selector="refreshStatusMessage:" target="-2" id="o2W-cD-ain"/>
                                                             <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowPosition" id="1274"/>
                                                         </connections>
                                                     </popUpButton>
@@ -1257,6 +1273,7 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="updateStatusBar:" target="-2" id="wqD-or-bSm"/>
                                                             <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
                                                         </connections>
                                                     </button>
@@ -1453,6 +1470,9 @@ Choose a profile from menu bar.</string>
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
+                                                        <connections>
+                                                            <action selector="restartAXNotifier:" target="-2" id="HI6-l6-cSh"/>
+                                                        </connections>
                                                     </button>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqD-On-FVF">
                                                         <rect key="frame" x="163" y="10" width="526" height="17"/>
@@ -1487,6 +1507,7 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="j07-Rs-vKQ"/>
                                                             <binding destination="1176" name="value" keyPath="values.kIsAXNotifierEnabled" id="YMa-nF-sYh"/>
                                                         </connections>
                                                     </button>
@@ -1497,6 +1518,7 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="W0W-JM-MLV"/>
                                                             <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInJavaApps" id="xeG-bG-Yxa"/>
                                                         </connections>
                                                     </button>
@@ -1507,6 +1529,7 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="fYE-Ys-Hrh"/>
                                                             <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInQtApps" id="vC7-9r-dNM"/>
                                                         </connections>
                                                     </button>
@@ -1517,6 +1540,7 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="4zU-Kz-l3C"/>
                                                             <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInPreview" id="eHV-eW-29L"/>
                                                         </connections>
                                                     </button>
@@ -1527,6 +1551,7 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
+                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="HDO-PD-Y7D"/>
                                                             <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInMicrosoftOffice" id="dlJ-l9-job"/>
                                                         </connections>
                                                     </button>
@@ -1651,6 +1676,9 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="checkForUpdatesStableOnly:" target="-2" id="cwz-cT-TfY"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1435">
                                             <rect key="frame" x="448" y="461" width="295" height="32"/>
@@ -1658,6 +1686,9 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="checkForUpdatesWithBetaVersion:" target="-2" id="2GZ-5K-2dX"/>
+                                            </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="TNB-Mo-4Qt">
                                             <rect key="frame" x="17" y="455" width="720" height="5"/>
@@ -1679,6 +1710,9 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="launchUninstaller:" target="-2" id="PAW-az-HYq"/>
+                                            </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="pJT-zW-wrA">
                                             <rect key="frame" x="17" y="415" width="720" height="5"/>
@@ -1700,6 +1734,9 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="openPrivateXML:" target="-2" id="fpo-YF-La0"/>
+                                            </connections>
                                         </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="qZa-XW-7Lm">
                                             <rect key="frame" x="170" y="362" width="238" height="18"/>
@@ -1732,6 +1769,9 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="launchEventViewer:" target="-2" id="b54-Nr-Q2c"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="658">
                                             <rect key="frame" x="166" y="286" width="231" height="32"/>
@@ -1739,6 +1779,9 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="launchMultiTouchExtension:" target="-2" id="Igr-c8-vlF"/>
+                                            </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ZTx-N8-36Q">
                                             <rect key="frame" x="17" y="280" width="720" height="5"/>
@@ -1847,6 +1890,7 @@ Debug Mode Guide</string>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="updateStatusBar:" target="-2" id="kF7-pb-KWf"/>
                                                 <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
                                             </connections>
                                         </button>
@@ -1874,6 +1918,9 @@ Debug Mode Guide</string>
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="relaunch:" target="-2" id="NoX-D0-VAX"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -1956,6 +2003,9 @@ Debug Mode Guide</string>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="mxj-Hh-50Z"/>
+                        </connections>
                     </tabView>
                 </subviews>
                 <constraints>
@@ -1968,17 +2018,27 @@ Debug Mode Guide</string>
             <connections>
                 <binding destination="1176" name="contentHeight" keyPath="values.kKarabinerPreferencesHeight" id="rlI-3a-nlh"/>
                 <binding destination="1176" name="contentWidth" keyPath="values.kKarabinerPreferencesWidth" previousBinding="rlI-3a-nlh" id="PdX-ep-2BH"/>
+                <outlet property="delegate" destination="-2" id="2gO-fq-LX2"/>
             </connections>
             <point key="canvasLocation" x="747" y="371"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="1176"/>
-        <customObject id="Vvy-Zk-dMA" customClass="CheckboxOutlineViewDataSource"/>
+        <customObject id="Vvy-Zk-dMA" customClass="CheckboxOutlineViewDataSource">
+            <connections>
+                <outlet property="preferencesWindowController" destination="-2" id="W88-Sb-yjH"/>
+            </connections>
+        </customObject>
         <customObject id="nHm-UC-8X2" customClass="CheckboxOutlineViewDelegate">
             <connections>
+                <outlet property="preferencesWindowController" destination="-2" id="opK-3i-gdk"/>
                 <outlet property="wrappedTextHeightCalculator" destination="s09-5a-Znl" id="E43-sU-E1f"/>
             </connections>
         </customObject>
-        <customObject id="s9s-xO-cMU" customClass="ParameterOutlineViewDataSource"/>
+        <customObject id="s9s-xO-cMU" customClass="ParameterOutlineViewDataSource">
+            <connections>
+                <outlet property="preferencesWindowController" destination="-2" id="fQ5-HF-NsW"/>
+            </connections>
+        </customObject>
         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" preferredMaxLayoutWidth="400" id="s09-5a-Znl">
             <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1989,9 +2049,21 @@ Debug Mode Guide</string>
             </textFieldCell>
             <point key="canvasLocation" x="747" y="790"/>
         </textField>
-        <customObject id="azx-Mg-L29" customClass="ParameterOutlineViewDelegate"/>
-        <customObject id="2GT-K4-ZxB" customClass="ProfileTableViewDataSource"/>
-        <customObject id="vk9-l6-h5y" customClass="ProfileTableViewDelegate"/>
+        <customObject id="azx-Mg-L29" customClass="ParameterOutlineViewDelegate">
+            <connections>
+                <outlet property="preferencesWindowController" destination="-2" id="WBQ-Eg-hE2"/>
+            </connections>
+        </customObject>
+        <customObject id="2GT-K4-ZxB" customClass="ProfileTableViewDataSource">
+            <connections>
+                <outlet property="preferencesWindowController" destination="-2" id="PBG-jI-H9k"/>
+            </connections>
+        </customObject>
+        <customObject id="vk9-l6-h5y" customClass="ProfileTableViewDelegate">
+            <connections>
+                <outlet property="preferencesWindowController" destination="-2" id="XOH-Md-fFV"/>
+            </connections>
+        </customObject>
     </objects>
     <resources>
         <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>

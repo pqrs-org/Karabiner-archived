@@ -43,6 +43,4 @@
 
 - (BOOL)isCheckForUpdates;
 
-- (IBAction)sendConfigListChangedNotification:(id)sender;
-
 @end

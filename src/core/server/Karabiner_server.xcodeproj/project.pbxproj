@@ -53,6 +53,8 @@
 		34A5573416EA1923000E5399 /* StatusMessageView_edge.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A5573316EA1923000E5399 /* StatusMessageView_edge.m */; };
 		34A611931531707E0003894B /* checkbox.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A611921531707E0003894B /* checkbox.xml */; };
 		34A83BCF144B1EAA00AE5687 /* appdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34A83BCE144B1EAA00AE5687 /* appdef.xml */; };
+		34AE71E11C78A7BB002EF8FF /* AXNotifierManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AE71E01C78A7BB002EF8FF /* AXNotifierManager.m */; };
+		34AE71E41C78AB94002EF8FF /* AppLauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AE71E31C78AB94002EF8FF /* AppLauncher.m */; };
 		34AFABF2181C354C00146896 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 34AFABF1181C354C00146896 /* libc++.dylib */; };
 		34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B41846194B5C1900707306 /* MigrationUtilities.m */; };
 		34B682EA1AC845AD00915847 /* StatusMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B682E91AC845AD00915847 /* StatusMessageManager.m */; };
@@ -171,6 +173,10 @@
 		34A5573316EA1923000E5399 /* StatusMessageView_edge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageView_edge.m; path = Classes/StatusMessage/StatusMessageView_edge.m; sourceTree = "<group>"; };
 		34A611921531707E0003894B /* checkbox.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = checkbox.xml; path = Resources/checkbox.xml; sourceTree = "<group>"; };
 		34A83BCE144B1EAA00AE5687 /* appdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = appdef.xml; path = Resources/appdef.xml; sourceTree = "<group>"; };
+		34AE71DF1C78A7BB002EF8FF /* AXNotifierManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXNotifierManager.h; path = Classes/AXNotifierManager.h; sourceTree = "<group>"; };
+		34AE71E01C78A7BB002EF8FF /* AXNotifierManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXNotifierManager.m; path = Classes/AXNotifierManager.m; sourceTree = "<group>"; };
+		34AE71E21C78AB94002EF8FF /* AppLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppLauncher.h; path = Classes/AppLauncher.h; sourceTree = "<group>"; };
+		34AE71E31C78AB94002EF8FF /* AppLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppLauncher.m; path = Classes/AppLauncher.m; sourceTree = "<group>"; };
 		34AFABF1181C354C00146896 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		34B2A65A13745B6000694134 /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../share/KarabinerKeys.h; sourceTree = "<group>"; };
 		34B41845194B5C1900707306 /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../share/MigrationUtilities.h; sourceTree = "<group>"; };
@@ -247,6 +253,10 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* AppDelegate.h */,
 				256AC3D90F4B6AC300CF3369 /* AppDelegate.m */,
+				34AE71E21C78AB94002EF8FF /* AppLauncher.h */,
+				34AE71E31C78AB94002EF8FF /* AppLauncher.m */,
+				34AE71DF1C78A7BB002EF8FF /* AXNotifierManager.h */,
+				34AE71E01C78A7BB002EF8FF /* AXNotifierManager.m */,
 				34597768128DBFAE003398BD /* bridge.h */,
 				3401D0DB1657DD4800CF962F /* ClientForKernelspace.h */,
 				3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */,
@@ -615,11 +625,13 @@
 				342A42D81A8EE7EE0007D37E /* IOHIDPostEventWrapper.m in Sources */,
 				34FB9592128F985A0088B235 /* PreferencesManager.m in Sources */,
 				34C157631C72EAE200E6E81B /* ProfileTableViewDataSource.m in Sources */,
+				34AE71E41C78AB94002EF8FF /* AppLauncher.m in Sources */,
 				34C1575E1C7235B200E6E81B /* ProfileCellView.m in Sources */,
 				34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */,
 				34DB980D1C74C29E00D90368 /* ServerObjects.m in Sources */,
 				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
 				3416745C1AFE5201005D6E58 /* SessionObserver.m in Sources */,
+				34AE71E11C78A7BB002EF8FF /* AXNotifierManager.m in Sources */,
 				34D4F83C12C45CF3001819AA /* WorkSpaceData+InputSource.m in Sources */,
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
 				34848266152F54B700A9A3BE /* XMLCompiler.m in Sources */,

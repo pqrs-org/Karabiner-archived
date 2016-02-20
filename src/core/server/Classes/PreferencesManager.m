@@ -544,9 +544,4 @@
   return [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
 }
 
-// ----------------------------------------------------------------------
-- (IBAction)sendConfigListChangedNotification:(id)sender {
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
-}
-
 @end

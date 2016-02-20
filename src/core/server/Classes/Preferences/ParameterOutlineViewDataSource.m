@@ -1,11 +1,14 @@
 #import "ParameterOutlineViewDataSource.h"
 #import "PreferencesManager.h"
+#import "PreferencesWindowController.h"
 #import "ServerObjects.h"
 #import "XMLCompiler.h"
 
 @interface ParameterOutlineViewDataSource ()
-@property(weak) IBOutlet ServerObjects* serverObjects;
+
+@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
 @property XMLCompilerTree* dataSource;
+
 @end
 
 @implementation ParameterOutlineViewDataSource
@@ -18,7 +21,7 @@
   }
 
   if (!self.dataSource) {
-    self.dataSource = self.serverObjects.xmlCompiler.preferencepane_parameter;
+    self.dataSource = self.preferencesWindowController.serverObjects.xmlCompiler.preferencepane_parameter;
   }
 }
 

@@ -4,14 +4,10 @@
 
 @class PreferencesManager;
 
-@interface Updater : NSObject {
-  IBOutlet PreferencesManager* preferencesManager_;
-}
+@interface Updater : NSObject
 
-- (IBAction)checkForUpdates:(id)sender;
-- (IBAction)checkForUpdatesInBackground:(id)sender;
-
-- (IBAction)checkForUpdatesStableOnly:(id)sender;
-- (IBAction)checkForUpdatesWithBetaVersion:(id)sender;
+- (void)checkForUpdatesInBackground;
+- (void)checkForUpdatesStableOnly;
+- (void)checkForUpdatesWithBetaVersion;
 
 @end

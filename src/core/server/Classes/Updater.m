@@ -2,9 +2,11 @@
 #import "Sparkle/SUUpdater.h"
 #import "Updater.h"
 
-@interface Updater () {
-  SUUpdater* suupdater_;
-}
+@interface Updater ()
+
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property SUUpdater* suupdater;
+
 @end
 
 @implementation Updater
@@ -13,7 +15,7 @@
   self = [super init];
 
   if (self) {
-    suupdater_ = [SUUpdater new];
+    self.suupdater = [SUUpdater new];
   }
 
   return self;
@@ -34,42 +36,38 @@
 }
 
 - (void)check:(BOOL)isBackground {
-  if (![preferencesManager_ isCheckForUpdates]) {
+  if (![self.preferencesManager isCheckForUpdates]) {
     NSLog(@"skip checkForUpdates");
     return;
   }
 
   NSString* url = [self getFeedURL:NO];
-  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
+  [self.suupdater setFeedURL:[NSURL URLWithString:url]];
 
   NSLog(@"checkForUpdates %@", url);
   if (isBackground) {
-    [suupdater_ checkForUpdatesInBackground];
+    [self.suupdater checkForUpdatesInBackground];
   } else {
-    [suupdater_ checkForUpdates:nil];
+    [self.suupdater checkForUpdates:nil];
   }
 }
 
-- (IBAction)checkForUpdates:(id)sender {
-  [self check:NO];
-}
-
-- (IBAction)checkForUpdatesInBackground:(id)sender {
+- (void)checkForUpdatesInBackground {
   [self check:YES];
 }
 
-- (IBAction)checkForUpdatesStableOnly:(id)sender {
+- (void)checkForUpdatesStableOnly {
   NSString* url = [self getFeedURL:NO];
-  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
+  [self.suupdater setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
-  [suupdater_ checkForUpdates:nil];
+  [self.suupdater checkForUpdates:nil];
 }
 
-- (IBAction)checkForUpdatesWithBetaVersion:(id)sender {
+- (void)checkForUpdatesWithBetaVersion {
   NSString* url = [self getFeedURL:YES];
-  [suupdater_ setFeedURL:[NSURL URLWithString:url]];
+  [self.suupdater setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
-  [suupdater_ checkForUpdates:nil];
+  [self.suupdater checkForUpdates:nil];
 }
 
 @end
