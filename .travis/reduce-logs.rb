@@ -9,3 +9,4 @@ while l = gets
     count = 0
   end
 end
+print "\n"
