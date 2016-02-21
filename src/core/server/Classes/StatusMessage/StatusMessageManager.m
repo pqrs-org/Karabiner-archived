@@ -200,8 +200,7 @@
 }
 
 // ------------------------------------------------------------
-- (void)refresh
-{
+- (void)refresh {
   [self updateWindows];
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
