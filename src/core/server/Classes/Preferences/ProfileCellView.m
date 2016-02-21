@@ -13,6 +13,10 @@
 
 - (IBAction)nameChanged:(id)sender {
   if (self.profileIndex >= 0) {
+    if ([self.textField.stringValue length] == 0) {
+      self.textField.stringValue = @"No Name";
+    }
+
     NSDictionary* notificationUserInfo = @{
       kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
     };
