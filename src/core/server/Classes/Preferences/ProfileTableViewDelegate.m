@@ -15,7 +15,6 @@
 - (NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row {
   ProfileCellView* result = [tableView makeViewWithIdentifier:@"ProfileCellView" owner:self];
   result.serverObjects = self.preferencesWindowController.serverObjects;
-  result.profileIndex = row;
 
   NSString* name = [self.preferencesWindowController.serverObjects.preferencesManager configlist_name:row];
   if (name) {
@@ -29,6 +28,8 @@
     result.deleteButton.hidden = NO;
     result.statusLabel.hidden = YES;
   }
+
+  result.profileIndex = row;
 
   return result;
 }

@@ -14,6 +14,7 @@
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
+#import "ProfileCellView.h"
 #import "ProfileTableView.h"
 #import "ProfileTableViewDataSource.h"
 #import "ProfileTableViewDelegate.h"
@@ -284,11 +285,29 @@
   [self.serverObjects.preferencesManager configlist_append];
 }
 
+- (void)disableAllProfileCells {
+  // Set profileIndex to -1 for all ProfileCellView in order to avoid to call configlist_setName while sorting.
+  //
+  // If you call sortProfilesByName or sortProfilesByCreated while you are editing profile name,
+  // [ProfileCellView nameChanged] method will be called with wrong name and profileIndex pair. (sorted name and unsorted profileIndex).
+  // Therefore, we need to ignore the nameChanged call while sorting by this method.
+
+  for (NSInteger i = 0; i < self.profileTableView.numberOfRows; ++i) {
+    NSTableRowView* rowView = [self.profileTableView rowViewAtRow:i makeIfNecessary:NO];
+    if (rowView) {
+      ProfileCellView* cellView = [rowView viewAtColumn:0];
+      cellView.profileIndex = -1;
+    }
+  }
+}
+
 - (IBAction)sortProfilesByName:(id)sender {
+  [self disableAllProfileCells];
   [self.serverObjects.preferencesManager configlist_sortByName];
 }
 
 - (IBAction)sortProfilesByCreated:(id)sender {
+  [self disableAllProfileCells];
   [self.serverObjects.preferencesManager configlist_sortByAppendIndex];
 }
 

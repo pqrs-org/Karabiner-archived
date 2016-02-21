@@ -525,6 +525,8 @@
   [[NSUserDefaults standardUserDefaults] setObject:sorted forKey:@"configList"];
 
   [self configlist_selectByIdentifier:identifier];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (void)configlist_sortByName {
@@ -537,6 +539,8 @@
   [[NSUserDefaults standardUserDefaults] setObject:sorted forKey:@"configList"];
 
   [self configlist_selectByIdentifier:identifier];
+
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 // ----------------------------------------------------------------------

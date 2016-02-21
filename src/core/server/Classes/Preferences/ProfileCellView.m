@@ -5,13 +5,21 @@
 
 @implementation ProfileCellView
 
+- (void)prepareForReuse {
+  [super prepareForReuse];
+
+  self.profileIndex = -1;
+}
+
 - (IBAction)nameChanged:(id)sender {
-  NSDictionary* notificationUserInfo = @{
-    kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
-  };
-  [self.serverObjects.preferencesManager configlist_setName:self.profileIndex
-                                                       name:self.textField.stringValue
-                                       notificationUserInfo:notificationUserInfo];
+  if (self.profileIndex >= 0) {
+    NSDictionary* notificationUserInfo = @{
+      kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
+    };
+    [self.serverObjects.preferencesManager configlist_setName:self.profileIndex
+                                                         name:self.textField.stringValue
+                                         notificationUserInfo:notificationUserInfo];
+  }
 }
 
 - (IBAction)deleteProfile:(id)sender {
