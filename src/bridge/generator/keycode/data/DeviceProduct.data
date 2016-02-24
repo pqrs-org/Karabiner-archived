@@ -15,6 +15,9 @@ Razer_DeathAdder_Chroma                 0x0043
 // Mionix
 Mionix_Naos_7000                        0x130c
 
+// Microsoft
+Microsoft_Sculpt_Touch_Mouse            0x077c
+
 //
 PSEUDO                                  0x0000
 ANY                                     0x0000

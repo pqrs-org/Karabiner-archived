@@ -307,6 +307,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Microsoft_Sculpt_Touch_Mouse</productname>
+    <productid>0x077c</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>TARGUS_BLUETOOTH_PRESENTER</productname>
     <productid>0x07d1</productid>
   </deviceproductdef>

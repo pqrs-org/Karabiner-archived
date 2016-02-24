@@ -9,3 +9,4 @@ PSEUDO           0x0000
 LOGITECH         0x046d
 Razer            0x1532
 Mionix           0x22d4
+MICROSOFT        0x045e

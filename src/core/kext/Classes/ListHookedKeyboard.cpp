@@ -339,9 +339,11 @@ bool ListHookedKeyboard::isExternalDevicesConnected(void) const {
     // * Razer DeathAdder Chroma
     // * Mionix Naos 7000
     // * Logitech Bluetooth Mouse M555b
+    // * Microsoft Sculpt Touch Mouse
     if (p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Razer, DeviceProduct::Razer_DeathAdder_Chroma) ||
         p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::Mionix, DeviceProduct::Mionix_Naos_7000) ||
         p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::LOGITECH, DeviceProduct::Logitech_Bluetooth_Mouse_M555b) ||
+        p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor::MICROSOFT, DeviceProduct::Microsoft_Sculpt_Touch_Mouse) ||
 #if 0
         /* Debug code: HHKB Professional JP */
         p->getDeviceIdentifier().isEqualVendorProduct(DeviceVendor(0x04fe), DeviceProduct(0x000d)) ||

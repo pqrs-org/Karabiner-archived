@@ -4,7 +4,8 @@
   * "Show icon in Dock" setting has been added.
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Mionix Naos 7000 has been supported.
-    * Logitech Bluetooth Mouse M555b
+    * Logitech Bluetooth Mouse M555b has been supported.
+    * Microsoft Sculpt Touch Mouse has been supported.
   * The word-wrap property of setting description in Preferences became break-word.
   * The consumer keys (media keys) repeat values has been synchronized with the key repeat values.
   * The behavior of starting Karabiner on system startup has been improved.
