@@ -9,8 +9,8 @@
 
 #define kLabelLeadingSpaceWithCheckbox 24
 #define kLabelLeadingSpaceWithoutCheckbox 4
-#define kLabelTopSpace 2
-#define kLabelBottomSpace 2
+#define kLabelTopSpace 4
+#define kLabelBottomSpace 4
 
 @interface CheckboxOutlineViewDelegate () {
   dispatch_queue_t textsHeightQueue_;

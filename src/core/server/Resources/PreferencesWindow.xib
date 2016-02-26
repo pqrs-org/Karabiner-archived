@@ -165,13 +165,13 @@
                                                 <action selector="filterCheckboxOutlineView:" target="-2" id="wCO-Mt-Mm4"/>
                                             </connections>
                                         </button>
-                                        <scrollView horizontalLineScroll="21" horizontalPageScroll="10" verticalLineScroll="21" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="664">
+                                        <scrollView horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="664">
                                             <rect key="frame" x="17" y="65" width="720" height="457"/>
                                             <clipView key="contentView" drawsBackground="NO" id="n2M-kD-RD0">
                                                 <rect key="frame" x="1" y="1" width="703" height="455"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="21" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="UXu-g8-5ZX" id="672" customClass="CheckboxOutlineView">
+                                                    <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="25" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="UXu-g8-5ZX" id="672" customClass="CheckboxOutlineView">
                                                         <rect key="frame" x="0.0" y="0.0" width="703" height="0.0"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <size key="intercellSpacing" width="2" height="0.0"/>
@@ -193,11 +193,11 @@
                                                                 <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                                 <prototypeCellViews>
                                                                     <tableCellView identifier="CheckboxCellView" id="gNO-xU-zAR" customClass="CheckboxCellView">
-                                                                        <rect key="frame" x="1" y="0.0" width="701" height="21"/>
+                                                                        <rect key="frame" x="1" y="0.0" width="701" height="25"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hsv-ed-2re">
-                                                                                <rect key="frame" x="22" y="2" width="681" height="17"/>
+                                                                                <rect key="frame" x="22" y="4" width="681" height="17"/>
                                                                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="1ol-YY-B0g">
                                                                                     <font key="font" metaFont="system"/>
                                                                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -206,10 +206,10 @@
                                                                             </textField>
                                                                         </subviews>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="bottom" secondItem="hsv-ed-2re" secondAttribute="bottom" constant="2" id="VOr-IO-UPS"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="hsv-ed-2re" secondAttribute="bottom" constant="4" id="VOr-IO-UPS"/>
                                                                             <constraint firstItem="hsv-ed-2re" firstAttribute="leading" secondItem="gNO-xU-zAR" secondAttribute="leading" constant="24" id="W3n-3k-enk"/>
                                                                             <constraint firstAttribute="trailing" secondItem="hsv-ed-2re" secondAttribute="trailing" id="mYy-cO-xJr"/>
-                                                                            <constraint firstItem="hsv-ed-2re" firstAttribute="top" secondItem="gNO-xU-zAR" secondAttribute="top" constant="2" id="qxd-Rb-ayj"/>
+                                                                            <constraint firstItem="hsv-ed-2re" firstAttribute="top" secondItem="gNO-xU-zAR" secondAttribute="top" constant="4" id="qxd-Rb-ayj"/>
                                                                         </constraints>
                                                                         <connections>
                                                                             <outlet property="labelBottomSpace" destination="VOr-IO-UPS" id="fog-gp-8Jr"/>
