@@ -822,6 +822,7 @@ needToBlock:
     int timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_blockuntilkeyup_timeout);
     blockingTimeOut_timer_.setTimeoutMS(timeout);
   }
+  KeyboardRepeat::pause();
 
   // When <autogen>__BlockUntilKeyUp__ KeyCode::SPACE</autogen> is enabled:
   //
@@ -945,6 +946,7 @@ void EventInputQueue::BlockUntilKeyUpHandler::endBlocking(void) {
   }
 
   blockingTimeOut_timer_.cancelTimeout();
+  KeyboardRepeat::resume();
 }
 
 void EventInputQueue::BlockUntilKeyUpHandler::setIgnoreToAllPressingEvents(void) {
