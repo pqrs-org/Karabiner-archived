@@ -15,17 +15,26 @@ void PointingRelativeToKey::add(AddDataType datatype, AddValue newval) {
   switch (datatype) {
   case BRIDGE_DATATYPE_POINTINGRELATIVE: {
     PointingRelative val(newval);
+    size_t keytokey_index = KEYTOKEY__END__;
     if (val == PointingRelative::UP) {
-      current_keytokey_ = &(keytokey_[KEYTOKEY_UP]);
+      keytokey_index = KEYTOKEY_UP;
     }
     if (val == PointingRelative::DOWN) {
-      current_keytokey_ = &(keytokey_[KEYTOKEY_DOWN]);
+      keytokey_index = KEYTOKEY_DOWN;
     }
     if (val == PointingRelative::LEFT) {
-      current_keytokey_ = &(keytokey_[KEYTOKEY_LEFT]);
+      keytokey_index = KEYTOKEY_LEFT;
     }
     if (val == PointingRelative::RIGHT) {
-      current_keytokey_ = &(keytokey_[KEYTOKEY_RIGHT]);
+      keytokey_index = KEYTOKEY_RIGHT;
+    }
+    if (val == PointingRelative::ANY) {
+      keytokey_index = KEYTOKEY_ANY;
+    }
+
+    if (keytokey_index != KEYTOKEY__END__) {
+      current_keytokey_ = &(keytokey_[keytokey_index]);
+      defined_[keytokey_index] = true;
     }
     break;
   }
@@ -86,7 +95,7 @@ bool PointingRelativeToKey::remap(RemapParams& remapParams) {
     int dx = deltaBuffer_dx_.sum();
     int dy = deltaBuffer_dy_.sum();
 
-    size_t keytokey_index = KEYTOKEY__END__;
+    size_t keytokey_index = KEYTOKEY_ANY;
     PointingRelative pr = PointingRelative::getPointingRelativeFromDelta(dx, dy);
     if (pr == PointingRelative::UP) {
       keytokey_index = KEYTOKEY_UP;
@@ -101,20 +110,25 @@ bool PointingRelativeToKey::remap(RemapParams& remapParams) {
       keytokey_index = KEYTOKEY_RIGHT;
     }
 
-    if (keytokey_index != KEYTOKEY__END__) {
-      keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
-      keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
-      // clear temporary flags.
-      FlagStatus::globalFlagStatus().set();
-
-      // We need to call EventWatcher::on here.
-      // See the comments in EventInputQueue::fire_timer_callback.
-      EventWatcher::on();
-
-      deltaBuffer_dx_.clear();
-      deltaBuffer_dy_.clear();
-      keyrepeat_ic_.begin();
+    if (! defined_[keytokey_index]) {
+      // fallback
+      keytokey_index = KEYTOKEY_ANY;
     }
+
+    // ----------------------------------------
+    keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::DOWN, remapParams.physicalEventType);
+    keytokey_[keytokey_index].call_remap_with_VK_PSEUDO_KEY(EventType::UP, remapParams.physicalEventType);
+
+    // clear temporary flags.
+    FlagStatus::globalFlagStatus().set();
+
+    // We need to call EventWatcher::on here.
+    // See the comments in EventInputQueue::fire_timer_callback.
+    EventWatcher::on();
+
+    deltaBuffer_dx_.clear();
+    deltaBuffer_dy_.clear();
+    keyrepeat_ic_.begin();
   }
 
   return true;

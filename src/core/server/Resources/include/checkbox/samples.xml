@@ -2589,6 +2589,35 @@ Two Lines</autogen>
           PointingRelative::RIGHT, KeyCode::CURSOR_RIGHT,
         </autogen>
       </item>
+      <item>
+        <identifier>remap.samples_pointingrelativetokey_any</identifier>
+        <name>With PointingRelative::ANY</name>
+        <appendix>Option+CursorMove to Shift+Space</appendix>
+
+        <autogen>
+          __PointingRelativeToKey__
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+          PointingRelative::ANY, KeyCode::SPACE, ModifierFlag::SHIFT_L,
+        </autogen>
+      </item>
+      <item>
+        <identifier>remap.samples_pointingrelativetokey_any_fallback</identifier>
+        <name>With PointingRelative::ANY fallback</name>
+        <appendix>Option+CursorMove (Up) to Command+Up-Arrow</appendix>
+        <appendix>Option+CursorMove (Down) to Command+Down-Arrow</appendix>
+        <appendix>Option+CursorMove (Other) to Shift+Space</appendix>
+
+        <autogen>
+          __PointingRelativeToKey__
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+          PointingRelative::UP, KeyCode::CURSOR_UP, ModifierFlag::COMMAND_L,
+          PointingRelative::DOWN, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L,
+
+          PointingRelative::ANY, KeyCode::SPACE, ModifierFlag::SHIFT_L,
+        </autogen>
+      </item>
     </item>
 
     <item>

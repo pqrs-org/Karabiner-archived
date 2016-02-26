@@ -11,10 +11,20 @@ namespace RemapFunc {
 class PointingRelativeToKey final : public RemapFuncBase {
 public:
   PointingRelativeToKey(AutogenId autogenId) : RemapFuncBase(BRIDGE_REMAPTYPE_POINTINGRELATIVETOKEY, autogenId),
-                                               keytokey_{{autogenId},
-                                                         {autogenId},
-                                                         {autogenId},
-                                                         {autogenId}},
+                                               keytokey_{
+                                                   {autogenId},
+                                                   {autogenId},
+                                                   {autogenId},
+                                                   {autogenId},
+                                                   {autogenId},
+                                               },
+                                               defined_{
+                                                   false,
+                                                   false,
+                                                   false,
+                                                   false,
+                                                   false,
+                                               },
                                                current_keytokey_(nullptr) {
     keyrepeat_ic_.begin();
 
@@ -42,9 +52,11 @@ private:
     KEYTOKEY_DOWN,
     KEYTOKEY_LEFT,
     KEYTOKEY_RIGHT,
+    KEYTOKEY_ANY,
     KEYTOKEY__END__,
   };
   KeyToKey keytokey_[KEYTOKEY__END__];
+  bool defined_[KEYTOKEY__END__];
   KeyToKey* current_keytokey_;
 };
 }
