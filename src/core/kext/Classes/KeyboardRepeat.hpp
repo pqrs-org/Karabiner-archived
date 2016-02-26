@@ -65,6 +65,10 @@ public:
 
   static int primitive_start(AutogenId autogenId, int delayUntilRepeat, int keyRepeat);
 
+  // --------------------------------------------------
+  static void pause(void);
+  static void resume(void);
+
 private:
   class Item final : public List::Item {
   public:
@@ -101,6 +105,7 @@ private:
 
   static List queue_;
   static TimerWrapper fire_timer_;
+  static bool paused_;
   static int id_;
   static int keyRepeat_;
   static AutogenId autogenId_;

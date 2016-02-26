@@ -8,6 +8,7 @@
 namespace org_pqrs_Karabiner {
 List KeyboardRepeat::queue_;
 TimerWrapper KeyboardRepeat::fire_timer_;
+bool KeyboardRepeat::paused_ = false;
 int KeyboardRepeat::id_ = 0;
 int KeyboardRepeat::keyRepeat_ = 0;
 AutogenId KeyboardRepeat::autogenId_(0);
@@ -24,6 +25,7 @@ void KeyboardRepeat::terminate(void) {
 
 void KeyboardRepeat::cancel(void) {
   fire_timer_.cancelTimeout();
+  paused_ = false;
 
   queue_.clear();
 
@@ -73,8 +75,22 @@ int KeyboardRepeat::primitive_start(AutogenId autogenId, int delayUntilRepeat, i
   keyRepeat_ = keyRepeat;
   autogenId_ = autogenId;
   fire_timer_.setTimeoutMS(delayUntilRepeat);
+  paused_ = false;
 
   return succID();
+}
+
+void KeyboardRepeat::pause(void) {
+  if (!paused_) {
+    fire_timer_.cancelTimeout();
+    paused_ = true;
+  }
+}
+void KeyboardRepeat::resume(void) {
+  if (paused_) {
+    fire_timer_.setTimeoutMS(keyRepeat_);
+    paused_ = false;
+  }
 }
 
 void KeyboardRepeat::set(EventType eventType,
