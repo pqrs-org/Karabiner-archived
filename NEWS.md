@@ -12,6 +12,7 @@
   * Prepared settings have been updated.
   * Updates for people who add new settings by oneself:
     * `Option::FLIPSCROLLWHEEL_ROTATE` has been added.
+    * `PointingRelative::ANY` has been added into `__PointingRelativeToKey__`.
 * Fixed issues:
   * Some Qt apps might be crash when AXNotifier is enabled. (WISO apps)
   * Microsoft Excel scroll position is sometimes reset while using scroll wheel.
