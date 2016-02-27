@@ -13,7 +13,9 @@
 
       <item>
         <name>Reverse Vertical &amp; Horizontal Scrolling</name>
+        <appendix>except in the menu bar. (eg. system volume control)</appendix>
         <identifier>remap.reverse_both_scrolling</identifier>
+        <not>SystemUIServer</not>
         <autogen>
           __FlipScrollWheel__
           Option::FLIPSCROLLWHEEL_HORIZONTAL,
@@ -23,7 +25,9 @@
 
       <item>
         <name>Reverse Vertical Scrolling</name>
+        <appendix>except in the menu bar. (eg. system volume control)</appendix>
         <identifier>remap.reverse_vertical_scrolling</identifier>
+        <not>SystemUIServer</not>
         <autogen>
           __FlipScrollWheel__
           Option::FLIPSCROLLWHEEL_VERTICAL,

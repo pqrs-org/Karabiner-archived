@@ -616,6 +616,11 @@
     <equal>com.twitter.twitter-mac</equal>
   </appdef>
 
+  <appdef>
+    <appname>SystemUIServer</appname>
+    <equal>com.apple.systemuiserver</equal>
+  </appdef>
+
   <!-- fallback -->
   <appdef>
     <appname>JetBrainsApps</appname>
