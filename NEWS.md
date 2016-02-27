@@ -7,6 +7,7 @@
     * Logitech Bluetooth Mouse M555b has been supported.
     * Microsoft Sculpt Touch Mouse has been supported.
   * The word-wrap property of setting description in Preferences became break-word.
+  * The font size in Preferences has been selectable from "default font" and "large font".
   * The consumer keys (media keys) repeat values has been synchronized with the key repeat values.
   * The behavior of starting Karabiner on system startup has been improved.
   * Prepared settings have been updated.
