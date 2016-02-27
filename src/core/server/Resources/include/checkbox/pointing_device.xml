@@ -33,6 +33,7 @@
           Option::FLIPSCROLLWHEEL_VERTICAL,
         </autogen>
       </item>
+
       <item>
         <name>Reverse Horizontal Scrolling</name>
         <identifier>remap.reverse_horizontal_scrolling</identifier>
