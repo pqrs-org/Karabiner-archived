@@ -320,10 +320,16 @@
         <appendix>(Fn+ScrollWheel Up to Brightness Up</appendix>
         <appendix>(Fn+ScrollWheel Down to Brightness Down</appendix>
         <identifier>remap.fn_scroll_to_brightness_control</identifier>
-        <autogen>__ScrollWheelToKey__ ScrollWheel::UP, ModifierFlag::FN | ModifierFlag::NONE,
-          KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP</autogen>
-        <autogen>__ScrollWheelToKey__ ScrollWheel::DOWN, ModifierFlag::FN | ModifierFlag::NONE,
-          KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN</autogen>
+        <autogen>
+          __ScrollWheelToKey__
+          ScrollWheel::UP, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::VK_CONSUMERKEY_BRIGHTNESS_UP,
+        </autogen>
+        <autogen>
+          __ScrollWheelToKey__
+          ScrollWheel::DOWN, ModifierFlag::FN | ModifierFlag::NONE,
+          KeyCode::VK_CONSUMERKEY_BRIGHTNESS_DOWN,
+        </autogen>
       </item>
     </item>
     <item>
