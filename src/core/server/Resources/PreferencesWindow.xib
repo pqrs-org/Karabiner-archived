@@ -1681,8 +1681,8 @@ The following settings will not work properly if you disable AXNotifier.
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1435">
-                                            <rect key="frame" x="448" y="461" width="295" height="32"/>
-                                            <buttonCell key="cell" type="push" title="Check for updates including beta versions" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
+                                            <rect key="frame" x="560" y="461" width="183" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Check for beta updates" bezelStyle="rounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1436">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
