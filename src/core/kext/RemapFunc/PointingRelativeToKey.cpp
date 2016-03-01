@@ -110,7 +110,7 @@ bool PointingRelativeToKey::remap(RemapParams& remapParams) {
       keytokey_index = KEYTOKEY_RIGHT;
     }
 
-    if (! defined_[keytokey_index]) {
+    if (!defined_[keytokey_index]) {
       // fallback
       keytokey_index = KEYTOKEY_ANY;
     }

@@ -5,12 +5,17 @@
 #import "PreferencesManager.h"
 #import "Relauncher.h"
 #import "ServerForUserspace.h"
-#import "Updater.h"
 #import "XMLCompiler.h"
 
 @interface ServerForUserspace () {
   NSConnection* connection_;
 }
+
+@property(weak) IBOutlet AppDelegate* appDelegate;
+@property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet XMLCompiler* xmlCompiler;
+
 @end
 
 @implementation ServerForUserspace
@@ -36,57 +41,57 @@
 
 // ----------------------------------------------------------------------
 - (int)value:(NSString*)name {
-  return [preferencesManager_ value:name];
+  return [self.preferencesManager value:name];
 }
 
 - (int)defaultValue:(NSString*)name {
-  return [preferencesManager_ defaultValue:name];
+  return [self.preferencesManager defaultValue:name];
 }
 
 - (void)setValue:(int)newval forName:(NSString*)name {
-  [preferencesManager_ setValue:newval forName:name];
+  [self.preferencesManager setValue:newval forName:name];
 }
 
 - (NSDictionary*)changed {
-  return [preferencesManager_ changed];
+  return [self.preferencesManager changed];
 }
 
 // ----------------------------------------------------------------------
 - (NSInteger)configlist_selectedIndex {
-  return [preferencesManager_ configlist_selectedIndex];
+  return [self.preferencesManager configlist_selectedIndex];
 }
 
 - (NSArray*)configlist_getConfigList {
-  return [preferencesManager_ configlist_getConfigList];
+  return [self.preferencesManager configlist_getConfigList];
 }
 
 - (void)configlist_select:(NSInteger)newIndex {
-  [preferencesManager_ configlist_select:newIndex];
+  [self.preferencesManager configlist_select:newIndex];
 }
 
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
-  [preferencesManager_ configlist_setName:rowIndex name:name];
+  [self.preferencesManager configlist_setName:rowIndex name:name];
 }
 
 - (void)configlist_append {
-  [preferencesManager_ configlist_append];
+  [self.preferencesManager configlist_append];
 }
 
 - (void)configlist_delete:(NSInteger)rowIndex {
-  [preferencesManager_ configlist_delete:rowIndex];
+  [self.preferencesManager configlist_delete:rowIndex];
 }
 
 - (void)configlist_clear_all_values:(NSInteger)rowIndex {
-  [preferencesManager_ configlist_clear_all_values:rowIndex];
+  [self.preferencesManager configlist_clear_all_values:rowIndex];
 }
 
 // ----------------------------------------------------------------------
 - (void)configxml_reload {
-  [xmlCompiler_ reload];
+  [self.xmlCompiler reload];
 }
 
 - (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value {
-  return [xmlCompiler_ symbolMapName:type value:(uint32_t)(value)];
+  return [self.xmlCompiler symbolMapName:type value:(uint32_t)(value)];
 }
 
 - (void)relaunch {
@@ -110,32 +115,32 @@
 }
 
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information {
-  return [appDelegate_ updateFocusedUIElementInformation:information];
+  return [self.appDelegate updateFocusedUIElementInformation:information];
 }
 
 // ----------------------------------------------------------------------
 - (NSArray*)device_information:(NSInteger)type {
-  return [clientForKernelspace_ device_information:type];
+  return [self.clientForKernelspace device_information:type];
 }
 
 - (NSDictionary*)focused_uielement_information {
-  return [appDelegate_ getFocusedUIElementInformation];
+  return [self.appDelegate getFocusedUIElementInformation];
 }
 
 - (NSArray*)workspace_app_ids {
-  return [appDelegate_ getWorkspaceAppIds];
+  return [self.appDelegate getWorkspaceAppIds];
 }
 
 - (NSArray*)workspace_window_name_ids {
-  return [appDelegate_ getWorkspaceWindowNameIds];
+  return [self.appDelegate getWorkspaceWindowNameIds];
 }
 
 - (NSArray*)workspace_inputsource_ids {
-  return [appDelegate_ getWorkspaceInputSourceIds];
+  return [self.appDelegate getWorkspaceInputSourceIds];
 }
 
 - (NSDictionary*)inputsource_information {
-  return [appDelegate_ getInputSourceInformation];
+  return [self.appDelegate getInputSourceInformation];
 }
 
 @end

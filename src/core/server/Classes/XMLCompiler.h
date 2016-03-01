@@ -3,7 +3,6 @@
 #import <Cocoa/Cocoa.h>
 #include "pqrs/xml_compiler_bindings_clang.h"
 
-@class ClientForKernelspace;
 @class CheckboxItem;
 @class ParameterItem;
 
@@ -37,9 +36,7 @@
 @property NSArray* children;
 @end
 
-@interface XMLCompiler : NSObject {
-  IBOutlet ClientForKernelspace* clientForKernelspace_;
-}
+@interface XMLCompiler : NSObject
 
 @property XMLCompilerTree* preferencepane_checkbox;
 @property XMLCompilerTree* preferencepane_parameter;

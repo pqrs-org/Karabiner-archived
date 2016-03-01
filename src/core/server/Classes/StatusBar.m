@@ -8,6 +8,10 @@
 @interface StatusBar () {
   NSStatusItem* statusItem_;
 }
+
+@property(weak) IBOutlet NSMenu* menu;
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
+
 @end
 
 @implementation StatusBar
@@ -64,7 +68,7 @@
       [statusItem_ setImage:image];
       [statusItem_ setHighlightMode:YES];
 
-      [statusItem_ setMenu:menu_];
+      [statusItem_ setMenu:self.menu];
     }
 
     // setTitle
@@ -73,7 +77,7 @@
       [statusItem_ setLength:NSSquareStatusItemLength];
 
     } else {
-      NSString* title = [preferencesManager_ configlist_selectedName];
+      NSString* title = [self.preferencesManager configlist_selectedName];
       if (title) {
         NSAttributedString* attributedtitle = [[NSAttributedString alloc] initWithString:title attributes:nil];
         [statusItem_ setAttributedTitle:attributedtitle];
@@ -87,7 +91,7 @@
 
 - (void)statusBarItemSelected:(id)sender {
   NSNumber* idx = [sender representedObject];
-  [preferencesManager_ configlist_select:[idx intValue]];
+  [self.preferencesManager configlist_select:[idx intValue]];
   [self refresh];
 }
 
@@ -103,9 +107,9 @@
 
   // --------------------
   // append
-  NSArray* list = [preferencesManager_ configlist_getConfigList];
+  NSArray* list = [self.preferencesManager configlist_getConfigList];
   int i = 0;
-  NSInteger selectedIndex = [preferencesManager_ configlist_selectedIndex];
+  NSInteger selectedIndex = [self.preferencesManager configlist_selectedIndex];
   for (NSDictionary* dict in list) {
     if (!dict) continue;
 

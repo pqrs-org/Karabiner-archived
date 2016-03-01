@@ -14,6 +14,13 @@
   NSTimer* timer_;
   int retryCounter_;
 }
+
+@property(weak) IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper;
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet StatusMessageManager* statusMessageManager;
+@property(weak) IBOutlet WorkSpaceData* workSpaceData;
+@property(weak) IBOutlet XMLCompiler* xmlCompiler;
+
 @end
 
 @implementation ClientForKernelspace
@@ -33,10 +40,10 @@
       if (![userClient_userspace_ synchronized_communication:&bridgestruct]) return;
 
       uint32_t configindex = option;
-      NSString* name = [xmlCompiler_ identifier:(int)(configindex)];
+      NSString* name = [self.xmlCompiler identifier:(int)(configindex)];
       if (name) {
         // Do not call set_config_one here. (== Call setValue with tellToKext:NO.)
-        [preferencesManager_ setValue:enabled forName:name tellToKext:NO];
+        [self.preferencesManager setValue:enabled forName:name tellToKext:NO];
       }
       break;
     }
@@ -52,25 +59,25 @@
 
       if (![userClient_userspace_ synchronized_communication:&bridgestruct]) return;
 
-      [statusMessageManager_ setStatusMessage:option message:@(buf)];
+      [self.statusMessageManager setStatusMessage:option message:@(buf)];
       break;
     }
 
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CHANGE_INPUT_SOURCE:
-      [workSpaceData_ selectInputSource:option];
+      [self.workSpaceData selectInputSource:option];
       break;
 
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_OPEN_URL: {
-      NSString* url = [xmlCompiler_ url:option];
+      NSString* url = [self.xmlCompiler url:option];
       if (url) {
-        NSString* urlType = [xmlCompiler_ urlType:option];
+        NSString* urlType = [self.xmlCompiler urlType:option];
 
         if ([urlType isEqualToString:@"shell"]) {
           [[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[ @"-c", url ]] waitUntilExit];
         } else if ([urlType isEqualToString:@"file"]) {
           [[NSWorkspace sharedWorkspace] openFile:url];
         } else {
-          BOOL openInBackground = [xmlCompiler_ urlIsBackground:option];
+          BOOL openInBackground = [self.xmlCompiler urlIsBackground:option];
           if (openInBackground) {
             NSArray* urls = [NSArray arrayWithObject:[NSURL URLWithString:url]];
             [[NSWorkspace sharedWorkspace] openURLs:urls
@@ -87,7 +94,7 @@
     }
 
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_IOHIDPOSTEVENT:
-      [iohidPostEventWrapper_ postKey:option];
+      [self.iohidPostEventWrapper postKey:option];
       break;
     }
   });
@@ -101,7 +108,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self send_remapclasses_initialize_vector_to_kext];
-    [preferencesManager_ clearNotSave];
+    [self.preferencesManager clearNotSave];
     [self send_config_to_kext];
     [self set_initialized];
   });
@@ -109,7 +116,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
 - (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [preferencesManager_ clearNotSave];
+    [self.preferencesManager clearNotSave];
     [self send_config_to_kext];
     [self set_initialized];
   });
@@ -222,8 +229,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 }
 
 - (void)send_remapclasses_initialize_vector_to_kext {
-  const uint32_t* p = [xmlCompiler_ remapclasses_initialize_vector_data];
-  size_t size = [xmlCompiler_ remapclasses_initialize_vector_size] * sizeof(uint32_t);
+  const uint32_t* p = [self.xmlCompiler remapclasses_initialize_vector_data];
+  size_t size = [self.xmlCompiler remapclasses_initialize_vector_size] * sizeof(uint32_t);
 
   // --------------------
   struct BridgeUserClientStruct bridgestruct;
@@ -250,7 +257,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkKirgudu]) {
       newvalue = 0;
     }
-    [preferencesManager_ setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
+    [self.preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
   }
   {
     // set automatically_enable_pointing_device
@@ -261,11 +268,11 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkSmoothMouse]) {
       newvalue = 0;
     }
-    [preferencesManager_ setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
+    [self.preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
   }
 
   // ------------------------------------------------------------
-  NSArray* essential_config = [preferencesManager_ essential_config];
+  NSArray* essential_config = [self.preferencesManager essential_config];
   if (!essential_config) {
     NSLog(@"[WARNING] essential_config == nil.");
     return;
@@ -273,7 +280,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
   // ------------------------------------------------------------
   NSUInteger essential_config_count = [essential_config count];
-  NSUInteger remapclasses_count = [xmlCompiler_ remapclasses_initialize_vector_config_count];
+  NSUInteger remapclasses_count = [self.xmlCompiler remapclasses_initialize_vector_config_count];
   size_t size = (essential_config_count + remapclasses_count) * sizeof(int32_t);
   int32_t* data = (int32_t*)(malloc(size));
   if (!data) {
@@ -292,12 +299,12 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     // --------------------
     // remapclasses config
     for (NSUInteger i = 0; i < remapclasses_count; ++i) {
-      NSString* name = [xmlCompiler_ identifier:(int)(i)];
+      NSString* name = [self.xmlCompiler identifier:(int)(i)];
       if (!name) {
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
       } else {
-        *p++ = [preferencesManager_ value:name];
+        *p++ = [self.preferencesManager value:name];
       }
     }
 

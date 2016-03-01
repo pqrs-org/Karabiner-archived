@@ -115,7 +115,7 @@
   [window setIgnoresMouseEvents:YES];
   [window setCollectionBehavior:behavior];
 
-  [[window contentView] setMessage:@""];
+  [[window contentView] updateMessage:@""];
 }
 
 - (BOOL)isNeedReplaceWindows {
@@ -284,7 +284,7 @@
   if ([statusMessage length] > 0) {
     for (NSWindowController* controller in windowControllers_) {
       NSWindow* window = [controller window];
-      [[window contentView] setMessage:statusMessage];
+      [[window contentView] updateMessage:statusMessage];
       [window orderFront:self];
       [self showStatusWindow:controller];
       [[window contentView] setNeedsDisplay:YES];

@@ -37,15 +37,21 @@
   SessionObserver* sessionObserver_;
 }
 
+@property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet ServerForUserspace* serverForUserspace;
 @property(weak) IBOutlet ServerObjects* serverObjects;
+@property(weak) IBOutlet StatusBar* statusbar;
+@property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet Updater* updater;
+@property(weak) IBOutlet WorkSpaceData* workSpaceData;
+@property(weak) IBOutlet XMLCompiler* xmlCompiler;
+
 @property PreferencesWindowController* preferencesWindowController;
 
 @end
 
 @implementation AppDelegate
-
-@synthesize clientForKernelspace;
 
 // ----------------------------------------
 - (void)send_workspacedata_to_kext {
@@ -74,7 +80,7 @@
     [workspaceIds addObject:n];
   }
 
-  [clientForKernelspace send_workspacedata_to_kext:workspaceIds];
+  [self.clientForKernelspace send_workspacedata_to_kext:workspaceIds];
 }
 
 // ------------------------------------------------------------
@@ -90,9 +96,9 @@
     if (!inputSource) {
       workspaceInputSourceIds_ = nil;
     } else {
-      workspaceInputSourceIds_ = [xmlCompiler_ inputsourceids:inputSource.languagecode
-                                                inputSourceID:inputSource.inputSourceID
-                                                  inputModeID:inputSource.inputModeID];
+      workspaceInputSourceIds_ = [self.xmlCompiler inputsourceids:inputSource.languagecode
+                                                    inputSourceID:inputSource.inputSourceID
+                                                      inputModeID:inputSource.inputModeID];
     }
     [self send_workspacedata_to_kext];
 
@@ -132,11 +138,11 @@
 
 // ------------------------------------------------------------
 - (void)callClearNotSave {
-  if (![preferencesManager_ value:@"general.keep_notsave_at_wake"]) {
+  if (![self.preferencesManager value:@"general.keep_notsave_at_wake"]) {
     // disable notsave.* in order to disable "Browsing Mode" and
     // other modes which overwrite some keys
     // because these modes annoy password input.
-    [preferencesManager_ clearNotSave];
+    [self.preferencesManager clearNotSave];
   }
 }
 
@@ -201,7 +207,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     // When you release the iterator you receive from IOServiceAddMatchingNotification, you also disable the notification.
 
     // ------------------------------------------------------------
-    [[self clientForKernelspace] refresh_connection_with_retry];
+    [self.clientForKernelspace refresh_connection_with_retry];
     [self send_workspacedata_to_kext];
   });
 }
@@ -277,7 +283,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 
   // ------------------------------------------------------------
-  if (![serverForUserspace_ register]) {
+  if (![self.serverForUserspace register]) {
     // Relaunch when register is failed.
     NSLog(@"[ServerForUserspace register] is failed. Restarting process.");
     [NSThread sleepForTimeInterval:2];
@@ -295,23 +301,23 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     TransformProcessType(&psn, kProcessTransformToForegroundApplication);
   }
 
-  [preferencesManager_ load];
+  [self.preferencesManager load];
 
-  [statusMessageManager_ setupStatusMessageManager];
-  [statusbar_ refresh];
-  [xmlCompiler_ reload];
+  [self.statusMessageManager setupStatusMessageManager];
+  [self.statusbar refresh];
+  [self.xmlCompiler reload];
 
   sessionObserver_ = [[SessionObserver alloc] init:1
       active:^{
-        [statusMessageManager_ resetStatusMessage];
+        [self.statusMessageManager resetStatusMessage];
         [self registerIONotification];
         [self registerWakeNotification];
       }
       inactive:^{
-        [statusMessageManager_ resetStatusMessage];
+        [self.statusMessageManager resetStatusMessage];
         [self unregisterIONotification];
         [self unregisterWakeNotification];
-        [clientForKernelspace disconnect_from_kext];
+        [self.clientForKernelspace disconnect_from_kext];
       }];
 
   // ------------------------------------------------------------
@@ -410,9 +416,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       focusedUIElementInformation_ = information;
     }
 
-    workspaceAppIds_ = [xmlCompiler_ appids:focusedUIElementInformation_[@"BundleIdentifier"]];
-    workspaceWindowNameIds_ = [xmlCompiler_ windownameids:focusedUIElementInformation_[@"WindowName"]];
-    workspaceUIElementRoleId_ = @([workSpaceData_ getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]]);
+    workspaceAppIds_ = [self.xmlCompiler appids:focusedUIElementInformation_[@"BundleIdentifier"]];
+    workspaceWindowNameIds_ = [self.xmlCompiler windownameids:focusedUIElementInformation_[@"WindowName"]];
+    workspaceUIElementRoleId_ = @([self.workSpaceData getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]]);
 
     [self send_workspacedata_to_kext];
   }

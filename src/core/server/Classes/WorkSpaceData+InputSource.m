@@ -110,10 +110,10 @@ static NSMutableArray* enabledInputSources_ = nil;
   InputSource* matched = nil;
   @synchronized(self) {
     for (InputSource* inputSource in enabledInputSources_) {
-      if ([xmlCompiler_ is_vk_change_inputsource_matched:vk_keycode
-                                            languagecode:inputSource.languagecode
-                                           inputSourceID:inputSource.inputSourceID
-                                             inputModeID:inputSource.inputModeID]) {
+      if ([self.xmlCompiler is_vk_change_inputsource_matched:vk_keycode
+                                                languagecode:inputSource.languagecode
+                                               inputSourceID:inputSource.inputSourceID
+                                                 inputModeID:inputSource.inputModeID]) {
         matched = inputSource;
         break;
       }

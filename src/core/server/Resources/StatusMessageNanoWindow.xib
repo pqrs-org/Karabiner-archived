@@ -30,7 +30,7 @@
                     </textField>
                 </subviews>
                 <connections>
-                    <outlet property="message_" destination="nKy-eE-Bpy" id="K8R-hM-7Fa"/>
+                    <outlet property="message" destination="nKy-eE-Bpy" id="Yfw-yg-eID"/>
                 </connections>
             </view>
         </window>

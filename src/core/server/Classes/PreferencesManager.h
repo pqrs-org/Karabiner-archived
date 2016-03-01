@@ -1,16 +1,9 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-@class ClientForKernelspace;
-@class XMLCompiler;
+@interface PreferencesManager : NSObject
 
-@interface PreferencesManager : NSObject {
-  IBOutlet ClientForKernelspace* clientForKernelspace_;
-  IBOutlet XMLCompiler* xmlCompiler_;
-}
-
-// --------------------------------------------------
 - (void)load;
 
 - (int)value:(NSString*)name;

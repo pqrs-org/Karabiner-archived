@@ -1,10 +1,12 @@
 // -*- Mode: objc -*-
 
-@interface StatusMessageView : NSView {
-  IBOutlet NSTextField* message_;
-}
+@import Cocoa;
 
-- (void)setMessage:(NSString*)message;
+@interface StatusMessageView : NSView
+
+@property(weak) IBOutlet NSTextField* message;
+
+- (void)updateMessage:(NSString*)message;
 - (void)updateWindowFrame:(NSScreen*)screen;
 
 @end

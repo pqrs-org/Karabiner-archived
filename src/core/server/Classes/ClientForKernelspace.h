@@ -1,22 +1,9 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 #include "bridge.h"
 
-@class IOHIDPostEventWrapper;
-@class PreferencesManager;
-@class StatusMessageManager;
-@class UserClient_userspace;
-@class WorkSpaceData;
-@class XMLCompiler;
-
-@interface ClientForKernelspace : NSObject {
-  IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper_;
-  IBOutlet PreferencesManager* preferencesManager_;
-  IBOutlet StatusMessageManager* statusMessageManager_;
-  IBOutlet WorkSpaceData* workSpaceData_;
-  IBOutlet XMLCompiler* xmlCompiler_;
-}
+@interface ClientForKernelspace : NSObject
 
 - (void)refresh_connection_with_retry;
 - (void)disconnect_from_kext;

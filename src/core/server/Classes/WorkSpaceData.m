@@ -7,7 +7,7 @@
 - (unsigned int)getUIElementRole:(NSString *)name {
   if (!name) return 0;
 
-  return [xmlCompiler_ uielementroleid:name];
+  return [self.xmlCompiler uielementroleid:name];
 }
 
 @end

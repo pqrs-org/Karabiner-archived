@@ -1,13 +1,8 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-@class PreferencesManager;
-
-@interface StatusBar : NSObject {
-  IBOutlet NSMenu* menu_;
-  IBOutlet PreferencesManager* preferencesManager_;
-}
+@interface StatusBar : NSObject
 
 - (void)refresh;
 - (void)statusBarItemSelected:(id)sender;

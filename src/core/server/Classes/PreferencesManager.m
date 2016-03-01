@@ -11,6 +11,10 @@
   NSArray* essential_configuration_identifiers_;
   GlobalDomainKeyRepeatObserver* globalDomainKeyRepeatObserver_;
 }
+
+@property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
+@property(weak) IBOutlet XMLCompiler* xmlCompiler;
+
 @end
 
 @implementation PreferencesManager
@@ -270,17 +274,17 @@
       bridgeSetConfigOne.isEssentialConfig = 1;
       bridgeSetConfigOne.index = (uint32_t)(i);
       bridgeSetConfigOne.value = (int32_t)(value);
-      [clientForKernelspace_ set_config_one:&bridgeSetConfigOne];
+      [self.clientForKernelspace set_config_one:&bridgeSetConfigOne];
       return;
     }
   }
 
-  int config_index = [xmlCompiler_ config_index:name];
+  int config_index = [self.xmlCompiler config_index:name];
   if (config_index >= 0) {
     bridgeSetConfigOne.isEssentialConfig = 0;
     bridgeSetConfigOne.index = (uint32_t)(config_index);
     bridgeSetConfigOne.value = (int32_t)(value);
-    [clientForKernelspace_ set_config_one:&bridgeSetConfigOne];
+    [self.clientForKernelspace set_config_one:&bridgeSetConfigOne];
     return;
   }
 }
@@ -307,7 +311,7 @@
 
         if (changed) {
           [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
-          [clientForKernelspace_ send_config_to_kext];
+          [self.clientForKernelspace send_config_to_kext];
         }
       }
     }
@@ -390,7 +394,7 @@
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
   [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
-  [clientForKernelspace_ send_config_to_kext];
+  [self.clientForKernelspace send_config_to_kext];
 }
 
 - (void)configlist_selectByIdentifier:(NSString*)identifier {
@@ -497,7 +501,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:[NSMutableDictionary new] forKey:identifier];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
-  [clientForKernelspace_ send_config_to_kext];
+  [self.clientForKernelspace send_config_to_kext];
 }
 
 - (NSInteger)configlist_maxAppendIndex {

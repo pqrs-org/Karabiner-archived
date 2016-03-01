@@ -38,7 +38,7 @@ Label</string>
                     </textField>
                 </subviews>
                 <connections>
-                    <outlet property="message_" destination="iVM-qq-vL1" id="DaA-dn-Mau"/>
+                    <outlet property="message" destination="iVM-qq-vL1" id="4hm-H6-5Sz"/>
                 </connections>
             </view>
         </window>
