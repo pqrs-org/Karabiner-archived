@@ -27,15 +27,6 @@
   NSDictionary* focusedUIElementInformation_;
   NSMutableDictionary* inputSourceInformation_;
 
-  // for IONotification
-  IONotificationPortRef notifyport_;
-  CFRunLoopSourceRef loopsource_;
-
-  NSArray* workspaceAppIds_;
-  NSArray* workspaceWindowNameIds_;
-  NSNumber* workspaceUIElementRoleId_;
-  NSArray* workspaceInputSourceIds_;
-
   SessionObserver* sessionObserver_;
 }
 
@@ -48,6 +39,15 @@
 @property(weak) IBOutlet Updater* updater;
 @property(weak) IBOutlet WorkSpaceData* workSpaceData;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
+
+// for IONotification
+@property IONotificationPortRef notifyport;
+@property CFRunLoopSourceRef loopsource;
+
+@property(copy, readwrite) NSArray* workspaceAppIds;
+@property(copy, readwrite) NSArray* workspaceWindowNameIds;
+@property(copy, readwrite) NSArray* workspaceInputSourceIds;
+@property(readwrite) NSNumber* workspaceUIElementRoleId;
 
 @property PreferencesWindowController* preferencesWindowController;
 
@@ -62,22 +62,22 @@
   [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_NONE)];
   [workspaceIds addObject:@0];
 
-  for (NSNumber* n in workspaceAppIds_) {
+  for (NSNumber* n in self.workspaceAppIds) {
     [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_APP_ID)];
     [workspaceIds addObject:n];
   }
 
-  for (NSNumber* n in workspaceInputSourceIds_) {
+  for (NSNumber* n in self.workspaceInputSourceIds) {
     [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_INPUT_SOURCE_ID)];
     [workspaceIds addObject:n];
   }
 
-  if (workspaceUIElementRoleId_) {
+  if (self.workspaceUIElementRoleId) {
     [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_UI_ELEMENT_ROLE_ID)];
-    [workspaceIds addObject:workspaceUIElementRoleId_];
+    [workspaceIds addObject:self.workspaceUIElementRoleId];
   }
 
-  for (NSNumber* n in workspaceWindowNameIds_) {
+  for (NSNumber* n in self.workspaceWindowNameIds) {
     [workspaceIds addObject:@(BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID)];
     [workspaceIds addObject:n];
   }
@@ -96,11 +96,11 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
     if (!inputSource) {
-      workspaceInputSourceIds_ = nil;
+      self.workspaceInputSourceIds = nil;
     } else {
-      workspaceInputSourceIds_ = [self.xmlCompiler inputsourceids:inputSource.languagecode
-                                                    inputSourceID:inputSource.inputSourceID
-                                                      inputModeID:inputSource.inputModeID];
+      self.workspaceInputSourceIds = [self.xmlCompiler inputsourceids:inputSource.languagecode
+                                                        inputSourceID:inputSource.inputSourceID
+                                                          inputModeID:inputSource.inputModeID];
     }
     [self send_workspacedata_to_kext];
 
@@ -127,10 +127,10 @@
     // the following values might be changed.
     // Therefore, we need to resend values to kext.
     //
-    // - workspaceAppIds_
-    // - workspaceWindowNameIds_
-    // - workspaceUIElementRoleId_
-    // - workspaceInputSourceIds_
+    // - workspaceAppIds
+    // - workspaceWindowNameIds
+    // - workspaceUIElementRoleId
+    // - workspaceInputSourceIds
 
     [self updateFocusedUIElementInformation:nil];
     [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
@@ -215,21 +215,21 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (void)unregisterIONotification {
-  if (notifyport_) {
-    if (loopsource_) {
-      CFRunLoopSourceInvalidate(loopsource_);
-      loopsource_ = nil;
+  if (self.notifyport) {
+    if (self.loopsource) {
+      CFRunLoopSourceInvalidate(self.loopsource);
+      self.loopsource = nil;
     }
-    IONotificationPortDestroy(notifyport_);
-    notifyport_ = nil;
+    IONotificationPortDestroy(self.notifyport);
+    self.notifyport = nil;
   }
 }
 
 - (void)registerIONotification {
   [self unregisterIONotification];
 
-  notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
-  if (!notifyport_) {
+  self.notifyport = IONotificationPortCreate(kIOMasterPortDefault);
+  if (!self.notifyport) {
     NSLog(@"[ERROR] IONotificationPortCreate failed\n");
     return;
   }
@@ -238,7 +238,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   io_iterator_t it;
   kern_return_t kernResult;
 
-  kernResult = IOServiceAddMatchingNotification(notifyport_,
+  kernResult = IOServiceAddMatchingNotification(self.notifyport,
                                                 kIOMatchedNotification,
                                                 IOServiceNameMatching("org_pqrs_driver_Karabiner"),
                                                 &observer_IONotification,
@@ -251,12 +251,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   observer_IONotification((__bridge void*)(self), it);
 
   // ----------------------------------------------------------------------
-  loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
-  if (!loopsource_) {
+  self.loopsource = IONotificationPortGetRunLoopSource(self.notifyport);
+  if (!self.loopsource) {
     NSLog(@"[ERROR] IONotificationPortGetRunLoopSource failed");
     return;
   }
-  CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
+  CFRunLoopAddSource(CFRunLoopGetCurrent(), self.loopsource, kCFRunLoopDefaultMode);
 }
 
 // ------------------------------------------------------------
@@ -418,9 +418,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       focusedUIElementInformation_ = information;
     }
 
-    workspaceAppIds_ = [self.xmlCompiler appids:focusedUIElementInformation_[@"BundleIdentifier"]];
-    workspaceWindowNameIds_ = [self.xmlCompiler windownameids:focusedUIElementInformation_[@"WindowName"]];
-    workspaceUIElementRoleId_ = @([self.workSpaceData getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]]);
+    self.workspaceAppIds = [self.xmlCompiler appids:focusedUIElementInformation_[@"BundleIdentifier"]];
+    self.workspaceWindowNameIds = [self.xmlCompiler windownameids:focusedUIElementInformation_[@"WindowName"]];
+    self.workspaceUIElementRoleId = @([self.workSpaceData getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]]);
 
     [self send_workspacedata_to_kext];
   }
@@ -429,24 +429,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 - (NSDictionary*)getFocusedUIElementInformation {
   @synchronized(self) {
     return focusedUIElementInformation_;
-  }
-}
-
-- (NSArray*)getWorkspaceAppIds {
-  @synchronized(self) {
-    return workspaceAppIds_;
-  }
-}
-
-- (NSArray*)getWorkspaceWindowNameIds {
-  @synchronized(self) {
-    return workspaceWindowNameIds_;
-  }
-}
-
-- (NSArray*)getWorkspaceInputSourceIds {
-  @synchronized(self) {
-    return workspaceInputSourceIds_;
   }
 }
 

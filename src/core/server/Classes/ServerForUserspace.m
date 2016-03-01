@@ -128,15 +128,15 @@
 }
 
 - (NSArray*)workspace_app_ids {
-  return [self.appDelegate getWorkspaceAppIds];
+  return self.appDelegate.workspaceAppIds;
 }
 
 - (NSArray*)workspace_window_name_ids {
-  return [self.appDelegate getWorkspaceWindowNameIds];
+  return self.appDelegate.workspaceWindowNameIds;
 }
 
 - (NSArray*)workspace_inputsource_ids {
-  return [self.appDelegate getWorkspaceInputSourceIds];
+  return self.appDelegate.workspaceInputSourceIds;
 }
 
 - (NSDictionary*)inputsource_information {

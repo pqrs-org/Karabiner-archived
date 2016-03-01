@@ -4,11 +4,12 @@
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
+@property(copy, readonly) NSArray* workspaceAppIds;
+@property(copy, readonly) NSArray* workspaceWindowNameIds;
+@property(copy, readonly) NSArray* workspaceInputSourceIds;
+
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;
 - (NSDictionary*)getFocusedUIElementInformation;
-- (NSArray*)getWorkspaceAppIds;
-- (NSArray*)getWorkspaceWindowNameIds;
-- (NSArray*)getWorkspaceInputSourceIds;
 - (NSDictionary*)getInputSourceInformation;
 
 + (void)quitWithConfirmation;
