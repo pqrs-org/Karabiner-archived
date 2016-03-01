@@ -124,7 +124,7 @@
 }
 
 - (NSDictionary*)focused_uielement_information {
-  return [self.appDelegate getFocusedUIElementInformation];
+  return self.appDelegate.focusedUIElementInformation;
 }
 
 - (NSArray*)workspace_app_ids {
@@ -140,7 +140,7 @@
 }
 
 - (NSDictionary*)inputsource_information {
-  return [self.appDelegate getInputSourceInformation];
+  return self.appDelegate.inputSourceInformation;
 }
 
 @end

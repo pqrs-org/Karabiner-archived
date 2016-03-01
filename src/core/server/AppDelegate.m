@@ -24,9 +24,6 @@
 #include <stdlib.h>
 
 @interface AppDelegate () {
-  NSDictionary* focusedUIElementInformation_;
-  NSMutableDictionary* inputSourceInformation_;
-
   SessionObserver* sessionObserver_;
 }
 
@@ -44,6 +41,8 @@
 @property IONotificationPortRef notifyport;
 @property CFRunLoopSourceRef loopsource;
 
+@property(copy, readwrite) NSDictionary* focusedUIElementInformation;
+@property(copy, readwrite) NSDictionary* inputSourceInformation;
 @property(copy, readwrite) NSArray* workspaceAppIds;
 @property(copy, readwrite) NSArray* workspaceWindowNameIds;
 @property(copy, readwrite) NSArray* workspaceInputSourceIds;
@@ -104,20 +103,21 @@
     }
     [self send_workspacedata_to_kext];
 
-    @synchronized(self) {
-      inputSourceInformation_ = [NSMutableDictionary new];
-      inputSourceInformation_[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
+    // ----------------------------------------
+    NSMutableDictionary* inputSourceInformation = [NSMutableDictionary new];
+    inputSourceInformation[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
 
-      if ([inputSource languagecode]) {
-        inputSourceInformation_[@"languageCode"] = [inputSource languagecode];
-      }
-      if ([inputSource inputSourceID]) {
-        inputSourceInformation_[@"inputSourceID"] = [inputSource inputSourceID];
-      }
-      if ([inputSource inputModeID]) {
-        inputSourceInformation_[@"inputModeID"] = [inputSource inputModeID];
-      }
+    if ([inputSource languagecode]) {
+      inputSourceInformation[@"languageCode"] = [inputSource languagecode];
     }
+    if ([inputSource inputSourceID]) {
+      inputSourceInformation[@"inputSourceID"] = [inputSource inputSourceID];
+    }
+    if ([inputSource inputModeID]) {
+      inputSourceInformation[@"inputModeID"] = [inputSource inputModeID];
+    }
+
+    self.inputSourceInformation = inputSourceInformation;
   });
 }
 
@@ -410,32 +410,20 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 // ------------------------------------------------------------
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;
 {
-  @synchronized(self) {
-    if (information) {
-      // We ignore our investigation application.
-      if ([information[@"BundleIdentifier"] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) return;
+  if (information) {
+    // We ignore our investigation application.
+    if ([information[@"BundleIdentifier"] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) return;
 
-      focusedUIElementInformation_ = information;
-    }
-
-    self.workspaceAppIds = [self.xmlCompiler appids:focusedUIElementInformation_[@"BundleIdentifier"]];
-    self.workspaceWindowNameIds = [self.xmlCompiler windownameids:focusedUIElementInformation_[@"WindowName"]];
-    self.workspaceUIElementRoleId = @([self.workSpaceData getUIElementRole:focusedUIElementInformation_[@"UIElementRole"]]);
-
-    [self send_workspacedata_to_kext];
+    self.focusedUIElementInformation = information;
   }
-}
 
-- (NSDictionary*)getFocusedUIElementInformation {
-  @synchronized(self) {
-    return focusedUIElementInformation_;
+  if (self.focusedUIElementInformation) {
+    self.workspaceAppIds = [self.xmlCompiler appids:self.focusedUIElementInformation[@"BundleIdentifier"]];
+    self.workspaceWindowNameIds = [self.xmlCompiler windownameids:self.focusedUIElementInformation[@"WindowName"]];
+    self.workspaceUIElementRoleId = @([self.workSpaceData getUIElementRole:self.focusedUIElementInformation[@"UIElementRole"]]);
   }
-}
 
-- (NSDictionary*)getInputSourceInformation {
-  @synchronized(self) {
-    return inputSourceInformation_;
-  }
+  [self send_workspacedata_to_kext];
 }
 
 + (void)quitWithConfirmation {
