@@ -1,6 +1,6 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 @class CheckboxItem;
@@ -38,8 +38,8 @@
 
 @interface XMLCompiler : NSObject
 
-@property XMLCompilerTree* preferencepane_checkbox;
-@property XMLCompilerTree* preferencepane_parameter;
+@property(readonly) XMLCompilerTree* preferencepane_checkbox;
+@property(readonly) XMLCompilerTree* preferencepane_parameter;
 
 + (NSString*)get_private_xml_path;
 
