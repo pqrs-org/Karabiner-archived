@@ -6,7 +6,7 @@
 
 @interface ParameterDiffCellView : NSTableCellView
 @property(weak) ServerObjects* serverObjects;
-@property NSString* settingIdentifier;
+@property(copy) NSString* settingIdentifier;
 @property NSInteger defaultValue;
 
 - (void)setObserver;

@@ -12,7 +12,7 @@
 @property(weak) ServerObjects* serverObjects;
 @property CheckboxBackgroundView* backgroundView;
 @property NSButton* checkbox;
-@property NSString* settingIdentifier;
+@property(copy) NSString* settingIdentifier;
 
 - (void)addLayoutConstraint:(NSView*)subview top:(CGFloat)top bottom:(CGFloat)bottom leading:(CGFloat)leading trailing:(CGFloat)trailing;
 - (void)toggle;

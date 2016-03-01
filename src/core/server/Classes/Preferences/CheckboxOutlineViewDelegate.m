@@ -12,13 +12,14 @@
 #define kLabelTopSpace 4
 #define kLabelBottomSpace 4
 
-@interface CheckboxOutlineViewDelegate () {
-  dispatch_queue_t textsHeightQueue_;
-}
+@interface CheckboxOutlineViewDelegate ()
+
 @property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
 @property NSFont* font;
 @property NSMutableDictionary* heightCache;
+@property dispatch_queue_t textsHeightQueue;
+
 @end
 
 @implementation CheckboxOutlineViewDelegate
@@ -27,7 +28,7 @@
   self = [super init];
 
   if (self) {
-    textsHeightQueue_ = dispatch_queue_create("org.pqrs.Karabiner.CheckboxOutlineViewDelegate.textsHeightQueue_", NULL);
+    self.textsHeightQueue = dispatch_queue_create("org.pqrs.Karabiner.CheckboxOutlineViewDelegate.textsHeightQueue", NULL);
     self.heightCache = [NSMutableDictionary new];
     [self updateFont];
   }
@@ -148,7 +149,7 @@
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;
     }
 
-    dispatch_sync(textsHeightQueue_, ^{
+    dispatch_sync(self.textsHeightQueue, ^{
       self.wrappedTextHeightCalculator.stringValue = [checkboxItem getName];
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;

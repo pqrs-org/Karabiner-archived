@@ -6,7 +6,7 @@
 
 @interface FilterCondition : NSObject
 @property BOOL isEnabledOnly;
-@property NSString* string;
+@property(copy) NSString* string;
 
 - (BOOL)isEqualToFilterCondition:(FilterCondition*)other;
 @end
