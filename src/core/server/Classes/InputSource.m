@@ -1,15 +1,15 @@
 #import "InputSource.h"
 
-@interface InputSource () {
-  TISInputSourceRef inputSource_;
-}
+@interface InputSource ()
+
+@property TISInputSourceRef inputSource;
+@property(copy, readwrite) NSString* languagecode;
+@property(copy, readwrite) NSString* inputSourceID;
+@property(copy, readwrite) NSString* inputModeID;
+
 @end
 
 @implementation InputSource
-
-@synthesize languagecode = languagecode_;
-@synthesize inputSourceID = inputSourceID_;
-@synthesize inputModeID = inputModeID_;
 
 + (NSString*)getLanguageCode:(TISInputSourceRef)source {
   NSArray* languages = (__bridge NSArray*)(TISGetInputSourceProperty(source, kTISPropertyInputSourceLanguages));
@@ -28,12 +28,12 @@
 
   if (self) {
     if (ref) {
-      inputSource_ = ref;
-      CFRetain(inputSource_);
+      self.inputSource = ref;
+      CFRetain(self.inputSource);
 
-      languagecode_ = [InputSource getLanguageCode:inputSource_];
-      inputSourceID_ = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceID));
-      inputModeID_ = (__bridge NSString*)(TISGetInputSourceProperty(inputSource_, kTISPropertyInputModeID));
+      self.languagecode = [InputSource getLanguageCode:self.inputSource];
+      self.inputSourceID = (__bridge NSString*)(TISGetInputSourceProperty(self.inputSource, kTISPropertyInputSourceID));
+      self.inputModeID = (__bridge NSString*)(TISGetInputSourceProperty(self.inputSource, kTISPropertyInputModeID));
     }
   }
 
@@ -41,23 +41,23 @@
 }
 
 - (void)dealloc {
-  if (inputSource_) {
-    CFRelease(inputSource_);
+  if (self.inputSource) {
+    CFRelease(self.inputSource);
   }
 }
 
 - (void)select {
-  if (inputSource_) {
-    TISSelectInputSource(inputSource_);
+  if (self.inputSource) {
+    TISSelectInputSource(self.inputSource);
   }
 }
 
 - (Boolean)selected {
-  if (!inputSource_) {
+  if (!self.inputSource) {
     return NO;
   }
 
-  CFBooleanRef selected = TISGetInputSourceProperty(inputSource_, kTISPropertyInputSourceIsSelected);
+  CFBooleanRef selected = TISGetInputSourceProperty(self.inputSource, kTISPropertyInputSourceIsSelected);
   if (!selected) {
     return NO;
   }
