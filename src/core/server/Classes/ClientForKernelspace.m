@@ -8,12 +8,7 @@
 #import "WorkSpaceData.h"
 #import "XMLCompiler.h"
 
-@interface ClientForKernelspace () {
-  UserClient_userspace* userClient_userspace_;
-
-  NSTimer* timer_;
-  int retryCounter_;
-}
+@interface ClientForKernelspace ()
 
 @property(weak) IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
@@ -22,6 +17,9 @@
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 
 @property io_async_ref64_t* asyncref;
+@property UserClient_userspace* userClient_userspace;
+@property NSTimer* timer;
+@property int retryCounter;
 
 @end
 
@@ -39,7 +37,7 @@
       bridgestruct.data = (user_addr_t)(&enabled);
       bridgestruct.size = sizeof(enabled);
 
-      if (![userClient_userspace_ synchronized_communication:&bridgestruct]) return;
+      if (![self.userClient_userspace synchronized_communication:&bridgestruct]) return;
 
       uint32_t configindex = option;
       NSString* name = [self.xmlCompiler identifier:(int)(configindex)];
@@ -59,7 +57,7 @@
       bridgestruct.data = (user_addr_t)(buf);
       bridgestruct.size = sizeof(buf);
 
-      if (![userClient_userspace_ synchronized_communication:&bridgestruct]) return;
+      if (![self.userClient_userspace synchronized_communication:&bridgestruct]) return;
 
       [self.statusMessageManager setStatusMessage:option message:@(buf)];
       break;
@@ -132,7 +130,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     (*(self.asyncref))[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(static_callback_NotificationFromKext);
     (*(self.asyncref))[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
 
-    userClient_userspace_ = [[UserClient_userspace alloc] init:self.asyncref];
+    self.userClient_userspace = [[UserClient_userspace alloc] init:self.asyncref];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigXMLReloaded:)
@@ -148,7 +146,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 }
 
 - (void)dealloc {
-  [timer_ invalidate];
+  [self.timer invalidate];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   if (self.asyncref) {
@@ -167,14 +165,14 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     // (There are few seconds between kext::init and registerService is called.
     // So we need to wait for a while.)
 
-    [timer_ invalidate];
-    timer_ = [NSTimer scheduledTimerWithTimeInterval:0.5
+    [self.timer invalidate];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                               target:self
                                             selector:@selector(timerFireMethod:)
                                             userInfo:nil
                                              repeats:YES];
-    retryCounter_ = 0;
-    [timer_ fire];
+    self.retryCounter = 0;
+    [self.timer fire];
   }
 }
 
@@ -188,7 +186,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
       }
 
       @try {
-        if ([userClient_userspace_ refresh_connection]) {
+        if ([self.userClient_userspace refresh_connection]) {
           // connected
 
           [timer invalidate];
@@ -198,8 +196,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
         } else {
           // retry
 
-          ++retryCounter_;
-          if (retryCounter_ > 120) {
+          ++(self.retryCounter);
+          if (self.retryCounter > 120) {
             [timer invalidate];
 
             NSAlert* alert = [NSAlert new];
@@ -231,8 +229,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
 - (void)disconnect_from_kext {
   @synchronized(self) {
-    [timer_ invalidate];
-    [userClient_userspace_ disconnect_from_kext];
+    [self.timer invalidate];
+    [self.userClient_userspace disconnect_from_kext];
   }
 }
 
@@ -247,7 +245,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   bridgestruct.data = (user_addr_t)(p);
   bridgestruct.size = size;
 
-  [userClient_userspace_ synchronized_communication:&bridgestruct];
+  [self.userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void)send_config_to_kext {
@@ -323,7 +321,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     bridgestruct.data = (user_addr_t)(data);
     bridgestruct.size = size;
 
-    [userClient_userspace_ synchronized_communication:&bridgestruct];
+    [self.userClient_userspace synchronized_communication:&bridgestruct];
 
     free(data);
   }
@@ -336,7 +334,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   bridgestruct.data = (user_addr_t)(bridgeSetConfigOne);
   bridgestruct.size = sizeof(*bridgeSetConfigOne);
 
-  [userClient_userspace_ synchronized_communication:&bridgestruct];
+  [self.userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void)set_initialized {
@@ -347,7 +345,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   bridgestruct.data = &value;
   bridgestruct.size = sizeof(value);
 
-  [userClient_userspace_ synchronized_communication:&bridgestruct];
+  [self.userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 - (void)send_workspacedata_to_kext:(NSArray*)array {
@@ -366,7 +364,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     bridgestruct.data = (user_addr_t)(data);
     bridgestruct.size = size;
 
-    [userClient_userspace_ synchronized_communication:&bridgestruct];
+    [self.userClient_userspace synchronized_communication:&bridgestruct];
 
     free(data);
   }
@@ -384,7 +382,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     bridgestruct.data = (user_addr_t)(&deviceInformation);
     bridgestruct.size = sizeof(deviceInformation);
 
-    if (![userClient_userspace_ synchronized_communication:&bridgestruct]) break;
+    if (![self.userClient_userspace synchronized_communication:&bridgestruct]) break;
 
     if (!deviceInformation.isFound) break;
 
@@ -417,7 +415,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   bridgestruct.data = &dummy;
   bridgestruct.size = sizeof(dummy);
 
-  [userClient_userspace_ synchronized_communication:&bridgestruct];
+  [self.userClient_userspace synchronized_communication:&bridgestruct];
 }
 
 @end
