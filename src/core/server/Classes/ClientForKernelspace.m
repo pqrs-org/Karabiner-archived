@@ -6,6 +6,7 @@
 #import "StatusMessageManager.h"
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
+#import "XMLCompiler.h"
 
 @interface ClientForKernelspace () {
   io_async_ref64_t asyncref_;

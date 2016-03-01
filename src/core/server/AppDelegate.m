@@ -3,6 +3,7 @@
 #import "AppDelegate.h"
 #import "AppLauncher.h"
 #import "ClientForKernelspace.h"
+#import "InputSource.h"
 #import "KarabinerKeys.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
@@ -18,6 +19,7 @@
 #import "StatusMessageManager.h"
 #import "Updater.h"
 #import "WorkSpaceData.h"
+#import "XMLCompiler.h"
 
 #include <stdlib.h>
 
