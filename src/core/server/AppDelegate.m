@@ -23,9 +23,7 @@
 
 #include <stdlib.h>
 
-@interface AppDelegate () {
-  SessionObserver* sessionObserver_;
-}
+@interface AppDelegate ()
 
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
@@ -48,6 +46,7 @@
 @property(copy, readwrite) NSArray* workspaceInputSourceIds;
 @property(readwrite) NSNumber* workspaceUIElementRoleId;
 
+@property SessionObserver* sessionObserver;
 @property PreferencesWindowController* preferencesWindowController;
 
 @end
@@ -309,7 +308,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self.statusbar refresh];
   [self.xmlCompiler reload];
 
-  sessionObserver_ = [[SessionObserver alloc] init:1
+  self.sessionObserver = [[SessionObserver alloc] init:1
       active:^{
         [self.statusMessageManager resetStatusMessage];
         [self registerIONotification];
