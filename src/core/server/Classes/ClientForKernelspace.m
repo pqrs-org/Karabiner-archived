@@ -9,7 +9,6 @@
 #import "XMLCompiler.h"
 
 @interface ClientForKernelspace () {
-  io_async_ref64_t asyncref_;
   UserClient_userspace* userClient_userspace_;
 
   NSTimer* timer_;
@@ -21,6 +20,8 @@
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet WorkSpaceData* workSpaceData;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
+
+@property io_async_ref64_t* asyncref;
 
 @end
 
@@ -127,10 +128,11 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   self = [super init];
 
   if (self) {
-    asyncref_[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(static_callback_NotificationFromKext);
-    asyncref_[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
+    self.asyncref = (io_async_ref64_t*)(malloc(sizeof(io_async_ref64_t)));
+    (*(self.asyncref))[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(static_callback_NotificationFromKext);
+    (*(self.asyncref))[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
 
-    userClient_userspace_ = [[UserClient_userspace alloc] init:&asyncref_];
+    userClient_userspace_ = [[UserClient_userspace alloc] init:self.asyncref];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigXMLReloaded:)
@@ -148,6 +150,11 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 - (void)dealloc {
   [timer_ invalidate];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+  if (self.asyncref) {
+    free(self.asyncref);
+    self.asyncref = NULL;
+  }
 }
 
 - (void)refresh_connection_with_retry {
