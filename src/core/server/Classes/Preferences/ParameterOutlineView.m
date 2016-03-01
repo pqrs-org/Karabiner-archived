@@ -2,7 +2,9 @@
 #import "XMLCompiler.h"
 
 @interface ParameterOutlineView ()
+
 @property(weak) NSTableCellView* mouseDownCellView;
+
 @end
 
 @implementation ParameterOutlineView

@@ -7,33 +7,41 @@
 @class ParameterItem;
 
 @interface XMLCompilerItem : NSObject
+
 @property(readonly) NSNumber* id;
 
 - (CheckboxItem*)castToCheckboxItem;
 - (ParameterItem*)castToParameterItem;
+
 @end
 
 @interface CheckboxItem : XMLCompilerItem
+
 - (NSString*)getName;
 - (NSString*)getStyle;
 - (NSString*)getIdentifier;
 - (NSUInteger)getChildrenCount;
 - (BOOL)needsShowCheckbox;
 - (BOOL)isNameMatched:(NSString*)string;
+
 @end
 
 @interface ParameterItem : XMLCompilerItem
+
 - (NSString*)getName;
 - (NSString*)getIdentifier;
 - (NSInteger)getDefaultValue;
 - (NSInteger)getStep;
 - (NSString*)getBaseUnit;
 - (NSUInteger)getChildrenCount;
+
 @end
 
 @interface XMLCompilerTree : NSObject
+
 @property XMLCompilerItem* node;
-@property NSArray* children;
+@property(copy) NSArray* children;
+
 @end
 
 @interface XMLCompiler : NSObject

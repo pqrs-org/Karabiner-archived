@@ -3,7 +3,9 @@
 #import "XMLCompiler.h"
 
 @interface CheckboxOutlineView ()
+
 @property(weak) CheckboxCellView* mouseDownCheckboxCellView;
+
 @end
 
 @implementation CheckboxOutlineView

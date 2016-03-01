@@ -5,10 +5,12 @@
 #import "XMLCompiler.h"
 
 @interface FilterCondition : NSObject
+
 @property BOOL isEnabledOnly;
 @property(copy) NSString* string;
 
 - (BOOL)isEqualToFilterCondition:(FilterCondition*)other;
+
 @end
 
 @implementation FilterCondition

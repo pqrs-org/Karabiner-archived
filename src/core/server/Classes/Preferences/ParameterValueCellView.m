@@ -3,9 +3,6 @@
 #import "PreferencesManager.h"
 #import "ServerObjects.h"
 
-@interface ParameterValueCellView ()
-@end
-
 @implementation ParameterValueCellView
 
 - (void)updatePreferences {

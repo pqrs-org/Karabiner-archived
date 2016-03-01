@@ -28,6 +28,7 @@
 #include <sys/sysctl.h>
 
 @interface PreferencesWindowController ()
+
 @property(weak) IBOutlet CheckboxOutlineView* checkboxOutlineView;
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
 @property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
@@ -51,6 +52,7 @@
 @property(weak) IBOutlet ProfileTableViewDataSource* profileTableViewDataSource;
 @property(weak) IBOutlet ProfileTableViewDelegate* profileTableViewDelegate;
 @property NSTimer* resizeTimer;
+
 @end
 
 @implementation PreferencesWindowController
