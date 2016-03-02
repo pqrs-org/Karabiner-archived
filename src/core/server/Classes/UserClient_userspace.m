@@ -2,13 +2,14 @@
 #import "UserClient_userspace.h"
 #include "bridge.h"
 
-@interface UserClient_userspace () {
-  io_service_t service_;
-  io_connect_t connect_;
-  IONotificationPortRef notifyport_;
-  CFRunLoopSourceRef loopsource_;
-  io_async_ref64_t* asyncref_;
-}
+@interface UserClient_userspace ()
+
+@property io_service_t service;
+@property io_connect_t connect;
+@property IONotificationPortRef notifyport;
+@property CFRunLoopSourceRef loopsource;
+@property io_async_ref64_t* asyncref;
+
 @end
 
 @implementation UserClient_userspace
@@ -16,21 +17,21 @@
 - (void)closeUserClient {
   // ----------------------------------------
   // call BRIDGE_USERCLIENT_CLOSE
-  if (service_ != IO_OBJECT_NULL && connect_ != IO_OBJECT_NULL) {
+  if (self.service != IO_OBJECT_NULL && self.connect != IO_OBJECT_NULL) {
     // BRIDGE_USERCLIENT_CLOSE may be failed. (when kext is unloaded, etc.)
     // So we don't output a log message when it is failed.
-    IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_CLOSE, NULL, 0, NULL, NULL);
+    IOConnectCallScalarMethod(self.connect, BRIDGE_USERCLIENT_CLOSE, NULL, 0, NULL, NULL);
   }
 
   // ----------------------------------------
   // release previous values.
-  if (connect_ != IO_OBJECT_NULL) {
-    IOServiceClose(connect_);
-    connect_ = IO_OBJECT_NULL;
+  if (self.connect != IO_OBJECT_NULL) {
+    IOServiceClose(self.connect);
+    self.connect = IO_OBJECT_NULL;
   }
-  if (service_ != IO_OBJECT_NULL) {
-    IOObjectRelease(service_);
-    service_ = IO_OBJECT_NULL;
+  if (self.service != IO_OBJECT_NULL) {
+    IOObjectRelease(self.service);
+    self.service = IO_OBJECT_NULL;
   }
 }
 
@@ -55,20 +56,25 @@
     [self closeUserClient];
 
     // ----------------------------------------
-    // setup service_
-    service_ = s;
-    kernResult = IOObjectRetain(service_);
+    // setup service
+    self.service = s;
+    kernResult = IOObjectRetain(self.service);
     if (kernResult != KERN_SUCCESS) {
       NSLog(@"[ERROR] IOObjectRetain returned 0x%08x\n", kernResult);
       continue;
     }
 
     // ----------------------------------------
-    // setup connect_
-    kernResult = IOServiceOpen(service_, mach_task_self(), 0, &connect_);
-    if (kernResult != KERN_SUCCESS) {
-      NSLog(@"[ERROR] IOServiceOpen returned 0x%08x\n", kernResult);
-      continue;
+    // setup connect
+    {
+      io_connect_t c;
+      kernResult = IOServiceOpen(self.service, mach_task_self(), 0, &c);
+      if (kernResult != KERN_SUCCESS) {
+        NSLog(@"[ERROR] IOServiceOpen returned 0x%08x\n", kernResult);
+        continue;
+      }
+
+      self.connect = c;
     }
 
     // ----------------------------------------
@@ -80,7 +86,7 @@
       uint64_t open_result = 0;
       uint32_t count = 1;
 
-      kernResult = IOConnectCallScalarMethod(connect_, BRIDGE_USERCLIENT_OPEN,
+      kernResult = IOConnectCallScalarMethod(self.connect, BRIDGE_USERCLIENT_OPEN,
                                              &bridge_version,
                                              1,
                                              &open_result,
@@ -107,11 +113,11 @@
 
     // ----------------------------------------
     // set notification
-    if (notifyport_) {
-      kernResult = IOConnectCallAsyncScalarMethod(connect_,
+    if (self.notifyport) {
+      kernResult = IOConnectCallAsyncScalarMethod(self.connect,
                                                   BRIDGE_USERCLIENT_NOTIFICATION_FROM_KEXT,
-                                                  IONotificationPortGetMachPort(notifyport_),
-                                                  *asyncref_,
+                                                  IONotificationPortGetMachPort(self.notifyport),
+                                                  *(self.asyncref),
                                                   kOSAsyncRef64Count,
                                                   NULL,  // input
                                                   0,     // inputCnt
@@ -139,9 +145,9 @@ finish:
   self = [super init];
 
   if (self) {
-    service_ = IO_OBJECT_NULL;
-    connect_ = IO_OBJECT_NULL;
-    asyncref_ = asyncref;
+    self.service = IO_OBJECT_NULL;
+    self.connect = IO_OBJECT_NULL;
+    self.asyncref = asyncref;
   }
 
   return self;
@@ -152,22 +158,22 @@ finish:
   @synchronized(self) {
     [self disconnect_from_kext];
 
-    service_ = IO_OBJECT_NULL;
-    connect_ = IO_OBJECT_NULL;
+    self.service = IO_OBJECT_NULL;
+    self.connect = IO_OBJECT_NULL;
 
     // ----------------------------------------
     // setup IONotification
-    notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
-    if (!notifyport_) {
+    self.notifyport = IONotificationPortCreate(kIOMasterPortDefault);
+    if (!self.notifyport) {
       NSLog(@"[ERROR] IONotificationPortCreate failed\n");
 
     } else {
-      loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
-      if (!loopsource_) {
+      self.loopsource = IONotificationPortGetRunLoopSource(self.notifyport);
+      if (!self.loopsource) {
         NSLog(@"[ERROR] IONotificationPortGetRunLoopSource failed\n");
 
       } else {
-        CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
+        CFRunLoopAddSource(CFRunLoopGetCurrent(), self.loopsource, kCFRunLoopDefaultMode);
         [self openUserClient];
       }
     }
@@ -178,13 +184,13 @@ finish:
   @synchronized(self) {
     [self closeUserClient];
 
-    if (notifyport_) {
-      if (loopsource_) {
-        CFRunLoopSourceInvalidate(loopsource_);
-        loopsource_ = nil;
+    if (self.notifyport) {
+      if (self.loopsource) {
+        CFRunLoopSourceInvalidate(self.loopsource);
+        self.loopsource = nil;
       }
-      IONotificationPortDestroy(notifyport_);
-      notifyport_ = nil;
+      IONotificationPortDestroy(self.notifyport);
+      self.notifyport = nil;
     }
   }
 }
@@ -194,13 +200,13 @@ finish:
     [self disconnect_from_kext];
     [self connect_to_kext];
 
-    return connect_ != IO_OBJECT_NULL;
+    return self.connect != IO_OBJECT_NULL;
   }
 }
 
 - (BOOL)synchronized_communication:(struct BridgeUserClientStruct*)bridgestruct {
   @synchronized(self) {
-    if (connect_ == IO_OBJECT_NULL) {
+    if (self.connect == IO_OBJECT_NULL) {
       NSLog(@"[INFO] BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION connection is null");
       return NO;
     }
@@ -208,7 +214,7 @@ finish:
 
     uint64_t output = 0;
     uint32_t outputCnt = 1;
-    kern_return_t kernResult = IOConnectCallMethod(connect_,
+    kern_return_t kernResult = IOConnectCallMethod(self.connect,
                                                    BRIDGE_USERCLIENT_SYNCHRONIZED_COMMUNICATION,
                                                    NULL, 0,                             // scalar input
                                                    bridgestruct, sizeof(*bridgestruct), // struct input
