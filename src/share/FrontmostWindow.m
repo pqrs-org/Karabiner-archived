@@ -1,12 +1,20 @@
 #import "FrontmostWindow.h"
 
+@interface FrontmostWindow ()
+
+@property(readwrite) CGRect windowBounds;
+@property(copy, readwrite) NSString* windowName;
+@property(copy, readwrite) NSString* bundleIdentifier;
+
+@end
+
 @implementation FrontmostWindow
 
 - (instancetype)init {
   self = [super init];
 
   if (self) {
-    _windowBounds = CGRectNull;
+    self.windowBounds = CGRectNull;
 
     NSRunningApplication* frontmostApplication = [[NSWorkspace sharedWorkspace] frontmostApplication];
     pid_t frontmostApplicationPid = [frontmostApplication processIdentifier];
@@ -75,19 +83,19 @@
         }
 
         // ----------------------------------------
-        _windowBounds = windowBounds;
-        _windowName = windowName;
-        _bundleIdentifier = bundleIdentifier;
+        self.windowBounds = windowBounds;
+        self.windowName = windowName;
+        self.bundleIdentifier = bundleIdentifier;
         break;
       }
     }
 
-    if (CGRectIsNull(_windowBounds)) {
+    if (CGRectIsNull(self.windowBounds)) {
       if ([[frontmostApplication bundleIdentifier] isEqualToString:@"com.apple.finder"]) {
         // Desktop
-        _windowBounds = [[NSScreen mainScreen] frame];
-        _windowName = nil;
-        _bundleIdentifier = [frontmostApplication bundleIdentifier];
+        self.windowBounds = [[NSScreen mainScreen] frame];
+        self.windowName = nil;
+        self.bundleIdentifier = [frontmostApplication bundleIdentifier];
       }
     }
   }

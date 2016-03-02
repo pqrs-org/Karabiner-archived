@@ -2,10 +2,11 @@
 #import <IOKit/hidsystem/ev_keymap.h>
 #import "IOHIDPostEventWrapper.h"
 
-@interface IOHIDPostEventWrapper () {
-  mach_port_t eventDriver_;
-  IOOptionBits eventFlags_;
-}
+@interface IOHIDPostEventWrapper ()
+
+@property mach_port_t eventDriver;
+@property IOOptionBits eventFlags;
+
 @end
 
 @implementation IOHIDPostEventWrapper
@@ -14,14 +15,15 @@
   self = [super init];
 
   if (self) {
-    eventFlags_ = 0;
+    self.eventFlags = 0;
 
     // ------------------------------------------------------------
-    // Getting eventDriver_
+    // Getting eventDriver
 
     mach_port_t masterPort = 0;
     mach_port_t service = 0;
     mach_port_t iter = 0;
+    mach_port_t ev = 0;
     kern_return_t kr;
 
     // Getting master device port
@@ -34,8 +36,10 @@
     service = IOIteratorNext(iter);
     if (!service) goto finish;
 
-    kr = IOServiceOpen(service, mach_task_self(), kIOHIDParamConnectType, &eventDriver_);
+    kr = IOServiceOpen(service, mach_task_self(), kIOHIDParamConnectType, &ev);
     if (KERN_SUCCESS != kr) goto finish;
+
+    self.eventDriver = ev;
 
   finish:
     if (service) {
@@ -54,20 +58,20 @@
   bzero(&event, sizeof(event));
 
   if (keydown) {
-    eventFlags_ |= mask;
+    self.eventFlags |= mask;
   } else {
-    eventFlags_ &= ~mask;
+    self.eventFlags &= ~mask;
   }
 
   IOGPoint loc = {0, 0};
-  kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_FLAGSCHANGED, loc, &event, kNXEventDataVersion, eventFlags_, TRUE);
+  kern_return_t kr = IOHIDPostEvent(self.eventDriver, NX_FLAGSCHANGED, loc, &event, kNXEventDataVersion, self.eventFlags, TRUE);
   if (KERN_SUCCESS != kr) {
     NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
   }
 }
 
 - (void)postAuxKey:(uint8_t)auxKeyCode {
-  if (!eventDriver_) return;
+  if (!self.eventDriver) return;
 
   uint32_t keydownup[] = {NX_KEYDOWN, NX_KEYUP};
 
@@ -78,7 +82,7 @@
     event.compound.misc.L[0] = (auxKeyCode << 16 | keydownup[i] << 8);
 
     IOGPoint loc = {0, 0};
-    kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, eventFlags_, FALSE);
+    kern_return_t kr = IOHIDPostEvent(self.eventDriver, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, self.eventFlags, FALSE);
     if (KERN_SUCCESS != kr) {
       NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
     }
@@ -86,14 +90,14 @@
 }
 
 - (void)postPowerKey {
-  if (!eventDriver_) return;
+  if (!self.eventDriver) return;
 
   NXEventData event;
   bzero(&event, sizeof(event));
   event.compound.subType = NX_SUBTYPE_POWER_KEY;
 
   IOGPoint loc = {0, 0};
-  kern_return_t kr = IOHIDPostEvent(eventDriver_, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, 0, FALSE);
+  kern_return_t kr = IOHIDPostEvent(self.eventDriver, NX_SYSDEFINED, loc, &event, kNXEventDataVersion, 0, FALSE);
   if (KERN_SUCCESS != kr) {
     NSLog(@"[ERROR] IOHIDPostEvent returned 0x%x", kr);
   }

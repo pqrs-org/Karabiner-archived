@@ -7,7 +7,7 @@
 - (instancetype)init;
 
 @property(readonly) CGRect windowBounds;
-@property(readonly) NSString* windowName;
-@property(readonly) NSString* bundleIdentifier;
+@property(copy, readonly) NSString* windowName;
+@property(copy, readonly) NSString* bundleIdentifier;
 
 @end
