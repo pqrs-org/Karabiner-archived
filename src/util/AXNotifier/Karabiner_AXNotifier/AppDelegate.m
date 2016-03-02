@@ -1,5 +1,6 @@
 #import "AXApplicationObserverManager.h"
 #import "AppDelegate.h"
+#import "KarabinerClient.h"
 #import "KarabinerKeys.h"
 #import "KarabinerUtilities.h"
 #import "MigrationUtilities.h"
@@ -9,31 +10,32 @@
 #import "WindowObserver.h"
 
 // ==================================================
-@interface AppDelegate () {
-  BOOL axEnabled_;
+@interface AppDelegate ()
 
-  NSDictionary* focusedUIElementInformation_;
-  NSDictionary* overlaidWindowElementInformation_;
-  NSDictionary* previousSentInformation_;
+@property(assign) IBOutlet NSWindow* window;
+@property(assign) IBOutlet KarabinerClient* client;
+@property BOOL axEnabled;
+@property(copy) NSDictionary* focusedUIElementInformation;
+@property(copy) NSDictionary* overlaidWindowElementInformation;
+@property(copy) NSDictionary* previousSentInformation;
+@property AXApplicationObserverManager* axApplicationObserverManager;
+@property WindowObserver* windowObserver;
 
-  AXApplicationObserverManager* axApplicationObserverManager_;
-  WindowObserver* windowObserver_;
-}
 @end
 
 @implementation AppDelegate
 
 - (void)tellToServer {
   NSMutableDictionary* target = nil;
-  if (overlaidWindowElementInformation_) {
-    target = [NSMutableDictionary dictionaryWithDictionary:overlaidWindowElementInformation_];
+  if (self.overlaidWindowElementInformation) {
+    target = [NSMutableDictionary dictionaryWithDictionary:self.overlaidWindowElementInformation];
   } else {
-    target = [NSMutableDictionary dictionaryWithDictionary:focusedUIElementInformation_];
+    target = [NSMutableDictionary dictionaryWithDictionary:self.focusedUIElementInformation];
   }
 
   // Send if the current information and the previous information are different.
   for (NSString* key in target) {
-    if (![target[key] isEqual:previousSentInformation_[key]]) {
+    if (![target[key] isEqual:self.previousSentInformation[key]]) {
       goto send;
     }
   }
@@ -49,11 +51,11 @@ send:
 #endif
   @try {
     [[self.client proxy] updateFocusedUIElementInformation:target];
-    previousSentInformation_ = target;
+    self.previousSentInformation = target;
   }
   @catch (NSException* exception) {
     NSLog(@"%@", exception);
-    previousSentInformation_ = nil;
+    self.previousSentInformation = nil;
   }
 }
 
@@ -70,7 +72,7 @@ send:
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
-      focusedUIElementInformation_ = @{
+      self.focusedUIElementInformation = @{
         @"BundleIdentifier" : d[@"bundleIdentifier"],
         @"WindowName" : d[@"title"],
         @"UIElementRole" : d[@"role"],
@@ -85,13 +87,13 @@ send:
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
       if ([d[@"visibility"] isEqualToNumber:@YES]) {
-        overlaidWindowElementInformation_ = @{
+        self.overlaidWindowElementInformation = @{
           @"BundleIdentifier" : d[@"bundleIdentifier"],
           @"WindowName" : d[@"windowName"],
           @"UIElementRole" : d[@"role"],
         };
       } else {
-        overlaidWindowElementInformation_ = nil;
+        self.overlaidWindowElementInformation = nil;
       }
       [self tellToServer];
     }
@@ -106,15 +108,15 @@ send:
           [[NSApplication sharedApplication] hide:self];
         }
 
-        if (!axEnabled_) {
-          axEnabled_ = YES;
+        if (!self.axEnabled) {
+          self.axEnabled = YES;
 
           // Renew AXApplicationObserverManager
           [self setupAXApplicationObserverManager];
         }
 
       } else {
-        axEnabled_ = NO;
+        self.axEnabled = NO;
       }
     }
   });
@@ -166,10 +168,10 @@ send:
 
   // ----------------------------------------
   if (AXIsProcessTrusted()) {
-    axEnabled_ = YES;
+    self.axEnabled = YES;
   }
   [self setupAXApplicationObserverManager];
-  windowObserver_ = [WindowObserver new];
+  self.windowObserver = [WindowObserver new];
 
   [NSTimer scheduledTimerWithTimeInterval:0.5
                                    target:self
@@ -182,7 +184,7 @@ send:
 }
 
 - (void)setupAXApplicationObserverManager {
-  axApplicationObserverManager_ = [[AXApplicationObserverManager alloc] initWithPreferences:[[self.client proxy] preferencesForAXNotifier]];
+  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithPreferences:[[self.client proxy] preferencesForAXNotifier]];
 }
 
 @end

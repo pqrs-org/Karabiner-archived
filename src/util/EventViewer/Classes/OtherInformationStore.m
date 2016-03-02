@@ -1,6 +1,6 @@
 #import "OtherInformationStore.h"
 
-@interface OtherInformationStore()
+@interface OtherInformationStore ()
 
 @property(weak) IBOutlet NSTextField* label_languagecode;
 @property(weak) IBOutlet NSTextField* label_inputsourceid;

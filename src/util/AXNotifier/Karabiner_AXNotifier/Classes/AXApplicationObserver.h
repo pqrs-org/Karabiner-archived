@@ -4,6 +4,8 @@
 
 @interface AXApplicationObserver : NSObject
 
+@property(readonly) NSRunningApplication* runningApplication;
+
 - (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication preferences:(NSDictionary*)preferences;
 
 // You have to observe kAXTitleChangedNotification by hand because
@@ -12,7 +14,5 @@
 - (void)observeTitleChangedNotification;
 
 - (void)postNotification;
-
-@property NSRunningApplication* runningApplication;
 
 @end

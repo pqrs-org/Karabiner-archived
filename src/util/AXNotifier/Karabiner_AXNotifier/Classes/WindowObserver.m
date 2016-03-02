@@ -7,20 +7,22 @@
 #define kTargetWindowAlfred @"Alfred"
 #define kTargetWindowOmniFocus @"OmniFocus"
 
-@interface WindowObserver () {
-  NSTimer* timer_;
-  NSTimer* refreshWindowIDsTimer_;
-  NSMutableDictionary* shown_;
+@interface WindowObserver ()
 
-  // targetWindows_ = { windowID: application type }
-  //
-  // For example, { 1234: "Spotlight" }
-  NSMutableDictionary* targetWindows_;
-  // rawWindowIDs_ should be pointer sized type in order to pass CFArrayCreate.
-  // (We need to manage long[] in order to put non-object-pointer into CFArray.)
-  long* rawWindowIDs_;
-  CFArrayRef cfWindowIDs_;
-}
+@property NSTimer* timer;
+@property NSTimer* refreshWindowIDsTimer;
+@property NSMutableDictionary* shown;
+
+// targetWindows = { windowID: application type }
+//
+// For example, { 1234: "Spotlight" }
+@property NSMutableDictionary* targetWindows;
+
+// rawWindowIDs should be pointer sized type in order to pass CFArrayCreate.
+// (We need to manage long[] in order to put non-object-pointer into CFArray.)
+@property long* rawWindowIDs;
+@property CFArrayRef cfWindowIDs;
+
 @end
 
 @implementation WindowObserver : NSObject
@@ -29,55 +31,55 @@
   self = [super init];
 
   if (self) {
-    shown_ = [NSMutableDictionary new];
-    targetWindows_ = [NSMutableDictionary new];
+    self.shown = [NSMutableDictionary new];
+    self.targetWindows = [NSMutableDictionary new];
 
-    refreshWindowIDsTimer_ = [NSTimer scheduledTimerWithTimeInterval:10
-                                                              target:self
-                                                            selector:@selector(refreshWindowIDsTimerFireMethod:)
-                                                            userInfo:nil
-                                                             repeats:YES];
+    self.refreshWindowIDsTimer = [NSTimer scheduledTimerWithTimeInterval:10
+                                                                  target:self
+                                                                selector:@selector(refreshWindowIDsTimerFireMethod:)
+                                                                userInfo:nil
+                                                                 repeats:YES];
 
-    timer_ = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                              target:self
-                                            selector:@selector(timerFireMethod:)
-                                            userInfo:nil
-                                             repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                  target:self
+                                                selector:@selector(timerFireMethod:)
+                                                userInfo:nil
+                                                 repeats:YES];
 
-    [refreshWindowIDsTimer_ fire];
-    [timer_ fire];
+    [self.refreshWindowIDsTimer fire];
+    [self.timer fire];
   }
 
   return self;
 }
 
 - (void)dealloc {
-  [timer_ invalidate];
+  [self.timer invalidate];
 
-  [targetWindows_ removeAllObjects];
+  [self.targetWindows removeAllObjects];
   [self updateCfWindowIDs];
 }
 
 - (void)updateCfWindowIDs {
-  if (cfWindowIDs_) {
-    CFRelease(cfWindowIDs_);
-    cfWindowIDs_ = NULL;
+  if (self.cfWindowIDs) {
+    CFRelease(self.cfWindowIDs);
+    self.cfWindowIDs = NULL;
   }
-  if (rawWindowIDs_) {
-    free(rawWindowIDs_);
-    rawWindowIDs_ = NULL;
+  if (self.rawWindowIDs) {
+    free(self.rawWindowIDs);
+    self.rawWindowIDs = NULL;
   }
 
-  NSArray* keys = [targetWindows_ allKeys];
+  NSArray* keys = [self.targetWindows allKeys];
   NSUInteger count = [keys count];
   if (count > 0) {
-    rawWindowIDs_ = (long*)(malloc(sizeof(long) * count));
-    if (rawWindowIDs_) {
+    self.rawWindowIDs = (long*)(malloc(sizeof(long) * count));
+    if (self.rawWindowIDs) {
       for (NSUInteger i = 0; i < count; ++i) {
-        rawWindowIDs_[i] = [keys[i] integerValue];
+        self.rawWindowIDs[i] = [keys[i] integerValue];
       }
     }
-    cfWindowIDs_ = CFArrayCreate(NULL, (const void**)(rawWindowIDs_), count, NULL);
+    self.cfWindowIDs = CFArrayCreate(NULL, (const void**)(self.rawWindowIDs), count, NULL);
   }
 }
 
@@ -232,7 +234,7 @@
     @synchronized(self) {
       // ----------------------------------------
       // update targetWindows_.
-      [targetWindows_ removeAllObjects];
+      [self.targetWindows removeAllObjects];
 
       NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionAll,
                                                                                  kCGNullWindowID));
@@ -245,35 +247,35 @@
                    windowName:windowName
                   windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          targetWindows_[@(windowNumber)] = kTargetWindowLaunchpad;
+          self.targetWindows[@(windowNumber)] = kTargetWindowLaunchpad;
         }
 
         if ([self isSpotlight:windowOwnerName
                    windowName:windowName
                   windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          targetWindows_[@(windowNumber)] = kTargetWindowSpotlight;
+          self.targetWindows[@(windowNumber)] = kTargetWindowSpotlight;
         }
 
         if ([self isQuicksilver:windowOwnerName
                      windowName:windowName
                     windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          targetWindows_[@(windowNumber)] = kTargetWindowQuicksilver;
+          self.targetWindows[@(windowNumber)] = kTargetWindowQuicksilver;
         }
 
         if ([self isAlfred:windowOwnerName
                  windowName:windowName
                 windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          targetWindows_[@(windowNumber)] = kTargetWindowAlfred;
+          self.targetWindows[@(windowNumber)] = kTargetWindowAlfred;
         }
 
         if ([self isOmniFocus:windowOwnerName
                    windowName:windowName
                   windowLayer:windowLayer]) {
           NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          targetWindows_[@(windowNumber)] = kTargetWindowOmniFocus;
+          self.targetWindows[@(windowNumber)] = kTargetWindowOmniFocus;
         }
       }
 
@@ -286,21 +288,21 @@
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      if (cfWindowIDs_) {
-        NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(cfWindowIDs_));
+      if (self.cfWindowIDs) {
+        NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(self.cfWindowIDs));
         for (NSDictionary* window in windows) {
           pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
           long windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
           BOOL isOnScreen = [window[(__bridge NSString*)(kCGWindowIsOnscreen)] boolValue];
 
-          NSString* key = targetWindows_[@(windowNumber)];
+          NSString* key = self.targetWindows[@(windowNumber)];
           if (key) {
             if (isOnScreen) {
-              if (!shown_[key]) {
+              if (!self.shown[key]) {
                 NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
                 if (bundleIdentifier) {
-                  shown_[key] = bundleIdentifier;
-                  [self postNotification:key bundleIdentifier:shown_[key] visibility:YES];
+                  self.shown[key] = bundleIdentifier;
+                  [self postNotification:key bundleIdentifier:self.shown[key] visibility:YES];
                 }
               }
               return;
@@ -312,12 +314,12 @@
       // ----------------------------------------
       // There is no target window in screen.
 
-      for (NSString* key in shown_) {
-        if (shown_[key]) {
-          [self postNotification:key bundleIdentifier:shown_[key] visibility:NO];
+      for (NSString* key in self.shown) {
+        if (self.shown[key]) {
+          [self postNotification:key bundleIdentifier:self.shown[key] visibility:NO];
         }
       }
-      [shown_ removeAllObjects];
+      [self.shown removeAllObjects];
     }
   });
 }

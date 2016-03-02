@@ -82,22 +82,22 @@
  *
  */
 
-@interface AXApplicationObserverManager () {
-  NSDictionary* preferences_;
+@interface AXApplicationObserverManager ()
 
-  NSMutableDictionary* systemApplicationObservers_;
+@property(copy) NSDictionary* preferences;
+@property NSMutableDictionary* systemApplicationObservers;
 
-  // We need to observe frontmostApplication only because
-  // kAXFocusedWindowChangedNotification will be sent from apps which are not frontmost.
-  // (You can confirm it by WindowChangedNotificationTester.app.)
-  AXApplicationObserver* observer_;
+// We need to observe frontmostApplication only because
+// kAXFocusedWindowChangedNotification will be sent from apps which are not frontmost.
+// (You can confirm it by WindowChangedNotificationTester.app.)
+@property AXApplicationObserver* observer;
 
-  NSTimer* timer_;
-  NSRunningApplication* runningApplicationForAXApplicationObserver_;
-  int retryCounter_;
+@property NSTimer* timer;
+@property NSRunningApplication* runningApplicationForAXApplicationObserver;
+@property int retryCounter;
 
-  NSTimer* systemApplicationObserversRefreshTimer_;
-}
+@property NSTimer* systemApplicationObserversRefreshTimer;
+
 @end
 
 @implementation AXApplicationObserverManager
@@ -109,21 +109,21 @@
                                             @"com.apple.notificationcenterui" ]) {
         {
           // Remove if terminated.
-          AXApplicationObserver* o = systemApplicationObservers_[bundleIdentifier];
+          AXApplicationObserver* o = self.systemApplicationObservers[bundleIdentifier];
           if (o) {
             NSRunningApplication* runningApplication = o.runningApplication;
             if (!runningApplication || runningApplication.terminated) {
-              NSLog(@"Remove %@ from systemApplicationObservers_", bundleIdentifier);
-              [systemApplicationObservers_ removeObjectForKey:bundleIdentifier];
+              NSLog(@"Remove %@ from systemApplicationObservers", bundleIdentifier);
+              [self.systemApplicationObservers removeObjectForKey:bundleIdentifier];
             }
           }
         }
 
-        if (!systemApplicationObservers_[bundleIdentifier]) {
+        if (!self.systemApplicationObservers[bundleIdentifier]) {
           NSArray* runningApplications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
           if ([runningApplications count] > 0) {
             @try {
-              systemApplicationObservers_[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0] preferences:preferences_];
+              self.systemApplicationObservers[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0] preferences:self.preferences];
             } @catch (NSException* e) {
 #if 0
               NSLog(@"%@", e);
@@ -139,35 +139,35 @@
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      if (!runningApplicationForAXApplicationObserver_) {
-        retryCounter_ = 0;
+      if (!self.runningApplicationForAXApplicationObserver) {
+        self.retryCounter = 0;
 
       } else {
-        if (retryCounter_ > 20) {
-          runningApplicationForAXApplicationObserver_ = nil;
+        if (self.retryCounter > 20) {
+          self.runningApplicationForAXApplicationObserver = nil;
           return;
         }
 #if 0
-        if (retryCounter_ > 0) {
-          NSLog(@"AXApplicationObserverManager creates AXApplicationObserver for %@ (retryCounter_:%d)",
-                runningApplicationForAXApplicationObserver_,
-                retryCounter_);
+        if (self.retryCounter > 0) {
+          NSLog(@"AXApplicationObserverManager creates AXApplicationObserver for %@ (retryCounter:%d)",
+                self.runningApplicationForAXApplicationObserver,
+                self.retryCounter);
         }
 #endif
 
         @try {
-          observer_ = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplicationForAXApplicationObserver_ preferences:preferences_];
-          [observer_ observeTitleChangedNotification];
-          [observer_ postNotification];
+          self.observer = [[AXApplicationObserver alloc] initWithRunningApplication:self.runningApplicationForAXApplicationObserver preferences:self.preferences];
+          [self.observer observeTitleChangedNotification];
+          [self.observer postNotification];
 
-          runningApplicationForAXApplicationObserver_ = nil;
-          retryCounter_ = 0;
+          self.runningApplicationForAXApplicationObserver = nil;
+          self.retryCounter = 0;
 
         } @catch (NSException* e) {
 #if 0
           NSLog(@"%@", e);
 #endif
-          ++retryCounter_;
+          ++(self.retryCounter);
         }
       }
     }
@@ -177,10 +177,10 @@
 - (void)observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      observer_ = nil;
+      self.observer = nil;
 
-      runningApplicationForAXApplicationObserver_ = [notification userInfo][NSWorkspaceApplicationKey];
-      [timer_ fire];
+      self.runningApplicationForAXApplicationObserver = [notification userInfo][NSWorkspaceApplicationKey];
+      [self.timer fire];
     }
   });
 }
@@ -189,10 +189,10 @@
   self = [super init];
 
   if (self) {
-    preferences_ = preferences;
-    NSLog(@"AXNotifier Preferences: %@", preferences_);
+    self.preferences = preferences;
+    NSLog(@"AXNotifier Preferences: %@", self.preferences);
 
-    systemApplicationObservers_ = [NSMutableDictionary new];
+    self.systemApplicationObservers = [NSMutableDictionary new];
 
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                            selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
@@ -200,21 +200,21 @@
                                                              object:nil];
 
     // ----------------------------------------
-    systemApplicationObserversRefreshTimer_ = [NSTimer scheduledTimerWithTimeInterval:3
-                                                                               target:self
-                                                                             selector:@selector(systemApplicationObserversRefreshTimerFireMethod:)
-                                                                             userInfo:nil
-                                                                              repeats:YES];
-    [systemApplicationObserversRefreshTimer_ fire];
+    self.systemApplicationObserversRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:3
+                                                                                   target:self
+                                                                                 selector:@selector(systemApplicationObserversRefreshTimerFireMethod:)
+                                                                                 userInfo:nil
+                                                                                  repeats:YES];
+    [self.systemApplicationObserversRefreshTimer fire];
 
-    timer_ = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                              target:self
-                                            selector:@selector(timerFireMethod:)
-                                            userInfo:nil
-                                             repeats:YES];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                                  target:self
+                                                selector:@selector(timerFireMethod:)
+                                                userInfo:nil
+                                                 repeats:YES];
 
-    runningApplicationForAXApplicationObserver_ = [[NSWorkspace sharedWorkspace] frontmostApplication];
-    [timer_ fire];
+    self.runningApplicationForAXApplicationObserver = [[NSWorkspace sharedWorkspace] frontmostApplication];
+    [self.timer fire];
   }
 
   return self;

@@ -5,14 +5,14 @@
 
 static NSMutableDictionary* ignoredApps_ = nil;
 
-@interface AXApplicationObserver () {
-  AXUIElementRef applicationElement_;
-  AXUIElementRef focusedWindowElementForAXTitleChangedNotification_;
-  AXObserverRef observer_;
-}
+@interface AXApplicationObserver ()
 
-@property NSString* title;
-@property NSString* role;
+@property(readwrite) NSRunningApplication* runningApplication;
+@property(copy) NSString* title;
+@property(copy) NSString* role;
+@property AXUIElementRef applicationElement;
+@property AXUIElementRef focusedWindowElementForAXTitleChangedNotification;
+@property AXObserverRef observer;
 
 - (void)updateTitle;
 - (void)updateRole:(AXUIElementRef)element;
@@ -156,38 +156,40 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
       pid_t pid = [self.runningApplication processIdentifier];
 
       // ----------------------------------------
-      // Create applicationElement_
+      // Create applicationElement
 
-      applicationElement_ = AXUIElementCreateApplication(pid);
-      if (!applicationElement_) {
+      self.applicationElement = AXUIElementCreateApplication(pid);
+      if (!self.applicationElement) {
         @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                        reason:@"AXUIElementCreateApplication is failed."
                                      userInfo:@{ @"runningApplication" : self.runningApplication }];
       }
 
       // ----------------------------------------
-      // Create observer_
+      // Create observer
 
       {
-        AXError error = AXObserverCreate(pid, observerCallback, &observer_);
+        AXObserverRef o;
+        AXError error = AXObserverCreate(pid, observerCallback, &o);
         if (error != kAXErrorSuccess) {
           @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                          reason:@"AXObserverCreate is failed."
                                        userInfo:@{ @"runningApplication" : self.runningApplication,
                                                    @"error" : @(error) }];
         }
+        self.observer = o;
       }
 
       // ----------------------------------------
       // Observe notifications
 
       // AXObserverAddNotification might be failed when just application launched.
-      if (![self observeAXNotification:applicationElement_ notification:kAXFocusedUIElementChangedNotification add:YES]) {
+      if (![self observeAXNotification:self.applicationElement notification:kAXFocusedUIElementChangedNotification add:YES]) {
         @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                        reason:@"Failed to observe kAXFocusedUIElementChangedNotification."
                                      userInfo:@{ @"runningApplication" : self.runningApplication }];
       }
-      if (![self observeAXNotification:applicationElement_ notification:kAXFocusedWindowChangedNotification add:YES]) {
+      if (![self observeAXNotification:self.applicationElement notification:kAXFocusedWindowChangedNotification add:YES]) {
         @throw [NSException exceptionWithName:@"AXApplicationObserverException"
                                        reason:@"Failed to observe kAXFocusedWindowChangedNotification."
                                      userInfo:@{ @"runningApplication" : self.runningApplication }];
@@ -198,7 +200,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
       // ----------------------------------------
       CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                         AXObserverGetRunLoopSource(observer_),
+                         AXObserverGetRunLoopSource(self.observer),
                          kCFRunLoopDefaultMode);
     }
 
@@ -218,30 +220,30 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 }
 
 - (void)dealloc {
-  if (observer_) {
+  if (self.observer) {
     CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
-                          AXObserverGetRunLoopSource(observer_),
+                          AXObserverGetRunLoopSource(self.observer),
                           kCFRunLoopDefaultMode);
-    CFRelease(observer_);
-    observer_ = NULL;
+    CFRelease(self.observer);
+    self.observer = NULL;
   }
 
-  if (applicationElement_) {
-    CFRelease(applicationElement_);
-    applicationElement_ = NULL;
+  if (self.applicationElement) {
+    CFRelease(self.applicationElement);
+    self.applicationElement = NULL;
   }
-  if (focusedWindowElementForAXTitleChangedNotification_) {
-    CFRelease(focusedWindowElementForAXTitleChangedNotification_);
-    focusedWindowElementForAXTitleChangedNotification_ = NULL;
+  if (self.focusedWindowElementForAXTitleChangedNotification) {
+    CFRelease(self.focusedWindowElementForAXTitleChangedNotification);
+    self.focusedWindowElementForAXTitleChangedNotification = NULL;
   }
 }
 
 - (BOOL)observeAXNotification:(AXUIElementRef)element notification:(CFStringRef)notification add:(BOOL)add {
   if (!element) return YES;
-  if (!observer_) return YES;
+  if (!self.observer) return YES;
 
   if (add) {
-    AXError error = AXObserverAddNotification(observer_,
+    AXError error = AXObserverAddNotification(self.observer,
                                               element,
                                               notification,
                                               (__bridge void*)self);
@@ -258,7 +260,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     }
 
   } else {
-    AXError error = AXObserverRemoveNotification(observer_,
+    AXError error = AXObserverRemoveNotification(self.observer,
                                                  element,
                                                  notification);
     if (error != kAXErrorSuccess) {
@@ -279,25 +281,25 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 }
 
 - (void)unobserveTitleChangedNotification {
-  if (focusedWindowElementForAXTitleChangedNotification_) {
-    [self observeAXNotification:focusedWindowElementForAXTitleChangedNotification_
+  if (self.focusedWindowElementForAXTitleChangedNotification) {
+    [self observeAXNotification:self.focusedWindowElementForAXTitleChangedNotification
                    notification:kAXTitleChangedNotification
                             add:NO];
 
-    CFRelease(focusedWindowElementForAXTitleChangedNotification_);
-    focusedWindowElementForAXTitleChangedNotification_ = NULL;
+    CFRelease(self.focusedWindowElementForAXTitleChangedNotification);
+    self.focusedWindowElementForAXTitleChangedNotification = NULL;
   }
 }
 
 - (void)observeTitleChangedNotification {
-  if (!applicationElement_) return;
+  if (!self.applicationElement) return;
 
   [self unobserveTitleChangedNotification];
 
-  focusedWindowElementForAXTitleChangedNotification_ = [AXUtilities copyFocusedWindow:applicationElement_];
-  if (!focusedWindowElementForAXTitleChangedNotification_) return;
+  self.focusedWindowElementForAXTitleChangedNotification = [AXUtilities copyFocusedWindow:self.applicationElement];
+  if (!self.focusedWindowElementForAXTitleChangedNotification) return;
 
-  [self observeAXNotification:focusedWindowElementForAXTitleChangedNotification_
+  [self observeAXNotification:self.focusedWindowElementForAXTitleChangedNotification
                  notification:kAXTitleChangedNotification
                           add:YES];
 }
@@ -305,13 +307,13 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 - (void)updateTitle {
   self.title = @"";
 
-  if (!applicationElement_) return;
+  if (!self.applicationElement) return;
 
   // Do not cache focusedWindowElement.
   // We need to get new focusedWindowElement because
   // getting title will be failed with cached focusedWindowElement on Finder.app.
 
-  AXUIElementRef focusedWindowElement = [AXUtilities copyFocusedWindow:applicationElement_];
+  AXUIElementRef focusedWindowElement = [AXUtilities copyFocusedWindow:self.applicationElement];
   if (focusedWindowElement) {
     NSString* title = [AXUtilities titleOfUIElement:focusedWindowElement];
     if (title) {

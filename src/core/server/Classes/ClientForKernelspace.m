@@ -167,10 +167,10 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
     [self.timer invalidate];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                              target:self
-                                            selector:@selector(timerFireMethod:)
-                                            userInfo:nil
-                                             repeats:YES];
+                                                  target:self
+                                                selector:@selector(timerFireMethod:)
+                                                userInfo:nil
+                                                 repeats:YES];
     self.retryCounter = 0;
     [self.timer fire];
   }
