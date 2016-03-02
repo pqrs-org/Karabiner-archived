@@ -2,13 +2,13 @@
 #include <CoreFoundation/CoreFoundation.h>
 #include <ApplicationServices/ApplicationServices.h>
 
-@interface SessionObserver () {
-  NSTimer* timer_;
-  BOOL lastState_;
+@interface SessionObserver ()
 
-  void (^active_)(void);
-  void (^inactive_)(void);
-}
+@property NSTimer* timer;
+@property BOOL lastState;
+@property(copy) void (^active)(void);
+@property(copy) void (^inactive)(void);
+
 @end
 
 @implementation SessionObserver
@@ -19,23 +19,23 @@
   self = [super init];
 
   if (self) {
-    lastState_ = NO;
-    active_ = active;
-    inactive_ = inactive;
+    self.lastState = NO;
+    self.active = active;
+    self.inactive = inactive;
 
-    timer_ = [NSTimer scheduledTimerWithTimeInterval:1
-                                              target:self
-                                            selector:@selector(timerFireMethod:)
-                                            userInfo:nil
-                                             repeats:YES];
-    [timer_ fire];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                  target:self
+                                                selector:@selector(timerFireMethod:)
+                                                userInfo:nil
+                                                 repeats:YES];
+    [self.timer fire];
   }
 
   return self;
 }
 
 - (void)dealloc {
-  [timer_ invalidate];
+  [self.timer invalidate];
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
@@ -44,18 +44,18 @@
 
   dispatch_async(dispatch_get_main_queue(), ^{
     BOOL currentState = [self isUserActive];
-    if (lastState_ != currentState) {
+    if (self.lastState != currentState) {
       NSLog(@"Session state has been changed. (%s)", currentState ? "active" : "inactive");
-      lastState_ = currentState;
+      self.lastState = currentState;
 
       if (currentState) {
-        if (active_) {
-          active_();
+        if (self.active) {
+          self.active();
         }
 
       } else {
-        if (inactive_) {
-          inactive_();
+        if (self.inactive) {
+          self.inactive();
         }
       }
     }

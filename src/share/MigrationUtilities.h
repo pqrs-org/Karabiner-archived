@@ -1,6 +1,6 @@
 // -*- Mode: objc -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
 @interface MigrationUtilities : NSObject
 
