@@ -1,7 +1,14 @@
-/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
-
 #import "Devices.h"
+#import "KarabinerClient.h"
 #include "bridge.h"
+
+@interface Devices ()
+
+@property NSMutableArray* devices;
+@property(weak) IBOutlet NSTableView* view;
+@property(weak) IBOutlet KarabinerClient* client;
+
+@end
 
 @implementation Devices
 
@@ -9,34 +16,34 @@
   self = [super init];
 
   if (self) {
-    devices_ = [NSMutableArray new];
+    self.devices = [NSMutableArray new];
   }
 
   return self;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)aTableView {
-  return [devices_ count];
+  return [self.devices count];
 }
 
 - (id)tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex {
-  NSDictionary* dict = devices_[rowIndex];
+  NSDictionary* dict = self.devices[rowIndex];
   return dict[[aTableColumn identifier]];
 }
 
-- (IBAction)refresh:(id)sender {
+- (void)refresh {
   @synchronized(self) {
-    [devices_ removeAllObjects];
+    [self.devices removeAllObjects];
 
     for (NSArray* a in @[ @[ @"Keyboard", @(BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_KEYBOARD) ],
                           @[ @"Consumer", @(BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_CONSUMER) ],
                           @[ @"Pointing", @(BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING) ] ]) {
       NSInteger type = [a[1] integerValue];
       @try {
-        for (NSDictionary* d in [[client_ proxy] device_information:type]) {
+        for (NSDictionary* d in [[self.client proxy] device_information:type]) {
           NSMutableDictionary* newdict = [NSMutableDictionary dictionaryWithDictionary:d];
           newdict[@"deviceType"] = a[0];
-          [devices_ addObject:newdict];
+          [self.devices addObject:newdict];
         }
       }
       @catch (NSException* exception) {
@@ -45,14 +52,18 @@
     }
   }
 
-  [view_ reloadData];
+  [self.view reloadData];
+}
+
+- (IBAction)refresh:(id)sender {
+  [self refresh];
 }
 
 - (IBAction)copy:(id)sender {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [NSMutableString new];
 
-  for (NSDictionary* dict in devices_) {
+  for (NSDictionary* dict in self.devices) {
     [string appendFormat:@"%@\n"
                          @"    %@ (%@)\n"
                          @"\n"

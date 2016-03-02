@@ -1,6 +1,11 @@
-/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
-
 #import "AppQueue.h"
+
+@interface AppQueue ()
+
+@property NSMutableArray* queue;
+@property(weak) IBOutlet NSTableView* view;
+
+@end
 
 @implementation AppQueue
 
@@ -12,34 +17,34 @@ enum {
   self = [super init];
 
   if (self) {
-    queue_ = [NSMutableArray new];
+    self.queue = [NSMutableArray new];
   }
 
   return self;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)aTableView {
-  if ([queue_ count] == 0) {
+  if ([self.queue count] == 0) {
     return 1;
   }
 
-  return [queue_ count];
+  return [self.queue count];
 }
 
 - (id)tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex {
   NSString* identifier = [aTableColumn identifier];
 
-  if ([queue_ count] == 0) {
+  if ([self.queue count] == 0) {
     return @"Please activate the other applications.";
   }
 
-  NSDictionary* dict = queue_[([queue_ count] - 1 - rowIndex)];
+  NSDictionary* dict = self.queue[([self.queue count] - 1 - rowIndex)];
   return dict[identifier];
 }
 
 - (void)refresh {
-  [view_ reloadData];
-  [view_ scrollRowToVisible:([queue_ count] - 1)];
+  [self.view reloadData];
+  [self.view scrollRowToVisible:([self.queue count] - 1)];
 }
 
 - (void)push:(NSDictionary*)dictionary {
@@ -63,15 +68,15 @@ enum {
                           @"UIElementRole" : role,
                           @"date" : [[NSDate date] description] };
 
-  [queue_ insertObject:dict atIndex:0];
-  if ([queue_ count] > MAXNUM) {
-    [queue_ removeLastObject];
+  [self.queue insertObject:dict atIndex:0];
+  if ([self.queue count] > MAXNUM) {
+    [self.queue removeLastObject];
   }
   [self refresh];
 }
 
 - (IBAction)clear:(id)sender {
-  [queue_ removeAllObjects];
+  [self.queue removeAllObjects];
   [self refresh];
 }
 
@@ -79,8 +84,8 @@ enum {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [NSMutableString new];
 
-  for (NSUInteger i = 0; i < [queue_ count]; ++i) {
-    NSDictionary* dict = queue_[([queue_ count] - 1 - i)];
+  for (NSUInteger i = 0; i < [self.queue count]; ++i) {
+    NSDictionary* dict = self.queue[([self.queue count] - 1 - i)];
 
     [string appendFormat:@"BundleIdentifier: %@\n", dict[@"BundleIdentifier"]];
     [string appendFormat:@"WindowName:       %@\n", dict[@"WindowName"]];

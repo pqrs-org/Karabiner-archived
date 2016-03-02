@@ -1,20 +1,10 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-@class KarabinerClient;
-
-@interface EventQueue : NSObject {
-@private
-  NSMutableArray* queue_;
-  IBOutlet NSTableView* view_;
-  IBOutlet KarabinerClient* client_;
-}
+@interface EventQueue : NSObject
 
 - (void)pushFromNSApplication:(NSEvent*)event;
 - (void)pushMouseEvent:(NSEvent*)event;
-
-- (IBAction)clear:(id)sender;
-- (IBAction)copy:(id)sender;
 
 @end

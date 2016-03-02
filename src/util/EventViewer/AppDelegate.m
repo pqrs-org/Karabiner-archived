@@ -1,25 +1,40 @@
 #import "AppDelegate.h"
+#import "AppQueue.h"
+#import "Devices.h"
 #import "KarabinerClient.h"
 #import "KarabinerKeys.h"
 #import "KeyResponder.h"
 #import "MigrationUtilities.h"
+#import "OtherInformationStore.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
 #import <Carbon/Carbon.h>
 
+@interface AppDelegate ()
+
+@property(weak) IBOutlet NSWindow* window;
+@property(weak) IBOutlet AppQueue* appQueue;
+@property(weak) IBOutlet Devices* devices;
+@property(weak) IBOutlet KarabinerClient* client;
+@property(weak) IBOutlet OtherInformationStore* otherInformationStore;
+@property(weak) IBOutlet KeyResponder* keyResponder;
+@property(weak) IBOutlet NSTextField* label_appnames;
+@property(weak) IBOutlet NSTextField* label_windownames;
+@property(weak) IBOutlet NSTextField* label_input_sources;
+
+@end
+
 @implementation AppDelegate
 
-@synthesize window;
-
 - (void)setKeyResponder {
-  [window makeFirstResponder:keyResponder_];
+  [self.window makeFirstResponder:self.keyResponder];
 }
 
 - (NSString*)joinNamesFromIds:(NSString*)type ids:(NSArray*)ids {
   NSMutableString* result = [NSMutableString new];
 
   for (NSNumber* n in ids) {
-    NSString* name = [[client_ proxy] symbolMapName:type value:[n intValue]];
+    NSString* name = [[self.client proxy] symbolMapName:type value:[n intValue]];
     if (name) {
       if ([result length] > 0) {
         [result appendString:@", "];
@@ -42,19 +57,19 @@
     static NSNumber* lastMtime = nil;
 
     @try {
-      NSDictionary* information = [[client_ proxy] focused_uielement_information];
+      NSDictionary* information = [[self.client proxy] focused_uielement_information];
       if (information[@"mtime"] && ![lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
-        [appQueue_ push:information];
+        [self.appQueue push:information];
 
         // ----------------------------------------
         // set labels
-        [label_appnames_ setStringValue:[self joinNamesFromIds:@"ApplicationType"
-                                                           ids:[[client_ proxy] workspace_app_ids]]];
+        [self.label_appnames setStringValue:[self joinNamesFromIds:@"ApplicationType"
+                                                               ids:[[self.client proxy] workspace_app_ids]]];
 
-        [label_windownames_ setStringValue:[self joinNamesFromIds:@"WindowName"
-                                                              ids:[[client_ proxy] workspace_window_name_ids]]];
+        [self.label_windownames setStringValue:[self joinNamesFromIds:@"WindowName"
+                                                                  ids:[[self.client proxy] workspace_window_name_ids]]];
       }
     }
     @catch (NSException* exception) {
@@ -68,16 +83,16 @@
     static NSNumber* lastMtime = nil;
 
     @try {
-      NSDictionary* information = [[client_ proxy] inputsource_information];
+      NSDictionary* information = [[self.client proxy] inputsource_information];
       if (information[@"mtime"] && ![lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
-        [otherinformationstore_ setLanguageCode:information[@"languageCode"]];
-        [otherinformationstore_ setInputSourceID:information[@"inputSourceID"]];
-        [otherinformationstore_ setInputModeID:information[@"inputModeID"]];
+        [self.otherInformationStore setLanguageCode:information[@"languageCode"]];
+        [self.otherInformationStore setInputSourceID:information[@"inputSourceID"]];
+        [self.otherInformationStore setInputModeID:information[@"inputModeID"]];
 
-        [label_input_sources_ setStringValue:[self joinNamesFromIds:@"InputSource"
-                                                                ids:[[client_ proxy] workspace_inputsource_ids]]];
+        [self.label_input_sources setStringValue:[self joinNamesFromIds:@"InputSource"
+                                                                    ids:[[self.client proxy] workspace_inputsource_ids]]];
       }
     }
     @catch (NSException* exception) {
@@ -144,40 +159,40 @@
   if ([[tabViewItem identifier] isEqualToString:@"Main"]) {
     [self setKeyResponder];
   } else if ([[tabViewItem identifier] isEqualToString:@"Devices"]) {
-    [devices_ refresh:nil];
+    [self.devices refresh];
   }
 }
 
 - (IBAction)setWindowProperty:(id)sender {
   // ----------------------------------------
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kForceStayTop]) {
-    [window setLevel:NSFloatingWindowLevel];
+    [self.window setLevel:NSFloatingWindowLevel];
 
-    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    NSWindowCollectionBehavior behavior = [self.window collectionBehavior];
     behavior &= ~(NSWindowCollectionBehaviorTransient);
     behavior |= NSWindowCollectionBehaviorManaged;
-    [window setCollectionBehavior:behavior];
+    [self.window setCollectionBehavior:behavior];
 
   } else {
-    [window setLevel:NSNormalWindowLevel];
+    [self.window setLevel:NSNormalWindowLevel];
 
-    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    NSWindowCollectionBehavior behavior = [self.window collectionBehavior];
     behavior &= ~(NSWindowCollectionBehaviorTransient);
     behavior |= NSWindowCollectionBehaviorManaged;
-    [window setCollectionBehavior:behavior];
+    [self.window setCollectionBehavior:behavior];
   }
 
   // ----------------------------------------
   if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowInAllSpaces]) {
-    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    NSWindowCollectionBehavior behavior = [self.window collectionBehavior];
     behavior &= ~(NSWindowCollectionBehaviorMoveToActiveSpace);
     behavior |= NSWindowCollectionBehaviorCanJoinAllSpaces;
-    [window setCollectionBehavior:behavior];
+    [self.window setCollectionBehavior:behavior];
 
   } else {
-    NSWindowCollectionBehavior behavior = [window collectionBehavior];
+    NSWindowCollectionBehavior behavior = [self.window collectionBehavior];
     behavior &= ~(NSWindowCollectionBehaviorCanJoinAllSpaces | NSWindowCollectionBehaviorMoveToActiveSpace);
-    [window setCollectionBehavior:behavior];
+    [self.window setCollectionBehavior:behavior];
   }
 }
 

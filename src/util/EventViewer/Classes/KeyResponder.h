@@ -1,10 +1,6 @@
 // -*- Mode: objc -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-@class EventQueue;
-
-@interface KeyResponder : NSView {
-  IBOutlet EventQueue* eventQueue_;
-}
+@interface KeyResponder : NSView
 @end

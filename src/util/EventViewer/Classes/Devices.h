@@ -1,16 +1,9 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
-#import <Cocoa/Cocoa.h>
-#import "KarabinerClient.h"
+@import Cocoa;
 
-@interface Devices : NSObject {
-@private
-  NSMutableArray* devices_;
-  IBOutlet id view_;
-  IBOutlet KarabinerClient* client_;
-}
+@interface Devices : NSObject
 
-- (IBAction)refresh:(id)sender;
-- (IBAction)copy:(id)sender;
+- (void)refresh;
 
 @end

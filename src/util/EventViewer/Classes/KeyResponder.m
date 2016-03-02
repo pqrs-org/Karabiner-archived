@@ -1,7 +1,11 @@
-// -*- Mode: objc -*-
-
 #import "EventQueue.h"
 #import "KeyResponder.h"
+
+@interface KeyResponder ()
+
+@property(weak) IBOutlet EventQueue* eventQueue;
+
+@end
 
 @implementation KeyResponder
 
@@ -50,43 +54,43 @@
 }
 
 - (void)mouseDown:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)mouseUp:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)mouseDragged:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)rightMouseDown:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)rightMouseUp:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)rightMouseDragged:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)otherMouseDown:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)otherMouseUp:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)otherMouseDragged:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)scrollWheel:(NSEvent*)event {
-  [eventQueue_ pushMouseEvent:event];
+  [self.eventQueue pushMouseEvent:event];
 }
 
 - (void)swipeWithEvent:(NSEvent*)event {

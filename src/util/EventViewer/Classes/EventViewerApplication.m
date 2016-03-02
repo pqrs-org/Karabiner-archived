@@ -1,12 +1,16 @@
-/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
-
 #import "EventViewerApplication.h"
 #import "EventQueue.h"
 
+@interface EventViewerApplication ()
+
+@property(weak) IBOutlet EventQueue* eventQueue;
+
+@end
+
 @implementation EventViewerApplication
 
-- (void)sendEvent:(NSEvent *)event {
-  [eventQueue_ pushFromNSApplication:event];
+- (void)sendEvent:(NSEvent*)event {
+  [self.eventQueue pushFromNSApplication:event];
 
   [super sendEvent:event];
 }

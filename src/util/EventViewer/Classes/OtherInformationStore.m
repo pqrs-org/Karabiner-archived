@@ -1,6 +1,15 @@
-/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
-
 #import "OtherInformationStore.h"
+
+@interface OtherInformationStore()
+
+@property(weak) IBOutlet NSTextField* label_languagecode;
+@property(weak) IBOutlet NSTextField* label_inputsourceid;
+@property(weak) IBOutlet NSTextField* label_inputmodeid;
+@property(copy) NSString* languagecode;
+@property(copy) NSString* inputsourceid;
+@property(copy) NSString* inputmodeid;
+
+@end
 
 @implementation OtherInformationStore
 
@@ -8,9 +17,9 @@
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [NSMutableString new];
 
-  [string appendFormat:@"Language Code: %@\n", languagecode_];
-  [string appendFormat:@"Input Source ID: %@\n", inputsourceid_];
-  [string appendFormat:@"Input Mode ID: %@\n", inputmodeid_];
+  [string appendFormat:@"Language Code: %@\n", self.languagecode];
+  [string appendFormat:@"Input Source ID: %@\n", self.inputsourceid];
+  [string appendFormat:@"Input Mode ID: %@\n", self.inputmodeid];
 
   [pboard clearContents];
   [pboard writeObjects:@[ string ]];
@@ -21,8 +30,8 @@
     value = @"---";
   }
 
-  languagecode_ = value;
-  [label_languagecode_ setStringValue:value];
+  self.languagecode = value;
+  [self.label_languagecode setStringValue:value];
 }
 
 - (void)setInputSourceID:(NSString*)value {
@@ -30,8 +39,8 @@
     value = @"---";
   }
 
-  inputsourceid_ = value;
-  [label_inputsourceid_ setStringValue:value];
+  self.inputsourceid = value;
+  [self.label_inputsourceid setStringValue:value];
 }
 
 - (void)setInputModeID:(NSString*)value {
@@ -39,8 +48,8 @@
     value = @"---";
   }
 
-  inputmodeid_ = value;
-  [label_inputmodeid_ setStringValue:value];
+  self.inputmodeid = value;
+  [self.label_inputmodeid setStringValue:value];
 }
 
 @end

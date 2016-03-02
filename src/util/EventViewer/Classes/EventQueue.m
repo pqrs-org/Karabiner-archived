@@ -1,8 +1,14 @@
-/* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
-
 #import "EventQueue.h"
 #import "KarabinerClient.h"
 #import "PreferencesKeys.h"
+
+@interface EventQueue ()
+
+@property NSMutableArray* queue;
+@property(weak) IBOutlet NSTableView* view;
+@property(weak) IBOutlet KarabinerClient* client;
+
+@end
 
 @implementation EventQueue
 
@@ -14,26 +20,26 @@ enum {
   self = [super init];
 
   if (self) {
-    queue_ = [NSMutableArray new];
+    self.queue = [NSMutableArray new];
   }
 
   return self;
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)aTableView {
-  return [queue_ count];
+  return [self.queue count];
 }
 
 - (id)tableView:(NSTableView*)aTableView objectValueForTableColumn:(NSTableColumn*)aTableColumn row:(NSInteger)rowIndex {
   id identifier = [aTableColumn identifier];
 
-  NSDictionary* dict = queue_[([queue_ count] - 1 - rowIndex)];
+  NSDictionary* dict = self.queue[([self.queue count] - 1 - rowIndex)];
   return dict[identifier];
 }
 
 - (void)refresh {
-  [view_ reloadData];
-  [view_ scrollRowToVisible:([queue_ count] - 1)];
+  [self.view reloadData];
+  [self.view scrollRowToVisible:([self.queue count] - 1)];
 }
 
 - (NSString*)modifierFlagsToString:(NSUInteger)flags {
@@ -236,7 +242,7 @@ enum {
     }
   }
 
-  NSString* keyCodeName = [[client_ proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
+  NSString* keyCodeName = [[self.client proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
   // Show `characters` at last because `characters` might be newline. (== newline truncates message.)
   NSString* misc = [NSString stringWithFormat:@"%@\tcharacters:%@",
                                               keyCodeName ? keyCodeName : @"",
@@ -277,7 +283,7 @@ enum {
       }
     }
 
-    NSString* keyCodeName = [[client_ proxy] symbolMapName:@"ConsumerKeyCode" value:keyCode];
+    NSString* keyCodeName = [[self.client proxy] symbolMapName:@"ConsumerKeyCode" value:keyCode];
     NSString* misc = keyCodeName ? keyCodeName : @"";
 
     [self push:eventType
@@ -365,15 +371,15 @@ enum {
                           @"flags" : flags,
                           @"misc" : misc };
 
-  [queue_ insertObject:dict atIndex:0];
-  if ([queue_ count] > MAXNUM) {
-    [queue_ removeLastObject];
+  [self.queue insertObject:dict atIndex:0];
+  if ([self.queue count] > MAXNUM) {
+    [self.queue removeLastObject];
   }
   [self refresh];
 }
 
 - (IBAction)clear:(id)sender {
-  [queue_ removeAllObjects];
+  [self.queue removeAllObjects];
   [self refresh];
 }
 
@@ -381,8 +387,8 @@ enum {
   NSPasteboard* pboard = [NSPasteboard generalPasteboard];
   NSMutableString* string = [NSMutableString new];
 
-  for (NSUInteger i = 0; i < [queue_ count]; ++i) {
-    NSDictionary* dict = queue_[([queue_ count] - 1 - i)];
+  for (NSUInteger i = 0; i < [self.queue count]; ++i) {
+    NSDictionary* dict = self.queue[([self.queue count] - 1 - i)];
 
     NSString* eventType = [NSString stringWithFormat:@"eventType:%@", dict[@"eventType"]];
     NSString* code = [NSString stringWithFormat:@"code:%@", dict[@"code"]];
