@@ -3,21 +3,21 @@
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 
-@interface GlobalDomainKeyRepeatObserver () {
-  PreferencesManager* preferencesManager_;
-  NSTimer* timer_;
+@interface GlobalDomainKeyRepeatObserver ()
 
-  int previousInitialKeyRepeat_;
-  int previousKeyRepeat_;
-}
+@property(weak) PreferencesManager* preferencesManager;
+@property NSTimer* timer;
+@property int previousInitialKeyRepeat;
+@property int previousKeyRepeat;
+
 @end
 
 @implementation GlobalDomainKeyRepeatObserver
 
 - (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    previousInitialKeyRepeat_ = -1;
-    previousKeyRepeat_ = -1;
+    self.previousInitialKeyRepeat = -1;
+    self.previousKeyRepeat = -1;
   });
 }
 
@@ -25,7 +25,7 @@
   self = [super init];
 
   if (self) {
-    preferencesManager_ = manager;
+    self.preferencesManager = manager;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_PreferencesChanged:)
@@ -37,18 +37,18 @@
 }
 
 - (void)start {
-  timer_ = [NSTimer scheduledTimerWithTimeInterval:1
-                                            target:self
-                                          selector:@selector(timerFireMethod:)
-                                          userInfo:nil
-                                           repeats:YES];
+  self.timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                                target:self
+                                              selector:@selector(timerFireMethod:)
+                                              userInfo:nil
+                                               repeats:YES];
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]) {
-      previousInitialKeyRepeat_ = -1;
-      previousKeyRepeat_ = -1;
+      self.previousInitialKeyRepeat = -1;
+      self.previousKeyRepeat = -1;
       return;
     }
 
@@ -56,22 +56,22 @@
     int currentInitialKeyRepeat = [self getInitialKeyRepeatFromDictionary:dictionary];
     int currentKeyRepeat = [self getKeyRepeatFromDictionary:dictionary];
 
-    if (previousInitialKeyRepeat_ != currentInitialKeyRepeat) {
-      previousInitialKeyRepeat_ = currentInitialKeyRepeat;
+    if (self.previousInitialKeyRepeat != currentInitialKeyRepeat) {
+      self.previousInitialKeyRepeat = currentInitialKeyRepeat;
 
       NSString* name = @"repeat.initial_wait";
-      if ([preferencesManager_ value:name] != currentInitialKeyRepeat) {
+      if ([self.preferencesManager value:name] != currentInitialKeyRepeat) {
         NSLog(@"Set %@ from NSGlobalDomain.InitialKeyRepeat: %d milliseconds", name, currentInitialKeyRepeat);
-        [preferencesManager_ setValue:currentInitialKeyRepeat forName:name];
+        [self.preferencesManager setValue:currentInitialKeyRepeat forName:name];
       }
     }
-    if (previousKeyRepeat_ != currentKeyRepeat) {
-      previousKeyRepeat_ = currentKeyRepeat;
+    if (self.previousKeyRepeat != currentKeyRepeat) {
+      self.previousKeyRepeat = currentKeyRepeat;
 
       NSString* name = @"repeat.wait";
-      if ([preferencesManager_ value:name] != currentKeyRepeat) {
+      if ([self.preferencesManager value:name] != currentKeyRepeat) {
         NSLog(@"Set %@ from NSGlobalDomain.KeyRepeat: %d milliseconds", name, currentKeyRepeat);
-        [preferencesManager_ setValue:currentKeyRepeat forName:name];
+        [self.preferencesManager setValue:currentKeyRepeat forName:name];
       }
     }
   });
@@ -81,7 +81,7 @@
   // If System Preferences has never changed, dictionary[@"InitialKeyRepeat"] is nil.
   // (We can confirm in Guest account.)
   if (!dictionary || !dictionary[@"InitialKeyRepeat"]) {
-    return [preferencesManager_ defaultValue:@"repeat.initial_wait"];
+    return [self.preferencesManager defaultValue:@"repeat.initial_wait"];
   }
   // The unit of InitialKeyRepeat is 1/60 second.
   return (int)([dictionary[@"InitialKeyRepeat"] floatValue] * 1000 / 60);
@@ -91,7 +91,7 @@
   // If System Preferences has never changed, dictionary[@"KeyRepeat"] is nil.
   // (We can confirm in Guest account.)
   if (!dictionary || !dictionary[@"KeyRepeat"]) {
-    return [preferencesManager_ defaultValue:@"repeat.wait"];
+    return [self.preferencesManager defaultValue:@"repeat.wait"];
   }
   // The unit of KeyRepeat is 1/60 second.
   return (int)([dictionary[@"KeyRepeat"] floatValue] * 1000 / 60);
