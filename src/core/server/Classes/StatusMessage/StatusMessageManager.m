@@ -6,12 +6,12 @@
 #import "StatusMessageManager.h"
 #include "bridge.h"
 
-@interface StatusMessageManager () {
-  BOOL statusWindowPreferencesOpened_;
-  NSMutableArray* windowControllers_;
-  NSMutableArray* lines_;
-  NSMutableArray* lastMessages_;
-}
+@interface StatusMessageManager ()
+
+@property BOOL statusWindowPreferencesOpened;
+@property NSMutableArray* windowControllers;
+@property NSMutableArray* lines;
+
 @end
 
 @implementation StatusMessageManager
@@ -25,14 +25,14 @@
 
 - (void)observer_StatusWindowPreferencesOpened:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    statusWindowPreferencesOpened_ = YES;
+    self.statusWindowPreferencesOpened = YES;
     [self refresh];
   });
 }
 
 - (void)observer_StatusWindowPreferencesClosed:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    statusWindowPreferencesOpened_ = NO;
+    self.statusWindowPreferencesOpened = NO;
     [self refresh];
   });
 }
@@ -41,14 +41,12 @@
   self = [super init];
 
   if (self) {
-    statusWindowPreferencesOpened_ = NO;
+    self.statusWindowPreferencesOpened = NO;
 
-    windowControllers_ = [NSMutableArray new];
-    lines_ = [NSMutableArray new];
-    lastMessages_ = [NSMutableArray new];
+    self.windowControllers = [NSMutableArray new];
+    self.lines = [NSMutableArray new];
     for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
-      [lines_ addObject:@""];
-      [lastMessages_ addObject:@""];
+      [self.lines addObject:@""];
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -121,11 +119,11 @@
 - (BOOL)isNeedReplaceWindows {
   // ----------------------------------------
   // Check count.
-  if ([windowControllers_ count] == 0) {
+  if ([self.windowControllers count] == 0) {
     return YES;
   }
 
-  if ([windowControllers_ count] != [[NSScreen screens] count]) {
+  if ([self.windowControllers count] != [[NSScreen screens] count]) {
     return YES;
   }
 
@@ -148,7 +146,7 @@
     break;
   }
 
-  if (![[[windowControllers_[0] window] contentView] isKindOfClass:expectedViewClass]) {
+  if (![[[self.windowControllers[0] window] contentView] isKindOfClass:expectedViewClass]) {
     return YES;
   }
 
@@ -174,23 +172,23 @@
   NSUInteger screenCount = [screens count];
 
   if ([self isNeedReplaceWindows]) {
-    for (NSWindowController* controller in windowControllers_) {
+    for (NSWindowController* controller in self.windowControllers) {
       [self hideStatusWindow:controller];
     }
-    [windowControllers_ removeAllObjects];
+    [self.windowControllers removeAllObjects];
 
     NSString* nibName = [self windowNibName];
     for (NSUInteger i = 0; i < screenCount; ++i) {
       NSWindowController* controller = [[NSWindowController alloc] initWithWindowNibName:nibName];
       [self setupStatusWindow:controller];
-      [windowControllers_ addObject:controller];
+      [self.windowControllers addObject:controller];
     }
   }
 
   // updateWindowFrame
-  if ([windowControllers_ count] == screenCount) {
+  if ([self.windowControllers count] == screenCount) {
     for (NSUInteger i = 0; i < screenCount; ++i) {
-      [[[windowControllers_[i] window] contentView] updateWindowFrame:screens[i]];
+      [[[self.windowControllers[i] window] contentView] updateWindowFrame:screens[i]];
     }
   }
 }
@@ -205,7 +203,7 @@
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   if (![defaults boolForKey:kIsStatusWindowEnabled]) {
-    for (NSWindowController* controller in windowControllers_) {
+    for (NSWindowController* controller in self.windowControllers) {
       [self hideStatusWindow:controller];
     }
     return;
@@ -236,12 +234,12 @@
       }
     }
 
-    NSString* message = lines_[idx];
+    NSString* message = self.lines[idx];
 
     // append caps lock status to modifier lock.
     if ([defaults boolForKey:kIsStatusWindowShowCapsLock]) {
       if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK) {
-        NSString* capslock = lines_[BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK];
+        NSString* capslock = self.lines[BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK];
         if ([capslock length] > 0) {
           message = [NSString stringWithFormat:@"%@%@", capslock, message];
         }
@@ -269,20 +267,20 @@
 
   // ------------------------------------------------------------
   // Extra Message
-  NSString* message = lines_[BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
+  NSString* message = self.lines[BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
 
   [statusMessage appendString:message];
 
   // ------------------------------------------------------------
   // Show status message when Status Message on Preferences is shown.
   if ([statusMessage length] == 0 &&
-      statusWindowPreferencesOpened_) {
+      self.statusWindowPreferencesOpened) {
     [statusMessage appendString:@"Example"];
   }
 
   // ------------------------------------------------------------
   if ([statusMessage length] > 0) {
-    for (NSWindowController* controller in windowControllers_) {
+    for (NSWindowController* controller in self.windowControllers) {
       NSWindow* window = [controller window];
       [[window contentView] updateMessage:statusMessage];
       [window orderFront:self];
@@ -290,7 +288,7 @@
       [[window contentView] setNeedsDisplay:YES];
     }
   } else {
-    for (NSWindowController* controller in windowControllers_) {
+    for (NSWindowController* controller in self.windowControllers) {
       [self hideStatusWindow:controller];
     }
   }
@@ -298,14 +296,14 @@
 
 - (void)resetStatusMessage {
   for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
-    lines_[i] = @"";
+    self.lines[i] = @"";
   }
 
   [self refresh];
 }
 
 - (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message {
-  lines_[lineIndex] = message;
+  self.lines[lineIndex] = message;
   [self refresh];
 }
 

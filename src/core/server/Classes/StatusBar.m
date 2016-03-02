@@ -5,12 +5,11 @@
 #import "PreferencesManager.h"
 #import "StatusBar.h"
 
-@interface StatusBar () {
-  NSStatusItem* statusItem_;
-}
+@interface StatusBar ()
 
 @property(weak) IBOutlet NSMenu* menu;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property NSStatusItem* statusItem;
 
 @end
 
@@ -52,38 +51,38 @@
 
 - (void)refresh {
   if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled]) {
-    if (statusItem_) {
-      [[NSStatusBar systemStatusBar] removeStatusItem:statusItem_];
-      statusItem_ = nil;
+    if (self.statusItem) {
+      [[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
+      self.statusItem = nil;
     }
 
   } else {
-    if (!statusItem_) {
+    if (!self.statusItem) {
       NSImage* image = [NSImage imageNamed:@"icon.statusbar"];
       [image setTemplate:YES];
 
-      statusItem_ = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
+      self.statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
 
-      [statusItem_ setToolTip:@"Karabiner"];
-      [statusItem_ setImage:image];
-      [statusItem_ setHighlightMode:YES];
+      [self.statusItem setToolTip:@"Karabiner"];
+      [self.statusItem setImage:image];
+      [self.statusItem setHighlightMode:YES];
 
-      [statusItem_ setMenu:self.menu];
+      [self.statusItem setMenu:self.menu];
     }
 
     // setTitle
     if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsShowSettingNameInStatusBar]) {
-      [statusItem_ setTitle:@""];
-      [statusItem_ setLength:NSSquareStatusItemLength];
+      [self.statusItem setTitle:@""];
+      [self.statusItem setLength:NSSquareStatusItemLength];
 
     } else {
       NSString* title = [self.preferencesManager configlist_selectedName];
       if (title) {
         NSAttributedString* attributedtitle = [[NSAttributedString alloc] initWithString:title attributes:nil];
-        [statusItem_ setAttributedTitle:attributedtitle];
+        [self.statusItem setAttributedTitle:attributedtitle];
         // We need to set length manually to avoid a bug of OS X 10.10.
         // (Don't use NSVariableStatusItemLength.)
-        [statusItem_ setLength:([[NSStatusBar systemStatusBar] thickness] + [attributedtitle size].width) + 2];
+        [self.statusItem setLength:([[NSStatusBar systemStatusBar] thickness] + [attributedtitle size].width) + 2];
       }
     }
   }

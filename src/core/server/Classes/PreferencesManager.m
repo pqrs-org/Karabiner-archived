@@ -6,14 +6,13 @@
 #import "XMLCompiler.h"
 #include <sys/time.h>
 
-@interface PreferencesManager () {
-  NSMutableDictionary* default_;
-  NSArray* essential_configuration_identifiers_;
-  GlobalDomainKeyRepeatObserver* globalDomainKeyRepeatObserver_;
-}
+@interface PreferencesManager ()
 
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
+@property NSMutableDictionary* defaults;
+@property(copy) NSArray* essential_configuration_identifiers;
+@property GlobalDomainKeyRepeatObserver* globalDomainKeyRepeatObserver;
 
 @end
 
@@ -55,7 +54,7 @@
     NSXMLNode* attr_default = [e attributeForName:@"default"];
     if (!attr_default) continue;
 
-    default_[[e stringValue]] = @([[attr_default stringValue] intValue]);
+    self.defaults[[e stringValue]] = @([[attr_default stringValue] intValue]);
   }
 
   for (NSXMLElement* e in [element elementsForName:@"list"]) {
@@ -79,12 +78,12 @@
   self = [super init];
 
   if (self) {
-    default_ = [NSMutableDictionary new];
+    self.defaults = [NSMutableDictionary new];
     [self setDefault];
 
-    globalDomainKeyRepeatObserver_ = [[GlobalDomainKeyRepeatObserver alloc] initWithPreferencesManager:self];
+    self.globalDomainKeyRepeatObserver = [[GlobalDomainKeyRepeatObserver alloc] initWithPreferencesManager:self];
 
-    essential_configuration_identifiers_ = [NSArray arrayWithObjects:
+    self.essential_configuration_identifiers = [NSArray arrayWithObjects:
 #include "../../../bridge/output/include.bridge_essential_configuration_identifiers.m"
     ];
   }
@@ -174,7 +173,7 @@
   }
 
   // ------------------------------------------------------------
-  [globalDomainKeyRepeatObserver_ start];
+  [self.globalDomainKeyRepeatObserver start];
 }
 
 // ----------------------------------------------------------------------
@@ -201,7 +200,7 @@
 }
 
 - (int)defaultValue:(NSString*)name {
-  NSNumber* number = default_[name];
+  NSNumber* number = self.defaults[name];
   if (number) {
     return [number intValue];
   } else {
@@ -241,7 +240,7 @@
     }
 
     int defaultvalue = 0;
-    NSNumber* defaultnumber = default_[name];
+    NSNumber* defaultnumber = self.defaults[name];
     if (defaultnumber) {
       defaultvalue = [defaultnumber intValue];
     }
@@ -269,8 +268,8 @@
 - (void)callSetConfigOne:(NSString*)name value:(int)value {
   struct BridgeSetConfigOne bridgeSetConfigOne;
 
-  for (NSUInteger i = 0, count = [essential_configuration_identifiers_ count]; i < count; ++i) {
-    if ([essential_configuration_identifiers_[i] isEqualToString:name]) {
+  for (NSUInteger i = 0, count = [self.essential_configuration_identifiers count]; i < count; ++i) {
+    if ([self.essential_configuration_identifiers[i] isEqualToString:name]) {
       bridgeSetConfigOne.isEssentialConfig = 1;
       bridgeSetConfigOne.index = (uint32_t)(i);
       bridgeSetConfigOne.value = (int32_t)(value);
@@ -321,8 +320,8 @@
 - (NSArray*)essential_config {
   NSMutableArray* a = [NSMutableArray new];
 
-  if (essential_configuration_identifiers_) {
-    for (NSString* identifier in essential_configuration_identifiers_) {
+  if (self.essential_configuration_identifiers) {
+    for (NSString* identifier in self.essential_configuration_identifiers) {
       [a addObject:@([self value:identifier])];
     }
   }

@@ -7,14 +7,13 @@
 #import "ServerForUserspace.h"
 #import "XMLCompiler.h"
 
-@interface ServerForUserspace () {
-  NSConnection* connection_;
-}
+@interface ServerForUserspace ()
 
 @property(weak) IBOutlet AppDelegate* appDelegate;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
+@property NSConnection* connection;
 
 @end
 
@@ -24,7 +23,7 @@
   self = [super init];
 
   if (self) {
-    connection_ = [NSConnection new];
+    self.connection = [NSConnection new];
   }
 
   return self;
@@ -32,8 +31,8 @@
 
 // ----------------------------------------------------------------------
 - (BOOL) register {
-  [connection_ setRootObject:self];
-  if (![connection_ registerName:kKarabinerConnectionName]) {
+  [self.connection setRootObject:self];
+  if (![self.connection registerName:kKarabinerConnectionName]) {
     return NO;
   }
   return YES;
