@@ -1,8 +1,15 @@
 #import "AppDelegate.h"
 
+@interface AppDelegate ()
+
+@property(assign) IBOutlet NSWindow* window1;
+@property(assign) IBOutlet NSWindow* window2;
+
+@end
+
 @implementation AppDelegate
 
-- (void)timerFireMethod:(NSTimer *)timer {
+- (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       static int counter = 0;
@@ -16,7 +23,7 @@
   });
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
   NSRect rect = [[NSScreen mainScreen] frame];
 
   [self.window1 setTitle:@"window1"];
