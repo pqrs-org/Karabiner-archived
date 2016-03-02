@@ -1,6 +1,23 @@
 // -*- Mode: objc -*-
 
 #import "IgnoredAreaView.h"
+#import "PreferencesController.h"
+
+@interface Finger : NSObject
+
+@property NSPoint point;
+@property BOOL ignored;
+
+@end
+
+@implementation Finger
+@end
+
+@interface IgnoredAreaView ()
+
+@property NSMutableArray* fingers;
+
+@end
 
 @implementation IgnoredAreaView
 
@@ -15,6 +32,16 @@
                     bottom,
                     (1.0 - left - right),
                     (1.0 - top - bottom));
+}
+
+- (instancetype)initWithFrame:(NSRect)frameRect {
+  self = [super initWithFrame:frameRect];
+
+  if (self) {
+    self.fingers = [NSMutableArray new];
+  }
+
+  return self;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
@@ -38,18 +65,18 @@
                                      yRadius:10] fill];
 
     // Draw fingers
-    for (size_t i = 0; i < nfingers_; ++i) {
+    for (Finger* finger in self.fingers) {
       enum {
         DIAMETER = 10,
       };
 
-      if (fingers_[i].ignored) {
+      if (finger.ignored) {
         [[NSColor blueColor] set];
       } else {
         [[NSColor redColor] set];
       }
-      NSRect rect = NSMakeRect(bounds.size.width * fingers_[i].point.x - DIAMETER / 2,
-                               bounds.size.height * fingers_[i].point.y - DIAMETER / 2,
+      NSRect rect = NSMakeRect(bounds.size.width * finger.point.x - DIAMETER / 2,
+                               bounds.size.height * finger.point.y - DIAMETER / 2,
                                DIAMETER,
                                DIAMETER);
       NSBezierPath* path = [NSBezierPath bezierPathWithOvalInRect:rect];
@@ -61,17 +88,18 @@
 }
 
 - (void)clearFingers {
-  nfingers_ = 0;
+  [self.fingers removeAllObjects];
+
   [self setNeedsDisplay:YES];
 }
 
 - (void)addFinger:(NSPoint)point ignored:(BOOL)ignored {
-  fingers_[nfingers_].point = point;
-  fingers_[nfingers_].ignored = ignored;
+  Finger* finger = [Finger new];
+  finger.point = point;
+  finger.ignored = ignored;
 
-  if (nfingers_ < IGNORE_AREA_VIEW_MAX_FINGERS - 1) {
-    ++nfingers_;
-  }
+  [self.fingers addObject:finger];
+
   [self setNeedsDisplay:YES];
 }
 

@@ -1,7 +1,11 @@
 #include <IOKit/IOKitLib.h>
 #import "AppDelegate.h"
+#import "FingerStatus.h"
+#import "IgnoredAreaView.h"
+#import "KarabinerClient.h"
 #import "KarabinerKeys.h"
 #import "MigrationUtilities.h"
+#import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
 #import "SessionObserver.h"
@@ -15,9 +19,16 @@ static time_t last_timestamp_ = 0;
 static NSTimer* global_timer_[MAX_FINGERS];
 static NSTimer* reset_timer_;
 
-@interface AppDelegate () {
-  SessionObserver* sessionObserver_;
-}
+@interface AppDelegate ()
+
+@property(weak) IBOutlet PreferencesController* preferences;
+@property(weak) IBOutlet IgnoredAreaView* ignoredAreaView;
+@property(weak) IBOutlet KarabinerClient* client;
+@property(copy) NSArray* mtdevices;
+@property IONotificationPortRef notifyport;
+@property CFRunLoopSourceRef loopsource;
+@property SessionObserver* sessionObserver;
+
 @end
 
 @implementation AppDelegate
@@ -81,9 +92,9 @@ void MTUnregisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
 void MTDeviceStart(MTDeviceRef, int);
 void MTDeviceStop(MTDeviceRef, int);
 
-AppDelegate* global_self_ = nil;
-IgnoredAreaView* global_ignoredAreaView_ = nil;
-KarabinerClient* global_client_ = nil;
+static AppDelegate* global_self_ = nil;
+static IgnoredAreaView* global_ignoredAreaView_ = nil;
+static KarabinerClient* global_client_ = nil;
 
 - (void)setValueFromTimer:(NSTimer*)timer {
   NSDictionary* dict = [timer userInfo];
@@ -279,24 +290,24 @@ static int callback(int device, Finger* data, int fingers, double timestamp, int
   @synchronized(self) {
     // ------------------------------------------------------------
     // unset callback (even if isset is YES.)
-    if (mtdevices_) {
-      for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
-        MTDeviceRef device = (__bridge MTDeviceRef)(mtdevices_[i]);
+    if (self.mtdevices) {
+      for (NSUInteger i = 0; i < [self.mtdevices count]; ++i) {
+        MTDeviceRef device = (__bridge MTDeviceRef)(self.mtdevices[i]);
         if (!device) continue;
 
         MTDeviceStop(device, 0);
         MTUnregisterContactFrameCallback(device, callback);
       }
-      mtdevices_ = nil;
+      self.mtdevices = nil;
     }
 
     // ------------------------------------------------------------
     // set callback if needed
     if (isset) {
-      mtdevices_ = (NSArray*)CFBridgingRelease(MTDeviceCreateList());
-      if (mtdevices_) {
-        for (NSUInteger i = 0; i < [mtdevices_ count]; ++i) {
-          MTDeviceRef device = (__bridge MTDeviceRef)(mtdevices_[i]);
+      self.mtdevices = (NSArray*)CFBridgingRelease(MTDeviceCreateList());
+      if (self.mtdevices) {
+        for (NSUInteger i = 0; i < [self.mtdevices count]; ++i) {
+          MTDeviceRef device = (__bridge MTDeviceRef)(self.mtdevices[i]);
           if (!device) continue;
 
           MTRegisterContactFrameCallback(device, callback);
@@ -333,13 +344,13 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   NSLog(@"unregisterIONotification");
 
   @synchronized(self) {
-    if (notifyport_) {
-      if (loopsource_) {
-        CFRunLoopSourceInvalidate(loopsource_);
-        loopsource_ = nil;
+    if (self.notifyport) {
+      if (self.loopsource) {
+        CFRunLoopSourceInvalidate(self.loopsource);
+        self.loopsource = nil;
       }
-      IONotificationPortDestroy(notifyport_);
-      notifyport_ = nil;
+      IONotificationPortDestroy(self.notifyport);
+      self.notifyport = nil;
     }
   }
 }
@@ -348,12 +359,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   NSLog(@"registerIONotification");
 
   @synchronized(self) {
-    if (notifyport_) {
+    if (self.notifyport) {
       [self unregisterIONotification];
     }
 
-    notifyport_ = IONotificationPortCreate(kIOMasterPortDefault);
-    if (!notifyport_) {
+    self.notifyport = IONotificationPortCreate(kIOMasterPortDefault);
+    if (!self.notifyport) {
       NSLog(@"[ERROR] IONotificationPortCreate");
       return;
     }
@@ -367,7 +378,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       kern_return_t kr;
 
       // for kIOTerminatedNotification
-      kr = IOServiceAddMatchingNotification(notifyport_,
+      kr = IOServiceAddMatchingNotification(self.notifyport,
                                             kIOTerminatedNotification,
                                             (__bridge CFMutableDictionaryRef)(match),
                                             &observer_IONotification,
@@ -389,7 +400,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       kern_return_t kr;
 
       // for kIOMatchedNotification
-      kr = IOServiceAddMatchingNotification(notifyport_,
+      kr = IOServiceAddMatchingNotification(self.notifyport,
                                             kIOMatchedNotification,
                                             (__bridge CFMutableDictionaryRef)(match),
                                             &observer_IONotification,
@@ -403,12 +414,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     }
 
     // ----------------------------------------------------------------------
-    loopsource_ = IONotificationPortGetRunLoopSource(notifyport_);
-    if (!loopsource_) {
+    self.loopsource = IONotificationPortGetRunLoopSource(self.notifyport);
+    if (!self.loopsource) {
       NSLog(@"[ERROR] IONotificationPortGetRunLoopSource");
       return;
     }
-    CFRunLoopAddSource(CFRunLoopGetCurrent(), loopsource_, kCFRunLoopDefaultMode);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), self.loopsource, kCFRunLoopDefaultMode);
   }
 }
 
@@ -466,7 +477,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 
   // ----------------------------------------
-  [preferences_ load];
+  [self.preferences load];
 
   if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hideIconInDock"]) {
     ProcessSerialNumber psn = {0, kCurrentProcess};
@@ -474,10 +485,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 
   global_self_ = self;
-  global_ignoredAreaView_ = ignoredAreaView_;
-  global_client_ = client_;
+  global_ignoredAreaView_ = self.ignoredAreaView;
+  global_client_ = self.client;
 
-  sessionObserver_ = [[SessionObserver alloc] init:1
+  self.sessionObserver = [[SessionObserver alloc] init:1
       active:^{
         [self registerIONotification];
         [self registerWakeNotification];
@@ -509,7 +520,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication*)theApplication hasVisibleWindows:(BOOL)flag {
-  [preferences_ show];
+  [self.preferences show];
   return YES;
 }
 

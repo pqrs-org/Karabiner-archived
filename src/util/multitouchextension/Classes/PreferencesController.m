@@ -1,8 +1,18 @@
 // -*- Mode: objc -*-
 
+#import "KarabinerClient.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "StartAtLoginUtilities.h"
+
+@interface PreferencesController ()
+
+@property NSMutableArray* oldSettings;
+@property(weak) IBOutlet NSWindow* preferencesWindow;
+@property(weak) IBOutlet KarabinerClient* client;
+@property(weak) IBOutlet NSButton* startAtLoginCheckbox;
+
+@end
 
 @implementation PreferencesController
 
@@ -33,7 +43,7 @@
   self = [super init];
 
   if (self) {
-    oldSettings_ = [NSMutableArray new];
+    self.oldSettings = [NSMutableArray new];
   }
 
   return self;
@@ -41,14 +51,14 @@
 
 - (void)load {
   if ([StartAtLoginUtilities isStartAtLogin]) {
-    [startAtLogin_ setState:NSOnState];
+    [self.startAtLoginCheckbox setState:NSOnState];
   } else {
-    [startAtLogin_ setState:NSOffState];
+    [self.startAtLoginCheckbox setState:NSOffState];
   }
 }
 
 - (void)show {
-  [preferencesWindow_ makeKeyAndOrderFront:nil];
+  [self.preferencesWindow makeKeyAndOrderFront:nil];
 }
 
 - (IBAction)setStartAtLogin:(id)sender {
@@ -71,19 +81,19 @@
 - (IBAction)set:(id)sender {
   // ------------------------------------------------------------
   // disable old settings
-  for (NSString* name in oldSettings_) {
+  for (NSString* name in self.oldSettings) {
     @try {
-      [[client_ proxy] setValue:0 forName:name];
+      [[self.client proxy] setValue:0 forName:name];
     }
     @catch (NSException* exception) {
       NSLog(@"%@", exception);
     }
   }
 
-  [oldSettings_ removeAllObjects];
+  [self.oldSettings removeAllObjects];
   for (int i = 1; i <= 4; ++i) {
     if ([PreferencesController isSettingEnabled:i]) {
-      [oldSettings_ addObject:[PreferencesController getSettingName:i]];
+      [self.oldSettings addObject:[PreferencesController getSettingName:i]];
     }
   }
 }

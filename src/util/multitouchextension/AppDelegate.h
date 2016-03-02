@@ -1,19 +1,6 @@
 // -*- Mode: objc -*-
 
-#import <Cocoa/Cocoa.h>
-#import "IgnoredAreaView.h"
-#import "FingerStatus.h"
-#import "KarabinerClient.h"
-#import "PreferencesController.h"
+@import Cocoa;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
-  NSArray* mtdevices_;
-  IONotificationPortRef notifyport_;
-  CFRunLoopSourceRef loopsource_;
-
-  IBOutlet PreferencesController* preferences_;
-  IBOutlet IgnoredAreaView* ignoredAreaView_;
-  IBOutlet KarabinerClient* client_;
-}
-
+@interface AppDelegate : NSObject <NSApplicationDelegate>
 @end

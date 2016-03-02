@@ -1,11 +1,28 @@
 #import "FingerStatus.h"
 
+@interface FingerStatusItem : NSObject
+
+@property int identifier;
+@property BOOL active;
+
+@end
+
+@implementation FingerStatusItem
+@end
+
+@interface FingerStatus ()
+
+@property NSMutableArray* items;
+
+@end
+
 @implementation FingerStatus
 
 - (id)init {
   self = [super init];
 
   if (self) {
+    self.items = [NSMutableArray new];
     [self clear];
   }
 
@@ -13,21 +30,21 @@
 }
 
 - (void)clear {
-  size_ = 0;
+  [self.items removeAllObjects];
 }
 
 - (void)add:(int)identifier active:(BOOL)active {
-  if (size_ < FINGER_STATUS_MAX_FINGERS) {
-    identifier_[size_] = identifier;
-    active_[size_] = active;
-    ++size_;
-  }
+  FingerStatusItem* item = [FingerStatusItem new];
+  item.identifier = identifier;
+  item.active = active;
+
+  [self.items addObject:item];
 }
 
 - (BOOL)isActive:(int)identifier {
-  for (size_t i = 0; i < size_; ++i) {
-    if (identifier_[i] == identifier) {
-      return active_[i];
+  for (FingerStatusItem* item in self.items) {
+    if (item.identifier == identifier) {
+      return item.active;
     }
   }
   return NO;

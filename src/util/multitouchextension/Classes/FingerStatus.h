@@ -1,16 +1,8 @@
 // -*- Mode: objc -*-
 
-#import <Cocoa/Cocoa.h>
+@import Cocoa;
 
-@interface FingerStatus : NSObject {
-  enum {
-    FINGER_STATUS_MAX_FINGERS = 20,
-  };
-
-  int identifier_[FINGER_STATUS_MAX_FINGERS];
-  BOOL active_[FINGER_STATUS_MAX_FINGERS];
-  size_t size_;
-}
+@interface FingerStatus : NSObject
 
 - (id)init;
 - (void)clear;
