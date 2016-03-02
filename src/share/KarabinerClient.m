@@ -1,24 +1,31 @@
 #import "KarabinerClient.h"
 #import "KarabinerKeys.h"
 
+@interface KarabinerClient ()
+
+@property NSDistantObject<KarabinerProtocol>* connection;
+@property dispatch_queue_t connectionQueue;
+
+@end
+
 @implementation KarabinerClient
 
-- (id<KarabinerProtocol>)proxy {
-  @synchronized(self) {
-    if (!proxy_) {
-      proxy_ = [NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil];
-      [proxy_ setProtocolForProxy:@protocol(KarabinerProtocol)];
+- (NSDistantObject<KarabinerProtocol>*)proxy {
+  dispatch_sync(self.connectionQueue, ^{
+    if (!self.connection) {
+      self.connection = (NSDistantObject<KarabinerProtocol>*)([NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil]);
+      [self.connection setProtocolForProxy:@protocol(KarabinerProtocol)];
     }
-    return proxy_;
-  }
+  });
+  return self.connection;
 }
 
-- (void)observer_NSConnectionDidDieNotification:(NSNotification *)notification {
+- (void)observer_NSConnectionDidDieNotification:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    @synchronized(self) {
+    dispatch_sync(self.connectionQueue, ^{
       NSLog(@"observer_NSConnectionDidDieNotification is called");
-      proxy_ = nil;
-    };
+      self.connection = nil;
+    });
   });
 }
 
@@ -26,6 +33,8 @@
   self = [super init];
 
   if (self) {
+    self.connectionQueue = dispatch_queue_create("org.pqrs.Karabiner.KarabinerClient.connectionQueue", NULL);
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_NSConnectionDidDieNotification:)
                                                  name:NSConnectionDidDieNotification
