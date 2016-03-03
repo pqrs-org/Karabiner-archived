@@ -232,6 +232,20 @@ enum {
   return [NSString stringWithFormat:@"button%d", (int)(number + 1)];
 }
 
+- (int)buttonToKernelValue:(NSEvent*)event {
+  NSInteger number = [event buttonNumber];
+  switch (number) {
+  case 0:
+    return 0x00000004;
+  case 1:
+    return 0x00000001;
+  case 2:
+    return 0x00000002;
+  default:
+    return (1 << number);
+  }
+}
+
 - (void)pushKeyEvent:(NSEvent*)event eventType:(NSString*)eventType {
   // An invalid event will be sent when we press command-tab and switch the current app to EventViewer.
   // (keyMod and keyCode == 0).
@@ -244,7 +258,7 @@ enum {
 
   NSString* keyCodeName = [[self.client proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
   // Show `characters` at last because `characters` might be newline. (== newline truncates message.)
-  NSString* misc = [NSString stringWithFormat:@"%@\tcharacters:%@",
+  NSString* misc = [NSString stringWithFormat:@"%@\t characters:%@",
                                               keyCodeName ? keyCodeName : @"",
                                               [[self charactersToString:event] stringByPaddingToLength:4
                                                                                             withString:@" "
@@ -299,7 +313,11 @@ enum {
         code:[NSString stringWithFormat:@"0x%x", (int)([event buttonNumber])]
         name:[self buttonToString:event]
        flags:[self modifierFlagsToString:[event modifierFlags]]
-        misc:[NSString stringWithFormat:@"%@ %d", NSStringFromPoint([event locationInWindow]), (int)([event clickCount])]];
+        misc:[NSString stringWithFormat:@"%@\t {%d,%d} %d",
+                                        [[self.client proxy] symbolMapName:@"PointingButton"
+                                                                     value:[self buttonToKernelValue:event]],
+                                        (int)([event locationInWindow].x), (int)([event locationInWindow].y),
+                                        (int)([event clickCount])]];
 }
 
 - (void)pushScrollWheelEvent:(NSEvent*)event eventType:(NSString*)eventType {
