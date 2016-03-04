@@ -36,6 +36,7 @@
 		34738785192589CC00F605BD /* windownamedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34738784192589CC00F605BD /* windownamedef.xml */; };
 		347828F613EE5F3400D50AB1 /* karabiner_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* karabiner_pub.pem */; };
 		3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */; };
+		347FC1621C89D4D6001E6953 /* ServerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347FC1611C89D4D6001E6953 /* ServerController.m */; };
 		3481FAA11ACC48510063828A /* StatusMessageNormalWindow.xib in Sources */ = {isa = PBXBuildFile; fileRef = 340D08811AC8463A006DD5ED /* StatusMessageNormalWindow.xib */; };
 		3481FAA31ACC4B020063828A /* StatusMessageNanoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */; };
 		3481FAA41ACC4C280063828A /* StatusMessageNanoWindow.xib in Sources */ = {isa = PBXBuildFile; fileRef = 3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */; };
@@ -150,6 +151,8 @@
 		34738784192589CC00F605BD /* windownamedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = windownamedef.xml; path = Resources/windownamedef.xml; sourceTree = "<group>"; };
 		347828F513EE5F3400D50AB1 /* karabiner_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = karabiner_pub.pem; path = Resources/karabiner_pub.pem; sourceTree = "<group>"; };
 		3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkopenurldef.xml; path = Resources/vkopenurldef.xml; sourceTree = "<group>"; };
+		347FC1601C89D4D6001E6953 /* ServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerController.h; path = Classes/ServerController.h; sourceTree = "<group>"; };
+		347FC1611C89D4D6001E6953 /* ServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerController.m; path = Classes/ServerController.m; sourceTree = "<group>"; };
 		3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatusMessageNanoWindow.xib; path = Resources/StatusMessageNanoWindow.xib; sourceTree = "<group>"; };
 		3481FAA51ACCFAD60063828A /* StatusMessageEdgeWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatusMessageEdgeWindow.xib; path = Resources/StatusMessageEdgeWindow.xib; sourceTree = "<group>"; };
 		3484825F152F526B00A9A3BE /* libxml_compiler.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxml_compiler.a; path = ../../lib/xml_compiler/build/Release/libxml_compiler.a; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 				3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */,
 				34FB9590128F98510088B235 /* PreferencesManager.h */,
 				34FB9591128F985A0088B235 /* PreferencesManager.m */,
+				347FC1601C89D4D6001E6953 /* ServerController.h */,
+				347FC1611C89D4D6001E6953 /* ServerController.m */,
 				3401D0D41657A18C00CF962F /* ServerForUserspace.h */,
 				3401D0D51657A18C00CF962F /* ServerForUserspace.m */,
 				34DB980B1C74C29E00D90368 /* ServerObjects.h */,
@@ -643,6 +648,7 @@
 				34F3FF541C4E9C9300B9B82C /* CheckboxCellView.m in Sources */,
 				34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */,
 				34C157641C72EAE200E6E81B /* ProfileTableViewDelegate.m in Sources */,
+				347FC1621C89D4D6001E6953 /* ServerController.m in Sources */,
 				34D542D41C5FA44200B23979 /* CheckboxOutlineView.m in Sources */,
 				34A5572F16EA075E000E5399 /* StatusMessageView.m in Sources */,
 				34E917091C6B947000C014BD /* ParameterOutlineViewDelegate.m in Sources */,

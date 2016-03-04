@@ -99,6 +99,7 @@
                 </menuItem>
             </items>
         </menu>
+        <customObject id="aLe-rO-6uz" customClass="ServerController"/>
         <customObject id="IVB-c7-TsL" customClass="ServerObjects">
             <connections>
                 <outlet property="clientForKernelspace" destination="600" id="cmc-G2-qVS"/>
