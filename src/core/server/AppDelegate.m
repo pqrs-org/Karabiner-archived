@@ -387,12 +387,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
     } else {
       if (![StartAtLoginUtilities isStartAtLogin]) {
-        [StartAtLoginUtilities setStartAtLogin:YES];
-
         if (!isDescendantProcess) {
           [self openPreferences:self];
         }
       }
+      [ServerController updateStartAtLogin:YES];
     }
   }
 }

@@ -5,5 +5,6 @@
 @interface ServerController : NSObject
 
 + (void)quitWithConfirmation;
++ (void)updateStartAtLogin:(BOOL)preferredValue;
 
 @end

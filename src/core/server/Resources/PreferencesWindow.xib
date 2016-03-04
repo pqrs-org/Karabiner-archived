@@ -1883,8 +1883,19 @@ Debug Mode Guide</string>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="r11-mA-r70">
+                                            <rect key="frame" x="170" y="107" width="200" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Resume at login (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wPc-gp-gmO">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="updateStartAtLogin:" target="-2" id="cVJ-Kd-QBs"/>
+                                                <binding destination="1176" name="value" keyPath="values.kResumeAtLogin" id="ToF-wX-ejq"/>
+                                            </connections>
+                                        </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
-                                            <rect key="frame" x="170" y="107" width="241" height="18"/>
+                                            <rect key="frame" x="170" y="83" width="241" height="18"/>
                                             <buttonCell key="cell" type="check" title="Show icon in menu bar (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="697">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1895,7 +1906,7 @@ Debug Mode Guide</string>
                                             </connections>
                                         </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="NjG-52-LcZ">
-                                            <rect key="frame" x="170" y="83" width="217" height="18"/>
+                                            <rect key="frame" x="170" y="59" width="217" height="18"/>
                                             <buttonCell key="cell" type="check" title="Show icon in Dock (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="h2i-ht-GOj">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1905,7 +1916,7 @@ Debug Mode Guide</string>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="91I-rI-qK8">
-                                            <rect key="frame" x="170" y="63" width="465" height="17"/>
+                                            <rect key="frame" x="170" y="39" width="465" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title=" (You have to relaunch Karabiner to reflect this &quot;Show icon in Dock&quot; setting.)" id="TGg-Hn-kkg">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1913,7 +1924,7 @@ Debug Mode Guide</string>
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oaZ-01-vkk">
-                                            <rect key="frame" x="166" y="25" width="158" height="32"/>
+                                            <rect key="frame" x="166" y="1" width="158" height="32"/>
                                             <buttonCell key="cell" type="push" title="Relaunch Karabiner" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dvz-Xv-isk">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -1929,12 +1940,13 @@ Debug Mode Guide</string>
                                         <constraint firstItem="656" firstAttribute="leading" secondItem="S53-gC-gxA" secondAttribute="trailing" constant="10" id="3OF-6c-ZGj"/>
                                         <constraint firstItem="i8T-VC-eT0" firstAttribute="leading" secondItem="yat-77-L8T" secondAttribute="trailing" constant="10" id="3tG-U3-kJu"/>
                                         <constraint firstItem="656" firstAttribute="centerY" secondItem="S53-gC-gxA" secondAttribute="centerY" id="4Sb-lH-Mwq"/>
+                                        <constraint firstItem="r11-mA-r70" firstAttribute="leading" secondItem="BRh-R3-iqY" secondAttribute="leading" id="4XH-Ub-1Gf"/>
                                         <constraint firstItem="NjG-52-LcZ" firstAttribute="leading" secondItem="696" secondAttribute="leading" id="4ws-A4-X6n"/>
                                         <constraint firstItem="654" firstAttribute="leading" secondItem="VyX-5h-w7l" secondAttribute="trailing" constant="10" id="5s2-vn-goj"/>
                                         <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="leading" secondItem="HyL-o3-wzh" secondAttribute="trailing" constant="10" id="6vg-sC-hK6"/>
                                         <constraint firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" constant="17" id="6vx-Cu-ULt"/>
                                         <constraint firstItem="TNB-Mo-4Qt" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="BOb-vK-GCH"/>
-                                        <constraint firstItem="696" firstAttribute="leading" secondItem="tgg-o9-eqX" secondAttribute="trailing" constant="10" id="BUl-wW-pMe"/>
+                                        <constraint firstItem="696" firstAttribute="leading" secondItem="r11-mA-r70" secondAttribute="leading" id="BV9-3T-mqh"/>
                                         <constraint firstItem="fS2-h7-83w" firstAttribute="leading" secondItem="LoB-mA-WN5" secondAttribute="leading" id="BmJ-lM-Feq"/>
                                         <constraint firstItem="VyX-5h-w7l" firstAttribute="top" secondItem="TNB-Mo-4Qt" secondAttribute="bottom" constant="10" id="DXR-xm-xLh"/>
                                         <constraint firstItem="8Yy-Qp-aKZ" firstAttribute="centerY" secondItem="HyL-o3-wzh" secondAttribute="centerY" id="F4m-ZQ-jKT"/>
@@ -1973,7 +1985,6 @@ Debug Mode Guide</string>
                                         <constraint firstItem="JOj-GD-zmd" firstAttribute="top" secondItem="LoB-mA-WN5" secondAttribute="bottom" constant="10" id="cIu-Mr-HhV"/>
                                         <constraint firstItem="0sJ-8e-EgS" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="cx4-9U-2NS"/>
                                         <constraint firstItem="HyL-o3-wzh" firstAttribute="top" secondItem="hOF-gU-Ds0" secondAttribute="bottom" constant="10" id="eEK-fb-Bdz"/>
-                                        <constraint firstItem="696" firstAttribute="centerY" secondItem="tgg-o9-eqX" secondAttribute="centerY" id="epy-To-9NC"/>
                                         <constraint firstItem="LoB-mA-WN5" firstAttribute="top" secondItem="641" secondAttribute="bottom" constant="10" id="f54-ey-0tg"/>
                                         <constraint firstItem="yat-77-L8T" firstAttribute="leading" secondItem="B4b-iA-pXM" secondAttribute="leading" id="f8Q-Ty-Vb2"/>
                                         <constraint firstItem="yat-77-L8T" firstAttribute="top" secondItem="B4b-iA-pXM" secondAttribute="bottom" constant="10" id="gv7-fG-t1A"/>
@@ -1984,6 +1995,7 @@ Debug Mode Guide</string>
                                         <constraint firstItem="S53-gC-gxA" firstAttribute="top" secondItem="pJT-zW-wrA" secondAttribute="bottom" constant="10" id="l5D-xY-S0i"/>
                                         <constraint firstItem="fS2-h7-83w" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="lNd-B3-LPi"/>
                                         <constraint firstItem="LoB-mA-WN5" firstAttribute="leading" secondItem="635" secondAttribute="leading" constant="17" id="mTH-UO-dlm"/>
+                                        <constraint firstItem="r11-mA-r70" firstAttribute="centerY" secondItem="tgg-o9-eqX" secondAttribute="centerY" id="nei-lU-Rju"/>
                                         <constraint firstItem="1435" firstAttribute="centerY" secondItem="644" secondAttribute="centerY" id="nxs-0P-cDb"/>
                                         <constraint firstItem="B4b-iA-pXM" firstAttribute="centerY" secondItem="dxO-dI-24Y" secondAttribute="centerY" id="oSu-jF-qF6"/>
                                         <constraint firstItem="rw8-0Y-kbO" firstAttribute="trailing" secondItem="LoB-mA-WN5" secondAttribute="trailing" id="p15-M4-5xC"/>
@@ -1993,6 +2005,7 @@ Debug Mode Guide</string>
                                         <constraint firstItem="dxO-dI-24Y" firstAttribute="top" secondItem="ZTx-N8-36Q" secondAttribute="bottom" constant="10" id="sEA-yf-2lp"/>
                                         <constraint firstItem="ee8-Fs-3nn" firstAttribute="top" secondItem="qZa-XW-7Lm" secondAttribute="bottom" constant="10" id="t1U-Ef-Zqs"/>
                                         <constraint firstItem="654" firstAttribute="centerY" secondItem="VyX-5h-w7l" secondAttribute="centerY" id="tbu-Si-v30"/>
+                                        <constraint firstItem="696" firstAttribute="top" secondItem="r11-mA-r70" secondAttribute="bottom" constant="10" id="tkU-1a-hrF"/>
                                         <constraint firstItem="Phh-vp-qNd" firstAttribute="trailing" secondItem="JOj-GD-zmd" secondAttribute="trailing" id="v2U-dT-Nhz"/>
                                         <constraint firstItem="qZa-XW-7Lm" firstAttribute="leading" secondItem="656" secondAttribute="leading" id="wok-k9-XQm"/>
                                         <constraint firstItem="TNB-Mo-4Qt" firstAttribute="top" secondItem="644" secondAttribute="bottom" constant="10" id="xyg-LC-pz8"/>

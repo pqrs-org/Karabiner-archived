@@ -1,3 +1,4 @@
+#import "PreferencesKeys.h"
 #import "ServerController.h"
 #import "StartAtLoginUtilities.h"
 
@@ -13,8 +14,22 @@
     return;
   }
 
-  [StartAtLoginUtilities setStartAtLogin:NO];
+  [ServerController updateStartAtLogin:NO];
   [NSApp terminate:nil];
+}
+
++ (void)updateStartAtLogin:(BOOL)preferredValue {
+  if (!preferredValue) {
+    [StartAtLoginUtilities setStartAtLogin:NO];
+
+  } else {
+    // Do not register to StartAtLogin if kResumeAtLogin is NO.
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin]) {
+      [StartAtLoginUtilities setStartAtLogin:NO];
+    } else {
+      [StartAtLoginUtilities setStartAtLogin:YES];
+    }
+  }
 }
 
 @end

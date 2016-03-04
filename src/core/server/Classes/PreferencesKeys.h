@@ -22,6 +22,7 @@
 #define kIsMigratedIsOverwriteKeyRepeat @"kIsMigratedOverwriteKeyRepeat"
 #define kIsOverwriteKeyRepeat @"kIsOverwriteKeyRepeat"
 #define kShowIconInDock @"kShowIconInDock"
+#define kResumeAtLogin @"kResumeAtLogin"
 
 #define kKarabinerPreferencesWidth @"kKarabinerPreferencesWidth"
 #define kKarabinerPreferencesHeight @"kKarabinerPreferencesHeight"

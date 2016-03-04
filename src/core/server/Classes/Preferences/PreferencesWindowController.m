@@ -410,6 +410,10 @@
   [[NSWorkspace sharedWorkspace] openFile:@"/Applications/Utilities/Console.app"];
 }
 
+- (IBAction)updateStartAtLogin:(id)sender {
+  [ServerController updateStartAtLogin:YES];
+}
+
 - (IBAction)relaunch:(id)sender {
   [Relauncher relaunch];
 }
