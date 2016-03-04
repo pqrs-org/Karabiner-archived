@@ -11,6 +11,7 @@
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
 #import "Relauncher.h"
+#import "ServerController.h"
 #import "ServerForUserspace.h"
 #import "ServerObjects.h"
 #import "SessionObserver.h"
@@ -425,20 +426,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self send_workspacedata_to_kext];
 }
 
-+ (void)quitWithConfirmation {
-  NSAlert* alert = [NSAlert new];
-  alert.messageText = @"Are you sure you want to quit Karabiner?";
-  alert.informativeText = @"The changed key will be restored after Karabiner is quit.";
-  [alert addButtonWithTitle:@"Quit"];
-  [alert addButtonWithTitle:@"Cancel"];
-  if ([alert runModal] != NSAlertFirstButtonReturn) {
-    return;
-  }
-
-  [StartAtLoginUtilities setStartAtLogin:NO];
-  [NSApp terminate:nil];
-}
-
 // ------------------------------------------------------------
 - (IBAction)launchEventViewer:(id)sender {
   [AppLauncher openEventViewer];
@@ -456,7 +443,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (IBAction)quit:(id)sender {
-  [AppDelegate quitWithConfirmation];
+  [ServerController quitWithConfirmation];
 }
 
 @end

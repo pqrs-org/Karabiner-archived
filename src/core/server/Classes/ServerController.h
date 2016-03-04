@@ -3,4 +3,7 @@
 @import Cocoa;
 
 @interface ServerController : NSObject
+
++ (void)quitWithConfirmation;
+
 @end

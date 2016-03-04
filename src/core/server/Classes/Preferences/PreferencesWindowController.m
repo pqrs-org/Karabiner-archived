@@ -1,7 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "AXNotifierManager.h"
-#import "AppDelegate.h"
 #import "AppLauncher.h"
 #import "CheckboxOutlineView.h"
 #import "CheckboxOutlineViewDataSource.h"
@@ -19,6 +18,7 @@
 #import "ProfileTableViewDataSource.h"
 #import "ProfileTableViewDelegate.h"
 #import "Relauncher.h"
+#import "ServerController.h"
 #import "ServerObjects.h"
 #import "StatusMessageManager.h"
 #import "Updater.h"
@@ -268,7 +268,7 @@
 }
 
 - (IBAction)quit:(id)sender {
-  [AppDelegate quitWithConfirmation];
+  [ServerController quitWithConfirmation];
 }
 
 - (IBAction)expandParameterOutlineView:(id)sender {

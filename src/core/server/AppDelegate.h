@@ -11,6 +11,5 @@
 @property(copy, readonly) NSArray* workspaceInputSourceIds;
 
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;
-+ (void)quitWithConfirmation;
 
 @end
