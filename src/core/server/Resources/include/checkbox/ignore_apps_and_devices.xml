@@ -51,9 +51,12 @@
     </item>
 
     <item>
-      <name>Disable all settings on Magic Mouse.</name>
+      <name>Disable all settings on Magic Mouse and Magic Mouse 2.</name>
       <identifier>ignore_devices.magic_mouse</identifier>
-      <device_only>DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE</device_only>
+      <device_only>
+        DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE,
+        DeviceVendor::Apple_Bluetooth, DeviceProduct::Magic_Mouse_2,
+      </device_only>
       <autogen>__PassThrough__</autogen>
     </item>
 

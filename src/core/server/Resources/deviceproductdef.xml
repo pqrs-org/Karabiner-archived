@@ -132,6 +132,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Magic_Mouse_2</productname>
+    <productid>0x0269</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>MAGIC_TRACKPAD</productname>
     <productid>0x030e</productid>
   </deviceproductdef>

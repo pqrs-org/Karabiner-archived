@@ -138,13 +138,14 @@
     </item>
 
     <item>
-      <name>For Magic Mouse</name>
+      <name>For Magic Mouse and Magic Mouse 2</name>
       <item>
         <name>Disable ScrollWheel</name>
         <identifier>remap.dropscrollwheel_0x05ac_0x030d</identifier>
         <block>
           <device_only>
             DeviceVendor::APPLE_INC, DeviceProduct::MAGIC_MOUSE,
+            DeviceVendor::Apple_Bluetooth, DeviceProduct::Magic_Mouse_2,
           </device_only>
           <autogen>__DropScrollWheel__</autogen>
         </block>
