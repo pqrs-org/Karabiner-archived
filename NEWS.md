@@ -1,4 +1,4 @@
-# Since 10.15.0
+# Version 10.16.0
 
 * New functions and improvements:
   * "Show icon in Dock" setting has been added.
