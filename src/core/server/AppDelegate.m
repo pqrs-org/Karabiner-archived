@@ -298,11 +298,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   [[NSApplication sharedApplication] disableRelaunchOnLogin];
 
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowIconInDock]) {
-    ProcessSerialNumber psn = {0, kCurrentProcess};
-    TransformProcessType(&psn, kProcessTransformToForegroundApplication);
-  }
-
   [self.preferencesManager load];
 
   [self.statusMessageManager setupStatusMessageManager];
@@ -386,7 +381,8 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
       });
 
     } else {
-      if (![StartAtLoginUtilities isStartAtLogin]) {
+      if (![StartAtLoginUtilities isStartAtLogin] &&
+          [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin]) {
         if (!isDescendantProcess) {
           [self openPreferences:self];
         }

@@ -130,6 +130,12 @@
                                              selector:@selector(observer_PreferencesChanged:)
                                                  name:kPreferencesChangedNotification
                                                object:nil];
+
+    // Show icon in Dock only when Preferences has been opened.
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowIconInDock]) {
+      ProcessSerialNumber psn = {0, kCurrentProcess};
+      TransformProcessType(&psn, kProcessTransformToForegroundApplication);
+    }
   }
 
   return self;
