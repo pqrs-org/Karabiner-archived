@@ -2,7 +2,8 @@
 
 * New functions and improvements:
   * "Show icon in Dock" setting has been added.
-  * "Resume at login" setting has been added.
+  * "Resume at login" setting has been added. <br />
+    You can disable auto resume function.
   * "Disable an internal keyboard while external keyboards are connected" setting has been improved.
     * Mionix Naos 7000 has been supported.
     * Logitech Bluetooth Mouse M555b has been supported.
