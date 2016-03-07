@@ -36,6 +36,10 @@
   return self;
 }
 
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)start {
   self.timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                 target:self
