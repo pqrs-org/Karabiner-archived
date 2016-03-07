@@ -23,6 +23,10 @@
   });
 }
 
+- (void)dealloc {
+  [self removeObserver];
+}
+
 - (void)prepareForReuse {
   [self removeObserver];
 }
