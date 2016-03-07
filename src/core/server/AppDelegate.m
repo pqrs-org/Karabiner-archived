@@ -163,21 +163,21 @@
 }
 
 - (void)registerWakeNotification {
-  [[NSNotificationCenter defaultCenter] addObserver:self
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                            selector:@selector(observer_NSWorkspaceDidWakeNotification:)
                                                name:NSWorkspaceDidWakeNotification
                                              object:nil];
-  [[NSNotificationCenter defaultCenter] addObserver:self
+  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                            selector:@selector(observer_NSWorkspaceScreensDidWakeNotification:)
                                                name:NSWorkspaceScreensDidWakeNotification
                                              object:nil];
 }
 
 - (void)unregisterWakeNotification {
-  [[NSNotificationCenter defaultCenter] removeObserver:self
+  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
                                                   name:NSWorkspaceDidWakeNotification
                                                 object:nil];
-  [[NSNotificationCenter defaultCenter] removeObserver:self
+  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
                                                   name:NSWorkspaceScreensDidWakeNotification
                                                 object:nil];
 }
@@ -398,6 +398,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (void)dealloc {
+  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
   [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
