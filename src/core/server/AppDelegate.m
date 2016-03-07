@@ -163,23 +163,23 @@
 }
 
 - (void)registerWakeNotification {
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceDidWakeNotification:)
-                                                             name:NSWorkspaceDidWakeNotification
-                                                           object:nil];
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceScreensDidWakeNotification:)
-                                                             name:NSWorkspaceScreensDidWakeNotification
-                                                           object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(observer_NSWorkspaceDidWakeNotification:)
+                                               name:NSWorkspaceDidWakeNotification
+                                             object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(observer_NSWorkspaceScreensDidWakeNotification:)
+                                               name:NSWorkspaceScreensDidWakeNotification
+                                             object:nil];
 }
 
 - (void)unregisterWakeNotification {
-  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
-                                                                name:NSWorkspaceDidWakeNotification
-                                                              object:nil];
-  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
-                                                                name:NSWorkspaceScreensDidWakeNotification
-                                                              object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:NSWorkspaceDidWakeNotification
+                                                object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:NSWorkspaceScreensDidWakeNotification
+                                                object:nil];
 }
 
 // ------------------------------------------------------------

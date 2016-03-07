@@ -194,10 +194,10 @@
 
     self.systemApplicationObservers = [NSMutableDictionary new];
 
-    [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                           selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
-                                                               name:NSWorkspaceDidActivateApplicationNotification
-                                                             object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
+                                                 name:NSWorkspaceDidActivateApplicationNotification
+                                               object:nil];
 
     // ----------------------------------------
     self.systemApplicationObserversRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:3
@@ -218,6 +218,10 @@
   }
 
   return self;
+}
+
+- (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

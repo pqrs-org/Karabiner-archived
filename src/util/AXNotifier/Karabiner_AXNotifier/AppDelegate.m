@@ -183,6 +183,11 @@ send:
   [Relauncher resetRelaunchedCount];
 }
 
+- (void)dealloc {
+  [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)setupAXApplicationObserverManager {
   self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithPreferences:[[self.client proxy] preferencesForAXNotifier]];
 }

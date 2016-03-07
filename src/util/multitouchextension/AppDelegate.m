@@ -448,16 +448,16 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (void)registerWakeNotification {
-  [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
-                                                         selector:@selector(observer_NSWorkspaceDidWakeNotification:)
-                                                             name:NSWorkspaceDidWakeNotification
-                                                           object:nil];
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(observer_NSWorkspaceDidWakeNotification:)
+                                               name:NSWorkspaceDidWakeNotification
+                                             object:nil];
 }
 
 - (void)unregisterWakeNotification {
-  [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self
-                                                                name:NSWorkspaceDidWakeNotification
-                                                              object:nil];
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                               name:NSWorkspaceDidWakeNotification
+                                             object:nil];
 }
 
 // ----------------------------------------
@@ -513,6 +513,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self setcallback:YES];
 
   [Relauncher resetRelaunchedCount];
+}
+
+- (void)dealloc {
+  [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)applicationWillTerminate:(NSNotification*)aNotification {
