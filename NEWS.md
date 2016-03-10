@@ -1,7 +1,7 @@
 # Since Version 10.18.0
 
 * Fixed issues:
-  * The argument treatment of `warp-mouse-cursor-position` is wrong. <br />
+  * The argument treatment in `warp-mouse-cursor-position` utility is wrong. <br />
     These adjustment values for `screen` and `front_window` were exchanged.
     For example, the vertical adjustment value for `screen` and `front_window` is used in horizontal adjustment.
 
