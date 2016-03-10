@@ -1,7 +1,16 @@
+# Since Version 10.18.0
+
+* Fixed issues:
+  * The argument treatment of `warp-mouse-cursor-position` is wrong. <br />
+    These adjustment values for `screen` and `front_window` were exchanged.
+    For example, the vertical adjustment value for `screen` and `front_window` is used in horizontal adjustment.
+
+
 # Version 10.18.0
 
 * Fixed an issue that is introduced in Karabiner 10.17.0:<br />
   Karabiner will be crashed when you change settings after you opened and closed the Preferences window in OS X 10.10.
+
 
 # Version 10.17.0
 
