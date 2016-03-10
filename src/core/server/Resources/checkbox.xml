@@ -95,6 +95,7 @@
     <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/vnc.xml" />
     <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/mucommander.xml" />
     <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/skim.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/twitter.xml" />
   </item>
 
   <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/keyboard_layouts.xml" />

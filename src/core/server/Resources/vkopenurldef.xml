@@ -441,6 +441,15 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_click_twitter_search_field</name>
+    <url type="shell">
+      <![CDATA[
+        /Applications/Karabiner.app/Contents/Library/utilities/bin/warp-mouse-cursor-position front_window top 20 left 200
+      ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_JXA_keystroke_HelloWorld</name>
     <url type="shell">
       osascript -l JavaScript -e "Application('System Events').keystroke('Hello World');"

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<root>
+
+  <item>
+    <name>Enable at only Twitter.app</name>
+
+    <item>
+      <name>Open search field by command-F</name>
+      <identifier>remap.twitter_search</identifier>
+      <only>Twitter</only>
+      <autogen>
+        __KeyToKey__
+        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
+
+        KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::OPTION_L,
+        KeyCode::VK_OPEN_URL_SHELL_click_twitter_search_field,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::VK_WAIT_100MS,
+        KeyCode::VK_WAIT_100MS,
+        PointingButton::LEFT,
+        Option::NOREPEAT,
+      </autogen>
+    </item>
+
+  </item>
+
+</root>
