@@ -77,9 +77,9 @@
         } else {
           NSUInteger number = [arguments[2] integerValue];
           NSString* vertical = arguments[3];
-          CGFloat x = [arguments[4] floatValue];
+          CGFloat y = [arguments[4] floatValue];
           NSString* horizontal = arguments[5];
-          CGFloat y = [arguments[6] floatValue];
+          CGFloat x = [arguments[6] floatValue];
 
           NSArray* screens = [NSScreen screens];
           if (number <= [screens count] - 1) {
@@ -102,9 +102,9 @@
           [self usage];
         } else {
           NSString* vertical = arguments[2];
-          CGFloat x = [arguments[3] floatValue];
+          CGFloat y = [arguments[3] floatValue];
           NSString* horizontal = arguments[4];
-          CGFloat y = [arguments[5] floatValue];
+          CGFloat x = [arguments[5] floatValue];
 
           FrontmostWindow* frontmostWindow = [FrontmostWindow new];
           if (!CGRectIsNull(frontmostWindow.windowBounds)) {
