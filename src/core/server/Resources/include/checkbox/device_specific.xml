@@ -392,6 +392,7 @@
 
       <include path="devices/logitech_m560.xml" />
       <include path="devices/logitech_m510.xml" />
+      <include path="devices/logitech_m505.xml" />
     </item>
 
     <item>
