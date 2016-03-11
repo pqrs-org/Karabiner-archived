@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
+<!-- Adds workspace and mission control support for Logitech M505 Mouse -->
 <root>
     <item>
         <name>Logitech M505 mouse</name>
-        <appendix>Adds Support for Scroll Button (Move a Workspace Left or Right & Show workspace on Scroll Click)</appendix>
+        <appendix>Adds Support for Scroll Button (Move a Workspace Left or Right and Show workspace on Scroll Click)</appendix>
 
         <!-- First setup the keyboard shortcut on your mac "Keyboard > Shortcuts > Enable "Move Left a Space" / "Move Right a Space" " -->
         <!-- Do the same for Workspace (3rd item) - Show workspace on middle click -->
@@ -16,7 +17,7 @@
         <!-- Which will move left a space -->
         <item>
             <name>Move Left a Workspace (on M505 Scroll Wheel Tilt Left)</name>
-            <identifier>logitech.m505.scroll.left</identifier>
+            <identifier>device.logitech.m505.scroll.workspace.left</identifier>
             <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
             <autogen>
                 __ScrollWheelToKey__ ScrollWheel::LEFT,
@@ -27,7 +28,7 @@
         <!-- Same as above but moving RIGHT a workspace -->
         <item>
             <name>Move Right a Workspace (on M505 Scroll Wheel Tilt Right)</name>
-            <identifier>logitech.m505.scroll.right</identifier>
+            <identifier>device.logitech.m505.scroll.workspace.right</identifier>
             <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
             <autogen>
                 __ScrollWheelToKey__
@@ -39,7 +40,7 @@
         <!-- Show workspace on click of the middle button (wheel click) -->
         <item>
             <name>Show Mission Control (on M505 Wheel Click)</name>
-            <identifier>logitech.m505.wheel.click</identifier>
+            <identifier>device.logitech.m505.wheel.click.mission.control</identifier>
             <device_only>DeviceVendor::LOGITECH, DeviceProduct::LOGITECH_USB_RECEIVER</device_only>
             <autogen>
                 __KeyToKey__ PointingButton::MIDDLE,
