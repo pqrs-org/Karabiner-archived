@@ -10,17 +10,21 @@
       <appendix>Change Option_R+8 to [</appendix>
       <appendix>Change Option_R+9 to ]</appendix>
       <appendix>Change Option_R+0 to }</appendix>
+      <appendix>──────────────────────────────</appendix>
+
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::OPTION_R, KeyCode::KEY_6, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_7, ModifierFlag::OPTION_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::KEY_0, ModifierFlag::OPTION_R, KeyCode::KEY_9, ModifierFlag::OPTION_R</autogen>
-      <appendix>──────────────────────────────</appendix>
     </item>
     <item>
       <name>Adapt Option_R to PC's AltGr (2)</name>
       <identifier>remap.german_adapt_option_r_to_pcs_altgr_2</identifier>
       <appendix>Change Option_R+'Q' to Option_R+'L' ( '@' )</appendix>
       <appendix>Change Option_R+'+' to Option_R+'N' ( '~' )</appendix>
+
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::OPTION_R, KeyCode::L, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, ModifierFlag::OPTION_R, KeyCode::N, ModifierFlag::OPTION_R</autogen>
     </item>
@@ -28,73 +32,87 @@
     <item>
       <name>Option+7 to {</name>
       <identifier>remap.german_option7_to_left_brace</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Option+8 to [</name>
       <identifier>remap.german_option8_to_left_bracket</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Option+9 to ]</name>
       <identifier>remap.german_option9_to_right_bracket</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Option+0 to }</name>
       <identifier>remap.german_option0_to_right_brace</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::KEY_0, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
       <name>Control+Ö to {</name>
       <identifier>remap.german_controlO_to_left_brace</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_8, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Command+Ö to [</name>
       <identifier>remap.german_commandO_to_left_bracket</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Command+Ä to ]</name>
       <identifier>remap.german_commandA_to_right_bracket</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::QUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_6, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Control+Ä to }</name>
       <identifier>remap.german_controlA_to_left_brace</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::QUOTE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_9, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item><name>──────────────────────────────</name></item>
     <item>
       <name>Control+PLUS to ~</name>
       <identifier>remap.german_controlPlus_to_tilde</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Option+PLUS to ~</name>
       <identifier>remap.german_optionPlus_to_tilde</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::BRACKET_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Command+MINUS to Backslash(\)</name>
       <identifier>remap.german_commandMinus_to_backslash</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::SLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Control+MINUS to Slash(/)</name>
       <identifier>remap.german_controlMinus_to_slash</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::SLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::KEY_7, ModifierFlag::SHIFT_L</autogen>
     </item>
     <item>
       <name>Option+ß to Backslash(\)</name>
       <identifier>remap.german_optionbeta2backslash</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_7, ModifierFlag::SHIFT_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Option+Q to @</name>
       <identifier>remap.german_optionQ2atmark</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
@@ -105,21 +123,25 @@
     <item>
       <name>Command+Ü to |</name>
       <identifier>remap.german_commandU2pipe</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::KEY_7, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Control+Ü to @</name>
       <identifier>remap.german_controlU2atmark</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::BRACKET_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::L, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
       <name>Option+Less-Than(&lt;) to |</name>
       <identifier>remap.german_optionLessthan_to_pipe</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
     </item>
     <item>
       <name>Swap Circumflex(^) and Less-Than(&lt;)</name>
       <identifier>remap.german_swap_circumflex_lessthan</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>__KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
       <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN, KeyCode::GERMAN_CIRCUMFLEX</autogen>
     </item>
@@ -137,8 +159,11 @@
       <identifier>remap.german_swap_circumflex_lessthan_pipe</identifier>
       <not>VIRTUALMACHINE</not>
       <inputsource_only>GERMAN</inputsource_only>
-      <autogen>__KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
-        KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::GERMAN_CIRCUMFLEX, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::GERMAN_CIRCUMFLEX, KeyCode::GERMAN_LESS_THAN</autogen>
       <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN,  KeyCode::GERMAN_CIRCUMFLEX</autogen>
     </item>
@@ -147,8 +172,11 @@
       <appendix>(+ Option+Less-Than(&lt;) to Pipe(|))</appendix>
       <identifier>remap.german_swap_circumflex_lessthan_pckeyboard</identifier>
       <not>VIRTUALMACHINE</not>
-      <autogen>__KeyToKey__ KeyCode::GERMAN_PC_LESS_THAN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
-        KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION</autogen>
+      <autogen>
+        __KeyToKey__
+        KeyCode::GERMAN_PC_LESS_THAN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE,
+        KeyCode::KEY_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+      </autogen>
       <autogen>__KeyToKey__ KeyCode::GERMAN_PC_LESS_THAN, KeyCode::GERMAN_LESS_THAN</autogen>
       <autogen>__KeyToKey__ KeyCode::GERMAN_LESS_THAN,    KeyCode::GERMAN_CIRCUMFLEX</autogen>
     </item>
@@ -157,11 +185,13 @@
       <item>
         <name>Command_L+Q to @</name>
         <identifier>remap.german_commandLQ2optionLL</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_L, KeyCode::L, ModifierFlag::OPTION_L</autogen>
       </item>
       <item>
         <name>Command_R+Q to @</name>
         <identifier>remap.german_commandRQ2optionLL</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <autogen>__KeyToKey__ KeyCode::Q, ModifierFlag::COMMAND_R, KeyCode::L, ModifierFlag::OPTION_L</autogen>
       </item>
     </item>
@@ -172,6 +202,7 @@
         <appendix>move Command_R + 8 to Option_L + 5</appendix>
         <appendix>move Command_R + 9 to Option_L + 6</appendix>
         <identifier>remap.german_map_square_bracket</identifier>
+        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::COMMAND_R, KeyCode::KEY_5, ModifierFlag::OPTION_L</autogen>
         <autogen>__KeyToKey__ KeyCode::KEY_9, ModifierFlag::COMMAND_R, KeyCode::KEY_6, ModifierFlag::OPTION_L</autogen>
       </item>
@@ -191,6 +222,7 @@
       <appendix>ö to oe</appendix>
       <appendix>ü to ue</appendix>
       <identifier>remap.german_a_to_ae</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <!-- ä to ae -->
       <autogen>__KeyToKey__ KeyCode::QUOTE,           KeyCode::A,           KeyCode::E</autogen>
       <!-- Ä to AE -->
@@ -211,37 +243,45 @@
       <appendix>Change Option_R+[ to ü</appendix>
       <appendix>Change Option_R+- to ß</appendix>
       <identifier>remap.org.openhort.german_umlaute_on_en_US</identifier>
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
 
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::SEMICOLON, ModifierFlag::OPTION_R | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
       </autogen>
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::SEMICOLON, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O,
       </autogen>
 
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::QUOTE, ModifierFlag::OPTION_R | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
       </autogen>
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::QUOTE, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A,
       </autogen>
 
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
       </autogen>
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::BRACKET_LEFT, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U,
       </autogen>
 
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::NONE,
-        KeyCode::S, ModifierFlag::OPTION_R
+        KeyCode::S, ModifierFlag::OPTION_R,
       </autogen>
     </item>
     <item>
@@ -250,31 +290,39 @@
       <appendix>Change OptionLeft+A to Ä</appendix>
       <appendix>Change OptionLeft+O to Ö</appendix>
       <identifier>remap.german_umlaute_with_us_keyboard</identifier>
-      <autogen>__KeyToKey__
+      <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+
+      <autogen>
+        __KeyToKey__
         KeyCode::O, ModifierFlag::OPTION_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
       </autogen>
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::O, ModifierFlag::OPTION_L | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::O,
       </autogen>
 
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::A, ModifierFlag::OPTION_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
       </autogen>
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::A, ModifierFlag::OPTION_L | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::A,
       </autogen>
 
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::U, ModifierFlag::OPTION_L | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
       </autogen>
-      <autogen>__KeyToKey__
+      <autogen>
+        __KeyToKey__
         KeyCode::U, ModifierFlag::OPTION_L | ModifierFlag::NONE,
-        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U
+        KeyCode::U, ModifierFlag::OPTION_R, KeyCode::U,
       </autogen>
     </item>
     <item>
@@ -282,7 +330,7 @@
       <identifier>remap.german_command_y_to_command_shift_z</identifier>
       <appendix>(except for Microsoft applications which already have this built-in)</appendix>
       <inputsource_only>GERMAN</inputsource_only>
-      <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE</not>
+      <not>WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE, VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
       <autogen>
         __KeyToKey__
         KeyCode::Z, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
