@@ -111,7 +111,43 @@
         KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
       </autogen>
     </item>
+  
+    <item>
+      <name>Scroll (Left/Right) to Move a space (natural direction)</name>
+      <appendix>(Change Left Scroll to Control+Right Arrow)</appendix>
+      <appendix>(Change Right Scroll to Control+Left Arrow)</appendix>
+      <appendix>Suggestion: use with `RightClick+CursorMove to ScrollWheel`, to be able to scroll horizontally</appendix>
+      <identifier>remap.scroll_to_controlarrow_inverse</identifier>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::LEFT, ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      </autogen>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::RIGHT, ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      </autogen>
+    </item>
 
+    <item>
+      <name>Scroll (Left/Right) to Move a space</name>
+      <appendix>(Change Left Scroll to Control+Left Arrow)</appendix>
+      <appendix>(Change Right Scroll to Control+Right Arrow)</appendix>
+      <appendix>Suggestion: use with `RightClick+CursorMove to ScrollWheel`, to be able to scroll horizontally</appendix>
+      <identifier>remap.scroll_to_controlarrow</identifier>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::LEFT, ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      </autogen>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::RIGHT, ModifierFlag::NONE,
+        KeyCode::CURSOR_RIGHT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+      </autogen>
+    </item>
+  
     <include path="expose_mode2/expose_mode2.xml" />
 
     <item>
