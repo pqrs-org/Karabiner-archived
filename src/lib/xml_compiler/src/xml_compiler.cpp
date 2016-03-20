@@ -25,6 +25,7 @@ void xml_compiler::reload(const std::string& checkbox_xml_file_name) {
   symbol_map_.clear();
   modifier_map_.clear();
   app_vector_.clear();
+  bundle_identifier_override_vector_.clear();
   window_name_vector_.clear();
   vk_change_inputsource_map_.clear();
   inputsource_vector_.clear();
@@ -121,6 +122,19 @@ void xml_compiler::reload(const std::string& checkbox_xml_file_name) {
       }
 
       loader_wrapper<app_loader>::traverse_system_xml(*this, loader, "appdef.xml");
+
+      global_included_files_.clear();
+    }
+
+    // bundle_identifier_override
+    {
+      bundle_identifier_override_loader loader(*this, symbol_map_, bundle_identifier_override_vector_);
+
+      if (private_xml_ptree_ptr) {
+        loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
+      }
+
+      loader_wrapper<bundle_identifier_override_loader>::traverse_system_xml(*this, loader, "bundleidentifieroverridedef.xml");
 
       global_included_files_.clear();
     }
@@ -340,6 +354,20 @@ boost::optional<int> xml_compiler::get_config_index(const std::string& identifie
     }
   }
   return boost::none;
+}
+
+std::string xml_compiler::override_bundle_identifier(const std::string& bundle_identifier,
+                                                     const std::string& window_name,
+                                                     const std::string& ui_element_role) const {
+  for (const auto& it : bundle_identifier_override_vector_) {
+    if (it && it->is_rules_matched(bundle_identifier, window_name, ui_element_role)) {
+      auto new_bundle_identifier = it->get_new_bundle_identifier();
+      if (new_bundle_identifier) {
+        return *new_bundle_identifier;
+      }
+    }
+  }
+  return bundle_identifier;
 }
 
 bool xml_compiler::is_app_matched(uint32_t& appid, size_t index, const std::string& application_identifier) const {

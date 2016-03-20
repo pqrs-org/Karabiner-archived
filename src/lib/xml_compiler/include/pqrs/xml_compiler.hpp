@@ -34,6 +34,7 @@ public:
 #include "pqrs/xml_compiler/detail/replacement.hpp"
 #include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
+#include "pqrs/xml_compiler/detail/bundle_identifier_override.hpp"
 #include "pqrs/xml_compiler/detail/window_name.hpp"
 #include "pqrs/xml_compiler/detail/ui_element_role.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
@@ -65,6 +66,9 @@ public:
 
   boost::optional<const std::string&> get_identifier(int config_index) const;
   boost::optional<int> get_config_index(const std::string& identifier) const;
+  std::string override_bundle_identifier(const std::string& bundle_identifier,
+                                         const std::string& window_name,
+                                         const std::string& ui_element_role) const;
   size_t get_app_vector_size(void) const { return app_vector_.size(); }
   size_t get_inputsource_vector_size(void) const { return inputsource_vector_.size(); }
   size_t get_window_name_vector_size(void) const { return window_name_vector_.size(); }
@@ -150,6 +154,7 @@ private:
   symbol_map symbol_map_;
   boost::unordered_map<uint32_t, std::shared_ptr<modifier>> modifier_map_;
   std::vector<std::shared_ptr<app>> app_vector_;
+  std::vector<std::shared_ptr<bundle_identifier_override>> bundle_identifier_override_vector_;
   std::vector<std::shared_ptr<window_name>> window_name_vector_;
   boost::unordered_map<uint32_t, std::shared_ptr<inputsource>> vk_change_inputsource_map_;
   std::vector<std::shared_ptr<inputsource>> inputsource_vector_;
