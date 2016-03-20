@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<root>
+
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>com.microsoft.rdc.mac</equal>
+    </bundleidentifiers>
+
+    <uielementroles>
+      <equal>AXTextArea</equal>
+      <equal>AXTextField</equal>
+    </uielementroles>
+  </bundleidentifieroverridedef>
+
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>karabiner.remotedesktop</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>com.google.Chrome</equal>
+    </bundleidentifiers>
+
+    <windownames>
+      <equal>Chrome Remote Desktop</equal>
+    </windownames>
+  </bundleidentifieroverridedef>
+
+</root>

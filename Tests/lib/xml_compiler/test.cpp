@@ -588,6 +588,32 @@ TEST(pqrs_xml_compiler, reload) {
 
     EXPECT_EQ(expected, actual);
   }
+
+  // ---------------------------------------
+  // override_bundle_identifier
+  {
+    auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
+                                                          "Karabiner",
+                                                          "AXTextField");
+    std::string expected = "org.pqrs.Karabiner";
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    auto actual = xml_compiler.override_bundle_identifier("com.microsoft.rdc.mac",
+                                                          "Microsoft Remote Desktop",
+                                                          "AXTextField");
+    std::string expected = "karabiner.remotedesktop-preferences";
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    auto actual = xml_compiler.override_bundle_identifier("com.google.Chrome",
+                                                          "Chrome Remote Desktop",
+                                                          "AXWindow");
+    std::string expected = "karabiner.remotedesktop";
+    EXPECT_EQ(expected, actual);
+  }
 }
 
 TEST(pqrs_xml_compiler, reload_bindings_clang) {
