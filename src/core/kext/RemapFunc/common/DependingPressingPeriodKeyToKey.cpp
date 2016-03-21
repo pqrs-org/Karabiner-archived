@@ -151,6 +151,9 @@ DependingPressingPeriodKeyToKey::DependingPressingPeriodKeyToKey(RemapFunc::Rema
     keytokey_[i].add(KeyCode::VK_PSEUDO_KEY);
   }
   beforeAfterKeys_.add(KeyCode::VK_PSEUDO_KEY);
+  // We need to push dummy toKey in order to increase index_ in KeyToKey.
+  // (If we do not do, the ModifierFlag in "Option::KEYTOKEY_AFTER_KEYUP, ModifierFlag::XXX" will be registered as FromModifier.)
+  beforeAfterKeys_.add(KeyCode::VK_NONE);
 }
 
 DependingPressingPeriodKeyToKey::~DependingPressingPeriodKeyToKey(void) {
