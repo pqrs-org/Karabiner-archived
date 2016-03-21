@@ -40,7 +40,7 @@
 @property IONotificationPortRef notifyport;
 @property CFRunLoopSourceRef loopsource;
 
-@property(copy, readwrite) NSDictionary* focusedUIElementInformation;
+@property NSMutableDictionary* mutableFocusedUIElementInformation;
 @property(copy, readwrite) NSDictionary* inputSourceInformation;
 @property(copy, readwrite) NSArray* workspaceAppIds;
 @property(copy, readwrite) NSArray* workspaceWindowNameIds;
@@ -410,16 +410,34 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     // We ignore our investigation application.
     if ([information[@"BundleIdentifier"] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) return;
 
-    self.focusedUIElementInformation = information;
+    NSMutableDictionary* dict = [NSMutableDictionary dictionaryWithDictionary:information];
+    dict[@"OriginalBundleIdentifier"] = dict[@"BundleIdentifier"];
+
+    self.mutableFocusedUIElementInformation = dict;
   }
 
-  if (self.focusedUIElementInformation) {
-    self.workspaceAppIds = [self.xmlCompiler appids:self.focusedUIElementInformation[@"BundleIdentifier"]];
-    self.workspaceWindowNameIds = [self.xmlCompiler windownameids:self.focusedUIElementInformation[@"WindowName"]];
-    self.workspaceUIElementRoleId = @([self.workSpaceData getUIElementRole:self.focusedUIElementInformation[@"UIElementRole"]]);
+  if (self.mutableFocusedUIElementInformation) {
+    // override BundleIdentifier
+    NSString* overrideBundleIdentifier = [self.xmlCompiler overrideBundleIdentifier:self.mutableFocusedUIElementInformation[@"OriginalBundleIdentifier"]
+                                                                         windowName:self.mutableFocusedUIElementInformation[@"WindowName"]
+                                                                      uiElementRole:self.mutableFocusedUIElementInformation[@"UIElementRole"]];
+    if (overrideBundleIdentifier) {
+      self.mutableFocusedUIElementInformation[@"BundleIdentifier"] = overrideBundleIdentifier;
+    } else {
+      self.mutableFocusedUIElementInformation[@"BundleIdentifier"] = self.mutableFocusedUIElementInformation[@"OriginalBundleIdentifier"];
+    }
+
+    // ----------------------------------------
+    self.workspaceAppIds = [self.xmlCompiler appids:self.mutableFocusedUIElementInformation[@"BundleIdentifier"]];
+    self.workspaceWindowNameIds = [self.xmlCompiler windownameids:self.mutableFocusedUIElementInformation[@"WindowName"]];
+    self.workspaceUIElementRoleId = @([self.workSpaceData getUIElementRole:self.mutableFocusedUIElementInformation[@"UIElementRole"]]);
   }
 
   [self send_workspacedata_to_kext];
+}
+
+- (NSDictionary*)focusedUIElementInformation {
+  return self.mutableFocusedUIElementInformation;
 }
 
 // ------------------------------------------------------------
