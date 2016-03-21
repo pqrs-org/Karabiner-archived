@@ -92,6 +92,23 @@ int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* i
   return *v;
 }
 
+const char* pqrs_xml_compiler_override_bundle_identifier(const pqrs_xml_compiler* p,
+                                                         const char* bundle_identifier,
+                                                         const char* window_name,
+                                                         const char* ui_element_role) {
+  const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return nullptr;
+
+  if (!bundle_identifier) return nullptr;
+  if (!window_name) return nullptr;
+  if (!ui_element_role) return nullptr;
+
+  auto v = xml_compiler->override_bundle_identifier(bundle_identifier, window_name, ui_element_role);
+  if (!v) return nullptr;
+
+  return v->c_str();
+}
+
 size_t pqrs_xml_compiler_get_app_vector_size(const pqrs_xml_compiler* p) {
   const pqrs::xml_compiler* xml_compiler = reinterpret_cast<const pqrs::xml_compiler*>(p);
   if (!xml_compiler) return 0;

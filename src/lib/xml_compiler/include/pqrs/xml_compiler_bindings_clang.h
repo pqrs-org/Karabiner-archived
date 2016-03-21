@@ -27,6 +27,10 @@ uint32_t pqrs_xml_compiler_get_symbol_map_value(const pqrs_xml_compiler* p, cons
 const char* pqrs_xml_compiler_get_symbol_map_name(const pqrs_xml_compiler* p, const char* type, uint32_t value);
 const char* pqrs_xml_compiler_get_identifier(const pqrs_xml_compiler* p, int config_index);
 int pqrs_xml_compiler_get_config_index(const pqrs_xml_compiler* p, const char* identifier);
+const char* pqrs_xml_compiler_override_bundle_identifier(const pqrs_xml_compiler* p,
+                                                         const char* bundle_identifier,
+                                                         const char* window_name,
+                                                         const char* ui_element_role);
 size_t pqrs_xml_compiler_get_app_vector_size(const pqrs_xml_compiler* p);
 size_t pqrs_xml_compiler_get_inputsource_vector_size(const pqrs_xml_compiler* p);
 size_t pqrs_xml_compiler_get_window_name_vector_size(const pqrs_xml_compiler* p);
