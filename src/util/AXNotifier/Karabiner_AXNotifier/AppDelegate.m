@@ -72,6 +72,11 @@ send:
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
+      // systemuiserver is handled by WindowObserver. (== observer_kWindowVisibilityChanged)
+      if ([d[@"bundleIdentifier"] isEqualToString:@"com.apple.systemuiserver"]) {
+        return;
+      }
+
       self.focusedUIElementInformation = @{
         @"BundleIdentifier" : d[@"bundleIdentifier"],
         @"WindowName" : d[@"title"],

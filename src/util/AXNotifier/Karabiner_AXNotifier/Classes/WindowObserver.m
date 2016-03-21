@@ -1,6 +1,27 @@
 #import "NotificationKeys.h"
 #import "WindowObserver.h"
 
+// We have to observe systemuiserver because of OS X issue.
+// OS X sends NSWorkspaceDidActivateApplicationNotification when systemuiserver is activated.
+// But OS X does not send NSWorkspaceDidActivateApplicationNotification when systemuiserver is deactivated
+// even if the frontmost application is changed to the previous app.
+//
+// ----------------------------------------
+// For example:
+//   (1) Focus to Terminal.
+//       (NSWorkspaceDidActivateApplicationNotification will be sent.)
+//
+//   (2) Open Wi-Fi menu.
+//       (NSWorkspaceDidActivateApplicationNotification will be sent.)
+//
+//   (3) Close Wi-Fi menu.
+//       (The frontmost application is changed to Terminal.
+//       But NSWorkspaceDidActivateApplicationNotification is not sent.)
+// ----------------------------------------
+//
+// After (3), <only>TERMINAL</only> does not work properly.
+#define kTargetWindowSystemUIServer @"SystemUIServer"
+
 #define kTargetWindowLaunchpad @"Launchpad"
 #define kTargetWindowSpotlight @"Spotlight"
 #define kTargetWindowQuicksilver @"Quicksilver"
@@ -27,12 +48,25 @@
 
 @implementation WindowObserver : NSObject
 
+- (void)observer_kFocusedUIElementChanged:(NSNotification*)notification {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    // For SystemUIServer
+    [self refreshWindowIDs];
+    [self checkWindows];
+  });
+}
+
 - (instancetype)init {
   self = [super init];
 
   if (self) {
     self.shown = [NSMutableDictionary new];
     self.targetWindows = [NSMutableDictionary new];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(observer_kFocusedUIElementChanged:)
+                                                 name:kFocusedUIElementChanged
+                                               object:nil];
 
     self.refreshWindowIDsTimer = [NSTimer scheduledTimerWithTimeInterval:10
                                                                   target:self
@@ -54,6 +88,8 @@
 }
 
 - (void)dealloc {
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+
   [self.timer invalidate];
 
   [self.targetWindows removeAllObjects];
@@ -81,6 +117,17 @@
     }
     self.cfWindowIDs = CFArrayCreate(NULL, (const void**)(self.rawWindowIDs), count, NULL);
   }
+}
+
+- (BOOL)isSystemUIServer:(NSString*)windowOwnerName
+              windowName:(NSString*)windowName
+             windowLayer:(NSInteger)windowLayer {
+  if ([windowOwnerName isEqualToString:@"SystemUIServer"] &&
+      windowLayer == 101) {
+    return YES;
+  }
+
+  return NO;
 }
 
 - (BOOL)isLaunchpad:(NSString*)windowOwnerName
@@ -232,96 +279,111 @@
 - (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      // ----------------------------------------
-      // update targetWindows_.
-      [self.targetWindows removeAllObjects];
-
-      NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionAll,
-                                                                                 kCGNullWindowID));
-      for (NSDictionary* window in windows) {
-        NSString* windowOwnerName = window[(__bridge NSString*)(kCGWindowOwnerName)];
-        NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
-        NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
-
-        if ([self isLaunchpad:windowOwnerName
-                   windowName:windowName
-                  windowLayer:windowLayer]) {
-          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          self.targetWindows[@(windowNumber)] = kTargetWindowLaunchpad;
-        }
-
-        if ([self isSpotlight:windowOwnerName
-                   windowName:windowName
-                  windowLayer:windowLayer]) {
-          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          self.targetWindows[@(windowNumber)] = kTargetWindowSpotlight;
-        }
-
-        if ([self isQuicksilver:windowOwnerName
-                     windowName:windowName
-                    windowLayer:windowLayer]) {
-          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          self.targetWindows[@(windowNumber)] = kTargetWindowQuicksilver;
-        }
-
-        if ([self isAlfred:windowOwnerName
-                 windowName:windowName
-                windowLayer:windowLayer]) {
-          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          self.targetWindows[@(windowNumber)] = kTargetWindowAlfred;
-        }
-
-        if ([self isOmniFocus:windowOwnerName
-                   windowName:windowName
-                  windowLayer:windowLayer]) {
-          NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          self.targetWindows[@(windowNumber)] = kTargetWindowOmniFocus;
-        }
-      }
-
-      // ----------------------------------------
-      [self updateCfWindowIDs];
+      [self refreshWindowIDs];
     }
   });
+}
+
+- (void)refreshWindowIDs {
+  // ----------------------------------------
+  // update targetWindows_.
+  [self.targetWindows removeAllObjects];
+
+  NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCopyWindowInfo(kCGWindowListOptionAll,
+                                                                             kCGNullWindowID));
+  for (NSDictionary* window in windows) {
+    NSString* windowOwnerName = window[(__bridge NSString*)(kCGWindowOwnerName)];
+    NSString* windowName = window[(__bridge NSString*)(kCGWindowName)];
+    NSInteger windowLayer = [window[(__bridge NSString*)(kCGWindowLayer)] integerValue];
+
+    if ([self isSystemUIServer:windowOwnerName
+                    windowName:windowName
+                   windowLayer:windowLayer]) {
+      NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+      self.targetWindows[@(windowNumber)] = kTargetWindowSystemUIServer;
+    }
+
+    if ([self isLaunchpad:windowOwnerName
+               windowName:windowName
+              windowLayer:windowLayer]) {
+      NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+      self.targetWindows[@(windowNumber)] = kTargetWindowLaunchpad;
+    }
+
+    if ([self isSpotlight:windowOwnerName
+               windowName:windowName
+              windowLayer:windowLayer]) {
+      NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+      self.targetWindows[@(windowNumber)] = kTargetWindowSpotlight;
+    }
+
+    if ([self isQuicksilver:windowOwnerName
+                 windowName:windowName
+                windowLayer:windowLayer]) {
+      NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+      self.targetWindows[@(windowNumber)] = kTargetWindowQuicksilver;
+    }
+
+    if ([self isAlfred:windowOwnerName
+             windowName:windowName
+            windowLayer:windowLayer]) {
+      NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+      self.targetWindows[@(windowNumber)] = kTargetWindowAlfred;
+    }
+
+    if ([self isOmniFocus:windowOwnerName
+               windowName:windowName
+              windowLayer:windowLayer]) {
+      NSInteger windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+      self.targetWindows[@(windowNumber)] = kTargetWindowOmniFocus;
+    }
+  }
+
+  // ----------------------------------------
+  [self updateCfWindowIDs];
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
     @synchronized(self) {
-      if (self.cfWindowIDs) {
-        NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(self.cfWindowIDs));
-        for (NSDictionary* window in windows) {
-          pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
-          long windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
-          BOOL isOnScreen = [window[(__bridge NSString*)(kCGWindowIsOnscreen)] boolValue];
-
-          NSString* key = self.targetWindows[@(windowNumber)];
-          if (key) {
-            if (isOnScreen) {
-              if (!self.shown[key]) {
-                NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
-                if (bundleIdentifier) {
-                  self.shown[key] = bundleIdentifier;
-                  [self postNotification:key bundleIdentifier:self.shown[key] visibility:YES];
-                }
-              }
-              return;
-            }
-          }
-        }
-      }
-
-      // ----------------------------------------
-      // There is no target window in screen.
-
-      for (NSString* key in self.shown) {
-        if (self.shown[key]) {
-          [self postNotification:key bundleIdentifier:self.shown[key] visibility:NO];
-        }
-      }
-      [self.shown removeAllObjects];
+      [self checkWindows];
     }
   });
+}
+
+- (void)checkWindows {
+  if (self.cfWindowIDs) {
+    NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(self.cfWindowIDs));
+    for (NSDictionary* window in windows) {
+      pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
+      long windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
+      BOOL isOnScreen = [window[(__bridge NSString*)(kCGWindowIsOnscreen)] boolValue];
+
+      NSString* key = self.targetWindows[@(windowNumber)];
+      if (key) {
+        if (isOnScreen) {
+          if (!self.shown[key]) {
+            NSString* bundleIdentifier = [[NSRunningApplication runningApplicationWithProcessIdentifier:windowOwnerPID] bundleIdentifier];
+            if (bundleIdentifier) {
+              self.shown[key] = bundleIdentifier;
+              [self postNotification:key bundleIdentifier:self.shown[key] visibility:YES];
+            }
+          }
+          return;
+        }
+      }
+    }
+  }
+
+  // ----------------------------------------
+  // There is no target window in screen.
+
+  for (NSString* key in self.shown) {
+    if (self.shown[key]) {
+      [self postNotification:key bundleIdentifier:self.shown[key] visibility:NO];
+    }
+  }
+  [self.shown removeAllObjects];
 }
 
 - (void)postNotification:(NSString*)windowName bundleIdentifier:(NSString*)bundleIdentifier visibility:(BOOL)visibility {
