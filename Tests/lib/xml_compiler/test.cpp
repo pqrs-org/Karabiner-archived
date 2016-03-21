@@ -595,7 +595,7 @@ TEST(pqrs_xml_compiler, reload) {
     auto actual = xml_compiler.override_bundle_identifier("com.microsoft.rdc.mac",
                                                           "Microsoft Remote Desktop",
                                                           "AXTextField");
-    std::string expected = "karabiner.remotedesktop-preferences";
+    auto expected = boost::optional<std::string>("karabiner.remotedesktop-preferences");
     EXPECT_EQ(expected, actual);
   }
 
@@ -603,7 +603,7 @@ TEST(pqrs_xml_compiler, reload) {
     auto actual = xml_compiler.override_bundle_identifier("com.google.Chrome",
                                                           "Chrome Remote Desktop",
                                                           "AXWindow");
-    std::string expected = "karabiner.remotedesktop";
+    auto expected = boost::optional<std::string>("karabiner.remotedesktop");
     EXPECT_EQ(expected, actual);
   }
 
@@ -611,7 +611,7 @@ TEST(pqrs_xml_compiler, reload) {
     auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
                                                           "Karabiner",
                                                           "AXTextField");
-    std::string expected = "org.pqrs.Karabiner";
+    boost::optional<std::string> expected = boost::none;
     EXPECT_EQ(expected, actual);
   }
 
@@ -620,7 +620,7 @@ TEST(pqrs_xml_compiler, reload) {
     auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
                                                           "Lorem ipsum dolor",
                                                           "AXTextField");
-    std::string expected = "karabiner.test";
+    auto expected = boost::optional<std::string>("karabiner.test");
     EXPECT_EQ(expected, actual);
   }
 
@@ -629,7 +629,7 @@ TEST(pqrs_xml_compiler, reload) {
     auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
                                                           "consectetur adipisicing elit",
                                                           "AXTextField");
-    std::string expected = "karabiner.test";
+    auto expected = boost::optional<std::string>("karabiner.test");
     EXPECT_EQ(expected, actual);
   }
 
@@ -638,7 +638,7 @@ TEST(pqrs_xml_compiler, reload) {
     auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
                                                           "ipsum dolor sit amet, consectetur adipisicing",
                                                           "AXTextField");
-    std::string expected = "org.pqrs.Karabiner";
+    auto expected = boost::none;
     EXPECT_EQ(expected, actual);
   }
 
@@ -647,7 +647,7 @@ TEST(pqrs_xml_compiler, reload) {
     auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
                                                           "ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
                                                           "AXTextField");
-    std::string expected = "karabiner.test";
+    auto expected = boost::optional<std::string>("karabiner.test");
     EXPECT_EQ(expected, actual);
   }
 }
