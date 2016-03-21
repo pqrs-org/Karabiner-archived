@@ -356,9 +356,9 @@ boost::optional<int> xml_compiler::get_config_index(const std::string& identifie
   return boost::none;
 }
 
-boost::optional<std::string> xml_compiler::override_bundle_identifier(const std::string& bundle_identifier,
-                                                                      const std::string& window_name,
-                                                                      const std::string& ui_element_role) const {
+boost::optional<const std::string&> xml_compiler::override_bundle_identifier(const std::string& bundle_identifier,
+                                                                             const std::string& window_name,
+                                                                             const std::string& ui_element_role) const {
   for (const auto& it : bundle_identifier_override_vector_) {
     if (it && it->is_rules_matched(bundle_identifier, window_name, ui_element_role)) {
       auto new_bundle_identifier = it->get_new_bundle_identifier();

@@ -66,9 +66,9 @@ public:
 
   boost::optional<const std::string&> get_identifier(int config_index) const;
   boost::optional<int> get_config_index(const std::string& identifier) const;
-  boost::optional<std::string> override_bundle_identifier(const std::string& bundle_identifier,
-                                                          const std::string& window_name,
-                                                          const std::string& ui_element_role) const;
+  boost::optional<const std::string&> override_bundle_identifier(const std::string& bundle_identifier,
+                                                                 const std::string& window_name,
+                                                                 const std::string& ui_element_role) const;
   size_t get_app_vector_size(void) const { return app_vector_.size(); }
   size_t get_inputsource_vector_size(void) const { return inputsource_vector_.size(); }
   size_t get_window_name_vector_size(void) const { return window_name_vector_.size(); }
