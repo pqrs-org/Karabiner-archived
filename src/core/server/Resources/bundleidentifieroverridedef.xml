@@ -1,6 +1,28 @@
 <?xml version="1.0"?>
 <root>
 
+  <!-- ======================================== -->
+  <!-- karabiner.terminal-preferences -->
+
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>karabiner.terminal-preferences</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>com.apple.Terminal</equal>
+    </bundleidentifiers>
+
+    <windownames>
+      <equal>General</equal>
+      <equal>Profiles</equal>
+      <equal>Window Groups</equal>
+      <equal>Encodings</equal>
+    </windownames>
+
+  </bundleidentifieroverridedef>
+
+  <!-- ======================================== -->
+  <!-- karabiner.remotedesktop-preferences -->
+
   <bundleidentifieroverridedef>
     <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
 
@@ -13,6 +35,25 @@
       <equal>AXTextField</equal>
     </uielementroles>
   </bundleidentifieroverridedef>
+
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>com.microsoft.rdc.mac</equal>
+    </bundleidentifiers>
+
+    <windownames>
+      <equal>Microsoft Remote Desktop</equal>
+      <equal>Preferences</equal>
+      <equal>Remote Resources</equal>
+      <equal>Azure RemoteApp</equal>
+      <prefix>Edit Remote Desktops -</prefix>
+    </windownames>
+  </bundleidentifieroverridedef>
+
+  <!-- ======================================== -->
+  <!-- karabiner.remotedesktop -->
 
   <bundleidentifieroverridedef>
     <newbundleidentifier>karabiner.remotedesktop</newbundleidentifier>
