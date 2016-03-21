@@ -4,6 +4,7 @@
   * The argument treatment in `warp-mouse-cursor-position` utility is wrong. <br />
     These adjustment values for `screen` and `front_window` were exchanged.
     For example, the vertical adjustment value for `screen` and `front_window` is used in horizontal adjustment.
+  * In some case, ModifierFlag pattern matching of `Option::KEYTOKEY_AFTER_KEYUP` in `__KeyOverlaidModifier__` and `__HoldingKeyToKey__` does not work property.
 * Prepared settings have been updated.
 
 
