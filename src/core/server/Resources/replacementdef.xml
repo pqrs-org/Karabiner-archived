@@ -250,9 +250,6 @@
   <replacementdef>
     <replacementname>PC_STYLE_BINDINGS_IGNORE_EXTRA</replacementname>
     <replacementvalue>
-      <![CDATA[
-               <windowname_not>Chrome_Remote_Desktop</windowname_not>
-               ]]>
     </replacementvalue>
   </replacementdef>
 
