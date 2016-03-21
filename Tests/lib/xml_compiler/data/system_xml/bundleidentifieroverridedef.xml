@@ -26,4 +26,18 @@
     </windownames>
   </bundleidentifieroverridedef>
 
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>karabiner.test</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>org.pqrs.Karabiner</equal>
+    </bundleidentifiers>
+
+    <windownames>
+      <prefix>Lorem ipsum</prefix>
+      <suffix>elit</suffix>
+      <regex>dolor.*eiusmod tempor</regex>
+    </windownames>
+  </bundleidentifieroverridedef>
+
 </root>

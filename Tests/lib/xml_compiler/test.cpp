@@ -592,14 +592,6 @@ TEST(pqrs_xml_compiler, reload) {
   // ---------------------------------------
   // override_bundle_identifier
   {
-    auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
-                                                          "Karabiner",
-                                                          "AXTextField");
-    std::string expected = "org.pqrs.Karabiner";
-    EXPECT_EQ(expected, actual);
-  }
-
-  {
     auto actual = xml_compiler.override_bundle_identifier("com.microsoft.rdc.mac",
                                                           "Microsoft Remote Desktop",
                                                           "AXTextField");
@@ -612,6 +604,50 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "Chrome Remote Desktop",
                                                           "AXWindow");
     std::string expected = "karabiner.remotedesktop";
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
+                                                          "Karabiner",
+                                                          "AXTextField");
+    std::string expected = "org.pqrs.Karabiner";
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    // <prefix>Lorem ipsum</prefix>
+    auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
+                                                          "Lorem ipsum dolor",
+                                                          "AXTextField");
+    std::string expected = "karabiner.test";
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    // <suffix>elit</suffix>
+    auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
+                                                          "consectetur adipisicing elit",
+                                                          "AXTextField");
+    std::string expected = "karabiner.test";
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    // not <prefix> and <suffix>
+    auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
+                                                          "ipsum dolor sit amet, consectetur adipisicing",
+                                                          "AXTextField");
+    std::string expected = "org.pqrs.Karabiner";
+    EXPECT_EQ(expected, actual);
+  }
+
+  {
+    // <regex>dolor.*eiusmod tempor</regex>
+    auto actual = xml_compiler.override_bundle_identifier("org.pqrs.Karabiner",
+                                                          "ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                                                          "AXTextField");
+    std::string expected = "karabiner.test";
     EXPECT_EQ(expected, actual);
   }
 }
