@@ -1,5 +1,8 @@
 # Since Version 10.18.0
 
+* New functions and improvements:
+  * Updates for people who add new settings by oneself:
+    * `<bundleidentifieroverridedef>` has been introduced.
 * Fixed issues:
   * The argument treatment in `warp-mouse-cursor-position` utility is wrong. <br />
     These adjustment values for `screen` and `front_window` were exchanged.
