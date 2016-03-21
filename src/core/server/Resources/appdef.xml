@@ -60,6 +60,7 @@
     <equal>com.p5sys.jump.mac.viewer.web</equal>
     <equal>com.vmware.horizon</equal>
     <equal>com.2X.Client.Mac</equal>
+    <equal>karabiner.remotedesktop</equal>
   </appdef>
 
   <appdef>
