@@ -10,6 +10,10 @@
 
 @implementation CheckboxOutlineView
 
+- (BOOL)acceptsFirstMouse:(NSEvent*)theEvent {
+  return NO;
+}
+
 - (void)mouseDown:(NSEvent*)theEvent {
   NSPoint point = [self convertPoint:theEvent.locationInWindow fromView:nil];
   NSInteger row = [self rowAtPoint:point];

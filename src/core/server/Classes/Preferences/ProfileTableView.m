@@ -6,6 +6,10 @@
   return YES;
 }
 
+- (BOOL)acceptsFirstMouse:(NSEvent*)theEvent {
+  return NO;
+}
+
 - (void)mouseDown:(NSEvent*)theEvent {
 }
 
