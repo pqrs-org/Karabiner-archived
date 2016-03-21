@@ -61,6 +61,7 @@
 - (NSString*)identifier:(uint32_t)config_index;
 - (NSString*)symbolMapName:(NSString*)type value:(uint32_t)value;
 - (int)config_index:(NSString*)identifier;
+- (NSString*)overrideBundleIdentifier:(NSString*)bundleIdentifier windowName:(NSString*)windowName uiElementRole:(NSString*)uiElementRole;
 - (NSArray*)appids:(NSString*)bundleIdentifier;
 - (NSArray*)windownameids:(NSString*)windowName;
 - (uint32_t)uielementroleid:(NSString*)uiElementRole;

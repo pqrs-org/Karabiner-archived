@@ -417,6 +417,19 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   }
 }
 
+- (NSString*)overrideBundleIdentifier:(NSString*)bundleIdentifier windowName:(NSString*)windowName uiElementRole:(NSString*)uiElementRole {
+  @synchronized(self) {
+    const char* override_bundle_identifier = pqrs_xml_compiler_override_bundle_identifier(self.pqrs_xml_compiler,
+                                                                                          [bundleIdentifier UTF8String],
+                                                                                          [windowName UTF8String],
+                                                                                          [uiElementRole UTF8String]);
+    if (override_bundle_identifier) {
+      return [NSString stringWithUTF8String:override_bundle_identifier];
+    }
+    return nil;
+  }
+}
+
 - (NSArray*)appids:(NSString*)bundleIdentifier {
   @synchronized(self) {
     NSMutableArray* ids = [NSMutableArray new];
