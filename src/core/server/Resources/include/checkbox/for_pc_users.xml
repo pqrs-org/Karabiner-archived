@@ -677,6 +677,16 @@
       <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
+      <name>Use PC Style Reload</name>
+      <appendix>(Control+R to Command_L+R)</appendix>
+      <appendix></appendix>
+      <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
+      <identifier>remap.copy_paste_winstyle_reload</identifier>
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
+      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <autogen>__KeyToKey__ KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::R, ModifierFlag::COMMAND_L</autogen>
+    </item>
+    <item>
       <name>Use PC Style New Tab</name>
       <appendix>(Control+T to Command_L+T)</appendix>
       <appendix></appendix>
