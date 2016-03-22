@@ -455,7 +455,8 @@
       <not>
         {{ PC_STYLE_BINDINGS_IGNORE_APPS }},
         <!-- except for Microsoft applications which already have this built-in -->
-        WORD, EXCEL, POWERPOINT, OUTLOOK
+        WORD, EXCEL, POWERPOINT, OUTLOOK,
+        JetBrainsApps
       </not>
       {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
       <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
@@ -1051,7 +1052,11 @@
         <name style="slight">Use PC Style PageUp/PageDown</name>
         <appendix>(behave like Option+PageUp/PageDown)</appendix>
         <identifier>remap.pclikepageupdown</identifier>
-        <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
+        <not>
+          VIRTUALMACHINE,
+          REMOTEDESKTOPCONNECTION,
+          JetBrainsApps,
+        </not>
         <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP,   ModifierFlag::OPTION_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
       </item>
