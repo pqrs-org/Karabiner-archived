@@ -1,7 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
-#import <IOKit/IOKitLib.h>
+@import Cocoa;
+@import IOKit;
 #include "bridge.h"
 
 @interface UserClient_userspace : NSObject
