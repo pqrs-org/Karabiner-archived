@@ -10,7 +10,13 @@
 @implementation ParameterOutlineView
 
 - (BOOL)validateProposedFirstResponder:(NSResponder*)responder forEvent:(NSEvent*)event {
-  return YES;
+  NSPoint point = [self convertPoint:event.locationInWindow fromView:nil];
+  NSInteger column = [self columnAtPoint:point];
+  if (column == 2) {
+    return YES;
+  } else {
+    return NO;
+  }
 }
 
 - (BOOL)acceptsFirstMouse:(NSEvent*)theEvent {
