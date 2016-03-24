@@ -3,7 +3,7 @@
 @import Cocoa;
 #import "KarabinerProtocol.h"
 
-@interface KarabinerClient : NSObject
+@interface ServerClient : NSObject
 
 - (NSDistantObject<KarabinerProtocol>*)proxy;
 

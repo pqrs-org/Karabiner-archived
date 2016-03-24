@@ -1,15 +1,15 @@
 // -*- Mode: objc -*-
 
-#import "KarabinerClient.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
+#import "ServerClient.h"
 #import "StartAtLoginUtilities.h"
 
 @interface PreferencesController ()
 
 @property NSMutableArray* oldSettings;
 @property(weak) IBOutlet NSWindow* preferencesWindow;
-@property(weak) IBOutlet KarabinerClient* client;
+@property(weak) IBOutlet ServerClient* client;
 @property(weak) IBOutlet NSButton* startAtLoginCheckbox;
 
 @end

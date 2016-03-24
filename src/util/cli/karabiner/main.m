@@ -1,5 +1,5 @@
 @import Cocoa;
-#import "KarabinerClient.h"
+#import "ServerClient.h"
 
 @interface KarabinerCLI : NSObject
 
@@ -59,7 +59,7 @@
   exit(2);
 }
 
-- (void)select:(KarabinerClient*)client command:(NSString*)command index:(NSInteger)index {
+- (void)select:(ServerClient*)client command:(NSString*)command index:(NSInteger)index {
   [[client proxy] configlist_select:index];
 
   if ([[client proxy] configlist_selectedIndex] != index) {
@@ -76,7 +76,7 @@
 
   } else {
     @try {
-      KarabinerClient* client = [KarabinerClient new];
+      ServerClient* client = [ServerClient new];
       NSString* command = arguments[1];
 
       /*  */ if ([command isEqualToString:@"list"]) {

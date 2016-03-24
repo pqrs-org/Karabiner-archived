@@ -1,11 +1,11 @@
 #import "AXApplicationObserverManager.h"
 #import "AppDelegate.h"
-#import "KarabinerClient.h"
 #import "KarabinerUtilities.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
+#import "ServerClient.h"
 #import "SharedKeys.h"
 #import "WindowObserver.h"
 
@@ -13,7 +13,7 @@
 @interface AppDelegate ()
 
 @property(assign) IBOutlet NSWindow* window;
-@property(assign) IBOutlet KarabinerClient* client;
+@property(assign) IBOutlet ServerClient* client;
 @property BOOL axEnabled;
 @property(copy) NSDictionary* focusedUIElementInformation;
 @property(copy) NSDictionary* overlaidWindowElementInformation;

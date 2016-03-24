@@ -811,7 +811,7 @@ when you touch fingers to trackpad.
                 <outlet property="startAtLoginCheckbox" destination="537" id="ykL-VB-wsX"/>
             </connections>
         </customObject>
-        <customObject id="535" customClass="KarabinerClient"/>
+        <customObject id="535" customClass="ServerClient"/>
         <userDefaultsController representsSharedInstance="YES" id="687"/>
     </objects>
     <resources>

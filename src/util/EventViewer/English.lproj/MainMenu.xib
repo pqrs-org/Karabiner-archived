@@ -861,7 +861,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                 <outlet property="label_languagecode" destination="814" id="V2a-ja-aJg"/>
             </connections>
         </customObject>
-        <customObject id="641" customClass="KarabinerClient"/>
+        <customObject id="641" customClass="ServerClient"/>
         <customObject id="826" customClass="AppQueue">
             <connections>
                 <outlet property="view" destination="884" id="xZV-dG-Wbg"/>

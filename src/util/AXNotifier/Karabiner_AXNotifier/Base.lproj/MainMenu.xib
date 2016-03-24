@@ -17,7 +17,7 @@
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
-        <customObject id="E62-9f-xSp" customClass="KarabinerClient"/>
+        <customObject id="E62-9f-xSp" customClass="ServerClient"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>

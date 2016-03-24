@@ -1,14 +1,14 @@
-#import "KarabinerClient.h"
+#import "ServerClient.h"
 #import "SharedKeys.h"
 
-@interface KarabinerClient ()
+@interface ServerClient ()
 
 @property NSDistantObject<KarabinerProtocol>* connection;
 @property dispatch_queue_t connectionQueue;
 
 @end
 
-@implementation KarabinerClient
+@implementation ServerClient
 
 - (NSDistantObject<KarabinerProtocol>*)proxy {
   dispatch_sync(self.connectionQueue, ^{
@@ -33,7 +33,7 @@
   self = [super init];
 
   if (self) {
-    self.connectionQueue = dispatch_queue_create("org.pqrs.Karabiner.KarabinerClient.connectionQueue", NULL);
+    self.connectionQueue = dispatch_queue_create("org.pqrs.Karabiner.ServerClient.connectionQueue", NULL);
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_NSConnectionDidDieNotification:)

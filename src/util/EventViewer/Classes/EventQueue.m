@@ -1,12 +1,12 @@
 #import "EventQueue.h"
-#import "KarabinerClient.h"
 #import "PreferencesKeys.h"
+#import "ServerClient.h"
 
 @interface EventQueue ()
 
 @property NSMutableArray* queue;
 @property(weak) IBOutlet NSTableView* view;
-@property(weak) IBOutlet KarabinerClient* client;
+@property(weak) IBOutlet ServerClient* client;
 
 @end
 

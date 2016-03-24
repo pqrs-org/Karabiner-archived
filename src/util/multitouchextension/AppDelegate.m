@@ -2,11 +2,11 @@
 #import "AppDelegate.h"
 #import "FingerStatus.h"
 #import "IgnoredAreaView.h"
-#import "KarabinerClient.h"
 #import "MigrationUtilities.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
+#import "ServerClient.h"
 #import "SessionObserver.h"
 #import "SharedKeys.h"
 
@@ -23,7 +23,7 @@ static NSTimer* reset_timer_;
 
 @property(weak) IBOutlet PreferencesController* preferences;
 @property(weak) IBOutlet IgnoredAreaView* ignoredAreaView;
-@property(weak) IBOutlet KarabinerClient* client;
+@property(weak) IBOutlet ServerClient* client;
 @property(copy) NSArray* mtdevices;
 @property IONotificationPortRef notifyport;
 @property CFRunLoopSourceRef loopsource;
@@ -94,7 +94,7 @@ void MTDeviceStop(MTDeviceRef, int);
 
 static AppDelegate* global_self_ = nil;
 static IgnoredAreaView* global_ignoredAreaView_ = nil;
-static KarabinerClient* global_client_ = nil;
+static ServerClient* global_client_ = nil;
 
 - (void)setValueFromTimer:(NSTimer*)timer {
   NSDictionary* dict = [timer userInfo];

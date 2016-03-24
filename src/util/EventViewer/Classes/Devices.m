@@ -1,12 +1,12 @@
 #import "Devices.h"
-#import "KarabinerClient.h"
+#import "ServerClient.h"
 #include "bridge.h"
 
 @interface Devices ()
 
 @property NSMutableArray* devices;
 @property(weak) IBOutlet NSTableView* view;
-@property(weak) IBOutlet KarabinerClient* client;
+@property(weak) IBOutlet ServerClient* client;
 
 @end
 

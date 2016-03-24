@@ -2,12 +2,12 @@
 #import "AppDelegate.h"
 #import "AppQueue.h"
 #import "Devices.h"
-#import "KarabinerClient.h"
 #import "KeyResponder.h"
 #import "MigrationUtilities.h"
 #import "OtherInformationStore.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
+#import "ServerClient.h"
 #import "SharedKeys.h"
 
 @interface AppDelegate ()
@@ -15,7 +15,7 @@
 @property(weak) IBOutlet NSWindow* window;
 @property(weak) IBOutlet AppQueue* appQueue;
 @property(weak) IBOutlet Devices* devices;
-@property(weak) IBOutlet KarabinerClient* client;
+@property(weak) IBOutlet ServerClient* client;
 @property(weak) IBOutlet OtherInformationStore* otherInformationStore;
 @property(weak) IBOutlet KeyResponder* keyResponder;
 @property(weak) IBOutlet NSTextField* label_appnames;

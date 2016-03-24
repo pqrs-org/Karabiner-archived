@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3480B3E9194AFCB100E168BC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3480B3E8194AFCB100E168BC /* CoreFoundation.framework */; };
 		34AF0F31194AFD5300C1EF75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AF0F30194AFD5300C1EF75 /* main.m */; };
-		34E8FBBD194AFE4800C94B30 /* KarabinerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8FBBC194AFE4800C94B30 /* KarabinerClient.m */; };
+		34E8FBBD194AFE4800C94B30 /* ServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8FBBC194AFE4800C94B30 /* ServerClient.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,8 +28,8 @@
 		3480B3E5194AFCB100E168BC /* karabiner */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = karabiner; sourceTree = BUILT_PRODUCTS_DIR; };
 		3480B3E8194AFCB100E168BC /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		34AF0F30194AFD5300C1EF75 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		34E8FBBB194AFE4800C94B30 /* KarabinerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerClient.h; path = ../../../share/KarabinerClient.h; sourceTree = "<group>"; };
-		34E8FBBC194AFE4800C94B30 /* KarabinerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KarabinerClient.m; path = ../../../share/KarabinerClient.m; sourceTree = "<group>"; };
+		34E8FBBB194AFE4800C94B30 /* ServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClient.h; path = ../../../share/ServerClient.h; sourceTree = "<group>"; };
+		34E8FBBC194AFE4800C94B30 /* ServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerClient.m; path = ../../../share/ServerClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 		34E8FBBA194AFDF300C94B30 /* share */ = {
 			isa = PBXGroup;
 			children = (
-				34E8FBBB194AFE4800C94B30 /* KarabinerClient.h */,
-				34E8FBBC194AFE4800C94B30 /* KarabinerClient.m */,
+				34E8FBBB194AFE4800C94B30 /* ServerClient.h */,
+				34E8FBBC194AFE4800C94B30 /* ServerClient.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -138,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34E8FBBD194AFE4800C94B30 /* KarabinerClient.m in Sources */,
+				34E8FBBD194AFE4800C94B30 /* ServerClient.m in Sources */,
 				34AF0F31194AFD5300C1EF75 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
