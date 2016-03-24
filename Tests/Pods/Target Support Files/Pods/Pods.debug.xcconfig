@@ -1,0 +1,6 @@
+CLANG_CXX_LIBRARY = libc++
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = GoogleTest/include/ $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GoogleTest"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/GoogleTest"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"GoogleTest" -framework "Cocoa"
+PODS_ROOT = ${SRCROOT}/Pods

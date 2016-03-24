@@ -26,9 +26,6 @@ src/util/prefpane/Info.plist
 src/util/uninstaller/Info.plist
 src/util/updater/Info.plist
 
-### CocoaPods ###
-Pods/
-
 ### Emacs ###
 # flymake-mode
 *_flymake.*

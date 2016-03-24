@@ -4,7 +4,6 @@ CONFIGURATION = Release
 AUTOUPDATE_ICON = 'build/Release/Karabiner.app/Contents/Frameworks/Sparkle.framework/Versions/A/Resources/Autoupdate.app/Contents/Resources/AppIcon.icns'
 
 all:
-	pod install --no-repo-update
 	$(MAKE) -C Resources
 	$(MAKE) -C ../../../pkginfo
 	$(MAKE) -C ../../bridge/generator/bridge_version
@@ -47,3 +46,4 @@ run: all
 
 podupdate:
 	pod update
+	pod install --no-repo-update
