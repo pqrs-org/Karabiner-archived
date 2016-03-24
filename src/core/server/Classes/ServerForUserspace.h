@@ -1,9 +1,9 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 @import Cocoa;
-#import "KarabinerProtocol.h"
+#import "ServerClientProtocol.h"
 
-@interface ServerForUserspace : NSObject <KarabinerProtocol>
+@interface ServerForUserspace : NSObject <ServerClientProtocol>
 
 - (BOOL) register;
 

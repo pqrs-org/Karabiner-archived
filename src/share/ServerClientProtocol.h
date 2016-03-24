@@ -2,7 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@protocol KarabinerProtocol
+@protocol ServerClientProtocol
 - (int)value:(NSString *)name;
 - (int)defaultValue:(NSString *)name;
 - (void)setValue:(int)newval forName:(NSString *)name;

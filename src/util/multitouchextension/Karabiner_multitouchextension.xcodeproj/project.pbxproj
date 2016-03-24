@@ -36,7 +36,7 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		3401D0E316586C5100CF962F /* KarabinerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerProtocol.h; path = ../../share/KarabinerProtocol.h; sourceTree = "<group>"; };
+		3401D0E316586C5100CF962F /* ServerClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClientProtocol.h; path = ../../share/ServerClientProtocol.h; sourceTree = "<group>"; };
 		3417233F16481E9A004A996E /* IgnoredAreaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IgnoredAreaView.h; path = Classes/IgnoredAreaView.h; sourceTree = "<group>"; };
 		3417234016481E9A004A996E /* IgnoredAreaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IgnoredAreaView.m; path = Classes/IgnoredAreaView.m; sourceTree = "<group>"; };
 		342DF86D1653548700C832FE /* FingerStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FingerStatus.h; path = Classes/FingerStatus.h; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 				349AD34F13098DD400474EFD /* ServerClient.h */,
 				349AD35013098DD400474EFD /* ServerClient.m */,
 				34B2A68B1374629A00694134 /* SharedKeys.h */,
-				3401D0E316586C5100CF962F /* KarabinerProtocol.h */,
+				3401D0E316586C5100CF962F /* ServerClientProtocol.h */,
 				343CFC85130A8C7C00BA28B9 /* PreferencesController.h */,
 				343CFC86130A8C7C00BA28B9 /* PreferencesController.m */,
 				3487280A180016C40061399A /* PreferencesKeys.h */,

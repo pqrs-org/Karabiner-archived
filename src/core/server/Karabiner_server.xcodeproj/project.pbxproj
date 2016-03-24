@@ -118,7 +118,7 @@
 		3401D0D91657CE6A00CF962F /* Updater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Updater.m; path = Classes/Updater.m; sourceTree = "<group>"; };
 		3401D0DB1657DD4800CF962F /* ClientForKernelspace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientForKernelspace.h; path = Classes/ClientForKernelspace.h; sourceTree = "<group>"; };
 		3401D0DC1657DD4800CF962F /* ClientForKernelspace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientForKernelspace.m; path = Classes/ClientForKernelspace.m; sourceTree = "<group>"; };
-		3401D0DE16586C0700CF962F /* KarabinerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerProtocol.h; path = ../../share/KarabinerProtocol.h; sourceTree = "<group>"; };
+		3401D0DE16586C0700CF962F /* ServerClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClientProtocol.h; path = ../../share/ServerClientProtocol.h; sourceTree = "<group>"; };
 		3401D0FB1658718100CF962F /* NotificationKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationKeys.h; path = Classes/NotificationKeys.h; sourceTree = "<group>"; };
 		3406F70D1668ED7000FE1E80 /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
 		340B7E3D1545090D00FB3237 /* InputSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InputSource.h; path = Classes/InputSource.h; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 				342A42D61A8EE7EE0007D37E /* IOHIDPostEventWrapper.h */,
 				342A42D71A8EE7EE0007D37E /* IOHIDPostEventWrapper.m */,
 				34B2A65A13745B6000694134 /* SharedKeys.h */,
-				3401D0DE16586C0700CF962F /* KarabinerProtocol.h */,
+				3401D0DE16586C0700CF962F /* ServerClientProtocol.h */,
 				34B41845194B5C1900707306 /* MigrationUtilities.h */,
 				34B41846194B5C1900707306 /* MigrationUtilities.m */,
 				34CB2F2E19565E2B00A6E0E3 /* Relauncher.h */,

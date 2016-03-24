@@ -45,7 +45,7 @@
 		3441AA3A194AF4CB00A96684 /* ServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClient.h; path = ../../share/ServerClient.h; sourceTree = "<group>"; };
 		3441AA3B194AF4CB00A96684 /* ServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerClient.m; path = ../../share/ServerClient.m; sourceTree = "<group>"; };
 		3441AA3C194AF4CB00A96684 /* SharedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedKeys.h; path = ../../share/SharedKeys.h; sourceTree = "<group>"; };
-		3441AA3D194AF4CB00A96684 /* KarabinerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerProtocol.h; path = ../../share/KarabinerProtocol.h; sourceTree = "<group>"; };
+		3441AA3D194AF4CB00A96684 /* ServerClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClientProtocol.h; path = ../../share/ServerClientProtocol.h; sourceTree = "<group>"; };
 		346FDD261BA6E58500B1072E /* EventViewerApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventViewerApplication.h; path = Classes/EventViewerApplication.h; sourceTree = "<group>"; };
 		346FDD271BA6E58500B1072E /* EventViewerApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventViewerApplication.m; path = Classes/EventViewerApplication.m; sourceTree = "<group>"; };
 		3481A9B81BC524280092E8EC /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = Classes/PreferencesManager.h; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 				3441AA3A194AF4CB00A96684 /* ServerClient.h */,
 				3441AA3B194AF4CB00A96684 /* ServerClient.m */,
 				3441AA3C194AF4CB00A96684 /* SharedKeys.h */,
-				3441AA3D194AF4CB00A96684 /* KarabinerProtocol.h */,
+				3441AA3D194AF4CB00A96684 /* ServerClientProtocol.h */,
 				34F16530194B096600D9765F /* MigrationUtilities.h */,
 				34F16531194B096600D9765F /* MigrationUtilities.m */,
 				34BD67EE1956620000587BE7 /* Relauncher.h */,

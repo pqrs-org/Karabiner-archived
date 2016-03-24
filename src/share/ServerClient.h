@@ -1,10 +1,10 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 @import Cocoa;
-#import "KarabinerProtocol.h"
+#import "ServerClientProtocol.h"
 
 @interface ServerClient : NSObject
 
-- (NSDistantObject<KarabinerProtocol>*)proxy;
+- (NSDistantObject<ServerClientProtocol>*)proxy;
 
 @end

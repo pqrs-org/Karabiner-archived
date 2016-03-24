@@ -3,18 +3,18 @@
 
 @interface ServerClient ()
 
-@property NSDistantObject<KarabinerProtocol>* connection;
+@property NSDistantObject<ServerClientProtocol>* connection;
 @property dispatch_queue_t connectionQueue;
 
 @end
 
 @implementation ServerClient
 
-- (NSDistantObject<KarabinerProtocol>*)proxy {
+- (NSDistantObject<ServerClientProtocol>*)proxy {
   dispatch_sync(self.connectionQueue, ^{
     if (!self.connection) {
-      self.connection = (NSDistantObject<KarabinerProtocol>*)([NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil]);
-      [self.connection setProtocolForProxy:@protocol(KarabinerProtocol)];
+      self.connection = (NSDistantObject<ServerClientProtocol>*)([NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil]);
+      [self.connection setProtocolForProxy:@protocol(ServerClientProtocol)];
     }
   });
   return self.connection;
