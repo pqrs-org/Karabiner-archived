@@ -1,5 +1,5 @@
 #import "KarabinerClient.h"
-#import "KarabinerKeys.h"
+#import "SharedKeys.h"
 
 @interface KarabinerClient ()
 

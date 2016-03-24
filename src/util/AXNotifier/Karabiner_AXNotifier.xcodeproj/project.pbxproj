@@ -58,7 +58,7 @@
 		34BD67F11956AFFD00587BE7 /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../../share/Relauncher.h; sourceTree = "<group>"; };
 		34BD67F21956AFFD00587BE7 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../../share/Relauncher.m; sourceTree = "<group>"; };
 		34D05538192C6962001A4F4F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
-		34D0553A192C6E98001A4F4F /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../../share/KarabinerKeys.h; sourceTree = "<group>"; };
+		34D0553A192C6E98001A4F4F /* SharedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedKeys.h; path = ../../../share/SharedKeys.h; sourceTree = "<group>"; };
 		34E3507C1932FC690036B0D3 /* FrontmostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontmostWindow.h; path = ../../../share/FrontmostWindow.h; sourceTree = "<group>"; };
 		34E3507D1932FC690036B0D3 /* FrontmostWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontmostWindow.m; path = ../../../share/FrontmostWindow.m; sourceTree = "<group>"; };
 		34FB0ED4192F97FB0038C1D5 /* AXUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXUtilities.h; path = Classes/AXUtilities.h; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 				34E3507D1932FC690036B0D3 /* FrontmostWindow.m */,
 				3403B07E1930EF1F003E0CC1 /* KarabinerClient.h */,
 				3403B07F1930EF1F003E0CC1 /* KarabinerClient.m */,
-				34D0553A192C6E98001A4F4F /* KarabinerKeys.h */,
+				34D0553A192C6E98001A4F4F /* SharedKeys.h */,
 				3403B0801930EF1F003E0CC1 /* KarabinerProtocol.h */,
 				342BFA7C1936DC7900DA93EC /* KarabinerUtilities.h */,
 				342BFA7D1936DC7900DA93EC /* KarabinerUtilities.m */,

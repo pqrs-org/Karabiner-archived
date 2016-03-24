@@ -1,10 +1,9 @@
-#import <Carbon/Carbon.h>
+@import Carbon;
 #import "AXNotifierManager.h"
 #import "AppDelegate.h"
 #import "AppLauncher.h"
 #import "ClientForKernelspace.h"
 #import "InputSource.h"
-#import "KarabinerKeys.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
@@ -15,6 +14,7 @@
 #import "ServerForUserspace.h"
 #import "ServerObjects.h"
 #import "SessionObserver.h"
+#import "SharedKeys.h"
 #import "StartAtLoginUtilities.h"
 #import "StatusBar.h"
 #import "StatusMessageManager.h"

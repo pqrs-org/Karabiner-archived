@@ -1,10 +1,10 @@
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
-#import "KarabinerKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "Relauncher.h"
 #import "ServerForUserspace.h"
+#import "SharedKeys.h"
 #import "XMLCompiler.h"
 
 @interface ServerForUserspace ()

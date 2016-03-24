@@ -1,12 +1,12 @@
 #import "AXApplicationObserverManager.h"
 #import "AppDelegate.h"
 #import "KarabinerClient.h"
-#import "KarabinerKeys.h"
 #import "KarabinerUtilities.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
+#import "SharedKeys.h"
 #import "WindowObserver.h"
 
 // ==================================================

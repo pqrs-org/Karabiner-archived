@@ -182,7 +182,7 @@
 		34AE71E21C78AB94002EF8FF /* AppLauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppLauncher.h; path = Classes/AppLauncher.h; sourceTree = "<group>"; };
 		34AE71E31C78AB94002EF8FF /* AppLauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppLauncher.m; path = Classes/AppLauncher.m; sourceTree = "<group>"; };
 		34AFABF1181C354C00146896 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
-		34B2A65A13745B6000694134 /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../share/KarabinerKeys.h; sourceTree = "<group>"; };
+		34B2A65A13745B6000694134 /* SharedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedKeys.h; path = ../../share/SharedKeys.h; sourceTree = "<group>"; };
 		34B41845194B5C1900707306 /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../share/MigrationUtilities.h; sourceTree = "<group>"; };
 		34B41846194B5C1900707306 /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../share/MigrationUtilities.m; sourceTree = "<group>"; };
 		34B682E81AC845AD00915847 /* StatusMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageManager.h; path = Classes/StatusMessage/StatusMessageManager.h; sourceTree = "<group>"; };
@@ -454,7 +454,7 @@
 				349120471925E19C0088F2C3 /* FrontmostWindow.m */,
 				342A42D61A8EE7EE0007D37E /* IOHIDPostEventWrapper.h */,
 				342A42D71A8EE7EE0007D37E /* IOHIDPostEventWrapper.m */,
-				34B2A65A13745B6000694134 /* KarabinerKeys.h */,
+				34B2A65A13745B6000694134 /* SharedKeys.h */,
 				3401D0DE16586C0700CF962F /* KarabinerProtocol.h */,
 				34B41845194B5C1900707306 /* MigrationUtilities.h */,
 				34B41846194B5C1900707306 /* MigrationUtilities.m */,

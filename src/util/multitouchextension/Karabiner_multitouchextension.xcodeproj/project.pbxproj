@@ -53,7 +53,7 @@
 		349AD37513098E7A00474EFD /* MultitouchSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MultitouchSupport.framework; path = System/Library/PrivateFrameworks/MultitouchSupport.framework; sourceTree = SDKROOT; };
 		349DCA271956B4DA00EC272A /* Relauncher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Relauncher.h; path = ../../share/Relauncher.h; sourceTree = "<group>"; };
 		349DCA281956B4DA00EC272A /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../share/Relauncher.m; sourceTree = "<group>"; };
-		34B2A68B1374629A00694134 /* KarabinerKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KarabinerKeys.h; path = ../../share/KarabinerKeys.h; sourceTree = "<group>"; };
+		34B2A68B1374629A00694134 /* SharedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedKeys.h; path = ../../share/SharedKeys.h; sourceTree = "<group>"; };
 		34D94444193217400062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		34D94445193217400062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
 		34FF3D861AFF88490031125C /* SessionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionObserver.h; path = ../../share/SessionObserver.h; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 				3417234016481E9A004A996E /* IgnoredAreaView.m */,
 				349AD34F13098DD400474EFD /* KarabinerClient.h */,
 				349AD35013098DD400474EFD /* KarabinerClient.m */,
-				34B2A68B1374629A00694134 /* KarabinerKeys.h */,
+				34B2A68B1374629A00694134 /* SharedKeys.h */,
 				3401D0E316586C5100CF962F /* KarabinerProtocol.h */,
 				343CFC85130A8C7C00BA28B9 /* PreferencesController.h */,
 				343CFC86130A8C7C00BA28B9 /* PreferencesController.m */,

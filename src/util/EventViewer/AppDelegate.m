@@ -1,14 +1,14 @@
+@import Carbon;
 #import "AppDelegate.h"
 #import "AppQueue.h"
 #import "Devices.h"
 #import "KarabinerClient.h"
-#import "KarabinerKeys.h"
 #import "KeyResponder.h"
 #import "MigrationUtilities.h"
 #import "OtherInformationStore.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
-#import <Carbon/Carbon.h>
+#import "SharedKeys.h"
 
 @interface AppDelegate ()
 

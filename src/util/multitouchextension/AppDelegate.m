@@ -1,14 +1,14 @@
-#include <IOKit/IOKitLib.h>
+@import IOKit;
 #import "AppDelegate.h"
 #import "FingerStatus.h"
 #import "IgnoredAreaView.h"
 #import "KarabinerClient.h"
-#import "KarabinerKeys.h"
 #import "MigrationUtilities.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
 #import "Relauncher.h"
 #import "SessionObserver.h"
+#import "SharedKeys.h"
 
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
