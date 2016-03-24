@@ -2,10 +2,5 @@ language: cpp
 os: osx
 osx_image: xcode7.2
 compiler: clang
-# We have to install newer ruby because CocoaPods will be crashed with the default ruby (ruby-2.0.0-p643).
-install:
-  - rvm install ruby-2.2.4
-  - rvm --default use 2.2.4
-  - gem install cocoapods
-  - pod setup | ruby .travis/reduce-logs.rb
+install: true
 script: make | ruby .travis/reduce-logs.rb && make -C Tests
