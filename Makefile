@@ -15,4 +15,4 @@ gitclean:
 	git clean -f -x -d
 
 ibtool-upgrade:
-	for f in `find * -name "*.xib"`; do xcrun ibtool --upgrade $$f; done
+	find * -name '*.xib' | while read f; do xcrun ibtool --upgrade "$$f"; done
