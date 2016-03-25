@@ -1,5 +1,5 @@
 all:
-	(cd Pods && xcodebuild -configuration Release SYMROOT=`pwd`/build)
+	(cd Pods && xcodebuild -configuration Release SYMROOT=$(CURDIR)/Pods/build)
 	@for d in `find * -type d`; do if [ -f "$$d/Makefile" ]; then echo "[Test] $$d"; make -C $$d run || exit 1; fi; done
 
 clean:
