@@ -1,5 +1,4 @@
-#import <IOKit/hidsystem/IOHIDLib.h>
-#import <IOKit/hidsystem/ev_keymap.h>
+@import IOKit;
 #import "IOHIDPostEventWrapper.h"
 
 @interface IOHIDPostEventWrapper ()

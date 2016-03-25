@@ -1,7 +1,3 @@
-//
-// Prefix header for all source files of the 'Karabiner_multitouchextension' target in the 'Karabiner_multitouchextension' project
-//
-
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+@import Cocoa;
 #endif

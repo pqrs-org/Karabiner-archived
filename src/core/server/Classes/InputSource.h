@@ -1,7 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
-#import <Cocoa/Cocoa.h>
-#import <Carbon/Carbon.h>
+@import Cocoa;
+@import Carbon;
 
 @interface InputSource : NSObject
 
