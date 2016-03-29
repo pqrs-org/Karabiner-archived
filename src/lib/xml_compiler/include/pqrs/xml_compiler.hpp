@@ -37,6 +37,7 @@ public:
 #include "pqrs/xml_compiler/detail/bundle_identifier_override.hpp"
 #include "pqrs/xml_compiler/detail/window_name.hpp"
 #include "pqrs/xml_compiler/detail/ui_element_role.hpp"
+#include "pqrs/xml_compiler/detail/shell_command.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
 #include "pqrs/xml_compiler/detail/preferences_node.hpp"
 #include "pqrs/xml_compiler/detail/essential_configuration.hpp"
@@ -156,6 +157,7 @@ private:
   std::vector<std::shared_ptr<app>> app_vector_;
   std::vector<std::shared_ptr<bundle_identifier_override>> bundle_identifier_override_vector_;
   std::vector<std::shared_ptr<window_name>> window_name_vector_;
+  std::vector<std::shared_ptr<shell_command>> shell_command_vector_;
   boost::unordered_map<uint32_t, std::shared_ptr<inputsource>> vk_change_inputsource_map_;
   std::vector<std::shared_ptr<inputsource>> inputsource_vector_;
   boost::unordered_map<uint32_t, std::shared_ptr<url>> vk_open_url_map_;
