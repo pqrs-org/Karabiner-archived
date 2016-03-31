@@ -35,7 +35,6 @@
                 <outlet property="xmlCompiler" destination="591" id="VFc-Dx-zkN"/>
             </connections>
         </customObject>
-        <customObject id="420" customClass="NSFontManager"/>
         <customObject id="552" customClass="StatusBar">
             <connections>
                 <outlet property="menu" destination="553" id="a0C-6W-4wB"/>
