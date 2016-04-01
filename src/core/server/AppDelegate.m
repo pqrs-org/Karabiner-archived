@@ -386,7 +386,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
     } else {
       if (![StartAtLoginUtilities isStartAtLogin] &&
           [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin]) {
-        [self openPreferences:self];
+        if (relaunchedCount == 0) {
+          [self openPreferences:self];
+        }
       }
       [ServerController updateStartAtLogin:YES];
     }
