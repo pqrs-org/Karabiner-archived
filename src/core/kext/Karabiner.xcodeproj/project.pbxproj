@@ -175,6 +175,7 @@
 		34F6FE60197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34F6FE5E197059510044B4DD /* VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp */; };
 		34FFF078149867D800A1348A /* ScrollWheelToScrollWheel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */; };
 		34FFF079149867D800A1348A /* ScrollWheelToScrollWheel.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */; };
+		E1A626C61CA96FAD00E4BC9C /* ShellCommandFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = E1A626C51CA96FAD00E4BC9C /* ShellCommandFilter.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -349,6 +350,7 @@
 		34FFF076149867D800A1348A /* ScrollWheelToScrollWheel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ScrollWheelToScrollWheel.cpp; path = RemapFunc/ScrollWheelToScrollWheel.cpp; sourceTree = "<group>"; };
 		34FFF077149867D800A1348A /* ScrollWheelToScrollWheel.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ScrollWheelToScrollWheel.hpp; path = RemapFunc/ScrollWheelToScrollWheel.hpp; sourceTree = "<group>"; };
 		8DA8362C06AD9B9200E5AC22 /* Kernel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kernel.framework; path = /System/Library/Frameworks/Kernel.framework; sourceTree = "<absolute>"; };
+		E1A626C51CA96FAD00E4BC9C /* ShellCommandFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ShellCommandFilter.hpp; path = RemapFilter/ShellCommandFilter.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -598,6 +600,7 @@
 				34A7DABA1A9080C700AFCA4B /* PressingPhysicalKeysFilter.hpp */,
 				34CAB8541261195200C3FFCB /* RemapFilterBase.hpp */,
 				3442A85119B07F11007FD563 /* RemapFilterFactory.hpp */,
+				E1A626C51CA96FAD00E4BC9C /* ShellCommandFilter.hpp */,
 				345C2F0D1936B86F005CB203 /* UIElementRoleFilter.hpp */,
 				34EE5C52192CDEAA00D73DDE /* WindowNameFilter.hpp */,
 			);
@@ -665,6 +668,7 @@
 				344BB4EF12812A9F008B75F6 /* DropPointingRelativeCursorMove.hpp in Headers */,
 				346E35981BAB2D2E006EA09B /* diagnostic_macros.hpp in Headers */,
 				3477936F185B1FA800B3EF06 /* LastPressedPhysicalKey.hpp in Headers */,
+				E1A626C61CA96FAD00E4BC9C /* ShellCommandFilter.hpp in Headers */,
 				05CB4A2C12BB4C0800737491 /* ModifierFilter.hpp in Headers */,
 				3442D9E712F3123300EF7DF8 /* ForceNumLockOn.hpp in Headers */,
 				349E3C9A13371CD700E7A81C /* UserClient_kext.hpp in Headers */,

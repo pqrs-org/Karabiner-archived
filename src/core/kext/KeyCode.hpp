@@ -446,6 +446,19 @@ private:
   unsigned int value_;
 };
 
+class ShellCommand final {
+public:
+  explicit ShellCommand(unsigned int v = 0) : value_(v) {}
+  unsigned int get(void) const { return value_; }
+  bool operator==(ShellCommand other) const { return value_ == other.get(); }
+  bool operator!=(ShellCommand other) const { return !(*this == other); }
+
+#include "../../../src/bridge/output/include.kext.ShellCommand.hpp"
+
+private:
+  unsigned int value_;
+};
+
 // ======================================================================
 class InputSource final {
 public:

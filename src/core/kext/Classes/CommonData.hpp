@@ -32,6 +32,7 @@ public:
   static const Vector_WorkspaceAppId& getcurrent_workspaceAppIds(void) { return current_workspaceAppIds_; }
   static const Vector_WorkspaceWindowNameId& getcurrent_workspaceWindowNameIds(void) { return current_workspaceWindowNameIds_; }
   static const WorkspaceUIElementRoleId getcurrent_workspaceUIElementRoleId(void) { return current_workspaceUIElementRoleId_; }
+  static const Vector_WorkspaceShellCommandId& getcurrent_workspaceShellCommandIds(void) { return current_workspaceShellCommandIds_; }
   static const Vector_WorkspaceInputSourceId& getcurrent_workspaceInputSourceIds(void) { return current_workspaceInputSourceIds_; }
 
   static void setcurrent_lastpressedphysicalkey(const Params_Base& newval) {
@@ -86,6 +87,7 @@ private:
   static Vector_WorkspaceInputSourceId current_workspaceInputSourceIds_;
   static WorkspaceUIElementRoleId current_workspaceUIElementRoleId_;
   static Vector_WorkspaceWindowNameId current_workspaceWindowNameIds_;
+  static Vector_WorkspaceShellCommandId current_workspaceShellCommandIds_;
   static LastPressedPhysicalKey current_lastpressedphysicalkey_;
   static LastReleasedPhysicalKey current_lastreleasedphysicalkey_;
   static LastSentEvent current_lastsentevent_;

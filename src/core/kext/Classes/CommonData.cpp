@@ -11,6 +11,7 @@ Vector_WorkspaceAppId CommonData::current_workspaceAppIds_;
 Vector_WorkspaceInputSourceId CommonData::current_workspaceInputSourceIds_;
 WorkspaceUIElementRoleId CommonData::current_workspaceUIElementRoleId_;
 Vector_WorkspaceWindowNameId CommonData::current_workspaceWindowNameIds_;
+Vector_WorkspaceShellCommandId CommonData::current_workspaceShellCommandIds_;
 
 LastPressedPhysicalKey CommonData::current_lastpressedphysicalkey_;
 LastReleasedPhysicalKey CommonData::current_lastreleasedphysicalkey_;
@@ -31,6 +32,7 @@ void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
   current_workspaceAppIds_.clear();
   current_workspaceWindowNameIds_.clear();
   current_workspaceUIElementRoleId_ = WorkspaceUIElementRoleId(0);
+  current_workspaceShellCommandIds_.clear();
   current_workspaceInputSourceIds_.clear();
 
   for (int i = 0; i < static_cast<int>(count) - 1; i += 2) {
@@ -55,6 +57,10 @@ void CommonData::setcurrent_workspaceIds(const uint32_t* ids, size_t count) {
 
     case BRIDGE_WORKSPACETYPE_WINDOW_NAME_ID:
       current_workspaceWindowNameIds_.push_back(WorkspaceWindowNameId(value));
+      break;
+
+    case BRIDGE_WORKSPACETYPE_SHELL_COMMAND_ID:
+      current_workspaceShellCommandIds_.push_back(WorkspaceShellCommandId(value));
       break;
 
     default:

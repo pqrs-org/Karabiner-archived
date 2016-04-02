@@ -18,6 +18,10 @@ void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
       add_(BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT, "UIElementRole::", it.get_data());
     } else if (it.get_tag_name() == "uielementrole_only") {
       add_(BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY, "UIElementRole::", it.get_data());
+    } else if (it.get_tag_name() == "shellcommand_not") {
+      add_(BRIDGE_FILTERTYPE_SHELLCOMMAND_NOT, "", it.get_data());
+    } else if (it.get_tag_name() == "shellcommand_only") {
+      add_(BRIDGE_FILTERTYPE_SHELLCOMMAND_ONLY, "", it.get_data());
     } else if (it.get_tag_name() == "config_not") {
       add_(BRIDGE_FILTERTYPE_CONFIG_NOT, "ConfigIndex::", it.get_data());
     } else if (it.get_tag_name() == "config_only") {

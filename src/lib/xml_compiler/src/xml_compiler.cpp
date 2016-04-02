@@ -27,6 +27,7 @@ void xml_compiler::reload(const std::string& checkbox_xml_file_name) {
   app_vector_.clear();
   bundle_identifier_override_vector_.clear();
   window_name_vector_.clear();
+  shell_command_vector_.clear();
   vk_change_inputsource_map_.clear();
   inputsource_vector_.clear();
   vk_open_url_map_.clear();
@@ -161,6 +162,19 @@ void xml_compiler::reload(const std::string& checkbox_xml_file_name) {
       }
 
       loader_wrapper<ui_element_role_loader>::traverse_system_xml(*this, loader, "uielementroledef.xml");
+
+      global_included_files_.clear();
+    }
+
+    // shell_command
+    {
+      shell_command_loader loader(*this, symbol_map_, shell_command_vector_);
+
+      if (private_xml_ptree_ptr) {
+        loader.traverse(make_extracted_ptree(*private_xml_ptree_ptr, private_xml_file_path));
+      }
+
+      loader_wrapper<shell_command_loader>::traverse_system_xml(*this, loader, "shellcommanddef.xml");
 
       global_included_files_.clear();
     }

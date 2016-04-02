@@ -132,4 +132,7 @@ DECLARE_VECTOR_WITH_HELPER(WorkspaceUIElementRoleId);
 DECLARE_WORKSPACE_CLASS(WorkspaceWindowNameId);
 DECLARE_VECTOR_WITH_HELPER(WorkspaceWindowNameId);
 
+DECLARE_WORKSPACE_CLASS(WorkspaceShellCommandId);
+DECLARE_VECTOR_WITH_HELPER(WorkspaceShellCommandId);
+
 #endif

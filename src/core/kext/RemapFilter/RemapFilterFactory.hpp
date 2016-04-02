@@ -17,6 +17,7 @@
 #include "PressingPhysicalKeysFilter.hpp"
 #include "UIElementRoleFilter.hpp"
 #include "WindowNameFilter.hpp"
+#include "ShellCommandFilter.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
@@ -96,6 +97,10 @@ public:
     case BRIDGE_FILTERTYPE_UIELEMENTROLE_NOT:
     case BRIDGE_FILTERTYPE_UIELEMENTROLE_ONLY:
       return new UIElementRoleFilter(type, vec, length);
+
+    case BRIDGE_FILTERTYPE_SHELLCOMMAND_NOT:
+    case BRIDGE_FILTERTYPE_SHELLCOMMAND_ONLY:
+      return new ShellCommandFilter(type, vec, length);
     }
 
     IOLOG_ERROR("RemapFilterFactory::create unknown type:%d.\n", type);
