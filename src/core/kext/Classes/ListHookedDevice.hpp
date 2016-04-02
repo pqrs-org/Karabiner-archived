@@ -85,6 +85,7 @@ public:
   ListHookedDevice::Item* get(const IOHIDevice* device);
   ListHookedDevice::Item* get_replaced(void);
 
+  bool exists(const DeviceIdentifier& deviceIdentifier) const;
   void getDeviceInformation(BridgeDeviceInformation& out, size_t index) const;
 
   static void initializeAll(IOWorkLoop& workloop);
@@ -92,6 +93,7 @@ public:
   static void refreshAll(void);
   static size_t pressingPhysicalKeysCountAll(void);
   static void clearInternalKeyboardPressingPhysicalKeysCountAll(void);
+  static bool existsAll(const DeviceIdentifier& deviceIdentifier);
 
   static void start_refreshInProgressDevices_timer(void);
   static void refreshInProgressDevices_timer_callback(OSObject* owner, IOTimerEventSource* sender);
