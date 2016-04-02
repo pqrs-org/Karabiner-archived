@@ -114,6 +114,33 @@
       </block>
     </item>
 
+    <item>
+      <name>Device exists only</name>
+      <appendix>Change left click to middle click in Apple devices when Trackman Marble is connected.</appendix>
+      <appendix>Change right option key to middle click in Apple devices when Trackman Marble is not connected.</appendix>
+      <identifier>remap.samples_deviceexists_only</identifier>
+
+      <block>
+        <deviceexists_only>DeviceVendor::LOGITECH, DeviceProduct::Logitech_Trackman_Marble</deviceexists_only>
+        <device_only>DeviceVendor::APPLE_INC, DeviceVendor::Apple_Bluetooth</device_only>
+        <autogen>
+          __KeyToKey__
+          PointingButton::LEFT,
+          PointingButton::MIDDLE,
+        </autogen>
+      </block>
+
+      <block>
+        <deviceexists_not>DeviceVendor::LOGITECH, DeviceProduct::Logitech_Trackman_Marble</deviceexists_not>
+        <device_only>DeviceVendor::APPLE_INC, DeviceVendor::Apple_Bluetooth</device_only>
+        <autogen>
+          __KeyToKey__
+          KeyCode::OPTION_R,
+          PointingButton::MIDDLE,
+        </autogen>
+      </block>
+    </item>
+
     <!-- Config only -->
     <item>
       <name>Config only</name>
