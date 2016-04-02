@@ -4,6 +4,7 @@
 #include "bridge.h"
 #include "ApplicationFilter.hpp"
 #include "ConfigFilter.hpp"
+#include "DeviceExistsFilter.hpp"
 #include "DeviceFilter.hpp"
 #include "ElapsedTimeSinceLastPressedFilter.hpp"
 #include "ElapsedTimeSinceLastReleasedFilter.hpp"
@@ -47,6 +48,10 @@ public:
     case BRIDGE_FILTERTYPE_DEVICE_NOT:
     case BRIDGE_FILTERTYPE_DEVICE_ONLY:
       return new DeviceFilter(type, vec, length);
+
+    case BRIDGE_FILTERTYPE_DEVICEEXISTS_NOT:
+    case BRIDGE_FILTERTYPE_DEVICEEXISTS_ONLY:
+      return new DeviceExistsFilter(type, vec, length);
 
     case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN:
     case BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_LESSTHAN:

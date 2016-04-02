@@ -55,6 +55,7 @@
 		345E3ECB11D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */; };
 		345E3ECC11D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */; };
 		346A727819D8F55E00DEEDE6 /* Params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 346A727719D8F55E00DEEDE6 /* Params.cpp */; };
+		346B3BC71CB01B5000826FB0 /* DeviceExistsFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346B3BC61CB01B5000826FB0 /* DeviceExistsFilter.hpp */; };
 		346E35981BAB2D2E006EA09B /* diagnostic_macros.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346E35971BAB2D2E006EA09B /* diagnostic_macros.hpp */; };
 		346EE06C1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */; };
 		3472914214CEFC64006586F5 /* VK_WAIT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3472914014CEFC64006586F5 /* VK_WAIT.cpp */; };
@@ -227,6 +228,7 @@
 		345E3EC811D79D24004B6347 /* IgnoreMultipleSameKeyPress.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IgnoreMultipleSameKeyPress.cpp; path = RemapFunc/IgnoreMultipleSameKeyPress.cpp; sourceTree = "<group>"; };
 		345E3EC911D79D24004B6347 /* IgnoreMultipleSameKeyPress.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = IgnoreMultipleSameKeyPress.hpp; path = RemapFunc/IgnoreMultipleSameKeyPress.hpp; sourceTree = "<group>"; };
 		346A727719D8F55E00DEEDE6 /* Params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Params.cpp; path = Classes/Params.cpp; sourceTree = "<group>"; };
+		346B3BC61CB01B5000826FB0 /* DeviceExistsFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = DeviceExistsFilter.hpp; path = RemapFilter/DeviceExistsFilter.hpp; sourceTree = "<group>"; };
 		346E35971BAB2D2E006EA09B /* diagnostic_macros.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = diagnostic_macros.hpp; sourceTree = "<group>"; };
 		346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ElapsedTimeSinceLastPressedFilter.hpp; path = RemapFilter/ElapsedTimeSinceLastPressedFilter.hpp; sourceTree = "<group>"; };
 		3472914014CEFC64006586F5 /* VK_WAIT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VK_WAIT.cpp; path = VirtualKey/VK_WAIT.cpp; sourceTree = "<group>"; };
@@ -584,6 +586,7 @@
 			children = (
 				34B5E8A51261284200DCFB0D /* ApplicationFilter.hpp */,
 				34CAB8531261195200C3FFCB /* ConfigFilter.hpp */,
+				346B3BC61CB01B5000826FB0 /* DeviceExistsFilter.hpp */,
 				342C80531261B379007F15DA /* DeviceFilter.hpp */,
 				346EE06A1709D2E600BCB64E /* ElapsedTimeSinceLastPressedFilter.hpp */,
 				34C879031B83563500FF759A /* ElapsedTimeSinceLastReleasedFilter.hpp */,
@@ -692,6 +695,7 @@
 				3472914314CEFC64006586F5 /* VK_WAIT.hpp in Headers */,
 				344CF51715F9A2EA00966FB9 /* strlcpy_utf8.hpp in Headers */,
 				342D245616A5AC9100EF070F /* VK_IOHIDPOSTEVENT.hpp in Headers */,
+				346B3BC71CB01B5000826FB0 /* DeviceExistsFilter.hpp in Headers */,
 				34997E3716C7EBE3002100A5 /* VK_DEFINED_IN_USERSPACE.hpp in Headers */,
 				34779367185B1FA800B3EF06 /* GlobalLock.hpp in Headers */,
 				347A6DAC16DA54C4000DD15D /* FlipScrollWheel.hpp in Headers */,

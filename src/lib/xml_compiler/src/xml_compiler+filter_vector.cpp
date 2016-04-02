@@ -26,6 +26,10 @@ void xml_compiler::filter_vector::traverse(const extracted_ptree& pt) {
       add_(BRIDGE_FILTERTYPE_DEVICE_NOT, "", it.get_data());
     } else if (it.get_tag_name() == "device_only") {
       add_(BRIDGE_FILTERTYPE_DEVICE_ONLY, "", it.get_data());
+    } else if (it.get_tag_name() == "deviceexists_not") {
+      add_(BRIDGE_FILTERTYPE_DEVICEEXISTS_NOT, "", it.get_data());
+    } else if (it.get_tag_name() == "deviceexists_only") {
+      add_(BRIDGE_FILTERTYPE_DEVICEEXISTS_ONLY, "", it.get_data());
     } else if (it.get_tag_name() == "elapsedtimesincelastpressed_greaterthan") {
       add_(BRIDGE_FILTERTYPE_ELAPSEDTIMESINCELASTPRESSED_GREATERTHAN, "", it.get_data());
     } else if (it.get_tag_name() == "elapsedtimesincelastpressed_lessthan") {
@@ -140,7 +144,9 @@ void xml_compiler::filter_vector::add_(uint32_t filter_type,
     }
 
     case BRIDGE_FILTERTYPE_DEVICE_NOT:
-    case BRIDGE_FILTERTYPE_DEVICE_ONLY: {
+    case BRIDGE_FILTERTYPE_DEVICE_ONLY:
+    case BRIDGE_FILTERTYPE_DEVICEEXISTS_NOT:
+    case BRIDGE_FILTERTYPE_DEVICEEXISTS_ONLY: {
       if (boost::starts_with(arg, "DeviceVendor")) {
         fill_omitted_device_specifying(count);
       }
@@ -160,7 +166,9 @@ void xml_compiler::filter_vector::add_(uint32_t filter_type,
   // ------------------------------------------------------------
   // Fill DeviceProduct, DeviceLocation if needed.
   if (filter_type == BRIDGE_FILTERTYPE_DEVICE_NOT ||
-      filter_type == BRIDGE_FILTERTYPE_DEVICE_ONLY) {
+      filter_type == BRIDGE_FILTERTYPE_DEVICE_ONLY ||
+      filter_type == BRIDGE_FILTERTYPE_DEVICEEXISTS_NOT ||
+      filter_type == BRIDGE_FILTERTYPE_DEVICEEXISTS_ONLY) {
     fill_omitted_device_specifying(count);
   }
 

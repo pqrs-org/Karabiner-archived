@@ -1316,6 +1316,12 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
                   "    DeviceVendor::VENDOR3,"
                   "  </device_not>"
                   "  <device_not></device_not>"
+                  "  <deviceexists_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</deviceexists_only>"
+                  "  <deviceexists_not>"
+                  "    DeviceVendor::VENDOR3,,,,"
+                  "    DeviceProduct::PRODUCT3,"
+                  "    DeviceVendor::VENDOR3,"
+                  "  </deviceexists_not>"
                   "  <inputsource_only>INPUTSOURCE1</inputsource_only>"
                   "  <inputsource_not>INPUTSOURCE2, INPUTSOURCE3</inputsource_not>"
                   "  <inputsourcedetail_only>INPUTSOURCE1</inputsourcedetail_only>"
@@ -1425,6 +1431,23 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
 
     // <device_not></device_not>
     // ***IGNORED***
+
+    // <deviceexists_only>DeviceVendor::VENDOR1, DeviceProduct::PRODUCT1, DeviceLocation::LOCATION1</deviceexists_only>
+    expected.push_back(4); // count
+    expected.push_back(BRIDGE_FILTERTYPE_DEVICEEXISTS_ONLY);
+    expected.push_back(10);
+    expected.push_back(100);
+    expected.push_back(400);
+
+    // <deviceexists_not>DeviceVendor::VENDOR3, DeviceProduct::PRODUCT3, DeviceVendor::VENDOR3</deviceexists_not>
+    expected.push_back(7); // count
+    expected.push_back(BRIDGE_FILTERTYPE_DEVICEEXISTS_NOT);
+    expected.push_back(30);
+    expected.push_back(300);
+    expected.push_back(0); // DeviceLocation::ANY
+    expected.push_back(30);
+    expected.push_back(0); // DeviceProduct::ANY
+    expected.push_back(0); // DeviceLocation::ANY
 
     // <inputsource_only>InputSource::INPUTSOURCE1</inputsource_only>
     expected.push_back(2); // count
