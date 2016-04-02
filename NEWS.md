@@ -3,6 +3,9 @@
 * New functions and improvements:
   * Updates for people who add new settings by oneself:
     * `<bundleidentifieroverridedef>` has been introduced.
+    * The following filters have been added.
+      * `<deviceexists_not>`
+      * `<deviceexists_only>`
 * Fixed issues:
   * The argument treatment in `warp-mouse-cursor-position` utility is wrong. <br />
     These adjustment values for `screen` and `front_window` were exchanged.
