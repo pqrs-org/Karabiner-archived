@@ -64,6 +64,7 @@
 
     <windownames>
       <equal>Chrome Remote Desktop</equal>
+      <regex>- Chrome Remote Desktop</regex>
     </windownames>
   </bundleidentifieroverridedef>
 

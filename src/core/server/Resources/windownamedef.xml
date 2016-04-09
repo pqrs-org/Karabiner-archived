@@ -8,6 +8,7 @@
   <windownamedef>
     <name>Chrome_Remote_Desktop</name>
     <regex>^Chrome Remote Desktop$</regex>
+    <regex>- Chrome Remote Desktop</regex>
   </windownamedef>
 
   <windownamedef>
