@@ -272,6 +272,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [[NSApplication sharedApplication] disableRelaunchOnLogin];
+
+  // ------------------------------------------------------------
   NSInteger relaunchedCount = [Relauncher getRelaunchedCount];
 
   // ------------------------------------------------------------
@@ -292,8 +295,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // Wait until other apps connect to me.
   [NSThread sleepForTimeInterval:1];
-
-  [[NSApplication sharedApplication] disableRelaunchOnLogin];
 
   [self.preferencesManager load];
 
