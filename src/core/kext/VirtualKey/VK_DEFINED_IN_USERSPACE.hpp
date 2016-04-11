@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_DEFINED_IN_USERSPACE_HPP
-#define VIRTUALKEY_VK_DEFINED_IN_USERSPACE_HPP
+#pragma once
 
 #include "RemapClass.hpp"
 
@@ -35,5 +34,3 @@ private:
 };
 }
 }
-
-#endif

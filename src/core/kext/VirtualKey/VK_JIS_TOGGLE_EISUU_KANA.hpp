@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_JIS_TOGGLE_EISUU_KANA_HPP
-#define VIRTUALKEY_VK_JIS_TOGGLE_EISUU_KANA_HPP
+#pragma once
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
@@ -13,5 +12,3 @@ private:
 };
 }
 }
-
-#endif

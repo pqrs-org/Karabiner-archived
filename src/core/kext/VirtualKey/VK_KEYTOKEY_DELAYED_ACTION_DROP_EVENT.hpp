@@ -1,5 +1,4 @@
-#ifndef VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT_HPP
-#define VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT_HPP
+#pragma once
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
@@ -17,5 +16,3 @@ private:
 };
 }
 }
-
-#endif

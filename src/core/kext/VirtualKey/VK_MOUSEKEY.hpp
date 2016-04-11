@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_MOUSEKEY_HPP
-#define VIRTUALKEY_VK_MOUSEKEY_HPP
+#pragma once
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
@@ -74,5 +73,3 @@ private:
 };
 }
 }
-
-#endif

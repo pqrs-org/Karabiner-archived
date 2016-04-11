@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_LAZY_HPP
-#define VIRTUALKEY_VK_LAZY_HPP
+#pragma once
 
 class KeyCode;
 class ModifierFlag;
@@ -15,5 +14,3 @@ public:
 };
 }
 }
-
-#endif

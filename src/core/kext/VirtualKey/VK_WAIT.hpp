@@ -1,5 +1,4 @@
-#ifndef VK_WAIT_HPP
-#define VK_WAIT_HPP
+#pragma once
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
@@ -9,5 +8,3 @@ public:
 };
 }
 }
-
-#endif

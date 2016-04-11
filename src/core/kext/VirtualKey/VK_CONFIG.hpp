@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_CONFIG_HPP
-#define VIRTUALKEY_VK_CONFIG_HPP
+#pragma once
 
 #include "RemapClass.hpp"
 
@@ -40,5 +39,3 @@ private:
 };
 }
 }
-
-#endif

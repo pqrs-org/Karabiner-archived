@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_PARTIAL_HPP
-#define VIRTUALKEY_VK_PARTIAL_HPP
+#pragma once
 
 #include "KeyCode.hpp"
 #include "List.hpp"
@@ -27,5 +26,3 @@ private:
 };
 }
 }
-
-#endif

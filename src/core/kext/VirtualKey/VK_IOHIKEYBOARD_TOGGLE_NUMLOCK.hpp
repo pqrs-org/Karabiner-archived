@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_IOHIKEYBOARD_TOGGLE_NUMLOCK_HPP
-#define VIRTUALKEY_VK_IOHIKEYBOARD_TOGGLE_NUMLOCK_HPP
+#pragma once
 
 namespace org_pqrs_Karabiner {
 namespace VirtualKey {
@@ -9,5 +8,3 @@ public:
 };
 }
 }
-
-#endif

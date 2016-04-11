@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_VK_IOHIDPOSTEVENT_HPP
-#define VIRTUALKEY_VK_IOHIDPOSTEVENT_HPP
+#pragma once
 
 #include "RemapClass.hpp"
 
@@ -14,5 +13,3 @@ public:
 };
 }
 }
-
-#endif
