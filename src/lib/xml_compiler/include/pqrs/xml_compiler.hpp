@@ -1,5 +1,4 @@
-#ifndef PQRS_XML_COMPILER_HPP
-#define PQRS_XML_COMPILER_HPP
+#pragma once
 
 #include <cstdlib>
 #include <memory>
@@ -167,5 +166,3 @@ private:
   preferences_node_tree<preferences_number_node> preferences_number_node_tree_;
 };
 }
-
-#endif

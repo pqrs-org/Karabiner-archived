@@ -1,5 +1,4 @@
-#ifndef PQRS_VECTOR_HPP
-#define PQRS_VECTOR_HPP
+#pragma once
 
 #include <memory>
 #include <string>
@@ -14,5 +13,3 @@ void make_combination(std::vector<std::shared_ptr<std::vector<std::string>>>& v,
                       const char* seeds[], size_t seeds_size);
 }
 }
-
-#endif

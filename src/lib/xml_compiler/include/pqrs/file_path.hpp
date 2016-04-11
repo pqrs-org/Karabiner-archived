@@ -1,5 +1,4 @@
-#ifndef PQRS_FILE_PATH_HPP
-#define PQRS_FILE_PATH_HPP
+#pragma once
 
 #include <string>
 
@@ -11,5 +10,3 @@ std::string dirname(const std::string& path);
 void normalize(std::string& path);
 }
 }
-
-#endif

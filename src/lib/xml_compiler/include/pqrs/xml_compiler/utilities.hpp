@@ -1,5 +1,4 @@
-#ifndef PQRS_XML_COMPILER_UTILITIES_HPP
-#define PQRS_XML_COMPILER_UTILITIES_HPP
+#pragma once
 
 #include "bridge.h"
 
@@ -62,5 +61,3 @@ public:
   }
 };
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef BRIDGE_H
-#define BRIDGE_H
+#pragma once
 
 #include <mach/mach_types.h>
 #include <sys/types.h>
@@ -222,5 +221,3 @@ enum { STATIC_ASSERT__sizeof_BridgeDeviceInformation = 1 / (sizeof(struct Bridge
 // Example of <remap>:
 //   { 5,BRIDGE_REMAPTYPE_KEYTOKEY,BRIDGE_DATATYPE_KEYCODE,0,BRIDGE_DATATYPE_KEYCODE,11 };
 //
-
-#endif

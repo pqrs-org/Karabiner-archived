@@ -1,5 +1,4 @@
-#ifndef PQRS_STRING_HPP
-#define PQRS_STRING_HPP
+#pragma once
 
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
@@ -141,5 +140,3 @@ private:
                                                       replacement replacement);
 };
 }
-
-#endif

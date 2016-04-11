@@ -1,5 +1,4 @@
-#ifndef STRLCPY_UTF8_HPP
-#define STRLCPY_UTF8_HPP
+#pragma once
 
 namespace pqrs {
 class strlcpy_utf8 final {
@@ -42,5 +41,3 @@ public:
   }
 };
 }
-
-#endif

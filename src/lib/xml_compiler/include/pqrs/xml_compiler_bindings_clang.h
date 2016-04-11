@@ -1,5 +1,4 @@
-#ifndef PQRS_XML_COMPILER_BINDINGS_CLANG_H
-#define PQRS_XML_COMPILER_BINDINGS_CLANG_H
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {
@@ -73,6 +72,4 @@ const char* pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(const p
 
 #ifdef __cplusplus
 }
-#endif
-
 #endif
