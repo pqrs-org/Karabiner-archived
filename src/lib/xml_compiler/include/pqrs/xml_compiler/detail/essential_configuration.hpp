@@ -1,4 +1,6 @@
-// This header intentionally has no include guards.
+#pragma once
+
+#include "pqrs/xml_compiler/detail/preferences_node.hpp"
 
 class essential_configuration final {
 public:

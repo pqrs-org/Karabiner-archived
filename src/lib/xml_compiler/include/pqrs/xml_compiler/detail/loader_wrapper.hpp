@@ -1,4 +1,4 @@
-// This header intentionally has no include guards.
+#pragma once
 
 template <class T>
 class loader_wrapper final {

@@ -1,4 +1,4 @@
-// This header intentionally has no include guards.
+#pragma once
 
 class ui_element_role_loader final {
 public:

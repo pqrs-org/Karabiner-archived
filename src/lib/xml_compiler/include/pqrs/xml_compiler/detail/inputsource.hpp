@@ -1,4 +1,6 @@
-// This header intentionally has no include guards.
+#pragma once
+
+#include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
 
 class inputsource final {
 public:

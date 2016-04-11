@@ -1,4 +1,4 @@
-// This header intentionally has no include guards.
+#pragma once
 
 class remapclasses_initialize_vector final {
 public:

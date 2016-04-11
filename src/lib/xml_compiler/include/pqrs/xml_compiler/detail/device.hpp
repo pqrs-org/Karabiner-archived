@@ -1,4 +1,4 @@
-// This header intentionally has no include guards.
+#pragma once
 
 class device_loader final {
 public:

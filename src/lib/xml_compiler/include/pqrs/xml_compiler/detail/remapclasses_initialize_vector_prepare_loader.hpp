@@ -1,4 +1,4 @@
-// This header intentionally has no include guards.
+#pragma once
 
 // Preparing ConfigIndex, etc for remapclasses_initialize_vector_loader.
 // And, it's a valuable opportunity to traverse checkbox.xml. (it takes very long time!)

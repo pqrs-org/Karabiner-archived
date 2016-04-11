@@ -1,4 +1,4 @@
-// This header intentionally has no include guards.
+#pragma once
 
 class xml_compiler_runtime_error final : public std::runtime_error {
 public:

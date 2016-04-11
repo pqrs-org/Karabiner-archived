@@ -1,4 +1,7 @@
-// This header intentionally has no include guards.
+#pragma once
+
+#include "pqrs/xml_compiler/detail/symbol_map.hpp"
+#include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
 
 class app final {
 public:

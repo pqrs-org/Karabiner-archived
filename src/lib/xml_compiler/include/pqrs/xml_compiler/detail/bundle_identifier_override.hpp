@@ -1,4 +1,4 @@
-// This header intentionally has no include guards.
+#pragma once
 
 class bundle_identifier_override final {
 public:
