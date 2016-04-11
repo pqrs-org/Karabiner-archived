@@ -1,5 +1,4 @@
-#ifndef REMAPFILTERFACTORY_HPP
-#define REMAPFILTERFACTORY_HPP
+#pragma once
 
 #include "ApplicationFilter.hpp"
 #include "ConfigFilter.hpp"
@@ -104,5 +103,3 @@ public:
 };
 }
 }
-
-#endif

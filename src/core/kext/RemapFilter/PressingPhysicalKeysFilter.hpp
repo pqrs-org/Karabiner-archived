@@ -1,5 +1,4 @@
-#ifndef PRESSINGKEYSFILTER_HPP
-#define PRESSINGKEYSFILTER_HPP
+#pragma once
 
 #include "CommonData.hpp"
 #include "ListHookedDevice.hpp"
@@ -40,5 +39,3 @@ private:
 };
 }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef CONFIGFILTER_HPP
-#define CONFIGFILTER_HPP
+#pragma once
 
 #include "Config.hpp"
 #include "RemapClass.hpp"
@@ -42,5 +41,3 @@ private:
 };
 }
 }
-
-#endif

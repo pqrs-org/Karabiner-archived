@@ -1,5 +1,4 @@
-#ifndef REMAPFILTERBASE_HPP
-#define REMAPFILTERBASE_HPP
+#pragma once
 
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
@@ -58,5 +57,3 @@ typedef RemapFilterBase* RemapFilterBasePointer;
 DECLARE_VECTOR(RemapFilterBasePointer);
 }
 }
-
-#endif

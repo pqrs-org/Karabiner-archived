@@ -1,5 +1,4 @@
-#ifndef MODIFIERFILTER_HPP
-#define MODIFIERFILTER_HPP
+#pragma once
 
 #include "FlagStatus.hpp"
 #include "RemapFilterBase.hpp"
@@ -94,5 +93,3 @@ private:
 };
 }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LASTRELEASEDPHYSICALKEYFILTER_HPP
-#define LASTRELEASEDPHYSICALKEYFILTER_HPP
+#pragma once
 
 #include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
@@ -49,5 +48,3 @@ private:
 };
 }
 }
-
-#endif

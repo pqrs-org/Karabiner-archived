@@ -1,5 +1,4 @@
-#ifndef DEVICEFILTER_HPP
-#define DEVICEFILTER_HPP
+#pragma once
 
 #include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
@@ -50,5 +49,3 @@ private:
 };
 }
 }
-
-#endif

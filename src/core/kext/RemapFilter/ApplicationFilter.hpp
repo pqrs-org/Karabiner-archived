@@ -1,5 +1,4 @@
-#ifndef APPLICATIONFILTER_HPP
-#define APPLICATIONFILTER_HPP
+#pragma once
 
 #include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
@@ -40,5 +39,3 @@ private:
 };
 }
 }
-
-#endif

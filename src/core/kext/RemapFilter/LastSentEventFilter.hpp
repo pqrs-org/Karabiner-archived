@@ -1,5 +1,4 @@
-#ifndef LASTSENTEVENTFILTER_HPP
-#define LASTSENTEVENTFILTER_HPP
+#pragma once
 
 #include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
@@ -71,5 +70,3 @@ private:
 };
 }
 }
-
-#endif

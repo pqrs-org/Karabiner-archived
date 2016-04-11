@@ -1,5 +1,4 @@
-#ifndef WINDOWNAMEFILTER_HPP
-#define WINDOWNAMEFILTER_HPP
+#pragma once
 
 #include "RemapFilterBase.hpp"
 
@@ -40,5 +39,3 @@ private:
 };
 }
 }
-
-#endif

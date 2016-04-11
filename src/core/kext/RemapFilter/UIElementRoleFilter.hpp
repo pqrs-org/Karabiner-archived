@@ -1,5 +1,4 @@
-#ifndef UIELEMENTROLEFILTER_HPP
-#define UIELEMENTROLEFILTER_HPP
+#pragma once
 
 #include "CommonData.hpp"
 #include "RemapFilterBase.hpp"
@@ -43,5 +42,3 @@ private:
 };
 }
 }
-
-#endif
