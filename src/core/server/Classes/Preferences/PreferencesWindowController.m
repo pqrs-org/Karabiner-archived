@@ -1,5 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
+#import "PreferencesWindowController.h"
 #import "AXNotifierManager.h"
 #import "AppLauncher.h"
 #import "CheckboxOutlineView.h"
@@ -12,7 +13,6 @@
 #import "ParameterOutlineViewDelegate.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
-#import "PreferencesWindowController.h"
 #import "ProfileCellView.h"
 #import "ProfileTableView.h"
 #import "ProfileTableViewDataSource.h"
@@ -24,8 +24,8 @@
 #import "Updater.h"
 #import "XMLCompiler.h"
 
-#include <sys/types.h>
 #include <sys/sysctl.h>
+#include <sys/types.h>
 
 @interface PreferencesWindowController ()
 

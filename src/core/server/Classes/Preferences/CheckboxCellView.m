@@ -1,5 +1,5 @@
-#import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
+#import "CheckboxBackgroundView.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
 #import "ServerObjects.h"

@@ -1,7 +1,7 @@
+#include "KeyboardRepeat.hpp"
 #include "CommonData.hpp"
 #include "EventOutputQueue.hpp"
 #include "IOLogWrapper.hpp"
-#include "KeyboardRepeat.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "RemapClass.hpp"
 

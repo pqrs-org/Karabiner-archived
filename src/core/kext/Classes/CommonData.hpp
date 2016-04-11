@@ -1,8 +1,8 @@
 #ifndef COMMONDATA_HPP
 #define COMMONDATA_HPP
 
-#include "KeyCode.hpp"
 #include "IOLogWrapper.hpp"
+#include "KeyCode.hpp"
 #include "LastPressedPhysicalKey.hpp"
 #include "LastReleasedPhysicalKey.hpp"
 #include "LastSentEvent.hpp"

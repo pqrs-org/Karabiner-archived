@@ -1,9 +1,9 @@
 #ifndef DROPALLKEYS_HPP
 #define DROPALLKEYS_HPP
 
+#include "CancelEventOutputQueueItemsHelper.hpp"
 #include "EventOutputQueue.hpp"
 #include "RemapFuncBase.hpp"
-#include "CancelEventOutputQueueItemsHelper.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {

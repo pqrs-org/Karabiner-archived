@@ -1,9 +1,9 @@
 #ifndef LASTSENTEVENT_HPP
 #define LASTSENTEVENT_HPP
 
-#include "bridge.h"
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 class Params_Base;

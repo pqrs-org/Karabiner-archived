@@ -1,8 +1,8 @@
 #ifndef BRIDGE_H
 #define BRIDGE_H
 
-#include <sys/types.h>
 #include <mach/mach_types.h>
+#include <sys/types.h>
 
 enum {
   BRIDGE_DATATYPE_NONE,

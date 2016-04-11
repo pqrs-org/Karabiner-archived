@@ -1,5 +1,5 @@
-#import "ParameterDiffCellView.h"
 #import "ParameterOutlineViewDelegate.h"
+#import "ParameterDiffCellView.h"
 #import "ParameterValueCellView.h"
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"

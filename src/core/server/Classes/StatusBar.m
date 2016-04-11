@@ -1,9 +1,9 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
+#import "StatusBar.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
-#import "StatusBar.h"
 
 @interface StatusBar ()
 

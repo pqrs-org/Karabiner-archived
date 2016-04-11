@@ -1,9 +1,9 @@
 #ifndef REMAPCLASS_HPP
 #define REMAPCLASS_HPP
 
-#include "bridge.h"
 #include "RemapFilter/RemapFilterBase.hpp"
 #include "RemapFunc/RemapFuncBase.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 class RemapClass final {

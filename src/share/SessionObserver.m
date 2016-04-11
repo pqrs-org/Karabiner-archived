@@ -1,6 +1,6 @@
 #import "SessionObserver.h"
-#include <CoreFoundation/CoreFoundation.h>
 #include <ApplicationServices/ApplicationServices.h>
+#include <CoreFoundation/CoreFoundation.h>
 
 @interface SessionObserver ()
 

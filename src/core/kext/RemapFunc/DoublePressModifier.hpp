@@ -1,9 +1,9 @@
 #ifndef DOUBLEPRESSMODIFIER_HPP
 #define DOUBLEPRESSMODIFIER_HPP
 
-#include "RemapFuncBase.hpp"
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {

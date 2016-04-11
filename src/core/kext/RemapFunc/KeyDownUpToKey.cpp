@@ -1,5 +1,5 @@
-#include "IOLogWrapper.hpp"
 #include "KeyDownUpToKey.hpp"
+#include "IOLogWrapper.hpp"
 #include "RemapClass.hpp"
 
 namespace org_pqrs_Karabiner {

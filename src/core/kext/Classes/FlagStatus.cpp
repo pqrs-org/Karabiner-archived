@@ -1,5 +1,5 @@
-#include "CommonData.hpp"
 #include "FlagStatus.hpp"
+#include "CommonData.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
 #include "ModifierName.hpp"

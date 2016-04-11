@@ -1,5 +1,5 @@
-#include "Config.hpp"
 #include "KeyCode.hpp"
+#include "Config.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
 
 namespace org_pqrs_Karabiner {

@@ -80,7 +80,7 @@ public:
   bool operator==(Flags other) const { return value_ == other.get(); }
   bool operator!=(Flags other) const { return !(*this == other); }
 
-  unsigned int operator~(void) const { return ~value_; }
+  unsigned int operator~(void)const { return ~value_; }
   Flags operator|(Flags other) const { return Flags(value_ | other.get()); }
   Flags operator|(ModifierFlag other) const { return *this | Flags(other); }
   Flags operator&(Flags other) const { return Flags(value_ & other.get()); }
@@ -232,7 +232,7 @@ public:
   bool operator==(PointingButton other) const { return value_ == other.get(); }
   bool operator!=(PointingButton other) const { return !(*this == other); }
 
-  unsigned int operator~(void) const { return ~value_; }
+  unsigned int operator~(void)const { return ~value_; }
 
 #include "../../../src/bridge/output/include.kext.PointingButton.hpp"
 
@@ -247,7 +247,7 @@ public:
   bool operator==(Buttons other) const { return value_ == other.get(); }
   bool operator!=(Buttons other) const { return !(*this == other); }
 
-  unsigned int operator~(void) const { return ~value_; }
+  unsigned int operator~(void)const { return ~value_; }
   Buttons operator|(Buttons other) const { return Buttons(value_ | other.get()); }
   Buttons operator|(PointingButton other) const { return *this | Buttons(other); }
 

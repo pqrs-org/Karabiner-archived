@@ -1,7 +1,6 @@
 #ifndef REMAPFUNCFACTORY_HPP
 #define REMAPFUNCFACTORY_HPP
 
-#include "bridge.h"
 #include "BlockUntilKeyUp.hpp"
 #include "DoublePressModifier.hpp"
 #include "DropAllKeys.hpp"
@@ -23,6 +22,7 @@
 #include "ScrollWheelToScrollWheel.hpp"
 #include "SetKeyboardType.hpp"
 #include "SimultaneousKeyPresses.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {

@@ -1,6 +1,6 @@
+#import "ProfileTableViewDataSource.h"
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
-#import "ProfileTableViewDataSource.h"
 #import "ServerObjects.h"
 
 @interface ProfileTableViewDataSource ()

@@ -1,5 +1,5 @@
-#import "AXApplicationObserver.h"
 #import "AXApplicationObserverManager.h"
+#import "AXApplicationObserver.h"
 
 /*
  * Notification and Information

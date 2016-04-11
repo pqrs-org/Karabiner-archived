@@ -1,13 +1,16 @@
+#include "VirtualKey.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
 #include "FlagStatus.hpp"
-#include "VirtualKey.hpp"
 #include "VirtualKey/VK_CONFIG.hpp"
 #include "VirtualKey/VK_CONSUMERKEY.hpp"
 #include "VirtualKey/VK_DEFINED_IN_USERSPACE.hpp"
 #include "VirtualKey/VK_IOHIDPOSTEVENT.hpp"
 #include "VirtualKey/VK_IOHIKEYBOARD_TOGGLE_NUMLOCK.hpp"
+#include "VirtualKey/VK_JIS_BACKSLASH.hpp"
+#include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
+#include "VirtualKey/VK_JIS_YEN.hpp"
 #include "VirtualKey/VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT.hpp"
 #include "VirtualKey/VK_LAZY.hpp"
 #include "VirtualKey/VK_LOCK.hpp"
@@ -15,9 +18,6 @@
 #include "VirtualKey/VK_PARTIAL.hpp"
 #include "VirtualKey/VK_STICKY.hpp"
 #include "VirtualKey/VK_WAIT.hpp"
-#include "VirtualKey/VK_JIS_BACKSLASH.hpp"
-#include "VirtualKey/VK_JIS_TOGGLE_EISUU_KANA.hpp"
-#include "VirtualKey/VK_JIS_YEN.hpp"
 
 namespace org_pqrs_Karabiner {
 void VirtualKey::initialize(IOWorkLoop& workloop) {

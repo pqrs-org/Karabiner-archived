@@ -1,7 +1,7 @@
+#include "TimerWrapper.hpp"
 #include "CommonData.hpp"
 #include "GlobalLock.hpp"
 #include "IOLogWrapper.hpp"
-#include "TimerWrapper.hpp"
 
 #define super OSObject
 OSDefineMetaClassAndStructors(org_pqrs_Karabiner_TimerWrapperObject, OSObject);

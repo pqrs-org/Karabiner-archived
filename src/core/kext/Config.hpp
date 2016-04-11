@@ -1,10 +1,10 @@
 #ifndef CONFIG_HPP
 #define CONFIG_HPP
 
-#include <sys/types.h>
-#include <sys/sysctl.h>
-#include "bridge.h"
 #include "../../bridge/output/include.bridge_essential_configuration_enum.h"
+#include "bridge.h"
+#include <sys/sysctl.h>
+#include <sys/types.h>
 
 namespace org_pqrs_Karabiner {
 class Config final {

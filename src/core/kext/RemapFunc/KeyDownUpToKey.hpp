@@ -1,8 +1,8 @@
 #ifndef KEYDOWNUPTOKEY_HPP
 #define KEYDOWNUPTOKEY_HPP
 
-#include "RemapFuncBase.hpp"
 #include "KeyToKey.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {

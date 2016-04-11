@@ -1,7 +1,6 @@
 #ifndef REMAPFILTERFACTORY_HPP
 #define REMAPFILTERFACTORY_HPP
 
-#include "bridge.h"
 #include "ApplicationFilter.hpp"
 #include "ConfigFilter.hpp"
 #include "DeviceExistsFilter.hpp"
@@ -17,6 +16,7 @@
 #include "PressingPhysicalKeysFilter.hpp"
 #include "UIElementRoleFilter.hpp"
 #include "WindowNameFilter.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {

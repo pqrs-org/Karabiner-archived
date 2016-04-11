@@ -8,8 +8,8 @@ BEGIN_IOKIT_INCLUDE;
 #include <IOKit/IOTimerEventSource.h>
 END_IOKIT_INCLUDE;
 
-#include "bridge.h"
 #include "Vector.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 class AddDataType final {

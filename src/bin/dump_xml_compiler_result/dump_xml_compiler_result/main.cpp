@@ -1,6 +1,6 @@
-#include <iostream>
-#include <boost/algorithm/string.hpp>
 #include "pqrs/xml_compiler.hpp"
+#include <boost/algorithm/string.hpp>
+#include <iostream>
 
 namespace {
 int total_identifier_count_ = 0;

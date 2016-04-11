@@ -1,8 +1,8 @@
 #ifndef LIST_HPP
 #define LIST_HPP
 
-#include <sys/types.h>
 #include <string.h>
+#include <sys/types.h>
 
 namespace org_pqrs_Karabiner {
 class List final {

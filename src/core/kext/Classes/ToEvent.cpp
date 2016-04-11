@@ -1,7 +1,7 @@
+#include "ToEvent.hpp"
 #include "CommonData.hpp"
 #include "EventOutputQueue.hpp"
 #include "KeyboardRepeat.hpp"
-#include "ToEvent.hpp"
 #include "VirtualKey.hpp"
 
 namespace org_pqrs_Karabiner {

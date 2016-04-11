@@ -1,7 +1,7 @@
+#import "ProfileTableViewDelegate.h"
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
 #import "ProfileCellView.h"
-#import "ProfileTableViewDelegate.h"
 #import "ServerObjects.h"
 
 @interface ProfileTableViewDelegate ()

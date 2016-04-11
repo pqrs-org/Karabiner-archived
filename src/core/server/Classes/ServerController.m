@@ -1,5 +1,5 @@
-#import "PreferencesKeys.h"
 #import "ServerController.h"
+#import "PreferencesKeys.h"
 #import "StartAtLoginUtilities.h"
 
 @implementation ServerController

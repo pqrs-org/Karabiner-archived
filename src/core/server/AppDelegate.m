@@ -1,6 +1,6 @@
 @import Carbon;
-#import "AXNotifierManager.h"
 #import "AppDelegate.h"
+#import "AXNotifierManager.h"
 #import "AppLauncher.h"
 #import "ClientForKernelspace.h"
 #import "InputSource.h"

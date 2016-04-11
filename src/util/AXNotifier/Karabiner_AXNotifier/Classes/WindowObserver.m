@@ -1,5 +1,5 @@
-#import "NotificationKeys.h"
 #import "WindowObserver.h"
+#import "NotificationKeys.h"
 
 // We have to observe systemuiserver because of OS X issue.
 // OS X sends NSWorkspaceDidActivateApplicationNotification when systemuiserver is activated.

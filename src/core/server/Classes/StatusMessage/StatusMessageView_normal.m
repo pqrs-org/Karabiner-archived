@@ -1,7 +1,7 @@
 // -*- Mode: objc -*-
 
-#import "PreferencesKeys.h"
 #import "StatusMessageView_normal.h"
+#import "PreferencesKeys.h"
 
 @implementation StatusMessageView_normal
 

@@ -1,8 +1,8 @@
 #ifndef DROPKEYAFTERREMAP_HPP
 #define DROPKEYAFTERREMAP_HPP
 
-#include "RemapFuncBase.hpp"
 #include "CancelEventOutputQueueItemsHelper.hpp"
+#include "RemapFuncBase.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFunc {

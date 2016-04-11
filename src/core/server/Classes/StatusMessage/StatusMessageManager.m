@@ -1,9 +1,9 @@
+#import "StatusMessageManager.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "StatusMessageView_edge.h"
 #import "StatusMessageView_nano.h"
 #import "StatusMessageView_normal.h"
-#import "StatusMessageManager.h"
 #include "bridge.h"
 
 @interface StatusMessageManager ()

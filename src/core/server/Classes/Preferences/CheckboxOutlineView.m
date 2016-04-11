@@ -1,5 +1,5 @@
-#import "CheckboxCellView.h"
 #import "CheckboxOutlineView.h"
+#import "CheckboxCellView.h"
 #import "XMLCompiler.h"
 
 @interface CheckboxOutlineView ()

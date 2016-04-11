@@ -1,5 +1,5 @@
-#include "Config.hpp"
 #include "EventOutputQueue.hpp"
+#include "Config.hpp"
 #include "ListHookedConsumer.hpp"
 #include "ListHookedKeyboard.hpp"
 #include "ListHookedPointing.hpp"

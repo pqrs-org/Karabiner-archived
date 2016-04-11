@@ -1,7 +1,7 @@
+#include "PressingPhysicalKeys.hpp"
 #include "Config.hpp"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
-#include "PressingPhysicalKeys.hpp"
 
 namespace org_pqrs_Karabiner {
 void PressingPhysicalKeys::update(const Params_Base &paramsBase) {

@@ -1,5 +1,5 @@
-#import "AXApplicationObserverManager.h"
 #import "AppDelegate.h"
+#import "AXApplicationObserverManager.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"

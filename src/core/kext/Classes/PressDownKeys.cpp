@@ -1,9 +1,9 @@
+#include "PressDownKeys.hpp"
 #include "CommonData.hpp"
 #include "Config.hpp"
 #include "EventOutputQueue.hpp"
 #include "IOLogWrapper.hpp"
 #include "Params.hpp"
-#include "PressDownKeys.hpp"
 
 namespace org_pqrs_Karabiner {
 List PressDownKeys::list_;

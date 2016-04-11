@@ -1,5 +1,5 @@
-#import <Foundation/Foundation.h>
 #import "IOHIDPostEventWrapper.h"
+#import <Foundation/Foundation.h>
 
 @interface PostHIDEvent : NSObject
 

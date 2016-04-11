@@ -1,5 +1,5 @@
-#import "EventQueue.h"
 #import "KeyResponder.h"
+#import "EventQueue.h"
 
 @interface KeyResponder ()
 

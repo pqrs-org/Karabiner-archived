@@ -1,8 +1,8 @@
 #ifndef LASTRELEASEDPHYSICALKEY_HPP
 #define LASTRELEASEDPHYSICALKEY_HPP
 
-#include "bridge.h"
 #include "IntervalChecker.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 class Params_Base;

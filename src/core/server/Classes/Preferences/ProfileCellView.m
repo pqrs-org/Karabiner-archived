@@ -1,6 +1,6 @@
+#import "ProfileCellView.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
-#import "ProfileCellView.h"
 #import "ServerObjects.h"
 
 @implementation ProfileCellView

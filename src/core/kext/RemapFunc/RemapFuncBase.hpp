@@ -1,7 +1,6 @@
 #ifndef REMAPFUNCBASE_HPP
 #define REMAPFUNCBASE_HPP
 
-#include "bridge.h"
 #include "EventOutputQueue.hpp"
 #include "FromEvent.hpp"
 #include "IOLogWrapper.hpp"
@@ -10,6 +9,7 @@
 #include "RemapFuncClasses.hpp"
 #include "ToEvent.hpp"
 #include "WeakPointer.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 class RemapSimultaneousKeyPressesResult {

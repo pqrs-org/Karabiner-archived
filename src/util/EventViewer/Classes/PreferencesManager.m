@@ -1,5 +1,5 @@
-#import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesKeys.h"
 
 @implementation PreferencesManager
 

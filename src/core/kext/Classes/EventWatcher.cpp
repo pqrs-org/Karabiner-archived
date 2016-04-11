@@ -1,6 +1,6 @@
+#include "EventWatcher.hpp"
 #include "Config.hpp"
 #include "EventInputQueue.hpp"
-#include "EventWatcher.hpp"
 #include "IOLogWrapper.hpp"
 
 namespace org_pqrs_Karabiner {

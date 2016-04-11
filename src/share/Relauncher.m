@@ -1,5 +1,5 @@
-#import <CommonCrypto/CommonDigest.h>
 #import "Relauncher.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation Relauncher
 

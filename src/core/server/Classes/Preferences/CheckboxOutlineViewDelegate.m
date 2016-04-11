@@ -1,6 +1,6 @@
+#import "CheckboxOutlineViewDelegate.h"
 #import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
-#import "CheckboxOutlineViewDelegate.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"

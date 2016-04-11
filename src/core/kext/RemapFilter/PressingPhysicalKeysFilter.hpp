@@ -2,8 +2,8 @@
 #define PRESSINGKEYSFILTER_HPP
 
 #include "CommonData.hpp"
-#include "RemapFilterBase.hpp"
 #include "ListHookedDevice.hpp"
+#include "RemapFilterBase.hpp"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {

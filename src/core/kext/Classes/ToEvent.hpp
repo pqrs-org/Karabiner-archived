@@ -1,8 +1,8 @@
-#ifndef TOEVENT_HPP
-#define TOEVENT_HPP
+#pragma once
 
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
+#include "Params.hpp"
 #include "Vector.hpp"
 #include "bridge.h"
 
@@ -110,5 +110,3 @@ private:
 DECLARE_VECTOR(ToEvent);
 DECLARE_VECTOR(Vector_ToEvent);
 }
-
-#endif

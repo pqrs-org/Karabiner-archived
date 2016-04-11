@@ -1,8 +1,8 @@
 #ifndef EVENTWATCHER_HPP
 #define EVENTWATCHER_HPP
 
-#include "List.hpp"
 #include "EventInputQueue.hpp"
+#include "List.hpp"
 
 namespace org_pqrs_Karabiner {
 class EventWatcher final {

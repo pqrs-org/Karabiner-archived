@@ -1,10 +1,10 @@
 #ifndef REMAPFILTERBASE_HPP
 #define REMAPFILTERBASE_HPP
 
-#include "bridge.h"
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
 #include "Vector.hpp"
+#include "bridge.h"
 
 namespace org_pqrs_Karabiner {
 namespace RemapFilter {
