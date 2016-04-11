@@ -1,7 +1,7 @@
 #pragma once
 
-#include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
+#include "pqrs/xml_compiler/detail/symbol_map.hpp"
 
 class app final {
 public:

@@ -1,5 +1,6 @@
-#include <ostream>
 #include <gtest/gtest.h>
+#include <ostream>
+
 #include "Config.hpp"
 #include "FlagStatus.hpp"
 #include "KeyCode.hpp"

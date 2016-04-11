@@ -1,5 +1,6 @@
-#include <ostream>
 #include <gtest/gtest.h>
+#include <ostream>
+
 #include "List.hpp"
 
 using namespace org_pqrs_Karabiner;

@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "strlcpy_utf8.hpp"
 
 TEST(strlcpy_utf8, ascii) {

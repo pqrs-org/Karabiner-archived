@@ -1,8 +1,9 @@
 #include <boost/property_tree/xml_parser.hpp>
 #include <gtest/gtest.h>
-#include "pqrs/xml_compiler_bindings_clang.h"
-#include "pqrs/xml_compiler.hpp"
+
 #include "bridge.h"
+#include "pqrs/xml_compiler.hpp"
+#include "pqrs/xml_compiler_bindings_clang.h"
 
 TEST(pqrs_xml_compiler, reload) {
   pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");

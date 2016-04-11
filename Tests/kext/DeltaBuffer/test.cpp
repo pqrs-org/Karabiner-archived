@@ -1,6 +1,7 @@
+#include <gtest/gtest.h>
 #include <ostream>
 #include <stdexcept>
-#include <gtest/gtest.h>
+
 #include "DeltaBuffer.hpp"
 
 using namespace org_pqrs_Karabiner;

@@ -1,6 +1,7 @@
-#include <ostream>
-#include <gtest/gtest.h>
 #include <boost/lexical_cast.hpp>
+#include <gtest/gtest.h>
+#include <ostream>
+
 #include "pqrs/string.hpp"
 
 TEST(pqrs_string, string_from_file) {

@@ -1,8 +1,9 @@
-#include <ostream>
 #include <gtest/gtest.h>
-#include "KeyCode.hpp"
+#include <ostream>
+
 #include "ButtonStatus.hpp"
 #include "Config.hpp"
+#include "KeyCode.hpp"
 
 using namespace org_pqrs_Karabiner;
 Config config;

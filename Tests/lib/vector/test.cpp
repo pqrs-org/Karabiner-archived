@@ -1,5 +1,6 @@
-#include <ostream>
 #include <gtest/gtest.h>
+#include <ostream>
+
 #include "pqrs/vector.hpp"
 
 TEST(pqrs_vector, remove_empty_strings) {

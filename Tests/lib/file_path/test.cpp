@@ -1,5 +1,6 @@
-#include <ostream>
 #include <gtest/gtest.h>
+#include <ostream>
+
 #include "pqrs/file_path.hpp"
 
 TEST(pqrs_file_path, dirname) {

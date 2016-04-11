@@ -1,5 +1,6 @@
-#include <ostream>
 #include <gtest/gtest.h>
+#include <ostream>
+
 #include "FromEvent.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"
 

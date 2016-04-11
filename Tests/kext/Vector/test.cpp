@@ -1,7 +1,8 @@
-#include <ostream>
-#include <unordered_map>
-#include <stdexcept>
 #include <gtest/gtest.h>
+#include <ostream>
+#include <stdexcept>
+#include <unordered_map>
+
 #include "Vector.hpp"
 
 class TestItem final {

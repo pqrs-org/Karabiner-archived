@@ -1,6 +1,7 @@
+#include <gtest/gtest.h>
 #include <ostream>
 #include <vector>
-#include <gtest/gtest.h>
+
 #include "Config.hpp"
 #include "KeyCode.hpp"
 #include "KeyCodeModifierFlagPairs.hpp"

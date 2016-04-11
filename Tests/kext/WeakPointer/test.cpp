@@ -1,5 +1,6 @@
-#include <ostream>
 #include <gtest/gtest.h>
+#include <ostream>
+
 #include "WeakPointer.hpp"
 
 using namespace org_pqrs_Karabiner;
