@@ -28,25 +28,25 @@ namespace pqrs {
 class xml_compiler final {
 public:
   typedef std::shared_ptr<boost::property_tree::ptree> ptree_ptr;
-#include "pqrs/xml_compiler/detail/exception.hpp"
-#include "pqrs/xml_compiler/detail/error_information.hpp"
-#include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
-#include "pqrs/xml_compiler/detail/replacement.hpp"
-#include "pqrs/xml_compiler/detail/symbol_map.hpp"
 #include "pqrs/xml_compiler/detail/app.hpp"
 #include "pqrs/xml_compiler/detail/bundle_identifier_override.hpp"
-#include "pqrs/xml_compiler/detail/window_name.hpp"
-#include "pqrs/xml_compiler/detail/ui_element_role.hpp"
 #include "pqrs/xml_compiler/detail/device.hpp"
-#include "pqrs/xml_compiler/detail/preferences_node.hpp"
+#include "pqrs/xml_compiler/detail/error_information.hpp"
 #include "pqrs/xml_compiler/detail/essential_configuration.hpp"
+#include "pqrs/xml_compiler/detail/exception.hpp"
+#include "pqrs/xml_compiler/detail/extracted_ptree.hpp"
 #include "pqrs/xml_compiler/detail/filter_vector.hpp"
-#include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
-#include "pqrs/xml_compiler/detail/remapclasses_initialize_vector_prepare_loader.hpp"
+#include "pqrs/xml_compiler/detail/inputsource.hpp"
 #include "pqrs/xml_compiler/detail/loader_wrapper.hpp"
 #include "pqrs/xml_compiler/detail/modifier.hpp"
-#include "pqrs/xml_compiler/detail/inputsource.hpp"
+#include "pqrs/xml_compiler/detail/preferences_node.hpp"
+#include "pqrs/xml_compiler/detail/remapclasses_initialize_vector.hpp"
+#include "pqrs/xml_compiler/detail/remapclasses_initialize_vector_prepare_loader.hpp"
+#include "pqrs/xml_compiler/detail/replacement.hpp"
+#include "pqrs/xml_compiler/detail/symbol_map.hpp"
+#include "pqrs/xml_compiler/detail/ui_element_role.hpp"
 #include "pqrs/xml_compiler/detail/url.hpp"
+#include "pqrs/xml_compiler/detail/window_name.hpp"
 
   xml_compiler(const std::string& system_xml_directory, const std::string& private_xml_directory) : system_xml_directory_(system_xml_directory),
                                                                                                     private_xml_directory_(private_xml_directory) {}

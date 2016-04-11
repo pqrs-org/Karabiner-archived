@@ -1,13 +1,13 @@
 #ifndef PQRS_STRING_HPP
 #define PQRS_STRING_HPP
 
-#include <cstdint>
-#include <string>
-#include <vector>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/optional.hpp>
 #include <boost/unordered_map.hpp>
+#include <cstdint>
+#include <string>
+#include <vector>
 
 namespace pqrs {
 class string final {
