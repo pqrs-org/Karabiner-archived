@@ -1,6 +1,6 @@
-#include <exception>
-#include "pqrs/xml_compiler.hpp"
 #include "bridge.h"
+#include "pqrs/xml_compiler.hpp"
+#include <exception>
 
 namespace pqrs {
 xml_compiler::modifier_loader::~modifier_loader(void) {

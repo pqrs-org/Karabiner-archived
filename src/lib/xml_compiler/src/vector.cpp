@@ -1,6 +1,6 @@
+#include "pqrs/vector.hpp"
 #include <algorithm>
 #include <functional>
-#include "pqrs/vector.hpp"
 
 namespace pqrs {
 namespace vector {

@@ -1,5 +1,5 @@
-#include <exception>
 #include "pqrs/xml_compiler.hpp"
+#include <exception>
 
 namespace pqrs {
 void xml_compiler::replacement_loader::traverse(const extracted_ptree& pt) const {

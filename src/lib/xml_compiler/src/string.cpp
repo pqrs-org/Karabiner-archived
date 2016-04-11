@@ -1,8 +1,8 @@
+#include "pqrs/string.hpp"
+#include "pqrs/vector.hpp"
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include "pqrs/string.hpp"
-#include "pqrs/vector.hpp"
 
 namespace pqrs {
 int string::string_by_replacing_double_curly_braces_(std::string& out,

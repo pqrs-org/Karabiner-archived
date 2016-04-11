@@ -1,5 +1,5 @@
-#include <exception>
 #include "pqrs/xml_compiler.hpp"
+#include <exception>
 
 namespace pqrs {
 

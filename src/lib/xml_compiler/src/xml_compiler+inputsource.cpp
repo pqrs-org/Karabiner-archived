@@ -1,6 +1,6 @@
-#include <exception>
-#include "pqrs/xml_compiler.hpp"
 #include "bridge.h"
+#include "pqrs/xml_compiler.hpp"
+#include <exception>
 
 namespace pqrs {
 bool xml_compiler::inputsource::is_rules_matched(const std::string& languagecode,

@@ -1,5 +1,5 @@
-#include <iostream>
 #include "pqrs/xml_compiler.hpp"
+#include <iostream>
 
 namespace pqrs {
 xml_compiler::symbol_map::symbol_map(void) {

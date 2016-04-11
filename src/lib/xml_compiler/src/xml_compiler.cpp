@@ -1,8 +1,8 @@
+#include "pqrs/xml_compiler.hpp"
+#include "pqrs/string.hpp"
 #include <exception>
 #include <iostream>
 #include <sstream>
-#include "pqrs/string.hpp"
-#include "pqrs/xml_compiler.hpp"
 
 namespace pqrs {
 void xml_compiler::append_environments_to_replacement_(pqrs::string::replacement& r) const {

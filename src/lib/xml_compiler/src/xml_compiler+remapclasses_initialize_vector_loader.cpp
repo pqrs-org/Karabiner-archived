@@ -1,10 +1,10 @@
-#include <algorithm>
-#include <exception>
 #include "bridge.h"
-#include "pqrs/xml_compiler.hpp"
-#include "pqrs/xml_compiler/utilities.hpp"
 #include "pqrs/string.hpp"
 #include "pqrs/vector.hpp"
+#include "pqrs/xml_compiler.hpp"
+#include "pqrs/xml_compiler/utilities.hpp"
+#include <algorithm>
+#include <exception>
 
 namespace pqrs {
 void xml_compiler::remapclasses_initialize_vector_loader::traverse(const extracted_ptree& pt,
