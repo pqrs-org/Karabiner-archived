@@ -1,5 +1,4 @@
-#ifndef LASTSENTEVENT_HPP
-#define LASTSENTEVENT_HPP
+#pragma once
 
 #include "IntervalChecker.hpp"
 #include "KeyCode.hpp"
@@ -28,5 +27,3 @@ private:
   IntervalChecker ic_;
 };
 }
-
-#endif

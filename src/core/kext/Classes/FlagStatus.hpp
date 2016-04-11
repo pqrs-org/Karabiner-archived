@@ -1,5 +1,4 @@
-#ifndef FLAGSTATUS_HPP
-#define FLAGSTATUS_HPP
+#pragma once
 
 #include "KeyCode.hpp"
 #include "bridge.h"
@@ -185,5 +184,3 @@ private:
   Vector_Item item_;
 };
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef LISTHOOKEDPOINTING_HPP
-#define LISTHOOKEDPOINTING_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -48,5 +47,3 @@ public:
   void apply(const Params_ScrollWheelEventCallback& params);
 };
 }
-
-#endif

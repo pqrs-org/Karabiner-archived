@@ -1,5 +1,4 @@
-#ifndef FROMEVENT_HPP
-#define FROMEVENT_HPP
+#pragma once
 
 #include "FlagStatus.hpp"
 #include "IOLogWrapper.hpp"
@@ -183,5 +182,3 @@ private:
 
 DECLARE_VECTOR(FromEvent);
 }
-
-#endif

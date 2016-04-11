@@ -1,5 +1,4 @@
-#ifndef EVENTWATCHER_HPP
-#define EVENTWATCHER_HPP
+#pragma once
 
 #include "EventInputQueue.hpp"
 #include "List.hpp"
@@ -76,5 +75,3 @@ private:
   static List list_;
 };
 }
-
-#endif

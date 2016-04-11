@@ -1,5 +1,4 @@
-#ifndef LISTHOOKEDDEVICE_HPP
-#define LISTHOOKEDDEVICE_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -112,5 +111,3 @@ private:
   static TimerWrapper refreshInProgressDevices_timer_;
 };
 }
-
-#endif

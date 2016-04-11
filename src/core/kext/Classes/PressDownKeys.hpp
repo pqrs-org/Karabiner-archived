@@ -1,5 +1,4 @@
-#ifndef PRESSDOWNKEYS_HPP
-#define PRESSDOWNKEYS_HPP
+#pragma once
 
 #include "KeyCode.hpp"
 #include "List.hpp"
@@ -26,5 +25,3 @@ private:
   static List list_;
 };
 }
-
-#endif

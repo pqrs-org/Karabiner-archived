@@ -1,5 +1,4 @@
-#ifndef LISTHOOKEDCONSUMER_HPP
-#define LISTHOOKEDCONSUMER_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -42,5 +41,3 @@ public:
   void disableNumLock(void);
 };
 }
-
-#endif

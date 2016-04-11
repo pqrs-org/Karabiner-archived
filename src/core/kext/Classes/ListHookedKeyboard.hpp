@@ -1,5 +1,4 @@
-#ifndef LISTHOOKEDKEYBOARD_HPP
-#define LISTHOOKEDKEYBOARD_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -56,5 +55,3 @@ private:
   static TimerWrapper setcapslock_timer_;
 };
 }
-
-#endif

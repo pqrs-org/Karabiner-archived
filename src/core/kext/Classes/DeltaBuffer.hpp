@@ -1,5 +1,4 @@
-#ifndef DELTABUFFER_HPP
-#define DELTABUFFER_HPP
+#pragma once
 
 namespace org_pqrs_Karabiner {
 // DeltaBuffer stores dx and dy of RelativePointerEvent in the short term
@@ -66,5 +65,3 @@ private:
   int sign_;
 };
 }
-
-#endif

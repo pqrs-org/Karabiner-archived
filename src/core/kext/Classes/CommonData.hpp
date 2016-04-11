@@ -1,5 +1,4 @@
-#ifndef COMMONDATA_HPP
-#define COMMONDATA_HPP
+#pragma once
 
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
@@ -93,5 +92,3 @@ private:
   static char statusmessage_[BRIDGE_USERCLIENT_STATUS_MESSAGE__END__][BRIDGE_USERCLIENT_STATUS_MESSAGE_MAXLEN];
 };
 }
-
-#endif

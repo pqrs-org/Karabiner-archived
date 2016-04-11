@@ -1,5 +1,4 @@
-#ifndef WEAKPOINTER_HPP
-#define WEAKPOINTER_HPP
+#pragma once
 
 #include "List.hpp"
 
@@ -111,5 +110,3 @@ namespace org_pqrs_Karabiner {
   List CLASS::WeakPointerManager_##TYPENAME::list_;  \
   int CLASS::WeakPointerManager_##TYPENAME::lastid_ = 0;
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef KEYBOARDREPEAT_HPP
-#define KEYBOARDREPEAT_HPP
+#pragma once
 
 #include "Config.hpp"
 #include "KeyCode.hpp"
@@ -111,5 +110,3 @@ private:
   static AutogenId autogenId_;
 };
 }
-
-#endif

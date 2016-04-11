@@ -1,5 +1,4 @@
-#ifndef GLOBALLOCK_HPP
-#define GLOBALLOCK_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -37,5 +36,3 @@ private:
   static IOLock* lock_;
 };
 }
-
-#endif

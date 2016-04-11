@@ -1,5 +1,4 @@
-#ifndef KEYCODEMODIFIERFLAGPAIRS_HPP
-#define KEYCODEMODIFIERFLAGPAIRS_HPP
+#pragma once
 
 #include "KeyCode.hpp"
 
@@ -103,5 +102,3 @@ private:
   static Vector_Pair pairs_;
 };
 }
-
-#endif

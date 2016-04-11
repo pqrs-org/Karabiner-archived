@@ -1,5 +1,4 @@
-#ifndef EVENTOUTPUTQUEUE_HPP
-#define EVENTOUTPUTQUEUE_HPP
+#pragma once
 
 #include "ButtonStatus.hpp"
 #include "CommonData.hpp"
@@ -115,5 +114,3 @@ private:
   static Buttons previousButtons_;
 };
 }
-
-#endif

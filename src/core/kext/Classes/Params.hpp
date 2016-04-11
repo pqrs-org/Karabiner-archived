@@ -1,5 +1,4 @@
-#ifndef CALLBACKWRAPPER_HPP
-#define CALLBACKWRAPPER_HPP
+#pragma once
 
 #include "CommonData.hpp"
 #include "IOLogWrapper.hpp"
@@ -287,5 +286,3 @@ public:
   }
 };
 }
-
-#endif

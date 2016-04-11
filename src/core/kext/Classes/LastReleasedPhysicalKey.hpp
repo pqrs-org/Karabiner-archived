@@ -1,5 +1,4 @@
-#ifndef LASTRELEASEDPHYSICALKEY_HPP
-#define LASTRELEASEDPHYSICALKEY_HPP
+#pragma once
 
 #include "IntervalChecker.hpp"
 #include "bridge.h"
@@ -24,5 +23,3 @@ private:
   IntervalChecker ic_;
 };
 }
-
-#endif

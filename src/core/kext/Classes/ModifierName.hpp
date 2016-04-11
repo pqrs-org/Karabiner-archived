@@ -1,5 +1,4 @@
-#ifndef MODIFIERNAME_HPP
-#define MODIFIERNAME_HPP
+#pragma once
 
 #include "IOLogWrapper.hpp"
 #include "KeyCode.hpp"
@@ -49,5 +48,3 @@ private:
   static Vector_Item items_;
 };
 }
-
-#endif

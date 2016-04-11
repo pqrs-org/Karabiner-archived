@@ -1,5 +1,4 @@
-#ifndef BUTTONSTATUS_HPP
-#define BUTTONSTATUS_HPP
+#pragma once
 
 #include "KeyCode.hpp"
 #include "bridge.h"
@@ -86,5 +85,3 @@ private:
   static Item item_[MAXNUM];
 };
 }
-
-#endif

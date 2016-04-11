@@ -1,5 +1,4 @@
-#ifndef EVENTINPUTQUEUE_HPP
-#define EVENTINPUTQUEUE_HPP
+#pragma once
 
 #include "FromEvent.hpp"
 #include "IntervalChecker.hpp"
@@ -214,5 +213,3 @@ private:
   static SerialNumber serialNumber_;
 };
 }
-
-#endif

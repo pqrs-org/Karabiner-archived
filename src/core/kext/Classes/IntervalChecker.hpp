@@ -1,5 +1,4 @@
-#ifndef INTERVALCHECKER_HPP
-#define INTERVALCHECKER_HPP
+#pragma once
 
 #include "Types.hpp"
 
@@ -14,5 +13,3 @@ private:
   clock_usec_t microsecs_;
 };
 }
-
-#endif

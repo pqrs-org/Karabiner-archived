@@ -1,5 +1,4 @@
-#ifndef VECTOR_HPP
-#define VECTOR_HPP
+#pragma once
 
 #define DECLARE_VECTOR_CLASS_BODY(TYPENAME, CHUNKSIZE)                  \
 public:                                                                 \
@@ -106,5 +105,3 @@ private:                                                                \
 #define DECLARE_VECTOR_WITH_HELPER(TYPENAME) DECLARE_VECTOR_WITH_CHUNKSIZE_WITH_HELPER(TYPENAME, 16)
 
 DECLARE_VECTOR_WITH_HELPER(int);
-
-#endif

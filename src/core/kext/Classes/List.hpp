@@ -1,5 +1,4 @@
-#ifndef LIST_HPP
-#define LIST_HPP
+#pragma once
 
 #include <string.h>
 #include <sys/types.h>
@@ -68,5 +67,3 @@ private:
   size_t size_;
 };
 }
-
-#endif

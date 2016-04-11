@@ -1,5 +1,4 @@
-#ifndef PRESSINGPHYSICALKEYS_HPP
-#define PRESSINGPHYSICALKEYS_HPP
+#pragma once
 
 #include "FromEvent.hpp"
 #include "List.hpp"
@@ -23,5 +22,3 @@ private:
   List list_;
 };
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef TIMERWRAPPER_HPP
-#define TIMERWRAPPER_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -51,5 +50,3 @@ private:
   IOTimerEventSource* timer_;
 };
 }
-
-#endif
