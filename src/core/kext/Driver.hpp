@@ -1,5 +1,4 @@
-#ifndef DRIVER_HPP
-#define DRIVER_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -28,5 +27,3 @@ private:
   IONotifier* notifier_hookPointing_;
   IONotifier* notifier_unhookPointing_;
 };
-
-#endif

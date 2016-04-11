@@ -1,5 +1,4 @@
-#ifndef REMAPCLASS_HPP
-#define REMAPCLASS_HPP
+#pragma once
 
 #include "RemapFilter/RemapFilterBase.hpp"
 #include "RemapFunc/RemapFuncBase.hpp"
@@ -219,5 +218,3 @@ void unregisterPrepareTargetItem(RemapFunc::RemapFuncBase* processor);
 void prepare(RemapParams& remapParams);
 }
 }
-
-#endif

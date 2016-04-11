@@ -1,5 +1,4 @@
-#ifndef CORE_HPP
-#define CORE_HPP
+#pragma once
 
 #include "Params.hpp"
 
@@ -25,5 +24,3 @@ void remap_RelativePointerEventCallback(const Params_Base& paramsBase);
 void remap_ScrollWheelEventCallback(const Params_Base& paramsBase);
 };
 }
-
-#endif

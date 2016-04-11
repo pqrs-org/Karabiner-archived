@@ -1,5 +1,4 @@
-#ifndef CONFIG_HPP
-#define CONFIG_HPP
+#pragma once
 
 #include "../../bridge/output/include.bridge_essential_configuration_enum.h"
 #include "bridge.h"
@@ -137,5 +136,3 @@ private:
   static const int essential_config_default_[BRIDGE_ESSENTIAL_CONFIG_INDEX__END__];
 };
 }
-
-#endif

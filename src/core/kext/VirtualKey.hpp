@@ -1,5 +1,4 @@
-#ifndef VIRTUALKEY_HPP
-#define VIRTUALKEY_HPP
+#pragma once
 
 #include "KeyCode.hpp"
 #include "Params.hpp"
@@ -16,5 +15,3 @@ bool handleAfterEnqueued(const Params_KeyboardEventCallBack& params);
 bool isKeyLikeModifier(KeyCode keycode);
 };
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef ORG_PQRS_TYPES_HPP
-#define ORG_PQRS_TYPES_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -131,5 +130,3 @@ DECLARE_VECTOR_WITH_HELPER(WorkspaceUIElementRoleId);
 
 DECLARE_WORKSPACE_CLASS(WorkspaceWindowNameId);
 DECLARE_VECTOR_WITH_HELPER(WorkspaceWindowNameId);
-
-#endif

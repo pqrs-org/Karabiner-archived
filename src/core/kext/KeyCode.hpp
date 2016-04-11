@@ -1,5 +1,4 @@
-#ifndef KEYCODE_HPP
-#define KEYCODE_HPP
+#pragma once
 
 #include "../../../src/bridge/include/bridge.h"
 #include "Types.hpp"
@@ -570,5 +569,3 @@ enum DeviceType {
 };
 }
 }
-
-#endif

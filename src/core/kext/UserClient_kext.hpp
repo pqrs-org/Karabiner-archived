@@ -1,5 +1,4 @@
-#ifndef USERCLIENT_KEXT_HPP
-#define USERCLIENT_KEXT_HPP
+#pragma once
 
 #include "diagnostic_macros.hpp"
 
@@ -56,5 +55,3 @@ private:
   static OSAsyncReference64 asyncref_;
   static bool notification_enabled_;
 };
-
-#endif

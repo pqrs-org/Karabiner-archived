@@ -1,5 +1,4 @@
-#ifndef DIAGNOSTIC_MACROS_HPP
-#define DIAGNOSTIC_MACROS_HPP
+#pragma once
 
 #define BEGIN_IOKIT_INCLUDE        \
   _Pragma("clang diagnostic push") \
@@ -7,5 +6,3 @@
 
 #define END_IOKIT_INCLUDE \
   _Pragma("clang diagnostic pop")
-
-#endif
