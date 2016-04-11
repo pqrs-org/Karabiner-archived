@@ -1,6 +1,3 @@
-#ifndef BASE_HPP
-#define BASE_HPP
+#pragma once
 
 #include <stdio.h>
-
-#endif

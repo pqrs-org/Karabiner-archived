@@ -1,5 +1,4 @@
-#ifndef ORG_PQRS_TYPES_HPP
-#define ORG_PQRS_TYPES_HPP
+#pragma once
 
 #include <cstddef>
 #include <cstdint>
@@ -10,5 +9,3 @@ typedef int32_t SInt32;
 typedef uint64_t UInt64;
 typedef unsigned int AddDataType;
 typedef unsigned int AddValue;
-
-#endif

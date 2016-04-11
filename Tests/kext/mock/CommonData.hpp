@@ -1,5 +1,4 @@
-#ifndef COMMONDATA_HPP
-#define COMMONDATA_HPP
+#pragma once
 
 class CommonData final {
 public:
@@ -11,5 +10,3 @@ public:
   static void send_notification_statusmessage(int index) {}
   static const char* get_statusmessage(int index) { return ""; }
 };
-
-#endif
