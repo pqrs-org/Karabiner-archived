@@ -1,5 +1,4 @@
-#ifndef KEYTOKEY_HPP
-#define KEYTOKEY_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 #include "TimerWrapper.hpp"
@@ -129,5 +128,3 @@ private:
 };
 }
 }
-
-#endif

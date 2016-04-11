@@ -1,5 +1,4 @@
-#ifndef KEYOVERLAIDMODIFIER_HPP
-#define KEYOVERLAIDMODIFIER_HPP
+#pragma once
 
 #include "DependingPressingPeriodKeyToKey.hpp"
 #include "RemapFuncBase.hpp"
@@ -51,5 +50,3 @@ private:
 };
 }
 }
-
-#endif

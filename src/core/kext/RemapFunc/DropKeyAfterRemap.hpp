@@ -1,5 +1,4 @@
-#ifndef DROPKEYAFTERREMAP_HPP
-#define DROPKEYAFTERREMAP_HPP
+#pragma once
 
 #include "CancelEventOutputQueueItemsHelper.hpp"
 #include "RemapFuncBase.hpp"
@@ -29,5 +28,3 @@ private:
 };
 }
 };
-
-#endif

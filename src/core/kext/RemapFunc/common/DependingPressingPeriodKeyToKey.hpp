@@ -1,5 +1,4 @@
-#ifndef DEPENDINGPRESSINGPERIODKEYTOKEY_HPP
-#define DEPENDINGPRESSINGPERIODKEYTOKEY_HPP
+#pragma once
 
 #include "EventWatcher.hpp"
 #include "IntervalChecker.hpp"
@@ -229,5 +228,3 @@ private:
 };
 }
 }
-
-#endif

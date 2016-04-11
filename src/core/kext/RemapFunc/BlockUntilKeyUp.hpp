@@ -1,5 +1,4 @@
-#ifndef BLOCKUNTILKEYUP_HPP
-#define BLOCKUNTILKEYUP_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 
@@ -17,5 +16,3 @@ private:
 };
 }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef SIMULTANEOUSKEYPRESSES_HPP
-#define SIMULTANEOUSKEYPRESSES_HPP
+#pragma once
 
 #include "EventInputQueue.hpp"
 #include "KeyToKey.hpp"
@@ -224,5 +223,3 @@ private:
 };
 }
 }
-
-#endif

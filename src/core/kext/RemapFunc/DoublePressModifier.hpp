@@ -1,5 +1,4 @@
-#ifndef DOUBLEPRESSMODIFIER_HPP
-#define DOUBLEPRESSMODIFIER_HPP
+#pragma once
 
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
@@ -43,5 +42,3 @@ private:
 };
 }
 }
-
-#endif

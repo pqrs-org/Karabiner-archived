@@ -1,5 +1,4 @@
-#ifndef PASSTHROUGH_HPP
-#define PASSTHROUGH_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 
@@ -13,5 +12,3 @@ public:
 };
 }
 }
-
-#endif

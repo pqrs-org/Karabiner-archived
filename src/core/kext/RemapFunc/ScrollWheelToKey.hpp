@@ -1,5 +1,4 @@
-#ifndef SCROLLWHEELTOKEY_HPP
-#define SCROLLWHEELTOKEY_HPP
+#pragma once
 
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
@@ -42,5 +41,3 @@ private:
 };
 }
 }
-
-#endif

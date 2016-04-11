@@ -1,5 +1,4 @@
-#ifndef DROPALLKEYS_HPP
-#define DROPALLKEYS_HPP
+#pragma once
 
 #include "CancelEventOutputQueueItemsHelper.hpp"
 #include "EventOutputQueue.hpp"
@@ -44,5 +43,3 @@ private:
 };
 }
 }
-
-#endif

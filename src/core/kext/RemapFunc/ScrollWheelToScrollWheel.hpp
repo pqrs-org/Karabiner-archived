@@ -1,5 +1,4 @@
-#ifndef SCROLLWHEELTOSCROLLWHEEL_HPP
-#define SCROLLWHEELTOSCROLLWHEEL_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 
@@ -21,5 +20,3 @@ private:
 };
 }
 }
-
-#endif

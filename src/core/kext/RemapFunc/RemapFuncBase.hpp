@@ -1,5 +1,4 @@
-#ifndef REMAPFUNCBASE_HPP
-#define REMAPFUNCBASE_HPP
+#pragma once
 
 #include "EventOutputQueue.hpp"
 #include "FromEvent.hpp"
@@ -75,5 +74,3 @@ protected:
 };
 }
 }
-
-#endif

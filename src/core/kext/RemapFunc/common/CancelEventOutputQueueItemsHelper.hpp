@@ -1,5 +1,4 @@
-#ifndef CANCELEVENTOUTPUTQUEUEITEMSHELPER_HPP
-#define CANCELEVENTOUTPUTQUEUEITEMSHELPER_HPP
+#pragma once
 
 #include "EventOutputQueue.hpp"
 #include "RemapFuncBase.hpp"
@@ -44,5 +43,3 @@ private:
 };
 }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef DROPPOINTINGRELATIVECURSORMOVE_HPP
-#define DROPPOINTINGRELATIVECURSORMOVE_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 
@@ -15,5 +14,3 @@ public:
 };
 }
 }
-
-#endif

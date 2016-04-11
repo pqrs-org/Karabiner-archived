@@ -1,5 +1,4 @@
-#ifndef IGNOREMULTIPLESAMEKEYPRESS_HPP
-#define IGNOREMULTIPLESAMEKEYPRESS_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 
@@ -24,5 +23,3 @@ private:
 };
 }
 }
-
-#endif

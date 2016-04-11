@@ -1,5 +1,4 @@
-#ifndef POINTINGRELATIVETOSCROLL_HPP
-#define POINTINGRELATIVETOSCROLL_HPP
+#pragma once
 
 #include "IntervalChecker.hpp"
 #include "KeyToKey.hpp"
@@ -104,5 +103,3 @@ private:
 };
 }
 }
-
-#endif

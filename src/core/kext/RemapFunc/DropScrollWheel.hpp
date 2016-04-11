@@ -1,5 +1,4 @@
-#ifndef DROPSCROLLWHEEL_HPP
-#define DROPSCROLLWHEEL_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 
@@ -21,5 +20,3 @@ private:
 };
 }
 }
-
-#endif

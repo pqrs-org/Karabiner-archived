@@ -1,5 +1,4 @@
-#ifndef KEYDOWNUPTOKEY_HPP
-#define KEYDOWNUPTOKEY_HPP
+#pragma once
 
 #include "KeyToKey.hpp"
 #include "RemapFuncBase.hpp"
@@ -45,5 +44,3 @@ private:
 };
 }
 }
-
-#endif

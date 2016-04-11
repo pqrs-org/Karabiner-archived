@@ -1,5 +1,4 @@
-#ifndef POINTINGRELATIVETOKEY_HPP
-#define POINTINGRELATIVETOKEY_HPP
+#pragma once
 
 #include "DeltaBuffer.hpp"
 #include "IntervalChecker.hpp"
@@ -61,5 +60,3 @@ private:
 };
 }
 }
-
-#endif

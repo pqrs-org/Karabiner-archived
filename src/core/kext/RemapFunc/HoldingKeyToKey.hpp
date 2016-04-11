@@ -1,5 +1,4 @@
-#ifndef HOLDINGKEYTOKEY_HPP
-#define HOLDINGKEYTOKEY_HPP
+#pragma once
 
 #include "DependingPressingPeriodKeyToKey.hpp"
 #include "RemapFuncBase.hpp"
@@ -47,5 +46,3 @@ private:
 };
 }
 }
-
-#endif

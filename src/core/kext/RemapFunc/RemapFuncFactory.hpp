@@ -1,5 +1,4 @@
-#ifndef REMAPFUNCFACTORY_HPP
-#define REMAPFUNCFACTORY_HPP
+#pragma once
 
 #include "BlockUntilKeyUp.hpp"
 #include "DoublePressModifier.hpp"
@@ -135,5 +134,3 @@ public:
 };
 }
 }
-
-#endif

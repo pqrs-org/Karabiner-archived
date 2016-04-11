@@ -1,5 +1,4 @@
-#ifndef REMAPFUNCCLASSES_HPP
-#define REMAPFUNCCLASSES_HPP
+#pragma once
 
 #include "FlagStatus.hpp"
 #include "KeyCode.hpp"
@@ -18,5 +17,3 @@ struct RemapParams {
   bool isremapped;
 };
 }
-
-#endif

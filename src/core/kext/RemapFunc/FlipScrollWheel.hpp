@@ -1,5 +1,4 @@
-#ifndef FLIPSCROLLWHEEL_HPP
-#define FLIPSCROLLWHEEL_HPP
+#pragma once
 
 #include "RemapFuncBase.hpp"
 
@@ -23,5 +22,3 @@ private:
 };
 }
 }
-
-#endif
