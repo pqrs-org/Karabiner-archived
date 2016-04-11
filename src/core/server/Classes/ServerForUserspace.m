@@ -1,9 +1,9 @@
+#import "ServerForUserspace.h"
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "Relauncher.h"
-#import "ServerForUserspace.h"
 #import "SharedKeys.h"
 #import "XMLCompiler.h"
 
@@ -19,7 +19,7 @@
 
 @implementation ServerForUserspace
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

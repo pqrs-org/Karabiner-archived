@@ -16,7 +16,7 @@ enum {
   MAXNUM = 50,
 };
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

@@ -23,7 +23,7 @@
   return nil;
 }
 
-- (id)initWithTISInputSourceRef:(TISInputSourceRef)ref {
+- (instancetype)initWithTISInputSourceRef:(TISInputSourceRef)ref {
   self = [super init];
 
   if (self) {

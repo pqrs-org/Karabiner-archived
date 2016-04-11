@@ -6,7 +6,7 @@
 
 @interface UserClient_userspace : NSObject
 
-- (id)init:(io_async_ref64_t *)asyncref;
+- (instancetype)init:(io_async_ref64_t *)asyncref;
 
 - (BOOL)refresh_connection;
 - (void)disconnect_from_kext;

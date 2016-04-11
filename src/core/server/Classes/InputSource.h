@@ -9,7 +9,7 @@
 @property(copy, readonly) NSString* inputSourceID;
 @property(copy, readonly) NSString* inputModeID;
 
-- (id)initWithTISInputSourceRef:(TISInputSourceRef)ref;
+- (instancetype)initWithTISInputSourceRef:(TISInputSourceRef)ref;
 - (Boolean)selected;
 - (void)select;
 

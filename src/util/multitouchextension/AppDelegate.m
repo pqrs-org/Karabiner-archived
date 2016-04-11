@@ -33,7 +33,7 @@ static NSTimer* reset_timer_;
 
 @implementation AppDelegate
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

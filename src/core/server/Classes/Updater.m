@@ -1,6 +1,6 @@
 @import Sparkle;
-#import "PreferencesManager.h"
 #import "Updater.h"
+#import "PreferencesManager.h"
 
 @interface Updater ()
 
@@ -11,7 +11,7 @@
 
 @implementation Updater
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

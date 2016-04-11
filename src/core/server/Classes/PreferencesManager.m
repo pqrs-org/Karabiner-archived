@@ -1,8 +1,8 @@
+#import "PreferencesManager.h"
 #import "ClientForKernelspace.h"
 #import "GlobalDomainKeyRepeatObserver.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
-#import "PreferencesManager.h"
 #import "XMLCompiler.h"
 #include <sys/time.h>
 
@@ -75,7 +75,7 @@
 }
 
 // ----------------------------------------
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

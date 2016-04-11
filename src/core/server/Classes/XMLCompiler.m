@@ -1,8 +1,8 @@
+#import "XMLCompiler.h"
 #import "EnvironmentChecker.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
-#import "XMLCompiler.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 static NSInteger xmlCompilerItemId_;
@@ -298,7 +298,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 }
 
 // ------------------------------------------------------------
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

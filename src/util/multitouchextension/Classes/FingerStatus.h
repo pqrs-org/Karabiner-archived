@@ -4,7 +4,7 @@
 
 @interface FingerStatus : NSObject
 
-- (id)init;
+- (instancetype)init;
 - (void)clear;
 - (void)add:(int)identifier active:(BOOL)active;
 - (BOOL)isActive:(int)identifier;

@@ -122,7 +122,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   });
 }
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

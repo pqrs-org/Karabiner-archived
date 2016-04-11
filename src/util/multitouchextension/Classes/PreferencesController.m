@@ -39,7 +39,7 @@
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
 }
 
-- (id)init {
+- (instancetype)init {
   self = [super init];
 
   if (self) {

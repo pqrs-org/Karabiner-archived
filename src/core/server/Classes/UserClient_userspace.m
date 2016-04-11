@@ -140,7 +140,7 @@ finish:
   IOObjectRelease(iterator);
 }
 
-- (id)init:(io_async_ref64_t*)asyncref;
+- (instancetype)init:(io_async_ref64_t*)asyncref;
 {
   self = [super init];
 
