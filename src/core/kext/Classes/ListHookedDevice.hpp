@@ -79,7 +79,7 @@ public:
   void refresh(void);
   bool isInProgress(void) const;
 
-  size_t pressingPhysicalKeysCount(void) const;
+  size_t totalPressingPhysicalKeysCount(void) const;
   void clearPressingPhysicalKeysCount(void) const;
 
   ListHookedDevice::Item* get(const IOHIDevice* device);

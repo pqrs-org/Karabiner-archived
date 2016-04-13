@@ -230,7 +230,7 @@ bool ListHookedDevice::isInProgress(void) const {
   return false;
 }
 
-size_t ListHookedDevice::pressingPhysicalKeysCount(void) const {
+size_t ListHookedDevice::totalPressingPhysicalKeysCount(void) const {
   size_t count = 0;
   for (Item* p = static_cast<Item*>(list_.safe_front()); p; p = static_cast<Item*>(p->getnext())) {
     count += (p->pressingPhysicalKeys_).count();
@@ -328,9 +328,9 @@ void ListHookedDevice::refreshAll(void) {
 }
 
 size_t ListHookedDevice::pressingPhysicalKeysCountAll(void) {
-  size_t count = ListHookedKeyboard::instance().pressingPhysicalKeysCount() +
-                 ListHookedConsumer::instance().pressingPhysicalKeysCount() +
-                 ListHookedPointing::instance().pressingPhysicalKeysCount();
+  size_t count = ListHookedKeyboard::instance().totalPressingPhysicalKeysCount() +
+                 ListHookedConsumer::instance().totalPressingPhysicalKeysCount() +
+                 ListHookedPointing::instance().totalPressingPhysicalKeysCount();
   IOLOG_DEVEL("ListHookedDevice::pressingPhysicalKeysCountAll: %ld\n", count);
   return count;
 }
