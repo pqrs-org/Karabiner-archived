@@ -39,21 +39,7 @@ namespace {
 IOWorkLoop* workLoop = nullptr;
 
 void resetInternalStateWhenDeviceIsTerminated(const IOHIDevice* device) {
-  int pressingPhysicalKeysCount = 0;
-  {
-    auto p = ListHookedKeyboard::instance().get(device);
-    if (p) { pressingPhysicalKeysCount += p->pressingPhysicalKeysCount(); }
-  }
-  {
-    auto p = ListHookedConsumer::instance().get(device);
-    if (p) { pressingPhysicalKeysCount += p->pressingPhysicalKeysCount(); }
-  }
-  {
-    auto p = ListHookedPointing::instance().get(device);
-    if (p) { pressingPhysicalKeysCount += p->pressingPhysicalKeysCount(); }
-  }
-
-  if (pressingPhysicalKeysCount > 0) {
+  if (ListHookedDevice::devicePressingPhysicalKeysCountAll(device) > 0) {
     IOLOG_INFO("reset internal state because using device has been disconnected.\n");
     KeyboardRepeat::cancel();
     VirtualKey::reset();

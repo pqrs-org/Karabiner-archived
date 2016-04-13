@@ -80,6 +80,7 @@ public:
   bool isInProgress(void) const;
 
   size_t totalPressingPhysicalKeysCount(void) const;
+  size_t devicePressingPhysicalKeysCount(const IOHIDevice* device);
   void clearPressingPhysicalKeysCount(void) const;
 
   ListHookedDevice::Item* get(const IOHIDevice* device);
@@ -92,6 +93,7 @@ public:
   static void terminateAll(void);
   static void refreshAll(void);
   static size_t totalPressingPhysicalKeysCountAll(void);
+  static size_t devicePressingPhysicalKeysCountAll(const IOHIDevice* device);
   static void clearInternalKeyboardPressingPhysicalKeysCountAll(void);
   static bool existsAll(const DeviceIdentifier& deviceIdentifier);
 
