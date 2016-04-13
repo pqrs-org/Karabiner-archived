@@ -91,7 +91,7 @@ public:
   static void initializeAll(IOWorkLoop& workloop);
   static void terminateAll(void);
   static void refreshAll(void);
-  static size_t pressingPhysicalKeysCountAll(void);
+  static size_t totalPressingPhysicalKeysCountAll(void);
   static void clearInternalKeyboardPressingPhysicalKeysCountAll(void);
   static bool existsAll(const DeviceIdentifier& deviceIdentifier);
 

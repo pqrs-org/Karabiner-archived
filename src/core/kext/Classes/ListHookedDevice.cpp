@@ -327,11 +327,11 @@ void ListHookedDevice::refreshAll(void) {
   ListHookedPointing::instance().refresh();
 }
 
-size_t ListHookedDevice::pressingPhysicalKeysCountAll(void) {
+size_t ListHookedDevice::totalPressingPhysicalKeysCountAll(void) {
   size_t count = ListHookedKeyboard::instance().totalPressingPhysicalKeysCount() +
                  ListHookedConsumer::instance().totalPressingPhysicalKeysCount() +
                  ListHookedPointing::instance().totalPressingPhysicalKeysCount();
-  IOLOG_DEVEL("ListHookedDevice::pressingPhysicalKeysCountAll: %ld\n", count);
+  IOLOG_DEVEL("ListHookedDevice::totalPressingPhysicalKeysCountAll: %ld\n", count);
   return count;
 }
 

@@ -731,7 +731,7 @@ void EventInputQueue::doFire(void) {
 
 void EventInputQueue::resetInternalStateIfNeeded(void) {
   // Reset if all keys are released and EventInputQueue is empty.
-  if (ListHookedDevice::pressingPhysicalKeysCountAll() == 0 &&
+  if (ListHookedDevice::totalPressingPhysicalKeysCountAll() == 0 &&
       queue_.empty() && BlockUntilKeyUpHandler::isQueueEmpty()) {
     IOLOG_DEVEL("EventInputQueue::resetInternalStateIfNeeded reset internal state.\n");
     KeyboardRepeat::cancel();

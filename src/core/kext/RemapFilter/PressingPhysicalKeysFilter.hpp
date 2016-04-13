@@ -19,7 +19,7 @@ public:
     if (get_type() == BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN ||
         get_type() == BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_LESSTHAN) {
 
-      auto current = ListHookedDevice::pressingPhysicalKeysCountAll();
+      auto current = ListHookedDevice::totalPressingPhysicalKeysCountAll();
 
       if (get_type() == BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_GREATERTHAN) {
         if (count_ >= current) return true;
