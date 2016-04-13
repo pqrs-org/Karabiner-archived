@@ -44,6 +44,7 @@ public:
 
     bool isInternalDevice(void) const { return deviceType_ == DeviceType::APPLE_INTERNAL; }
 
+    size_t pressingPhysicalKeysCount(void) const { return pressingPhysicalKeys_.count(); }
     void updatePressingPhysicalKeys(const Params_Base& paramsBase) {
       pressingPhysicalKeys_.update(paramsBase);
     }

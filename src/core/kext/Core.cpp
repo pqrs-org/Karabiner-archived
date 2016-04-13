@@ -38,9 +38,26 @@ namespace Core {
 namespace {
 IOWorkLoop* workLoop = nullptr;
 
-void resetInternalStateWhenDeviceIsTerminated(void) {
-  KeyboardRepeat::cancel();
-  VirtualKey::reset();
+void resetInternalStateWhenDeviceIsTerminated(const IOHIDevice* device) {
+  int pressingPhysicalKeysCount = 0;
+  {
+    auto p = ListHookedKeyboard::instance().get(device);
+    if (p) { pressingPhysicalKeysCount += p->pressingPhysicalKeysCount(); }
+  }
+  {
+    auto p = ListHookedConsumer::instance().get(device);
+    if (p) { pressingPhysicalKeysCount += p->pressingPhysicalKeysCount(); }
+  }
+  {
+    auto p = ListHookedPointing::instance().get(device);
+    if (p) { pressingPhysicalKeysCount += p->pressingPhysicalKeysCount(); }
+  }
+
+  if (pressingPhysicalKeysCount > 0) {
+    IOLOG_INFO("reset internal state because using device has been disconnected.\n");
+    KeyboardRepeat::cancel();
+    VirtualKey::reset();
+  }
 }
 }
 
@@ -130,10 +147,10 @@ bool IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon,
   IOHIDevice* device = OSDynamicCast(IOHIKeyboard, newService);
   if (!device) return false;
 
+  resetInternalStateWhenDeviceIsTerminated(device);
+
   ListHookedKeyboard::instance().erase(device);
   ListHookedConsumer::instance().erase(device);
-
-  resetInternalStateWhenDeviceIsTerminated();
 
   return true;
 }
@@ -160,9 +177,9 @@ bool IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon,
   IOHIDevice* device = OSDynamicCast(IOHIPointing, newService);
   if (!device) return false;
 
-  ListHookedPointing::instance().erase(device);
+  resetInternalStateWhenDeviceIsTerminated(device);
 
-  resetInternalStateWhenDeviceIsTerminated();
+  ListHookedPointing::instance().erase(device);
 
   return true;
 }
