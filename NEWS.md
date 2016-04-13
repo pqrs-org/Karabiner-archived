@@ -1,6 +1,7 @@
 # Since Version 10.18.0
 
 * New functions and improvements:
+  * The device disconnect handling has been improved.
   * Updates for people who add new settings by oneself:
     * `<bundleidentifieroverridedef>` has been introduced.
     * The following filters have been added.
