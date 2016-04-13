@@ -37,6 +37,11 @@ namespace org_pqrs_Karabiner {
 namespace Core {
 namespace {
 IOWorkLoop* workLoop = nullptr;
+
+void resetInternalStateWhenDeviceIsTerminated(void) {
+  KeyboardRepeat::cancel();
+  VirtualKey::reset();
+}
 }
 
 void start(void) {
@@ -127,6 +132,9 @@ bool IOHIKeyboard_gIOTerminatedNotification_callback(void* target, void* refCon,
 
   ListHookedKeyboard::instance().erase(device);
   ListHookedConsumer::instance().erase(device);
+
+  resetInternalStateWhenDeviceIsTerminated();
+
   return true;
 }
 
@@ -153,6 +161,9 @@ bool IOHIPointing_gIOTerminatedNotification_callback(void* target, void* refCon,
   if (!device) return false;
 
   ListHookedPointing::instance().erase(device);
+
+  resetInternalStateWhenDeviceIsTerminated();
+
   return true;
 }
 
