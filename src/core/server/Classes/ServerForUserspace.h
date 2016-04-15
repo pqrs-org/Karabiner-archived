@@ -5,6 +5,6 @@
 
 @interface ServerForUserspace : NSObject <ServerClientProtocol>
 
-- (BOOL) register;
+- (BOOL)registerService;
 
 @end
