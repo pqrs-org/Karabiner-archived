@@ -2,7 +2,16 @@
 
 @import Cocoa;
 
+@class PreferencesModel;
+
 @protocol ServerClientProtocol
+
+- (NSString *)bundleVersion;
+
+- (void)loadPreferencesModel:(PreferencesModel *)preferencesModel;
+- (void)savePreferencesModel:(PreferencesModel *)preferencesModel processIdentifier:(int)processIdentifier;
+- (void)updateStartAtLogin;
+
 - (int)value:(NSString *)name;
 - (int)defaultValue:(NSString *)name;
 - (void)setValue:(int)newval forName:(NSString *)name;

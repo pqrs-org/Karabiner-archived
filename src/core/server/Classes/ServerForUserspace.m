@@ -4,6 +4,7 @@
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "Relauncher.h"
+#import "ServerController.h"
 #import "SharedKeys.h"
 #import "XMLCompiler.h"
 
@@ -35,6 +36,23 @@
     return NO;
   }
   return YES;
+}
+
+// ----------------------------------------------------------------------
+- (NSString*)bundleVersion {
+  return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
+}
+
+- (void)loadPreferencesModel:(PreferencesModel*)preferencesModel {
+  [self.preferencesManager loadPreferencesModel:preferencesModel];
+}
+
+- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
+  [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
+}
+
+- (void)updateStartAtLogin {
+  [ServerController updateStartAtLogin:YES];
 }
 
 // ----------------------------------------------------------------------
