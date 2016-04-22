@@ -4,6 +4,7 @@
 
 @class ClientForKernelspace;
 @class PreferencesManager;
+@class ServerForUserspace;
 @class StatusMessageManager;
 @class Updater;
 @class XMLCompiler;
@@ -12,6 +13,7 @@
 
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet ServerForUserspace* serverForUserspace;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet Updater* updater;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
