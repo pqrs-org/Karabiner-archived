@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
@@ -24,6 +25,7 @@
                 <outlet property="parameterOutlineView" destination="678" id="mME-GG-3k3"/>
                 <outlet property="parameterOutlineViewDataSource" destination="s9s-xO-cMU" id="lR4-Zl-WOl"/>
                 <outlet property="parameterOutlineViewDelegate" destination="azx-Mg-L29" id="Vrf-44-hYY"/>
+                <outlet property="preferencesModel" destination="nrN-Rm-RbK" id="pyk-uX-Vmc"/>
                 <outlet property="profileTableView" destination="703" id="uYW-0t-vhY"/>
                 <outlet property="profileTableViewDataSource" destination="2GT-K4-ZxB" id="yJF-Wf-akC"/>
                 <outlet property="profileTableViewDelegate" destination="vk9-l6-h5y" id="QAY-L4-1oo"/>
@@ -384,7 +386,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" headerView="681" viewBased="YES" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="683" id="678" customClass="ParameterOutlineView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="479"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <size key="intercellSpacing" width="3" height="2"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1665,7 +1667,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <binding destination="1176" name="value" keyPath="values.isCheckUpdate" id="6Np-3V-Rul"/>
+                                                <action selector="preferencesChanged:" target="-2" id="AdS-LW-Tup"/>
+                                                <binding destination="nrN-Rm-RbK" name="value" keyPath="self.checkForUpdates" id="z5c-at-Mmr"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="644">
@@ -1888,8 +1891,8 @@ Debug Mode Guide</string>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="updateStartAtLogin:" target="-2" id="cVJ-Kd-QBs"/>
-                                                <binding destination="1176" name="value" keyPath="values.kResumeAtLogin" id="ToF-wX-ejq"/>
+                                                <action selector="resumeAtLoginChanged:" target="-2" id="TG5-QA-dAS"/>
+                                                <binding destination="nrN-Rm-RbK" name="value" keyPath="self.resumeAtLogin" id="Ejy-7A-btw"/>
                                             </connections>
                                         </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="696">
@@ -2034,6 +2037,7 @@ Debug Mode Guide</string>
             <point key="canvasLocation" x="747" y="371"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="1176"/>
+        <customObject id="nrN-Rm-RbK" customClass="PreferencesModel"/>
         <customObject id="Vvy-Zk-dMA" customClass="CheckboxOutlineViewDataSource">
             <connections>
                 <outlet property="preferencesWindowController" destination="-2" id="W88-Sb-yjH"/>
