@@ -3,12 +3,15 @@
 #import "GlobalDomainKeyRepeatObserver.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
+#import "SharedKeys.h"
 #import "XMLCompiler.h"
 #include <sys/time.h>
 
 @interface PreferencesManager ()
 
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @property NSMutableDictionary* defaults;
 @property(copy) NSArray* essential_configuration_identifiers;
@@ -47,6 +50,29 @@
     kKarabinerPreferencesCheckboxFont : @0,
   };
   [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+}
+
+- (void)loadPreferencesModel:(PreferencesModel*)preferencesModel {
+  preferencesModel.resumeAtLogin = [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin];
+  preferencesModel.checkForUpdates = [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
+}
+
+- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.checkForUpdates) forKey:kCheckForUpdates];
+
+  // ----------------------------------------
+  // refresh local model.
+  if (preferencesModel != self.preferencesModel) {
+    [self loadPreferencesModel:self.preferencesModel];
+  }
+
+  // ----------------------------------------
+  [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerPreferencesUpdatedNotification
+                                                                 object:nil
+                                                               userInfo:@{ @"processIdentifier" : @(processIdentifier) }
+                                                     deliverImmediately:YES];
 }
 
 // ----------------------------------------
