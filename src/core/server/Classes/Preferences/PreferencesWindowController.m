@@ -13,12 +13,14 @@
 #import "ParameterOutlineViewDelegate.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesModel.h"
 #import "ProfileCellView.h"
 #import "ProfileTableView.h"
 #import "ProfileTableViewDataSource.h"
 #import "ProfileTableViewDelegate.h"
 #import "Relauncher.h"
 #import "ServerController.h"
+#import "ServerForUserspace.h"
 #import "ServerObjects.h"
 #import "StatusMessageManager.h"
 #import "Updater.h"
@@ -45,6 +47,7 @@
 @property(weak) IBOutlet NSTextField* keyRepeatLabel;
 @property(weak) IBOutlet NSTextField* keyRepeatTextField;
 @property(weak) IBOutlet NSTextField* versionText;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ParameterOutlineView* parameterOutlineView;
 @property(weak) IBOutlet ParameterOutlineViewDelegate* parameterOutlineViewDelegate;
 @property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
@@ -147,6 +150,8 @@
 
 /* ---------------------------------------------------------------------- */
 - (void)windowDidLoad {
+  [self.serverObjects.serverForUserspace loadPreferencesModel:self.preferencesModel];
+
   [self expandParameterOutlineView:self];
 }
 
@@ -236,6 +241,19 @@
 }
 
 /* ---------------------------------------------------------------------- */
+- (void)savePreferencesModel {
+  [self.serverObjects.serverForUserspace savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+}
+
+- (IBAction)preferencesChanged:(id)sender {
+  [self savePreferencesModel];
+}
+
+- (IBAction)resumeAtLoginChanged:(id)sender {
+  [self savePreferencesModel];
+  [self.serverObjects.serverForUserspace updateStartAtLogin];
+}
+
 - (void)show {
   [self.window makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
@@ -414,10 +432,6 @@
 
 - (IBAction)openConsoleApp:(id)sender {
   [[NSWorkspace sharedWorkspace] openFile:@"/Applications/Utilities/Console.app"];
-}
-
-- (IBAction)updateStartAtLogin:(id)sender {
-  [ServerController updateStartAtLogin:YES];
 }
 
 - (IBAction)relaunch:(id)sender {
