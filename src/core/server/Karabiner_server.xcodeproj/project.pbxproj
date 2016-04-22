@@ -23,6 +23,7 @@
 		3431D7CB19E1395D00AE3219 /* icon.statusbar.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3431D7CA19E1395D00AE3219 /* icon.statusbar.tif */; };
 		343481641CC93EF300ECB9B3 /* SharedUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481631CC93EF300ECB9B3 /* SharedUtilities.m */; };
 		343481671CC9430800ECB9B3 /* CheckboxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481661CC9430800ECB9B3 /* CheckboxTree.m */; };
+		3434816A1CCA7C5800ECB9B3 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481691CCA7C5800ECB9B3 /* PreferencesModel.m */; };
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
 		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
@@ -139,6 +140,8 @@
 		343481631CC93EF300ECB9B3 /* SharedUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedUtilities.m; path = ../../share/SharedUtilities.m; sourceTree = "<group>"; };
 		343481651CC9430800ECB9B3 /* CheckboxTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxTree.h; path = ../../share/CheckboxTree.h; sourceTree = "<group>"; };
 		343481661CC9430800ECB9B3 /* CheckboxTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxTree.m; path = ../../share/CheckboxTree.m; sourceTree = "<group>"; };
+		343481681CCA7C5800ECB9B3 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../share/PreferencesModel.h; sourceTree = "<group>"; };
+		343481691CCA7C5800ECB9B3 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../share/PreferencesModel.m; sourceTree = "<group>"; };
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
 		343B2458153DCC7C0023BA6E /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = Resources/include; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
@@ -464,6 +467,8 @@
 				342A42D71A8EE7EE0007D37E /* IOHIDPostEventWrapper.m */,
 				34B41845194B5C1900707306 /* MigrationUtilities.h */,
 				34B41846194B5C1900707306 /* MigrationUtilities.m */,
+				343481681CCA7C5800ECB9B3 /* PreferencesModel.h */,
+				343481691CCA7C5800ECB9B3 /* PreferencesModel.m */,
 				34CB2F2E19565E2B00A6E0E3 /* Relauncher.h */,
 				34CB2F2F19565E2B00A6E0E3 /* Relauncher.m */,
 				3401D0DE16586C0700CF962F /* ServerClientProtocol.h */,
@@ -657,6 +662,7 @@
 				34B41847194B5C1900707306 /* MigrationUtilities.m in Sources */,
 				346A2F261C77778300E32362 /* PreferencesWindowController.m in Sources */,
 				3493C43D1BD93E21007A5887 /* GlobalDomainKeyRepeatObserver.m in Sources */,
+				3434816A1CCA7C5800ECB9B3 /* PreferencesModel.m in Sources */,
 				34F3FF5A1C4E9E4200B9B82C /* CheckboxOutlineViewDelegate.m in Sources */,
 				34E917061C6B4A1900C014BD /* ParameterValueCellView.m in Sources */,
 				34F3FF541C4E9C9300B9B82C /* CheckboxCellView.m in Sources */,
