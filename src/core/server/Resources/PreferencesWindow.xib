@@ -312,7 +312,7 @@
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="quit:" target="-2" id="pbA-Gz-ScD"/>
+                                                <action selector="quitWithConfirmation:" target="-2" id="z14-RB-ksI"/>
                                             </connections>
                                         </button>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cA4-9j-dKU">

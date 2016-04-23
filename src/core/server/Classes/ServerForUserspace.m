@@ -13,6 +13,7 @@
 @property(weak) IBOutlet AppDelegate* appDelegate;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet ServerController* serverController;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @property NSConnection* connection;
 
@@ -52,7 +53,23 @@
 }
 
 - (void)updateStartAtLogin {
-  [ServerController updateStartAtLogin:YES];
+  [self.serverController updateStartAtLogin:YES];
+}
+
+- (void)terminateServerProcess {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.serverController terminateServerProcess];
+  });
+}
+
+- (void)relaunch {
+  // Use dispatch_async in order to avoid "disconnected from server".
+  //
+  // Example error message of disconnection:
+  //   "karabiner: connection went invalid while waiting for a reply because a mach port died"
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [Relauncher relaunch];
+  });
 }
 
 // ----------------------------------------------------------------------
@@ -108,16 +125,6 @@
 
 - (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value {
   return [self.xmlCompiler symbolMapName:type value:(uint32_t)(value)];
-}
-
-- (void)relaunch {
-  // Use dispatch_async in order to avoid "disconnected from server".
-  //
-  // Example error message of disconnection:
-  //   "karabiner: connection went invalid while waiting for a reply because a mach port died"
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [Relauncher relaunch];
-  });
 }
 
 // ----------------------------------------------------------------------

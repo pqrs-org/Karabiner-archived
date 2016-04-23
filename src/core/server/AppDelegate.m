@@ -16,6 +16,7 @@
 #import "ServerObjects.h"
 #import "SessionObserver.h"
 #import "SharedKeys.h"
+#import "SharedUtilities.h"
 #import "StartAtLoginUtilities.h"
 #import "StatusBar.h"
 #import "StatusMessageManager.h"
@@ -30,6 +31,7 @@
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
+@property(weak) IBOutlet ServerController* serverController;
 @property(weak) IBOutlet ServerForUserspace* serverForUserspace;
 @property(weak) IBOutlet ServerObjects* serverObjects;
 @property(weak) IBOutlet StatusBar* statusbar;
@@ -298,6 +300,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // Wait until other apps connect to me.
   [NSThread sleepForTimeInterval:1];
 
+  // ------------------------------------------------------------
+  [self.preferencesManager loadPreferencesModel:self.preferencesModel];
+
   [self.preferencesManager load];
 
   [self.statusMessageManager setupStatusMessageManager];
@@ -393,7 +398,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
           [self openPreferences:self];
         }
       }
-      [ServerController updateStartAtLogin:YES];
+      [self.serverController updateStartAtLogin:YES];
     }
   }
 }
@@ -462,8 +467,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self.updater checkForUpdatesStableOnly];
 }
 
-- (IBAction)quit:(id)sender {
-  [ServerController quitWithConfirmation];
+- (IBAction)quitWithConfirmation:(id)sender {
+  if ([SharedUtilities confirmQuit]) {
+    [self.serverController terminateServerProcess];
+  }
 }
 
 @end

@@ -29,6 +29,7 @@
 - (void)configxml_reload;
 - (NSString *)symbolMapName:(NSString *)type value:(NSInteger)value;
 
+- (void)terminateServerProcess;
 - (void)relaunch;
 
 // for AXNotifier

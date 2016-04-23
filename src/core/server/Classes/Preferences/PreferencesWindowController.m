@@ -22,6 +22,7 @@
 #import "ServerController.h"
 #import "ServerForUserspace.h"
 #import "ServerObjects.h"
+#import "SharedUtilities.h"
 #import "StatusMessageManager.h"
 #import "Updater.h"
 #import "XMLCompiler.h"
@@ -291,8 +292,15 @@
   [self.checkboxOutlineView reloadData];
 }
 
-- (IBAction)quit:(id)sender {
-  [ServerController quitWithConfirmation];
+- (IBAction)quitWithConfirmation:(id)sender {
+  if ([SharedUtilities confirmQuit]) {
+    @try {
+      [self.serverObjects.serverForUserspace terminateServerProcess];
+    } @catch (NSException* exception) {
+    }
+
+    [NSApp terminate:nil];
+  }
 }
 
 - (IBAction)expandParameterOutlineView:(id)sender {
