@@ -27,6 +27,7 @@
             <connections>
                 <outlet property="clientForKernelspace" destination="600" id="621"/>
                 <outlet property="preferencesManager" destination="592" id="Rme-JE-WMZ"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Gge-fX-a1y"/>
                 <outlet property="serverForUserspace" destination="593" id="e1L-bb-rhx"/>
                 <outlet property="serverObjects" destination="IVB-c7-TsL" id="2tF-0E-05U"/>
                 <outlet property="statusMessageManager" destination="606" id="vjd-va-ZKm"/>
