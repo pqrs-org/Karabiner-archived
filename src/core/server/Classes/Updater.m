@@ -1,10 +1,10 @@
 @import Sparkle;
 #import "Updater.h"
-#import "PreferencesManager.h"
+#import "PreferencesModel.h"
 
 @interface Updater ()
 
-@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property SUUpdater* suupdater;
 
 @end
@@ -36,7 +36,7 @@
 }
 
 - (void)check:(BOOL)isBackground {
-  if (![self.preferencesManager isCheckForUpdates]) {
+  if (!self.preferencesModel.checkForUpdates) {
     NSLog(@"skip checkForUpdates");
     return;
   }

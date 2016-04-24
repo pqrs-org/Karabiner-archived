@@ -79,7 +79,7 @@
         </menu>
         <customObject id="588" customClass="Updater">
             <connections>
-                <outlet property="preferencesManager" destination="592" id="NFf-1V-SZ0"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Oo0-Ke-83N"/>
             </connections>
         </customObject>
         <customObject id="591" customClass="XMLCompiler"/>
