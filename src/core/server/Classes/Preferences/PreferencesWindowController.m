@@ -260,6 +260,11 @@
   [NSApp activateIgnoringOtherApps:YES];
 }
 
+- (IBAction)focusSearchField:(id)sender {
+  [self.tabView selectFirstTabViewItem:sender];
+  [self.window makeFirstResponder:self.checkboxSearchText];
+}
+
 - (IBAction)reloadXML:(id)sender {
   [self.serverObjects.xmlCompiler reload];
 }

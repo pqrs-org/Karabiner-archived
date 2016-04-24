@@ -98,7 +98,7 @@
                             </menuItem>
                             <menuItem title="Find…" tag="1" keyEquivalent="f" id="1111">
                                 <connections>
-                                    <action selector="performFindPanelAction:" target="-1" id="1143"/>
+                                    <action selector="focusSearchField:" target="-2" id="0ZS-yO-bLl"/>
                                 </connections>
                             </menuItem>
                         </items>
