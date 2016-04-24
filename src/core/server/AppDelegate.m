@@ -347,10 +347,10 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
                                                name:NSWindowWillCloseNotification
                                              object:nil];
 
-  // ------------------------------------------------------------
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
 
+  // ------------------------------------------------------------
   if (relaunchedCount == 0) {
     [self.updater checkForUpdatesInBackground];
   } else {
@@ -376,11 +376,17 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   // ------------------------------------------------------------
   // Open Preferences if Karabiner was launched by hand.
   // ------------------------------------------------------------
+  if (![StartAtLoginUtilities isStartAtLogin] &&
+      self.preferencesModel.resumeAtLogin) {
+    if (relaunchedCount == 0) {
+      [self openPreferences:self];
+    }
+  }
+  [self.serverController updateStartAtLogin:YES];
+
   {
     NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
     if (![bundlePath isEqualToString:@"/Applications/Karabiner.app"]) {
-      NSLog(@"Skip setStartAtLogin for %@", bundlePath);
-
       if (relaunchedCount == 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
           NSAlert* alert = [NSAlert new];
@@ -390,15 +396,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
           [alert runModal];
         });
       }
-
-    } else {
-      if (![StartAtLoginUtilities isStartAtLogin] &&
-          [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin]) {
-        if (relaunchedCount == 0) {
-          [self openPreferences:self];
-        }
-      }
-      [self.serverController updateStartAtLogin:YES];
     }
   }
 }
