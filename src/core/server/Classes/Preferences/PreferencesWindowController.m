@@ -322,11 +322,6 @@
   [self.parameterOutlineView collapseItem:nil collapseChildren:YES];
 }
 
-// deprecated
-- (IBAction)updateStatusBar:(id)sender {
-  [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarConfigurationChangedNotification object:nil];
-}
-
 - (IBAction)addNewProfile:(id)sender {
   [self.serverObjects.preferencesManager configlist_append];
 }

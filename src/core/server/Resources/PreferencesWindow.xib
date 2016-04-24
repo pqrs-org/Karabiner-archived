@@ -1273,8 +1273,8 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="updateStatusBar:" target="-2" id="wqD-or-bSm"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isShowSettingNameInStatusBar" id="1180"/>
+                                                            <action selector="statusBarConfigurationChanged:" target="-2" id="yVe-ZH-f6t"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.showProfileNameInStatusBar" id="99m-V7-QNX"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

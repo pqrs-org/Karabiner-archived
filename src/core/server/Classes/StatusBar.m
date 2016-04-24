@@ -73,7 +73,7 @@
     }
 
     // setTitle
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:kShowProfileNameInStatusBar]) {
+    if (!self.preferencesModel.showProfileNameInStatusBar) {
       [self.statusItem setTitle:@""];
       [self.statusItem setLength:NSSquareStatusItemLength];
 
