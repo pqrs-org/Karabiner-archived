@@ -1,6 +1,7 @@
 #import "ServerForUserspace.h"
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
+#import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "Relauncher.h"
@@ -54,6 +55,10 @@
 
 - (void)updateStartAtLogin {
   [self.serverController updateStartAtLogin:YES];
+}
+
+- (void)updateStatusBar {
+  [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarConfigurationChangedNotification object:nil];
 }
 
 - (void)terminateServerProcess {

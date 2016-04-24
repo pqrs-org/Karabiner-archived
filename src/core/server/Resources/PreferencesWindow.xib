@@ -1902,8 +1902,8 @@ Debug Mode Guide</string>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="updateStatusBar:" target="-2" id="kF7-pb-KWf"/>
-                                                <binding destination="1176" name="value" keyPath="values.isStatusbarEnable" id="1178"/>
+                                                <action selector="statusBarConfigurationChanged:" target="-2" id="uli-Yu-3DI"/>
+                                                <binding destination="nrN-Rm-RbK" name="value" keyPath="self.statusBarEnabled" id="NTZ-EB-Ngs"/>
                                             </connections>
                                         </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="NjG-52-LcZ">

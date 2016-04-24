@@ -4,11 +4,13 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesModel.h"
 
 @interface StatusBar ()
 
 @property(weak) IBOutlet NSMenu* menu;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property NSStatusItem* statusItem;
 
 @end
@@ -50,7 +52,7 @@
 }
 
 - (void)refresh {
-  if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled]) {
+  if (!self.preferencesModel.statusBarEnabled) {
     if (self.statusItem) {
       [[NSStatusBar systemStatusBar] removeStatusItem:self.statusItem];
       self.statusItem = nil;

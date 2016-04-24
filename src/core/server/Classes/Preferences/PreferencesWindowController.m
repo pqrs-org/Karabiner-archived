@@ -255,6 +255,11 @@
   [self.serverObjects.serverForUserspace updateStartAtLogin];
 }
 
+- (IBAction)statusBarConfigurationChanged:(id)sender {
+  [self savePreferencesModel];
+  [self.serverObjects.serverForUserspace updateStatusBar];
+}
+
 - (void)show {
   [self.window makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
@@ -317,6 +322,7 @@
   [self.parameterOutlineView collapseItem:nil collapseChildren:YES];
 }
 
+// deprecated
 - (IBAction)updateStatusBar:(id)sender {
   [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarConfigurationChangedNotification object:nil];
 }

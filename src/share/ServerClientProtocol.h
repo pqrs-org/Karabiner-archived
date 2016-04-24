@@ -11,6 +11,7 @@
 - (void)loadPreferencesModel:(PreferencesModel *)preferencesModel;
 - (void)savePreferencesModel:(PreferencesModel *)preferencesModel processIdentifier:(int)processIdentifier;
 - (void)updateStartAtLogin;
+- (void)updateStatusBar;
 
 - (int)value:(NSString *)name;
 - (int)defaultValue:(NSString *)name;

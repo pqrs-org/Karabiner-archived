@@ -42,6 +42,7 @@
             <connections>
                 <outlet property="menu" destination="553" id="a0C-6W-4wB"/>
                 <outlet property="preferencesManager" destination="592" id="jAD-zS-2a2"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Dzg-ok-soY"/>
             </connections>
         </customObject>
         <menu id="553" userLabel="StatusBarMenu">
