@@ -7,5 +7,6 @@
 @property BOOL resumeAtLogin;
 @property BOOL checkForUpdates;
 @property BOOL statusBarEnabled;
+@property BOOL showProfileNameInStatusBar;
 
 @end
