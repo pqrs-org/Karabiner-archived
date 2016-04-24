@@ -299,7 +299,8 @@
     } @catch (NSException* exception) {
     }
 
-    [NSApp terminate:nil];
+    // TODO: uncomment this line after separate preferences window to another process.
+    //[NSApp terminate:nil];
   }
 }
 
