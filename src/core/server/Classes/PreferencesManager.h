@@ -39,6 +39,4 @@
 - (void)configlist_sortByAppendIndex;
 - (void)configlist_sortByName;
 
-- (BOOL)isCheckForUpdates;
-
 @end

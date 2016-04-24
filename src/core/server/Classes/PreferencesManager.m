@@ -573,9 +573,4 @@
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
-// ----------------------------------------------------------------------
-- (BOOL)isCheckForUpdates {
-  return [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
-}
-
 @end
