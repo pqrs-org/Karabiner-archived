@@ -24,8 +24,8 @@
 // ----------------------------------------
 + (void)initialize {
   NSDictionary* dict = @{
-    kIsStatusBarEnabled : @YES,
-    kIsShowSettingNameInStatusBar : @NO,
+    kStatusBarEnabled : @YES,
+    kShowProfileNameInStatusBar : @NO,
     kConfigListSelectedIndex : @0,
     kCheckForUpdates : @YES,
     kIsStatusWindowEnabled : @YES,
@@ -55,15 +55,15 @@
 - (void)loadPreferencesModel:(PreferencesModel*)preferencesModel {
   preferencesModel.resumeAtLogin = [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin];
   preferencesModel.checkForUpdates = [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
-  preferencesModel.statusBarEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled];
-  preferencesModel.showProfileNameInStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:kIsShowSettingNameInStatusBar];
+  preferencesModel.statusBarEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kStatusBarEnabled];
+  preferencesModel.showProfileNameInStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:kShowProfileNameInStatusBar];
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.checkForUpdates) forKey:kCheckForUpdates];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusBarEnabled) forKey:kIsStatusBarEnabled];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showProfileNameInStatusBar) forKey:kIsShowSettingNameInStatusBar];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusBarEnabled) forKey:kStatusBarEnabled];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showProfileNameInStatusBar) forKey:kShowProfileNameInStatusBar];
 
   // ----------------------------------------
   // refresh local model.
