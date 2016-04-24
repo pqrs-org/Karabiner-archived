@@ -55,11 +55,13 @@
 - (void)loadPreferencesModel:(PreferencesModel*)preferencesModel {
   preferencesModel.resumeAtLogin = [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin];
   preferencesModel.checkForUpdates = [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
+  preferencesModel.statusBarEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusBarEnabled];
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.checkForUpdates) forKey:kCheckForUpdates];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusBarEnabled) forKey:kIsStatusBarEnabled];
 
   // ----------------------------------------
   // refresh local model.
