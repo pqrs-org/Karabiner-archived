@@ -10,14 +10,30 @@
     <item>
       <name>Swap Minus and Underscore</name>
       <identifier>remap.swap_minus_and_underscore</identifier>
-      <autogen>__KeyToKey__ KeyCode::MINUS, ModifierFlag::NONE,
-        KeyCode::MINUS, ModifierFlag::SHIFT_L
-      </autogen>
-      <autogen>
-        __KeyToKey__
-        KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE,
-        KeyCode::MINUS,
-      </autogen>
+
+      <block>
+        <modifier_not>
+          ModifierFlag::COMMAND_L,
+          ModifierFlag::COMMAND_R,
+          ModifierFlag::CONTROL_L,
+          ModifierFlag::CONTROL_R,
+          ModifierFlag::FN,
+          ModifierFlag::OPTION_L,
+          ModifierFlag::OPTION_R,
+        </modifier_not>
+
+        <autogen>
+          __KeyToKey__
+          KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+          KeyCode::MINUS,
+        </autogen>
+
+        <autogen>
+          __KeyToKey__
+          KeyCode::MINUS,
+          KeyCode::MINUS, ModifierFlag::SHIFT_L
+        </autogen>
+      </block>
     </item>
   </item>
 </root>
