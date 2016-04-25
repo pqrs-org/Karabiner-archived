@@ -262,6 +262,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>HHKB_BT_JP_0x0203</productname>
+    <productid>0x0203</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>HHKB_LITE2_JP_0x0068</productname>
     <productid>0x0068</productid>
   </deviceproductdef>
