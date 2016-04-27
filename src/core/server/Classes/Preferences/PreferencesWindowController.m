@@ -274,6 +274,11 @@
   [self.serverObjects.xmlCompiler reload];
 }
 
+- (IBAction)usePreparedSettingsConfigurationChanged:(id)sender {
+  [self savePreferencesModel];
+  [self.serverObjects.xmlCompiler reload];
+}
+
 - (IBAction)filterCheckboxOutlineView:(id)sender {
   BOOL isEnabledOnly = ([self.checkbox_showEnabledOnly state] == NSOnState);
   NSString* string = [self.checkboxSearchText stringValue];

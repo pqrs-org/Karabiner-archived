@@ -3,6 +3,7 @@
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 static NSInteger xmlCompilerItemId_;
@@ -180,6 +181,8 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
 @interface XMLCompiler ()
 
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
+
 @property(readwrite) XMLCompilerTree* preferencepane_checkbox;
 @property(readwrite) XMLCompilerTree* preferencepane_parameter;
 @property pqrs_xml_compiler* pqrs_xml_compiler;
@@ -322,7 +325,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
     [XMLCompiler prepare_private_xml];
 
     const char* checkbox_xml_file_name = "checkbox.xml";
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings]) {
+    if (!self.preferencesModel.usePreparedSettings) {
       checkbox_xml_file_name = "checkbox-omitted.xml";
     }
 

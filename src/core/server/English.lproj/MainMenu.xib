@@ -83,7 +83,11 @@
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Oo0-Ke-83N"/>
             </connections>
         </customObject>
-        <customObject id="591" customClass="XMLCompiler"/>
+        <customObject id="591" customClass="XMLCompiler">
+            <connections>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="zfS-AG-FMl"/>
+            </connections>
+        </customObject>
         <customObject id="592" customClass="PreferencesManager">
             <connections>
                 <outlet property="clientForKernelspace" destination="600" id="540-ED-9Ay"/>

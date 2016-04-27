@@ -1746,8 +1746,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
-                                                <action selector="reloadXML:" target="-2" id="EMC-eb-YTV"/>
-                                                <binding destination="1176" name="value" keyPath="values.kUsePreparedSettings" id="0tC-rV-Er6"/>
+                                                <action selector="usePreparedSettingsConfigurationChanged:" target="-2" id="n3x-V4-bvi"/>
+                                                <binding destination="nrN-Rm-RbK" name="value" keyPath="self.usePreparedSettings" id="w53-qn-WiK"/>
                                             </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="ee8-Fs-3nn">
