@@ -8,5 +8,6 @@
 @property BOOL checkForUpdates;
 @property BOOL statusBarEnabled;
 @property BOOL showProfileNameInStatusBar;
+@property BOOL usePreparedSettings;
 
 @end
