@@ -1,7 +1,6 @@
 /* -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*- */
 
 #import "PreferencesWindowController.h"
-#import "AXNotifierManager.h"
 #import "AppLauncher.h"
 #import "CheckboxOutlineView.h"
 #import "CheckboxOutlineViewDataSource.h"
@@ -260,6 +259,11 @@
   [self.serverObjects.serverForUserspace updateStatusBar];
 }
 
+- (IBAction)axNotifierConfigurationChanged:(id)sender {
+  [self savePreferencesModel];
+  [self.serverObjects.serverForUserspace restartAXNotifier];
+}
+
 - (void)show {
   [self.window makeKeyAndOrderFront:self];
   [NSApp activateIgnoringOtherApps:YES];
@@ -410,7 +414,7 @@
 }
 
 - (IBAction)restartAXNotifier:(id)sender {
-  if (![[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
+  if (!self.preferencesModel.useAXNotifier) {
     NSAlert* alert = [NSAlert new];
     [alert setMessageText:@"Karabiner Alert"];
     [alert addButtonWithTitle:@"Close"];
@@ -419,11 +423,11 @@
     return;
   }
 
-  [AXNotifierManager restartAXNotifier];
+  [self.serverObjects.serverForUserspace restartAXNotifier];
 }
 
 - (IBAction)restartAXNotifierWithoutAlert:(id)sender {
-  [AXNotifierManager restartAXNotifier];
+  [self.serverObjects.serverForUserspace restartAXNotifier];
 }
 
 - (IBAction)checkForUpdatesStableOnly:(id)sender {

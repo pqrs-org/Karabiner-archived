@@ -1,7 +1,13 @@
 #import "AXNotifierManager.h"
-#import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 
 static dispatch_queue_t queue_;
+
+@interface AXNotifierManager ()
+
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
+
+@end
 
 @implementation AXNotifierManager
 
@@ -9,13 +15,13 @@ static dispatch_queue_t queue_;
   queue_ = dispatch_queue_create("org.pqrs.Karabiner.AXNotifierManager", NULL);
 }
 
-+ (NSString*)AXNotifierPath {
+- (NSString*)AXNotifierPath {
   return @"/Applications/Karabiner.app/Contents/Applications/Karabiner_AXNotifier.app";
 }
 
-+ (void)launchNewAXNotifier {
+- (void)launchNewAXNotifier {
   dispatch_sync(queue_, ^{
-    NSString* path = [AXNotifierManager AXNotifierPath];
+    NSString* path = self.AXNotifierPath;
     NSURL* url = [NSURL fileURLWithPath:path];
     // Set NSWorkspaceLaunchNewInstance because
     // AXNotifier might be running (terminating) immediately after terminateAXNotifier.
@@ -27,9 +33,9 @@ static dispatch_queue_t queue_;
   });
 }
 
-+ (void)terminateAXNotifiers {
+- (void)terminateAXNotifiers {
   dispatch_sync(queue_, ^{
-    NSString* path = [AXNotifierManager AXNotifierPath];
+    NSString* path = self.AXNotifierPath;
     NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
 
     // If Karabiner has been moved into /Applications/Utilities, bundleIdentifier will be nil.
@@ -43,11 +49,11 @@ static dispatch_queue_t queue_;
   });
 }
 
-+ (void)restartAXNotifier {
-  [AXNotifierManager terminateAXNotifiers];
+- (void)restartAXNotifier {
+  [self terminateAXNotifiers];
 
-  if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled]) {
-    [AXNotifierManager launchNewAXNotifier];
+  if (self.preferencesModel.useAXNotifier) {
+    [self launchNewAXNotifier];
   }
 }
 

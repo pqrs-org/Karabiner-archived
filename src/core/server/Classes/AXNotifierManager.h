@@ -4,6 +4,6 @@
 
 @interface AXNotifierManager : NSObject
 
-+ (void)restartAXNotifier;
+- (void)restartAXNotifier;
 
 @end

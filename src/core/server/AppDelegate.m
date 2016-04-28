@@ -28,6 +28,7 @@
 
 @interface AppDelegate ()
 
+@property(weak) IBOutlet AXNotifierManager* axNotifierManager;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
@@ -358,7 +359,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   }
 
   // ------------------------------------------------------------
-  [AXNotifierManager restartAXNotifier];
+  [self.axNotifierManager restartAXNotifier];
 
   // ------------------------------------------------------------
   // Send kKarabinerServerDidLaunchNotification after launching AXNotifier.

@@ -1,4 +1,5 @@
 #import "ServerForUserspace.h"
+#import "AXNotifierManager.h"
 #import "AppDelegate.h"
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
@@ -12,6 +13,7 @@
 @interface ServerForUserspace ()
 
 @property(weak) IBOutlet AppDelegate* appDelegate;
+@property(weak) IBOutlet AXNotifierManager* axNotifierManager;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet ServerController* serverController;
@@ -59,6 +61,10 @@
 
 - (void)updateStatusBar {
   [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarConfigurationChangedNotification object:nil];
+}
+
+- (void)restartAXNotifier {
+  [self.axNotifierManager restartAXNotifier];
 }
 
 - (void)terminateServerProcess {

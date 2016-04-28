@@ -12,19 +12,9 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="IVB-c7-TsL" customClass="ServerObjects">
-            <connections>
-                <outlet property="clientForKernelspace" destination="600" id="cmc-G2-qVS"/>
-                <outlet property="preferencesManager" destination="592" id="BOL-JN-afJ"/>
-                <outlet property="serverForUserspace" destination="593" id="LPh-oh-KPf"/>
-                <outlet property="statusMessageManager" destination="606" id="0gp-nD-Cxc"/>
-                <outlet property="updater" destination="588" id="AVr-Nt-LFt"/>
-                <outlet property="xmlCompiler" destination="591" id="SQx-uN-mJn"/>
-            </connections>
-        </customObject>
-        <customObject id="606" customClass="StatusMessageManager"/>
         <customObject id="494" customClass="AppDelegate">
             <connections>
+                <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="kvX-lc-3Vc"/>
                 <outlet property="clientForKernelspace" destination="600" id="621"/>
                 <outlet property="preferencesManager" destination="592" id="Rme-JE-WMZ"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Gge-fX-a1y"/>
@@ -38,6 +28,22 @@
                 <outlet property="xmlCompiler" destination="591" id="VFc-Dx-zkN"/>
             </connections>
         </customObject>
+        <customObject id="CDf-xS-2dG" customClass="AXNotifierManager">
+            <connections>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="CiP-Gy-k3T"/>
+            </connections>
+        </customObject>
+        <customObject id="IVB-c7-TsL" customClass="ServerObjects">
+            <connections>
+                <outlet property="clientForKernelspace" destination="600" id="cmc-G2-qVS"/>
+                <outlet property="preferencesManager" destination="592" id="BOL-JN-afJ"/>
+                <outlet property="serverForUserspace" destination="593" id="LPh-oh-KPf"/>
+                <outlet property="statusMessageManager" destination="606" id="0gp-nD-Cxc"/>
+                <outlet property="updater" destination="588" id="AVr-Nt-LFt"/>
+                <outlet property="xmlCompiler" destination="591" id="SQx-uN-mJn"/>
+            </connections>
+        </customObject>
+        <customObject id="606" customClass="StatusMessageManager"/>
         <customObject id="552" customClass="StatusBar">
             <connections>
                 <outlet property="menu" destination="553" id="a0C-6W-4wB"/>
@@ -99,6 +105,7 @@
         <customObject id="593" customClass="ServerForUserspace">
             <connections>
                 <outlet property="appDelegate" destination="494" id="st8-42-DqC"/>
+                <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="VXf-WB-FAl"/>
                 <outlet property="clientForKernelspace" destination="600" id="UFv-5O-yDR"/>
                 <outlet property="preferencesManager" destination="592" id="z9H-TY-rFE"/>
                 <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>

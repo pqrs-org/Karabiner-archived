@@ -1507,8 +1507,8 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="j07-Rs-vKQ"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kIsAXNotifierEnabled" id="YMa-nF-sYh"/>
+                                                            <action selector="axNotifierConfigurationChanged:" target="-2" id="w93-vh-IpT"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.useAXNotifier" id="1Rx-6n-SgE"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="TIe-Bi-YgY">

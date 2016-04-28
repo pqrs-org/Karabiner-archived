@@ -12,6 +12,7 @@
 - (void)savePreferencesModel:(PreferencesModel *)preferencesModel processIdentifier:(int)processIdentifier;
 - (void)updateStartAtLogin;
 - (void)updateStatusBar;
+- (void)restartAXNotifier;
 
 - (int)value:(NSString *)name;
 - (int)defaultValue:(NSString *)name;
