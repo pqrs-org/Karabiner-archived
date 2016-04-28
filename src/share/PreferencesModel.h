@@ -10,4 +10,6 @@
 @property BOOL showProfileNameInStatusBar;
 @property BOOL usePreparedSettings;
 
+@property BOOL useAXNotifier;
+
 @end
