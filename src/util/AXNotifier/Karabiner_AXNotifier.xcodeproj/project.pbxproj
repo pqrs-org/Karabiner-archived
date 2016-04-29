@@ -15,6 +15,7 @@
 		3403B0811930EF1F003E0CC1 /* ServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3403B07F1930EF1F003E0CC1 /* ServerClient.m */; };
 		342C9FBA1960534F00B4C740 /* AXApplicationObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 342C9FB71960534F00B4C740 /* AXApplicationObserver.m */; };
 		342C9FBB1960534F00B4C740 /* WindowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 342C9FB91960534F00B4C740 /* WindowObserver.m */; };
+		3471FBEF1CD2F1B1000B1DF6 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3471FBEE1CD2F1B1000B1DF6 /* PreferencesModel.m */; };
 		347A86EB194B0BC7009A6CDA /* MigrationUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */; };
 		347A86EC194B0BC7009A6CDA /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 347A86EA194B0BC7009A6CDA /* StartAtLoginUtilities.m */; };
 		349909BF196069D200058C5F /* AXApplicationObserverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 349909BE196069D200058C5F /* AXApplicationObserverManager.m */; };
@@ -44,6 +45,8 @@
 		342C9FB71960534F00B4C740 /* AXApplicationObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AXApplicationObserver.m; path = Classes/AXApplicationObserver.m; sourceTree = "<group>"; };
 		342C9FB81960534F00B4C740 /* WindowObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WindowObserver.h; path = Classes/WindowObserver.h; sourceTree = "<group>"; };
 		342C9FB91960534F00B4C740 /* WindowObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WindowObserver.m; path = Classes/WindowObserver.m; sourceTree = "<group>"; };
+		3471FBED1CD2F1B1000B1DF6 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../../share/PreferencesModel.h; sourceTree = "<group>"; };
+		3471FBEE1CD2F1B1000B1DF6 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../../share/PreferencesModel.m; sourceTree = "<group>"; };
 		347A86E7194B0BC7009A6CDA /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../../share/MigrationUtilities.h; sourceTree = "<group>"; };
 		347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../../share/MigrationUtilities.m; sourceTree = "<group>"; };
 		347A86E9194B0BC7009A6CDA /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				34E3507D1932FC690036B0D3 /* FrontmostWindow.m */,
 				347A86E7194B0BC7009A6CDA /* MigrationUtilities.h */,
 				347A86E8194B0BC7009A6CDA /* MigrationUtilities.m */,
+				3471FBED1CD2F1B1000B1DF6 /* PreferencesModel.h */,
+				3471FBEE1CD2F1B1000B1DF6 /* PreferencesModel.m */,
 				34BD67F11956AFFD00587BE7 /* Relauncher.h */,
 				34BD67F21956AFFD00587BE7 /* Relauncher.m */,
 				3403B07E1930EF1F003E0CC1 /* ServerClient.h */,
@@ -244,6 +249,7 @@
 				342C9FBA1960534F00B4C740 /* AXApplicationObserver.m in Sources */,
 				347A86EB194B0BC7009A6CDA /* MigrationUtilities.m in Sources */,
 				34BD67F31956AFFD00587BE7 /* Relauncher.m in Sources */,
+				3471FBEF1CD2F1B1000B1DF6 /* PreferencesModel.m in Sources */,
 				34E3507E1932FC690036B0D3 /* FrontmostWindow.m in Sources */,
 				34010024192C63AA00B0A3A5 /* main.m in Sources */,
 				34FB0ED6192F97FB0038C1D5 /* AXUtilities.m in Sources */,

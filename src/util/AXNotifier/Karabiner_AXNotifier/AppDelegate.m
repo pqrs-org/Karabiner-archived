@@ -3,6 +3,7 @@
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 #import "Relauncher.h"
 #import "ServerClient.h"
 #import "SharedKeys.h"
@@ -11,8 +12,10 @@
 // ==================================================
 @interface AppDelegate ()
 
-@property(assign) IBOutlet NSWindow* window;
-@property(assign) IBOutlet ServerClient* client;
+@property(weak) IBOutlet NSWindow* window;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
+@property(weak) IBOutlet ServerClient* client;
+
 @property BOOL axEnabled;
 @property(copy) NSDictionary* focusedUIElementInformation;
 @property(copy) NSDictionary* overlaidWindowElementInformation;
@@ -193,7 +196,8 @@ send:
 }
 
 - (void)setupAXApplicationObserverManager {
-  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithPreferences:[[self.client proxy] preferencesForAXNotifier]];
+  [self.client.proxy loadPreferencesModel:self.preferencesModel];
+  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithPreferencesModel:self.preferencesModel];
 }
 
 @end

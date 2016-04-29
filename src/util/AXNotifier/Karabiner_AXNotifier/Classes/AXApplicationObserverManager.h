@@ -2,8 +2,10 @@
 
 @import Cocoa;
 
+@class PreferencesModel;
+
 @interface AXApplicationObserverManager : NSObject
 
-- (instancetype)initWithPreferences:(NSDictionary*)preferences;
+- (instancetype)initWithPreferencesModel:(PreferencesModel*)preferencesModel;
 
 @end

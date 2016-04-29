@@ -1,5 +1,6 @@
 #import "AXApplicationObserverManager.h"
 #import "AXApplicationObserver.h"
+#import "PreferencesModel.h"
 
 /*
  * Notification and Information
@@ -84,7 +85,7 @@
 
 @interface AXApplicationObserverManager ()
 
-@property(copy) NSDictionary* preferences;
+@property(weak) PreferencesModel* preferencesModel;
 @property NSMutableDictionary* systemApplicationObservers;
 
 // We need to observe frontmostApplication only because
@@ -123,7 +124,7 @@
           NSArray* runningApplications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
           if ([runningApplications count] > 0) {
             @try {
-              self.systemApplicationObservers[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0] preferences:self.preferences];
+              self.systemApplicationObservers[bundleIdentifier] = [[AXApplicationObserver alloc] initWithRunningApplication:runningApplications[0] preferencesModel:self.preferencesModel];
             } @catch (NSException* e) {
 #if 0
               NSLog(@"%@", e);
@@ -156,7 +157,7 @@
 #endif
 
         @try {
-          self.observer = [[AXApplicationObserver alloc] initWithRunningApplication:self.runningApplicationForAXApplicationObserver preferences:self.preferences];
+          self.observer = [[AXApplicationObserver alloc] initWithRunningApplication:self.runningApplicationForAXApplicationObserver preferencesModel:self.preferencesModel];
           [self.observer observeTitleChangedNotification];
           [self.observer postNotification];
 
@@ -185,12 +186,11 @@
   });
 }
 
-- (instancetype)initWithPreferences:(NSDictionary*)preferences {
+- (instancetype)initWithPreferencesModel:(PreferencesModel*)preferencesModel {
   self = [super init];
 
   if (self) {
-    self.preferences = preferences;
-    NSLog(@"AXNotifier Preferences: %@", self.preferences);
+    self.preferencesModel = preferencesModel;
 
     self.systemApplicationObservers = [NSMutableDictionary new];
 
