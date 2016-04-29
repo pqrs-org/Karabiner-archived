@@ -1540,8 +1540,8 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="4zU-Kz-l3C"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInPreview" id="eHV-eW-29L"/>
+                                                            <action selector="axNotifierConfigurationChanged:" target="-2" id="hZv-ZN-YXt"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInPreview" id="PFe-M2-b6s"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="7B1-Lp-x4v">
