@@ -11,5 +11,6 @@
 @property BOOL usePreparedSettings;
 
 @property BOOL useAXNotifier;
+@property BOOL disableAXNotifierInJavaApps;
 
 @end

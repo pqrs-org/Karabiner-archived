@@ -59,6 +59,7 @@
   preferencesModel.showProfileNameInStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:kShowProfileNameInStatusBar];
   preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
   preferencesModel.useAXNotifier = [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled];
+  preferencesModel.disableAXNotifierInJavaApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps];
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
@@ -68,6 +69,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showProfileNameInStatusBar) forKey:kShowProfileNameInStatusBar];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useAXNotifier) forKey:kIsAXNotifierEnabled];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
 
   // ----------------------------------------
   // refresh local model.
