@@ -8,8 +8,8 @@
 #import "PreferencesModel.h"
 #import "Relauncher.h"
 #import "ServerController.h"
-#import "StatusMessageManager.h"
 #import "SharedKeys.h"
+#import "StatusMessageManager.h"
 #import "XMLCompiler.h"
 
 @interface ServerForUserspace ()
