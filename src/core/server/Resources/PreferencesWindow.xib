@@ -968,8 +968,8 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="refreshStatusMessage:" target="-2" id="lBU-j2-iWb"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isStatusWindowShowStickyModifier" id="1319"/>
+                                                            <action selector="statusWindowConfigurationChanged:" target="-2" id="Tv6-AC-8LK"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.showStickyModifiersStateInStatusWindow" id="E1R-Of-k3o"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="1325" userLabel="Show status message">

@@ -227,7 +227,7 @@
 
     // Skip message if configured as hide.
     if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY) {
-      if (![defaults boolForKey:kIsStatusWindowShowStickyModifier]) {
+      if (!self.preferencesModel.showStickyModifiersStateInStatusWindow) {
         continue;
       }
     }
