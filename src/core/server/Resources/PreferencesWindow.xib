@@ -1529,8 +1529,8 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="fYE-Ys-Hrh"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInQtApps" id="vC7-9r-dNM"/>
+                                                            <action selector="axNotifierConfigurationChanged:" target="-2" id="75D-qg-yPj"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInQtApps" id="kwg-9G-jac"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="l8Y-ol-1AD">
