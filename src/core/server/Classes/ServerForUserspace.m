@@ -8,6 +8,7 @@
 #import "PreferencesModel.h"
 #import "Relauncher.h"
 #import "ServerController.h"
+#import "StatusMessageManager.h"
 #import "SharedKeys.h"
 #import "XMLCompiler.h"
 
@@ -19,6 +20,7 @@
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ServerController* serverController;
+@property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @property NSConnection* connection;
 
@@ -63,6 +65,10 @@
 
 - (void)updateStatusBar {
   [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarConfigurationChangedNotification object:nil];
+}
+
+- (void)updateStatusWindow {
+  [self.statusMessageManager refresh];
 }
 
 - (void)restartAXNotifier {

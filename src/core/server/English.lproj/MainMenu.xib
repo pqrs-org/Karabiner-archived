@@ -43,7 +43,11 @@
                 <outlet property="xmlCompiler" destination="591" id="SQx-uN-mJn"/>
             </connections>
         </customObject>
-        <customObject id="606" customClass="StatusMessageManager"/>
+        <customObject id="606" customClass="StatusMessageManager">
+            <connections>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="QU3-uN-Lq2"/>
+            </connections>
+        </customObject>
         <customObject id="552" customClass="StatusBar">
             <connections>
                 <outlet property="menu" destination="553" id="a0C-6W-4wB"/>
@@ -110,6 +114,7 @@
                 <outlet property="preferencesManager" destination="592" id="z9H-TY-rFE"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="oDY-ts-MGJ"/>
                 <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>
+                <outlet property="statusMessageManager" destination="606" id="P7L-QV-UR3"/>
                 <outlet property="xmlCompiler" destination="591" id="Sxi-i0-3U2"/>
             </connections>
         </customObject>

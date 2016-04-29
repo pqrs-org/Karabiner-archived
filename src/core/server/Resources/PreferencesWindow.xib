@@ -947,7 +947,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="refreshStatusMessage:" target="-2" id="jNX-EI-zDw"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isStatusWindowEnabled" id="1255"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.useStatusWindow" id="pIQ-m0-uxj"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="wdT-lG-Jfw" userLabel="Show status message">

@@ -1,12 +1,15 @@
 #import "StatusMessageManager.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 #import "StatusMessageView_edge.h"
 #import "StatusMessageView_nano.h"
 #import "StatusMessageView_normal.h"
 #include "bridge.h"
 
 @interface StatusMessageManager ()
+
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 
 @property BOOL statusWindowPreferencesOpened;
 @property NSMutableArray* windowControllers;
@@ -202,7 +205,7 @@
   [self updateWindows];
 
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  if (![defaults boolForKey:kIsStatusWindowEnabled]) {
+  if (!self.preferencesModel.useStatusWindow) {
     for (NSWindowController* controller in self.windowControllers) {
       [self hideStatusWindow:controller];
     }

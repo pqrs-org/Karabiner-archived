@@ -259,6 +259,11 @@
   [self.serverObjects.serverForUserspace updateStatusBar];
 }
 
+- (IBAction)statusWindowConfigurationChanged:(id)sender {
+  [self savePreferencesModel];
+  [self.serverObjects.serverForUserspace updateStatusWindow];
+}
+
 - (IBAction)axNotifierConfigurationChanged:(id)sender {
   [self savePreferencesModel];
   [self.serverObjects.serverForUserspace restartAXNotifier];
