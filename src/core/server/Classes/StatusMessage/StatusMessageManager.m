@@ -240,7 +240,7 @@
     NSString* message = self.lines[idx];
 
     // append caps lock status to modifier lock.
-    if ([defaults boolForKey:kIsStatusWindowShowCapsLock]) {
+    if (self.preferencesModel.showCapsLockStateInStatusWindow) {
       if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK) {
         NSString* capslock = self.lines[BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK];
         if ([capslock length] > 0) {

@@ -946,7 +946,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="refreshStatusMessage:" target="-2" id="jNX-EI-zDw"/>
+                                                            <action selector="statusWindowConfigurationChanged:" target="-2" id="hg6-lC-gRN"/>
                                                             <binding destination="nrN-Rm-RbK" name="value" keyPath="self.useStatusWindow" id="pIQ-m0-uxj"/>
                                                         </connections>
                                                     </button>
@@ -957,8 +957,8 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="refreshStatusMessage:" target="-2" id="lMG-7D-PMr"/>
-                                                            <binding destination="1176" name="value" keyPath="values.isStatusWindowShowCapsLock" id="CAy-g3-pDK"/>
+                                                            <action selector="statusWindowConfigurationChanged:" target="-2" id="t9u-vE-KeV"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.showCapsLockStateInStatusWindow" id="CPx-zB-TaR"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="1315" userLabel="Show status message">
