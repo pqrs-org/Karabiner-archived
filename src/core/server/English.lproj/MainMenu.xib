@@ -108,6 +108,7 @@
                 <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="VXf-WB-FAl"/>
                 <outlet property="clientForKernelspace" destination="600" id="UFv-5O-yDR"/>
                 <outlet property="preferencesManager" destination="592" id="z9H-TY-rFE"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="oDY-ts-MGJ"/>
                 <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>
                 <outlet property="xmlCompiler" destination="591" id="Sxi-i0-3U2"/>
             </connections>

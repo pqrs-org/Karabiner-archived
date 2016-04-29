@@ -1518,8 +1518,8 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="W0W-JM-MLV"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInJavaApps" id="xeG-bG-Yxa"/>
+                                                            <action selector="axNotifierConfigurationChanged:" target="-2" id="oLK-Xi-ymQ"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInJavaApps" id="FDq-v9-hxd"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Kkb-FW-HE7">

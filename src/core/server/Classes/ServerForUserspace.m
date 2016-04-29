@@ -5,6 +5,7 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesModel.h"
 #import "Relauncher.h"
 #import "ServerController.h"
 #import "SharedKeys.h"
@@ -16,6 +17,7 @@
 @property(weak) IBOutlet AXNotifierManager* axNotifierManager;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ServerController* serverController;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @property NSConnection* connection;
@@ -141,7 +143,7 @@
 // ----------------------------------------------------------------------
 - (NSDictionary*)preferencesForAXNotifier {
   return @{
-    @"kAXNotifierDisabledInJavaApps" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps]),
+    @"kAXNotifierDisabledInJavaApps" : @(self.preferencesModel.disableAXNotifierInJavaApps),
     @"kAXNotifierDisabledInQtApps" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps]),
     @"kAXNotifierDisabledInPreview" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview]),
     @"kAXNotifierDisabledInMicrosoftOffice" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice]),
