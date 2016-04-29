@@ -17,5 +17,6 @@
 @property BOOL disableAXNotifierInMicrosoftOffice;
 
 @property BOOL useStatusWindow;
+@property BOOL showCapsLockStateInStatusWindow;
 
 @end
