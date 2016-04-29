@@ -2,9 +2,9 @@
 
 @interface AppDelegate ()
 
-@property(assign) IBOutlet NSWindow* window1;
-@property(assign) IBOutlet NSWindow* window2;
-@property(assign) IBOutlet NSWindow* window3;
+@property(weak) IBOutlet NSWindow* window1;
+@property(weak) IBOutlet NSWindow* window2;
+@property(weak) IBOutlet NSWindow* window3;
 
 @end
 
