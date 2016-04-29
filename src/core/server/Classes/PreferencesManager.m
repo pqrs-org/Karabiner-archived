@@ -60,6 +60,7 @@
   preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
   preferencesModel.useStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowEnabled];
   preferencesModel.showCapsLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowCapsLock];
+  preferencesModel.showStickyModifiersStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowStickyModifier];
 
   if (!preferencesModel.axNotifierPreferencesModel) {
     preferencesModel.axNotifierPreferencesModel = [AXNotifierPreferencesModel new];
@@ -83,6 +84,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useStatusWindow) forKey:kIsStatusWindowEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showCapsLockStateInStatusWindow) forKey:kIsStatusWindowShowCapsLock];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showStickyModifiersStateInStatusWindow) forKey:kIsStatusWindowShowStickyModifier];
 
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.useAXNotifier) forKey:kIsAXNotifierEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
