@@ -426,10 +426,6 @@
   [self.serverObjects.serverForUserspace restartAXNotifier];
 }
 
-- (IBAction)restartAXNotifierWithoutAlert:(id)sender {
-  [self.serverObjects.serverForUserspace restartAXNotifier];
-}
-
 - (IBAction)checkForUpdatesStableOnly:(id)sender {
   [self.serverObjects.updater checkForUpdatesStableOnly];
 }

@@ -1551,8 +1551,8 @@ Choose a profile from menu bar.</string>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="restartAXNotifierWithoutAlert:" target="-2" id="HDO-PD-Y7D"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kAXNotifierDisabledInMicrosoftOffice" id="dlJ-l9-job"/>
+                                                            <action selector="axNotifierConfigurationChanged:" target="-2" id="gN4-HQ-wPV"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInMicrosoftOffice" id="x9O-oc-nhb"/>
                                                         </connections>
                                                     </button>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-Fh-Xme">

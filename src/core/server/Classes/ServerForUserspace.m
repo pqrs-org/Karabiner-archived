@@ -146,7 +146,7 @@
     @"kAXNotifierDisabledInJavaApps" : @(self.preferencesModel.disableAXNotifierInJavaApps),
     @"kAXNotifierDisabledInQtApps" : @(self.preferencesModel.disableAXNotifierInQtApps),
     @"kAXNotifierDisabledInPreview" : @(self.preferencesModel.disableAXNotifierInPreview),
-    @"kAXNotifierDisabledInMicrosoftOffice" : @([[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice]),
+    @"kAXNotifierDisabledInMicrosoftOffice" : @(self.preferencesModel.disableAXNotifierInMicrosoftOffice),
   };
 }
 
