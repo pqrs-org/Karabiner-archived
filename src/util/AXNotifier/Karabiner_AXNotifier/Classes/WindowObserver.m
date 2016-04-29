@@ -97,9 +97,10 @@
 }
 
 - (void)updateCfWindowIDs {
-  if (self.cfWindowIDs) {
-    CFRelease(self.cfWindowIDs);
-    self.cfWindowIDs = NULL;
+  // Accessing _cfWindowIDs directly in order to avoid static analyzer warning.
+  if (_cfWindowIDs) {
+    CFRelease(_cfWindowIDs);
+    _cfWindowIDs = NULL;
   }
   if (self.rawWindowIDs) {
     free(self.rawWindowIDs);
@@ -115,7 +116,7 @@
         self.rawWindowIDs[i] = [keys[i] integerValue];
       }
     }
-    self.cfWindowIDs = CFArrayCreate(NULL, (const void**)(self.rawWindowIDs), count, NULL);
+    _cfWindowIDs = CFArrayCreate(NULL, (const void**)(self.rawWindowIDs), count, NULL);
   }
 }
 
@@ -352,8 +353,8 @@
 }
 
 - (void)checkWindows {
-  if (self.cfWindowIDs) {
-    NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(self.cfWindowIDs));
+  if (_cfWindowIDs) {
+    NSArray* windows = (__bridge_transfer NSArray*)(CGWindowListCreateDescriptionFromArray(_cfWindowIDs));
     for (NSDictionary* window in windows) {
       pid_t windowOwnerPID = [window[(__bridge NSString*)(kCGWindowOwnerPID)] intValue];
       long windowNumber = [window[(__bridge NSString*)(kCGWindowNumber)] unsignedIntValue];
