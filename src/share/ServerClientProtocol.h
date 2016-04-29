@@ -35,7 +35,6 @@
 - (void)relaunch;
 
 // for AXNotifier
-- (NSDictionary *)preferencesForAXNotifier;
 - (void)updateFocusedUIElementInformation:(NSDictionary *)information;
 
 // For EventViewer.

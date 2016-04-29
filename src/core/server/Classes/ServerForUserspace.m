@@ -141,15 +141,6 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSDictionary*)preferencesForAXNotifier {
-  return @{
-    @"kAXNotifierDisabledInJavaApps" : @(self.preferencesModel.disableAXNotifierInJavaApps),
-    @"kAXNotifierDisabledInQtApps" : @(self.preferencesModel.disableAXNotifierInQtApps),
-    @"kAXNotifierDisabledInPreview" : @(self.preferencesModel.disableAXNotifierInPreview),
-    @"kAXNotifierDisabledInMicrosoftOffice" : @(self.preferencesModel.disableAXNotifierInMicrosoftOffice),
-  };
-}
-
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information {
   return [self.appDelegate updateFocusedUIElementInformation:information];
 }
