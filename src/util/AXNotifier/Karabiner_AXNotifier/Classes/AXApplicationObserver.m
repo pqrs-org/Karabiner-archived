@@ -51,7 +51,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   ignoredApps_ = [NSMutableDictionary new];
 }
 
-- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication preferencesModel:(PreferencesModel*)preferencesModel {
+- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication axNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
   self = [super init];
 
   if (self) {
@@ -71,7 +71,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     }
 
     // Java apps will be crashed if observe. (We confirm crash in SQLDeveloper.)
-    if (preferencesModel.disableAXNotifierInJavaApps) {
+    if (axNotifierPreferencesModel.disableAXNotifierInJavaApps) {
       if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
           [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
           [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
@@ -126,7 +126,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     }
 
     // Qt apps will be crashed if observe.
-    if (preferencesModel.disableAXNotifierInQtApps) {
+    if (axNotifierPreferencesModel.disableAXNotifierInQtApps) {
       if ([[[runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
           false) {
         observable = NO;
@@ -135,14 +135,14 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 
     // Preview.app will be slow when opening large pdf if Preview.app is observed.
     // eg. http://web.mit.edu/rsi/www/pdfs/beamer-tutorial.pdf
-    if (preferencesModel.disableAXNotifierInPreview) {
+    if (axNotifierPreferencesModel.disableAXNotifierInPreview) {
       if ([[runningApplication bundleIdentifier] isEqualToString:@"com.apple.Preview"]) {
         observable = NO;
       }
     }
 
     // Microsoft Excel.app will reset scrolling by scroll wheel if it is observed.
-    if (preferencesModel.disableAXNotifierInMicrosoftOffice) {
+    if (axNotifierPreferencesModel.disableAXNotifierInMicrosoftOffice) {
       if ([[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Excel"] ||
           [[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Powerpoint"] ||
           [[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Word"] ||

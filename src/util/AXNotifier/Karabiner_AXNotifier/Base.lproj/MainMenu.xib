@@ -14,13 +14,13 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="axNotifierPreferencesModel" destination="SmS-1z-for" id="40P-g7-cRt"/>
                 <outlet property="client" destination="E62-9f-xSp" id="3Fs-w4-Ge3"/>
-                <outlet property="preferencesModel" destination="SmS-1z-for" id="MPa-lB-iZE"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="E62-9f-xSp" customClass="ServerClient"/>
-        <customObject id="SmS-1z-for" customClass="PreferencesModel"/>
+        <customObject id="SmS-1z-for" customClass="AXNotifierPreferencesModel"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Karabiner_AXNotifier" id="1Xt-HY-uBw">

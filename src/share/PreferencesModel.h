@@ -2,6 +2,18 @@
 
 @import Cocoa;
 
+@interface AXNotifierPreferencesModel : NSObject <NSCoding, NSCopying>
+
+@property BOOL useAXNotifier;
+@property BOOL disableAXNotifierInJavaApps;
+@property BOOL disableAXNotifierInQtApps;
+@property BOOL disableAXNotifierInPreview;
+@property BOOL disableAXNotifierInMicrosoftOffice;
+
+- (void)log;
+
+@end
+
 @interface PreferencesModel : NSObject
 
 @property BOOL resumeAtLogin;
@@ -10,13 +22,9 @@
 @property BOOL showProfileNameInStatusBar;
 @property BOOL usePreparedSettings;
 
-@property BOOL useAXNotifier;
-@property BOOL disableAXNotifierInJavaApps;
-@property BOOL disableAXNotifierInQtApps;
-@property BOOL disableAXNotifierInPreview;
-@property BOOL disableAXNotifierInMicrosoftOffice;
-
 @property BOOL useStatusWindow;
 @property BOOL showCapsLockStateInStatusWindow;
+
+@property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 
 @end

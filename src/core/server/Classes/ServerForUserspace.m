@@ -55,6 +55,10 @@
   [self.preferencesManager loadPreferencesModel:preferencesModel];
 }
 
+- (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
+  [self.preferencesManager loadAXNotifierPreferencesModel:axNotifierPreferencesModel];
+}
+
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
 }

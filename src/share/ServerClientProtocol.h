@@ -3,48 +3,50 @@
 @import Cocoa;
 
 @class PreferencesModel;
+@class AXNotifierPreferencesModel;
 
 @protocol ServerClientProtocol
 
-- (NSString *)bundleVersion;
+- (NSString*)bundleVersion;
 
-- (void)loadPreferencesModel:(PreferencesModel *)preferencesModel;
-- (void)savePreferencesModel:(PreferencesModel *)preferencesModel processIdentifier:(int)processIdentifier;
+- (void)loadPreferencesModel:(PreferencesModel*)preferencesModel;
+- (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel;
+- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
 - (void)updateStartAtLogin;
 - (void)updateStatusBar;
 - (void)updateStatusWindow;
 - (void)restartAXNotifier;
 
-- (int)value:(NSString *)name;
-- (int)defaultValue:(NSString *)name;
-- (void)setValue:(int)newval forName:(NSString *)name;
+- (int)value:(NSString*)name;
+- (int)defaultValue:(NSString*)name;
+- (void)setValue:(int)newval forName:(NSString*)name;
 
-- (NSDictionary *)changed;
+- (NSDictionary*)changed;
 
 - (NSInteger)configlist_selectedIndex;
-- (NSArray *)configlist_getConfigList;
+- (NSArray*)configlist_getConfigList;
 - (void)configlist_select:(NSInteger)newindex;
-- (void)configlist_setName:(NSInteger)rowIndex name:(NSString *)name;
+- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
 - (void)configlist_append;
 - (void)configlist_delete:(NSInteger)rowIndex;
 - (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
 - (void)configxml_reload;
-- (NSString *)symbolMapName:(NSString *)type value:(NSInteger)value;
+- (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value;
 
 - (void)terminateServerProcess;
 - (void)relaunch;
 
 // for AXNotifier
-- (void)updateFocusedUIElementInformation:(NSDictionary *)information;
+- (void)updateFocusedUIElementInformation:(NSDictionary*)information;
 
 // For EventViewer.
-- (NSArray *)device_information:(NSInteger)type;
-- (NSDictionary *)focused_uielement_information;
-- (NSArray *)workspace_app_ids;
-- (NSArray *)workspace_window_name_ids;
-- (NSArray *)workspace_inputsource_ids;
-;
-- (NSDictionary *)inputsource_information;
+- (NSArray*)device_information:(NSInteger)type;
+- (NSDictionary*)focused_uielement_information;
+- (NSArray*)workspace_app_ids;
+- (NSArray*)workspace_window_name_ids;
+- (NSArray*)workspace_inputsource_ids;
+
+- (NSDictionary*)inputsource_information;
 
 @end

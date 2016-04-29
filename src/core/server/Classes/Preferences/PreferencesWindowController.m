@@ -419,7 +419,7 @@
 }
 
 - (IBAction)restartAXNotifier:(id)sender {
-  if (!self.preferencesModel.useAXNotifier) {
+  if (!self.preferencesModel.axNotifierPreferencesModel.useAXNotifier) {
     NSAlert* alert = [NSAlert new];
     [alert setMessageText:@"Karabiner Alert"];
     [alert addButtonWithTitle:@"Close"];

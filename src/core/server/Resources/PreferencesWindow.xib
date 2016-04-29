@@ -1508,7 +1508,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="-2" id="w93-vh-IpT"/>
-                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.useAXNotifier" id="1Rx-6n-SgE"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.axNotifierPreferencesModel.useAXNotifier" id="4Al-RB-Mps"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="TIe-Bi-YgY">
@@ -1519,7 +1519,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="-2" id="oLK-Xi-ymQ"/>
-                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInJavaApps" id="FDq-v9-hxd"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.axNotifierPreferencesModel.disableAXNotifierInJavaApps" id="sK4-iu-huM"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Kkb-FW-HE7">
@@ -1530,7 +1530,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="-2" id="75D-qg-yPj"/>
-                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInQtApps" id="kwg-9G-jac"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.axNotifierPreferencesModel.disableAXNotifierInQtApps" id="OY8-3Q-uAj"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="l8Y-ol-1AD">
@@ -1541,7 +1541,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="-2" id="hZv-ZN-YXt"/>
-                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInPreview" id="PFe-M2-b6s"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.axNotifierPreferencesModel.disableAXNotifierInPreview" id="asv-4T-mSv"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="7B1-Lp-x4v">
@@ -1552,7 +1552,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="-2" id="gN4-HQ-wPV"/>
-                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.disableAXNotifierInMicrosoftOffice" id="x9O-oc-nhb"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.axNotifierPreferencesModel.disableAXNotifierInMicrosoftOffice" id="rk3-ya-h1O"/>
                                                         </connections>
                                                     </button>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="1yU-Fh-Xme">

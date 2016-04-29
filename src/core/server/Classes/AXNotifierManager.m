@@ -52,7 +52,7 @@ static dispatch_queue_t queue_;
 - (void)restartAXNotifier {
   [self terminateAXNotifiers];
 
-  if (self.preferencesModel.useAXNotifier) {
+  if (self.preferencesModel.axNotifierPreferencesModel.useAXNotifier) {
     [self launchNewAXNotifier];
   }
 }

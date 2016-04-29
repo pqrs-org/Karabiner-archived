@@ -13,7 +13,7 @@
 @interface AppDelegate ()
 
 @property(weak) IBOutlet NSWindow* window;
-@property(weak) IBOutlet PreferencesModel* preferencesModel;
+@property(weak) IBOutlet AXNotifierPreferencesModel* axNotifierPreferencesModel;
 @property(weak) IBOutlet ServerClient* client;
 
 @property BOOL axEnabled;
@@ -196,8 +196,9 @@ send:
 }
 
 - (void)setupAXApplicationObserverManager {
-  [self.client.proxy loadPreferencesModel:self.preferencesModel];
-  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithPreferencesModel:self.preferencesModel];
+  [self.client.proxy loadAXNotifierPreferencesModel:self.axNotifierPreferencesModel];
+  [self.axNotifierPreferencesModel log];
+  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithAXNotifierPreferencesModel:self.axNotifierPreferencesModel];
 }
 
 @end
