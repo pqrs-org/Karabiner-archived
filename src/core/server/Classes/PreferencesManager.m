@@ -63,6 +63,7 @@
   preferencesModel.disableAXNotifierInQtApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps];
   preferencesModel.disableAXNotifierInPreview = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview];
   preferencesModel.disableAXNotifierInMicrosoftOffice = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice];
+  preferencesModel.useStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowEnabled];
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
@@ -76,6 +77,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.disableAXNotifierInPreview) forKey:kAXNotifierDisabledInPreview];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.disableAXNotifierInMicrosoftOffice) forKey:kAXNotifierDisabledInMicrosoftOffice];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useStatusWindow) forKey:kIsStatusWindowEnabled];
 
   // ----------------------------------------
   // refresh local model.

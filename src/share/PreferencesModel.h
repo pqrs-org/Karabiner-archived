@@ -16,4 +16,6 @@
 @property BOOL disableAXNotifierInPreview;
 @property BOOL disableAXNotifierInMicrosoftOffice;
 
+@property BOOL useStatusWindow;
+
 @end
