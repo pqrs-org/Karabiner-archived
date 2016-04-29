@@ -12,5 +12,6 @@
 
 @property BOOL useAXNotifier;
 @property BOOL disableAXNotifierInJavaApps;
+@property BOOL disableAXNotifierInQtApps;
 
 @end

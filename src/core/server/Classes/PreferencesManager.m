@@ -60,6 +60,7 @@
   preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
   preferencesModel.useAXNotifier = [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled];
   preferencesModel.disableAXNotifierInJavaApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps];
+  preferencesModel.disableAXNotifierInQtApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps];
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
@@ -70,6 +71,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useAXNotifier) forKey:kIsAXNotifierEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
 
   // ----------------------------------------
   // refresh local model.
