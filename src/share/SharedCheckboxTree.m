@@ -1,4 +1,4 @@
-#import "CheckboxTree.h"
+#import "SharedCheckboxTree.h"
 
 static NSInteger itemId_;
 static dispatch_queue_t itemIdQueue_;

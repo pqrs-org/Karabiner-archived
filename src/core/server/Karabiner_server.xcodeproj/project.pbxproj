@@ -22,7 +22,6 @@
 		343028BA1C9F144C00729C29 /* bundleidentifieroverridedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343028B91C9F144C00729C29 /* bundleidentifieroverridedef.xml */; };
 		3431D7CB19E1395D00AE3219 /* icon.statusbar.tif in Resources */ = {isa = PBXBuildFile; fileRef = 3431D7CA19E1395D00AE3219 /* icon.statusbar.tif */; };
 		343481641CC93EF300ECB9B3 /* SharedUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481631CC93EF300ECB9B3 /* SharedUtilities.m */; };
-		343481671CC9430800ECB9B3 /* CheckboxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481661CC9430800ECB9B3 /* CheckboxTree.m */; };
 		3434816A1CCA7C5800ECB9B3 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481691CCA7C5800ECB9B3 /* PreferencesModel.m */; };
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
@@ -37,6 +36,7 @@
 		346A2F261C77778300E32362 /* PreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346A2F251C77778300E32362 /* PreferencesWindowController.m */; };
 		346A2F281C780EEA00E32362 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346A2F271C780EEA00E32362 /* PreferencesWindow.xib */; };
 		346E2B5C1C5129A500719E5E /* CheckboxBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 346E2B5B1C5129A500719E5E /* CheckboxBackgroundView.m */; };
+		3471FBF21CD4EB1B000B1DF6 /* SharedCheckboxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3471FBF11CD4EB1B000B1DF6 /* SharedCheckboxTree.m */; };
 		34738785192589CC00F605BD /* windownamedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34738784192589CC00F605BD /* windownamedef.xml */; };
 		347828F613EE5F3400D50AB1 /* karabiner_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 347828F513EE5F3400D50AB1 /* karabiner_pub.pem */; };
 		3478EF8916C8C34F00AD2986 /* vkopenurldef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */; };
@@ -138,8 +138,6 @@
 		3431D7CA19E1395D00AE3219 /* icon.statusbar.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; name = icon.statusbar.tif; path = Resources/icon.statusbar.tif; sourceTree = "<group>"; };
 		343481621CC93EF300ECB9B3 /* SharedUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedUtilities.h; path = ../../share/SharedUtilities.h; sourceTree = "<group>"; };
 		343481631CC93EF300ECB9B3 /* SharedUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedUtilities.m; path = ../../share/SharedUtilities.m; sourceTree = "<group>"; };
-		343481651CC9430800ECB9B3 /* CheckboxTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxTree.h; path = ../../share/CheckboxTree.h; sourceTree = "<group>"; };
-		343481661CC9430800ECB9B3 /* CheckboxTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxTree.m; path = ../../share/CheckboxTree.m; sourceTree = "<group>"; };
 		343481681CCA7C5800ECB9B3 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../share/PreferencesModel.h; sourceTree = "<group>"; };
 		343481691CCA7C5800ECB9B3 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../share/PreferencesModel.m; sourceTree = "<group>"; };
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
@@ -159,6 +157,8 @@
 		346A2F271C780EEA00E32362 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Resources/PreferencesWindow.xib; sourceTree = "<group>"; };
 		346E2B5A1C5129A500719E5E /* CheckboxBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxBackgroundView.h; path = Classes/Preferences/CheckboxBackgroundView.h; sourceTree = "<group>"; };
 		346E2B5B1C5129A500719E5E /* CheckboxBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxBackgroundView.m; path = Classes/Preferences/CheckboxBackgroundView.m; sourceTree = "<group>"; };
+		3471FBF01CD4EB1B000B1DF6 /* SharedCheckboxTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedCheckboxTree.h; path = ../../share/SharedCheckboxTree.h; sourceTree = "<group>"; };
+		3471FBF11CD4EB1B000B1DF6 /* SharedCheckboxTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedCheckboxTree.m; path = ../../share/SharedCheckboxTree.m; sourceTree = "<group>"; };
 		34738784192589CC00F605BD /* windownamedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = windownamedef.xml; path = Resources/windownamedef.xml; sourceTree = "<group>"; };
 		347828F513EE5F3400D50AB1 /* karabiner_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = karabiner_pub.pem; path = Resources/karabiner_pub.pem; sourceTree = "<group>"; };
 		3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkopenurldef.xml; path = Resources/vkopenurldef.xml; sourceTree = "<group>"; };
@@ -459,8 +459,6 @@
 		34D944401932164F0062E422 /* share */ = {
 			isa = PBXGroup;
 			children = (
-				343481651CC9430800ECB9B3 /* CheckboxTree.h */,
-				343481661CC9430800ECB9B3 /* CheckboxTree.m */,
 				349120461925E19C0088F2C3 /* FrontmostWindow.h */,
 				349120471925E19C0088F2C3 /* FrontmostWindow.m */,
 				342A42D61A8EE7EE0007D37E /* IOHIDPostEventWrapper.h */,
@@ -474,6 +472,8 @@
 				3401D0DE16586C0700CF962F /* ServerClientProtocol.h */,
 				3416745A1AFE5201005D6E58 /* SessionObserver.h */,
 				3416745B1AFE5201005D6E58 /* SessionObserver.m */,
+				3471FBF01CD4EB1B000B1DF6 /* SharedCheckboxTree.h */,
+				3471FBF11CD4EB1B000B1DF6 /* SharedCheckboxTree.m */,
 				34B2A65A13745B6000694134 /* SharedKeys.h */,
 				343481621CC93EF300ECB9B3 /* SharedUtilities.h */,
 				343481631CC93EF300ECB9B3 /* SharedUtilities.m */,
@@ -665,8 +665,8 @@
 				3434816A1CCA7C5800ECB9B3 /* PreferencesModel.m in Sources */,
 				34F3FF5A1C4E9E4200B9B82C /* CheckboxOutlineViewDelegate.m in Sources */,
 				34E917061C6B4A1900C014BD /* ParameterValueCellView.m in Sources */,
+				3471FBF21CD4EB1B000B1DF6 /* SharedCheckboxTree.m in Sources */,
 				34F3FF541C4E9C9300B9B82C /* CheckboxCellView.m in Sources */,
-				343481671CC9430800ECB9B3 /* CheckboxTree.m in Sources */,
 				34A5572B16EA04D6000E5399 /* StatusMessageView_normal.m in Sources */,
 				343481641CC93EF300ECB9B3 /* SharedUtilities.m in Sources */,
 				34C157641C72EAE200E6E81B /* ProfileTableViewDelegate.m in Sources */,
