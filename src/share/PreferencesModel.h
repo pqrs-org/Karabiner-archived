@@ -27,6 +27,7 @@
 @property BOOL showStickyModifiersStateInStatusWindow;
 @property BOOL showPointingButtonLockStateInStatusWindow;
 @property NSInteger statusWindowType;
+@property NSInteger statusWindowTheme;
 
 @property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 
