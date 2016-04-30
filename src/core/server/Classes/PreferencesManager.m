@@ -65,6 +65,7 @@
   preferencesModel.statusWindowType = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType];
   preferencesModel.statusWindowTheme = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowTheme];
   preferencesModel.statusWindowOpacity = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowOpacity];
+  preferencesModel.statusWindowFontSize = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowFontSize];
 
   if (!preferencesModel.axNotifierPreferencesModel) {
     preferencesModel.axNotifierPreferencesModel = [AXNotifierPreferencesModel new];
@@ -93,6 +94,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowType) forKey:kStatusWindowType];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowTheme) forKey:kStatusWindowTheme];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowOpacity) forKey:kStatusWindowOpacity];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowFontSize) forKey:kStatusWindowFontSize];
 
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.useAXNotifier) forKey:kIsAXNotifierEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];

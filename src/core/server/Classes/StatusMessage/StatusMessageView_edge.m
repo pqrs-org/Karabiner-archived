@@ -2,16 +2,16 @@
 
 #import "StatusMessageView_edge.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 
 @implementation StatusMessageView_edge
 
 - (void)updateWindowFrame:(NSScreen*)screen {
   NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   NSInteger position = [defaults integerForKey:kStatusWindowPosition];
-  NSInteger fontsize = [defaults integerForKey:kStatusWindowFontSize];
 
   CGFloat width = [[NSApp mainMenu] menuBarHeight] / 8;
-  switch (fontsize) {
+  switch (self.preferencesModel.statusWindowFontSize) {
   case 1: // Regular
     width *= 2;
     break;

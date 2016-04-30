@@ -1,7 +1,7 @@
 // -*- Mode: objc -*-
 
 #import "StatusMessageView_normal.h"
-#import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 
 @implementation StatusMessageView_normal
 
@@ -9,8 +9,7 @@
   [super drawRect:dirtyRect];
 
   // Font Size
-  NSInteger fontsize = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowFontSize];
-  switch (fontsize) {
+  switch (self.preferencesModel.statusWindowFontSize) {
   case 1: // Regular
     [self.message setFont:[NSFont systemFontOfSize:[NSFont systemFontSize]]];
     break;
