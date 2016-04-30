@@ -1,7 +1,6 @@
 // -*- Mode: objc -*-
 
 #import "StatusMessageView.h"
-#import "PreferencesKeys.h"
 #import "PreferencesModel.h"
 
 @implementation StatusMessageView
@@ -89,15 +88,12 @@
 }
 
 - (void)updateWindowFrame:(NSScreen*)screen {
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  NSInteger position = [defaults integerForKey:kStatusWindowPosition];
-
   NSRect screenFrame = [screen visibleFrame];
   NSRect windowFrame = [[self window] frame];
   int margin = 10;
   NSPoint point;
 
-  switch (position) {
+  switch (self.preferencesModel.statusWindowPosition) {
   case 0:
     // Top left
     point.x = screenFrame.origin.x + margin;

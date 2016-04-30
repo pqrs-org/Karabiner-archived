@@ -30,6 +30,7 @@
 @property NSInteger statusWindowTheme;
 @property NSInteger statusWindowOpacity;
 @property NSInteger statusWindowFontSize;
+@property NSInteger statusWindowPosition;
 
 @property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 

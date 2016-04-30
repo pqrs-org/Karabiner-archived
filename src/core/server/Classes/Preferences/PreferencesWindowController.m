@@ -414,10 +414,6 @@
   [self refreshKeyRepeatTab:sender];
 }
 
-- (IBAction)refreshStatusMessage:(id)sender {
-  [self.serverObjects.statusMessageManager refresh];
-}
-
 - (IBAction)restartAXNotifier:(id)sender {
   if (!self.preferencesModel.axNotifierPreferencesModel.useAXNotifier) {
     NSAlert* alert = [NSAlert new];
