@@ -25,6 +25,7 @@
 @property BOOL useStatusWindow;
 @property BOOL showCapsLockStateInStatusWindow;
 @property BOOL showStickyModifiersStateInStatusWindow;
+@property BOOL showPointingButtonLockStateInStatusWindow;
 
 @property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 
