@@ -204,7 +204,6 @@
 - (void)refresh {
   [self updateWindows];
 
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
   if (!self.preferencesModel.useStatusWindow) {
     for (NSWindowController* controller in self.windowControllers) {
       [self hideStatusWindow:controller];
@@ -232,7 +231,7 @@
       }
     }
     if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK) {
-      if (![defaults boolForKey:kIsStatusWindowShowPointingButtonLock]) {
+      if (!self.preferencesModel.showPointingButtonLockStateInStatusWindow) {
         continue;
       }
     }
