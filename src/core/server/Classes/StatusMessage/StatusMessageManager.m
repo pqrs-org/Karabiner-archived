@@ -116,7 +116,9 @@
   [window setIgnoresMouseEvents:YES];
   [window setCollectionBehavior:behavior];
 
-  [[window contentView] updateMessage:@""];
+  StatusMessageView* view = [window contentView];
+  view.preferencesModel = self.preferencesModel;
+  [view updateMessage:@""];
 }
 
 - (BOOL)isNeedReplaceWindows {

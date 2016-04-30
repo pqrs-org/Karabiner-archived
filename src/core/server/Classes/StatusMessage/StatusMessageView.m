@@ -2,6 +2,7 @@
 
 #import "StatusMessageView.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 
 @implementation StatusMessageView
 
@@ -11,14 +12,11 @@
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  NSInteger theme = [defaults integerForKey:kStatusWindowTheme];
-
   // Background
   [NSGraphicsContext saveGraphicsState];
   {
     NSRect bounds = [self bounds];
-    switch (theme) {
+    switch (self.preferencesModel.statusWindowTheme) {
     case 1:
       // Black
       [self.message setTextColor:[NSColor whiteColor]];

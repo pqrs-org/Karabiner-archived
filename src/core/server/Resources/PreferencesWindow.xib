@@ -1074,8 +1074,8 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             </menu>
                                                         </popUpButtonCell>
                                                         <connections>
-                                                            <action selector="refreshStatusMessage:" target="-2" id="KAD-4R-Kzv"/>
-                                                            <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowTheme" id="1298"/>
+                                                            <action selector="statusWindowConfigurationChanged:" target="-2" id="Dfg-xr-JKQ"/>
+                                                            <binding destination="nrN-Rm-RbK" name="selectedIndex" keyPath="self.statusWindowTheme" id="Qfb-gc-sK8"/>
                                                         </connections>
                                                     </popUpButton>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1247">
