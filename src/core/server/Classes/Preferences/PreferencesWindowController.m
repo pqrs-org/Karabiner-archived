@@ -152,6 +152,7 @@
 - (void)windowDidLoad {
   [self.serverObjects.serverForUserspace loadPreferencesModel:self.preferencesModel];
 
+  [self.checkboxOutlineViewDelegate updateFont];
   [self expandParameterOutlineView:self];
 }
 

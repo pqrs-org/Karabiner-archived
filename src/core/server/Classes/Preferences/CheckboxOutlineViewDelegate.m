@@ -32,7 +32,6 @@
   if (self) {
     self.textsHeightQueue = dispatch_queue_create("org.pqrs.Karabiner.CheckboxOutlineViewDelegate.textsHeightQueue", NULL);
     self.heightCache = [NSMutableDictionary new];
-    [self updateFont];
   }
 
   return self;
