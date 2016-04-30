@@ -28,6 +28,7 @@
 @property BOOL showPointingButtonLockStateInStatusWindow;
 @property NSInteger statusWindowType;
 @property NSInteger statusWindowTheme;
+@property NSInteger statusWindowOpacity;
 
 @property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 

@@ -1,6 +1,5 @@
 #import "StatusMessageManager.h"
 #import "NotificationKeys.h"
-#import "PreferencesKeys.h"
 #import "PreferencesModel.h"
 #import "StatusMessageView_edge.h"
 #import "StatusMessageView_nano.h"
@@ -95,9 +94,7 @@
 }
 
 - (void)showStatusWindow:(NSWindowController*)controller {
-  NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-  double opacity = [defaults doubleForKey:kStatusWindowOpacity];
-  [[[controller window] contentView] setAlphaValue:(opacity / 100)];
+  [[[controller window] contentView] setAlphaValue:((double)(self.preferencesModel.statusWindowOpacity) / 100)];
 }
 
 - (void)setupStatusWindow:(NSWindowController*)controller {

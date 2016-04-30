@@ -1093,8 +1093,8 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </constraints>
                                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="20" maxValue="100" doubleValue="20" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="1250"/>
                                                         <connections>
-                                                            <action selector="refreshStatusMessage:" target="-2" id="Gc9-pK-JfC"/>
-                                                            <binding destination="1176" name="value" keyPath="values.statusWindowOpacity" id="1261"/>
+                                                            <action selector="statusWindowConfigurationChanged:" target="-2" id="IYT-WA-cP6"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.statusWindowOpacity" id="lNf-LP-561"/>
                                                         </connections>
                                                     </slider>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1279">
