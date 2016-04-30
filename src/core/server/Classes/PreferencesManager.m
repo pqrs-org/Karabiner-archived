@@ -1,6 +1,5 @@
 #import "PreferencesManager.h"
 #import "ClientForKernelspace.h"
-#import "GlobalDomainKeyRepeatObserver.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesModel.h"
@@ -15,7 +14,6 @@
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @property NSMutableDictionary* defaults;
 @property(copy) NSArray* essential_configuration_identifiers;
-@property GlobalDomainKeyRepeatObserver* globalDomainKeyRepeatObserver;
 
 @end
 
@@ -44,7 +42,7 @@
     kAXNotifierDisabledInMicrosoftOffice : @YES,
     kUsePreparedSettings : @YES,
     kIsMigratedIsOverwriteKeyRepeat : @NO,
-    kIsOverwriteKeyRepeat : @NO,
+    kIsOverrideKeyRepeat : @NO,
     kShowIconInDock : @NO,
     kResumeAtLogin : @YES,
     kKarabinerPreferencesCheckboxFont : @0,
@@ -55,6 +53,7 @@
 - (void)loadPreferencesModel:(PreferencesModel*)preferencesModel {
   preferencesModel.resumeAtLogin = [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin];
   preferencesModel.checkForUpdates = [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
+  preferencesModel.overrideKeyRepeat = [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverrideKeyRepeat];
   preferencesModel.statusBarEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kStatusBarEnabled];
   preferencesModel.showProfileNameInStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:kShowProfileNameInStatusBar];
   preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
@@ -85,6 +84,7 @@
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.checkForUpdates) forKey:kCheckForUpdates];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.overrideKeyRepeat) forKey:kIsOverrideKeyRepeat];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusBarEnabled) forKey:kStatusBarEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showProfileNameInStatusBar) forKey:kShowProfileNameInStatusBar];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
@@ -150,8 +150,6 @@
   if (self) {
     self.defaults = [NSMutableDictionary new];
     [self setDefault];
-
-    self.globalDomainKeyRepeatObserver = [[GlobalDomainKeyRepeatObserver alloc] initWithPreferencesManager:self];
 
     self.essential_configuration_identifiers = [NSArray arrayWithObjects:
 #include "../../../bridge/output/include.bridge_essential_configuration_identifiers.m"
@@ -225,7 +223,7 @@
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsMigratedIsOverwriteKeyRepeat];
 
     if ([self valueAsNumber:@"repeat.initial_wait"] || [self valueAsNumber:@"repeat.wait"]) {
-      [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsOverwriteKeyRepeat];
+      [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:kIsOverrideKeyRepeat];
 
       if (![self valueAsNumber:@"repeat.initial_wait"]) {
         // old defalut value is 500.
@@ -236,14 +234,11 @@
         [self setValue:83 forName:@"repeat.wait"];
       }
     } else {
-      [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:kIsOverwriteKeyRepeat];
+      [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:kIsOverrideKeyRepeat];
     }
 
-    NSLog(@"Migration: Set kIsOverwriteKeyRepeat:%d", [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]);
+    NSLog(@"Migration: Set kIsOverrideKeyRepeat:%d", [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverrideKeyRepeat]);
   }
-
-  // ------------------------------------------------------------
-  [self.globalDomainKeyRepeatObserver start];
 }
 
 // ----------------------------------------------------------------------

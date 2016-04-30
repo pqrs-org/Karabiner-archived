@@ -660,14 +660,14 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="pVL-Uu-jsq">
-                                                        <rect key="frame" x="15" y="8" width="359" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Overwrite the key repeat values of system (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cum-b2-gcl">
+                                                        <rect key="frame" x="15" y="8" width="353" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Override the key repeat values of system (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Cum-b2-gcl">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <action selector="refreshKeyRepeatTab:" target="-2" id="PYS-BQ-oSX"/>
-                                                            <binding destination="1176" name="value" keyPath="values.kIsOverwriteKeyRepeat" id="gj9-5Y-dsC"/>
+                                                            <action selector="overrideKeyRepeatConfigurationChanged:" target="-2" id="VMW-8f-S7Y"/>
+                                                            <binding destination="nrN-Rm-RbK" name="value" keyPath="self.overrideKeyRepeat" id="fVQ-IT-uQs"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

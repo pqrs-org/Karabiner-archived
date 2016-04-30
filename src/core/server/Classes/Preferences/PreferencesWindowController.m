@@ -63,7 +63,7 @@
 - (void)observer_ConfigListChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
-    [self refreshKeyRepeatTab:nil];
+    [self refreshKeyRepeatTab];
 
     if ([self.checkbox_showEnabledOnly state] == NSOnState) {
       [self.checkboxOutlineViewDataSource clearFilterCondition];
@@ -102,7 +102,7 @@
 - (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
-    [self refreshKeyRepeatTab:nil];
+    [self refreshKeyRepeatTab];
 
     if (notification.userInfo && notification.userInfo[kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI]) {
       // do nothing
@@ -208,7 +208,7 @@
 - (void)windowDidBecomeMain:(NSNotification*)notification {
   [self drawVersion];
   [self drawEnabledCount];
-  [self refreshKeyRepeatTab:nil];
+  [self refreshKeyRepeatTab];
   [self updateDebugModeGuide];
   [self sendStatusWindowPreferencesNotification:[[self.tabView selectedTabViewItem] identifier]];
 }
@@ -252,6 +252,11 @@
 - (IBAction)resumeAtLoginChanged:(id)sender {
   [self savePreferencesModel];
   [self.serverObjects.serverForUserspace updateStartAtLogin];
+}
+
+- (IBAction)overrideKeyRepeatConfigurationChanged:(id)sender {
+  [self savePreferencesModel];
+  [self refreshKeyRepeatTab];
 }
 
 - (IBAction)statusBarConfigurationChanged:(id)sender {
@@ -375,8 +380,8 @@
   [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
 }
 
-- (IBAction)refreshKeyRepeatTab:(id)sender {
-  BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat];
+- (void)refreshKeyRepeatTab {
+  BOOL enabled = self.preferencesModel.overrideKeyRepeat;
 
   if (enabled) {
     [self.keyRepeatParameters selectTabViewItemAtIndex:1];
@@ -406,12 +411,12 @@
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
   [self.serverObjects.preferencesManager setValue:[sender intValue] forName:@"repeat.initial_wait"];
-  [self refreshKeyRepeatTab:sender];
+  [self refreshKeyRepeatTab];
 }
 
 - (IBAction)changeKeyRepeat:(id)sender {
   [self.serverObjects.preferencesManager setValue:[sender intValue] forName:@"repeat.wait"];
-  [self refreshKeyRepeatTab:sender];
+  [self refreshKeyRepeatTab];
 }
 
 - (IBAction)restartAXNotifier:(id)sender {

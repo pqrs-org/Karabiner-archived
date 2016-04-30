@@ -18,6 +18,7 @@
 
 @property BOOL resumeAtLogin;
 @property BOOL checkForUpdates;
+@property BOOL overrideKeyRepeat;
 @property BOOL statusBarEnabled;
 @property BOOL showProfileNameInStatusBar;
 @property BOOL usePreparedSettings;

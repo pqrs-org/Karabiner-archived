@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="kvX-lc-3Vc"/>
                 <outlet property="clientForKernelspace" destination="600" id="621"/>
+                <outlet property="globalDomainKeyRepeatObserver" destination="ByB-cb-Het" id="y2q-FT-Hjk"/>
                 <outlet property="preferencesManager" destination="592" id="Rme-JE-WMZ"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Gge-fX-a1y"/>
                 <outlet property="serverController" destination="F7g-QL-0Bv" id="deE-OJ-EQ9"/>
@@ -31,6 +32,12 @@
         <customObject id="CDf-xS-2dG" customClass="AXNotifierManager">
             <connections>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="CiP-Gy-k3T"/>
+            </connections>
+        </customObject>
+        <customObject id="ByB-cb-Het" customClass="GlobalDomainKeyRepeatObserver">
+            <connections>
+                <outlet property="preferencesManager" destination="592" id="B6e-d6-zv4"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Ia8-Km-Z7e"/>
             </connections>
         </customObject>
         <customObject id="IVB-c7-TsL" customClass="ServerObjects">

@@ -2,10 +2,12 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesModel.h"
 
 @interface GlobalDomainKeyRepeatObserver ()
 
-@property(weak) PreferencesManager* preferencesManager;
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property NSTimer* timer;
 @property int previousInitialKeyRepeat;
 @property int previousKeyRepeat;
@@ -21,12 +23,10 @@
   });
 }
 
-- (instancetype)initWithPreferencesManager:(PreferencesManager*)manager {
+- (instancetype)init {
   self = [super init];
 
   if (self) {
-    self.preferencesManager = manager;
-
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_PreferencesChanged:)
                                                  name:kPreferencesChangedNotification
@@ -50,7 +50,7 @@
 
 - (void)timerFireMethod:(NSTimer*)timer {
   dispatch_async(dispatch_get_main_queue(), ^{
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kIsOverwriteKeyRepeat]) {
+    if (self.preferencesModel.overrideKeyRepeat) {
       self.previousInitialKeyRepeat = -1;
       self.previousKeyRepeat = -1;
       return;

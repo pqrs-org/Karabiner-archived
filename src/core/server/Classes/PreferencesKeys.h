@@ -20,7 +20,7 @@
 #define kAXNotifierDisabledInMicrosoftOffice @"kAXNotifierDisabledInMicrosoftOffice"
 #define kUsePreparedSettings @"kUsePreparedSettings"
 #define kIsMigratedIsOverwriteKeyRepeat @"kIsMigratedOverwriteKeyRepeat"
-#define kIsOverwriteKeyRepeat @"kIsOverwriteKeyRepeat"
+#define kIsOverrideKeyRepeat @"kIsOverwriteKeyRepeat"
 #define kShowIconInDock @"kShowIconInDock"
 #define kResumeAtLogin @"kResumeAtLogin"
 

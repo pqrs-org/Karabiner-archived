@@ -2,11 +2,8 @@
 
 @import Cocoa;
 
-@class PreferencesManager;
-
 @interface GlobalDomainKeyRepeatObserver : NSObject
 
-- (instancetype)initWithPreferencesManager:(PreferencesManager*)manager;
 - (void)start;
 
 @end

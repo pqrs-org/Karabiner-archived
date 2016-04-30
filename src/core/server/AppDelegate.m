@@ -3,6 +3,7 @@
 #import "AXNotifierManager.h"
 #import "AppLauncher.h"
 #import "ClientForKernelspace.h"
+#import "GlobalDomainKeyRepeatObserver.h"
 #import "InputSource.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
@@ -30,6 +31,7 @@
 
 @property(weak) IBOutlet AXNotifierManager* axNotifierManager;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
+@property(weak) IBOutlet GlobalDomainKeyRepeatObserver* globalDomainKeyRepeatObserver;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ServerController* serverController;
@@ -350,6 +352,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   [self distributedObserver_kTISNotifyEnabledKeyboardInputSourcesChanged:nil];
   [self distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:nil];
+
+  // ------------------------------------------------------------
+  [self.globalDomainKeyRepeatObserver start];
 
   // ------------------------------------------------------------
   if (relaunchedCount == 0) {
