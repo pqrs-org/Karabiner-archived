@@ -134,7 +134,7 @@
   // Check view's class.
   Class expectedViewClass = nil;
 
-  switch ([[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType]) {
+  switch (self.preferencesModel.statusWindowType) {
   case 1:
     expectedViewClass = [StatusMessageView_nano class];
     break;
@@ -157,7 +157,7 @@
 }
 
 - (NSString*)windowNibName {
-  switch ([[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType]) {
+  switch (self.preferencesModel.statusWindowType) {
   case 1:
     return @"StatusMessageNanoWindow";
 

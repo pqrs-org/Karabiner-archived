@@ -1013,6 +1013,33 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
+                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1403" userLabel="Type">
+                                                        <rect key="frame" x="84" y="111" width="305" height="26"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="300" id="uwA-Nn-7Bz"/>
+                                                        </constraints>
+                                                        <popUpButtonCell key="cell" type="push" title="Edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1410" id="1404">
+                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="menu"/>
+                                                            <menu key="menu" title="OtherViews" id="1405">
+                                                                <items>
+                                                                    <menuItem title="Normal (Default)" id="1406">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="Nano" id="1407">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                    <menuItem title="Edge of screen" state="on" id="1410">
+                                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                                    </menuItem>
+                                                                </items>
+                                                            </menu>
+                                                        </popUpButtonCell>
+                                                        <connections>
+                                                            <action selector="statusWindowConfigurationChanged:" target="-2" id="50V-nv-BaN"/>
+                                                            <binding destination="nrN-Rm-RbK" name="selectedIndex" keyPath="self.statusWindowType" id="1i1-JJ-ONp"/>
+                                                        </connections>
+                                                    </popUpButton>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1233">
                                                         <rect key="frame" x="37" y="89" width="41" height="17"/>
                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Color:" id="1234">
@@ -1122,33 +1149,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <connections>
                                                             <action selector="refreshStatusMessage:" target="-2" id="RuW-tg-7ap"/>
                                                             <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowFontSize" id="1312"/>
-                                                        </connections>
-                                                    </popUpButton>
-                                                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1403" userLabel="Type">
-                                                        <rect key="frame" x="84" y="111" width="305" height="26"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="300" id="uwA-Nn-7Bz"/>
-                                                        </constraints>
-                                                        <popUpButtonCell key="cell" type="push" title="Edge of screen" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="1410" id="1404">
-                                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="menu"/>
-                                                            <menu key="menu" title="OtherViews" id="1405">
-                                                                <items>
-                                                                    <menuItem title="Normal (Default)" id="1406">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                    <menuItem title="Nano" id="1407">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                    <menuItem title="Edge of screen" state="on" id="1410">
-                                                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                                                    </menuItem>
-                                                                </items>
-                                                            </menu>
-                                                        </popUpButtonCell>
-                                                        <connections>
-                                                            <action selector="refreshStatusMessage:" target="-2" id="03f-xB-Vx6"/>
-                                                            <binding destination="1176" name="selectedIndex" keyPath="values.statusWindowType" id="1412"/>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
