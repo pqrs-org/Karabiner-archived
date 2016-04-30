@@ -254,6 +254,13 @@
   [self.serverObjects.serverForUserspace updateStartAtLogin];
 }
 
+- (IBAction)checkboxFontConfigurationChanged:(id)sender {
+  [self savePreferencesModel];
+  [self.checkboxOutlineViewDelegate updateFont];
+  [self.checkboxOutlineViewDelegate clearHeightCache];
+  [self.checkboxOutlineView reloadData];
+}
+
 - (IBAction)overrideKeyRepeatConfigurationChanged:(id)sender {
   [self savePreferencesModel];
   [self refreshKeyRepeatTab];
@@ -313,12 +320,6 @@
 
 - (IBAction)collapseCheckboxOutlineView:(id)sender {
   [self.checkboxOutlineView collapseItem:nil collapseChildren:YES];
-}
-
-- (IBAction)setCheckboxOutlineViewFont:(id)sender {
-  [self.checkboxOutlineViewDelegate updateFont];
-  [self.checkboxOutlineViewDelegate clearHeightCache];
-  [self.checkboxOutlineView reloadData];
 }
 
 - (IBAction)quitWithConfirmation:(id)sender {

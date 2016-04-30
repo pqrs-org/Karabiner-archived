@@ -3,6 +3,7 @@
 #import "CheckboxCellView.h"
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerObjects.h"
 #import "XMLCompiler.h"
@@ -15,6 +16,7 @@
 @interface CheckboxOutlineViewDelegate ()
 
 @property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
 @property NSFont* font;
 @property NSMutableDictionary* heightCache;
@@ -37,7 +39,7 @@
 }
 
 - (void)updateFont {
-  switch ([[NSUserDefaults standardUserDefaults] integerForKey:kKarabinerPreferencesCheckboxFont]) {
+  switch (self.preferencesModel.preferencesCheckboxFont) {
   case 0:
     self.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
     break;

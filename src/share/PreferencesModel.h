@@ -33,6 +33,8 @@
 @property NSInteger statusWindowFontSize;
 @property NSInteger statusWindowPosition;
 
+@property NSInteger preferencesCheckboxFont;
+
 @property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 
 @end

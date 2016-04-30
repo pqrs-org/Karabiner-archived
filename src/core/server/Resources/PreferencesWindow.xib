@@ -279,8 +279,8 @@
                                                 </segments>
                                             </segmentedCell>
                                             <connections>
-                                                <action selector="setCheckboxOutlineViewFont:" target="-2" id="dsT-O7-2sQ"/>
-                                                <binding destination="1176" name="selectedIndex" keyPath="values.kKarabinerPreferencesCheckboxFont" id="R5Y-P7-Nlq"/>
+                                                <action selector="checkboxFontConfigurationChanged:" target="-2" id="hWq-he-ag1"/>
+                                                <binding destination="nrN-Rm-RbK" name="selectedIndex" keyPath="self.preferencesCheckboxFont" id="U0u-6N-Oqy"/>
                                             </connections>
                                         </segmentedControl>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="yzW-7Y-jBA">
@@ -2045,6 +2045,7 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="nHm-UC-8X2" customClass="CheckboxOutlineViewDelegate">
             <connections>
+                <outlet property="preferencesModel" destination="nrN-Rm-RbK" id="Uan-d4-pyN"/>
                 <outlet property="preferencesWindowController" destination="-2" id="opK-3i-gdk"/>
                 <outlet property="wrappedTextHeightCalculator" destination="s09-5a-Znl" id="E43-sU-E1f"/>
             </connections>

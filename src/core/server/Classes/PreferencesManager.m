@@ -66,6 +66,7 @@
   preferencesModel.statusWindowOpacity = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowOpacity];
   preferencesModel.statusWindowFontSize = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowFontSize];
   preferencesModel.statusWindowPosition = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowPosition];
+  preferencesModel.preferencesCheckboxFont = [[NSUserDefaults standardUserDefaults] integerForKey:kKarabinerPreferencesCheckboxFont];
 
   if (!preferencesModel.axNotifierPreferencesModel) {
     preferencesModel.axNotifierPreferencesModel = [AXNotifierPreferencesModel new];
@@ -97,6 +98,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowOpacity) forKey:kStatusWindowOpacity];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowFontSize) forKey:kStatusWindowFontSize];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowPosition) forKey:kStatusWindowPosition];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.preferencesCheckboxFont) forKey:kKarabinerPreferencesCheckboxFont];
 
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.useAXNotifier) forKey:kIsAXNotifierEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
