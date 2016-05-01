@@ -107,7 +107,7 @@
           [self output:@"#!/bin/sh\n\n"];
           [self output:[NSString stringWithFormat:@"cli=%@\n\n", arguments[0]]];
 
-          for (NSString* key in [dict allKeys]) {
+          for (NSString* key in [[dict allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
             if (![key hasPrefix:@"notsave."]) {
               [self output:[NSString stringWithFormat:@"$cli set %@ %@\n", key, dict[key]]];
               [self output:@"/bin/echo -n .\n"];
