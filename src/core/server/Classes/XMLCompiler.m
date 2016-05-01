@@ -341,6 +341,8 @@ static NSInteger xmlCompilerItemId_ = 0;
 }
 
 - (void)reload {
+  __block NSString* errorMessage = nil;
+
   dispatch_sync(self.xmlCompilerReloadQueue, ^{
     [XMLCompiler prepare_private_xml];
 
@@ -367,26 +369,25 @@ static NSInteger xmlCompilerItemId_ = 0;
       self.preferencepane_parameter = tree;
       self.sharedParameterTree = [self buildSharedXMLCompilerTree:tree];
     }
+
+    errorMessage = [self preferencepane_error_message];
   });
 
   // ------------------------------------------------------------
-  {
-    NSString* message = [self preferencepane_error_message];
-    if (message) {
-      NSUInteger maxlen = 500;
-      if ([message length] > maxlen) {
-        message = [message substringToIndex:maxlen];
-      }
-
-      dispatch_async(dispatch_get_main_queue(), ^{
-        NSAlert* alert = [NSAlert new];
-        [alert setMessageText:@"Karabiner Error"];
-        [alert addButtonWithTitle:@"Close"];
-        [alert setInformativeText:message];
-
-        [alert runModal];
-      });
+  if (errorMessage) {
+    NSUInteger maxlen = 500;
+    if ([errorMessage length] > maxlen) {
+      errorMessage = [errorMessage substringToIndex:maxlen];
     }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+      NSAlert* alert = [NSAlert new];
+      [alert setMessageText:@"Karabiner Error"];
+      [alert addButtonWithTitle:@"Close"];
+      [alert setInformativeText:errorMessage];
+
+      [alert runModal];
+    });
   }
 
   // ------------------------------------------------------------
