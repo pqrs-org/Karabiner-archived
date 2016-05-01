@@ -269,7 +269,6 @@ static NSInteger xmlCompilerItemId_ = 0;
   for (size_t i = 0; i < size; ++i) {
     XMLCompilerTree* child = [XMLCompilerTree new];
     ParameterItem* node = [[ParameterItem alloc] initWithParent:self.pqrs_xml_compiler parent:parent index:i];
-    NSLog(@"ParameterItem %@", node.id);
     child.node = node;
     child.children = [self build_preferencepane_parameter:node];
 
@@ -614,10 +613,6 @@ static NSInteger xmlCompilerItemId_ = 0;
     if (id) {
       XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
       result = tree ? [tree.node castToCheckboxItem] : nil;
-
-      if ([id intValue] == 2) {
-        NSLog(@"tree %@ %@", tree.node, result);
-      }
     }
   });
   return result;

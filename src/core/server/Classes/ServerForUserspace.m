@@ -161,9 +161,6 @@
 
 - (NSString*)checkboxItemGetName:(NSNumber*)id {
   NSString* value = [[self.xmlCompiler getCheckboxItem:id] getName];
-  if ([value length] == 0) {
-    NSLog(@"value length == 0 for %@ %@", id, [self.xmlCompiler getCheckboxItem:id]);
-  }
   return value ? value : @"";
 }
 
