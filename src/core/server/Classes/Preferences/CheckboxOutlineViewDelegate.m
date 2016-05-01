@@ -5,7 +5,9 @@
 #import "PreferencesManager.h"
 #import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
+#import "ServerForUserspace.h"
 #import "ServerObjects.h"
+#import "SharedXMLCompilerTree.h"
 #import "XMLCompiler.h"
 
 #define kLabelLeadingSpaceWithCheckbox 24
@@ -53,11 +55,10 @@
 }
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
-  CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-  NSString* name = [checkboxItem getName];
-  NSString* style = [checkboxItem getStyle];
-  NSString* identifier = [checkboxItem getIdentifier];
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
+  NSString* name = [self.preferencesWindowController.serverObjects.serverForUserspace checkboxItemGetName:tree.id];
+  NSString* style = [self.preferencesWindowController.serverObjects.serverForUserspace checkboxItemGetStyle:tree.id];
+  NSString* identifier = [self.preferencesWindowController.serverObjects.serverForUserspace checkboxItemGetIdentifier:tree.id];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.serverObjects = self.preferencesWindowController.serverObjects;
@@ -69,7 +70,7 @@
   result.labelTopSpace.constant = kLabelTopSpace;
   result.labelBottomSpace.constant = kLabelBottomSpace;
 
-  if (![checkboxItem needsShowCheckbox]) {
+  if (![self.preferencesWindowController.serverObjects.serverForUserspace checkboxItemNeedsShowCheckbox:tree.id]) {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
   } else {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
@@ -132,35 +133,34 @@
 // So, we need to calculate the height by using wrappedTextHeightCalculator.
 
 - (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
-  CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-  if (!checkboxItem) {
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
+  if (!tree.id) {
     return [outlineView rowHeight];
   }
 
-  if (!self.heightCache[checkboxItem.id]) {
+  if (!self.heightCache[tree.id]) {
     NSTableColumn* column = [outlineView outlineTableColumn];
 
     CGFloat indentation = outlineView.indentationPerLevel * ([outlineView levelForItem:item] + 1);
     NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - indentation;
 
-    if ([checkboxItem needsShowCheckbox]) {
+    if (![self.preferencesWindowController.serverObjects.serverForUserspace checkboxItemNeedsShowCheckbox:tree.id]) {
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
     } else {
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;
     }
 
     dispatch_sync(self.textsHeightQueue, ^{
-      self.wrappedTextHeightCalculator.stringValue = [checkboxItem getName];
+      self.wrappedTextHeightCalculator.stringValue = [self.preferencesWindowController.serverObjects.serverForUserspace checkboxItemGetName:tree.id];
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 
       NSSize size = [self.wrappedTextHeightCalculator fittingSize];
-      self.heightCache[checkboxItem.id] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
+      self.heightCache[tree.id] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
     });
   }
 
-  return [self.heightCache[checkboxItem.id] integerValue];
+  return [self.heightCache[tree.id] integerValue];
 }
 
 @end

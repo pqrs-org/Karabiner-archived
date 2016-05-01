@@ -155,16 +155,26 @@
   return self.xmlCompiler.sharedCheckboxTree;
 }
 
+- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+  return [self.xmlCompiler narrowedSharedCheckboxTree:isEnabledOnly strings:strings];
+}
+
 - (NSString*)checkboxItemGetName:(NSNumber*)id {
-  return [[self.xmlCompiler getCheckboxItem:id] getName];
+  NSString* value = [[self.xmlCompiler getCheckboxItem:id] getName];
+  if ([value length] == 0) {
+    NSLog(@"value length == 0 for %@ %@", id, [self.xmlCompiler getCheckboxItem:id]);
+  }
+  return value ? value : @"";
 }
 
 - (NSString*)checkboxItemGetStyle:(NSNumber*)id {
-  return [[self.xmlCompiler getCheckboxItem:id] getStyle];
+  NSString* value = [[self.xmlCompiler getCheckboxItem:id] getStyle];
+  return value ? value : @"";
 }
 
 - (NSString*)checkboxItemGetIdentifier:(NSNumber*)id {
-  return [[self.xmlCompiler getCheckboxItem:id] getIdentifier];
+  NSString* value = [[self.xmlCompiler getCheckboxItem:id] getIdentifier];
+  return value ? value : @"";
 }
 
 - (NSUInteger)checkboxItemGetChildrenCount:(NSNumber*)id {
@@ -180,11 +190,13 @@
 }
 
 - (NSString*)parameterItemGetName:(NSNumber*)id {
-  return [[self.xmlCompiler getParameterItem:id] getName];
+  NSString* value = [[self.xmlCompiler getParameterItem:id] getName];
+  return value ? value : @"";
 }
 
 - (NSString*)parameterItemGetIdentifier:(NSNumber*)id {
-  return [[self.xmlCompiler getParameterItem:id] getIdentifier];
+  NSString* value = [[self.xmlCompiler getParameterItem:id] getIdentifier];
+  return value ? value : @"";
 }
 
 - (NSInteger)parameterItemGetDefaultValue:(NSNumber*)id {

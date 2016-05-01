@@ -2,6 +2,8 @@
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
 #import "ServerObjects.h"
+#import "ServerForUserspace.h"
+#import "SharedXMLCompilerTree.h"
 #import "XMLCompiler.h"
 
 @interface FilterCondition : NSObject
@@ -53,7 +55,7 @@
 @interface CheckboxOutlineViewDataSource ()
 
 @property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
-@property XMLCompilerTree* dataSource;
+@property SharedXMLCompilerTree* dataSource;
 @property FilterCondition* filterCondition;
 
 @end
@@ -69,83 +71,9 @@
   }
 
   if (!self.dataSource) {
-    self.dataSource = self.preferencesWindowController.serverObjects.xmlCompiler.preferencepane_checkbox;
+    self.dataSource = self.preferencesWindowController.serverObjects.serverForUserspace.sharedCheckboxTree;
     self.filterCondition = nil;
   }
-}
-
-- (XMLCompilerTree*)filterDataSource_core:(XMLCompilerTree*)tree isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  // check strings
-  BOOL stringsMatched = YES;
-  if (strings) {
-    // Remove matched strings from strings for children.
-    //
-    // For example:
-    //   strings == @[@"Emacs", @"Mode", @"Tab"]
-    //
-    //   * Emacs Mode
-    //     * Control+I to Tab
-    //
-    //   notMatchedStrings == @[@"Tab"] at "Emacs Mode".
-    //   Then "Control+I to Tab" will be matched by strings == @[@"Tab"].
-
-    NSMutableArray* notMatchedStrings = nil;
-    for (NSString* s in strings) {
-      CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-      if (![checkboxItem isNameMatched:s]) {
-        stringsMatched = NO;
-      } else {
-        if (!notMatchedStrings) {
-          notMatchedStrings = [NSMutableArray arrayWithArray:strings];
-        }
-        [notMatchedStrings removeObject:s];
-      }
-    }
-
-    if (notMatchedStrings) {
-      strings = notMatchedStrings;
-    }
-  }
-
-  // ------------------------------------------------------------
-  // check children
-  XMLCompilerTree* newtree = [XMLCompilerTree new];
-  newtree.node = tree.node;
-
-  if (tree.children) {
-    NSMutableArray* newchildren = [NSMutableArray new];
-    for (XMLCompilerTree* child in tree.children) {
-      XMLCompilerTree* t = [self filterDataSource_core:child isEnabledOnly:isEnabledOnly strings:strings];
-      if (t) {
-        [newchildren addObject:t];
-      }
-    }
-
-    if ([newchildren count] > 0) {
-      newtree.children = newchildren;
-      return newtree;
-    }
-  }
-
-  // ------------------------------------------------------------
-  // filter by isEnabledOnly
-  if (isEnabledOnly) {
-    CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-    NSString* identifier = [checkboxItem getIdentifier];
-    if ([identifier length] == 0) {
-      return nil;
-    }
-    if (![self.preferencesWindowController.serverObjects.preferencesManager value:identifier]) {
-      return nil;
-    }
-  }
-
-  // check strings
-  if (!stringsMatched) {
-    return nil;
-  }
-
-  return newtree;
 }
 
 // return YES if we need to call [NSOutlineView reloadData]
@@ -170,11 +98,7 @@
   }
 
   if (isEnabledOnly || [strings count] > 0) {
-    XMLCompilerTree* newdatasource = [self filterDataSource_core:self.dataSource isEnabledOnly:isEnabledOnly strings:strings];
-    if (!newdatasource) {
-      newdatasource = [XMLCompilerTree new];
-    }
-    self.dataSource = newdatasource;
+    self.dataSource = [self.preferencesWindowController.serverObjects.serverForUserspace narrowedSharedCheckboxTree:isEnabledOnly strings:strings];
   }
 
   self.filterCondition = filterCondition;
@@ -184,7 +108,7 @@
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
   [self load:NO];
 
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
   return tree ? [tree.children count] : [self.dataSource.children count];
 }
 
@@ -196,7 +120,7 @@
   [self load:NO];
 
   // ----------------------------------------
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
 
   if ((NSUInteger)(index) >= [a count]) return nil;
@@ -204,7 +128,7 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
   return [a count] > 0;
 }

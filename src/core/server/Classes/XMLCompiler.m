@@ -7,8 +7,7 @@
 #import "SharedXMLCompilerTree.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
-static NSInteger xmlCompilerItemId_;
-static dispatch_queue_t xmlCompilerItemIdQueue_;
+static NSInteger xmlCompilerItemId_ = 0;
 
 @interface XMLCompilerItem ()
 
@@ -21,19 +20,12 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
 @implementation XMLCompilerItem
 
-+ (void)initialize {
-  xmlCompilerItemId_ = 0;
-  xmlCompilerItemIdQueue_ = dispatch_queue_create("org.pqrs.Karabiner.XMLCompiler.xmlCompilerItemIdQueue_", NULL);
-}
-
 - (instancetype)init {
   self = [super init];
 
   if (self) {
-    dispatch_sync(xmlCompilerItemIdQueue_, ^{
-      ++xmlCompilerItemId_;
-      self.id = @(xmlCompilerItemId_);
-    });
+    ++xmlCompilerItemId_;
+    self.id = @(xmlCompilerItemId_);
   }
 
   return self;
@@ -185,6 +177,8 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 
+@property dispatch_queue_t xmlCompilerReloadQueue;
+
 @property(readwrite) XMLCompilerTree* preferencepane_checkbox;
 @property(readwrite) XMLCompilerTree* preferencepane_parameter;
 @property(readwrite) SharedXMLCompilerTree* sharedCheckboxTree;
@@ -209,6 +203,21 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   tree.node = checkboxItem;
 
   return tree;
+}
+
+- (NSString*)preferencepane_error_message {
+  if (pqrs_xml_compiler_get_error_count(self.pqrs_xml_compiler) == 0) {
+    return nil;
+  }
+  const char* error_message = pqrs_xml_compiler_get_error_message(self.pqrs_xml_compiler);
+  if (!error_message) {
+    return nil;
+  }
+
+  return [NSString stringWithFormat:@"Error in XML.\n%s\n%s\n%s",
+                                    "----------------------------------------",
+                                    error_message,
+                                    "----------------------------------------"];
 }
 
 - (NSArray*)build_preferencepane_checkbox:(CheckboxItem*)parent {
@@ -260,6 +269,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   for (size_t i = 0; i < size; ++i) {
     XMLCompilerTree* child = [XMLCompilerTree new];
     ParameterItem* node = [[ParameterItem alloc] initWithParent:self.pqrs_xml_compiler parent:parent index:i];
+    NSLog(@"ParameterItem %@", node.id);
     child.node = node;
     child.children = [self build_preferencepane_parameter:node];
 
@@ -311,6 +321,8 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   self = [super init];
 
   if (self) {
+    self.xmlCompilerReloadQueue = dispatch_queue_create("org.pqrs.Karabiner.XMLCompiler.xmlCompilerReloadQueue", NULL);
+
     pqrs_xml_compiler* p = NULL;
     pqrs_xml_compiler_initialize(&p,
                                  [[[NSBundle mainBundle] resourcePath] UTF8String],
@@ -329,7 +341,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 }
 
 - (void)reload {
-  @synchronized(self) {
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     [XMLCompiler prepare_private_xml];
 
     const char* checkbox_xml_file_name = "checkbox.xml";
@@ -338,8 +350,8 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
     }
 
     pqrs_xml_compiler_reload(self.pqrs_xml_compiler, checkbox_xml_file_name);
-    [self.xmlCompilerTreeDictionary removeAllObjects];
 
+    [self.xmlCompilerTreeDictionary removeAllObjects];
     {
       CheckboxItem* root = [[CheckboxItem alloc] initWithParent:self.pqrs_xml_compiler parent:nil index:0];
       XMLCompilerTree* tree = [XMLCompilerTree new];
@@ -347,7 +359,6 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       self.preferencepane_checkbox = tree;
       self.sharedCheckboxTree = [self buildSharedXMLCompilerTree:tree];
     }
-
     // build preferencepane_parameter
     {
       ParameterItem* root = [[ParameterItem alloc] initWithParent:self.pqrs_xml_compiler parent:nil index:0];
@@ -356,7 +367,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       self.preferencepane_parameter = tree;
       self.sharedParameterTree = [self buildSharedXMLCompilerTree:tree];
     }
-  }
+  });
 
   // ------------------------------------------------------------
   {
@@ -388,76 +399,92 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   for (XMLCompilerTree* child in tree.children) {
     [children addObject:[self buildSharedXMLCompilerTree:child]];
   }
-  SharedXMLCompilerTree* sharedTree = [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:children];
-  if ([sharedTree.id integerValue] > 0) {
-    self.xmlCompilerTreeDictionary[sharedTree.id] = tree;
-  }
+  NSNumber* id = tree.node ? tree.node.id : @0;
+  SharedXMLCompilerTree* sharedTree = [[SharedXMLCompilerTree alloc] initWithId:id children:children];
+  self.xmlCompilerTreeDictionary[id] = tree;
+
   return sharedTree;
 }
 
 - (size_t)remapclasses_initialize_vector_size {
-  @synchronized(self) {
-    return pqrs_xml_compiler_get_remapclasses_initialize_vector_size(self.pqrs_xml_compiler);
-  }
+  __block size_t result = 0;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = pqrs_xml_compiler_get_remapclasses_initialize_vector_size(self.pqrs_xml_compiler);
+  });
+  return result;
 }
 
 - (const uint32_t*)remapclasses_initialize_vector_data {
-  @synchronized(self) {
-    return pqrs_xml_compiler_get_remapclasses_initialize_vector_data(self.pqrs_xml_compiler);
-  }
+  __block const uint32_t* result = NULL;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = pqrs_xml_compiler_get_remapclasses_initialize_vector_data(self.pqrs_xml_compiler);
+  });
+  return result;
 }
 
 - (uint32_t)remapclasses_initialize_vector_config_count {
-  @synchronized(self) {
-    return pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(self.pqrs_xml_compiler);
-  }
+  __block uint32_t result = 0;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = pqrs_xml_compiler_get_remapclasses_initialize_vector_config_count(self.pqrs_xml_compiler);
+  });
+  return result;
 }
 
 - (uint32_t)keycode:(NSString*)name {
-  @synchronized(self) {
-    return pqrs_xml_compiler_get_symbol_map_value(self.pqrs_xml_compiler, [name UTF8String]);
-  }
+  __block uint32_t result = 0;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = pqrs_xml_compiler_get_symbol_map_value(self.pqrs_xml_compiler, [name UTF8String]);
+  });
+  return result;
 }
 
 - (NSString*)identifier:(uint32_t)config_index {
-  @synchronized(self) {
+  __block NSString* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     const char* p = pqrs_xml_compiler_get_identifier(self.pqrs_xml_compiler, config_index);
-    if (!p) return nil;
-
-    return @(p);
-  }
+    if (p) {
+      result = @(p);
+    }
+  });
+  return result;
 }
 
 - (NSString*)symbolMapName:(NSString*)type value:(uint32_t)value {
-  @synchronized(self) {
+  __block NSString* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     const char* p = pqrs_xml_compiler_get_symbol_map_name(self.pqrs_xml_compiler, [type UTF8String], value);
-    if (!p) return nil;
-
-    return @(p);
-  }
+    if (p) {
+      result = @(p);
+    }
+  });
+  return result;
 }
 
 - (int)config_index:(NSString*)identifier {
-  @synchronized(self) {
-    return pqrs_xml_compiler_get_config_index(self.pqrs_xml_compiler, [identifier UTF8String]);
-  }
+  __block int result = 0;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = pqrs_xml_compiler_get_config_index(self.pqrs_xml_compiler, [identifier UTF8String]);
+  });
+  return result;
 }
 
 - (NSString*)overrideBundleIdentifier:(NSString*)bundleIdentifier windowName:(NSString*)windowName uiElementRole:(NSString*)uiElementRole {
-  @synchronized(self) {
+  __block NSString* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     const char* override_bundle_identifier = pqrs_xml_compiler_override_bundle_identifier(self.pqrs_xml_compiler,
                                                                                           [bundleIdentifier UTF8String],
                                                                                           [windowName UTF8String],
                                                                                           [uiElementRole UTF8String]);
     if (override_bundle_identifier) {
-      return [NSString stringWithUTF8String:override_bundle_identifier];
+      result = [NSString stringWithUTF8String:override_bundle_identifier];
     }
-    return nil;
-  }
+  });
+  return result;
 }
 
 - (NSArray*)appids:(NSString*)bundleIdentifier {
-  @synchronized(self) {
+  __block NSArray* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     NSMutableArray* ids = [NSMutableArray new];
     size_t size = pqrs_xml_compiler_get_app_vector_size(self.pqrs_xml_compiler);
     const char* identifier = [bundleIdentifier UTF8String];
@@ -472,12 +499,14 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       [ids addObject:@0];
     }
 
-    return ids;
-  }
+    result = ids;
+  });
+  return result;
 }
 
 - (NSArray*)windownameids:(NSString*)windowName {
-  @synchronized(self) {
+  __block NSArray* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     NSMutableArray* ids = [NSMutableArray new];
     size_t size = pqrs_xml_compiler_get_window_name_vector_size(self.pqrs_xml_compiler);
     const char* utf8string = [windowName UTF8String];
@@ -492,21 +521,25 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       [ids addObject:@0];
     }
 
-    return ids;
-  }
+    result = ids;
+  });
+  return result;
 }
 
 - (uint32_t)uielementroleid:(NSString*)uiElementRole {
-  @synchronized(self) {
+  __block uint32_t result = 0;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     NSString* key = [NSString stringWithFormat:@"UIElementRole::%@", uiElementRole];
-    return pqrs_xml_compiler_get_symbol_map_value(self.pqrs_xml_compiler, [key UTF8String]);
-  }
+    result = pqrs_xml_compiler_get_symbol_map_value(self.pqrs_xml_compiler, [key UTF8String]);
+  });
+  return result;
 }
 
 - (NSArray*)inputsourceids:(NSString*)languagecode
              inputSourceID:(NSString*)inputSourceID
                inputModeID:(NSString*)inputModeID {
-  @synchronized(self) {
+  __block NSArray* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     NSMutableArray* ids = [NSMutableArray new];
     size_t size = pqrs_xml_compiler_get_inputsource_vector_size(self.pqrs_xml_compiler);
     const char* languagecode_u8 = [languagecode UTF8String];
@@ -523,8 +556,9 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       [ids addObject:@0];
     }
 
-    return ids;
-  }
+    result = ids;
+  });
+  return result;
 }
 
 - (BOOL)is_vk_change_inputsource_matched:(uint32_t)keycode
@@ -532,71 +566,79 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
                            inputSourceID:(NSString*)inputSourceID
                              inputModeID:(NSString*)inputModeID;
 {
-  @synchronized(self) {
-    return pqrs_xml_compiler_is_vk_change_inputsource_matched(self.pqrs_xml_compiler,
-                                                              keycode,
-                                                              [languagecode UTF8String],
-                                                              [inputSourceID UTF8String],
-                                                              [inputModeID UTF8String]);
-  }
+  __block BOOL result = NO;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = pqrs_xml_compiler_is_vk_change_inputsource_matched(self.pqrs_xml_compiler,
+                                                                keycode,
+                                                                [languagecode UTF8String],
+                                                                [inputSourceID UTF8String],
+                                                                [inputModeID UTF8String]);
+  });
+  return result;
 }
 
 - (NSString*)url:(uint32_t)keycode {
-  @synchronized(self) {
+  __block NSString* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     const char* p = pqrs_xml_compiler_get_url(self.pqrs_xml_compiler, keycode);
-    if (!p) return nil;
-
-    return @(p);
-  }
+    if (p) {
+      result = @(p);
+    }
+  });
+  return result;
 }
 
 - (NSString*)urlType:(uint32_t)keycode {
-  @synchronized(self) {
+  __block NSString* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
     const char* p = pqrs_xml_compiler_get_url_type(self.pqrs_xml_compiler, keycode);
-    if (!p) return nil;
-
-    return @(p);
-  }
+    if (p) {
+      result = @(p);
+    }
+  });
+  return result;
 }
 
 - (BOOL)urlIsBackground:(uint32_t)keycode {
-  @synchronized(self) {
-    return pqrs_xml_compiler_get_url_background(self.pqrs_xml_compiler, keycode);
-  }
-}
-
-- (NSString*)preferencepane_error_message;
-{
-  @synchronized(self) {
-    if (pqrs_xml_compiler_get_error_count(self.pqrs_xml_compiler) == 0) {
-      return nil;
-    }
-    const char* error_message = pqrs_xml_compiler_get_error_message(self.pqrs_xml_compiler);
-    if (!error_message) {
-      return nil;
-    }
-
-    return [NSString stringWithFormat:@"Error in XML.\n%s\n%s\n%s",
-                                      "----------------------------------------",
-                                      error_message,
-                                      "----------------------------------------"];
-  }
+  __block BOOL result = NO;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = pqrs_xml_compiler_get_url_background(self.pqrs_xml_compiler, keycode);
+  });
+  return result;
 }
 
 - (CheckboxItem*)getCheckboxItem:(NSNumber*)id {
-  if (!id) return nil;
-  XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
-  return tree ? [tree.node castToCheckboxItem] : nil;
+  __block CheckboxItem* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    if (id) {
+      XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
+      result = tree ? [tree.node castToCheckboxItem] : nil;
+
+      if ([id intValue] == 2) {
+        NSLog(@"tree %@ %@", tree.node, result);
+      }
+    }
+  });
+  return result;
 }
 
 - (ParameterItem*)getParameterItem:(NSNumber*)id {
-  if (!id) return nil;
-  XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
-  return tree ? [tree.node castToParameterItem] : nil;
+  __block ParameterItem* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    if (id) {
+      XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
+      result = tree ? [tree.node castToParameterItem] : nil;
+    }
+  });
+  return result;
 }
 
 - (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  return [self narrowedSharedCheckboxTree:self.preferencepane_checkbox isEnabledOnly:isEnabledOnly strings:strings];
+  __block SharedXMLCompilerTree* result = nil;
+  dispatch_sync(self.xmlCompilerReloadQueue, ^{
+    result = [self narrowedSharedCheckboxTree:self.preferencepane_checkbox isEnabledOnly:isEnabledOnly strings:strings];
+  });
+  return result;
 }
 
 - (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(XMLCompilerTree*)tree isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {

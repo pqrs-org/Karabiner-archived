@@ -30,7 +30,7 @@
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
   [self load:NO];
 
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
   return tree ? [tree.children count] : [self.dataSource.children count];
 }
 
@@ -38,7 +38,7 @@
   [self load:NO];
 
   // ----------------------------------------
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
 
   if ((NSUInteger)(index) >= [a count]) return nil;
@@ -46,7 +46,7 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
-  XMLCompilerTree* tree = (XMLCompilerTree*)(item);
+  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
   return [a count] > 0;
 }
