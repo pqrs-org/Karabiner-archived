@@ -2,7 +2,7 @@
 #import "EnvironmentChecker.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
-#import "PreferencesKeys.h"
+#import "PreferencesManager.h"
 #import "PreferencesModel.h"
 #import "SharedXMLCompilerTree.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
@@ -182,6 +182,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
 @interface XMLCompiler ()
 
+@property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 
 @property(readwrite) XMLCompilerTree* preferencepane_checkbox;
@@ -592,6 +593,78 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   if (!id) return nil;
   XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
   return tree ? [tree.node castToParameterItem] : nil;
+}
+
+- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+  return [self narrowedSharedCheckboxTree:self.preferencepane_checkbox isEnabledOnly:isEnabledOnly strings:strings];
+}
+
+- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(XMLCompilerTree*)tree isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+  // check strings
+  BOOL stringsMatched = YES;
+  if (strings) {
+    // Remove matched strings from strings for children.
+    //
+    // For example:
+    //   strings == @[@"Emacs", @"Mode", @"Tab"]
+    //
+    //   * Emacs Mode
+    //     * Control+I to Tab
+    //
+    //   notMatchedStrings == @[@"Tab"] at "Emacs Mode".
+    //   Then "Control+I to Tab" will be matched by strings == @[@"Tab"].
+
+    NSMutableArray* notMatchedStrings = nil;
+    for (NSString* s in strings) {
+      CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
+      if (![checkboxItem isNameMatched:s]) {
+        stringsMatched = NO;
+      } else {
+        if (!notMatchedStrings) {
+          notMatchedStrings = [NSMutableArray arrayWithArray:strings];
+        }
+        [notMatchedStrings removeObject:s];
+      }
+    }
+
+    if (notMatchedStrings) {
+      strings = notMatchedStrings;
+    }
+  }
+
+  // ------------------------------------------------------------
+  // check children
+  NSMutableArray* newchildren = [NSMutableArray new];
+  for (XMLCompilerTree* child in tree.children) {
+    SharedXMLCompilerTree* t = [self narrowedSharedCheckboxTree:child isEnabledOnly:isEnabledOnly strings:strings];
+    if (t) {
+      [newchildren addObject:t];
+    }
+  }
+
+  if ([newchildren count] > 0) {
+    return [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:newchildren];
+  }
+
+  // ------------------------------------------------------------
+  // filter by isEnabledOnly
+  if (isEnabledOnly) {
+    CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
+    NSString* identifier = [checkboxItem getIdentifier];
+    if ([identifier length] == 0) {
+      return nil;
+    }
+    if (![self.preferencesManager value:identifier]) {
+      return nil;
+    }
+  }
+
+  // check strings
+  if (!stringsMatched) {
+    return nil;
+  }
+
+  return [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:nil];
 }
 
 @end

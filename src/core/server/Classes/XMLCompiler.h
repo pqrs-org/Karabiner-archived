@@ -82,4 +82,6 @@
 - (CheckboxItem*)getCheckboxItem:(NSNumber*)id;
 - (ParameterItem*)getParameterItem:(NSNumber*)id;
 
+- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings;
+
 @end

@@ -102,6 +102,7 @@
         </customObject>
         <customObject id="591" customClass="XMLCompiler">
             <connections>
+                <outlet property="preferencesManager" destination="592" id="Nsb-S9-i2Y"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="zfS-AG-FMl"/>
             </connections>
         </customObject>
