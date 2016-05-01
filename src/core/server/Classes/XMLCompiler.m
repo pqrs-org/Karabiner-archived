@@ -187,9 +187,10 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 @property(readwrite) XMLCompilerTree* preferencepane_checkbox;
 @property(readwrite) XMLCompilerTree* preferencepane_parameter;
 @property(readwrite) SharedXMLCompilerTree* sharedCheckboxTree;
+@property(readwrite) SharedXMLCompilerTree* sharedParameterTree;
 
 @property pqrs_xml_compiler* pqrs_xml_compiler;
-@property NSMutableDictionary* checkboxTreeDictionary;
+@property NSMutableDictionary* xmlCompilerTreeDictionary;
 
 @end
 
@@ -315,7 +316,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
                                  [[[XMLCompiler get_private_xml_path] stringByDeletingLastPathComponent] UTF8String]);
     self.pqrs_xml_compiler = p;
 
-    self.checkboxTreeDictionary = [NSMutableDictionary new];
+    self.xmlCompilerTreeDictionary = [NSMutableDictionary new];
   }
 
   return self;
@@ -336,7 +337,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
     }
 
     pqrs_xml_compiler_reload(self.pqrs_xml_compiler, checkbox_xml_file_name);
-    [self.checkboxTreeDictionary removeAllObjects];
+    [self.xmlCompilerTreeDictionary removeAllObjects];
 
     {
       CheckboxItem* root = [[CheckboxItem alloc] initWithParent:self.pqrs_xml_compiler parent:nil index:0];
@@ -352,6 +353,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       XMLCompilerTree* tree = [XMLCompilerTree new];
       tree.children = [self build_preferencepane_parameter:root];
       self.preferencepane_parameter = tree;
+      self.sharedParameterTree = [self buildSharedXMLCompilerTree:tree];
     }
   }
 
@@ -387,7 +389,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   }
   SharedXMLCompilerTree* sharedTree = [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:children];
   if ([sharedTree.id integerValue] > 0) {
-    self.checkboxTreeDictionary[sharedTree.id] = tree;
+    self.xmlCompilerTreeDictionary[sharedTree.id] = tree;
   }
   return sharedTree;
 }
@@ -581,7 +583,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 }
 
 - (CheckboxItem*)getCheckboxItem:(NSNumber*)id {
-  XMLCompilerTree* tree = self.checkboxTreeDictionary[id];
+  XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
   return tree ? [tree.node castToCheckboxItem] : nil;
 }
 

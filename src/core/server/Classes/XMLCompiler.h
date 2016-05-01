@@ -50,6 +50,7 @@
 @property(readonly) XMLCompilerTree* preferencepane_checkbox;
 @property(readonly) XMLCompilerTree* preferencepane_parameter;
 @property(readonly) SharedXMLCompilerTree* sharedCheckboxTree;
+@property(readonly) SharedXMLCompilerTree* sharedParameterTree;
 
 + (NSString*)get_private_xml_path;
 
