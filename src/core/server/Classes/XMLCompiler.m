@@ -4,7 +4,7 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesModel.h"
-#import "SharedCheckboxTree.h"
+#import "SharedXMLCompilerTree.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 static NSInteger xmlCompilerItemId_;
@@ -186,7 +186,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
 @property(readwrite) XMLCompilerTree* preferencepane_checkbox;
 @property(readwrite) XMLCompilerTree* preferencepane_parameter;
-@property(readwrite) SharedCheckboxTree* sharedCheckboxTree;
+@property(readwrite) SharedXMLCompilerTree* sharedCheckboxTree;
 
 @property pqrs_xml_compiler* pqrs_xml_compiler;
 @property NSMutableDictionary* checkboxTreeDictionary;
@@ -343,7 +343,7 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
       XMLCompilerTree* tree = [XMLCompilerTree new];
       tree.children = [self build_preferencepane_checkbox:root];
       self.preferencepane_checkbox = tree;
-      self.sharedCheckboxTree = [self buildSharedCheckboxTree:tree];
+      self.sharedCheckboxTree = [self buildSharedXMLCompilerTree:tree];
     }
 
     // build preferencepane_parameter
@@ -380,12 +380,12 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
 }
 
-- (SharedCheckboxTree*)buildSharedCheckboxTree:(XMLCompilerTree*)tree {
+- (SharedXMLCompilerTree*)buildSharedXMLCompilerTree:(XMLCompilerTree*)tree {
   NSMutableArray* children = [NSMutableArray new];
   for (XMLCompilerTree* child in tree.children) {
-    [children addObject:[self buildSharedCheckboxTree:child]];
+    [children addObject:[self buildSharedXMLCompilerTree:child]];
   }
-  SharedCheckboxTree* sharedTree = [[SharedCheckboxTree alloc] initWithId:tree.node.id children:children];
+  SharedXMLCompilerTree* sharedTree = [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:children];
   if ([sharedTree.id integerValue] > 0) {
     self.checkboxTreeDictionary[sharedTree.id] = tree;
   }

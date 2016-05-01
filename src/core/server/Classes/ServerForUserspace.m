@@ -151,7 +151,7 @@
 }
 
 // ----------------------------------------------------------------------
-- (SharedCheckboxTree*)sharedCheckboxTree {
+- (SharedXMLCompilerTree*)sharedCheckboxTree {
   return self.xmlCompiler.sharedCheckboxTree;
 }
 

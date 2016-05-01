@@ -1,6 +1,6 @@
-#import "SharedCheckboxTree.h"
+#import "SharedXMLCompilerTree.h"
 
-@implementation SharedCheckboxTree
+@implementation SharedXMLCompilerTree
 
 - (instancetype)initWithId:(NSNumber*)id
                   children:(NSArray*)children {
@@ -42,7 +42,7 @@
 #pragma mark - NSCoping
 
 - (id)copyWithZone:(NSZone*)zone {
-  SharedCheckboxTree* obj = [[[self class] allocWithZone:zone] init];
+  SharedXMLCompilerTree* obj = [[[self class] allocWithZone:zone] init];
   if (obj) {
     obj.id = [self.id copyWithZone:zone];
     obj.children = [self.children copyWithZone:zone];

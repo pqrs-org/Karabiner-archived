@@ -5,7 +5,7 @@
 
 @class CheckboxItem;
 @class ParameterItem;
-@class SharedCheckboxTree;
+@class SharedXMLCompilerTree;
 
 @interface XMLCompilerItem : NSObject
 
@@ -49,7 +49,7 @@
 
 @property(readonly) XMLCompilerTree* preferencepane_checkbox;
 @property(readonly) XMLCompilerTree* preferencepane_parameter;
-@property(readonly) SharedCheckboxTree* sharedCheckboxTree;
+@property(readonly) SharedXMLCompilerTree* sharedCheckboxTree;
 
 + (NSString*)get_private_xml_path;
 

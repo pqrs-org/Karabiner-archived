@@ -2,7 +2,7 @@
 
 @import Cocoa;
 
-@interface SharedCheckboxTree : NSObject <NSCoding, NSCopying>
+@interface SharedXMLCompilerTree : NSObject <NSCoding, NSCopying>
 
 @property NSNumber* id;
 @property(copy) NSArray* children;
