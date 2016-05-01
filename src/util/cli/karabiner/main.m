@@ -60,9 +60,9 @@
 }
 
 - (void)select:(ServerClient*)client command:(NSString*)command index:(NSInteger)index {
-  [[client proxy] configlist_select:index];
+  [client.proxy configlist_select:index];
 
-  if ([[client proxy] configlist_selectedIndex] != index) {
+  if ([client.proxy configlist_selectedIndex] != index) {
     [self output:[NSString stringWithFormat:@"Failed to %@.\n", command]];
     exit(1);
   }
@@ -80,7 +80,7 @@
       NSString* command = arguments[1];
 
       /*  */ if ([command isEqualToString:@"list"]) {
-        NSArray* a = [[client proxy] configlist_getConfigList];
+        NSArray* a = [client.proxy configlist_getConfigList];
         int index = 0;
         for (NSDictionary* dict in a) {
           [self output:[NSString stringWithFormat:@"%d: %@\n", index, dict[@"name"]]];
@@ -88,10 +88,10 @@
         }
 
       } else if ([command isEqualToString:@"selected"]) {
-        [self output:[NSString stringWithFormat:@"%d\n", (int)([[client proxy] configlist_selectedIndex])]];
+        [self output:[NSString stringWithFormat:@"%d\n", (int)([client.proxy configlist_selectedIndex])]];
 
       } else if ([command isEqualToString:@"changed"]) {
-        NSDictionary* dict = [[client proxy] changed];
+        NSDictionary* dict = [client.proxy changed];
         if (dict) {
           for (NSString* key in [dict allKeys]) {
             [self output:[NSString stringWithFormat:@"%@=%@\n", key, dict[key]]];
@@ -99,10 +99,10 @@
         }
 
       } else if ([command isEqualToString:@"reloadxml"]) {
-        [[client proxy] configxml_reload];
+        [client.proxy configxml_reload];
 
       } else if ([command isEqualToString:@"export"]) {
-        NSDictionary* dict = [[client proxy] changed];
+        NSDictionary* dict = [client.proxy changed];
         if (dict) {
           [self output:@"#!/bin/sh\n\n"];
           [self output:[NSString stringWithFormat:@"cli=%@\n\n", arguments[0]]];
@@ -117,7 +117,7 @@
         }
 
       } else if ([command isEqualToString:@"relaunch"]) {
-        [[client proxy] relaunch];
+        [client.proxy relaunch];
 
       } else if ([command isEqualToString:@"select"]) {
         if ([arguments count] != 3) {
@@ -132,7 +132,7 @@
         }
         NSString* value = arguments[2];
         int index = 0;
-        for (NSDictionary* config in [[client proxy] configlist_getConfigList]) {
+        for (NSDictionary* config in [client.proxy configlist_getConfigList]) {
           if ([value isEqualToString:config[@"name"]]) {
             [self select:client command:command index:index];
             return;
@@ -147,9 +147,9 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        [[client proxy] configlist_append];
-        NSInteger index = [[[client proxy] configlist_getConfigList] count] - 1;
-        [[client proxy] configlist_setName:index name:value];
+        [client.proxy configlist_append];
+        NSInteger index = [[client.proxy configlist_getConfigList] count] - 1;
+        [client.proxy configlist_setName:index name:value];
 
       } else if ([command isEqualToString:@"rename"]) {
         if ([arguments count] != 4) {
@@ -157,19 +157,19 @@
         }
         NSString* index = arguments[2];
         NSString* value = arguments[3];
-        [[client proxy] configlist_setName:[index intValue] name:value];
+        [client.proxy configlist_setName:[index intValue] name:value];
 
       } else if ([command isEqualToString:@"delete"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
-        NSInteger selected = [[client proxy] configlist_selectedIndex];
+        NSInteger selected = [client.proxy configlist_selectedIndex];
         NSString* index = arguments[2];
         if (selected == [index integerValue]) {
           [self output:@"You cannot delete selected profile.\n"];
           exit(1);
         } else {
-          [[client proxy] configlist_delete:[index intValue]];
+          [client.proxy configlist_delete:[index intValue]];
         }
 
       } else if ([command isEqualToString:@"set"]) {
@@ -178,29 +178,29 @@
         }
         NSString* identifier = arguments[2];
         NSString* value = arguments[3];
-        [[client proxy] setValue:[value intValue] forName:identifier];
+        [client.proxy setValue:[value intValue] forName:identifier];
 
       } else if ([command isEqualToString:@"enable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* value = arguments[2];
-        [[client proxy] setValue:1 forName:value];
+        [client.proxy setValue:1 forName:value];
 
       } else if ([command isEqualToString:@"disable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* value = arguments[2];
-        [[client proxy] setValue:0 forName:value];
+        [client.proxy setValue:0 forName:value];
 
       } else if ([command isEqualToString:@"toggle"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* value = arguments[2];
-        int current = [[client proxy] value:value];
-        [[client proxy] setValue:(!current) forName:value];
+        int current = [client.proxy value:value];
+        [client.proxy setValue:(!current) forName:value];
 
       } else if ([command isEqualToString:@"be_careful_to_use__clear_all_values_by_name"]) {
         if ([arguments count] != 3) {
@@ -208,9 +208,9 @@
         }
         NSString* value = arguments[2];
         int index = 0;
-        for (NSDictionary* config in [[client proxy] configlist_getConfigList]) {
+        for (NSDictionary* config in [client.proxy configlist_getConfigList]) {
           if ([value isEqualToString:config[@"name"]]) {
-            [[client proxy] configlist_clear_all_values:index];
+            [client.proxy configlist_clear_all_values:index];
             return;
           }
           ++index;
