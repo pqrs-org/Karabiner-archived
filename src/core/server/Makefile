@@ -34,6 +34,9 @@ xcode:
 run: all
 	open ./build/Release/Karabiner.app
 
+relaunch:
+	/Applications/Karabiner.app/Contents/Library/bin/karabiner relaunch
+
 podupdate:
 	pod update
 	pod install --no-repo-update
