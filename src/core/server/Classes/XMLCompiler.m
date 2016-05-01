@@ -634,6 +634,9 @@ static NSInteger xmlCompilerItemId_ = 0;
   dispatch_sync(self.xmlCompilerReloadQueue, ^{
     result = [self narrowedSharedCheckboxTree:self.preferencepane_checkbox isEnabledOnly:isEnabledOnly strings:strings];
   });
+  if (!result) {
+    result = [[SharedXMLCompilerTree alloc] initWithId:nil children:nil];
+  }
   return result;
 }
 
