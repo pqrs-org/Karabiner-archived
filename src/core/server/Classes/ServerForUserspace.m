@@ -175,6 +175,34 @@
   return [[self.xmlCompiler getCheckboxItem:id] needsShowCheckbox];
 }
 
+- (SharedXMLCompilerTree*)sharedParameterTree {
+  return self.xmlCompiler.sharedParameterTree;
+}
+
+- (NSString*)parameterItemGetName:(NSNumber*)id {
+  return [[self.xmlCompiler getParameterItem:id] getName];
+}
+
+- (NSString*)parameterItemGetIdentifier:(NSNumber*)id {
+  return [[self.xmlCompiler getParameterItem:id] getIdentifier];
+}
+
+- (NSInteger)parameterItemGetDefaultValue:(NSNumber*)id {
+  return [[self.xmlCompiler getParameterItem:id] getDefaultValue];
+}
+
+- (NSInteger)parameterItemGetStep:(NSNumber*)id {
+  return [[self.xmlCompiler getParameterItem:id] getStep];
+}
+
+- (NSString*)parameterItemGetBaseUnit:(NSNumber*)id {
+  return [[self.xmlCompiler getParameterItem:id] getBaseUnit];
+}
+
+- (NSUInteger)parameterItemGetChildrenCount:(NSNumber*)id {
+  return [[self.xmlCompiler getParameterItem:id] getChildrenCount];
+}
+
 // ----------------------------------------------------------------------
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information {
   return [self.appDelegate updateFocusedUIElementInformation:information];

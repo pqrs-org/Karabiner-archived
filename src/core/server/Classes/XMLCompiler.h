@@ -80,5 +80,6 @@
 - (BOOL)urlIsBackground:(uint32_t)keycode;
 
 - (CheckboxItem*)getCheckboxItem:(NSNumber*)id;
+- (ParameterItem*)getParameterItem:(NSNumber*)id;
 
 @end

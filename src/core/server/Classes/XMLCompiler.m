@@ -587,4 +587,9 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   return tree ? [tree.node castToCheckboxItem] : nil;
 }
 
+- (ParameterItem*)getParameterItem:(NSNumber*)id {
+  XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
+  return tree ? [tree.node castToParameterItem] : nil;
+}
+
 @end

@@ -4,7 +4,7 @@
 
 @class PreferencesModel;
 @class AXNotifierPreferencesModel;
-@class SharedCheckboxTree;
+@class SharedXMLCompilerTree;
 
 @protocol ServerClientProtocol
 
@@ -38,13 +38,21 @@
 - (void)terminateServerProcess;
 - (void)relaunch;
 
-// for SharedCheckboxTree
-- (SharedCheckboxTree*)sharedCheckboxTree;
+// for SharedXMLCompilerTree
+- (SharedXMLCompilerTree*)sharedCheckboxTree;
 - (NSString*)checkboxItemGetName:(NSNumber*)id;
 - (NSString*)checkboxItemGetStyle:(NSNumber*)id;
 - (NSString*)checkboxItemGetIdentifier:(NSNumber*)id;
 - (NSUInteger)checkboxItemGetChildrenCount:(NSNumber*)id;
 - (BOOL)checkboxItemNeedsShowCheckbox:(NSNumber*)id;
+
+- (SharedXMLCompilerTree*)sharedParameterTree;
+- (NSString*)parameterItemGetName:(NSNumber*)id;
+- (NSString*)parameterItemGetIdentifier:(NSNumber*)id;
+- (NSInteger)parameterItemGetDefaultValue:(NSNumber*)id;
+- (NSInteger)parameterItemGetStep:(NSNumber*)id;
+- (NSString*)parameterItemGetBaseUnit:(NSNumber*)id;
+- (NSUInteger)parameterItemGetChildrenCount:(NSNumber*)id;
 
 // for AXNotifier
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;
