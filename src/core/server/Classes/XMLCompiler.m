@@ -4,6 +4,7 @@
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesModel.h"
+#import "SharedCheckboxTree.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 static NSInteger xmlCompilerItemId_;
@@ -185,7 +186,10 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
 
 @property(readwrite) XMLCompilerTree* preferencepane_checkbox;
 @property(readwrite) XMLCompilerTree* preferencepane_parameter;
+@property(readwrite) SharedCheckboxTree* sharedCheckboxTree;
+
 @property pqrs_xml_compiler* pqrs_xml_compiler;
+@property NSMutableDictionary* checkboxTreeDictionary;
 
 @end
 
@@ -310,6 +314,8 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
                                  [[[NSBundle mainBundle] resourcePath] UTF8String],
                                  [[[XMLCompiler get_private_xml_path] stringByDeletingLastPathComponent] UTF8String]);
     self.pqrs_xml_compiler = p;
+
+    self.checkboxTreeDictionary = [NSMutableDictionary new];
   }
 
   return self;
@@ -330,12 +336,14 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
     }
 
     pqrs_xml_compiler_reload(self.pqrs_xml_compiler, checkbox_xml_file_name);
+    [self.checkboxTreeDictionary removeAllObjects];
 
     {
       CheckboxItem* root = [[CheckboxItem alloc] initWithParent:self.pqrs_xml_compiler parent:nil index:0];
       XMLCompilerTree* tree = [XMLCompilerTree new];
       tree.children = [self build_preferencepane_checkbox:root];
       self.preferencepane_checkbox = tree;
+      self.sharedCheckboxTree = [self buildSharedCheckboxTree:tree];
     }
 
     // build preferencepane_parameter
@@ -370,6 +378,18 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
   // ------------------------------------------------------------
   // We need to send a notification outside synchronized block to prevent lock.
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
+}
+
+- (SharedCheckboxTree*)buildSharedCheckboxTree:(XMLCompilerTree*)tree {
+  NSMutableArray* children = [NSMutableArray new];
+  for (XMLCompilerTree* child in tree.children) {
+    [children addObject:[self buildSharedCheckboxTree:child]];
+  }
+  SharedCheckboxTree* sharedTree = [[SharedCheckboxTree alloc] initWithId:tree.node.id children:children];
+  if ([sharedTree.id integerValue] > 0) {
+    self.checkboxTreeDictionary[sharedTree.id] = tree;
+  }
+  return sharedTree;
 }
 
 - (size_t)remapclasses_initialize_vector_size {
@@ -558,6 +578,11 @@ static dispatch_queue_t xmlCompilerItemIdQueue_;
                                       error_message,
                                       "----------------------------------------"];
   }
+}
+
+- (CheckboxItem*)getCheckboxItem:(NSNumber*)id {
+  XMLCompilerTree* tree = self.checkboxTreeDictionary[id];
+  return tree ? [tree.node castToCheckboxItem] : nil;
 }
 
 @end

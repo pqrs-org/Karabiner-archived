@@ -151,6 +151,31 @@
 }
 
 // ----------------------------------------------------------------------
+- (SharedCheckboxTree*)sharedCheckboxTree {
+  return self.xmlCompiler.sharedCheckboxTree;
+}
+
+- (NSString*)checkboxItemGetName:(NSNumber*)id {
+  return [[self.xmlCompiler getCheckboxItem:id] getName];
+}
+
+- (NSString*)checkboxItemGetStyle:(NSNumber*)id {
+  return [[self.xmlCompiler getCheckboxItem:id] getStyle];
+}
+
+- (NSString*)checkboxItemGetIdentifier:(NSNumber*)id {
+  return [[self.xmlCompiler getCheckboxItem:id] getIdentifier];
+}
+
+- (NSUInteger)checkboxItemGetChildrenCount:(NSNumber*)id {
+  return [[self.xmlCompiler getCheckboxItem:id] getChildrenCount];
+}
+
+- (BOOL)checkboxItemNeedsShowCheckbox:(NSNumber*)id {
+  return [[self.xmlCompiler getCheckboxItem:id] needsShowCheckbox];
+}
+
+// ----------------------------------------------------------------------
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information {
   return [self.appDelegate updateFocusedUIElementInformation:information];
 }
