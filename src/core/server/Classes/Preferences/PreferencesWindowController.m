@@ -77,6 +77,7 @@
     if (notification.userInfo && notification.userInfo[kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI]) {
       // do nothing
     } else {
+      [self.profileTableViewDataSource load:YES];
       [self.profileTableView reloadData];
     }
   });
