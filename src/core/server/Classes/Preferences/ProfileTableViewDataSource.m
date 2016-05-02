@@ -7,7 +7,6 @@
 @interface ProfileTableViewDataSource ()
 
 @property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
-@property(copy) NSArray* dataSource;
 
 @end
 
