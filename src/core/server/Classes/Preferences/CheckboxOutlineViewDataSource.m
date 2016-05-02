@@ -1,8 +1,8 @@
 #import "CheckboxOutlineViewDataSource.h"
 #import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
-#import "ServerObjects.h"
 #import "ServerForUserspace.h"
+#import "ServerObjects.h"
 #import "SharedXMLCompilerTree.h"
 #import "XMLCompiler.h"
 
