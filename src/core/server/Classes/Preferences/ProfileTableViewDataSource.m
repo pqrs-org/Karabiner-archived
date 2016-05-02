@@ -22,7 +22,6 @@
 
   if (!self.dataSource) {
     self.dataSource = [self.preferencesWindowController.serverObjects.serverForUserspace configlist_getConfigList];
-    NSLog(@"%@", self.dataSource);
   }
 }
 
