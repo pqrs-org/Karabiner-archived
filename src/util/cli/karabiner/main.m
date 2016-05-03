@@ -63,14 +63,16 @@
   exit(2);
 }
 
-- (void)select:(NSString*)command index:(NSInteger)index {
-  [self.client.proxy configlist_select:index];
-  [self.client.proxy loadPreferencesModel:self.preferencesModel];
+- (void)select:(NSInteger)index {
+  NSArray* profiles = [self.client.proxy configlist_getConfigList];
 
-  if (self.preferencesModel.selectedProfileIndex != index) {
-    [self output:[NSString stringWithFormat:@"Failed to %@.\n", command]];
+  if (index < 0 || index >= (NSInteger)([profiles count])) {
+    [self output:[NSString stringWithFormat:@"The profile index (%d) is out of range.\n", (int)(index)]];
     exit(1);
   }
+
+  self.preferencesModel.selectedProfileIndex = index;
+  [self.client.proxy savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
 }
 
 - (void)main {
@@ -132,7 +134,7 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        [self select:command index:[value integerValue]];
+        [self select:[value integerValue]];
 
       } else if ([command isEqualToString:@"select_by_name"]) {
         if ([arguments count] != 3) {
@@ -142,7 +144,7 @@
         int index = 0;
         for (NSDictionary* config in [self.client.proxy configlist_getConfigList]) {
           if ([value isEqualToString:config[@"name"]]) {
-            [self select:command index:index];
+            [self select:index];
             return;
           }
           ++index;
