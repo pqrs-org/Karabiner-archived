@@ -17,7 +17,7 @@
 
 @implementation StatusBar
 
-- (void)observer_ProfileChanged:(NSNotification*)notification {
+- (void)observer_PreferencesChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self refresh];
   });
@@ -34,8 +34,8 @@
 
   if (self) {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_ProfileChanged:)
-                                                 name:kProfileChangedNotification
+                                             selector:@selector(observer_PreferencesChanged:)
+                                                 name:kPreferencesChangedNotification
                                                object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
