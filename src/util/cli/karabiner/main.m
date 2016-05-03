@@ -68,14 +68,13 @@
 }
 
 - (void)select:(NSInteger)index {
-  NSArray* profiles = [self.client.proxy configlist_getConfigList];
-
-  if (index < 0 || index >= (NSInteger)([profiles count])) {
+  ProfileModel* profileModel = [self.preferencesModel profile:index];
+  if (!profileModel) {
     [self output:[NSString stringWithFormat:@"The profile index (%d) is out of range.\n", (int)(index)]];
     exit(1);
   }
 
-  self.preferencesModel.selectedProfileIndex = index;
+  self.preferencesModel.currentProfileIndex = index;
   [self savePreferencesModel];
 }
 
@@ -102,7 +101,7 @@
         }
 
       } else if ([command isEqualToString:@"selected"]) {
-        [self output:[NSString stringWithFormat:@"%d\n", (int)(self.preferencesModel.selectedProfileIndex)]];
+        [self output:[NSString stringWithFormat:@"%d\n", (int)(self.preferencesModel.currentProfileIndex)]];
 
       } else if ([command isEqualToString:@"changed"]) {
         NSDictionary* dict = [self.client.proxy changed];
@@ -170,18 +169,21 @@
         }
         NSString* index = arguments[2];
         NSString* value = arguments[3];
-        [self.client.proxy configlist_setName:[index intValue] name:value];
+
+        [self.preferencesModel renameProfile:[index integerValue] name:value];
+        [self savePreferencesModel];
 
       } else if ([command isEqualToString:@"delete"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* index = arguments[2];
-        if (self.preferencesModel.selectedProfileIndex == [index integerValue]) {
+        if (self.preferencesModel.currentProfileIndex == [index integerValue]) {
           [self output:@"You cannot delete the current profile.\n"];
           exit(1);
         } else {
-          [self.client.proxy configlist_delete:[index intValue]];
+          [self.preferencesModel deleteProfile:[index integerValue]];
+          [self savePreferencesModel];
         }
 
       } else if ([command isEqualToString:@"set"]) {
