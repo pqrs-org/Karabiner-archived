@@ -24,7 +24,6 @@
 - (NSDictionary*)changed;
 
 // --------------------------------------------------
-- (NSInteger)configlist_selectedIndex;
 - (NSString*)configlist_selectedName;
 - (NSString*)configlist_selectedIdentifier;
 - (NSArray*)configlist_getConfigList;
@@ -32,7 +31,6 @@
 - (NSDictionary*)configlist_dictionary:(NSInteger)rowIndex;
 - (NSString*)configlist_name:(NSInteger)rowIndex;
 - (NSString*)configlist_identifier:(NSInteger)rowIndex;
-- (void)configlist_select:(NSInteger)newindex;
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name notificationUserInfo:(NSDictionary*)notificationUserInfo;
 - (void)configlist_append;

@@ -113,10 +113,6 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSInteger)configlist_selectedIndex {
-  return [self.preferencesManager configlist_selectedIndex];
-}
-
 - (NSArray*)configlist_getConfigList {
   return [self.preferencesManager configlist_getConfigList];
 }
