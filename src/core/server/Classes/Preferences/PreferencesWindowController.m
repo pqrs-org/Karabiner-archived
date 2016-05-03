@@ -411,8 +411,8 @@
   [self.keyRepeatTextField setEnabled:enabled];
   [self.keyRepeatStepper setEnabled:enabled];
 
-  int delayUntilRepeat = [self.serverObjects.preferencesManager value:@"repeat.initial_wait"];
-  int keyRepeat = [self.serverObjects.preferencesManager value:@"repeat.wait"];
+  int delayUntilRepeat = [self.serverObjects.serverForUserspace value:@"repeat.initial_wait"];
+  int keyRepeat = [self.serverObjects.serverForUserspace value:@"repeat.wait"];
 
   [self.delayUntilRepeatLabel setStringValue:[NSString stringWithFormat:@"%d milliseconds", delayUntilRepeat]];
   [self.delayUntilRepeatTextField setIntegerValue:delayUntilRepeat];
@@ -427,12 +427,12 @@
 }
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
-  [self.serverObjects.preferencesManager setValue:[sender intValue] forName:@"repeat.initial_wait"];
+  [self.serverObjects.serverForUserspace setValue:[sender intValue] forName:@"repeat.initial_wait"];
   [self refreshKeyRepeatTab];
 }
 
 - (IBAction)changeKeyRepeat:(id)sender {
-  [self.serverObjects.preferencesManager setValue:[sender intValue] forName:@"repeat.wait"];
+  [self.serverObjects.serverForUserspace setValue:[sender intValue] forName:@"repeat.wait"];
   [self refreshKeyRepeatTab];
 }
 
