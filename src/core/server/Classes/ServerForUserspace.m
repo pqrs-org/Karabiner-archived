@@ -121,10 +121,6 @@
   [self.preferencesManager configlist_setName:rowIndex name:name];
 }
 
-- (void)configlist_append {
-  [self.preferencesManager configlist_append];
-}
-
 - (void)configlist_delete:(NSInteger)rowIndex {
   [self.preferencesManager configlist_delete:rowIndex];
 }

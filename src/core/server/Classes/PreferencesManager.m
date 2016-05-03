@@ -195,11 +195,6 @@
 
     if (![self configlist_selectedIdentifier]) {
       NSLog(@"initialize configlist");
-
-      // add new item
-      [self configlist_append];
-      [self configlist_setName:0 name:@"Default Profile"];
-      [self configlist_select:0];
     }
   }
 
@@ -527,9 +522,6 @@
   [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil userInfo:notificationUserInfo];
-}
-
-- (void)configlist_append {
 }
 
 - (void)configlist_delete:(NSInteger)rowIndex {
