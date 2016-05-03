@@ -96,7 +96,7 @@
   self.preferencesModel.selectedProfileIndex = [idx intValue];
   [self.preferencesManager savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
 
-  [self refresh];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (void)menuNeedsUpdate:(NSMenu*)menu {
