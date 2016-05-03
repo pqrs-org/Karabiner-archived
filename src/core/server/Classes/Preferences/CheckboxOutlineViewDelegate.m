@@ -82,7 +82,7 @@
     result.checkbox.imagePosition = NSImageOnly;
     result.checkbox.target = result;
     result.checkbox.action = @selector(valueChanged:);
-    if ([self.preferencesWindowController.serverObjects.preferencesManager value:identifier]) {
+    if ([self.preferencesWindowController.serverObjects.serverForUserspace value:identifier]) {
       result.checkbox.state = NSOnState;
     } else {
       result.checkbox.state = NSOffState;
