@@ -1,7 +1,6 @@
 #import "ParameterOutlineViewDelegate.h"
 #import "ParameterDiffCellView.h"
 #import "ParameterValueCellView.h"
-#import "PreferencesManager.h"
 #import "PreferencesWindowController.h"
 #import "ServerForUserspace.h"
 #import "ServerObjects.h"
@@ -36,7 +35,7 @@
       return result;
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterValueColumn"]) {
-      int value = [self.preferencesWindowController.serverObjects.preferencesManager value:identifier];
+      int value = [self.preferencesWindowController.serverObjects.serverForUserspace value:identifier];
       ParameterValueCellView* result = [outlineView makeViewWithIdentifier:@"ParameterValueCellView" owner:self];
       result.textField.stringValue = [NSString stringWithFormat:@"%d", value];
       result.stepper.integerValue = value;
