@@ -169,7 +169,7 @@
   if (![self.window isVisible]) return;
 
   int count = [self enabled_count:self.serverObjects.xmlCompiler.preferencepane_checkbox
-                          changed:[self.serverObjects.preferencesManager changed]];
+                          changed:[self.serverObjects.serverForUserspace changed]];
 
   [self.checkbox_showEnabledOnly setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", count, count >= 2 ? @"items" : @"item"]];
 }
