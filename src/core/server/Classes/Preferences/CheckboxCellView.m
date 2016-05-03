@@ -1,7 +1,7 @@
 #import "CheckboxCellView.h"
 #import "CheckboxBackgroundView.h"
 #import "NotificationKeys.h"
-#import "PreferencesManager.h"
+#import "ServerForUserspace.h"
 #import "ServerObjects.h"
 
 @implementation CheckboxCellView
@@ -59,14 +59,7 @@
   if (self.checkbox) {
     int value = (self.checkbox.state == NSOnState);
 
-    NSDictionary* notificationUserInfo = @{
-      kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI : @YES,
-    };
-
-    [self.serverObjects.preferencesManager setValue:value
-                                            forName:self.settingIdentifier
-                                         tellToKext:YES
-                               notificationUserInfo:notificationUserInfo];
+    [self.serverObjects.serverForUserspace setValue:value forName:self.settingIdentifier];
   }
 }
 
