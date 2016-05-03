@@ -26,7 +26,6 @@
 
 - (NSInteger)configlist_selectedIndex;
 - (NSArray*)configlist_getConfigList;
-- (void)configlist_select:(NSInteger)newindex;
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
 - (void)configlist_append;
 - (void)configlist_delete:(NSInteger)rowIndex;

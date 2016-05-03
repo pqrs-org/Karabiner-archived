@@ -121,10 +121,6 @@
   return [self.preferencesManager configlist_getConfigList];
 }
 
-- (void)configlist_select:(NSInteger)newIndex {
-  [self.preferencesManager configlist_select:newIndex];
-}
-
 - (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
   [self.preferencesManager configlist_setName:rowIndex name:name];
 }
