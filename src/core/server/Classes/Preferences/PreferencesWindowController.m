@@ -345,7 +345,7 @@
 }
 
 - (IBAction)addNewProfile:(id)sender {
-  [self.serverObjects.preferencesManager configlist_append];
+  [self.serverObjects.serverForUserspace configlist_append];
 }
 
 - (void)disableAllProfileCells {

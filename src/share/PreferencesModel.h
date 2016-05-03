@@ -2,6 +2,14 @@
 
 @import Cocoa;
 
+@interface ProfileModel : NSObject <NSCoding, NSCopying>
+
+@property(copy) NSString* name;
+@property(copy) NSString* identifier;
+@property NSInteger appendIndex;
+
+@end
+
 @interface AXNotifierPreferencesModel : NSObject <NSCoding, NSCopying>
 
 @property BOOL useAXNotifier;
@@ -23,6 +31,7 @@
 @property BOOL showProfileNameInStatusBar;
 @property BOOL usePreparedSettings;
 
+@property(copy) NSArray* profiles;
 @property NSInteger selectedProfileIndex;
 
 @property BOOL useStatusWindow;
@@ -38,5 +47,9 @@
 @property NSInteger preferencesCheckboxFont;
 
 @property AXNotifierPreferencesModel* axNotifierPreferencesModel;
+
+- (void)addProfile:(NSString*)name;
+- (void)sortProfilesByAppendIndex;
+- (void)sortProfilesByName;
 
 @end

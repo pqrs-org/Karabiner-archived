@@ -1,5 +1,46 @@
 #import "PreferencesModel.h"
 
+@implementation ProfileModel
+
+#pragma mark - NSObject
+
+- (id)replacementObjectForPortCoder:(NSPortCoder*)encoder {
+  if ([encoder isBycopy]) return self;
+  return [super replacementObjectForPortCoder:encoder];
+}
+
+#pragma mark - NSCoding
+
+- (instancetype)initWithCoder:(NSCoder*)decoder {
+  self = [super init];
+
+  if (self) {
+    self.name = [decoder decodeObjectForKey:@"name"];
+    self.identifier = [decoder decodeObjectForKey:@"identifier"];
+    self.appendIndex = [decoder decodeIntegerForKey:@"appendIndex"];
+  }
+
+  return self;
+}
+
+- (void)encodeWithCoder:(NSCoder*)encoder {
+  [encoder encodeObject:self.name forKey:@"name"];
+  [encoder encodeObject:self.identifier forKey:@"identifier"];
+  [encoder encodeInteger:self.appendIndex forKey:@"appendIndex"];
+}
+
+- (id)copyWithZone:(NSZone*)zone {
+  ProfileModel* obj = [[[self class] allocWithZone:zone] init];
+  if (obj) {
+    obj.name = [self.name copyWithZone:zone];
+    obj.identifier = [self.identifier copyWithZone:zone];
+    obj.appendIndex = self.appendIndex;
+  }
+  return obj;
+}
+
+@end
+
 @implementation AXNotifierPreferencesModel
 
 - (void)log {
@@ -84,4 +125,14 @@
 @end
 
 @implementation PreferencesModel
+
+- (void)addProfile:(NSString*)name {
+}
+
+- (void)sortProfilesByAppendIndex {
+}
+
+- (void)sortProfilesByName {
+}
+
 @end

@@ -2,6 +2,7 @@
 
 #define kStatusBarEnabled @"isStatusbarEnable"
 #define kShowProfileNameInStatusBar @"isShowSettingNameInStatusBar"
+#define kProfiles @"configList"
 #define kSelectedProfileIndex @"selectedIndex"
 #define kCheckForUpdates @"isCheckUpdate"
 #define kIsStatusWindowEnabled @"isStatusWindowEnabled"

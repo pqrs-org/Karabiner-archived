@@ -24,6 +24,7 @@
   NSDictionary* dict = @{
     kStatusBarEnabled : @YES,
     kShowProfileNameInStatusBar : @NO,
+    kProfiles : @[],
     kSelectedProfileIndex : @0,
     kCheckForUpdates : @YES,
     kIsStatusWindowEnabled : @YES,
@@ -69,6 +70,18 @@
   preferencesModel.statusWindowPosition = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowPosition];
   preferencesModel.preferencesCheckboxFont = [[NSUserDefaults standardUserDefaults] integerForKey:kKarabinerPreferencesCheckboxFont];
 
+  // ----------------------------------------
+  NSMutableArray* profiles = [NSMutableArray new];
+  for (NSDictionary* profile in [[NSUserDefaults standardUserDefaults] arrayForKey:kProfiles]) {
+    ProfileModel* profileModel = [ProfileModel new];
+    profileModel.name = profile[@"name"];
+    profileModel.identifier = profile[@"identify"];
+    profileModel.appendIndex = [profile[@"appendIndex"] integerValue];
+    [profiles addObject:profileModel];
+  }
+  preferencesModel.profiles = profiles;
+
+  // ----------------------------------------
   if (!preferencesModel.axNotifierPreferencesModel) {
     preferencesModel.axNotifierPreferencesModel = [AXNotifierPreferencesModel new];
   }
@@ -102,6 +115,18 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowPosition) forKey:kStatusWindowPosition];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.preferencesCheckboxFont) forKey:kKarabinerPreferencesCheckboxFont];
 
+  // ----------------------------------------
+  NSMutableArray* profiles = [NSMutableArray new];
+  for (ProfileModel* profileModel in preferencesModel.profiles) {
+    [profiles addObject:@{
+      @"name" : profileModel.name ? profileModel.name : @"",
+      @"identify" : profileModel.identifier ? profileModel.identifier : @"",
+      @"appendIndex" : @(profileModel.appendIndex),
+    }];
+  }
+  [[NSUserDefaults standardUserDefaults] setObject:profiles forKey:kProfiles];
+
+  // ----------------------------------------
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.useAXNotifier) forKey:kIsAXNotifierEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifierPreferencesModel.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
