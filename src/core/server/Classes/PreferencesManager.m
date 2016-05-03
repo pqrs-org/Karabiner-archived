@@ -205,26 +205,6 @@
   }
 
   // ------------------------------------------------------------
-  // set AppendIndex if needed.
-  {
-    NSMutableArray* ma = [NSMutableArray new];
-    NSInteger appendIndex = [self configlist_maxAppendIndex] + 1;
-
-    for (NSDictionary* d in [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"]) {
-      NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
-
-      if (!md[@"appendIndex"]) {
-        md[@"appendIndex"] = @(appendIndex);
-        ++appendIndex;
-      }
-
-      [ma addObject:md];
-    }
-
-    [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
-  }
-
-  // ------------------------------------------------------------
   // scan config_* and detech notsave.*
   for (NSDictionary* dict in [self configlist_getConfigList]) {
     if (!dict) continue;
@@ -435,22 +415,12 @@
   return [[NSUserDefaults standardUserDefaults] integerForKey:@"selectedIndex"];
 }
 
-- (NSString*)configlist_selectedName {
-  return [self configlist_name:[self configlist_selectedIndex]];
-}
-
 - (NSString*)configlist_selectedIdentifier {
   return [self configlist_identifier:[self configlist_selectedIndex]];
 }
 
 - (NSArray*)configlist_getConfigList {
   return [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-}
-
-- (NSUInteger)configlist_count {
-  NSArray* a = [self configlist_getConfigList];
-  if (!a) return 0;
-  return [a count];
 }
 
 - (NSDictionary*)configlist_dictionary:(NSInteger)rowIndex {
@@ -460,12 +430,6 @@
   if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [list count]) return nil;
 
   return list[rowIndex];
-}
-
-- (NSString*)configlist_name:(NSInteger)rowIndex {
-  NSDictionary* dict = [self configlist_dictionary:rowIndex];
-  if (!dict) return nil;
-  return dict[@"name"];
 }
 
 - (NSString*)configlist_identifier:(NSInteger)rowIndex {
@@ -489,16 +453,6 @@
   [self.clientForKernelspace send_config_to_kext];
 }
 
-- (void)configlist_selectByIdentifier:(NSString*)identifier {
-  NSInteger count = (NSInteger)([self configlist_count]);
-  for (NSInteger i = 0; i < count; ++i) {
-    if ([identifier isEqualToString:[self configlist_identifier:i]]) {
-      [self configlist_select:i];
-      return;
-    }
-  }
-}
-
 - (void)configlist_clear_all_values:(NSInteger)rowIndex {
   NSString* identifier = [self configlist_identifier:rowIndex];
   if (!identifier) return;
@@ -507,21 +461,6 @@
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
   [self.clientForKernelspace send_config_to_kext];
-}
-
-- (NSInteger)configlist_maxAppendIndex {
-  NSInteger maxAppendIndex = 0;
-
-  for (NSDictionary* d in [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"]) {
-    if (d[@"appendIndex"]) {
-      NSInteger index = [d[@"appendIndex"] integerValue];
-      if (maxAppendIndex < index) {
-        maxAppendIndex = index;
-      }
-    }
-  }
-
-  return maxAppendIndex;
 }
 
 @end

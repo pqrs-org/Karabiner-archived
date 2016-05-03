@@ -24,11 +24,8 @@
 - (NSDictionary*)changed;
 
 // --------------------------------------------------
-- (NSString*)configlist_selectedName;
 - (NSString*)configlist_selectedIdentifier;
-- (NSUInteger)configlist_count;
 - (NSDictionary*)configlist_dictionary:(NSInteger)rowIndex;
-- (NSString*)configlist_name:(NSInteger)rowIndex;
 - (NSString*)configlist_identifier:(NSInteger)rowIndex;
 - (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
