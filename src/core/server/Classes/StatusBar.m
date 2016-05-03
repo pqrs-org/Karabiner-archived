@@ -92,7 +92,10 @@
 
 - (void)statusBarItemSelected:(id)sender {
   NSNumber* idx = [sender representedObject];
-  [self.preferencesManager configlist_select:[idx intValue]];
+
+  self.preferencesModel.selectedProfileIndex = [idx intValue];
+  [self.preferencesManager savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+
   [self refresh];
 }
 
@@ -110,7 +113,6 @@
   // append
   NSArray* list = [self.preferencesManager configlist_getConfigList];
   int i = 0;
-  NSInteger selectedIndex = [self.preferencesManager configlist_selectedIndex];
   for (NSDictionary* dict in list) {
     if (!dict) continue;
 
@@ -120,7 +122,7 @@
     [newItem setTarget:self];
     [newItem setRepresentedObject:@(i)];
 
-    if (selectedIndex == i) {
+    if (self.preferencesModel.selectedProfileIndex == i) {
       [newItem setState:NSOnState];
     } else {
       [newItem setState:NSOffState];
