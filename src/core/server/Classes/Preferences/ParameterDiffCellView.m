@@ -5,12 +5,6 @@
 
 @implementation ParameterDiffCellView
 
-- (void)observer_ConfigListChanged:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self updateValue];
-  });
-}
-
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self updateValue];
@@ -37,11 +31,6 @@
 
 - (void)setObserver {
   [self removeObserver];
-
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(observer_ConfigListChanged:)
-                                               name:kConfigListChangedNotification
-                                             object:nil];
 
   [[NSNotificationCenter defaultCenter] addObserver:self
                                            selector:@selector(observer_ConfigXMLReloaded:)

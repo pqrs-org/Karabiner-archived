@@ -24,7 +24,7 @@
     kStatusBarEnabled : @YES,
     kShowProfileNameInStatusBar : @NO,
     kProfiles : @[],
-    kSelectedProfileIndex : @0,
+    kCurrentProfileIndex : @0,
     kCheckForUpdates : @YES,
     kIsStatusWindowEnabled : @YES,
     kIsStatusWindowShowCapsLock : @NO,
@@ -57,7 +57,7 @@
   preferencesModel.statusBarEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kStatusBarEnabled];
   preferencesModel.showProfileNameInStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:kShowProfileNameInStatusBar];
   preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
-  preferencesModel.selectedProfileIndex = [[NSUserDefaults standardUserDefaults] integerForKey:kSelectedProfileIndex];
+  preferencesModel.currentProfileIndex = [[NSUserDefaults standardUserDefaults] integerForKey:kCurrentProfileIndex];
   preferencesModel.useStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowEnabled];
   preferencesModel.showCapsLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowCapsLock];
   preferencesModel.showStickyModifiersStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowStickyModifier];
@@ -102,7 +102,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusBarEnabled) forKey:kStatusBarEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showProfileNameInStatusBar) forKey:kShowProfileNameInStatusBar];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.selectedProfileIndex) forKey:kSelectedProfileIndex];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.currentProfileIndex) forKey:kCurrentProfileIndex];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useStatusWindow) forKey:kIsStatusWindowEnabled];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showCapsLockStateInStatusWindow) forKey:kIsStatusWindowShowCapsLock];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showStickyModifiersStateInStatusWindow) forKey:kIsStatusWindowShowStickyModifier];
@@ -115,6 +115,8 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.preferencesCheckboxFont) forKey:kKarabinerPreferencesCheckboxFont];
 
   // ----------------------------------------
+  NSString* oldProfileIdentifier = self.preferencesModel.currentProfileIdentifier;
+
   NSMutableArray* profiles = [NSMutableArray new];
   for (ProfileModel* profileModel in preferencesModel.profiles) {
     [profiles addObject:@{
@@ -144,6 +146,10 @@
                                                                  object:nil
                                                                userInfo:@{ @"processIdentifier" : @(processIdentifier) }
                                                      deliverImmediately:YES];
+
+  if (![self.preferencesModel.currentProfileIdentifier isEqualToString:oldProfileIdentifier]) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kProfileChangedNotification object:nil];
+  }
 }
 
 // ----------------------------------------
@@ -479,7 +485,6 @@
   NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
   [userdefaults setInteger:newindex forKey:@"selectedIndex"];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
   [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
   [self.clientForKernelspace send_config_to_kext];
 }
@@ -492,66 +497,6 @@
       return;
     }
   }
-}
-
-- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
-  [self configlist_setName:rowIndex name:name notificationUserInfo:nil];
-}
-
-- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name notificationUserInfo:(NSDictionary*)notificationUserInfo {
-  if ([name length] == 0) return;
-
-  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-  if (!a) return;
-  if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
-
-  NSDictionary* d = a[rowIndex];
-  if (!d) return;
-
-  NSMutableDictionary* md = [NSMutableDictionary dictionaryWithDictionary:d];
-  if (!md) return;
-  if ([md[@"name"] isEqualToString:name]) {
-    return;
-  }
-  md[@"name"] = name;
-
-  NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
-  if (!ma) return;
-  ma[rowIndex] = md;
-
-  [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil userInfo:notificationUserInfo];
-}
-
-- (void)configlist_delete:(NSInteger)rowIndex {
-  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-  if (!a) return;
-
-  if (rowIndex < 0 || (NSUInteger)(rowIndex) >= [a count]) return;
-
-  NSInteger selectedIndex = [self configlist_selectedIndex];
-  if (rowIndex == selectedIndex) return;
-
-  NSMutableArray* ma = [NSMutableArray arrayWithArray:a];
-  if (!ma) return;
-
-  [ma removeObjectAtIndex:(NSUInteger)(rowIndex)];
-
-  [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
-
-  // When Item2 is deleted in the following condition,
-  // we need to decrease selected index 2->1.
-  //
-  // - Item1
-  // - Item2
-  // - Item3 [selected]
-  //
-  if (rowIndex < selectedIndex) {
-    [self configlist_select:(selectedIndex - 1)];
-  }
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (void)configlist_clear_all_values:(NSInteger)rowIndex {

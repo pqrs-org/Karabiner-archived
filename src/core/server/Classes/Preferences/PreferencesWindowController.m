@@ -58,29 +58,6 @@
 
 @implementation PreferencesWindowController
 
-- (void)observer_ConfigListChanged:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [self drawEnabledCount];
-    [self refreshKeyRepeatTab];
-
-    if ([self.checkbox_showEnabledOnly state] == NSOnState) {
-      [self.checkboxOutlineViewDataSource clearFilterCondition];
-      [self filterCheckboxOutlineView:self];
-    } else {
-      [self.checkboxOutlineView reloadData];
-    }
-
-    [self.parameterOutlineView reloadData];
-
-    if (notification.userInfo && notification.userInfo[kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI]) {
-      // do nothing
-    } else {
-      [self.profileTableViewDataSource load:YES];
-      [self.profileTableView reloadData];
-    }
-  });
-}
-
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self drawEnabledCount];
@@ -108,6 +85,7 @@
     } else {
       [self.checkboxOutlineView reloadData];
       [self.parameterOutlineView reloadData];
+      [self.profileTableView reloadData];
     }
   });
 }
@@ -117,11 +95,6 @@
 
   if (self) {
     self.serverObjects = serverObjects;
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_ConfigListChanged:)
-                                                 name:kConfigListChangedNotification
-                                               object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigXMLReloaded:)

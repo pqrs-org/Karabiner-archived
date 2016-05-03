@@ -31,9 +31,6 @@
 - (NSDictionary*)configlist_dictionary:(NSInteger)rowIndex;
 - (NSString*)configlist_name:(NSInteger)rowIndex;
 - (NSString*)configlist_identifier:(NSInteger)rowIndex;
-- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name;
-- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name notificationUserInfo:(NSDictionary*)notificationUserInfo;
-- (void)configlist_delete:(NSInteger)rowIndex;
 - (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
 @end

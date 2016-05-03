@@ -17,7 +17,7 @@
 
 @implementation StatusBar
 
-- (void)observer_ConfigListChanged:(NSNotification*)notification {
+- (void)observer_ProfileChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self refresh];
   });
@@ -34,8 +34,8 @@
 
   if (self) {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_ConfigListChanged:)
-                                                 name:kConfigListChangedNotification
+                                             selector:@selector(observer_ProfileChanged:)
+                                                 name:kProfileChangedNotification
                                                object:nil];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -93,10 +93,10 @@
 - (void)statusBarItemSelected:(id)sender {
   NSNumber* idx = [sender representedObject];
 
-  self.preferencesModel.selectedProfileIndex = [idx intValue];
+  self.preferencesModel.currentProfileIndex = [idx intValue];
   [self.preferencesManager savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
+  [[NSNotificationCenter defaultCenter] postNotificationName:kProfileChangedNotification object:nil];
 }
 
 - (void)menuNeedsUpdate:(NSMenu*)menu {
@@ -122,7 +122,7 @@
     [newItem setTarget:self];
     [newItem setRepresentedObject:@(i)];
 
-    if (self.preferencesModel.selectedProfileIndex == i) {
+    if (self.preferencesModel.currentProfileIndex == i) {
       [newItem setState:NSOnState];
     } else {
       [newItem setState:NSOffState];

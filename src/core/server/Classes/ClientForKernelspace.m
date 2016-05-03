@@ -114,7 +114,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   });
 }
 
-- (void)observer_ConfigListChanged:(NSNotification*)notification {
+- (void)observer_ProfileChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self.preferencesManager clearNotSave];
     [self send_config_to_kext];
@@ -137,8 +137,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
                                                  name:kConfigXMLReloadedNotification
                                                object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_ConfigListChanged:)
-                                                 name:kConfigListChangedNotification
+                                             selector:@selector(observer_ProfileChanged:)
+                                                 name:kProfileChangedNotification
                                                object:nil];
   }
 

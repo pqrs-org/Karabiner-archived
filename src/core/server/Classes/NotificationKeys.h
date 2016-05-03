@@ -1,7 +1,7 @@
 // -*- Mode: objc; Coding: utf-8; indent-tabs-mode: nil; -*-
 
 #define kConfigXMLReloadedNotification @"ConfigXMLReloaded"
-#define kConfigListChangedNotification @"ConfigListChanged"
+#define kProfileChangedNotification @"kProfileChangedNotification"
 #define kPreferencesChangedNotification @"PreferencesChanged"
 #define kStatusBarConfigurationChangedNotification @"kStatusBarConfigurationChangedNotification"
 #define kStatusWindowPreferencesOpenedNotification @"StatusWindowPreferencesOpenedNotification"

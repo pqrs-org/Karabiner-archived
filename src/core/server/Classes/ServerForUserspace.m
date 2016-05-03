@@ -138,14 +138,6 @@
   return [self.preferencesManager configlist_getConfigList];
 }
 
-- (void)configlist_setName:(NSInteger)rowIndex name:(NSString*)name {
-  [self.preferencesManager configlist_setName:rowIndex name:name];
-}
-
-- (void)configlist_delete:(NSInteger)rowIndex {
-  [self.preferencesManager configlist_delete:rowIndex];
-}
-
 - (void)configlist_clear_all_values:(NSInteger)rowIndex {
   [self.preferencesManager configlist_clear_all_values:rowIndex];
 }

@@ -30,7 +30,7 @@
     result.textField.stringValue = name;
   }
 
-  if (self.preferencesModel.selectedProfileIndex == row) {
+  if (self.preferencesModel.currentProfileIndex == row) {
     result.deleteButton.hidden = YES;
     result.statusLabel.hidden = NO;
   } else {
