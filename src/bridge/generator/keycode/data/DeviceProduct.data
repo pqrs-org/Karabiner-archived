@@ -17,6 +17,7 @@ Mionix_Naos_7000                        0x130c
 
 // Microsoft
 Microsoft_Sculpt_Touch_Mouse            0x077c
+Microsoft_Designer_Bluetooth_Mouse      0x0805
 
 //
 PSEUDO                                  0x0000
