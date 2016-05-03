@@ -111,7 +111,7 @@
         }
 
       } else if ([command isEqualToString:@"reloadxml"]) {
-        [self.client.proxy configxml_reload];
+        [self.client.proxy reloadXML];
 
       } else if ([command isEqualToString:@"export"]) {
         NSDictionary* dict = [self.client.proxy changed];

@@ -114,6 +114,10 @@
   });
 }
 
+- (void)reloadXML {
+  [self.xmlCompiler reload];
+}
+
 - (void)openEventViewer {
   [AppLauncher openEventViewer];
 }
@@ -164,10 +168,6 @@
 }
 
 // ----------------------------------------------------------------------
-- (void)configxml_reload {
-  [self.xmlCompiler reload];
-}
-
 - (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value {
   return [self.xmlCompiler symbolMapName:type value:(uint32_t)(value)];
 }

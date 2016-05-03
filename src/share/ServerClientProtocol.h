@@ -27,7 +27,6 @@
 
 - (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
-- (void)configxml_reload;
 - (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value;
 
 - (void)terminateServerProcess;
@@ -35,6 +34,8 @@
 
 - (void)checkForUpdatesStableOnly;
 - (void)checkForUpdatesWithBetaVersion;
+
+- (void)reloadXML;
 
 - (void)openEventViewer;
 - (void)openMultiTouchExtension;
