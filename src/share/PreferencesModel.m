@@ -150,15 +150,13 @@
 
 - (void)profileSelectByIdentifier:(NSString*)identifier {
   self.currentProfileIndex = 0;
-  if (identifier) {
-    int index = 0;
-    for (ProfileModel* profileModel in self.profiles) {
-      if ([identifier isEqualToString:profileModel.identifier]) {
-        self.currentProfileIndex = index;
-        break;
-      }
-      ++index;
+  int index = 0;
+  for (ProfileModel* profileModel in self.profiles) {
+    if ([identifier isEqualToString:profileModel.identifier]) {
+      self.currentProfileIndex = index;
+      break;
     }
+    ++index;
   }
 }
 
@@ -167,6 +165,17 @@
     return self.profiles[index];
   }
   return nil;
+}
+
+- (NSInteger)profileIndexByName:(NSString*)name {
+  int index = 0;
+  for (ProfileModel* profileModel in self.profiles) {
+    if ([name isEqualToString:profileModel.name]) {
+      return index;
+    }
+    ++index;
+  }
+  return -1;
 }
 
 - (void)addProfile:(NSString*)name {
