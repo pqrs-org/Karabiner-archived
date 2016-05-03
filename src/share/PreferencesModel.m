@@ -139,8 +139,8 @@
   return maxAppendIndex;
 }
 
-- (NSString*)profileSelectedIdentifier {
-  ProfileModel* profileModel = [self profile:self.selectedProfileIndex];
+- (NSString*)currentProfileIdentifier {
+  ProfileModel* profileModel = [self profile:self.currentProfileIndex];
   if (profileModel) {
     return profileModel.identifier;
   } else {
@@ -149,12 +149,12 @@
 }
 
 - (void)profileSelectByIdentifier:(NSString*)identifier {
-  self.selectedProfileIndex = 0;
+  self.currentProfileIndex = 0;
   if (identifier) {
     int index = 0;
     for (ProfileModel* profileModel in self.profiles) {
       if ([identifier isEqualToString:profileModel.identifier]) {
-        self.selectedProfileIndex = index;
+        self.currentProfileIndex = index;
         break;
       }
       ++index;
@@ -193,7 +193,7 @@
 }
 
 - (void)deleteProfile:(NSInteger)index {
-  if (self.selectedProfileIndex != index) {
+  if (self.currentProfileIndex != index) {
     ProfileModel* profileModel = [self profile:index];
     if (profileModel) {
       NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
@@ -204,7 +204,8 @@
 }
 
 - (void)sortProfilesByAppendIndex {
-  NSString* identifier = [self profileSelectedIdentifier];
+  // get current identifier before sort.
+  NSString* identifier = self.currentProfileIdentifier;
 
   NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
     return obj1.appendIndex - obj2.appendIndex;
@@ -215,7 +216,8 @@
 }
 
 - (void)sortProfilesByName {
-  NSString* identifier = [self profileSelectedIdentifier];
+  // get current identifier before sort.
+  NSString* identifier = self.currentProfileIdentifier;
 
   NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
     return [obj1.name compare:obj2.name options:NSCaseInsensitiveSearch];

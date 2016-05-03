@@ -32,7 +32,8 @@
 @property BOOL usePreparedSettings;
 
 @property(copy) NSArray* profiles;
-@property NSInteger selectedProfileIndex;
+@property NSInteger currentProfileIndex;
+@property(copy, readonly) NSString* currentProfileIdentifier;
 
 @property BOOL useStatusWindow;
 @property BOOL showCapsLockStateInStatusWindow;
