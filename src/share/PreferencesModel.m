@@ -178,6 +178,23 @@
   self.profiles = profiles;
 }
 
+- (void)renameProfile:(NSInteger)index name:(NSString*)name {
+  if (0 <= index && index < (NSInteger)([self.profiles count])) {
+    ProfileModel* profileModel = self.profiles[index];
+    profileModel.name = name;
+  }
+}
+
+- (void)deleteProfile:(NSInteger)index {
+  if (0 <= index && index < (NSInteger)([self.profiles count])) {
+    if (self.selectedProfileIndex != index) {
+      NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
+      [profiles removeObjectAtIndex:index];
+      self.profiles = profiles;
+    }
+  }
+}
+
 - (void)sortProfilesByAppendIndex {
   NSString* identifier = [self profileSelectedIdentifier];
 
