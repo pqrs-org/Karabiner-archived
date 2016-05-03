@@ -93,10 +93,9 @@
       NSString* command = arguments[1];
 
       /*  */ if ([command isEqualToString:@"list"]) {
-        NSArray* a = [self.client.proxy configlist_getConfigList];
         int index = 0;
-        for (NSDictionary* dict in a) {
-          [self output:[NSString stringWithFormat:@"%d: %@\n", index, dict[@"name"]]];
+        for (ProfileModel* profileModel in self.preferencesModel.profiles) {
+          [self output:[NSString stringWithFormat:@"%d: %@\n", index, profileModel.name]];
           ++index;
         }
 
@@ -144,13 +143,10 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        int index = 0;
-        for (NSDictionary* config in [self.client.proxy configlist_getConfigList]) {
-          if ([value isEqualToString:config[@"name"]]) {
-            [self select:index];
-            return;
-          }
-          ++index;
+        NSInteger index = [self.preferencesModel profileIndexByName:value];
+        if (index >= 0) {
+          [self select:index];
+          return;
         }
         [self output:[NSString stringWithFormat:@"\"%@\" is not found.\n", value]];
         exit(1);
@@ -221,13 +217,10 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        int index = 0;
-        for (NSDictionary* config in [self.client.proxy configlist_getConfigList]) {
-          if ([value isEqualToString:config[@"name"]]) {
-            [self.client.proxy configlist_clear_all_values:index];
-            return;
-          }
-          ++index;
+        NSInteger index = [self.preferencesModel profileIndexByName:value];
+        if (index >= 0) {
+          [self.client.proxy configlist_clear_all_values:index];
+          return;
         }
         [self output:[NSString stringWithFormat:@"\"%@\" is not found.\n", value]];
         exit(1);
