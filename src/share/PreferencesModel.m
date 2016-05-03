@@ -139,6 +139,15 @@
   return maxAppendIndex;
 }
 
+- (NSString*)currentProfileName {
+  ProfileModel* profileModel = [self profile:self.currentProfileIndex];
+  if (profileModel) {
+    return profileModel.name;
+  } else {
+    return nil;
+  }
+}
+
 - (NSString*)currentProfileIdentifier {
   ProfileModel* profileModel = [self profile:self.currentProfileIndex];
   if (profileModel) {

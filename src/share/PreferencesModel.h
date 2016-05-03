@@ -33,6 +33,7 @@
 
 @property(copy) NSArray* profiles;
 @property NSInteger currentProfileIndex;
+@property(copy, readonly) NSString* currentProfileName;
 @property(copy, readonly) NSString* currentProfileIdentifier;
 
 @property BOOL useStatusWindow;
