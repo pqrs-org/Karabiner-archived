@@ -10,8 +10,6 @@
 #import "ParameterOutlineView.h"
 #import "ParameterOutlineViewDataSource.h"
 #import "ParameterOutlineViewDelegate.h"
-#import "PreferencesKeys.h"
-#import "PreferencesManager.h"
 #import "PreferencesModel.h"
 #import "ProfileCellView.h"
 #import "ProfileTableView.h"
@@ -134,12 +132,6 @@
                                              selector:@selector(observer_PreferencesChanged:)
                                                  name:kPreferencesChangedNotification
                                                object:nil];
-
-    // Show icon in Dock only when Preferences has been opened.
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kShowIconInDock]) {
-      ProcessSerialNumber psn = {0, kCurrentProcess};
-      TransformProcessType(&psn, kProcessTransformToForegroundApplication);
-    }
   }
 
   return self;
