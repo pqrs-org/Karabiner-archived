@@ -22,9 +22,7 @@ src/util/AXNotifier/Karabiner_AXNotifier/Info.plist
 src/util/EventViewer/Info.plist
 src/util/cli/Info.plist
 src/util/multitouchextension/Info.plist
-src/util/prefpane/Info.plist
-src/util/uninstaller/Info.plist
-src/util/updater/Info.plist
+src/util/preference/Info.plist
 
 ### Emacs ###
 # flymake-mode
