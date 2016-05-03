@@ -1,4 +1,5 @@
 #import "PreferencesModel.h"
+#include <sys/time.h>
 
 @implementation ProfileModel
 
@@ -126,7 +127,32 @@
 
 @implementation PreferencesModel
 
+- (NSInteger)profileMaxAppendIndex {
+  NSInteger maxAppendIndex = 0;
+
+  for (ProfileModel* profileModel in self.profiles) {
+    if (maxAppendIndex < profileModel.appendIndex) {
+      maxAppendIndex = profileModel.appendIndex;
+    }
+  }
+
+  return maxAppendIndex;
+}
+
 - (void)addProfile:(NSString*)name {
+  NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
+
+  struct timeval tm;
+  gettimeofday(&tm, NULL);
+
+  ProfileModel* profileModel = [ProfileModel new];
+  profileModel.name = name ? name : @"New Profile";
+  profileModel.identifier = [NSString stringWithFormat:@"config_%ld_%ld", (time_t)(tm.tv_sec), (time_t)(tm.tv_usec)];
+  profileModel.appendIndex = [self profileMaxAppendIndex] + 1;
+
+  [profiles addObject:profileModel];
+
+  self.profiles = profiles;
 }
 
 - (void)sortProfilesByAppendIndex {

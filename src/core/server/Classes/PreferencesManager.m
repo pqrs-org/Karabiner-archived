@@ -5,7 +5,6 @@
 #import "PreferencesModel.h"
 #import "SharedKeys.h"
 #import "XMLCompiler.h"
-#include <sys/time.h>
 
 @interface PreferencesManager ()
 
@@ -531,30 +530,6 @@
 }
 
 - (void)configlist_append {
-  NSMutableArray* ma = nil;
-
-  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-  if (a) {
-    ma = [NSMutableArray arrayWithArray:a];
-  } else {
-    ma = [NSMutableArray new];
-  }
-  if (!ma) return;
-
-  struct timeval tm;
-  gettimeofday(&tm, NULL);
-  NSString* identifier = [NSString stringWithFormat:@"config_%ld_%ld", (time_t)(tm.tv_sec), (time_t)(tm.tv_usec)];
-
-  NSMutableDictionary* md = [NSMutableDictionary dictionaryWithCapacity:0];
-  md[@"name"] = @"New Profile";
-  md[@"identify"] = identifier;
-  md[@"appendIndex"] = @([self configlist_maxAppendIndex] + 1);
-
-  [ma addObject:md];
-
-  [[NSUserDefaults standardUserDefaults] setObject:ma forKey:@"configList"];
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
 }
 
 - (void)configlist_delete:(NSInteger)rowIndex {

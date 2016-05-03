@@ -63,6 +63,10 @@
   exit(2);
 }
 
+- (void)savePreferencesModel {
+  [self.client.proxy savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+}
+
 - (void)select:(NSInteger)index {
   NSArray* profiles = [self.client.proxy configlist_getConfigList];
 
@@ -72,7 +76,7 @@
   }
 
   self.preferencesModel.selectedProfileIndex = index;
-  [self.client.proxy savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+  [self savePreferencesModel];
 }
 
 - (void)main {
@@ -157,9 +161,8 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        [self.client.proxy configlist_append];
-        NSInteger index = [[self.client.proxy configlist_getConfigList] count] - 1;
-        [self.client.proxy configlist_setName:index name:value];
+        [self.preferencesModel addProfile:value];
+        [self savePreferencesModel];
 
       } else if ([command isEqualToString:@"rename"]) {
         if ([arguments count] != 4) {

@@ -345,7 +345,11 @@
 }
 
 - (IBAction)addNewProfile:(id)sender {
-  [self.serverObjects.serverForUserspace configlist_append];
+  [self.preferencesModel addProfile:@"New Profile"];
+  [self savePreferencesModel];
+
+  [self.profileTableViewDataSource load:YES];
+  [self.profileTableView reloadData];
 }
 
 - (void)disableAllProfileCells {
