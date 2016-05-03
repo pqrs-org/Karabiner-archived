@@ -82,6 +82,10 @@
   [self.axNotifierManager restartAXNotifier];
 }
 
+- (void)unsetDebugFlags {
+  [self.clientForKernelspace unset_debug_flags];
+}
+
 - (void)terminateServerProcess {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self.serverController terminateServerProcess];

@@ -17,6 +17,7 @@
 - (void)updateStatusBar;
 - (void)updateStatusWindow;
 - (void)restartAXNotifier;
+- (void)unsetDebugFlags;
 
 - (int)value:(NSString*)name;
 - (int)defaultValue:(NSString*)name;
