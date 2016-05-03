@@ -24,7 +24,6 @@
 
 - (NSDictionary*)changed;
 
-- (NSArray*)configlist_getConfigList;
 - (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
 - (void)configxml_reload;
