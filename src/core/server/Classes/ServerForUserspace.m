@@ -134,10 +134,6 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSArray*)configlist_getConfigList {
-  return [self.preferencesManager configlist_getConfigList];
-}
-
 - (void)configlist_clear_all_values:(NSInteger)rowIndex {
   [self.preferencesManager configlist_clear_all_values:rowIndex];
 }

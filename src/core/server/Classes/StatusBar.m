@@ -111,13 +111,9 @@
 
   // --------------------
   // append
-  NSArray* list = [self.preferencesManager configlist_getConfigList];
   int i = 0;
-  for (NSDictionary* dict in list) {
-    if (!dict) continue;
-
-    NSString* title = dict[@"name"];
-    NSMenuItem* newItem = [[NSMenuItem alloc] initWithTitle:title action:@selector(statusBarItemSelected:) keyEquivalent:@""];
+  for (ProfileModel* profileModel in self.preferencesModel.profiles) {
+    NSMenuItem* newItem = [[NSMenuItem alloc] initWithTitle:profileModel.name action:@selector(statusBarItemSelected:) keyEquivalent:@""];
 
     [newItem setTarget:self];
     [newItem setRepresentedObject:@(i)];
