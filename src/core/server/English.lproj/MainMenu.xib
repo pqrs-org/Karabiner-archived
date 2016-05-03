@@ -62,6 +62,59 @@
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Dzg-ok-soY"/>
             </connections>
         </customObject>
+        <customObject id="588" customClass="Updater">
+            <connections>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Oo0-Ke-83N"/>
+            </connections>
+        </customObject>
+        <customObject id="591" customClass="XMLCompiler">
+            <connections>
+                <outlet property="preferencesManager" destination="592" id="Nsb-S9-i2Y"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="zfS-AG-FMl"/>
+            </connections>
+        </customObject>
+        <customObject id="592" customClass="PreferencesManager">
+            <connections>
+                <outlet property="clientForKernelspace" destination="600" id="540-ED-9Ay"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="reF-fR-9Yq"/>
+                <outlet property="xmlCompiler" destination="591" id="ohe-Ue-0r2"/>
+            </connections>
+        </customObject>
+        <customObject id="bZI-C0-0rU" customClass="PreferencesModel"/>
+        <customObject id="593" customClass="ServerForUserspace">
+            <connections>
+                <outlet property="appDelegate" destination="494" id="st8-42-DqC"/>
+                <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="VXf-WB-FAl"/>
+                <outlet property="clientForKernelspace" destination="600" id="UFv-5O-yDR"/>
+                <outlet property="preferencesManager" destination="592" id="z9H-TY-rFE"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="oDY-ts-MGJ"/>
+                <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>
+                <outlet property="statusMessageManager" destination="606" id="P7L-QV-UR3"/>
+                <outlet property="updater" destination="588" id="w9f-In-7Jq"/>
+                <outlet property="xmlCompiler" destination="591" id="Sxi-i0-3U2"/>
+            </connections>
+        </customObject>
+        <customObject id="596" customClass="WorkSpaceData">
+            <connections>
+                <outlet property="xmlCompiler" destination="591" id="ONX-Xc-swQ"/>
+            </connections>
+        </customObject>
+        <customObject id="600" customClass="ClientForKernelspace">
+            <connections>
+                <outlet property="iohidPostEventWrapper" destination="1320" id="je3-UQ-7WI"/>
+                <outlet property="preferencesManager" destination="592" id="Zji-Y5-khd"/>
+                <outlet property="statusMessageManager" destination="606" id="vUs-1j-Ag0"/>
+                <outlet property="workSpaceData" destination="596" id="ZsW-rS-sMq"/>
+                <outlet property="xmlCompiler" destination="591" id="ihh-EN-MRB"/>
+            </connections>
+        </customObject>
+        <customObject id="1320" customClass="IOHIDPostEventWrapper"/>
+        <customObject id="F7g-QL-0Bv" customClass="ServerController">
+            <connections>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="dSx-u2-HG4"/>
+            </connections>
+        </customObject>
+        <menu title="Main Menu" systemMenu="main" id="3B5-MA-GS9"/>
         <menu id="553" userLabel="StatusBarMenu">
             <items>
                 <menuItem isSeparatorItem="YES" title="endoflist" id="558"/>
@@ -95,57 +148,5 @@
                 <outlet property="delegate" destination="552" id="562"/>
             </connections>
         </menu>
-        <customObject id="588" customClass="Updater">
-            <connections>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Oo0-Ke-83N"/>
-            </connections>
-        </customObject>
-        <customObject id="591" customClass="XMLCompiler">
-            <connections>
-                <outlet property="preferencesManager" destination="592" id="Nsb-S9-i2Y"/>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="zfS-AG-FMl"/>
-            </connections>
-        </customObject>
-        <customObject id="592" customClass="PreferencesManager">
-            <connections>
-                <outlet property="clientForKernelspace" destination="600" id="540-ED-9Ay"/>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="reF-fR-9Yq"/>
-                <outlet property="xmlCompiler" destination="591" id="ohe-Ue-0r2"/>
-            </connections>
-        </customObject>
-        <customObject id="bZI-C0-0rU" customClass="PreferencesModel"/>
-        <customObject id="593" customClass="ServerForUserspace">
-            <connections>
-                <outlet property="appDelegate" destination="494" id="st8-42-DqC"/>
-                <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="VXf-WB-FAl"/>
-                <outlet property="clientForKernelspace" destination="600" id="UFv-5O-yDR"/>
-                <outlet property="preferencesManager" destination="592" id="z9H-TY-rFE"/>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="oDY-ts-MGJ"/>
-                <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>
-                <outlet property="statusMessageManager" destination="606" id="P7L-QV-UR3"/>
-                <outlet property="xmlCompiler" destination="591" id="Sxi-i0-3U2"/>
-            </connections>
-        </customObject>
-        <customObject id="596" customClass="WorkSpaceData">
-            <connections>
-                <outlet property="xmlCompiler" destination="591" id="ONX-Xc-swQ"/>
-            </connections>
-        </customObject>
-        <customObject id="600" customClass="ClientForKernelspace">
-            <connections>
-                <outlet property="iohidPostEventWrapper" destination="1320" id="je3-UQ-7WI"/>
-                <outlet property="preferencesManager" destination="592" id="Zji-Y5-khd"/>
-                <outlet property="statusMessageManager" destination="606" id="vUs-1j-Ag0"/>
-                <outlet property="workSpaceData" destination="596" id="ZsW-rS-sMq"/>
-                <outlet property="xmlCompiler" destination="591" id="ihh-EN-MRB"/>
-            </connections>
-        </customObject>
-        <customObject id="1320" customClass="IOHIDPostEventWrapper"/>
-        <customObject id="F7g-QL-0Bv" customClass="ServerController">
-            <connections>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="dSx-u2-HG4"/>
-            </connections>
-        </customObject>
-        <menu title="Main Menu" systemMenu="main" id="3B5-MA-GS9"/>
     </objects>
 </document>

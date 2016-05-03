@@ -32,6 +32,9 @@
 - (void)terminateServerProcess;
 - (void)relaunch;
 
+- (void)checkForUpdatesStableOnly;
+- (void)checkForUpdatesWithBetaVersion;
+
 - (void)openEventViewer;
 - (void)openMultiTouchExtension;
 - (void)openPrivateXMLDirectory;

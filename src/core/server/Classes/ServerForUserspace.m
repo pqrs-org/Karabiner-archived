@@ -11,6 +11,7 @@
 #import "ServerController.h"
 #import "SharedKeys.h"
 #import "StatusMessageManager.h"
+#import "Updater.h"
 #import "XMLCompiler.h"
 
 @interface ServerForUserspace ()
@@ -23,6 +24,7 @@
 @property(weak) IBOutlet ServerController* serverController;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
+@property(weak) IBOutlet Updater* updater;
 @property NSConnection* connection;
 
 @end
@@ -93,6 +95,18 @@
   //   "karabiner: connection went invalid while waiting for a reply because a mach port died"
   dispatch_async(dispatch_get_main_queue(), ^{
     [Relauncher relaunch];
+  });
+}
+
+- (void)checkForUpdatesStableOnly {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.updater checkForUpdatesStableOnly];
+  });
+}
+
+- (void)checkForUpdatesWithBetaVersion {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.updater checkForUpdatesWithBetaVersion];
   });
 }
 
