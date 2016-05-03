@@ -26,7 +26,6 @@
 // --------------------------------------------------
 - (NSString*)configlist_selectedName;
 - (NSString*)configlist_selectedIdentifier;
-- (NSArray*)configlist_getConfigList;
 - (NSUInteger)configlist_count;
 - (NSDictionary*)configlist_dictionary:(NSInteger)rowIndex;
 - (NSString*)configlist_name:(NSInteger)rowIndex;
