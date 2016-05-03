@@ -78,7 +78,7 @@
       [self.statusItem setLength:NSSquareStatusItemLength];
 
     } else {
-      NSString* title = [self.preferencesManager configlist_selectedName];
+      NSString* title = self.preferencesModel.currentProfileName;
       if (title) {
         NSAttributedString* attributedtitle = [[NSAttributedString alloc] initWithString:title attributes:nil];
         [self.statusItem setAttributedTitle:attributedtitle];
