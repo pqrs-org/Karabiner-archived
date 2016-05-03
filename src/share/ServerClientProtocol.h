@@ -38,6 +38,8 @@
 - (void)openSystemPreferencesKeyboard;
 - (void)openUninstaller;
 
+- (void)showExampleStatusWindow:(BOOL)visibility;
+
 // for SharedXMLCompilerTree
 - (SharedXMLCompilerTree*)sharedCheckboxTree;
 - (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings;

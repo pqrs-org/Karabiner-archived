@@ -10,7 +10,7 @@
 
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 
-@property BOOL statusWindowPreferencesOpened;
+@property BOOL showExampleStatusWindow;
 @property NSMutableArray* windowControllers;
 @property NSMutableArray* lines;
 
@@ -25,25 +25,11 @@
   });
 }
 
-- (void)observer_StatusWindowPreferencesOpened:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    self.statusWindowPreferencesOpened = YES;
-    [self refresh];
-  });
-}
-
-- (void)observer_StatusWindowPreferencesClosed:(NSNotification*)notification {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    self.statusWindowPreferencesOpened = NO;
-    [self refresh];
-  });
-}
-
 - (instancetype)init {
   self = [super init];
 
   if (self) {
-    self.statusWindowPreferencesOpened = NO;
+    self.showExampleStatusWindow = NO;
 
     self.windowControllers = [NSMutableArray new];
     self.lines = [NSMutableArray new];
@@ -54,14 +40,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_NSApplicationDidChangeScreenParametersNotification:)
                                                  name:NSApplicationDidChangeScreenParametersNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_StatusWindowPreferencesOpened:)
-                                                 name:kStatusWindowPreferencesOpenedNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_StatusWindowPreferencesClosed:)
-                                                 name:kStatusWindowPreferencesClosedNotification
                                                object:nil];
   }
 
@@ -274,8 +252,7 @@
 
   // ------------------------------------------------------------
   // Show status message when Status Message on Preferences is shown.
-  if ([statusMessage length] == 0 &&
-      self.statusWindowPreferencesOpened) {
+  if ([statusMessage length] == 0 && self.showExampleStatusWindow) {
     [statusMessage appendString:@"Example"];
   }
 
@@ -305,6 +282,11 @@
 
 - (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message {
   self.lines[lineIndex] = message;
+  [self refresh];
+}
+
+- (void)showExampleStatusWindow:(BOOL)visibility {
+  self.showExampleStatusWindow = visibility;
   [self refresh];
 }
 

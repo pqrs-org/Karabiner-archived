@@ -4,6 +4,7 @@
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
 #import "PreferencesModel.h"
+#import "SharedKeys.h"
 #import "SharedXMLCompilerTree.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
@@ -392,6 +393,7 @@ static NSInteger xmlCompilerItemId_ = 0;
   // ------------------------------------------------------------
   // We need to send a notification outside synchronized block to prevent lock.
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerXMLReloadedNotification object:nil];
 }
 
 - (SharedXMLCompilerTree*)buildSharedXMLCompilerTree:(XMLCompilerTree*)tree {

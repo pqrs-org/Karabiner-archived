@@ -10,5 +10,6 @@
 
 - (void)resetStatusMessage;
 - (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString *)message;
+- (void)showExampleStatusWindow:(BOOL)visibility;
 
 @end

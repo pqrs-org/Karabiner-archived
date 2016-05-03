@@ -117,6 +117,13 @@
 }
 
 // ----------------------------------------------------------------------
+- (void)showExampleStatusWindow:(BOOL)visibility {
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self.statusMessageManager showExampleStatusWindow:visibility];
+  });
+}
+
+// ----------------------------------------------------------------------
 - (int)value:(NSString*)name {
   return [self.preferencesManager value:name];
 }

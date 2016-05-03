@@ -3,6 +3,7 @@
 // ------------------------------------------------------------
 // NSDistributedNotificationCenter for EventViewer.app, AXNotifier.app, multitouchextension.app.
 #define kKarabinerServerDidLaunchNotification @"org.pqrs.Karabiner.notification.serverDidLaunch"
+#define kKarabinerXMLReloadedNotification @"org.pqrs.Karabiner.notification.XMLReloaded"
 #define kKarabinerPreferencesUpdatedNotification @"org.pqrs.Karabiner.notification.PreferencesUpdated"
 
 // ------------------------------------------------------------
