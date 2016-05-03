@@ -10,6 +10,7 @@
 		3480B3E9194AFCB100E168BC /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3480B3E8194AFCB100E168BC /* CoreFoundation.framework */; };
 		34AF0F31194AFD5300C1EF75 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34AF0F30194AFD5300C1EF75 /* main.m */; };
 		34E8FBBD194AFE4800C94B30 /* ServerClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8FBBC194AFE4800C94B30 /* ServerClient.m */; };
+		34FB061A1CD82F4500491F58 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB06191CD82F4500491F58 /* PreferencesModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,8 @@
 		34AF0F30194AFD5300C1EF75 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		34E8FBBB194AFE4800C94B30 /* ServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClient.h; path = ../../../share/ServerClient.h; sourceTree = "<group>"; };
 		34E8FBBC194AFE4800C94B30 /* ServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerClient.m; path = ../../../share/ServerClient.m; sourceTree = "<group>"; };
+		34FB06181CD82F4500491F58 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../../share/PreferencesModel.h; sourceTree = "<group>"; };
+		34FB06191CD82F4500491F58 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../../share/PreferencesModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +84,8 @@
 		34E8FBBA194AFDF300C94B30 /* share */ = {
 			isa = PBXGroup;
 			children = (
+				34FB06181CD82F4500491F58 /* PreferencesModel.h */,
+				34FB06191CD82F4500491F58 /* PreferencesModel.m */,
 				34E8FBBB194AFE4800C94B30 /* ServerClient.h */,
 				34E8FBBC194AFE4800C94B30 /* ServerClient.m */,
 			);
@@ -140,6 +145,7 @@
 			files = (
 				34E8FBBD194AFE4800C94B30 /* ServerClient.m in Sources */,
 				34AF0F31194AFD5300C1EF75 /* main.m in Sources */,
+				34FB061A1CD82F4500491F58 /* PreferencesModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
