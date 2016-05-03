@@ -2077,6 +2077,7 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="vk9-l6-h5y" customClass="ProfileTableViewDelegate">
             <connections>
+                <outlet property="preferencesModel" destination="nrN-Rm-RbK" id="aPA-xF-bR5"/>
                 <outlet property="preferencesWindowController" destination="-2" id="XOH-Md-fFV"/>
                 <outlet property="profileTableViewDataSource" destination="2GT-K4-ZxB" id="Tkx-eu-IDI"/>
             </connections>

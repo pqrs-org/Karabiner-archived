@@ -1,5 +1,5 @@
 #import "ProfileTableViewDelegate.h"
-#import "PreferencesManager.h"
+#import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ProfileCellView.h"
 #import "ProfileTableViewDataSource.h"
@@ -8,6 +8,7 @@
 
 @interface ProfileTableViewDelegate ()
 
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
 @property(weak) IBOutlet ProfileTableViewDataSource* profileTableViewDataSource;
 
@@ -29,7 +30,7 @@
     result.textField.stringValue = name;
   }
 
-  if ([self.preferencesWindowController.serverObjects.preferencesManager configlist_selectedIndex] == row) {
+  if (self.preferencesModel.selectedProfileIndex == row) {
     result.deleteButton.hidden = YES;
     result.statusLabel.hidden = NO;
   } else {
