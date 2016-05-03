@@ -190,6 +190,14 @@
 }
 
 - (void)sortProfilesByName {
+  NSString* identifier = [self profileSelectedIdentifier];
+
+  NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
+    return [obj1.name compare:obj2.name options:NSCaseInsensitiveSearch];
+  }];
+  self.profiles = sorted;
+
+  [self profileSelectByIdentifier:identifier];
 }
 
 @end

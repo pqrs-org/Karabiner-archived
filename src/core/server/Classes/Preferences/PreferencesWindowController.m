@@ -370,11 +370,17 @@
 
 - (IBAction)sortProfilesByName:(id)sender {
   [self disableAllProfileCells];
-  [self.serverObjects.preferencesManager configlist_sortByName];
+
+  [self.preferencesModel sortProfilesByName];
+  [self savePreferencesModel];
+
+  [self.profileTableViewDataSource load:YES];
+  [self.profileTableView reloadData];
 }
 
 - (IBAction)sortProfilesByCreated:(id)sender {
   [self disableAllProfileCells];
+
   [self.preferencesModel sortProfilesByAppendIndex];
   [self savePreferencesModel];
 
