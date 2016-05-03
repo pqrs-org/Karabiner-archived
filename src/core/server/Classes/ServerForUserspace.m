@@ -1,6 +1,7 @@
 #import "ServerForUserspace.h"
 #import "AXNotifierManager.h"
 #import "AppDelegate.h"
+#import "AppLauncher.h"
 #import "ClientForKernelspace.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
@@ -93,6 +94,26 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [Relauncher relaunch];
   });
+}
+
+- (void)openEventViewer {
+  [AppLauncher openEventViewer];
+}
+
+- (void)openMultiTouchExtension {
+  [AppLauncher openMultiTouchExtension];
+}
+
+- (void)openPrivateXMLDirectory {
+  [AppLauncher openPrivateXMLDirectory];
+}
+
+- (void)openSystemPreferencesKeyboard {
+  [AppLauncher openSystemPreferencesKeyboard];
+}
+
+- (void)openUninstaller {
+  [AppLauncher openUninstaller];
 }
 
 // ----------------------------------------------------------------------
