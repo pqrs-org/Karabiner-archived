@@ -375,7 +375,11 @@
 
 - (IBAction)sortProfilesByCreated:(id)sender {
   [self disableAllProfileCells];
-  [self.serverObjects.preferencesManager configlist_sortByAppendIndex];
+  [self.preferencesModel sortProfilesByAppendIndex];
+  [self savePreferencesModel];
+
+  [self.profileTableViewDataSource load:YES];
+  [self.profileTableView reloadData];
 }
 
 - (IBAction)openURL:(id)sender {

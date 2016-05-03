@@ -139,6 +139,29 @@
   return maxAppendIndex;
 }
 
+- (NSString*)profileSelectedIdentifier {
+  if (0 <= self.selectedProfileIndex && self.selectedProfileIndex < (NSInteger)([self.profiles count])) {
+    ProfileModel* profileModel = self.profiles[self.selectedProfileIndex];
+    return profileModel.identifier;
+  } else {
+    return nil;
+  }
+}
+
+- (void)profileSelectByIdentifier:(NSString*)identifier {
+  self.selectedProfileIndex = 0;
+  if (identifier) {
+    int index = 0;
+    for (ProfileModel* profileModel in self.profiles) {
+      if ([identifier isEqualToString:profileModel.identifier]) {
+        self.selectedProfileIndex = index;
+        break;
+      }
+      ++index;
+    }
+  }
+}
+
 - (void)addProfile:(NSString*)name {
   NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
 
@@ -156,6 +179,14 @@
 }
 
 - (void)sortProfilesByAppendIndex {
+  NSString* identifier = [self profileSelectedIdentifier];
+
+  NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
+    return obj1.appendIndex - obj2.appendIndex;
+  }];
+  self.profiles = sorted;
+
+  [self profileSelectByIdentifier:identifier];
 }
 
 - (void)sortProfilesByName {
