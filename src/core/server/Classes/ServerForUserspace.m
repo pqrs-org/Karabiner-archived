@@ -156,6 +156,10 @@
   return [self.xmlCompiler narrowedSharedCheckboxTree:isEnabledOnly strings:strings];
 }
 
+- (NSUInteger)enabledCheckboxCount {
+  return [self.xmlCompiler enabledCheckboxCount];
+}
+
 - (NSString*)checkboxItemGetName:(NSNumber*)id {
   NSString* value = [[self.xmlCompiler getCheckboxItem:id] getName];
   return value ? value : @"";

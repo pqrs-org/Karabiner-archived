@@ -41,6 +41,7 @@
 // for SharedXMLCompilerTree
 - (SharedXMLCompilerTree*)sharedCheckboxTree;
 - (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings;
+- (NSUInteger)enabledCheckboxCount;
 - (NSString*)checkboxItemGetName:(NSNumber*)id;
 - (NSString*)checkboxItemGetStyle:(NSNumber*)id;
 - (NSString*)checkboxItemGetIdentifier:(NSNumber*)id;

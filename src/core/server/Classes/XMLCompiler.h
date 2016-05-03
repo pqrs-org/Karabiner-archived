@@ -79,6 +79,7 @@
 - (NSString*)urlType:(uint32_t)keycode;
 - (BOOL)urlIsBackground:(uint32_t)keycode;
 
+- (NSUInteger)enabledCheckboxCount;
 - (CheckboxItem*)getCheckboxItem:(NSNumber*)id;
 - (ParameterItem*)getParameterItem:(NSNumber*)id;
 

@@ -607,6 +607,32 @@ static NSInteger xmlCompilerItemId_ = 0;
   return result;
 }
 
+- (NSUInteger)enabledCheckboxCount {
+  return [self enabledCheckboxCount:self.preferencepane_checkbox changed:[self.preferencesManager changed]];
+}
+
+- (NSUInteger)enabledCheckboxCount:(XMLCompilerTree*)tree changed:(NSDictionary*)changed {
+  int count = 0;
+
+  if (tree) {
+    CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
+    NSString* identifier = [checkboxItem getIdentifier];
+    if ([identifier length] > 0) {
+      if ([changed[identifier] intValue] != 0) {
+        ++count;
+      }
+    }
+
+    if (tree.children) {
+      for (XMLCompilerTree* child in tree.children) {
+        count += [self enabledCheckboxCount:child changed:changed];
+      }
+    }
+  }
+
+  return count;
+}
+
 - (CheckboxItem*)getCheckboxItem:(NSNumber*)id {
   __block CheckboxItem* result = nil;
   dispatch_sync(self.xmlCompilerReloadQueue, ^{
