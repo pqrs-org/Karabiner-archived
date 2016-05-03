@@ -23,6 +23,8 @@
 @property BOOL showProfileNameInStatusBar;
 @property BOOL usePreparedSettings;
 
+@property NSInteger selectedProfileIndex;
+
 @property BOOL useStatusWindow;
 @property BOOL showCapsLockStateInStatusWindow;
 @property BOOL showStickyModifiersStateInStatusWindow;
