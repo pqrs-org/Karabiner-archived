@@ -48,6 +48,7 @@
 
 @property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 
+- (ProfileModel*)profile:(NSInteger)index;
 - (void)addProfile:(NSString*)name;
 - (void)renameProfile:(NSInteger)index name:(NSString*)name;
 - (void)deleteProfile:(NSInteger)index;

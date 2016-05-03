@@ -140,8 +140,8 @@
 }
 
 - (NSString*)profileSelectedIdentifier {
-  if (0 <= self.selectedProfileIndex && self.selectedProfileIndex < (NSInteger)([self.profiles count])) {
-    ProfileModel* profileModel = self.profiles[self.selectedProfileIndex];
+  ProfileModel* profileModel = [self profile:self.selectedProfileIndex];
+  if (profileModel) {
     return profileModel.identifier;
   } else {
     return nil;
@@ -162,6 +162,13 @@
   }
 }
 
+- (ProfileModel*)profile:(NSInteger)index {
+  if (0 <= index && index < (NSInteger)([self.profiles count])) {
+    return self.profiles[index];
+  }
+  return nil;
+}
+
 - (void)addProfile:(NSString*)name {
   NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
 
@@ -179,15 +186,16 @@
 }
 
 - (void)renameProfile:(NSInteger)index name:(NSString*)name {
-  if (0 <= index && index < (NSInteger)([self.profiles count])) {
-    ProfileModel* profileModel = self.profiles[index];
+  ProfileModel* profileModel = [self profile:index];
+  if (profileModel) {
     profileModel.name = name;
   }
 }
 
 - (void)deleteProfile:(NSInteger)index {
-  if (0 <= index && index < (NSInteger)([self.profiles count])) {
-    if (self.selectedProfileIndex != index) {
+  if (self.selectedProfileIndex != index) {
+    ProfileModel* profileModel = [self profile:index];
+    if (profileModel) {
       NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
       [profiles removeObjectAtIndex:index];
       self.profiles = profiles;
