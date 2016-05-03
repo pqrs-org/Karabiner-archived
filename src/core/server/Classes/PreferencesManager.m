@@ -579,20 +579,6 @@
   return maxAppendIndex;
 }
 
-- (void)configlist_sortByAppendIndex {
-  NSString* identifier = [self configlist_selectedIdentifier];
-
-  NSArray* a = [[NSUserDefaults standardUserDefaults] arrayForKey:@"configList"];
-  NSArray* sorted = [a sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-    return [obj1[@"appendIndex"] compare:obj2[@"appendIndex"]];
-  }];
-  [[NSUserDefaults standardUserDefaults] setObject:sorted forKey:@"configList"];
-
-  [self configlist_selectByIdentifier:identifier];
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:kConfigListChangedNotification object:nil];
-}
-
 - (void)configlist_sortByName {
   NSString* identifier = [self configlist_selectedIdentifier];
 
