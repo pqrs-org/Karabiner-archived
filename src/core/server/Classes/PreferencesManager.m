@@ -203,16 +203,6 @@
 
 - (void)load {
   // ------------------------------------------------------------
-  // initialize
-  if (![self configlist_selectedIdentifier]) {
-    [self configlist_select:0];
-
-    if (![self configlist_selectedIdentifier]) {
-      NSLog(@"initialize configlist");
-    }
-  }
-
-  // ------------------------------------------------------------
   // scan config_* and detech notsave.*
   for (NSDictionary* dict in [self configlist_getConfigList]) {
     if (!dict) continue;
@@ -339,7 +329,7 @@
     if (oldval != newval) {
       // We post notification only when newval is different from oldval in order to avoid infinity loop.
       // (`setValue` might be called in observer.)
-      [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil userInfo:notificationUserInfo];
+      [self postPreferencesChangedNotifications:[NSProcessInfo processInfo].processIdentifier];
       if (tellToKext) {
         [self callSetConfigOne:name value:newval];
       }
@@ -391,7 +381,7 @@
         [[NSUserDefaults standardUserDefaults] setObject:md forKey:identifier];
 
         if (changed) {
-          [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+          [self postPreferencesChangedNotifications:[NSProcessInfo processInfo].processIdentifier];
           [self.clientForKernelspace send_config_to_kext];
         }
       }
@@ -446,28 +436,13 @@
   return dict[@"identify"];
 }
 
-- (void)configlist_select:(NSInteger)newindex {
-  if (newindex < 0) return;
-  if (newindex == [self configlist_selectedIndex]) return;
-
-  NSArray* list = [self configlist_getConfigList];
-  if (!list) return;
-  if ((NSUInteger)(newindex) >= [list count]) return;
-
-  NSUserDefaults* userdefaults = [NSUserDefaults standardUserDefaults];
-  [userdefaults setInteger:newindex forKey:@"selectedIndex"];
-
-  [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
-  [self.clientForKernelspace send_config_to_kext];
-}
-
 - (void)configlist_clear_all_values:(NSInteger)rowIndex {
-  NSString* identifier = [self configlist_identifier:rowIndex];
+  NSString* identifier = self.preferencesModel.currentProfileIdentifier;
   if (!identifier) return;
 
   [[NSUserDefaults standardUserDefaults] setObject:[NSMutableDictionary new] forKey:identifier];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
+  [self postPreferencesChangedNotifications:[NSProcessInfo processInfo].processIdentifier];
   [self.clientForKernelspace send_config_to_kext];
 }
 
