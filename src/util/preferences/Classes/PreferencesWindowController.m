@@ -431,10 +431,6 @@
   [[NSWorkspace sharedWorkspace] openFile:@"/Applications/Utilities/Console.app"];
 }
 
-- (IBAction)relaunch:(id)sender {
-  [Relauncher relaunch];
-}
-
 - (IBAction)toggleDebugMode:(id)sender {
   if ([self isDebugMode]) {
     [self.client.proxy unsetDebugFlags];

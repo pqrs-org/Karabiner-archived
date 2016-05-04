@@ -58,6 +58,7 @@
   NSString* identifier = [self.client.proxy checkboxItemGetIdentifier:tree.id];
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
+  result.client = self.client;
   result.settingIdentifier = identifier;
 
   result.textField.stringValue = name;
