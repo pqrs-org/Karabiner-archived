@@ -128,6 +128,7 @@
   [self.versionText setStringValue:version];
 
   [self drawEnabledCount];
+  [self refreshKeyRepeatTab];
 
   [self.checkboxOutlineViewDataSource setup];
   [self.parameterOutlineViewDataSource setup];
