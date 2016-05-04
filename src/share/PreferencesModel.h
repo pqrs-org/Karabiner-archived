@@ -48,8 +48,6 @@
 
 @property NSInteger preferencesCheckboxFont;
 
-@property AXNotifierPreferencesModel* axNotifierPreferencesModel;
-
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;
 - (void)addProfile:(NSString*)name;

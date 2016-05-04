@@ -15,6 +15,7 @@
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="kvX-lc-3Vc"/>
+                <outlet property="axNotifierPreferencesModel" destination="vSG-pj-zVy" id="UNt-Rq-ddi"/>
                 <outlet property="clientForKernelspace" destination="600" id="621"/>
                 <outlet property="globalDomainKeyRepeatObserver" destination="ByB-cb-Het" id="y2q-FT-Hjk"/>
                 <outlet property="preferencesManager" destination="592" id="Rme-JE-WMZ"/>
@@ -31,9 +32,10 @@
         </customObject>
         <customObject id="CDf-xS-2dG" customClass="AXNotifierManager">
             <connections>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="CiP-Gy-k3T"/>
+                <outlet property="axNotifierPreferencesModel" destination="vSG-pj-zVy" id="uz9-KR-5f3"/>
             </connections>
         </customObject>
+        <customObject id="vSG-pj-zVy" customClass="AXNotifierPreferencesModel"/>
         <customObject id="ByB-cb-Het" customClass="GlobalDomainKeyRepeatObserver">
             <connections>
                 <outlet property="preferencesManager" destination="592" id="B6e-d6-zv4"/>
@@ -75,6 +77,7 @@
         </customObject>
         <customObject id="592" customClass="PreferencesManager">
             <connections>
+                <outlet property="axNotifierPreferencesModel" destination="vSG-pj-zVy" id="Js8-Ni-3OS"/>
                 <outlet property="clientForKernelspace" destination="600" id="540-ED-9Ay"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="reF-fR-9Yq"/>
                 <outlet property="xmlCompiler" destination="591" id="ohe-Ue-0r2"/>

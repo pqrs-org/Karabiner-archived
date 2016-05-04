@@ -11,8 +11,9 @@
 - (NSString*)bundleVersion;
 
 - (void)loadPreferencesModel:(PreferencesModel*)preferencesModel;
-- (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel;
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
+- (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel;
+- (void)saveAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel processIdentifier:(int)processIdentifier;
 - (void)updateStartAtLogin;
 - (void)updateStatusBar;
 - (void)updateStatusWindow;

@@ -58,12 +58,16 @@
   [self.preferencesManager loadPreferencesModel:preferencesModel];
 }
 
+- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
+  [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
+}
+
 - (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
   [self.preferencesManager loadAXNotifierPreferencesModel:axNotifierPreferencesModel];
 }
 
-- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
-  [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
+- (void)saveAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel processIdentifier:(int)processIdentifier {
+  [self.preferencesManager saveAXNotifierPreferencesModel:axNotifierPreferencesModel processIdentifier:processIdentifier];
 }
 
 - (void)updateStartAtLogin {
