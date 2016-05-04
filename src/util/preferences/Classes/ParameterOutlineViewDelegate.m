@@ -46,6 +46,7 @@
       result.stepper.valueWraps = NO;
       result.preferencesModel = self.preferencesModel;
       result.preferencesWindowController = self.preferencesWindowController;
+      result.client = self.client;
       result.settingIdentifier = identifier;
       return result;
 
@@ -58,6 +59,7 @@
       ParameterDiffCellView* result = [outlineView makeViewWithIdentifier:@"ParameterDiffCellView" owner:self];
       result.preferencesModel = self.preferencesModel;
       result.preferencesWindowController = self.preferencesWindowController;
+      result.client = self.client;
       result.settingIdentifier = identifier;
       result.defaultValue = [self.client.proxy parameterItemGetDefaultValue:tree.id];
       [result setObserver];

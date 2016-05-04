@@ -22,14 +22,30 @@
                 <outlet property="preferencesWindowController" destination="0cj-x4-sGx" id="kij-zA-Sn5"/>
             </connections>
         </customObject>
-        <customObject id="s5G-mp-Pk1" customClass="CheckboxOutlineViewDataSource"/>
+        <customObject id="s5G-mp-Pk1" customClass="CheckboxOutlineViewDataSource">
+            <connections>
+                <outlet property="client" destination="2VA-wX-cTn" id="X2i-4k-myv"/>
+                <outlet property="preferencesWindowController" destination="0cj-x4-sGx" id="dP6-vb-ob9"/>
+            </connections>
+        </customObject>
         <customObject id="el5-KR-6ra" customClass="CheckboxOutlineViewDelegate">
             <connections>
+                <outlet property="client" destination="2VA-wX-cTn" id="5Q9-Zb-rFp"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="JFe-P3-hAc"/>
             </connections>
         </customObject>
-        <customObject id="pJk-4b-3Kl" customClass="ParameterOutlineViewDataSource"/>
-        <customObject id="0oz-bn-wMs" customClass="ParameterOutlineViewDelegate"/>
+        <customObject id="pJk-4b-3Kl" customClass="ParameterOutlineViewDataSource">
+            <connections>
+                <outlet property="client" destination="2VA-wX-cTn" id="WnR-6H-hSH"/>
+            </connections>
+        </customObject>
+        <customObject id="0oz-bn-wMs" customClass="ParameterOutlineViewDelegate">
+            <connections>
+                <outlet property="client" destination="2VA-wX-cTn" id="V0S-pA-HZD"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="cWX-BS-rEo"/>
+                <outlet property="preferencesWindowController" destination="0cj-x4-sGx" id="XgF-ve-gU0"/>
+            </connections>
+        </customObject>
         <customObject id="bZI-C0-0rU" customClass="PreferencesModel"/>
         <window title="Karabiner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="tcO-xA-vhE" userLabel="Preferences">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -473,6 +489,10 @@
                                                                 </prototypeCellViews>
                                                             </tableColumn>
                                                         </tableColumns>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="pJk-4b-3Kl" id="Wgc-9d-Dgr"/>
+                                                            <outlet property="delegate" destination="0oz-bn-wMs" id="6SY-eZ-AHh"/>
+                                                        </connections>
                                                     </outlineView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -496,6 +516,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="expandParameterOutlineView:" target="0cj-x4-sGx" id="YH2-g0-mTl"/>
+                                            </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uar-6K-gdQ">
                                             <rect key="frame" x="141" y="9" width="120" height="20"/>
@@ -503,6 +526,9 @@
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="smallSystem"/>
                                             </buttonCell>
+                                            <connections>
+                                                <action selector="collapseParameterOutlineView:" target="0cj-x4-sGx" id="Imr-Kh-k2r"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>

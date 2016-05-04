@@ -136,6 +136,8 @@
   [self.checkboxOutlineView reloadData];
   [self.parameterOutlineView reloadData];
   [self.profileTableView reloadData];
+
+  [self expandParameterOutlineView:self];
 }
 
 - (void)dealloc {
