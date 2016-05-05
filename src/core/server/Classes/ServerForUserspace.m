@@ -177,69 +177,12 @@
 }
 
 // ----------------------------------------------------------------------
-- (SharedXMLCompilerTree*)sharedCheckboxTree {
-  return self.xmlCompiler.sharedCheckboxTree;
+- (CheckboxTree*)checkboxTree {
+  return self.xmlCompiler.checkboxTree;
 }
 
-- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  return [self.xmlCompiler narrowedSharedCheckboxTree:isEnabledOnly strings:strings];
-}
-
-- (NSUInteger)enabledCheckboxCount {
-  return [self.xmlCompiler enabledCheckboxCount];
-}
-
-- (NSString*)checkboxItemGetName:(NSNumber*)id {
-  NSString* value = [[self.xmlCompiler getCheckboxItem:id] getName];
-  return value ? value : @"";
-}
-
-- (NSString*)checkboxItemGetStyle:(NSNumber*)id {
-  NSString* value = [[self.xmlCompiler getCheckboxItem:id] getStyle];
-  return value ? value : @"";
-}
-
-- (NSString*)checkboxItemGetIdentifier:(NSNumber*)id {
-  NSString* value = [[self.xmlCompiler getCheckboxItem:id] getIdentifier];
-  return value ? value : @"";
-}
-
-- (NSUInteger)checkboxItemGetChildrenCount:(NSNumber*)id {
-  return [[self.xmlCompiler getCheckboxItem:id] getChildrenCount];
-}
-
-- (BOOL)checkboxItemNeedsShowCheckbox:(NSNumber*)id {
-  return [[self.xmlCompiler getCheckboxItem:id] needsShowCheckbox];
-}
-
-- (SharedXMLCompilerTree*)sharedParameterTree {
-  return self.xmlCompiler.sharedParameterTree;
-}
-
-- (NSString*)parameterItemGetName:(NSNumber*)id {
-  NSString* value = [[self.xmlCompiler getParameterItem:id] getName];
-  return value ? value : @"";
-}
-
-- (NSString*)parameterItemGetIdentifier:(NSNumber*)id {
-  NSString* value = [[self.xmlCompiler getParameterItem:id] getIdentifier];
-  return value ? value : @"";
-}
-
-- (NSInteger)parameterItemGetDefaultValue:(NSNumber*)id {
-  return [[self.xmlCompiler getParameterItem:id] getDefaultValue];
-}
-
-- (NSInteger)parameterItemGetStep:(NSNumber*)id {
-  return [[self.xmlCompiler getParameterItem:id] getStep];
-}
-
-- (NSString*)parameterItemGetBaseUnit:(NSNumber*)id {
-  return [[self.xmlCompiler getParameterItem:id] getBaseUnit];
-}
-
-- (NSUInteger)parameterItemGetChildrenCount:(NSNumber*)id {
-  return [[self.xmlCompiler getParameterItem:id] getChildrenCount];
+- (ParameterTree*)parameterTree {
+  return self.xmlCompiler.parameterTree;
 }
 
 // ----------------------------------------------------------------------

@@ -3,54 +3,13 @@
 @import Cocoa;
 #include "pqrs/xml_compiler_bindings_clang.h"
 
-@class CheckboxItem;
-@class ParameterItem;
-@class SharedXMLCompilerTree;
-
-@interface XMLCompilerItem : NSObject
-
-@property(readonly) NSNumber* id;
-
-- (CheckboxItem*)castToCheckboxItem;
-- (ParameterItem*)castToParameterItem;
-
-@end
-
-@interface CheckboxItem : XMLCompilerItem
-
-- (NSString*)getName;
-- (NSString*)getStyle;
-- (NSString*)getIdentifier;
-- (NSUInteger)getChildrenCount;
-- (BOOL)needsShowCheckbox;
-- (BOOL)isNameMatched:(NSString*)string;
-
-@end
-
-@interface ParameterItem : XMLCompilerItem
-
-- (NSString*)getName;
-- (NSString*)getIdentifier;
-- (NSInteger)getDefaultValue;
-- (NSInteger)getStep;
-- (NSString*)getBaseUnit;
-- (NSUInteger)getChildrenCount;
-
-@end
-
-@interface XMLCompilerTree : NSObject
-
-@property XMLCompilerItem* node;
-@property(copy) NSArray* children;
-
-@end
+@class CheckboxTree;
+@class ParameterTree;
 
 @interface XMLCompiler : NSObject
 
-@property(readonly) XMLCompilerTree* preferencepane_checkbox;
-@property(readonly) XMLCompilerTree* preferencepane_parameter;
-@property(readonly) SharedXMLCompilerTree* sharedCheckboxTree;
-@property(readonly) SharedXMLCompilerTree* sharedParameterTree;
+@property(readonly) CheckboxTree* checkboxTree;
+@property(readonly) ParameterTree* parameterTree;
 
 + (NSString*)get_private_xml_path;
 
@@ -78,11 +37,5 @@
 - (NSString*)url:(uint32_t)keycode;
 - (NSString*)urlType:(uint32_t)keycode;
 - (BOOL)urlIsBackground:(uint32_t)keycode;
-
-- (NSUInteger)enabledCheckboxCount;
-- (CheckboxItem*)getCheckboxItem:(NSNumber*)id;
-- (ParameterItem*)getParameterItem:(NSNumber*)id;
-
-- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings;
 
 @end

@@ -1,177 +1,13 @@
 #import "XMLCompiler.h"
+#import "CheckboxTree.h"
 #import "EnvironmentChecker.h"
 #import "MigrationUtilities.h"
 #import "NotificationKeys.h"
+#import "ParameterTree.h"
 #import "PreferencesManager.h"
 #import "PreferencesModel.h"
 #import "SharedKeys.h"
-#import "SharedXMLCompilerTree.h"
 #include "pqrs/xml_compiler_bindings_clang.h"
-
-static NSInteger xmlCompilerItemId_ = 0;
-
-@interface XMLCompilerItem ()
-
-@property(readwrite) NSNumber* id;
-@property pqrs_xml_compiler* pqrs_xml_compiler;
-@property size_t* indexes;
-@property size_t indexes_size;
-
-@end
-
-@implementation XMLCompilerItem
-
-- (instancetype)init {
-  self = [super init];
-
-  if (self) {
-    ++xmlCompilerItemId_;
-    self.id = @(xmlCompilerItemId_);
-  }
-
-  return self;
-}
-
-- (instancetype)initWithParent:(pqrs_xml_compiler*)pqrs_xml_compiler parent:(XMLCompilerItem*)parent index:(size_t)index {
-  self = [self init];
-
-  if (self) {
-    self.pqrs_xml_compiler = pqrs_xml_compiler;
-
-    if (!parent) {
-      self.indexes_size = 0;
-    } else {
-      self.indexes_size = parent.indexes_size + 1;
-      self.indexes = (size_t*)malloc(sizeof(size_t) * self.indexes_size);
-      if (parent.indexes_size > 0) {
-        memcpy(self.indexes, parent.indexes, sizeof(self.indexes[0]) * parent.indexes_size);
-      }
-      self.indexes[self.indexes_size - 1] = index;
-    }
-  }
-
-  return self;
-}
-
-- (void)dealloc {
-  if (self.indexes) {
-    free(self.indexes);
-    self.indexes = NULL;
-  }
-}
-
-- (CheckboxItem*)castToCheckboxItem {
-  return [self isKindOfClass:[CheckboxItem class]] ? (CheckboxItem*)(self) : nil;
-}
-
-- (ParameterItem*)castToParameterItem {
-  return [self isKindOfClass:[ParameterItem class]] ? (ParameterItem*)(self) : nil;
-}
-
-@end
-
-@implementation CheckboxItem
-
-- (NSString*)getName {
-  const char* value = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  return value ? @(value) : @"";
-}
-
-- (NSString*)getStyle {
-  const char* value = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  return value ? @(value) : @"";
-}
-
-- (NSString*)getIdentifier {
-  const char* value = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  return value ? @(value) : @"";
-}
-
-- (NSUInteger)getChildrenCount {
-  return pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-}
-
-- (BOOL)needsShowCheckbox {
-  NSString* identifier = [self getIdentifier];
-  if ([identifier length] == 0 ||
-      [identifier hasPrefix:@"notsave."]) {
-    return NO;
-  }
-  return YES;
-}
-
-- (BOOL)isNameMatched:(NSString*)string {
-  if (!string) {
-    return NO;
-  }
-  return pqrs_xml_compiler_is_preferences_checkbox_node_tree_name_icontains(self.pqrs_xml_compiler, self.indexes, self.indexes_size, [string UTF8String]);
-}
-
-@end
-
-@interface CheckboxItemWithStaticData : CheckboxItem
-
-@property(copy) NSString* name;
-@property(copy) NSString* style;
-
-@end
-
-@implementation CheckboxItemWithStaticData
-
-- (NSString*)getName {
-  return self.name ? self.name : @"";
-}
-- (NSString*)getStyle {
-  return self.style ? self.style : @"";
-}
-- (NSString*)getIdentifier {
-  return @"";
-}
-- (NSUInteger)getChildrenCount {
-  return 0;
-}
-- (BOOL)needsShowCheckbox {
-  return NO;
-}
-- (BOOL)isNameMatched:(NSString*)string {
-  return YES;
-}
-
-@end
-
-@implementation ParameterItem
-
-- (NSString*)getName {
-  const char* value = pqrs_xml_compiler_get_preferences_number_node_tree_name(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  return value ? @(value) : @"";
-}
-
-- (NSString*)getIdentifier {
-  const char* value = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  return value ? @(value) : @"";
-}
-
-- (NSInteger)getDefaultValue {
-  return pqrs_xml_compiler_get_preferences_number_node_tree_default_value(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-}
-
-- (NSInteger)getStep {
-  return pqrs_xml_compiler_get_preferences_number_node_tree_step(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-}
-
-- (NSString*)getBaseUnit {
-  const char* value = pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-  return value ? @(value) : @"";
-}
-
-- (NSUInteger)getChildrenCount {
-  return pqrs_xml_compiler_get_preferences_number_node_tree_children_count(self.pqrs_xml_compiler, self.indexes, self.indexes_size);
-}
-
-@end
-
-@implementation XMLCompilerTree
-@end
 
 @interface XMLCompiler ()
 
@@ -180,13 +16,10 @@ static NSInteger xmlCompilerItemId_ = 0;
 
 @property dispatch_queue_t xmlCompilerReloadQueue;
 
-@property(readwrite) XMLCompilerTree* preferencepane_checkbox;
-@property(readwrite) XMLCompilerTree* preferencepane_parameter;
-@property(readwrite) SharedXMLCompilerTree* sharedCheckboxTree;
-@property(readwrite) SharedXMLCompilerTree* sharedParameterTree;
+@property(readwrite) CheckboxTree* checkboxTree;
+@property(readwrite) ParameterTree* parameterTree;
 
 @property pqrs_xml_compiler* pqrs_xml_compiler;
-@property NSMutableDictionary* xmlCompilerTreeDictionary;
 
 @end
 
@@ -195,14 +28,9 @@ static NSInteger xmlCompilerItemId_ = 0;
 // ------------------------------------------------------------
 // private methods
 
-- (XMLCompilerTree*)newCautionNode:(NSString*)name {
-  CheckboxItemWithStaticData* checkboxItem = [CheckboxItemWithStaticData new];
-  checkboxItem.name = name;
-  checkboxItem.style = @"caution";
-
-  XMLCompilerTree* tree = [XMLCompilerTree new];
-  tree.node = checkboxItem;
-
+- (CheckboxTree*)newCautionNode:(NSString*)name {
+  CheckboxItem* node = [[CheckboxItem alloc] initWithName:[name UTF8String] style:"caution" identifier:""];
+  CheckboxTree* tree = [[CheckboxTree alloc] initWithItem:node children:nil];
   return tree;
 }
 
@@ -221,13 +49,13 @@ static NSInteger xmlCompilerItemId_ = 0;
                                     "----------------------------------------"];
 }
 
-- (NSArray*)build_preferencepane_checkbox:(CheckboxItem*)parent {
-  size_t size = [parent getChildrenCount];
+- (NSArray*)checkboxTreeChildren:(const pqrs_xml_compiler_preferences_checkbox_node_tree*)parent root:(BOOL)root {
+  size_t size = pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(parent);
   if (size == 0) return nil;
 
   NSMutableArray* children = [NSMutableArray new];
 
-  if (parent.indexes_size == 0) {
+  if (root) {
     // Add error messages into root children.
     {
       NSString* message = [self preferencepane_error_message];
@@ -250,30 +78,40 @@ static NSInteger xmlCompilerItemId_ = 0;
   }
 
   for (size_t i = 0; i < size; ++i) {
-    XMLCompilerTree* child = [XMLCompilerTree new];
-    CheckboxItem* node = [[CheckboxItem alloc] initWithParent:self.pqrs_xml_compiler parent:parent index:i];
-    child.node = node;
-    child.children = [self build_preferencepane_checkbox:node];
+    const pqrs_xml_compiler_preferences_checkbox_node_tree* child = pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(parent, i);
+    if (!child) continue;
 
-    [children addObject:child];
+    const char* name = pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(child);
+    const char* style = pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(child);
+    const char* identifier = pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(child);
+
+    CheckboxItem* node = [[CheckboxItem alloc] initWithName:name style:style identifier:identifier];
+    CheckboxTree* tree = [[CheckboxTree alloc] initWithItem:node children:[self checkboxTreeChildren:child root:NO]];
+    [children addObject:tree];
   }
 
   return children;
 }
 
-- (NSArray*)build_preferencepane_parameter:(ParameterItem*)parent {
-  size_t size = [parent getChildrenCount];
+- (NSArray*)parameterTreeChildren:(const pqrs_xml_compiler_preferences_number_node_tree*)parent {
+  size_t size = pqrs_xml_compiler_get_preferences_number_node_tree_children_count(parent);
   if (size == 0) return nil;
 
   NSMutableArray* children = [NSMutableArray new];
 
   for (size_t i = 0; i < size; ++i) {
-    XMLCompilerTree* child = [XMLCompilerTree new];
-    ParameterItem* node = [[ParameterItem alloc] initWithParent:self.pqrs_xml_compiler parent:parent index:i];
-    child.node = node;
-    child.children = [self build_preferencepane_parameter:node];
+    const pqrs_xml_compiler_preferences_number_node_tree* child = pqrs_xml_compiler_get_preferences_number_node_tree_child(parent, i);
+    if (!child) continue;
 
-    [children addObject:child];
+    const char* name = pqrs_xml_compiler_get_preferences_number_node_tree_name(child);
+    const char* identifier = pqrs_xml_compiler_get_preferences_number_node_tree_identifier(child);
+    int defaultValue = pqrs_xml_compiler_get_preferences_number_node_tree_default_value(child);
+    int step = pqrs_xml_compiler_get_preferences_number_node_tree_step(child);
+    const char* baseUnit = pqrs_xml_compiler_get_preferences_number_node_tree_base_unit(child);
+
+    ParameterItem* node = [[ParameterItem alloc] initWithName:name identifier:identifier defaultValue:defaultValue step:step baseUnit:baseUnit];
+    ParameterTree* tree = [[ParameterTree alloc] initWithItem:node children:[self parameterTreeChildren:child]];
+    [children addObject:tree];
   }
 
   return children;
@@ -328,8 +166,6 @@ static NSInteger xmlCompilerItemId_ = 0;
                                  [[[NSBundle mainBundle] resourcePath] UTF8String],
                                  [[[XMLCompiler get_private_xml_path] stringByDeletingLastPathComponent] UTF8String]);
     self.pqrs_xml_compiler = p;
-
-    self.xmlCompilerTreeDictionary = [NSMutableDictionary new];
   }
 
   return self;
@@ -353,21 +189,14 @@ static NSInteger xmlCompilerItemId_ = 0;
 
     pqrs_xml_compiler_reload(self.pqrs_xml_compiler, checkbox_xml_file_name);
 
-    [self.xmlCompilerTreeDictionary removeAllObjects];
     {
-      CheckboxItem* root = [[CheckboxItem alloc] initWithParent:self.pqrs_xml_compiler parent:nil index:0];
-      XMLCompilerTree* tree = [XMLCompilerTree new];
-      tree.children = [self build_preferencepane_checkbox:root];
-      self.preferencepane_checkbox = tree;
-      self.sharedCheckboxTree = [self buildSharedXMLCompilerTree:tree];
+      const pqrs_xml_compiler_preferences_checkbox_node_tree* root = pqrs_xml_compiler_get_preferences_checkbox_node_tree_root(self.pqrs_xml_compiler);
+      self.checkboxTree = [[CheckboxTree alloc] initWithItem:nil children:[self checkboxTreeChildren:root root:YES]];
     }
     // build preferencepane_parameter
     {
-      ParameterItem* root = [[ParameterItem alloc] initWithParent:self.pqrs_xml_compiler parent:nil index:0];
-      XMLCompilerTree* tree = [XMLCompilerTree new];
-      tree.children = [self build_preferencepane_parameter:root];
-      self.preferencepane_parameter = tree;
-      self.sharedParameterTree = [self buildSharedXMLCompilerTree:tree];
+      const pqrs_xml_compiler_preferences_number_node_tree* root = pqrs_xml_compiler_get_preferences_number_node_tree_root(self.pqrs_xml_compiler);
+      self.parameterTree = [[ParameterTree alloc] initWithItem:nil children:[self parameterTreeChildren:root]];
     }
 
     errorMessage = [self preferencepane_error_message];
@@ -394,18 +223,6 @@ static NSInteger xmlCompilerItemId_ = 0;
   // We need to send a notification outside synchronized block to prevent lock.
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
   [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerXMLReloadedNotification object:nil];
-}
-
-- (SharedXMLCompilerTree*)buildSharedXMLCompilerTree:(XMLCompilerTree*)tree {
-  NSMutableArray* children = [NSMutableArray new];
-  for (XMLCompilerTree* child in tree.children) {
-    [children addObject:[self buildSharedXMLCompilerTree:child]];
-  }
-  NSNumber* id = tree.node ? tree.node.id : @0;
-  SharedXMLCompilerTree* sharedTree = [[SharedXMLCompilerTree alloc] initWithId:id children:children];
-  self.xmlCompilerTreeDictionary[id] = tree;
-
-  return sharedTree;
 }
 
 - (size_t)remapclasses_initialize_vector_size {
@@ -607,133 +424,6 @@ static NSInteger xmlCompilerItemId_ = 0;
     result = pqrs_xml_compiler_get_url_background(self.pqrs_xml_compiler, keycode);
   });
   return result;
-}
-
-- (NSUInteger)enabledCheckboxCount {
-  return [self enabledCheckboxCount:self.preferencepane_checkbox changed:[self.preferencesManager changed]];
-}
-
-- (NSUInteger)enabledCheckboxCount:(XMLCompilerTree*)tree changed:(NSDictionary*)changed {
-  int count = 0;
-
-  if (tree) {
-    CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-    NSString* identifier = [checkboxItem getIdentifier];
-    if ([identifier length] > 0) {
-      if ([changed[identifier] intValue] != 0) {
-        ++count;
-      }
-    }
-
-    if (tree.children) {
-      for (XMLCompilerTree* child in tree.children) {
-        count += [self enabledCheckboxCount:child changed:changed];
-      }
-    }
-  }
-
-  return count;
-}
-
-- (CheckboxItem*)getCheckboxItem:(NSNumber*)id {
-  __block CheckboxItem* result = nil;
-  dispatch_sync(self.xmlCompilerReloadQueue, ^{
-    if (id) {
-      XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
-      result = tree ? [tree.node castToCheckboxItem] : nil;
-    }
-  });
-  return result;
-}
-
-- (ParameterItem*)getParameterItem:(NSNumber*)id {
-  __block ParameterItem* result = nil;
-  dispatch_sync(self.xmlCompilerReloadQueue, ^{
-    if (id) {
-      XMLCompilerTree* tree = self.xmlCompilerTreeDictionary[id];
-      result = tree ? [tree.node castToParameterItem] : nil;
-    }
-  });
-  return result;
-}
-
-- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  __block SharedXMLCompilerTree* result = nil;
-  dispatch_sync(self.xmlCompilerReloadQueue, ^{
-    result = [self narrowedSharedCheckboxTree:self.preferencepane_checkbox isEnabledOnly:isEnabledOnly strings:strings];
-  });
-  if (!result) {
-    result = [[SharedXMLCompilerTree alloc] initWithId:nil children:nil];
-  }
-  return result;
-}
-
-- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(XMLCompilerTree*)tree isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  // check strings
-  BOOL stringsMatched = YES;
-  if (strings) {
-    // Remove matched strings from strings for children.
-    //
-    // For example:
-    //   strings == @[@"Emacs", @"Mode", @"Tab"]
-    //
-    //   * Emacs Mode
-    //     * Control+I to Tab
-    //
-    //   notMatchedStrings == @[@"Tab"] at "Emacs Mode".
-    //   Then "Control+I to Tab" will be matched by strings == @[@"Tab"].
-
-    NSMutableArray* notMatchedStrings = nil;
-    for (NSString* s in strings) {
-      CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-      if (![checkboxItem isNameMatched:s]) {
-        stringsMatched = NO;
-      } else {
-        if (!notMatchedStrings) {
-          notMatchedStrings = [NSMutableArray arrayWithArray:strings];
-        }
-        [notMatchedStrings removeObject:s];
-      }
-    }
-
-    if (notMatchedStrings) {
-      strings = notMatchedStrings;
-    }
-  }
-
-  // ------------------------------------------------------------
-  // check children
-  NSMutableArray* newchildren = [NSMutableArray new];
-  for (XMLCompilerTree* child in tree.children) {
-    SharedXMLCompilerTree* t = [self narrowedSharedCheckboxTree:child isEnabledOnly:isEnabledOnly strings:strings];
-    if (t) {
-      [newchildren addObject:t];
-    }
-  }
-
-  if ([newchildren count] > 0) {
-    return [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:newchildren];
-  }
-
-  // ------------------------------------------------------------
-  // filter by isEnabledOnly
-  if (isEnabledOnly) {
-    CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-    NSString* identifier = [checkboxItem getIdentifier];
-    if ([identifier length] == 0) {
-      return nil;
-    }
-    if (![self.preferencesManager value:identifier]) {
-      return nil;
-    }
-  }
-
-  // check strings
-  if (!stringsMatched) {
-    return nil;
-  }
-
-  return [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:nil];
 }
 
 @end
