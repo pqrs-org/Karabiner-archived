@@ -131,6 +131,7 @@
   [self refreshKeyRepeatTab];
 
   [self.checkboxOutlineViewDataSource setup];
+  [self.checkboxOutlineViewDelegate updateFont];
   [self.parameterOutlineViewDataSource setup];
 
   [self.checkboxOutlineView reloadData];
