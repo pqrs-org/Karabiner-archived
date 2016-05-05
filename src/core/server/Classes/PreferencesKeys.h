@@ -24,7 +24,4 @@
 #define kIsOverrideKeyRepeat @"kIsOverwriteKeyRepeat"
 #define kShowIconInDock @"kShowIconInDock"
 #define kResumeAtLogin @"kResumeAtLogin"
-
-#define kKarabinerPreferencesWidth @"kKarabinerPreferencesWidth"
-#define kKarabinerPreferencesHeight @"kKarabinerPreferencesHeight"
 #define kKarabinerPreferencesCheckboxFont @"kKarabinerPreferencesCheckboxFont"
