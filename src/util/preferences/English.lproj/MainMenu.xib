@@ -49,7 +49,7 @@
             </connections>
         </customObject>
         <customObject id="bZI-C0-0rU" customClass="PreferencesModel"/>
-        <window title="Karabiner" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="tcO-xA-vhE" userLabel="Preferences">
+        <window title="Karabiner Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="tcO-xA-vhE" userLabel="Preferences">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="398" y="285" width="800" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
