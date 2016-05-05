@@ -1,6 +1,6 @@
 #import "CheckboxOutlineView.h"
 #import "CheckboxCellView.h"
-#import "SharedXMLCompilerTree.h"
+#import "CheckboxTree.h"
 
 @interface CheckboxOutlineView ()
 
@@ -31,7 +31,7 @@
     CheckboxCellView* view = [self viewAtColumn:0 row:row makeIfNecessary:NO];
     if (self.mouseDownCheckboxCellView == view) {
       // clicked
-      SharedXMLCompilerTree* item = [self itemAtRow:row];
+      CheckboxTree* item = [self itemAtRow:row];
       if ([self isExpandable:item]) {
         if ([self isItemExpanded:item]) {
           if ([self selectedRow] == row) {

@@ -1,27 +1,27 @@
 #import "ParameterOutlineViewDataSource.h"
+#import "ParameterTree.h"
 #import "ServerClient.h"
-#import "SharedXMLCompilerTree.h"
 
 @interface ParameterOutlineViewDataSource ()
 
 @property(weak) IBOutlet ServerClient* client;
-@property SharedXMLCompilerTree* dataSource;
+@property ParameterTree* dataSource;
 
 @end
 
 @implementation ParameterOutlineViewDataSource
 
 - (void)setup {
-  self.dataSource = [self.client.proxy sharedParameterTree];
+  self.dataSource = [self.client.proxy parameterTree];
 }
 
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
-  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
+  ParameterTree* tree = (ParameterTree*)(item);
   return tree ? [tree.children count] : [self.dataSource.children count];
 }
 
 - (id)outlineView:(NSOutlineView*)outlineView child:(NSInteger)index ofItem:(id)item {
-  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
+  ParameterTree* tree = (ParameterTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
 
   if ((NSUInteger)(index) >= [a count]) return nil;
@@ -29,7 +29,7 @@
 }
 
 - (BOOL)outlineView:(NSOutlineView*)outlineView isItemExpandable:(id)item {
-  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
+  ParameterTree* tree = (ParameterTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
   return [a count] > 0;
 }

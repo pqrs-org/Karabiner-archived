@@ -1,5 +1,5 @@
 #import "ParameterOutlineView.h"
-#import "SharedXMLCompilerTree.h"
+#import "ParameterTree.h"
 
 @interface ParameterOutlineView ()
 
@@ -42,7 +42,7 @@
     NSTableCellView* view = [self viewAtColumn:column row:row makeIfNecessary:NO];
     if (self.mouseDownCellView == view) {
       // clicked
-      SharedXMLCompilerTree* item = [self itemAtRow:row];
+      ParameterTree* item = [self itemAtRow:row];
       if ([self isExpandable:item]) {
         if ([self isItemExpanded:item]) {
           if ([self selectedRow] == row) {

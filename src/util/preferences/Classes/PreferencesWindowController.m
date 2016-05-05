@@ -4,6 +4,7 @@
 #import "CheckboxOutlineView.h"
 #import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxOutlineViewDelegate.h"
+#import "CheckboxTree.h"
 #import "ParameterOutlineView.h"
 #import "ParameterOutlineViewDataSource.h"
 #import "ParameterOutlineViewDelegate.h"
@@ -127,7 +128,6 @@
   NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   [self.versionText setStringValue:version];
 
-  [self drawEnabledCount];
   [self refreshKeyRepeatTab];
 
   [self.checkboxOutlineViewDataSource setup];
@@ -138,6 +138,7 @@
   [self.profileTableView reloadData];
 
   [self expandParameterOutlineView:self];
+  [self drawEnabledCount];
 }
 
 - (void)dealloc {
@@ -164,8 +165,35 @@
 
 /* ---------------------------------------------------------------------- */
 - (void)drawEnabledCount {
-  NSUInteger count = [self.client.proxy enabledCheckboxCount];
+  NSUInteger count = [self enabledCheckboxCount];
   [self.checkbox_showEnabledOnly setTitle:[NSString stringWithFormat:@"show enabled only (%d %@)", (int)(count), count >= 2 ? @"items" : @"item"]];
+}
+
+- (NSUInteger)enabledCheckboxCount {
+  return [self enabledCheckboxCount:self.checkboxOutlineViewDataSource.fullDataSource changed:[self.client.proxy changed]];
+}
+
+- (NSUInteger)enabledCheckboxCount:(CheckboxTree*)tree changed:(NSDictionary*)changed {
+  int count = 0;
+
+  if (tree) {
+    if (tree.node) {
+      NSString* identifier = tree.node.identifier;
+      if ([identifier length] > 0) {
+        if ([changed[identifier] intValue] != 0) {
+          ++count;
+        }
+      }
+    }
+
+    if (tree.children) {
+      for (CheckboxTree* child in tree.children) {
+        count += [self enabledCheckboxCount:child changed:changed];
+      }
+    }
+  }
+
+  return count;
 }
 
 /* ---------------------------------------------------------------------- */

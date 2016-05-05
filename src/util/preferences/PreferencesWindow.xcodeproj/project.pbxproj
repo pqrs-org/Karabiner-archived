@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* AppDelegate.m */; };
+		341A9EDC1CDB87C400101C1B /* CheckboxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 341A9EDB1CDB87C400101C1B /* CheckboxTree.m */; };
+		341A9EDF1CDB87D400101C1B /* ParameterTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 341A9EDE1CDB87D400101C1B /* ParameterTree.m */; };
 		343481641CC93EF300ECB9B3 /* SharedUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481631CC93EF300ECB9B3 /* SharedUtilities.m */; };
 		3434816A1CCA7C5800ECB9B3 /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 343481691CCA7C5800ECB9B3 /* PreferencesModel.m */; };
 		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
-		3471FBF81CD5949B000B1DF6 /* SharedXMLCompilerTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 3471FBF71CD5949B000B1DF6 /* SharedXMLCompilerTree.m */; };
 		34FB06391CD8878500491F58 /* CheckboxBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB061C1CD8878400491F58 /* CheckboxBackgroundView.m */; };
 		34FB063A1CD8878500491F58 /* CheckboxCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB061E1CD8878400491F58 /* CheckboxCellView.m */; };
 		34FB063B1CD8878500491F58 /* CheckboxOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB06201CD8878400491F58 /* CheckboxOutlineView.m */; };
@@ -60,13 +61,15 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		3401D0DE16586C0700CF962F /* ServerClientProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClientProtocol.h; path = ../../share/ServerClientProtocol.h; sourceTree = "<group>"; };
+		341A9EDA1CDB87C400101C1B /* CheckboxTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxTree.h; path = ../../share/CheckboxTree.h; sourceTree = "<group>"; };
+		341A9EDB1CDB87C400101C1B /* CheckboxTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxTree.m; path = ../../share/CheckboxTree.m; sourceTree = "<group>"; };
+		341A9EDD1CDB87D400101C1B /* ParameterTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParameterTree.h; path = ../../share/ParameterTree.h; sourceTree = "<group>"; };
+		341A9EDE1CDB87D400101C1B /* ParameterTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParameterTree.m; path = ../../share/ParameterTree.m; sourceTree = "<group>"; };
 		343481621CC93EF300ECB9B3 /* SharedUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedUtilities.h; path = ../../share/SharedUtilities.h; sourceTree = "<group>"; };
 		343481631CC93EF300ECB9B3 /* SharedUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedUtilities.m; path = ../../share/SharedUtilities.m; sourceTree = "<group>"; };
 		343481681CCA7C5800ECB9B3 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../share/PreferencesModel.h; sourceTree = "<group>"; };
 		343481691CCA7C5800ECB9B3 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../share/PreferencesModel.m; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
-		3471FBF61CD5949B000B1DF6 /* SharedXMLCompilerTree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedXMLCompilerTree.h; path = ../../share/SharedXMLCompilerTree.h; sourceTree = "<group>"; };
-		3471FBF71CD5949B000B1DF6 /* SharedXMLCompilerTree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedXMLCompilerTree.m; path = ../../share/SharedXMLCompilerTree.m; sourceTree = "<group>"; };
 		34B2A65A13745B6000694134 /* SharedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedKeys.h; path = ../../share/SharedKeys.h; sourceTree = "<group>"; };
 		34FB061B1CD8878400491F58 /* CheckboxBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CheckboxBackgroundView.h; path = Classes/CheckboxBackgroundView.h; sourceTree = "<group>"; };
 		34FB061C1CD8878400491F58 /* CheckboxBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CheckboxBackgroundView.m; path = Classes/CheckboxBackgroundView.m; sourceTree = "<group>"; };
@@ -230,6 +233,10 @@
 		34D944401932164F0062E422 /* share */ = {
 			isa = PBXGroup;
 			children = (
+				341A9EDA1CDB87C400101C1B /* CheckboxTree.h */,
+				341A9EDB1CDB87C400101C1B /* CheckboxTree.m */,
+				341A9EDD1CDB87D400101C1B /* ParameterTree.h */,
+				341A9EDE1CDB87D400101C1B /* ParameterTree.m */,
 				343481681CCA7C5800ECB9B3 /* PreferencesModel.h */,
 				343481691CCA7C5800ECB9B3 /* PreferencesModel.m */,
 				34FB064C1CD8E23100491F58 /* Relauncher.h */,
@@ -240,8 +247,6 @@
 				34B2A65A13745B6000694134 /* SharedKeys.h */,
 				343481621CC93EF300ECB9B3 /* SharedUtilities.h */,
 				343481631CC93EF300ECB9B3 /* SharedUtilities.m */,
-				3471FBF61CD5949B000B1DF6 /* SharedXMLCompilerTree.h */,
-				3471FBF71CD5949B000B1DF6 /* SharedXMLCompilerTree.m */,
 			);
 			name = share;
 			sourceTree = "<group>";
@@ -315,10 +320,12 @@
 			files = (
 				34FB06401CD8878500491F58 /* ParameterOutlineViewDataSource.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
+				341A9EDC1CDB87C400101C1B /* CheckboxTree.m in Sources */,
 				34FB064A1CD88E5C00491F58 /* ServerClient.m in Sources */,
 				34FB06461CD8878500491F58 /* ProfileTableViewDataSource.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* AppDelegate.m in Sources */,
 				34FB063D1CD8878500491F58 /* CheckboxOutlineViewDelegate.m in Sources */,
+				341A9EDF1CDB87D400101C1B /* ParameterTree.m in Sources */,
 				34FB06391CD8878500491F58 /* CheckboxBackgroundView.m in Sources */,
 				34FB06441CD8878500491F58 /* ProfileCellView.m in Sources */,
 				34FB06471CD8878500491F58 /* ProfileTableViewDelegate.m in Sources */,
@@ -326,7 +333,6 @@
 				34FB063F1CD8878500491F58 /* ParameterOutlineView.m in Sources */,
 				3434816A1CCA7C5800ECB9B3 /* PreferencesModel.m in Sources */,
 				343481641CC93EF300ECB9B3 /* SharedUtilities.m in Sources */,
-				3471FBF81CD5949B000B1DF6 /* SharedXMLCompilerTree.m in Sources */,
 				34FB064E1CD8E23100491F58 /* Relauncher.m in Sources */,
 				34FB063B1CD8878500491F58 /* CheckboxOutlineView.m in Sources */,
 				34FB06451CD8878500491F58 /* ProfileTableView.m in Sources */,

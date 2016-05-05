@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
@@ -293,7 +293,7 @@
                                         <scrollView horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="foB-Mq-Ofb">
                                             <rect key="frame" x="17" y="38" width="720" height="503"/>
                                             <clipView key="contentView" drawsBackground="NO" id="ox6-7R-wHt">
-                                                <rect key="frame" x="1" y="23" width="703" height="479"/>
+                                                <rect key="frame" x="1" y="0.0" width="703" height="502"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" headerView="Xhw-29-Rcb" viewBased="YES" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="vb6-cL-dDn" id="2kM-Hv-31I" customClass="ParameterOutlineView">
@@ -322,7 +322,7 @@
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="pM3-et-NWF">
-                                                                                <rect key="frame" x="2" y="13" width="422" height="14"/>
+                                                                                <rect key="frame" x="2" y="2" width="422" height="14"/>
                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="name" id="UcV-fu-WUP">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -358,7 +358,7 @@
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="I0u-0y-tQK">
-                                                                                <rect key="frame" x="0.0" y="13" width="60" height="14"/>
+                                                                                <rect key="frame" x="0.0" y="2" width="60" height="14"/>
                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="default" id="oIy-Rl-djx">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -394,7 +394,7 @@
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="IpZ-fZ-HS7">
-                                                                                <rect key="frame" x="2" y="11" width="63" height="19"/>
+                                                                                <rect key="frame" x="2" y="-1" width="63" height="19"/>
                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="right" title="value" drawsBackground="YES" id="Lvt-Vf-Hrr">
                                                                                     <numberFormatter key="formatter" formatterBehavior="default10_4" localizesFormat="NO" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="kNV-aM-5ie">
                                                                                         <real key="minimum" value="0.0"/>
@@ -409,7 +409,7 @@
                                                                                 </connections>
                                                                             </textField>
                                                                             <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j8B-9U-ttF">
-                                                                                <rect key="frame" x="62" y="6" width="19" height="27"/>
+                                                                                <rect key="frame" x="62" y="-6" width="19" height="28"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="22" id="Cb2-zO-eoj"/>
                                                                                 </constraints>
@@ -450,7 +450,7 @@
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Xhi-RF-LVL">
-                                                                                <rect key="frame" x="0.0" y="13" width="60" height="14"/>
+                                                                                <rect key="frame" x="0.0" y="2" width="60" height="14"/>
                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="unit" id="EJB-2o-T0w">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -486,7 +486,7 @@
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="m0x-gr-yvG">
-                                                                                <rect key="frame" x="0.0" y="13" width="22" height="14"/>
+                                                                                <rect key="frame" x="0.0" y="2" width="22" height="14"/>
                                                                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="diff" id="KPl-yU-R1M">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -964,12 +964,12 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="300" id="oTC-PP-iK5"/>
                                                         </constraints>
-                                                        <popUpButtonCell key="cell" type="push" title="White (Default)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="nf3-Xl-6FT">
+                                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="nf3-Xl-6FT">
                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" metaFont="menu"/>
                                                             <menu key="menu" title="OtherViews" id="SgE-Mk-QUT">
                                                                 <items>
-                                                                    <menuItem title="White (Default)" state="on" id="I2Z-sZ-We3"/>
+                                                                    <menuItem title="White (Default)" id="I2Z-sZ-We3"/>
                                                                     <menuItem title="Black" id="d7N-Q9-S4C"/>
                                                                     <menuItem isSeparatorItem="YES" id="kzw-Tu-kiV"/>
                                                                     <menuItem title="Blue" id="aPM-wK-6Cr"/>
@@ -1907,6 +1907,8 @@ Debug Mode Guide</string>
                 </constraints>
             </view>
             <connections>
+                <binding destination="bjj-Kt-RQw" name="contentHeight" keyPath="values.WindowWidth" id="Y6e-b9-if5"/>
+                <binding destination="bjj-Kt-RQw" name="contentWidth" keyPath="values.WindowHeight" previousBinding="Y6e-b9-if5" id="nMk-ud-hul"/>
                 <outlet property="delegate" destination="0cj-x4-sGx" id="qiV-fx-0ba"/>
             </connections>
             <point key="canvasLocation" x="747" y="371"/>
@@ -2051,6 +2053,7 @@ Debug Mode Guide</string>
                 </menuItem>
             </items>
         </menu>
+        <userDefaultsController representsSharedInstance="YES" id="bjj-Kt-RQw"/>
     </objects>
     <resources>
         <image name="NSFollowLinkFreestandingTemplate" width="14" height="14"/>

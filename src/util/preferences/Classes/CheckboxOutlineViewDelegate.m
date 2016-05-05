@@ -1,10 +1,10 @@
 #import "CheckboxOutlineViewDelegate.h"
 #import "CheckboxBackgroundView.h"
 #import "CheckboxCellView.h"
+#import "CheckboxTree.h"
 #import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerClient.h"
-#import "SharedXMLCompilerTree.h"
 
 #define kLabelLeadingSpaceWithCheckbox 24
 #define kLabelLeadingSpaceWithoutCheckbox 4
@@ -52,22 +52,20 @@
 }
 
 - (NSView*)outlineView:(NSOutlineView*)outlineView viewForTableColumn:(NSTableColumn*)tableColumn item:(id)item {
-  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
-  NSString* name = [self.client.proxy checkboxItemGetName:tree.id];
-  NSString* style = [self.client.proxy checkboxItemGetStyle:tree.id];
-  NSString* identifier = [self.client.proxy checkboxItemGetIdentifier:tree.id];
+  CheckboxTree* tree = (CheckboxTree*)(item);
+  if (!tree || !tree.node) return nil;
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.client = self.client;
-  result.settingIdentifier = identifier;
+  result.settingIdentifier = tree.node.identifier;
 
-  result.textField.stringValue = name;
+  result.textField.stringValue = tree.node.name;
   result.textField.font = self.font;
 
   result.labelTopSpace.constant = kLabelTopSpace;
   result.labelBottomSpace.constant = kLabelBottomSpace;
 
-  if (![self.client.proxy checkboxItemNeedsShowCheckbox:tree.id]) {
+  if (!tree.node.needsShowCheckbox) {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithoutCheckbox;
   } else {
     result.labelLeadingSpace.constant = kLabelLeadingSpaceWithCheckbox;
@@ -79,7 +77,7 @@
     result.checkbox.imagePosition = NSImageOnly;
     result.checkbox.target = result;
     result.checkbox.action = @selector(valueChanged:);
-    if ([self.client.proxy value:identifier]) {
+    if ([self.client.proxy value:tree.node.identifier]) {
       result.checkbox.state = NSOnState;
     } else {
       result.checkbox.state = NSOffState;
@@ -107,11 +105,11 @@
   // Set backgroundView
 
   NSColor* backgroundColor = nil;
-  if ([style isEqualToString:@"caution"]) {
+  if ([tree.node.style isEqualToString:@"caution"]) {
     backgroundColor = [NSColor greenColor];
-  } else if ([style isEqualToString:@"important"]) {
+  } else if ([tree.node.style isEqualToString:@"important"]) {
     backgroundColor = [NSColor orangeColor];
-  } else if ([style isEqualToString:@"slight"]) {
+  } else if ([tree.node.style isEqualToString:@"slight"]) {
     backgroundColor = [NSColor lightGrayColor];
   }
 
@@ -130,34 +128,34 @@
 // So, we need to calculate the height by using wrappedTextHeightCalculator.
 
 - (CGFloat)outlineView:(NSOutlineView*)outlineView heightOfRowByItem:(id)item {
-  SharedXMLCompilerTree* tree = (SharedXMLCompilerTree*)(item);
-  if (!tree.id) {
+  CheckboxTree* tree = (CheckboxTree*)(item);
+  if (!tree || !tree.node) {
     return [outlineView rowHeight];
   }
 
-  if (!self.heightCache[tree.id]) {
+  if (!self.heightCache[tree.node.id]) {
     NSTableColumn* column = [outlineView outlineTableColumn];
 
     CGFloat indentation = outlineView.indentationPerLevel * ([outlineView levelForItem:item] + 1);
     NSInteger preferredMaxLayoutWidth = (NSInteger)(column.width) - indentation;
 
-    if (![self.client.proxy checkboxItemNeedsShowCheckbox:tree.id]) {
-      preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
-    } else {
+    if (!tree.node.needsShowCheckbox) {
       preferredMaxLayoutWidth -= kLabelLeadingSpaceWithoutCheckbox;
+    } else {
+      preferredMaxLayoutWidth -= kLabelLeadingSpaceWithCheckbox;
     }
 
     dispatch_sync(self.textsHeightQueue, ^{
-      self.wrappedTextHeightCalculator.stringValue = [self.client.proxy checkboxItemGetName:tree.id];
+      self.wrappedTextHeightCalculator.stringValue = tree.node.name;
       self.wrappedTextHeightCalculator.font = self.font;
       self.wrappedTextHeightCalculator.preferredMaxLayoutWidth = preferredMaxLayoutWidth;
 
       NSSize size = [self.wrappedTextHeightCalculator fittingSize];
-      self.heightCache[tree.id] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
+      self.heightCache[tree.node.id] = @(size.height + kLabelTopSpace + kLabelBottomSpace);
     });
   }
 
-  return [self.heightCache[tree.id] integerValue];
+  return [self.heightCache[tree.node.id] integerValue];
 }
 
 @end
