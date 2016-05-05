@@ -286,16 +286,6 @@ const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(const pqr
   return (node_tree->get_node()).get_style().c_str();
 }
 
-bool pqrs_xml_compiler_is_preferences_checkbox_node_tree_name_icontains(const pqrs_xml_compiler_preferences_checkbox_node_tree* p, const char* string) {
-  auto node_tree = cast_to_preferences_checkbox_node_tree(p);
-  if (!node_tree) return false;
-
-  if (!string) return false;
-
-  auto& name = (node_tree->get_node()).get_name();
-  return boost::icontains(name, string);
-}
-
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
   if (!node_tree) return nullptr;

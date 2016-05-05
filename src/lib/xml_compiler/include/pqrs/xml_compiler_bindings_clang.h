@@ -61,7 +61,6 @@ size_t pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(const
 const pqrs_xml_compiler_preferences_checkbox_node_tree* pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compiler_preferences_checkbox_node_tree* p, size_t index);
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_style(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
-bool pqrs_xml_compiler_is_preferences_checkbox_node_tree_name_icontains(const pqrs_xml_compiler_preferences_checkbox_node_tree* p, const char* string);
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_identifier(const pqrs_xml_compiler_preferences_checkbox_node_tree* p);
 
 // ------------------------------------------------------------
