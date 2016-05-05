@@ -261,6 +261,17 @@ size_t pqrs_xml_compiler_get_preferences_checkbox_node_tree_children_count(const
   return children->size();
 }
 
+const pqrs_xml_compiler_preferences_checkbox_node_tree* pqrs_xml_compiler_get_preferences_checkbox_node_tree_child(const pqrs_xml_compiler_preferences_checkbox_node_tree* p, size_t index) {
+  auto node_tree = cast_to_preferences_checkbox_node_tree(p);
+  if (!node_tree) return nullptr;
+
+  auto children = node_tree->get_children();
+  if (!children) return nullptr;
+  if (index >= children->size()) return nullptr;
+
+  return reinterpret_cast<const pqrs_xml_compiler_preferences_checkbox_node_tree*>(((*children)[index]).get());
+}
+
 const char* pqrs_xml_compiler_get_preferences_checkbox_node_tree_name(const pqrs_xml_compiler_preferences_checkbox_node_tree* p) {
   auto node_tree = cast_to_preferences_checkbox_node_tree(p);
   if (!node_tree) return nullptr;
@@ -314,6 +325,17 @@ size_t pqrs_xml_compiler_get_preferences_number_node_tree_children_count(const p
   if (!children) return 0;
 
   return children->size();
+}
+
+const pqrs_xml_compiler_preferences_number_node_tree* pqrs_xml_compiler_get_preferences_number_node_tree_child(const pqrs_xml_compiler_preferences_number_node_tree* p, size_t index) {
+  auto node_tree = cast_to_preferences_number_node_tree(p);
+  if (!node_tree) return nullptr;
+
+  auto children = node_tree->get_children();
+  if (!children) return nullptr;
+  if (index >= children->size()) return nullptr;
+
+  return reinterpret_cast<const pqrs_xml_compiler_preferences_number_node_tree*>(((*children)[index]).get());
 }
 
 const char* pqrs_xml_compiler_get_preferences_number_node_tree_name(const pqrs_xml_compiler_preferences_number_node_tree* p) {
