@@ -2,9 +2,10 @@
 
 @import Cocoa;
 
-@class PreferencesModel;
 @class AXNotifierPreferencesModel;
-@class SharedXMLCompilerTree;
+@class CheckboxTree;
+@class ParameterTree;
+@class PreferencesModel;
 
 @protocol ServerClientProtocol
 
@@ -47,22 +48,8 @@
 - (void)showExampleStatusWindow:(BOOL)visibility;
 
 // for SharedXMLCompilerTree
-- (SharedXMLCompilerTree*)sharedCheckboxTree;
-- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings;
-- (NSUInteger)enabledCheckboxCount;
-- (NSString*)checkboxItemGetName:(NSNumber*)id;
-- (NSString*)checkboxItemGetStyle:(NSNumber*)id;
-- (NSString*)checkboxItemGetIdentifier:(NSNumber*)id;
-- (NSUInteger)checkboxItemGetChildrenCount:(NSNumber*)id;
-- (BOOL)checkboxItemNeedsShowCheckbox:(NSNumber*)id;
-
-- (SharedXMLCompilerTree*)sharedParameterTree;
-- (NSString*)parameterItemGetName:(NSNumber*)id;
-- (NSString*)parameterItemGetIdentifier:(NSNumber*)id;
-- (NSInteger)parameterItemGetDefaultValue:(NSNumber*)id;
-- (NSInteger)parameterItemGetStep:(NSNumber*)id;
-- (NSString*)parameterItemGetBaseUnit:(NSNumber*)id;
-- (NSUInteger)parameterItemGetChildrenCount:(NSNumber*)id;
+- (CheckboxTree*)checkboxTree;
+- (ParameterTree*)parameterTree;
 
 // for AXNotifier
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;
