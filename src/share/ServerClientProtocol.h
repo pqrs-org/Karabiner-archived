@@ -48,8 +48,8 @@
 - (void)showExampleStatusWindow:(BOOL)visibility;
 
 // for SharedXMLCompilerTree
-- (CheckboxTree*)checkboxTree;
-- (ParameterTree*)parameterTree;
+- (bycopy CheckboxTree*)checkboxTree;
+- (bycopy ParameterTree*)parameterTree;
 
 // for AXNotifier
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;

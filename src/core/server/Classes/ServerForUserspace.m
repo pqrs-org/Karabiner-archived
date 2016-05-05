@@ -177,11 +177,11 @@
 }
 
 // ----------------------------------------------------------------------
-- (CheckboxTree*)checkboxTree {
+- (bycopy CheckboxTree*)checkboxTree {
   return self.xmlCompiler.checkboxTree;
 }
 
-- (ParameterTree*)parameterTree {
+- (bycopy ParameterTree*)parameterTree {
   return self.xmlCompiler.parameterTree;
 }
 
