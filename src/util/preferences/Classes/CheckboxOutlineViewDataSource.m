@@ -69,7 +69,6 @@
 
 // return YES if we need to call [NSOutlineView reloadData]
 - (BOOL)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string {
-#if 0
   // Check filter condition is changed from previous filterDataSource.
   FilterCondition* filterCondition = [[FilterCondition alloc] init:isEnabledOnly string:string];
   if ([self.filterCondition isEqualToFilterCondition:filterCondition]) {
@@ -86,76 +85,85 @@
   }
 
   if (isEnabledOnly || [strings count] > 0) {
-    self.dataSource = [self.client.proxy narrowedSharedCheckboxTree:isEnabledOnly strings:strings];
+    self.dataSource = [self narrowedSharedCheckboxTree:isEnabledOnly strings:strings];
   } else {
-    self.dataSource = [self.client.proxy sharedCheckboxTree];
+    self.dataSource = self.fullDataSource;
   }
 
   self.filterCondition = filterCondition;
   return YES;
-#else
-  return NO;
-#endif
 }
 
-#if 0
-- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(XMLCompilerTree*)tree isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+- (CheckboxTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+  CheckboxTree* result = [self narrowedSharedCheckboxTree:self.fullDataSource isEnabledOnly:isEnabledOnly strings:strings];
+  if (!result) {
+    result = [[CheckboxTree alloc] initWithItem:nil children:nil];
+  }
+  return result;
+}
+
+- (CheckboxTree*)narrowedSharedCheckboxTree:(CheckboxTree*)tree isEnabledOnly:(BOOL)isEnabledOnly strings:(NSArray*)strings {
+  if (!tree) return nil;
+
   // check strings
   BOOL stringsMatched = YES;
-  if (strings) {
-    // Remove matched strings from strings for children.
-    //
-    // For example:
-    //   strings == @[@"Emacs", @"Mode", @"Tab"]
-    //
-    //   * Emacs Mode
-    //     * Control+I to Tab
-    //
-    //   notMatchedStrings == @[@"Tab"] at "Emacs Mode".
-    //   Then "Control+I to Tab" will be matched by strings == @[@"Tab"].
+  if (!tree.node) {
+    stringsMatched = NO;
+  } else {
+    if (strings) {
+      // Remove matched strings from strings for children.
+      //
+      // For example:
+      //   strings == @[@"Emacs", @"Mode", @"Tab"]
+      //
+      //   * Emacs Mode
+      //     * Control+I to Tab
+      //
+      //   notMatchedStrings == @[@"Tab"] at "Emacs Mode".
+      //   Then "Control+I to Tab" will be matched by strings == @[@"Tab"].
 
-    NSMutableArray* notMatchedStrings = nil;
-    for (NSString* s in strings) {
-      CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-      if (![checkboxItem isNameMatched:s]) {
-        stringsMatched = NO;
-      } else {
-        if (!notMatchedStrings) {
-          notMatchedStrings = [NSMutableArray arrayWithArray:strings];
+      NSMutableArray* notMatchedStrings = nil;
+      for (NSString* s in strings) {
+        if ([tree.node.name rangeOfString:s options:NSCaseInsensitiveSearch].location == NSNotFound) {
+          stringsMatched = NO;
+        } else {
+          if (!notMatchedStrings) {
+            notMatchedStrings = [NSMutableArray arrayWithArray:strings];
+          }
+          [notMatchedStrings removeObject:s];
         }
-        [notMatchedStrings removeObject:s];
       }
-    }
 
-    if (notMatchedStrings) {
-      strings = notMatchedStrings;
+      if (notMatchedStrings) {
+        strings = notMatchedStrings;
+      }
     }
   }
 
   // ------------------------------------------------------------
   // check children
   NSMutableArray* newchildren = [NSMutableArray new];
-  for (XMLCompilerTree* child in tree.children) {
-    SharedXMLCompilerTree* t = [self narrowedSharedCheckboxTree:child isEnabledOnly:isEnabledOnly strings:strings];
+  for (CheckboxTree* child in tree.children) {
+    CheckboxTree* t = [self narrowedSharedCheckboxTree:child isEnabledOnly:isEnabledOnly strings:strings];
     if (t) {
       [newchildren addObject:t];
     }
   }
 
   if ([newchildren count] > 0) {
-    return [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:newchildren];
+    return [[CheckboxTree alloc] initWithItem:tree.node children:newchildren];
   }
 
   // ------------------------------------------------------------
   // filter by isEnabledOnly
   if (isEnabledOnly) {
-    CheckboxItem* checkboxItem = [tree.node castToCheckboxItem];
-    NSString* identifier = [checkboxItem getIdentifier];
-    if ([identifier length] == 0) {
-      return nil;
-    }
-    if (![self.preferencesManager value:identifier]) {
-      return nil;
+    if (tree.node) {
+      if ([tree.node.identifier length] == 0) {
+        return nil;
+      }
+      if (![self.client.proxy value:tree.node.identifier]) {
+        return nil;
+      }
     }
   }
 
@@ -164,20 +172,8 @@
     return nil;
   }
 
-  return [[SharedXMLCompilerTree alloc] initWithId:tree.node.id children:nil];
+  return [[CheckboxTree alloc] initWithItem:tree.node children:nil];
 }
-
-- (SharedXMLCompilerTree*)narrowedSharedCheckboxTree:(BOOL)isEnabledOnly strings:(NSArray*)strings {
-  __block SharedXMLCompilerTree* result = nil;
-  dispatch_sync(self.xmlCompilerReloadQueue, ^{
-    result = [self narrowedSharedCheckboxTree:self.preferencepane_checkbox isEnabledOnly:isEnabledOnly strings:strings];
-  });
-  if (!result) {
-    result = [[SharedXMLCompilerTree alloc] initWithId:nil children:nil];
-  }
-  return result;
-}
-#endif
 
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
   CheckboxTree* tree = (CheckboxTree*)(item);
