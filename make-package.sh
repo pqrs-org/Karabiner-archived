@@ -26,9 +26,10 @@ cp -R "src/core/server/build/Release/Karabiner.app" "pkgroot/Applications"
 basedir="pkgroot/Applications/Karabiner.app/Contents/Applications"
 mkdir -p "$basedir"
 for d in \
-    src/util/AXNotifier/build/Release/Karabiner_AXNotifier.app \
-    src/util/EventViewer/build/Release/EventViewer.app \
-    src/util/multitouchextension/build/Release/Karabiner_multitouchextension.app \
+    "src/util/AXNotifier/build/Release/Karabiner_AXNotifier.app" \
+    "src/util/EventViewer/build/Release/EventViewer.app" \
+    "src/util/multitouchextension/build/Release/Karabiner_multitouchextension.app" \
+    "src/util/preferences/build/Release/Karabiner Preferences.app" \
     ;
 do
     cp -R "$d" "$basedir"
