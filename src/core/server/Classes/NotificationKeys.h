@@ -4,5 +4,3 @@
 #define kProfileChangedNotification @"kProfileChangedNotification"
 #define kPreferencesChangedNotification @"PreferencesChanged"
 #define kStatusBarConfigurationChangedNotification @"kStatusBarConfigurationChangedNotification"
-
-#define kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI @"kPreferencesChangedNotificationUserInfoKeyPreferencesChangedFromGUI"
