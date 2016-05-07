@@ -389,13 +389,13 @@
   [self.keyRepeatTextField setEnabled:enabled];
   [self.keyRepeatStepper setEnabled:enabled];
 
-  int delayUntilRepeat = [self.client.proxy value:@"repeat.initial_wait"];
-  int keyRepeat = [self.client.proxy value:@"repeat.wait"];
+  NSInteger delayUntilRepeat = [self.sharedPreferencesManager.pm value:@"repeat.initial_wait"];
+  NSInteger keyRepeat = [self.sharedPreferencesManager.pm value:@"repeat.wait"];
 
-  [self.delayUntilRepeatLabel setStringValue:[NSString stringWithFormat:@"%d milliseconds", delayUntilRepeat]];
+  [self.delayUntilRepeatLabel setStringValue:[NSString stringWithFormat:@"%d milliseconds", (int)(delayUntilRepeat)]];
   [self.delayUntilRepeatTextField setIntegerValue:delayUntilRepeat];
   [self.delayUntilRepeatStepper setIntegerValue:delayUntilRepeat];
-  [self.keyRepeatLabel setStringValue:[NSString stringWithFormat:@"%d milliseconds", keyRepeat]];
+  [self.keyRepeatLabel setStringValue:[NSString stringWithFormat:@"%d milliseconds", (int)(keyRepeat)]];
   [self.keyRepeatTextField setIntegerValue:keyRepeat];
   [self.keyRepeatStepper setIntegerValue:keyRepeat];
 }

@@ -20,8 +20,6 @@
 - (void)restartAXNotifier;
 - (void)unsetDebugFlags;
 
-- (int)value:(NSString*)name;
-- (int)defaultValue:(NSString*)name;
 - (void)setValue:(int)newval forName:(NSString*)name;
 
 - (NSDictionary*)changed;

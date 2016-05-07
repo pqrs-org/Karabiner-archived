@@ -149,14 +149,6 @@
 }
 
 // ----------------------------------------------------------------------
-- (int)value:(NSString*)name {
-  return [self.preferencesManager value:name];
-}
-
-- (int)defaultValue:(NSString*)name {
-  return [self.preferencesManager defaultValue:name];
-}
-
 - (void)setValue:(int)newval forName:(NSString*)name {
   [self.preferencesManager setValue:newval forName:name];
 }

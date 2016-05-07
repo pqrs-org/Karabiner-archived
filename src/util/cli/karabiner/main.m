@@ -208,7 +208,7 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        int current = [self.client.proxy value:value];
+        NSInteger current = [self.preferencesModel value:value];
         [self.client.proxy setValue:(!current) forName:value];
 
       } else if ([command isEqualToString:@"be_careful_to_use__clear_all_values_by_name"]) {
