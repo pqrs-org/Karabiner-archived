@@ -85,7 +85,7 @@
 
 @interface AXApplicationObserverManager ()
 
-@property(weak) AXNotifierPreferencesModel* axNotifierPreferencesModel;
+@property AXNotifierPreferencesModel* axNotifierPreferencesModel;
 @property NSMutableDictionary* systemApplicationObservers;
 
 // We need to observe frontmostApplication only because

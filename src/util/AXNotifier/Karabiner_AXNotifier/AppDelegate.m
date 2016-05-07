@@ -6,7 +6,6 @@
 #import "Relauncher.h"
 #import "ServerClient.h"
 #import "SharedKeys.h"
-#import "SharedPreferencesManager.h"
 #import "WindowObserver.h"
 
 // ==================================================
@@ -14,7 +13,6 @@
 
 @property(weak) IBOutlet NSWindow* window;
 @property(weak) IBOutlet ServerClient* client;
-@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 
 @property BOOL axEnabled;
 @property(copy) NSDictionary* focusedUIElementInformation;
@@ -189,9 +187,10 @@ send:
 }
 
 - (void)setupAXApplicationObserverManager {
-  [self.sharedPreferencesManager load];
-  [self.sharedPreferencesManager.pm.axNotifier log];
-  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithAXNotifierPreferencesModel:self.sharedPreferencesManager.pm.axNotifier];
+  // Get AXNotifierPreferencesModel only (not entire PreferencesModel) in order to continue running AXNotifier when PreferencesModel is updated.
+  AXNotifierPreferencesModel* axNotifierPreferencesModel = [self.client.proxy axNotifierPreferencesModel];
+  [axNotifierPreferencesModel log];
+  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithAXNotifierPreferencesModel:axNotifierPreferencesModel];
 }
 
 @end
