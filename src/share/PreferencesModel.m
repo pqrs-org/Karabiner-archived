@@ -189,6 +189,30 @@
   return [value integerValue];
 }
 
+- (void)setValue:(NSInteger)value forName:(NSString*)name {
+  [self setValue:value forName:name defaultValue:0];
+}
+
+- (void)setValue:(NSInteger)value forName:(NSString*)name defaultValue:(NSInteger)defaultValue {
+  if ([name length] == 0) {
+    return;
+  }
+
+  ProfileModel* profileModel = [self profile:self.currentProfileIndex];
+  if (!profileModel) {
+    return;
+  }
+
+  NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];
+  if (value == defaultValue) {
+    [values removeObjectForKey:name];
+  } else {
+    values[name] = @(value);
+  }
+
+  profileModel.values = values;
+}
+
 - (NSInteger)profileMaxAppendIndex {
   NSInteger maxAppendIndex = 0;
 
@@ -259,6 +283,7 @@
   profileModel.name = name ? name : @"New Profile";
   profileModel.identifier = [NSString stringWithFormat:@"config_%ld_%ld", (time_t)(tm.tv_sec), (time_t)(tm.tv_usec)];
   profileModel.appendIndex = [self profileMaxAppendIndex] + 1;
+  profileModel.values = @{};
 
   [profiles addObject:profileModel];
 
