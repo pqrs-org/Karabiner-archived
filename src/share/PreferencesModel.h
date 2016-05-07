@@ -2,15 +2,16 @@
 
 @import Cocoa;
 
-@interface ProfileModel : NSObject <NSCoding, NSCopying>
+@interface ProfileModel : NSObject <NSCoding>
 
 @property(copy) NSString* name;
 @property(copy) NSString* identifier;
 @property NSInteger appendIndex;
+@property(copy) NSDictionary* values;
 
 @end
 
-@interface AXNotifierPreferencesModel : NSObject <NSCoding, NSCopying>
+@interface AXNotifierPreferencesModel : NSObject <NSCoding>
 
 @property BOOL useAXNotifier;
 @property BOOL disableAXNotifierInJavaApps;
@@ -22,7 +23,7 @@
 
 @end
 
-@interface PreferencesModel : NSObject
+@interface PreferencesModel : NSObject <NSCoding>
 
 @property BOOL resumeAtLogin;
 @property BOOL checkForUpdates;
@@ -33,8 +34,6 @@
 
 @property(copy) NSArray* profiles;
 @property NSInteger currentProfileIndex;
-@property(copy, readonly) NSString* currentProfileName;
-@property(copy, readonly) NSString* currentProfileIdentifier;
 
 @property BOOL useStatusWindow;
 @property BOOL showCapsLockStateInStatusWindow;
@@ -47,6 +46,12 @@
 @property NSInteger statusWindowPosition;
 
 @property NSInteger preferencesCheckboxFont;
+
+// readonly method
+@property(copy, readonly) NSString* currentProfileName;
+@property(copy, readonly) NSString* currentProfileIdentifier;
+
+- (NSInteger)value:(NSString*)name;
 
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;

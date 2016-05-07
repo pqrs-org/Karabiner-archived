@@ -1,6 +1,14 @@
 #import "PreferencesModel.h"
 #include <sys/time.h>
 
+#define DECODE_BOOL(KEY) self.KEY = [decoder decodeBoolForKey:@ #KEY];
+#define DECODE_INTEGER(KEY) self.KEY = [decoder decodeIntegerForKey:@ #KEY];
+#define DECODE_OBJECT(KEY) self.KEY = [decoder decodeObjectForKey:@ #KEY];
+
+#define ENCODE_BOOL(KEY) [encoder encodeBool:self.KEY forKey:@ #KEY];
+#define ENCODE_INTEGER(KEY) [encoder encodeInteger:self.KEY forKey:@ #KEY];
+#define ENCODE_OBJECT(KEY) [encoder encodeObject:self.KEY forKey:@ #KEY];
+
 @implementation ProfileModel
 
 #pragma mark - NSObject
@@ -16,28 +24,20 @@
   self = [super init];
 
   if (self) {
-    self.name = [decoder decodeObjectForKey:@"name"];
-    self.identifier = [decoder decodeObjectForKey:@"identifier"];
-    self.appendIndex = [decoder decodeIntegerForKey:@"appendIndex"];
+    DECODE_OBJECT(name);
+    DECODE_OBJECT(identifier);
+    DECODE_INTEGER(appendIndex);
+    DECODE_OBJECT(values);
   }
 
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder*)encoder {
-  [encoder encodeObject:self.name forKey:@"name"];
-  [encoder encodeObject:self.identifier forKey:@"identifier"];
-  [encoder encodeInteger:self.appendIndex forKey:@"appendIndex"];
-}
-
-- (id)copyWithZone:(NSZone*)zone {
-  ProfileModel* obj = [[[self class] allocWithZone:zone] init];
-  if (obj) {
-    obj.name = [self.name copyWithZone:zone];
-    obj.identifier = [self.identifier copyWithZone:zone];
-    obj.appendIndex = self.appendIndex;
-  }
-  return obj;
+  ENCODE_OBJECT(name);
+  ENCODE_OBJECT(identifier);
+  ENCODE_INTEGER(appendIndex);
+  ENCODE_OBJECT(values);
 }
 
 @end
@@ -78,54 +78,102 @@
   self = [super init];
 
   if (self) {
-#define DECODE(KEY)                               \
-  {                                               \
-    self.KEY = [decoder decodeBoolForKey:@ #KEY]; \
-  }
-
-    DECODE(useAXNotifier);
-    DECODE(disableAXNotifierInJavaApps);
-    DECODE(disableAXNotifierInQtApps);
-    DECODE(disableAXNotifierInPreview);
-    DECODE(disableAXNotifierInMicrosoftOffice);
+    DECODE_BOOL(useAXNotifier);
+    DECODE_BOOL(disableAXNotifierInJavaApps);
+    DECODE_BOOL(disableAXNotifierInQtApps);
+    DECODE_BOOL(disableAXNotifierInPreview);
+    DECODE_BOOL(disableAXNotifierInMicrosoftOffice);
   }
 
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder*)encoder {
-#define ENCODE(KEY)                              \
-  {                                              \
-    [encoder encodeBool:self.KEY forKey:@ #KEY]; \
-  }
-
-  ENCODE(useAXNotifier);
-  ENCODE(disableAXNotifierInJavaApps);
-  ENCODE(disableAXNotifierInQtApps);
-  ENCODE(disableAXNotifierInPreview);
-  ENCODE(disableAXNotifierInMicrosoftOffice);
-}
-
-- (id)copyWithZone:(NSZone*)zone {
-  AXNotifierPreferencesModel* obj = [[[self class] allocWithZone:zone] init];
-  if (obj) {
-#define COPY(KEY)       \
-  {                     \
-    obj.KEY = self.KEY; \
-  }
-
-    COPY(useAXNotifier);
-    COPY(disableAXNotifierInJavaApps);
-    COPY(disableAXNotifierInQtApps);
-    COPY(disableAXNotifierInPreview);
-    COPY(disableAXNotifierInMicrosoftOffice);
-  }
-  return obj;
+  ENCODE_BOOL(useAXNotifier);
+  ENCODE_BOOL(disableAXNotifierInJavaApps);
+  ENCODE_BOOL(disableAXNotifierInQtApps);
+  ENCODE_BOOL(disableAXNotifierInPreview);
+  ENCODE_BOOL(disableAXNotifierInMicrosoftOffice);
 }
 
 @end
 
 @implementation PreferencesModel
+
+#pragma mark - NSObject
+
+- (id)replacementObjectForPortCoder:(NSPortCoder*)encoder {
+  if ([encoder isBycopy]) return self;
+  return [super replacementObjectForPortCoder:encoder];
+}
+
+#pragma mark - NSCoding
+
+- (instancetype)initWithCoder:(NSCoder*)decoder {
+  self = [super init];
+
+  if (self) {
+    DECODE_BOOL(resumeAtLogin);
+    DECODE_BOOL(checkForUpdates);
+    DECODE_BOOL(overrideKeyRepeat);
+    DECODE_BOOL(statusBarEnabled);
+    DECODE_BOOL(showProfileNameInStatusBar);
+    DECODE_BOOL(usePreparedSettings);
+
+    DECODE_OBJECT(profiles);
+    DECODE_INTEGER(currentProfileIndex);
+
+    DECODE_BOOL(useStatusWindow);
+    DECODE_BOOL(showCapsLockStateInStatusWindow);
+    DECODE_BOOL(showStickyModifiersStateInStatusWindow);
+    DECODE_BOOL(showPointingButtonLockStateInStatusWindow);
+    DECODE_INTEGER(statusWindowType);
+    DECODE_INTEGER(statusWindowTheme);
+    DECODE_INTEGER(statusWindowOpacity);
+    DECODE_INTEGER(statusWindowFontSize);
+    DECODE_INTEGER(statusWindowPosition);
+
+    DECODE_INTEGER(preferencesCheckboxFont);
+  }
+
+  return self;
+}
+
+- (void)encodeWithCoder:(NSCoder*)encoder {
+  ENCODE_BOOL(resumeAtLogin);
+  ENCODE_BOOL(checkForUpdates);
+  ENCODE_BOOL(overrideKeyRepeat);
+  ENCODE_BOOL(statusBarEnabled);
+  ENCODE_BOOL(showProfileNameInStatusBar);
+  ENCODE_BOOL(usePreparedSettings);
+
+  ENCODE_OBJECT(profiles);
+  ENCODE_INTEGER(currentProfileIndex);
+
+  ENCODE_BOOL(useStatusWindow);
+  ENCODE_BOOL(showCapsLockStateInStatusWindow);
+  ENCODE_BOOL(showStickyModifiersStateInStatusWindow);
+  ENCODE_BOOL(showPointingButtonLockStateInStatusWindow);
+  ENCODE_INTEGER(statusWindowType);
+  ENCODE_INTEGER(statusWindowTheme);
+  ENCODE_INTEGER(statusWindowOpacity);
+  ENCODE_INTEGER(statusWindowFontSize);
+  ENCODE_INTEGER(statusWindowPosition);
+
+  ENCODE_INTEGER(preferencesCheckboxFont);
+}
+
+- (NSInteger)value:(NSString*)name {
+  if ([name length] == 0) {
+    return 0;
+  }
+
+  ProfileModel* profileModel = [self profile:self.currentProfileIndex];
+  if (!profileModel) {
+    return 0;
+  }
+  return [profileModel.values[name] integerValue];
+}
 
 - (NSInteger)profileMaxAppendIndex {
   NSInteger maxAppendIndex = 0;
