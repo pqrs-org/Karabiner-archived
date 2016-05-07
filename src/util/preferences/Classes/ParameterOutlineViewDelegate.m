@@ -35,7 +35,7 @@
       return result;
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterValueColumn"]) {
-      NSInteger value = [self.sharedPreferencesManager.pm value:tree.node.identifier];
+      NSInteger value = [self.sharedPreferencesManager.pm value:tree.node.identifier defaultValue:tree.node.defaultValue];
       ParameterValueCellView* result = [outlineView makeViewWithIdentifier:@"ParameterValueCellView" owner:self];
       result.textField.stringValue = [NSString stringWithFormat:@"%d", (int)(value)];
       result.stepper.integerValue = value;
