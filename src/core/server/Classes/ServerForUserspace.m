@@ -20,7 +20,6 @@
 @property(weak) IBOutlet AXNotifierManager* axNotifierManager;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
-@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ServerController* serverController;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
@@ -54,20 +53,14 @@
   return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
 }
 
-- (void)loadPreferencesModel:(PreferencesModel*)preferencesModel {
+- (bycopy PreferencesModel*)preferencesModel {
+  PreferencesModel* preferencesModel = [PreferencesModel new];
   [self.preferencesManager loadPreferencesModel:preferencesModel];
+  return preferencesModel;
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
-}
-
-- (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
-  [self.preferencesManager loadAXNotifierPreferencesModel:axNotifierPreferencesModel];
-}
-
-- (void)saveAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel processIdentifier:(int)processIdentifier {
-  [self.preferencesManager saveAXNotifierPreferencesModel:axNotifierPreferencesModel processIdentifier:processIdentifier];
 }
 
 - (void)updateStartAtLogin {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
@@ -14,7 +15,6 @@
         <customObject id="494" customClass="AppDelegate">
             <connections>
                 <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="kvX-lc-3Vc"/>
-                <outlet property="axNotifierPreferencesModel" destination="vSG-pj-zVy" id="UNt-Rq-ddi"/>
                 <outlet property="clientForKernelspace" destination="600" id="621"/>
                 <outlet property="globalDomainKeyRepeatObserver" destination="ByB-cb-Het" id="y2q-FT-Hjk"/>
                 <outlet property="preferencesManager" destination="592" id="Rme-JE-WMZ"/>
@@ -31,10 +31,9 @@
         </customObject>
         <customObject id="CDf-xS-2dG" customClass="AXNotifierManager">
             <connections>
-                <outlet property="axNotifierPreferencesModel" destination="vSG-pj-zVy" id="uz9-KR-5f3"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="XHu-gM-7fD"/>
             </connections>
         </customObject>
-        <customObject id="vSG-pj-zVy" customClass="AXNotifierPreferencesModel"/>
         <customObject id="ByB-cb-Het" customClass="GlobalDomainKeyRepeatObserver">
             <connections>
                 <outlet property="preferencesManager" destination="592" id="B6e-d6-zv4"/>
@@ -76,7 +75,6 @@
         </customObject>
         <customObject id="592" customClass="PreferencesManager">
             <connections>
-                <outlet property="axNotifierPreferencesModel" destination="vSG-pj-zVy" id="Js8-Ni-3OS"/>
                 <outlet property="clientForKernelspace" destination="600" id="540-ED-9Ay"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="reF-fR-9Yq"/>
                 <outlet property="xmlCompiler" destination="591" id="ohe-Ue-0r2"/>
@@ -89,7 +87,6 @@
                 <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="VXf-WB-FAl"/>
                 <outlet property="clientForKernelspace" destination="600" id="UFv-5O-yDR"/>
                 <outlet property="preferencesManager" destination="592" id="z9H-TY-rFE"/>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="oDY-ts-MGJ"/>
                 <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>
                 <outlet property="statusMessageManager" destination="606" id="P7L-QV-UR3"/>
                 <outlet property="updater" destination="588" id="w9f-In-7Jq"/>

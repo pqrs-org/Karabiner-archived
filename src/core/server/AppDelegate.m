@@ -29,7 +29,6 @@
 @interface AppDelegate ()
 
 @property(weak) IBOutlet AXNotifierManager* axNotifierManager;
-@property(weak) IBOutlet AXNotifierPreferencesModel* axNotifierPreferencesModel;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet GlobalDomainKeyRepeatObserver* globalDomainKeyRepeatObserver;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
@@ -293,7 +292,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // ------------------------------------------------------------
   [self.preferencesManager loadPreferencesModel:self.preferencesModel];
-  [self.preferencesManager loadAXNotifierPreferencesModel:self.axNotifierPreferencesModel];
+
   // make default profile if needed.
   if ([self.preferencesModel.profiles count] == 0) {
     [self.preferencesModel addProfile:@"Default Profile"];

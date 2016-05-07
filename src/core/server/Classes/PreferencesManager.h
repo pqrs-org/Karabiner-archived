@@ -3,14 +3,11 @@
 @import Cocoa;
 
 @class PreferencesModel;
-@class AXNotifierPreferencesModel;
 
 @interface PreferencesManager : NSObject
 
 - (void)loadPreferencesModel:(PreferencesModel*)preferencesModel;
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
-- (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel;
-- (void)saveAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel processIdentifier:(int)processIdentifier;
 
 - (void)load;
 

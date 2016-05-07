@@ -5,7 +5,7 @@ static dispatch_queue_t queue_;
 
 @interface AXNotifierManager ()
 
-@property(weak) IBOutlet AXNotifierPreferencesModel* axNotifierPreferencesModel;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 
 @end
 
@@ -52,7 +52,7 @@ static dispatch_queue_t queue_;
 - (void)restartAXNotifier {
   [self terminateAXNotifiers];
 
-  if (self.axNotifierPreferencesModel.useAXNotifier) {
+  if (self.preferencesModel.axNotifier.useAXNotifier) {
     [self launchNewAXNotifier];
   }
 }

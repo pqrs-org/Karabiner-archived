@@ -10,7 +10,6 @@
 
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
-@property(weak) IBOutlet AXNotifierPreferencesModel* axNotifierPreferencesModel;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @property NSMutableDictionary* defaults;
 @property(copy) NSArray* essential_configuration_identifiers;
@@ -71,15 +70,26 @@
   preferencesModel.preferencesCheckboxFont = [[NSUserDefaults standardUserDefaults] integerForKey:kKarabinerPreferencesCheckboxFont];
 
   // ----------------------------------------
+  // profiles
   NSMutableArray* profiles = [NSMutableArray new];
   for (NSDictionary* profile in [[NSUserDefaults standardUserDefaults] arrayForKey:kProfiles]) {
     ProfileModel* profileModel = [ProfileModel new];
     profileModel.name = profile[@"name"];
     profileModel.identifier = profile[@"identify"];
     profileModel.appendIndex = [profile[@"appendIndex"] integerValue];
+    profileModel.values = [[NSUserDefaults standardUserDefaults] dictionaryForKey:profileModel.identifier];
     [profiles addObject:profileModel];
   }
   preferencesModel.profiles = profiles;
+
+  // ----------------------------------------
+  // axNotifier
+  preferencesModel.axNotifier = [AXNotifierPreferencesModel new];
+  preferencesModel.axNotifier.useAXNotifier = [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled];
+  preferencesModel.axNotifier.disableAXNotifierInJavaApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps];
+  preferencesModel.axNotifier.disableAXNotifierInQtApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps];
+  preferencesModel.axNotifier.disableAXNotifierInPreview = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview];
+  preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice];
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
@@ -102,6 +112,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.preferencesCheckboxFont) forKey:kKarabinerPreferencesCheckboxFont];
 
   // ----------------------------------------
+  // profiles
   NSString* oldProfileIdentifier = self.preferencesModel.currentProfileIdentifier;
 
   NSMutableArray* profiles = [NSMutableArray new];
@@ -115,6 +126,14 @@
   [[NSUserDefaults standardUserDefaults] setObject:profiles forKey:kProfiles];
 
   // ----------------------------------------
+  // axNotifier
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.useAXNotifier) forKey:kIsAXNotifierEnabled];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInPreview) forKey:kAXNotifierDisabledInPreview];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice) forKey:kAXNotifierDisabledInMicrosoftOffice];
+
+  // ----------------------------------------
   // refresh local model.
   if (preferencesModel != self.preferencesModel) {
     [self loadPreferencesModel:self.preferencesModel];
@@ -126,30 +145,6 @@
   if (![self.preferencesModel.currentProfileIdentifier isEqualToString:oldProfileIdentifier]) {
     [[NSNotificationCenter defaultCenter] postNotificationName:kProfileChangedNotification object:nil];
   }
-}
-
-- (void)loadAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
-  axNotifierPreferencesModel.useAXNotifier = [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled];
-  axNotifierPreferencesModel.disableAXNotifierInJavaApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps];
-  axNotifierPreferencesModel.disableAXNotifierInQtApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps];
-  axNotifierPreferencesModel.disableAXNotifierInPreview = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview];
-  axNotifierPreferencesModel.disableAXNotifierInMicrosoftOffice = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice];
-}
-
-- (void)saveAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel processIdentifier:(int)processIdentifier {
-  [[NSUserDefaults standardUserDefaults] setObject:@(axNotifierPreferencesModel.useAXNotifier) forKey:kIsAXNotifierEnabled];
-  [[NSUserDefaults standardUserDefaults] setObject:@(axNotifierPreferencesModel.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
-  [[NSUserDefaults standardUserDefaults] setObject:@(axNotifierPreferencesModel.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
-  [[NSUserDefaults standardUserDefaults] setObject:@(axNotifierPreferencesModel.disableAXNotifierInPreview) forKey:kAXNotifierDisabledInPreview];
-  [[NSUserDefaults standardUserDefaults] setObject:@(axNotifierPreferencesModel.disableAXNotifierInMicrosoftOffice) forKey:kAXNotifierDisabledInMicrosoftOffice];
-
-  // ----------------------------------------
-  // refresh local model.
-  if (axNotifierPreferencesModel != self.axNotifierPreferencesModel) {
-    [self loadAXNotifierPreferencesModel:self.axNotifierPreferencesModel];
-  }
-
-  [self postPreferencesChangedNotifications:processIdentifier];
 }
 
 - (void)postPreferencesChangedNotifications:(int)processIdentifier {
