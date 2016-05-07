@@ -2,15 +2,11 @@
 
 @import Cocoa;
 
-@class PreferencesModel;
-@class PreferencesWindowController;
-@class ServerClient;
+@class SharedPreferencesManager;
 
 @interface ParameterDiffCellView : NSTableCellView
 
-@property(weak) PreferencesModel* preferencesModel;
-@property(weak) PreferencesWindowController* preferencesWindowController;
-@property(weak) ServerClient* client;
+@property(weak) SharedPreferencesManager* sharedPreferencesManager;
 @property(copy) NSString* settingIdentifier;
 @property NSInteger defaultValue;
 

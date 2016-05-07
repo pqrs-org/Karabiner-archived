@@ -2,14 +2,14 @@
 #import "ParameterDiffCellView.h"
 #import "ParameterTree.h"
 #import "ParameterValueCellView.h"
+#import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerClient.h"
+#import "SharedPreferencesManager.h"
 
 @interface ParameterOutlineViewDelegate ()
 
-@property(weak) IBOutlet PreferencesModel* preferencesModel;
-@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
-@property(weak) IBOutlet ServerClient* client;
+@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 
 @end
 
@@ -35,18 +35,16 @@
       return result;
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterValueColumn"]) {
-      int value = [self.client.proxy value:tree.node.identifier];
+      NSInteger value = [self.sharedPreferencesManager.pm value:tree.node.identifier];
       ParameterValueCellView* result = [outlineView makeViewWithIdentifier:@"ParameterValueCellView" owner:self];
-      result.textField.stringValue = [NSString stringWithFormat:@"%d", value];
+      result.textField.stringValue = [NSString stringWithFormat:@"%d", (int)(value)];
       result.stepper.integerValue = value;
       result.stepper.minValue = 0;
       result.stepper.maxValue = 1073741824; // 2^30
       result.stepper.increment = tree.node.step;
       result.stepper.autorepeat = YES;
       result.stepper.valueWraps = NO;
-      result.preferencesModel = self.preferencesModel;
-      result.preferencesWindowController = self.preferencesWindowController;
-      result.client = self.client;
+      result.sharedPreferencesManager = self.sharedPreferencesManager;
       result.settingIdentifier = tree.node.identifier;
       return result;
 
@@ -57,9 +55,7 @@
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterDiffColumn"]) {
       ParameterDiffCellView* result = [outlineView makeViewWithIdentifier:@"ParameterDiffCellView" owner:self];
-      result.preferencesModel = self.preferencesModel;
-      result.preferencesWindowController = self.preferencesWindowController;
-      result.client = self.client;
+      result.sharedPreferencesManager = self.sharedPreferencesManager;
       result.settingIdentifier = tree.node.identifier;
       result.defaultValue = tree.node.defaultValue;
       [result setObserver];

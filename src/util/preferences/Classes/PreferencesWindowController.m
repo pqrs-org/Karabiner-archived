@@ -16,6 +16,7 @@
 #import "Relauncher.h"
 #import "ServerClient.h"
 #import "SharedKeys.h"
+#import "SharedPreferencesManager.h"
 #import "SharedUtilities.h"
 
 #include <sys/sysctl.h>
@@ -23,7 +24,6 @@
 
 @interface PreferencesWindowController ()
 
-@property(weak) IBOutlet AXNotifierPreferencesModel* axNotifierPreferencesModel;
 @property(weak) IBOutlet CheckboxOutlineView* checkboxOutlineView;
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
 @property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
@@ -43,11 +43,11 @@
 @property(weak) IBOutlet ParameterOutlineView* parameterOutlineView;
 @property(weak) IBOutlet ParameterOutlineViewDataSource* parameterOutlineViewDataSource;
 @property(weak) IBOutlet ParameterOutlineViewDelegate* parameterOutlineViewDelegate;
-@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ProfileTableView* profileTableView;
 @property(weak) IBOutlet ProfileTableViewDataSource* profileTableViewDataSource;
 @property(weak) IBOutlet ProfileTableViewDelegate* profileTableViewDelegate;
 @property(weak) IBOutlet ServerClient* client;
+@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 @property NSTimer* resizeTimer;
 
 @end
@@ -65,8 +65,7 @@
     if (notification.userInfo &&
         [notification.userInfo[@"processIdentifier"] intValue] != [NSProcessInfo processInfo].processIdentifier) {
       NSLog(@"PreferencesModel is changed in another process.");
-      [self.client.proxy loadPreferencesModel:self.preferencesModel];
-      [self.client.proxy loadAXNotifierPreferencesModel:self.axNotifierPreferencesModel];
+      [self.sharedPreferencesManager load];
 
       [self drawEnabledCount];
       [self refreshKeyRepeatTab];
@@ -235,43 +234,39 @@
 }
 
 /* ---------------------------------------------------------------------- */
-- (void)savePreferencesModel {
-  [self.client.proxy savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
-}
-
 - (IBAction)preferencesChanged:(id)sender {
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager save];
 }
 
 - (IBAction)resumeAtLoginChanged:(id)sender {
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager save];
   [self.client.proxy updateStartAtLogin];
 }
 
 - (IBAction)checkboxFontConfigurationChanged:(id)sender {
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager save];
   [self.checkboxOutlineViewDelegate updateFont];
   [self.checkboxOutlineViewDelegate clearHeightCache];
   [self.checkboxOutlineView reloadData];
 }
 
 - (IBAction)overrideKeyRepeatConfigurationChanged:(id)sender {
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager save];
   [self refreshKeyRepeatTab];
 }
 
 - (IBAction)statusBarConfigurationChanged:(id)sender {
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager save];
   [self.client.proxy updateStatusBar];
 }
 
 - (IBAction)statusWindowConfigurationChanged:(id)sender {
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager save];
   [self.client.proxy updateStatusWindow];
 }
 
 - (IBAction)axNotifierConfigurationChanged:(id)sender {
-  [self.client.proxy saveAXNotifierPreferencesModel:self.axNotifierPreferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+  [self.sharedPreferencesManager save];
   [self.client.proxy restartAXNotifier];
 }
 
@@ -285,7 +280,7 @@
 }
 
 - (IBAction)usePreparedSettingsConfigurationChanged:(id)sender {
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager save];
   [self.client.proxy reloadXML];
 }
 
@@ -331,8 +326,8 @@
 }
 
 - (IBAction)addNewProfile:(id)sender {
-  [self.preferencesModel addProfile:@"New Profile"];
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager.pm addProfile:@"New Profile"];
+  [self.sharedPreferencesManager save];
 
   [self.profileTableView reloadData];
 }
@@ -356,8 +351,8 @@
 - (IBAction)sortProfilesByName:(id)sender {
   [self disableAllProfileCells];
 
-  [self.preferencesModel sortProfilesByName];
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager.pm sortProfilesByName];
+  [self.sharedPreferencesManager save];
 
   [self.profileTableView reloadData];
 }
@@ -365,8 +360,8 @@
 - (IBAction)sortProfilesByCreated:(id)sender {
   [self disableAllProfileCells];
 
-  [self.preferencesModel sortProfilesByAppendIndex];
-  [self savePreferencesModel];
+  [self.sharedPreferencesManager.pm sortProfilesByAppendIndex];
+  [self.sharedPreferencesManager save];
 
   [self.profileTableView reloadData];
 }
@@ -381,7 +376,7 @@
 }
 
 - (void)refreshKeyRepeatTab {
-  BOOL enabled = self.preferencesModel.overrideKeyRepeat;
+  BOOL enabled = self.sharedPreferencesManager.pm.overrideKeyRepeat;
 
   if (enabled) {
     [self.keyRepeatParameters selectTabViewItemAtIndex:1];
@@ -420,7 +415,7 @@
 }
 
 - (IBAction)restartAXNotifier:(id)sender {
-  if (!self.axNotifierPreferencesModel.useAXNotifier) {
+  if (!self.sharedPreferencesManager.pm.axNotifier.useAXNotifier) {
     NSAlert* alert = [NSAlert new];
     [alert setMessageText:@"Karabiner Alert"];
     [alert addButtonWithTitle:@"Close"];

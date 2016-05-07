@@ -1,6 +1,7 @@
 #import "ParameterDiffCellView.h"
 #import "NotificationKeys.h"
-#import "ServerClient.h"
+#import "PreferencesModel.h"
+#import "SharedPreferencesManager.h"
 
 @implementation ParameterDiffCellView
 
@@ -36,7 +37,7 @@
     return;
   }
 
-  NSInteger value = [self.client.proxy value:self.settingIdentifier];
+  NSInteger value = [self.sharedPreferencesManager.pm value:self.settingIdentifier];
   if (value == self.defaultValue) {
     self.textField.stringValue = @"";
   } else {

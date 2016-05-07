@@ -3,11 +3,12 @@
 #import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerClient.h"
+#import "SharedPreferencesManager.h"
 
 @implementation ParameterValueCellView
 
 - (void)updatePreferences {
-  [self.client.proxy setValue:self.stepper.intValue forName:self.settingIdentifier];
+  [self.sharedPreferencesManager setValue:self.stepper.intValue forName:self.settingIdentifier];
   [[NSNotificationCenter defaultCenter] postNotificationName:kParameterValueChangedNotification object:nil];
 }
 

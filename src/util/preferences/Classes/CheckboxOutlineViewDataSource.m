@@ -1,7 +1,9 @@
 #import "CheckboxOutlineViewDataSource.h"
 #import "CheckboxTree.h"
+#import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerClient.h"
+#import "SharedPreferencesManager.h"
 
 @interface FilterCondition : NSObject
 
@@ -51,8 +53,8 @@
 
 @interface CheckboxOutlineViewDataSource ()
 
-@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
 @property(weak) IBOutlet ServerClient* client;
+@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 @property(readwrite) CheckboxTree* dataSource;
 @property(readwrite) CheckboxTree* fullDataSource;
 @property FilterCondition* filterCondition;
@@ -161,7 +163,7 @@
       if ([tree.node.identifier length] == 0) {
         return nil;
       }
-      if (![self.client.proxy value:tree.node.identifier]) {
+      if (![self.sharedPreferencesManager.pm value:tree.node.identifier]) {
         return nil;
       }
     }

@@ -5,6 +5,7 @@
 #import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerClient.h"
+#import "SharedPreferencesManager.h"
 
 #define kLabelLeadingSpaceWithCheckbox 24
 #define kLabelLeadingSpaceWithoutCheckbox 4
@@ -13,10 +14,8 @@
 
 @interface CheckboxOutlineViewDelegate ()
 
-@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
-@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
-@property(weak) IBOutlet ServerClient* client;
+@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 @property NSFont* font;
 @property NSMutableDictionary* heightCache;
 @property dispatch_queue_t textsHeightQueue;
@@ -37,7 +36,7 @@
 }
 
 - (void)updateFont {
-  switch (self.preferencesModel.preferencesCheckboxFont) {
+  switch (self.sharedPreferencesManager.pm.preferencesCheckboxFont) {
   case 0:
     self.font = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
     break;
@@ -56,7 +55,7 @@
   if (!tree || !tree.node) return nil;
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
-  result.client = self.client;
+  result.sharedPreferencesManager = self.sharedPreferencesManager;
   result.settingIdentifier = tree.node.identifier;
 
   result.textField.stringValue = tree.node.name;
@@ -77,7 +76,7 @@
     result.checkbox.imagePosition = NSImageOnly;
     result.checkbox.target = result;
     result.checkbox.action = @selector(valueChanged:);
-    if ([self.client.proxy value:tree.node.identifier]) {
+    if ([self.sharedPreferencesManager.pm value:tree.node.identifier]) {
       result.checkbox.state = NSOnState;
     } else {
       result.checkbox.state = NSOffState;

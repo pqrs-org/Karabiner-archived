@@ -1,7 +1,7 @@
 #import "ProfileCellView.h"
 #import "PreferencesModel.h"
-#import "PreferencesWindowController.h"
 #import "ProfileTableView.h"
+#import "SharedPreferencesManager.h"
 
 @implementation ProfileCellView
 
@@ -17,14 +17,14 @@
       self.textField.stringValue = @"No Name";
     }
 
-    [self.preferencesModel renameProfile:self.profileIndex name:self.textField.stringValue];
-    [self.preferencesWindowController savePreferencesModel];
+    [self.sharedPreferencesManager.pm renameProfile:self.profileIndex name:self.textField.stringValue];
+    [self.sharedPreferencesManager save];
   }
 }
 
 - (IBAction)deleteProfile:(id)sender {
-  [self.preferencesModel deleteProfile:self.profileIndex];
-  [self.preferencesWindowController savePreferencesModel];
+  [self.sharedPreferencesManager.pm deleteProfile:self.profileIndex];
+  [self.sharedPreferencesManager save];
   [self.profileTableView reloadData];
 }
 

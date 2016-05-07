@@ -10,6 +10,5 @@
 
 - (void)setup;
 - (void)show;
-- (void)savePreferencesModel;
 
 @end
