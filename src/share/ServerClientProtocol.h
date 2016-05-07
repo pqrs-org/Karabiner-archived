@@ -44,14 +44,14 @@
 
 - (void)showExampleStatusWindow:(BOOL)visibility;
 
-// for SharedXMLCompilerTree
+// for PreferencesWindow
 - (bycopy CheckboxTree*)checkboxTree;
 - (bycopy ParameterTree*)parameterTree;
 
 // for AXNotifier
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information;
 
-// For EventViewer.
+// For EventViewer
 - (NSArray*)device_information:(NSInteger)type;
 - (NSDictionary*)focused_uielement_information;
 - (NSArray*)workspace_app_ids;
