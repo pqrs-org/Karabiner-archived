@@ -17,5 +17,5 @@ clean:
 xcode:
 	open *.xcodeproj
 
-run:
+run: all
 	open "./build/Release/Karabiner Preferences.app"

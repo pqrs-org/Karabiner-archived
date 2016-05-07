@@ -198,6 +198,7 @@
                                             </segmentedCell>
                                             <connections>
                                                 <action selector="checkboxFontConfigurationChanged:" target="0cj-x4-sGx" id="zvB-A6-5lQ"/>
+                                                <binding destination="DhH-Gv-Z3N" name="selectedIndex" keyPath="self.pm.preferencesCheckboxFont" id="7JF-XT-f6R"/>
                                             </connections>
                                         </segmentedControl>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="uZp-Yu-pRy">
@@ -569,6 +570,7 @@
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="overrideKeyRepeatConfigurationChanged:" target="0cj-x4-sGx" id="kQ7-SF-Vqt"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.overrideKeyRepeat" id="rc8-Jb-oOa"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -848,6 +850,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="QXd-SN-d4Q"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.useStatusWindow" id="c7k-ke-TRA"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="QPe-cq-lVM" userLabel="Show status message">
@@ -858,6 +861,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="9O3-rX-8YM"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.showCapsLockStateInStatusWindow" id="YUp-TX-F8Y"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="bw4-hN-nKP" userLabel="Show status message">
@@ -868,6 +872,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="fzQ-In-O1z"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.showStickyModifiersStateInStatusWindow" id="cat-Yg-hFh"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="UpC-8X-aWi" userLabel="Show status message">
@@ -878,6 +883,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="cGH-bf-rKe"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.showPointingButtonLockStateInStatusWindow" id="h3g-qn-H8j"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -934,6 +940,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </popUpButtonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="wAf-tG-Juz"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="selectedIndex" keyPath="self.pm.statusWindowType" id="FIj-i8-rcX"/>
                                                         </connections>
                                                     </popUpButton>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yH5-xb-kTY">
@@ -971,6 +978,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </popUpButtonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="ZeZ-TJ-oCU"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="selectedIndex" keyPath="self.pm.statusWindowTheme" id="278-h3-pI7"/>
                                                         </connections>
                                                     </popUpButton>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N95-29-qed">
@@ -989,6 +997,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="20" maxValue="100" doubleValue="20" tickMarkPosition="below" numberOfTickMarks="9" allowsTickMarkValuesOnly="YES" sliderType="linear" id="Zm5-lL-avo"/>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="vCI-CD-ZAI"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.statusWindowOpacity" id="S2w-jF-2YN"/>
                                                         </connections>
                                                     </slider>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QAF-wO-f6A">
@@ -1042,6 +1051,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </popUpButtonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="Jny-sd-Rdo"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="selectedIndex" keyPath="self.pm.statusWindowFontSize" id="Lg8-O4-7On"/>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
@@ -1109,6 +1119,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                         </popUpButtonCell>
                                                         <connections>
                                                             <action selector="statusWindowConfigurationChanged:" target="0cj-x4-sGx" id="lmk-7k-Fhg"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="selectedIndex" keyPath="self.pm.statusWindowPosition" id="XNF-X2-Oqe"/>
                                                         </connections>
                                                     </popUpButton>
                                                 </subviews>
@@ -1166,6 +1177,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="statusBarConfigurationChanged:" target="0cj-x4-sGx" id="z0V-ps-aOo"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.showProfileNameInStatusBar" id="FHr-Yf-okJ"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1559,6 +1571,7 @@ The following settings will not work properly if you disable AXNotifier.
                                             </buttonCell>
                                             <connections>
                                                 <action selector="preferencesChanged:" target="0cj-x4-sGx" id="vXD-QQ-Tqq"/>
+                                                <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.checkForUpdates" id="sNC-BN-ebt"/>
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KbP-Qc-Usf">
@@ -1637,6 +1650,7 @@ The following settings will not work properly if you disable AXNotifier.
                                             </buttonCell>
                                             <connections>
                                                 <action selector="usePreparedSettingsConfigurationChanged:" target="0cj-x4-sGx" id="dsR-NM-MS3"/>
+                                                <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.usePreparedSettings" id="nX2-eh-ox5"/>
                                             </connections>
                                         </button>
                                         <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="RWk-QG-rdT">
@@ -1781,6 +1795,7 @@ Debug Mode Guide</string>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="resumeAtLoginChanged:" target="0cj-x4-sGx" id="0zf-qg-bMj"/>
+                                                <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.resumeAtLogin" id="epS-Sz-goc"/>
                                             </connections>
                                         </button>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="89e-HF-F4I">
@@ -1791,6 +1806,7 @@ Debug Mode Guide</string>
                                             </buttonCell>
                                             <connections>
                                                 <action selector="statusBarConfigurationChanged:" target="0cj-x4-sGx" id="pHR-Pg-789"/>
+                                                <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.statusBarEnabled" id="VDm-ID-pVz"/>
                                             </connections>
                                         </button>
                                     </subviews>
