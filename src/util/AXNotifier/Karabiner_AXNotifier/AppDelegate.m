@@ -1,20 +1,20 @@
 #import "AppDelegate.h"
 #import "AXApplicationObserverManager.h"
-#import "MigrationUtilities.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesModel.h"
 #import "Relauncher.h"
 #import "ServerClient.h"
 #import "SharedKeys.h"
+#import "SharedPreferencesManager.h"
 #import "WindowObserver.h"
 
 // ==================================================
 @interface AppDelegate ()
 
 @property(weak) IBOutlet NSWindow* window;
-@property(weak) IBOutlet AXNotifierPreferencesModel* axNotifierPreferencesModel;
 @property(weak) IBOutlet ServerClient* client;
+@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 
 @property BOOL axEnabled;
 @property(copy) NSDictionary* focusedUIElementInformation;
@@ -136,13 +136,6 @@ send:
   setenv([kDescendantProcess UTF8String], "1", 1);
 
   // ------------------------------------------------------------
-  if ([MigrationUtilities migrate:@[ @"org.pqrs.KeyRemap4MacBook.AXNotifier" ]
-           oldApplicationSupports:@[]
-                         oldPaths:@[ @"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_AXNotifier.app" ]]) {
-    [Relauncher relaunch];
-  }
-
-  // ------------------------------------------------------------
   [_window setLevel:NSFloatingWindowLevel];
 
   if (![[NSUserDefaults standardUserDefaults] boolForKey:kDoNotShowAXWarningMessage]) {
@@ -196,9 +189,9 @@ send:
 }
 
 - (void)setupAXApplicationObserverManager {
-  [self.client.proxy loadAXNotifierPreferencesModel:self.axNotifierPreferencesModel];
-  [self.axNotifierPreferencesModel log];
-  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithAXNotifierPreferencesModel:self.axNotifierPreferencesModel];
+  [self.sharedPreferencesManager load];
+  [self.sharedPreferencesManager.pm.axNotifier log];
+  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithAXNotifierPreferencesModel:self.sharedPreferencesManager.pm.axNotifier];
 }
 
 @end
