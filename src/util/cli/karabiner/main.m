@@ -87,8 +87,7 @@
   } else {
     @try {
       self.client = [ServerClient new];
-      self.preferencesModel = [PreferencesModel new];
-      [self.client.proxy loadPreferencesModel:self.preferencesModel];
+      self.preferencesModel = [self.client.proxy preferencesModel];
 
       NSString* command = arguments[1];
 
