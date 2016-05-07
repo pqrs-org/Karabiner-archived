@@ -59,6 +59,12 @@
   return preferencesModel;
 }
 
+- (bycopy AXNotifierPreferencesModel*)axNotifierPreferencesModel {
+  PreferencesModel* preferencesModel = [PreferencesModel new];
+  [self.preferencesManager loadPreferencesModel:preferencesModel];
+  return preferencesModel.axNotifier;
+}
+
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
 }

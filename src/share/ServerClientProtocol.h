@@ -2,6 +2,7 @@
 
 @import Cocoa;
 
+@class AXNotifierPreferencesModel;
 @class CheckboxTree;
 @class ParameterTree;
 @class PreferencesModel;
@@ -11,6 +12,7 @@
 - (NSString*)bundleVersion;
 
 - (bycopy PreferencesModel*)preferencesModel;
+- (bycopy AXNotifierPreferencesModel*)axNotifierPreferencesModel;
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
 - (void)updateStartAtLogin;
 - (void)updateStatusBar;
