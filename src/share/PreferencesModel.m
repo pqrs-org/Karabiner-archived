@@ -134,6 +134,8 @@
     DECODE_INTEGER(statusWindowPosition);
 
     DECODE_INTEGER(preferencesCheckboxFont);
+
+    DECODE_OBJECT(axNotifier);
   }
 
   return self;
@@ -161,6 +163,8 @@
   ENCODE_INTEGER(statusWindowPosition);
 
   ENCODE_INTEGER(preferencesCheckboxFont);
+
+  ENCODE_OBJECT(axNotifier);
 }
 
 - (NSInteger)value:(NSString*)name {

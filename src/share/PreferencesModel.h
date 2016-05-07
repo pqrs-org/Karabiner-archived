@@ -47,6 +47,8 @@
 
 @property NSInteger preferencesCheckboxFont;
 
+@property AXNotifierPreferencesModel* axNotifier;
+
 // readonly method
 @property(copy, readonly) NSString* currentProfileName;
 @property(copy, readonly) NSString* currentProfileIdentifier;
