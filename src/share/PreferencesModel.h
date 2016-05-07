@@ -54,6 +54,7 @@
 @property(copy, readonly) NSString* currentProfileIdentifier;
 
 - (NSInteger)value:(NSString*)name;
+- (NSInteger)value:(NSString*)name defaultValue:(NSInteger)defaultValue;
 
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;

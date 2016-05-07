@@ -168,15 +168,25 @@
 }
 
 - (NSInteger)value:(NSString*)name {
+  return [self value:name defaultValue:0];
+}
+
+- (NSInteger)value:(NSString*)name defaultValue:(NSInteger)defaultValue {
   if ([name length] == 0) {
-    return 0;
+    return defaultValue;
   }
 
   ProfileModel* profileModel = [self profile:self.currentProfileIndex];
   if (!profileModel) {
-    return 0;
+    return defaultValue;
   }
-  return [profileModel.values[name] integerValue];
+
+  NSNumber* value = profileModel.values[name];
+  if (!value) {
+    return defaultValue;
+  }
+
+  return [value integerValue];
 }
 
 - (NSInteger)profileMaxAppendIndex {
