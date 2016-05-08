@@ -225,9 +225,11 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        NSInteger index = [self.preferencesModel profileIndexByName:value];
-        if (index >= 0) {
-          [self.client.proxy configlist_clear_all_values:index];
+        ProfileModel* profileModel = [self.preferencesModel profile:[self.preferencesModel profileIndexByName:value]];
+        if (profileModel) {
+          profileModel.values = @{};
+          [self savePreferencesModel];
+          [self.client.proxy updateKextValues];
           return;
         }
         [self output:[NSString stringWithFormat:@"\"%@\" is not found.\n", value]];
