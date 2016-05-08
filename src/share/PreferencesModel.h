@@ -50,6 +50,7 @@
 @property AXNotifierPreferencesModel* axNotifier;
 
 // readonly method
+@property(readonly) ProfileModel* currentProfile;
 @property(copy, readonly) NSString* currentProfileName;
 @property(copy, readonly) NSString* currentProfileIdentifier;
 

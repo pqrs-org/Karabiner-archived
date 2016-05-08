@@ -23,8 +23,6 @@
 - (void)restartAXNotifier;
 - (void)unsetDebugFlags;
 
-- (NSDictionary*)changed;
-
 - (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
 - (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value;

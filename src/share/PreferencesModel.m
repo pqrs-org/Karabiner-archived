@@ -262,6 +262,10 @@ static NSDictionary* essentialConfigurationDefaults_ = nil;
   return maxAppendIndex;
 }
 
+- (ProfileModel*)currentProfile {
+  return [self profile:self.currentProfileIndex];
+}
+
 - (NSString*)currentProfileName {
   ProfileModel* profileModel = [self profile:self.currentProfileIndex];
   if (profileModel) {
