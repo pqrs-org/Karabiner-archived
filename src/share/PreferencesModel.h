@@ -58,7 +58,7 @@
 - (void)setValue:(NSInteger)value forName:(NSString*)name;
 - (void)clearNotSave;
 @property(copy, readonly) NSArray* essentialConfigurations;
-- (NSInteger)essentialConfigurationIndex:(NSString*)name;
+- (NSInteger)essentialConfigurationIndex:(NSString*)identifier;
 
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;

@@ -99,6 +99,7 @@
 @end
 
 static NSDictionary* essentialConfigurationDefaults_ = nil;
+static NSArray* essentialConfigurationIdentifiers_ = nil;
 
 @implementation PreferencesModel
 
@@ -108,6 +109,9 @@ static NSDictionary* essentialConfigurationDefaults_ = nil;
     essentialConfigurationDefaults_ = @{
 #include "../bridge/output/include.bridge_essential_configuration_default_values.m"
     };
+    essentialConfigurationIdentifiers_ = @[
+#include "../bridge/output/include.bridge_essential_configuration_identifiers.m"
+                                           ];
   });
 }
 
@@ -231,17 +235,17 @@ static NSDictionary* essentialConfigurationDefaults_ = nil;
 - (NSArray*)essentialConfigurations {
   NSMutableArray* essentialConfigurations = [NSMutableArray new];
 
-  for (NSString* name in essentialConfigurationDefaults_) {
-    [essentialConfigurations addObject:@([self value:name])];
+  for (NSString* identifier in essentialConfigurationIdentifiers_) {
+    [essentialConfigurations addObject:@([self value:identifier])];
   }
 
   return essentialConfigurations;
 }
 
-- (NSInteger)essentialConfigurationIndex:(NSString*)name {
+- (NSInteger)essentialConfigurationIndex:(NSString*)identifier {
   NSInteger index = 0;
-  for (NSString* key in essentialConfigurationDefaults_) {
-    if ([key isEqualToString:name]) {
+  for (NSString* key in essentialConfigurationIdentifiers_) {
+    if ([key isEqualToString:identifier]) {
       return index;
     }
     ++index;
