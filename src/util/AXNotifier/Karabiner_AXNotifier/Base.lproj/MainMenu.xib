@@ -15,7 +15,6 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="client" destination="E62-9f-xSp" id="3Fs-w4-Ge3"/>
-                <outlet property="sharedPreferencesManager" destination="mdc-38-l7G" id="4EG-af-8mB"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
