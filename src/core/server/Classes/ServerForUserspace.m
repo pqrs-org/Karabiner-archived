@@ -20,6 +20,7 @@
 @property(weak) IBOutlet AXNotifierManager* axNotifierManager;
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ServerController* serverController;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
@@ -53,20 +54,20 @@
   return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
 }
 
-- (bycopy PreferencesModel*)preferencesModel {
-  PreferencesModel* preferencesModel = [PreferencesModel new];
-  [self.preferencesManager loadPreferencesModel:preferencesModel];
-  return preferencesModel;
-}
-
 - (bycopy AXNotifierPreferencesModel*)axNotifierPreferencesModel {
-  PreferencesModel* preferencesModel = [PreferencesModel new];
-  [self.preferencesManager loadPreferencesModel:preferencesModel];
-  return preferencesModel.axNotifier;
+  return self.preferencesModel.axNotifier;
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
+}
+
+- (void)updateKextValue:(NSString*)name {
+  [self.preferencesManager updateKextValue:name];
+}
+
+- (void)updateKextValues {
+  [self.clientForKernelspace send_config_to_kext];
 }
 
 - (void)updateStartAtLogin {
@@ -146,20 +147,6 @@
   dispatch_async(dispatch_get_main_queue(), ^{
     [self.statusMessageManager showExampleStatusWindow:visibility];
   });
-}
-
-// ----------------------------------------------------------------------
-- (void)setValue:(int)newval forName:(NSString*)name {
-  [self.preferencesManager setValue:newval forName:name];
-}
-
-- (NSDictionary*)changed {
-  return [self.preferencesManager changed];
-}
-
-// ----------------------------------------------------------------------
-- (void)configlist_clear_all_values:(NSInteger)rowIndex {
-  [self.preferencesManager configlist_clear_all_values:rowIndex];
 }
 
 // ----------------------------------------------------------------------
