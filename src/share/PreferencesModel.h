@@ -56,6 +56,8 @@
 - (NSInteger)value:(NSString*)name;
 - (void)setValue:(NSInteger)value forName:(NSString*)name;
 - (void)clearNotSave;
+@property(copy, readonly) NSArray* essentialConfigurations;
+- (BOOL)essentialConfiguration:(NSString*)name;
 
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;

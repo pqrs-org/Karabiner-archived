@@ -98,14 +98,14 @@
 
 @end
 
-static NSDictionary* defaults_ = nil;
+static NSDictionary* essentialConfigurationDefaults_ = nil;
 
 @implementation PreferencesModel
 
 + (void)initialize {
   static dispatch_once_t once;
   dispatch_once(&once, ^{
-    defaults_ = @{
+    essentialConfigurationDefaults_ = @{
 #include "../bridge/output/include.bridge_essential_configuration_default_values.m"
     };
   });
@@ -190,7 +190,7 @@ static NSDictionary* defaults_ = nil;
 
   NSNumber* value = profileModel.values[name];
   if (!value) {
-    return [defaults_[name] integerValue];
+    return [essentialConfigurationDefaults_[name] integerValue];
   }
 
   return [value integerValue];
@@ -207,7 +207,7 @@ static NSDictionary* defaults_ = nil;
   }
 
   NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];
-  if (value == [defaults_[name] integerValue]) {
+  if (value == [essentialConfigurationDefaults_[name] integerValue]) {
     [values removeObjectForKey:name];
   } else {
     values[name] = @(value);
@@ -226,6 +226,20 @@ static NSDictionary* defaults_ = nil;
     }
     profileModel.values = values;
   }
+}
+
+- (NSArray*)essentialConfigurations {
+  NSMutableArray* essentialConfigurations = [NSMutableArray new];
+
+  for (NSString* name in essentialConfigurationDefaults_) {
+    [essentialConfigurations addObject:@([self value:name])];
+  }
+
+  return essentialConfigurations;
+}
+
+- (BOOL)essentialConfiguration:(NSString*)name {
+  return essentialConfigurationDefaults_[name] != nil;
 }
 
 - (NSInteger)profileMaxAppendIndex {
