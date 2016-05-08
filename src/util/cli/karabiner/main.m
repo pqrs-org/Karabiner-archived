@@ -102,10 +102,11 @@
         [self output:[NSString stringWithFormat:@"%d\n", (int)(self.preferencesModel.currentProfileIndex)]];
 
       } else if ([command isEqualToString:@"changed"]) {
-        NSDictionary* dict = [self.client.proxy changed];
-        if (dict) {
-          for (NSString* key in [dict allKeys]) {
-            [self output:[NSString stringWithFormat:@"%@=%@\n", key, dict[key]]];
+        [self.preferencesModel clearNotSave];
+        if (self.preferencesModel.currentProfile) {
+          NSDictionary* values = self.preferencesModel.currentProfile.values;
+          for (NSString* key in [[values allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
+            [self output:[NSString stringWithFormat:@"%@=%@\n", key, values[key]]];
           }
         }
 
@@ -113,14 +114,14 @@
         [self.client.proxy reloadXML];
 
       } else if ([command isEqualToString:@"export"]) {
-        NSDictionary* dict = [self.client.proxy changed];
-        if (dict) {
+        [self.preferencesModel clearNotSave];
+        if (self.preferencesModel.currentProfile) {
+          NSDictionary* values = self.preferencesModel.currentProfile.values;
           [self output:@"#!/bin/sh\n\n"];
           [self output:[NSString stringWithFormat:@"cli=%@\n\n", arguments[0]]];
-
-          for (NSString* key in [[dict allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
+          for (NSString* key in [[values allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
             if (![key hasPrefix:@"notsave."]) {
-              [self output:[NSString stringWithFormat:@"$cli set %@ %@\n", key, dict[key]]];
+              [self output:[NSString stringWithFormat:@"$cli set %@ %@\n", key, values[key]]];
               [self output:@"/bin/echo -n .\n"];
             }
           }
