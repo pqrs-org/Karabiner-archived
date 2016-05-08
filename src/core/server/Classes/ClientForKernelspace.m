@@ -319,7 +319,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
       } else {
-        *p++ = (int)([self.preferencesModel value:name]);
+        *p++ = (int32_t)([self.preferencesModel value:name]);
       }
     }
 
