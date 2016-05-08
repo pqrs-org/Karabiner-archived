@@ -94,7 +94,7 @@
   NSNumber* idx = [sender representedObject];
 
   self.preferencesModel.currentProfileIndex = [idx intValue];
-  [self.preferencesManager savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+  [self.preferencesManager save];
 
   [[NSNotificationCenter defaultCenter] postNotificationName:kProfileChangedNotification object:nil];
 }
