@@ -55,6 +55,7 @@
 
 - (NSInteger)value:(NSString*)name;
 - (void)setValue:(NSInteger)value forName:(NSString*)name;
+- (void)clearNotSave;
 
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;

@@ -216,6 +216,18 @@ static NSDictionary* defaults_ = nil;
   profileModel.values = values;
 }
 
+- (void)clearNotSave {
+  for (ProfileModel* profileModel in self.profiles) {
+    NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];
+    for (NSString* name in [values allKeys]) {
+      if ([name hasPrefix:@"notsave."]) {
+        [values removeObjectForKey:name];
+      }
+    }
+    profileModel.values = values;
+  }
+}
+
 - (NSInteger)profileMaxAppendIndex {
   NSInteger maxAppendIndex = 0;
 
