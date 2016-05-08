@@ -16,14 +16,13 @@
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
 
 - (void)updateKextValue:(NSString*)name;
+- (void)updateKextValues;
 
 - (void)updateStartAtLogin;
 - (void)updateStatusBar;
 - (void)updateStatusWindow;
 - (void)restartAXNotifier;
 - (void)unsetDebugFlags;
-
-- (void)configlist_clear_all_values:(NSInteger)rowIndex;
 
 - (NSString*)symbolMapName:(NSString*)type value:(NSInteger)value;
 
