@@ -105,12 +105,11 @@ static NSDictionary* defaults_ = nil;
 + (void)initialize {
   static dispatch_once_t once;
   dispatch_once(&once, ^{
-      defaults_ = @{
+    defaults_ = @{
 #include "../bridge/output/include.bridge_essential_configuration_default_values.m"
-};
-      });
+    };
+  });
 }
-
 
 #pragma mark - NSObject
 
