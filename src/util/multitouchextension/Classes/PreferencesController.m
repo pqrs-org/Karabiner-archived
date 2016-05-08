@@ -17,26 +17,29 @@
 @implementation PreferencesController
 
 + (void)initialize {
-  NSDictionary* dict = @{
-    @"hideIconInDock" : @NO,
-    @"relaunchAfterWakeUpFromSleep" : @YES,
-    @"relaunchWait" : @"3",
-    @"targetSettingIsEnabled1" : @YES,
-    @"targetSettingIsEnabled2" : @NO,
-    @"targetSettingIsEnabled3" : @NO,
-    @"targetSettingIsEnabled4" : @NO,
-    @"targetSetting1" : @"notsave.thumbsense",
-    @"targetSetting2" : @"notsave.enhanced_copyandpaste",
-    @"targetSetting3" : @"notsave.pointing_relative_to_scroll",
-    @"targetSetting4" : @"notsave.pointing_relative_to_scroll",
-    @"ignoredAreaTop" : @"0",
-    @"ignoredAreaBottom" : @"0",
-    @"ignoredAreaLeft" : @"0",
-    @"ignoredAreaRight" : @"0",
-    kDelayBeforeTurnOff : @"0",
-    kDelayBeforeTurnOn : @"0",
-  };
-  [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    NSDictionary* dict = @{
+      @"hideIconInDock" : @NO,
+      @"relaunchAfterWakeUpFromSleep" : @YES,
+      @"relaunchWait" : @"3",
+      @"targetSettingIsEnabled1" : @YES,
+      @"targetSettingIsEnabled2" : @NO,
+      @"targetSettingIsEnabled3" : @NO,
+      @"targetSettingIsEnabled4" : @NO,
+      @"targetSetting1" : @"notsave.thumbsense",
+      @"targetSetting2" : @"notsave.enhanced_copyandpaste",
+      @"targetSetting3" : @"notsave.pointing_relative_to_scroll",
+      @"targetSetting4" : @"notsave.pointing_relative_to_scroll",
+      @"ignoredAreaTop" : @"0",
+      @"ignoredAreaBottom" : @"0",
+      @"ignoredAreaLeft" : @"0",
+      @"ignoredAreaRight" : @"0",
+      kDelayBeforeTurnOff : @"0",
+      kDelayBeforeTurnOn : @"0",
+    };
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+  });
 }
 
 - (instancetype)init {
