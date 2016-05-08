@@ -3,6 +3,7 @@
 #import "IOHIDPostEventWrapper.h"
 #import "NotificationKeys.h"
 #import "PreferencesManager.h"
+#import "PreferencesModel.h"
 #import "StatusMessageManager.h"
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
@@ -12,6 +13,7 @@
 
 @property(weak) IBOutlet IOHIDPostEventWrapper* iohidPostEventWrapper;
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
+@property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet WorkSpaceData* workSpaceData;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
@@ -42,8 +44,9 @@
       uint32_t configindex = option;
       NSString* name = [self.xmlCompiler identifier:(int)(configindex)];
       if (name) {
-        // Do not call set_config_one here. (== Call setValue with tellToKext:NO.)
-        [self.preferencesManager setValue:enabled forName:name tellToKext:NO];
+        [self.preferencesModel setValue:enabled forName:name];
+        [self.preferencesManager save];
+        // Do not call `updateKextValue` here.
       }
       break;
     }
@@ -108,7 +111,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
     [self send_remapclasses_initialize_vector_to_kext];
-    [self.preferencesManager clearNotSave];
+    [self.preferencesModel clearNotSave];
+    [self.preferencesManager save];
     [self send_config_to_kext];
     [self set_initialized];
   });
@@ -116,7 +120,8 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 
 - (void)observer_ProfileChanged:(NSNotification*)notification {
   dispatch_async(dispatch_get_main_queue(), ^{
-    [self.preferencesManager clearNotSave];
+    [self.preferencesModel clearNotSave];
+    [self.preferencesManager save];
     [self send_config_to_kext];
     [self set_initialized];
   });
@@ -263,7 +268,9 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkKirgudu]) {
       newvalue = 0;
     }
-    [self.preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
+    [self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
+    [self.preferencesManager save];
+    // Do not call `updateKextValue` here.
   }
   {
     // set automatically_enable_pointing_device
@@ -274,11 +281,13 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkSmoothMouse]) {
       newvalue = 0;
     }
-    [self.preferencesManager setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
+    [self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
+    [self.preferencesManager save];
+    // Do not call `updateKextValue` here.
   }
 
   // ------------------------------------------------------------
-  NSArray* essential_config = [self.preferencesManager essential_config];
+  NSArray* essential_config = [self.preferencesModel essentialConfigurations];
   if (!essential_config) {
     NSLog(@"[WARNING] essential_config == nil.");
     return;
@@ -310,7 +319,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
         NSLog(@"[WARNING] %s name == nil. private.xml has error?", __FUNCTION__);
         *p++ = 0;
       } else {
-        *p++ = [self.preferencesManager value:name];
+        *p++ = (int)([self.preferencesModel value:name]);
       }
     }
 
