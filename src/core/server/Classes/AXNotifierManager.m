@@ -12,7 +12,10 @@ static dispatch_queue_t queue_;
 @implementation AXNotifierManager
 
 + (void)initialize {
-  queue_ = dispatch_queue_create("org.pqrs.Karabiner.AXNotifierManager", NULL);
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    queue_ = dispatch_queue_create("org.pqrs.Karabiner.AXNotifierManager", NULL);
+  });
 }
 
 - (NSString*)AXNotifierPath {
