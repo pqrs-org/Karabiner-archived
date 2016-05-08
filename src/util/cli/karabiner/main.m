@@ -187,21 +187,27 @@
         }
         NSString* identifier = arguments[2];
         NSString* value = arguments[3];
-        [self.client.proxy setValue:[value intValue] forName:identifier];
+        [self.preferencesModel setValue:[value integerValue] forName:identifier];
+        [self savePreferencesModel];
+        [self.client.proxy updateKextValue:identifier];
 
       } else if ([command isEqualToString:@"enable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* value = arguments[2];
-        [self.client.proxy setValue:1 forName:value];
+        [self.preferencesModel setValue:1 forName:value];
+        [self savePreferencesModel];
+        [self.client.proxy updateKextValue:value];
 
       } else if ([command isEqualToString:@"disable"]) {
         if ([arguments count] != 3) {
           [self usage];
         }
         NSString* value = arguments[2];
-        [self.client.proxy setValue:0 forName:value];
+        [self.preferencesModel setValue:0 forName:value];
+        [self savePreferencesModel];
+        [self.client.proxy updateKextValue:value];
 
       } else if ([command isEqualToString:@"toggle"]) {
         if ([arguments count] != 3) {
@@ -209,7 +215,9 @@
         }
         NSString* value = arguments[2];
         NSInteger current = [self.preferencesModel value:value];
-        [self.client.proxy setValue:(!current) forName:value];
+        [self.preferencesModel setValue:(!current) forName:value];
+        [self savePreferencesModel];
+        [self.client.proxy updateKextValue:value];
 
       } else if ([command isEqualToString:@"be_careful_to_use__clear_all_values_by_name"]) {
         if ([arguments count] != 3) {
