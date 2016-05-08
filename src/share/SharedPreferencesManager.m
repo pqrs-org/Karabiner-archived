@@ -1,4 +1,5 @@
 #import "SharedPreferencesManager.h"
+#import "PreferencesModel.h"
 #import "ServerClient.h"
 
 @interface SharedPreferencesManager ()
@@ -18,7 +19,9 @@
 }
 
 - (void)setValue:(int)newval forName:(NSString*)name {
-  [self.client.proxy setValue:newval forName:name];
+  [self.pm setValue:newval forName:name];
+  [self save];
+  [self.client.proxy updateKextValue:name];
 }
 
 @end
