@@ -145,11 +145,13 @@
 
 // ------------------------------------------------------------
 - (void)callClearNotSave {
-  if (![self.preferencesManager value:@"general.keep_notsave_at_wake"]) {
+  if (![self.preferencesModel value:@"general.keep_notsave_at_wake"]) {
     // disable notsave.* in order to disable "Browsing Mode" and
     // other modes which overwrite some keys
     // because these modes annoy password input.
-    [self.preferencesManager clearNotSave];
+    [self.preferencesModel clearNotSave];
+    [self.preferencesManager save];
+    [self.clientForKernelspace send_config_to_kext];
   }
 }
 
@@ -292,14 +294,13 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // ------------------------------------------------------------
   [self.preferencesManager loadPreferencesModel:self.preferencesModel];
+  [self.preferencesModel clearNotSave];
 
   // make default profile if needed.
   if ([self.preferencesModel.profiles count] == 0) {
     [self.preferencesModel addProfile:@"Default Profile"];
     [self.preferencesManager savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
   }
-
-  [self.preferencesManager load];
 
   [self.statusMessageManager setupStatusMessageManager];
   [self.statusbar refresh];
