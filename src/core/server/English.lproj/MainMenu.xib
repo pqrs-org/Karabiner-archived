@@ -87,6 +87,7 @@
                 <outlet property="axNotifierManager" destination="CDf-xS-2dG" id="VXf-WB-FAl"/>
                 <outlet property="clientForKernelspace" destination="600" id="UFv-5O-yDR"/>
                 <outlet property="preferencesManager" destination="592" id="z9H-TY-rFE"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="LB7-uk-3Bi"/>
                 <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>
                 <outlet property="statusMessageManager" destination="606" id="P7L-QV-UR3"/>
                 <outlet property="updater" destination="588" id="w9f-In-7Jq"/>
@@ -102,6 +103,7 @@
             <connections>
                 <outlet property="iohidPostEventWrapper" destination="1320" id="je3-UQ-7WI"/>
                 <outlet property="preferencesManager" destination="592" id="Zji-Y5-khd"/>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="wHS-6O-8Wq"/>
                 <outlet property="statusMessageManager" destination="606" id="vUs-1j-Ag0"/>
                 <outlet property="workSpaceData" destination="596" id="ZsW-rS-sMq"/>
                 <outlet property="xmlCompiler" destination="591" id="ihh-EN-MRB"/>
