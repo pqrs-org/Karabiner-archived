@@ -2,7 +2,9 @@
 
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 #import "ServerClient.h"
+#import "SharedPreferencesManager.h"
 #import "StartAtLoginUtilities.h"
 
 @interface PreferencesController ()
@@ -11,6 +13,7 @@
 @property(weak) IBOutlet NSWindow* preferencesWindow;
 @property(weak) IBOutlet ServerClient* client;
 @property(weak) IBOutlet NSButton* startAtLoginCheckbox;
+@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 
 @end
 
@@ -84,9 +87,13 @@
 - (IBAction)set:(id)sender {
   // ------------------------------------------------------------
   // disable old settings
+  [self.sharedPreferencesManager load];
+
   for (NSString* name in self.oldSettings) {
     @try {
-      [[self.client proxy] setValue:0 forName:name];
+      [self.sharedPreferencesManager.pm setValue:0 forName:name];
+      [self.sharedPreferencesManager save];
+      [self.client.proxy updateKextValue:name];
     }
     @catch (NSException* exception) {
       NSLog(@"%@", exception);

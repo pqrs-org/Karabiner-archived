@@ -5,10 +5,12 @@
 #import "MigrationUtilities.h"
 #import "PreferencesController.h"
 #import "PreferencesKeys.h"
+#import "PreferencesModel.h"
 #import "Relauncher.h"
 #import "ServerClient.h"
 #import "SessionObserver.h"
 #import "SharedKeys.h"
+#import "SharedPreferencesManager.h"
 
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
@@ -24,6 +26,7 @@ static NSTimer* reset_timer_;
 @property(weak) IBOutlet PreferencesController* preferences;
 @property(weak) IBOutlet IgnoredAreaView* ignoredAreaView;
 @property(weak) IBOutlet ServerClient* client;
+@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 @property(copy) NSArray* mtdevices;
 @property IONotificationPortRef notifyport;
 @property CFRunLoopSourceRef loopsource;
@@ -95,10 +98,14 @@ void MTDeviceStop(MTDeviceRef, int);
 static AppDelegate* global_self_ = nil;
 static IgnoredAreaView* global_ignoredAreaView_ = nil;
 static ServerClient* global_client_ = nil;
+static SharedPreferencesManager* global_sharedPreferencesManager_ = nil;
 
 - (void)setValueFromTimer:(NSTimer*)timer {
   NSDictionary* dict = [timer userInfo];
-  [[global_client_ proxy] setValue:[dict[@"value"] intValue] forName:dict[@"name"]];
+  [global_sharedPreferencesManager_ load];
+  [global_sharedPreferencesManager_.pm setValue:[dict[@"value"] intValue] forName:dict[@"name"]];
+  [global_sharedPreferencesManager_ save];
+  [self.client.proxy updateKextValue:dict[@"name"]];
 }
 
 static void setPreference(int fingers, int newvalue) {
@@ -106,8 +113,6 @@ static void setPreference(int fingers, int newvalue) {
     NSString* name = [PreferencesController getSettingName:fingers];
     if ([name length] > 0) {
       @try {
-        id client = [global_client_ proxy];
-
         if (global_timer_[fingers - 1]) {
           [global_timer_[fingers - 1] invalidate];
           global_timer_[fingers - 1] = nil;
@@ -121,7 +126,10 @@ static void setPreference(int fingers, int newvalue) {
         }
 
         if (delay == 0) {
-          [client setValue:newvalue forName:name];
+          [global_sharedPreferencesManager_ load];
+          [global_sharedPreferencesManager_.pm setValue:newvalue forName:name];
+          [global_sharedPreferencesManager_ save];
+          [global_client_.proxy updateKextValue:name];
         } else {
           global_timer_[fingers - 1] = [NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
                                                                         target:global_self_
@@ -487,6 +495,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   global_self_ = self;
   global_ignoredAreaView_ = self.ignoredAreaView;
   global_client_ = self.client;
+  global_sharedPreferencesManager_ = self.sharedPreferencesManager;
 
   self.sessionObserver = [[SessionObserver alloc] init:1
       active:^{

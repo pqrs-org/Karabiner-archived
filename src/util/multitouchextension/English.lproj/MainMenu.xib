@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
@@ -100,7 +101,7 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="proportionallyDown" image="app" id="577"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="581">
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="581">
                         <rect key="frame" x="98" y="513" width="292" height="18"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Karabiner multi-touch extension preferences" id="582">
                             <font key="font" metaFont="system" size="14"/>
@@ -801,6 +802,7 @@ when you touch fingers to trackpad.
                 <outlet property="client" destination="535" id="5c7-Tf-G59"/>
                 <outlet property="ignoredAreaView" destination="595" id="785-Yu-v7w"/>
                 <outlet property="preferences" destination="533" id="ZRM-zd-u7p"/>
+                <outlet property="sharedPreferencesManager" destination="WZO-R1-287" id="h1K-lq-ASc"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
@@ -808,10 +810,16 @@ when you touch fingers to trackpad.
             <connections>
                 <outlet property="client" destination="535" id="jkG-1K-QAI"/>
                 <outlet property="preferencesWindow" destination="371" id="yAG-OS-Pk9"/>
+                <outlet property="sharedPreferencesManager" destination="WZO-R1-287" id="R8o-eu-B9X"/>
                 <outlet property="startAtLoginCheckbox" destination="537" id="ykL-VB-wsX"/>
             </connections>
         </customObject>
         <customObject id="535" customClass="ServerClient"/>
+        <customObject id="WZO-R1-287" customClass="SharedPreferencesManager">
+            <connections>
+                <outlet property="client" destination="535" id="WJE-qF-12K"/>
+            </connections>
+        </customObject>
         <userDefaultsController representsSharedInstance="YES" id="687"/>
     </objects>
     <resources>
