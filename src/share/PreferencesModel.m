@@ -238,8 +238,16 @@ static NSDictionary* essentialConfigurationDefaults_ = nil;
   return essentialConfigurations;
 }
 
-- (BOOL)essentialConfiguration:(NSString*)name {
-  return essentialConfigurationDefaults_[name] != nil;
+- (NSInteger)essentialConfigurationIndex:(NSString*)name {
+  NSInteger index = 0;
+  for (NSString* key in essentialConfigurationDefaults_) {
+    if ([key isEqualToString:name]) {
+      return index;
+    }
+    ++index;
+  }
+
+  return -1;
 }
 
 - (NSInteger)profileMaxAppendIndex {
