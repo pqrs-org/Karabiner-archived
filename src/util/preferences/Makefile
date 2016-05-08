@@ -3,6 +3,7 @@ CONFIGURATION = Release
 
 all:
 	$(MAKE) -C ../../../pkginfo
+	$(MAKE) -C ../../bridge/generator/config
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
