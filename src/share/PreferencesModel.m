@@ -98,7 +98,19 @@
 
 @end
 
+static NSDictionary* defaults_ = nil;
+
 @implementation PreferencesModel
+
++ (void)initialize {
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+      defaults_ = @{
+#include "../bridge/output/include.bridge_essential_configuration_default_values.m"
+};
+      });
+}
+
 
 #pragma mark - NSObject
 
@@ -168,32 +180,24 @@
 }
 
 - (NSInteger)value:(NSString*)name {
-  return [self value:name defaultValue:0];
-}
-
-- (NSInteger)value:(NSString*)name defaultValue:(NSInteger)defaultValue {
   if ([name length] == 0) {
-    return defaultValue;
+    return 0;
   }
 
   ProfileModel* profileModel = [self profile:self.currentProfileIndex];
   if (!profileModel) {
-    return defaultValue;
+    return 0;
   }
 
   NSNumber* value = profileModel.values[name];
   if (!value) {
-    return defaultValue;
+    return [defaults_[name] integerValue];
   }
 
   return [value integerValue];
 }
 
 - (void)setValue:(NSInteger)value forName:(NSString*)name {
-  [self setValue:value forName:name defaultValue:0];
-}
-
-- (void)setValue:(NSInteger)value forName:(NSString*)name defaultValue:(NSInteger)defaultValue {
   if ([name length] == 0) {
     return;
   }
@@ -204,7 +208,7 @@
   }
 
   NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];
-  if (value == defaultValue) {
+  if (value == [defaults_[name] integerValue]) {
     [values removeObjectForKey:name];
   } else {
     values[name] = @(value);
