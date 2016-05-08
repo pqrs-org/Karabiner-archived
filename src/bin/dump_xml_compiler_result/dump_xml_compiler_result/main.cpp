@@ -163,6 +163,17 @@ int main(int argc, const char* argv[]) {
                 << ","
                 << std::endl;
     }
+
+  } else if (command == "output_bridge_essential_configuration_identifiers_m") {
+    for (size_t i = 0;; ++i) {
+      auto essential_configuration = xml_compiler.get_essential_configuration(i);
+      if (!essential_configuration) {
+        break;
+      }
+
+      std::cout << "@\"" << essential_configuration->get_raw_identifier() << "\","
+                << std::endl;
+    }
   }
 
   return 0;
