@@ -48,7 +48,10 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 @implementation AXApplicationObserver
 
 + (void)initialize {
-  ignoredApps_ = [NSMutableDictionary new];
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    ignoredApps_ = [NSMutableDictionary new];
+  });
 }
 
 - (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication axNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
