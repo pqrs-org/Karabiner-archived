@@ -4,12 +4,15 @@
 @implementation PreferencesManager
 
 + (void)initialize {
-  NSDictionary* dict = @{
-    kForceStayTop : @NO,
-    kShowInAllSpaces : @NO,
-    kHideIgnorableEvents : @YES,
-  };
-  [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    NSDictionary* dict = @{
+      kForceStayTop : @NO,
+      kShowInAllSpaces : @NO,
+      kHideIgnorableEvents : @YES,
+    };
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+  });
 }
 
 @end
