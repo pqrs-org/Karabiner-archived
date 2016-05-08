@@ -220,6 +220,13 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
   profileModel.values = values;
 }
 
+- (NSInteger)defaultValue:(NSString*)identifier {
+  if ([identifier length] == 0) {
+    return 0;
+  }
+  return [essentialConfigurationDefaults_[identifier] integerValue];
+}
+
 - (void)clearNotSave {
   for (ProfileModel* profileModel in self.profiles) {
     NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];

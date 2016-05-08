@@ -56,6 +56,7 @@
 
 - (NSInteger)value:(NSString*)name;
 - (void)setValue:(NSInteger)value forName:(NSString*)name;
+- (NSInteger)defaultValue:(NSString*)identifier;
 - (void)clearNotSave;
 @property(copy, readonly) NSArray* essentialConfigurations;
 - (NSInteger)essentialConfigurationIndex:(NSString*)identifier;
