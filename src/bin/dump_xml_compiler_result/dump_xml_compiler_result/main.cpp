@@ -151,15 +151,15 @@ int main(int argc, const char* argv[]) {
                 << std::endl;
     }
 
-  } else if (command == "output_bridge_essential_configuration_identifiers_m") {
+  } else if (command == "output_bridge_essential_configuration_default_values_m") {
     for (size_t i = 0;; ++i) {
       auto essential_configuration = xml_compiler.get_essential_configuration(i);
       if (!essential_configuration) {
-        std::cout << "nil" << std::endl;
         break;
       }
 
-      std::cout << "@\"" << essential_configuration->get_raw_identifier() << "\""
+      std::cout << "@\"" << essential_configuration->get_raw_identifier() << "\": "
+                << "@(" << essential_configuration->get_default_value() << ")"
                 << ","
                 << std::endl;
     }

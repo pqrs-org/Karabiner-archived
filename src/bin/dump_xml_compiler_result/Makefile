@@ -61,8 +61,8 @@ output_bridge_essential_configuration_default_values_c:
 	/Applications/Karabiner.app/Contents/Resources \
 	output_bridge_essential_configuration_default_values_c
 
-output_bridge_essential_configuration_identifiers_m:
+output_bridge_essential_configuration_default_values_m:
 	@./build/Release/dump_xml_compiler_result \
 	/Applications/Karabiner.app/Contents/Resources \
 	/Applications/Karabiner.app/Contents/Resources \
-	output_bridge_essential_configuration_identifiers_m
+	output_bridge_essential_configuration_default_values_m

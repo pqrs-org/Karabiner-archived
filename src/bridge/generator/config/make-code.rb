@@ -12,8 +12,8 @@ require "#{File.dirname(__FILE__)}/../lib/converter.rb"
    :parameter => 'output_bridge_essential_configuration_default_values_c',
  },
  {
-   :filename => '../../output/include.bridge_essential_configuration_identifiers.m.tmp',
-   :parameter => 'output_bridge_essential_configuration_identifiers_m',
+   :filename => '../../output/include.bridge_essential_configuration_default_values.m.tmp',
+   :parameter => 'output_bridge_essential_configuration_default_values_m',
  },
 ].each do |info|
   dump_xml_compiler_result = '../../../bin/dump_xml_compiler_result/build/Release/dump_xml_compiler_result'
