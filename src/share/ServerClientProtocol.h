@@ -14,13 +14,14 @@
 - (bycopy PreferencesModel*)preferencesModel;
 - (bycopy AXNotifierPreferencesModel*)axNotifierPreferencesModel;
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
+
+- (void)updateKextValue:(NSString*)name;
+
 - (void)updateStartAtLogin;
 - (void)updateStatusBar;
 - (void)updateStatusWindow;
 - (void)restartAXNotifier;
 - (void)unsetDebugFlags;
-
-- (void)setValue:(int)newval forName:(NSString*)name;
 
 - (NSDictionary*)changed;
 
