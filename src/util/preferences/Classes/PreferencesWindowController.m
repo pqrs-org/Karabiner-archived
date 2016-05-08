@@ -170,17 +170,21 @@
 }
 
 - (NSUInteger)enabledCheckboxCount {
-  return [self enabledCheckboxCount:self.checkboxOutlineViewDataSource.fullDataSource changed:[self.client.proxy changed]];
+  ProfileModel* profileModel = [self.sharedPreferencesManager.pm profile:self.sharedPreferencesManager.pm.currentProfileIndex];
+  NSDictionary* values = profileModel ? profileModel.values : @{};
+
+  return [self enabledCheckboxCount:self.checkboxOutlineViewDataSource.fullDataSource values:values];
 }
 
-- (NSUInteger)enabledCheckboxCount:(CheckboxTree*)tree changed:(NSDictionary*)changed {
+- (NSUInteger)enabledCheckboxCount:(CheckboxTree*)tree values:(NSDictionary*)values {
   int count = 0;
 
   if (tree) {
     if (tree.node) {
       NSString* identifier = tree.node.identifier;
       if ([identifier length] > 0) {
-        if ([changed[identifier] intValue] != 0) {
+        if (! [identifier hasPrefix:@"notsave."] &&
+            [values[identifier] intValue] != 0) {
           ++count;
         }
       }
@@ -188,7 +192,7 @@
 
     if (tree.children) {
       for (CheckboxTree* child in tree.children) {
-        count += [self enabledCheckboxCount:child changed:changed];
+        count += [self enabledCheckboxCount:child values:values];
       }
     }
   }
@@ -405,12 +409,12 @@
 }
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
-  [self.client.proxy setValue:[sender intValue] forName:@"repeat.initial_wait"];
+  [self.sharedPreferencesManager setValue:[sender intValue] forName:@"repeat.initial_wait"];
   [self refreshKeyRepeatTab];
 }
 
 - (IBAction)changeKeyRepeat:(id)sender {
-  [self.client.proxy setValue:[sender intValue] forName:@"repeat.wait"];
+  [self.sharedPreferencesManager setValue:[sender intValue] forName:@"repeat.wait"];
   [self refreshKeyRepeatTab];
 }
 

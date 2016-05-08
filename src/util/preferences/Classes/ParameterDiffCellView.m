@@ -37,7 +37,7 @@
     return;
   }
 
-  NSInteger value = [self.sharedPreferencesManager.pm value:self.settingIdentifier defaultValue:self.defaultValue];
+  NSInteger value = [self.sharedPreferencesManager.pm value:self.settingIdentifier];
   if (value == self.defaultValue) {
     self.textField.stringValue = @"";
   } else {
