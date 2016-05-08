@@ -64,18 +64,22 @@
       self.previousInitialKeyRepeat = currentInitialKeyRepeat;
 
       NSString* name = @"repeat.initial_wait";
-      if ([self.preferencesManager value:name] != currentInitialKeyRepeat) {
+      if ([self.preferencesModel value:name] != currentInitialKeyRepeat) {
         NSLog(@"Set %@ from NSGlobalDomain.InitialKeyRepeat: %d milliseconds", name, currentInitialKeyRepeat);
-        [self.preferencesManager setValue:currentInitialKeyRepeat forName:name];
+        [self.preferencesModel setValue:currentInitialKeyRepeat forName:name];
+        [self.preferencesManager save];
+        [self.preferencesManager updateKextValue:name];
       }
     }
     if (self.previousKeyRepeat != currentKeyRepeat) {
       self.previousKeyRepeat = currentKeyRepeat;
 
       NSString* name = @"repeat.wait";
-      if ([self.preferencesManager value:name] != currentKeyRepeat) {
+      if ([self.preferencesModel value:name] != currentKeyRepeat) {
         NSLog(@"Set %@ from NSGlobalDomain.KeyRepeat: %d milliseconds", name, currentKeyRepeat);
-        [self.preferencesManager setValue:currentKeyRepeat forName:name];
+        [self.preferencesModel setValue:currentKeyRepeat forName:name];
+        [self.preferencesManager save];
+        [self.preferencesManager updateKextValue:name];
       }
     }
   });
@@ -85,7 +89,7 @@
   // If System Preferences has never changed, dictionary[@"InitialKeyRepeat"] is nil.
   // (We can confirm in Guest account.)
   if (!dictionary || !dictionary[@"InitialKeyRepeat"]) {
-    return [self.preferencesManager defaultValue:@"repeat.initial_wait"];
+    return (int)([self.preferencesModel defaultValue:@"repeat.initial_wait"]);
   }
   // The unit of InitialKeyRepeat is 1/60 second.
   return (int)([dictionary[@"InitialKeyRepeat"] floatValue] * 1000 / 60);
@@ -95,7 +99,7 @@
   // If System Preferences has never changed, dictionary[@"KeyRepeat"] is nil.
   // (We can confirm in Guest account.)
   if (!dictionary || !dictionary[@"KeyRepeat"]) {
-    return [self.preferencesManager defaultValue:@"repeat.wait"];
+    return (int)([self.preferencesModel defaultValue:@"repeat.wait"]);
   }
   // The unit of KeyRepeat is 1/60 second.
   return (int)([dictionary[@"KeyRepeat"] floatValue] * 1000 / 60);
