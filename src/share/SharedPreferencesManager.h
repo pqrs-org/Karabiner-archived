@@ -11,7 +11,6 @@
 - (void)load;
 - (void)save;
 
-// TODO remove me.
 - (void)setValue:(int)newval forName:(NSString*)name;
 
 @end

@@ -19,9 +19,10 @@
 }
 
 - (void)setValue:(int)newval forName:(NSString*)name {
-  [self.pm setValue:newval forName:name];
-  [self save];
-  [self.client.proxy updateKextValue:name];
+  if ([self.pm setValue:newval forName:name]) {
+    [self save];
+    [self.client.proxy updateKextValue:name];
+  }
 }
 
 @end

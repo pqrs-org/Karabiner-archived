@@ -91,9 +91,7 @@
 
   for (NSString* name in self.oldSettings) {
     @try {
-      [self.sharedPreferencesManager.pm setValue:0 forName:name];
-      [self.sharedPreferencesManager save];
-      [self.client.proxy updateKextValue:name];
+      [self.sharedPreferencesManager setValue:0 forName:name];
     }
     @catch (NSException* exception) {
       NSLog(@"%@", exception);

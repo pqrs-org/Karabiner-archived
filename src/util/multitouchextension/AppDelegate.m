@@ -103,9 +103,7 @@ static SharedPreferencesManager* global_sharedPreferencesManager_ = nil;
 - (void)setValueFromTimer:(NSTimer*)timer {
   NSDictionary* dict = [timer userInfo];
   [global_sharedPreferencesManager_ load];
-  [global_sharedPreferencesManager_.pm setValue:[dict[@"value"] intValue] forName:dict[@"name"]];
-  [global_sharedPreferencesManager_ save];
-  [self.client.proxy updateKextValue:dict[@"name"]];
+  [global_sharedPreferencesManager_ setValue:[dict[@"value"] intValue] forName:dict[@"name"]];
 }
 
 static void setPreference(int fingers, int newvalue) {
@@ -127,9 +125,7 @@ static void setPreference(int fingers, int newvalue) {
 
         if (delay == 0) {
           [global_sharedPreferencesManager_ load];
-          [global_sharedPreferencesManager_.pm setValue:newvalue forName:name];
-          [global_sharedPreferencesManager_ save];
-          [global_client_.proxy updateKextValue:name];
+          [global_sharedPreferencesManager_ setValue:newvalue forName:name];
         } else {
           global_timer_[fingers - 1] = [NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
                                                                         target:global_self_

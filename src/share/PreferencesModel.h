@@ -55,7 +55,8 @@
 @property(copy, readonly) NSString* currentProfileIdentifier;
 
 - (NSInteger)value:(NSString*)name;
-- (void)setValue:(NSInteger)value forName:(NSString*)name;
+// return YES if the configuration was changed.
+- (BOOL)setValue:(NSInteger)value forName:(NSString*)name;
 - (NSInteger)defaultValue:(NSString*)identifier;
 - (void)clearNotSave;
 @property(copy, readonly) NSArray* essentialConfigurations;

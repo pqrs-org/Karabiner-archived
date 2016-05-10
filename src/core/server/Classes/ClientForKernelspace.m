@@ -44,9 +44,10 @@
       uint32_t configindex = option;
       NSString* name = [self.xmlCompiler identifier:(int)(configindex)];
       if (name) {
-        [self.preferencesModel setValue:enabled forName:name];
-        [self.preferencesManager save];
-        // Do not call `updateKextValue` here.
+        if ([self.preferencesModel setValue:enabled forName:name]) {
+          [self.preferencesManager save];
+          // Do not call `updateKextValue` here.
+        }
       }
       break;
     }
@@ -268,9 +269,10 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkKirgudu]) {
       newvalue = 0;
     }
-    [self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"];
-    [self.preferencesManager save];
-    // Do not call `updateKextValue` here.
+    if ([self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"]) {
+      [self.preferencesManager save];
+      // Do not call `updateKextValue` here.
+    }
   }
   {
     // set automatically_enable_pointing_device
@@ -281,9 +283,10 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkSmoothMouse]) {
       newvalue = 0;
     }
-    [self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"];
-    [self.preferencesManager save];
-    // Do not call `updateKextValue` here.
+    if ([self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"]) {
+      [self.preferencesManager save];
+      // Do not call `updateKextValue` here.
+    }
   }
 
   // ------------------------------------------------------------

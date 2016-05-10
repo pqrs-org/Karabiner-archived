@@ -111,7 +111,7 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
     };
     essentialConfigurationIdentifiers_ = @[
 #include "../bridge/output/include.bridge_essential_configuration_identifiers.m"
-                                           ];
+    ];
   });
 }
 
@@ -200,14 +200,18 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
   return [value integerValue];
 }
 
-- (void)setValue:(NSInteger)value forName:(NSString*)name {
+- (BOOL)setValue:(NSInteger)value forName:(NSString*)name {
   if ([name length] == 0) {
-    return;
+    return NO;
   }
 
   ProfileModel* profileModel = [self profile:self.currentProfileIndex];
   if (!profileModel) {
-    return;
+    return NO;
+  }
+
+  if ([profileModel.values[name] integerValue] == value) {
+    return NO;
   }
 
   NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];
@@ -218,6 +222,8 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
   }
 
   profileModel.values = values;
+
+  return YES;
 }
 
 - (NSInteger)defaultValue:(NSString*)identifier {
