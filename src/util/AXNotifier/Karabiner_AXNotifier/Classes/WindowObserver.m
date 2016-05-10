@@ -262,6 +262,10 @@
       windowLayer == 27) {
     return YES;
   }
+  if ([windowOwnerName isEqualToString:@"Alfred 3"] &&
+      windowLayer == 27) {
+    return YES;
+  }
 
   return NO;
 }
