@@ -4,7 +4,7 @@
 
 @class PreferencesModel;
 
-@interface SharedPreferencesManager : NSObject
+@interface PreferencesClient : NSObject
 
 @property PreferencesModel* pm;
 

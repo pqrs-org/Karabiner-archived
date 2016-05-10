@@ -2,14 +2,14 @@
 #import "ParameterDiffCellView.h"
 #import "ParameterTree.h"
 #import "ParameterValueCellView.h"
+#import "PreferencesClient.h"
 #import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerClient.h"
-#import "SharedPreferencesManager.h"
 
 @interface ParameterOutlineViewDelegate ()
 
-@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
+@property(weak) IBOutlet PreferencesClient* preferencesClient;
 
 @end
 
@@ -35,7 +35,7 @@
       return result;
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterValueColumn"]) {
-      NSInteger value = [self.sharedPreferencesManager.pm value:tree.node.identifier];
+      NSInteger value = [self.preferencesClient.pm value:tree.node.identifier];
       ParameterValueCellView* result = [outlineView makeViewWithIdentifier:@"ParameterValueCellView" owner:self];
       result.textField.stringValue = [NSString stringWithFormat:@"%d", (int)(value)];
       result.stepper.integerValue = value;
@@ -44,7 +44,7 @@
       result.stepper.increment = tree.node.step;
       result.stepper.autorepeat = YES;
       result.stepper.valueWraps = NO;
-      result.sharedPreferencesManager = self.sharedPreferencesManager;
+      result.preferencesClient = self.preferencesClient;
       result.settingIdentifier = tree.node.identifier;
       return result;
 
@@ -55,7 +55,7 @@
 
     } else if ([tableColumn.identifier isEqualToString:@"ParameterDiffColumn"]) {
       ParameterDiffCellView* result = [outlineView makeViewWithIdentifier:@"ParameterDiffCellView" owner:self];
-      result.sharedPreferencesManager = self.sharedPreferencesManager;
+      result.preferencesClient = self.preferencesClient;
       result.settingIdentifier = tree.node.identifier;
       result.defaultValue = tree.node.defaultValue;
       [result setObserver];

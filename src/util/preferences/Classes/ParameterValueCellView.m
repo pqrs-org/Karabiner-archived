@@ -1,14 +1,14 @@
 #import "ParameterValueCellView.h"
 #import "NotificationKeys.h"
+#import "PreferencesClient.h"
 #import "PreferencesModel.h"
 #import "PreferencesWindowController.h"
 #import "ServerClient.h"
-#import "SharedPreferencesManager.h"
 
 @implementation ParameterValueCellView
 
 - (void)updatePreferences {
-  [self.sharedPreferencesManager setValue:self.stepper.intValue forName:self.settingIdentifier];
+  [self.preferencesClient setValue:self.stepper.intValue forName:self.settingIdentifier];
   [[NSNotificationCenter defaultCenter] postNotificationName:kParameterValueChangedNotification object:nil];
 }
 

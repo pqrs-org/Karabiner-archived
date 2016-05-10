@@ -1,14 +1,14 @@
-#import "SharedPreferencesManager.h"
+#import "PreferencesClient.h"
 #import "PreferencesModel.h"
 #import "ServerClient.h"
 
-@interface SharedPreferencesManager ()
+@interface PreferencesClient ()
 
 @property(weak) IBOutlet ServerClient* client;
 
 @end
 
-@implementation SharedPreferencesManager
+@implementation PreferencesClient
 
 - (void)load {
   self.pm = [self.client.proxy preferencesModel];

@@ -802,7 +802,7 @@ when you touch fingers to trackpad.
                 <outlet property="client" destination="535" id="5c7-Tf-G59"/>
                 <outlet property="ignoredAreaView" destination="595" id="785-Yu-v7w"/>
                 <outlet property="preferences" destination="533" id="ZRM-zd-u7p"/>
-                <outlet property="sharedPreferencesManager" destination="WZO-R1-287" id="h1K-lq-ASc"/>
+                <outlet property="preferencesClient" destination="WZO-R1-287" id="h1K-lq-ASc"/>
             </connections>
         </customObject>
         <customObject id="420" customClass="NSFontManager"/>
@@ -810,12 +810,12 @@ when you touch fingers to trackpad.
             <connections>
                 <outlet property="client" destination="535" id="jkG-1K-QAI"/>
                 <outlet property="preferencesWindow" destination="371" id="yAG-OS-Pk9"/>
-                <outlet property="sharedPreferencesManager" destination="WZO-R1-287" id="R8o-eu-B9X"/>
+                <outlet property="preferencesClient" destination="WZO-R1-287" id="R8o-eu-B9X"/>
                 <outlet property="startAtLoginCheckbox" destination="537" id="ykL-VB-wsX"/>
             </connections>
         </customObject>
         <customObject id="535" customClass="ServerClient"/>
-        <customObject id="WZO-R1-287" customClass="SharedPreferencesManager">
+        <customObject id="WZO-R1-287" customClass="PreferencesClient">
             <connections>
                 <outlet property="client" destination="535" id="WJE-qF-12K"/>
             </connections>

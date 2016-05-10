@@ -15,19 +15,19 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="494" customClass="AppDelegate">
             <connections>
+                <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="dDl-bN-yYy"/>
                 <outlet property="preferencesWindowController" destination="0cj-x4-sGx" id="kij-zA-Sn5"/>
-                <outlet property="sharedPreferencesManager" destination="DhH-Gv-Z3N" id="dDl-bN-yYy"/>
             </connections>
         </customObject>
         <customObject id="s5G-mp-Pk1" customClass="CheckboxOutlineViewDataSource">
             <connections>
                 <outlet property="client" destination="2VA-wX-cTn" id="X2i-4k-myv"/>
-                <outlet property="sharedPreferencesManager" destination="DhH-Gv-Z3N" id="2zZ-q4-zAg"/>
+                <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="2zZ-q4-zAg"/>
             </connections>
         </customObject>
         <customObject id="el5-KR-6ra" customClass="CheckboxOutlineViewDelegate">
             <connections>
-                <outlet property="sharedPreferencesManager" destination="DhH-Gv-Z3N" id="ovu-U1-AlM"/>
+                <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="ovu-U1-AlM"/>
                 <outlet property="wrappedTextHeightCalculator" destination="Mda-Gq-eJV" id="e14-Fs-0SC"/>
             </connections>
         </customObject>
@@ -38,7 +38,7 @@
         </customObject>
         <customObject id="0oz-bn-wMs" customClass="ParameterOutlineViewDelegate">
             <connections>
-                <outlet property="sharedPreferencesManager" destination="DhH-Gv-Z3N" id="O9s-iF-Gb0"/>
+                <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="O9s-iF-Gb0"/>
             </connections>
         </customObject>
         <window title="Karabiner Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="tcO-xA-vhE" userLabel="Preferences">
@@ -1935,10 +1935,10 @@ Debug Mode Guide</string>
                 <outlet property="parameterOutlineView" destination="2kM-Hv-31I" id="2eF-fj-OL7"/>
                 <outlet property="parameterOutlineViewDataSource" destination="pJk-4b-3Kl" id="9er-ou-335"/>
                 <outlet property="parameterOutlineViewDelegate" destination="0oz-bn-wMs" id="3id-fd-hE0"/>
+                <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="PG8-Yn-hhU"/>
                 <outlet property="profileTableView" destination="VtD-5e-DMU" id="228-6s-CSu"/>
                 <outlet property="profileTableViewDataSource" destination="15L-X6-1Ch" id="c8R-Op-Lu6"/>
                 <outlet property="profileTableViewDelegate" destination="fDG-95-RE7" id="RNQ-iY-shW"/>
-                <outlet property="sharedPreferencesManager" destination="DhH-Gv-Z3N" id="PG8-Yn-hhU"/>
                 <outlet property="tabView" destination="qNw-ZI-ntf" id="kEb-HT-lQd"/>
                 <outlet property="versionText" destination="nZZ-l6-5mu" id="o2Z-cY-ywc"/>
                 <outlet property="window" destination="tcO-xA-vhE" id="XLY-4e-CCK"/>
@@ -1946,17 +1946,17 @@ Debug Mode Guide</string>
         </customObject>
         <customObject id="15L-X6-1Ch" customClass="ProfileTableViewDataSource">
             <connections>
-                <outlet property="sharedPreferencesManager" destination="DhH-Gv-Z3N" id="eGP-wI-Wj0"/>
+                <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="eGP-wI-Wj0"/>
             </connections>
         </customObject>
         <customObject id="fDG-95-RE7" customClass="ProfileTableViewDelegate">
             <connections>
+                <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="YZS-qB-GYI"/>
                 <outlet property="profileTableView" destination="VtD-5e-DMU" id="2yQ-CF-b3O"/>
-                <outlet property="sharedPreferencesManager" destination="DhH-Gv-Z3N" id="YZS-qB-GYI"/>
             </connections>
         </customObject>
         <customObject id="2VA-wX-cTn" customClass="ServerClient"/>
-        <customObject id="DhH-Gv-Z3N" customClass="SharedPreferencesManager">
+        <customObject id="DhH-Gv-Z3N" customClass="PreferencesClient">
             <connections>
                 <outlet property="client" destination="2VA-wX-cTn" id="1O9-6Z-690"/>
             </connections>

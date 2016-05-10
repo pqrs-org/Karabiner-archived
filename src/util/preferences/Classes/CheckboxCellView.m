@@ -1,7 +1,7 @@
 #import "CheckboxCellView.h"
 #import "CheckboxBackgroundView.h"
+#import "PreferencesClient.h"
 #import "ServerClient.h"
-#import "SharedPreferencesManager.h"
 
 @implementation CheckboxCellView
 
@@ -58,7 +58,7 @@
   if (self.checkbox) {
     int value = (self.checkbox.state == NSOnState);
 
-    [self.sharedPreferencesManager setValue:value forName:self.settingIdentifier];
+    [self.preferencesClient setValue:value forName:self.settingIdentifier];
   }
 }
 

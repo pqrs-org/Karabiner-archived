@@ -1,17 +1,17 @@
 #import "ProfileTableViewDataSource.h"
+#import "PreferencesClient.h"
 #import "PreferencesModel.h"
-#import "SharedPreferencesManager.h"
 
 @interface ProfileTableViewDataSource ()
 
-@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
+@property(weak) IBOutlet PreferencesClient* preferencesClient;
 
 @end
 
 @implementation ProfileTableViewDataSource
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView*)aTableView {
-  return [self.sharedPreferencesManager.pm.profiles count];
+  return [self.preferencesClient.pm.profiles count];
 }
 
 @end

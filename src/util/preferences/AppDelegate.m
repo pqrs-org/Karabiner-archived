@@ -1,18 +1,18 @@
 #import "AppDelegate.h"
+#import "PreferencesClient.h"
 #import "PreferencesWindowController.h"
-#import "SharedPreferencesManager.h"
 
 @interface AppDelegate ()
 
+@property(weak) IBOutlet PreferencesClient* preferencesClient;
 @property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
-@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
 
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
-  [self.sharedPreferencesManager load];
+  [self.preferencesClient load];
 
   [self.preferencesWindowController setup];
 }

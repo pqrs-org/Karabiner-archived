@@ -2,12 +2,12 @@
 
 @import Cocoa;
 
-@class SharedPreferencesManager;
+@class PreferencesClient;
 
 @interface ParameterValueCellView : NSTableCellView
 
 @property(weak) IBOutlet NSStepper* stepper;
-@property(weak) SharedPreferencesManager* sharedPreferencesManager;
+@property(weak) PreferencesClient* preferencesClient;
 @property(copy) NSString* settingIdentifier;
 
 @end

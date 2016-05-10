@@ -1,19 +1,19 @@
 // -*- Mode: objc -*-
 
 #import "PreferencesController.h"
+#import "PreferencesClient.h"
 #import "PreferencesKeys.h"
 #import "PreferencesModel.h"
 #import "ServerClient.h"
-#import "SharedPreferencesManager.h"
 #import "StartAtLoginUtilities.h"
 
 @interface PreferencesController ()
 
 @property NSMutableArray* oldSettings;
-@property(weak) IBOutlet NSWindow* preferencesWindow;
-@property(weak) IBOutlet ServerClient* client;
 @property(weak) IBOutlet NSButton* startAtLoginCheckbox;
-@property(weak) IBOutlet SharedPreferencesManager* sharedPreferencesManager;
+@property(weak) IBOutlet NSWindow* preferencesWindow;
+@property(weak) IBOutlet PreferencesClient* preferencesClient;
+@property(weak) IBOutlet ServerClient* client;
 
 @end
 
@@ -87,11 +87,11 @@
 - (IBAction)set:(id)sender {
   // ------------------------------------------------------------
   // disable old settings
-  [self.sharedPreferencesManager load];
+  [self.preferencesClient load];
 
   for (NSString* name in self.oldSettings) {
     @try {
-      [self.sharedPreferencesManager setValue:0 forName:name];
+      [self.preferencesClient setValue:0 forName:name];
     }
     @catch (NSException* exception) {
       NSLog(@"%@", exception);

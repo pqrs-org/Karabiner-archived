@@ -20,7 +20,7 @@
 		349DCA291956B4DA00EC272A /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 349DCA281956B4DA00EC272A /* Relauncher.m */; };
 		34D94446193217400062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94445193217400062E422 /* StartAtLoginUtilities.m */; };
 		34FEC5141CDFB233001D882C /* PreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FEC5131CDFB233001D882C /* PreferencesModel.m */; };
-		34FEC5171CDFB336001D882C /* SharedPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FEC5161CDFB336001D882C /* SharedPreferencesManager.m */; };
+		34FEC5171CDFB336001D882C /* PreferencesClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FEC5161CDFB336001D882C /* PreferencesClient.m */; };
 		34FF3D881AFF88490031125C /* SessionObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FF3D871AFF88490031125C /* SessionObserver.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -60,8 +60,8 @@
 		34D94445193217400062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
 		34FEC5121CDFB233001D882C /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../share/PreferencesModel.h; sourceTree = "<group>"; };
 		34FEC5131CDFB233001D882C /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../share/PreferencesModel.m; sourceTree = "<group>"; };
-		34FEC5151CDFB336001D882C /* SharedPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedPreferencesManager.h; path = ../../share/SharedPreferencesManager.h; sourceTree = "<group>"; };
-		34FEC5161CDFB336001D882C /* SharedPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SharedPreferencesManager.m; path = ../../share/SharedPreferencesManager.m; sourceTree = "<group>"; };
+		34FEC5151CDFB336001D882C /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = ../../share/PreferencesClient.h; sourceTree = "<group>"; };
+		34FEC5161CDFB336001D882C /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = ../../share/PreferencesClient.m; sourceTree = "<group>"; };
 		34FF3D861AFF88490031125C /* SessionObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionObserver.h; path = ../../share/SessionObserver.h; sourceTree = "<group>"; };
 		34FF3D871AFF88490031125C /* SessionObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionObserver.m; path = ../../share/SessionObserver.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,14 +177,14 @@
 			children = (
 				3477DDA1194B046C00E46EDC /* MigrationUtilities.h */,
 				3477DDA2194B046C00E46EDC /* MigrationUtilities.m */,
+				34FEC5151CDFB336001D882C /* PreferencesClient.h */,
+				34FEC5161CDFB336001D882C /* PreferencesClient.m */,
 				34FEC5121CDFB233001D882C /* PreferencesModel.h */,
 				34FEC5131CDFB233001D882C /* PreferencesModel.m */,
 				349DCA271956B4DA00EC272A /* Relauncher.h */,
 				349DCA281956B4DA00EC272A /* Relauncher.m */,
 				34FF3D861AFF88490031125C /* SessionObserver.h */,
 				34FF3D871AFF88490031125C /* SessionObserver.m */,
-				34FEC5151CDFB336001D882C /* SharedPreferencesManager.h */,
-				34FEC5161CDFB336001D882C /* SharedPreferencesManager.m */,
 				34D94444193217400062E422 /* StartAtLoginUtilities.h */,
 				34D94445193217400062E422 /* StartAtLoginUtilities.m */,
 			);
@@ -262,7 +262,7 @@
 				349AD35113098DD400474EFD /* ServerClient.m in Sources */,
 				34FEC5141CDFB233001D882C /* PreferencesModel.m in Sources */,
 				343CFC87130A8C7C00BA28B9 /* PreferencesController.m in Sources */,
-				34FEC5171CDFB336001D882C /* SharedPreferencesManager.m in Sources */,
+				34FEC5171CDFB336001D882C /* PreferencesClient.m in Sources */,
 				34FF3D881AFF88490031125C /* SessionObserver.m in Sources */,
 				3417234116481E9A004A996E /* IgnoredAreaView.m in Sources */,
 				349DCA291956B4DA00EC272A /* Relauncher.m in Sources */,

@@ -3,14 +3,14 @@
 @import Cocoa;
 
 @class CheckboxBackgroundView;
-@class SharedPreferencesManager;
+@class PreferencesClient;
 
 @interface CheckboxCellView : NSTableCellView
 
 @property(weak) IBOutlet NSLayoutConstraint* labelLeadingSpace;
 @property(weak) IBOutlet NSLayoutConstraint* labelTopSpace;
 @property(weak) IBOutlet NSLayoutConstraint* labelBottomSpace;
-@property(weak) SharedPreferencesManager* sharedPreferencesManager;
+@property(weak) PreferencesClient* preferencesClient;
 @property CheckboxBackgroundView* backgroundView;
 @property NSButton* checkbox;
 @property(copy) NSString* settingIdentifier;
