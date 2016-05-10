@@ -1,5 +1,8 @@
 # Since Version 10.18.0
 
+* Incompatibility changes:
+  * The multi-touch extension default configuration has been changed. <br />
+    Please enable ThumbSense setting manually if you want to use it.
 * New functions and improvements:
   * The device disconnect handling has been improved.
   * Updates for people who add new settings by oneself:
