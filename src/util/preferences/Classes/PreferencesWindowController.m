@@ -183,7 +183,7 @@
     if (tree.node) {
       NSString* identifier = tree.node.identifier;
       if ([identifier length] > 0) {
-        if (! [identifier hasPrefix:@"notsave."] &&
+        if (![identifier hasPrefix:@"notsave."] &&
             [values[identifier] intValue] != 0) {
           ++count;
         }
