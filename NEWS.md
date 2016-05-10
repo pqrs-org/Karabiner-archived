@@ -2,7 +2,7 @@
 
 * Incompatibility changes:
   * The multi-touch extension default configuration has been changed. <br />
-    Please enable ThumbSense setting manually if you want to use it.
+    If you are using ThumbSense, please enable ThumbSense setting manually in multi-touch extension preferences.
 * New functions and improvements:
   * The device disconnect handling has been improved.
   * Updates for people who add new settings by oneself:
