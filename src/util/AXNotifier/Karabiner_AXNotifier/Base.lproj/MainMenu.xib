@@ -19,11 +19,6 @@
             </connections>
         </customObject>
         <customObject id="E62-9f-xSp" customClass="ServerClient"/>
-        <customObject id="mdc-38-l7G" customClass="SharedPreferencesManager">
-            <connections>
-                <outlet property="client" destination="E62-9f-xSp" id="Z6h-V9-X6H"/>
-            </connections>
-        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="Karabiner_AXNotifier" id="1Xt-HY-uBw">
