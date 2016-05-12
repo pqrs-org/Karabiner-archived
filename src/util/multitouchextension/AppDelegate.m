@@ -11,6 +11,7 @@
 #import "ServerClient.h"
 #import "SessionObserver.h"
 #import "SharedKeys.h"
+#import "weakify.h"
 
 enum { MAX_FINGERS = 4 };
 static int current_status_[MAX_FINGERS];
@@ -151,7 +152,12 @@ static void setPreference(int fingers, int newvalue) {
 }
 
 - (void)resetTimerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     // ------------------------------------------------------------
     // If multi touch devices are touched at launch,
     // the first multi touch callback is called with invalid `device` arg.
@@ -429,7 +435,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void)observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     NSLog(@"observer_NSWorkspaceDidWakeNotification");
 
     // sleep until devices are settled.
@@ -466,7 +477,12 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ----------------------------------------
 - (void)distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
     [NSApp terminate:self];
   });

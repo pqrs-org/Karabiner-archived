@@ -46,6 +46,7 @@
 		343CFC85130A8C7C00BA28B9 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesController.h; path = Classes/PreferencesController.h; sourceTree = "<group>"; };
 		343CFC86130A8C7C00BA28B9 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesController.m; path = Classes/PreferencesController.m; sourceTree = "<group>"; };
 		343EE7A013098F2E00953F8F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		346971B11CE47D20004034E1 /* weakify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = weakify.h; path = ../../share/weakify.h; sourceTree = "<group>"; };
 		3477DDA1194B046C00E46EDC /* MigrationUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MigrationUtilities.h; path = ../../share/MigrationUtilities.h; sourceTree = "<group>"; };
 		3477DDA2194B046C00E46EDC /* MigrationUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MigrationUtilities.m; path = ../../share/MigrationUtilities.m; sourceTree = "<group>"; };
 		3487280A180016C40061399A /* PreferencesKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesKeys.h; path = Classes/PreferencesKeys.h; sourceTree = "<group>"; };
@@ -187,6 +188,7 @@
 				34FF3D871AFF88490031125C /* SessionObserver.m */,
 				34D94444193217400062E422 /* StartAtLoginUtilities.h */,
 				34D94445193217400062E422 /* StartAtLoginUtilities.m */,
+				346971B11CE47D20004034E1 /* weakify.h */,
 			);
 			name = share;
 			sourceTree = "<group>";
