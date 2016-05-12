@@ -1,6 +1,7 @@
 #import "AXApplicationObserverManager.h"
 #import "AXApplicationObserver.h"
 #import "PreferencesModel.h"
+#import "weakify.h"
 
 /*
  * Notification and Information
@@ -104,7 +105,12 @@
 @implementation AXApplicationObserverManager
 
 - (void)systemApplicationObserversRefreshTimerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       for (NSString* bundleIdentifier in @[ @"com.apple.systemuiserver",
                                             @"com.apple.notificationcenterui" ]) {
@@ -138,7 +144,12 @@
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       if (!self.runningApplicationForAXApplicationObserver) {
         self.retryCounter = 0;
@@ -176,7 +187,12 @@
 }
 
 - (void)observer_NSWorkspaceDidActivateApplicationNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       self.observer = nil;
 

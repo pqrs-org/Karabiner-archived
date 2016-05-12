@@ -7,6 +7,7 @@
 #import "ServerClient.h"
 #import "SharedKeys.h"
 #import "WindowObserver.h"
+#import "weakify.h"
 
 // ==================================================
 @interface AppDelegate ()
@@ -60,7 +61,12 @@ send:
 }
 
 - (void)distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
       [NSApp terminate:self];
@@ -69,7 +75,12 @@ send:
 }
 
 - (void)observer_kFocusedUIElementChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
       // systemuiserver is handled by WindowObserver. (== observer_kWindowVisibilityChanged)
@@ -88,7 +99,12 @@ send:
 }
 
 - (void)observer_kWindowVisibilityChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       NSDictionary* d = [notification userInfo];
       if ([d[@"visibility"] isEqualToNumber:@YES]) {
@@ -106,7 +122,12 @@ send:
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       if (AXIsProcessTrusted()) {
         if (![[NSApplication sharedApplication] isHidden]) {

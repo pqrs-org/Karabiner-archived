@@ -1,5 +1,6 @@
 #import "WindowObserver.h"
 #import "NotificationKeys.h"
+#import "weakify.h"
 
 // We have to observe systemuiserver because of OS X issue.
 // OS X sends NSWorkspaceDidActivateApplicationNotification when systemuiserver is activated.
@@ -49,7 +50,12 @@
 @implementation WindowObserver : NSObject
 
 - (void)observer_kFocusedUIElementChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     // For SystemUIServer
     [self refreshWindowIDs];
     [self checkWindows];
@@ -282,7 +288,12 @@
 }
 
 - (void)refreshWindowIDsTimerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       [self refreshWindowIDs];
     }
@@ -349,7 +360,12 @@
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       [self checkWindows];
     }
