@@ -23,6 +23,7 @@
 #import "Updater.h"
 #import "WorkSpaceData.h"
 #import "XMLCompiler.h"
+#import "weakify.h"
 
 #include <stdlib.h>
 
@@ -97,7 +98,12 @@
 }
 
 - (void)distributedObserver_kTISNotifySelectedKeyboardInputSourceChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     InputSource* inputSource = [WorkSpaceData getCurrentInputSource];
     if (!inputSource) {
       self.workspaceInputSourceIds = nil;
@@ -127,7 +133,12 @@
 }
 
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     // If <appdef> or <inputsourcedef> is updated,
     // the following values might be changed.
     // Therefore, we need to resend values to kext.
@@ -156,14 +167,24 @@
 }
 
 - (void)observer_NSWorkspaceDidWakeNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     NSLog(@"observer_NSWorkspaceDidWakeNotification");
     [self callClearNotSave];
   });
 }
 
 - (void)observer_NSWorkspaceScreensDidWakeNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     NSLog(@"observer_NSWorkspaceScreensDidWakeNotification");
     [self callClearNotSave];
   });
@@ -191,14 +212,19 @@
 
 // ------------------------------------------------------------
 static void observer_IONotification(void* refcon, io_iterator_t iterator) {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    NSLog(@"observer_IONotification");
+  AppDelegate* self = (__bridge AppDelegate*)(refcon);
+  if (!self) {
+    NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
+    return;
+  }
 
-    AppDelegate* self = (__bridge AppDelegate*)(refcon);
-    if (!self) {
-      NSLog(@"[ERROR] observer_IONotification refcon == nil\n");
-      return;
-    }
+  @weakify(self);
+
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    NSLog(@"observer_IONotification");
 
     for (;;) {
       io_object_t obj = IOIteratorNext(iterator);
@@ -306,13 +332,20 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self.statusbar refresh];
   [self.xmlCompiler reload];
 
+  @weakify(self);
   self.sessionObserver = [[SessionObserver alloc] init:1
       active:^{
+        @strongify(self);
+        if (!self) return;
+
         [self.statusMessageManager resetStatusMessage];
         [self registerIONotification];
         [self registerWakeNotification];
       }
       inactive:^{
+        @strongify(self);
+        if (!self) return;
+
         [self.statusMessageManager resetStatusMessage];
         [self unregisterIONotification];
         [self unregisterWakeNotification];

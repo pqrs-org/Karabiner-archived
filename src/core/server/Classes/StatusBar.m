@@ -5,6 +5,7 @@
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "PreferencesModel.h"
+#import "weakify.h"
 
 @interface StatusBar ()
 
@@ -18,13 +19,23 @@
 @implementation StatusBar
 
 - (void)observer_PreferencesChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self refresh];
   });
 }
 
 - (void)observer_StatusBarConfigurationChangedNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self refresh];
   });
 }

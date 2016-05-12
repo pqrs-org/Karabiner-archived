@@ -140,6 +140,7 @@
 		34738784192589CC00F605BD /* windownamedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = windownamedef.xml; path = Resources/windownamedef.xml; sourceTree = "<group>"; };
 		347828F513EE5F3400D50AB1 /* karabiner_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = karabiner_pub.pem; path = Resources/karabiner_pub.pem; sourceTree = "<group>"; };
 		3478EF8816C8C34F00AD2986 /* vkopenurldef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = vkopenurldef.xml; path = Resources/vkopenurldef.xml; sourceTree = "<group>"; };
+		347C65121CE436C30074DD23 /* weakify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = weakify.h; path = ../../share/weakify.h; sourceTree = "<group>"; };
 		347FC1601C89D4D6001E6953 /* ServerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerController.h; path = Classes/ServerController.h; sourceTree = "<group>"; };
 		347FC1611C89D4D6001E6953 /* ServerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerController.m; path = Classes/ServerController.m; sourceTree = "<group>"; };
 		3481FAA21ACC4B020063828A /* StatusMessageNanoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = StatusMessageNanoWindow.xib; path = Resources/StatusMessageNanoWindow.xib; sourceTree = "<group>"; };
@@ -398,6 +399,7 @@
 				343481631CC93EF300ECB9B3 /* SharedUtilities.m */,
 				34D94447193217A80062E422 /* StartAtLoginUtilities.h */,
 				34D94448193217A80062E422 /* StartAtLoginUtilities.m */,
+				347C65121CE436C30074DD23 /* weakify.h */,
 			);
 			name = share;
 			sourceTree = "<group>";

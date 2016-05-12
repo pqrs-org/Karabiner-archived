@@ -13,6 +13,7 @@
 #import "StatusMessageManager.h"
 #import "Updater.h"
 #import "XMLCompiler.h"
+#import "weakify.h"
 
 @interface ServerForUserspace ()
 
@@ -91,7 +92,12 @@
 }
 
 - (void)terminateServerProcess {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self.serverController terminateServerProcess];
   });
 }
@@ -107,13 +113,23 @@
 }
 
 - (void)checkForUpdatesStableOnly {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self.updater checkForUpdatesStableOnly];
   });
 }
 
 - (void)checkForUpdatesWithBetaVersion {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self.updater checkForUpdatesWithBetaVersion];
   });
 }
@@ -144,7 +160,12 @@
 
 // ----------------------------------------------------------------------
 - (void)showExampleStatusWindow:(BOOL)visibility {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self.statusMessageManager showExampleStatusWindow:visibility];
   });
 }

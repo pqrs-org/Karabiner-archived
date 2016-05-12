@@ -3,6 +3,7 @@
 #import "PreferencesKeys.h"
 #import "PreferencesManager.h"
 #import "PreferencesModel.h"
+#import "weakify.h"
 
 @interface GlobalDomainKeyRepeatObserver ()
 
@@ -17,7 +18,12 @@
 @implementation GlobalDomainKeyRepeatObserver
 
 - (void)observer_PreferencesChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     self.previousInitialKeyRepeat = -1;
     self.previousKeyRepeat = -1;
   });
@@ -49,7 +55,12 @@
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     if (self.preferencesModel.overrideKeyRepeat) {
       self.previousInitialKeyRepeat = -1;
       self.previousKeyRepeat = -1;

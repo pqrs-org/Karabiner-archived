@@ -8,6 +8,7 @@
 #import "UserClient_userspace.h"
 #import "WorkSpaceData.h"
 #import "XMLCompiler.h"
+#import "weakify.h"
 
 @interface ClientForKernelspace ()
 
@@ -28,7 +29,12 @@
 @implementation ClientForKernelspace
 
 - (void)callback_NotificationFromKext:(uint32_t)type option:(uint32_t)option {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     switch (type) {
     case BRIDGE_USERCLIENT_NOTIFICATION_TYPE_CONFIG_ENABLED_UPDATED: {
       uint32_t enabled = 0;
@@ -110,7 +116,12 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 }
 
 - (void)observer_ConfigXMLReloaded:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self send_remapclasses_initialize_vector_to_kext];
     [self.preferencesModel clearNotSave];
     [self.preferencesManager save];
@@ -120,7 +131,12 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 }
 
 - (void)observer_ProfileChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self.preferencesModel clearNotSave];
     [self.preferencesManager save];
     [self send_config_to_kext];
@@ -183,7 +199,12 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       if (![timer isValid]) {
         // disconnect_from_kext is already called.
