@@ -9,6 +9,7 @@
 #import "Relauncher.h"
 #import "ServerClient.h"
 #import "SharedKeys.h"
+#import "weakify.h"
 
 @interface AppDelegate ()
 
@@ -103,7 +104,12 @@
 
 // ------------------------------------------------------------
 - (void)distributedObserver_kKarabinerServerDidLaunchNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [NSTask launchedTaskWithLaunchPath:[[NSBundle mainBundle] executablePath] arguments:@[]];
     [NSApp terminate:self];
   });
@@ -111,7 +117,12 @@
 
 // ------------------------------------------------------------
 - (void)timerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self addToAppQueue];
     [self updateOtherInformationStore];
   });
