@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import "weakify.h"
 
 @interface AppDelegate ()
 
@@ -11,7 +12,12 @@
 @implementation AppDelegate
 
 - (void)timerFireMethod:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     @synchronized(self) {
       [self.window2 setTitle:[NSString stringWithFormat:@"window2 %@", [NSDate date]]];
     }

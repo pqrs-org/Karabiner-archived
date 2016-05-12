@@ -17,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		347C65161CE4774B0074DD23 /* weakify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = weakify.h; path = ../../../share/weakify.h; sourceTree = "<group>"; };
 		34D2D867195FE16600E1CBE9 /* WindowChangedNotificationTester.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindowChangedNotificationTester.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D2D86A195FE16600E1CBE9 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		34D2D86D195FE16600E1CBE9 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -45,6 +46,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		347C65151CE477420074DD23 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				347C65161CE4774B0074DD23 /* weakify.h */,
+			);
+			name = share;
+			sourceTree = "<group>";
+		};
 		34D2D85E195FE16500E1CBE9 = {
 			isa = PBXGroup;
 			children = (
@@ -86,8 +95,9 @@
 			children = (
 				34D2D87C195FE16600E1CBE9 /* AppDelegate.h */,
 				34D2D87D195FE16600E1CBE9 /* AppDelegate.m */,
-				34D2D87F195FE16600E1CBE9 /* MainMenu.xib */,
 				34D2D882195FE16600E1CBE9 /* Images.xcassets */,
+				34D2D87F195FE16600E1CBE9 /* MainMenu.xib */,
+				347C65151CE477420074DD23 /* share */,
 				34D2D871195FE16600E1CBE9 /* Supporting Files */,
 			);
 			path = WindowChangedNotificationTester;
@@ -131,7 +141,7 @@
 		34D2D85F195FE16500E1CBE9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = pqrs.org;
 			};
 			buildConfigurationList = 34D2D862195FE16500E1CBE9 /* Build configuration list for PBXProject "WindowChangedNotificationTester" */;
@@ -257,6 +267,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WindowChangedNotificationTester/WindowChangedNotificationTester-Prefix.pch";
 				INFOPLIST_FILE = "WindowChangedNotificationTester/WindowChangedNotificationTester-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.pqrs.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
