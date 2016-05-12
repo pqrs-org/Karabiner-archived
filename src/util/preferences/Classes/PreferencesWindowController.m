@@ -18,6 +18,7 @@
 #import "ServerClient.h"
 #import "SharedKeys.h"
 #import "SharedUtilities.h"
+#import "weakify.h"
 
 #include <sys/sysctl.h>
 #include <sys/types.h>
@@ -61,7 +62,12 @@
 }
 
 - (void)observer_kKarabinerPreferencesUpdatedNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     if (notification.userInfo &&
         [notification.userInfo[@"processIdentifier"] intValue] != [NSProcessInfo processInfo].processIdentifier) {
       NSLog(@"PreferencesModel is changed in another process.");
@@ -83,7 +89,12 @@
 }
 
 - (void)observer_kKarabinerXMLReloadedNotification:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self drawEnabledCount];
     // refreshKeyRepeatTab is not needed here.
 
@@ -225,7 +236,12 @@
 }
 
 - (void)reloadCheckboxOutlineView:(NSTimer*)timer {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self.checkboxOutlineViewDelegate clearHeightCache];
     [self.checkboxOutlineView reloadData];
   });

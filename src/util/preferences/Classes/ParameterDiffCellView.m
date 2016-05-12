@@ -2,11 +2,17 @@
 #import "NotificationKeys.h"
 #import "PreferencesClient.h"
 #import "PreferencesModel.h"
+#import "weakify.h"
 
 @implementation ParameterDiffCellView
 
 - (void)observer_ParameterValueChanged:(NSNotification*)notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     [self updateValue];
   });
 }

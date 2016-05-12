@@ -71,6 +71,7 @@
 		343481681CCA7C5800ECB9B3 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../share/PreferencesModel.h; sourceTree = "<group>"; };
 		343481691CCA7C5800ECB9B3 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../share/PreferencesModel.m; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
+		346971B21CE47D69004034E1 /* weakify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = weakify.h; path = ../../share/weakify.h; sourceTree = "<group>"; };
 		34B2A65A13745B6000694134 /* SharedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedKeys.h; path = ../../share/SharedKeys.h; sourceTree = "<group>"; };
 		34C0681C1CDE1DEC0036D220 /* PreferencesClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesClient.h; path = ../../share/PreferencesClient.h; sourceTree = "<group>"; };
 		34C0681D1CDE1DEC0036D220 /* PreferencesClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesClient.m; path = ../../share/PreferencesClient.m; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 				34B2A65A13745B6000694134 /* SharedKeys.h */,
 				343481621CC93EF300ECB9B3 /* SharedUtilities.h */,
 				343481631CC93EF300ECB9B3 /* SharedUtilities.m */,
+				346971B21CE47D69004034E1 /* weakify.h */,
 			);
 			name = share;
 			sourceTree = "<group>";
