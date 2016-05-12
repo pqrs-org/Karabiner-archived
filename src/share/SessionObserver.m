@@ -1,4 +1,5 @@
 #import "SessionObserver.h"
+#import "weakify.h"
 #include <ApplicationServices/ApplicationServices.h>
 #include <CoreFoundation/CoreFoundation.h>
 
@@ -42,7 +43,12 @@
   // NSWorkspaceSessionDidResignActiveNotification is sometimes not called. (OS X bug?)
   // Therefore, we have to check session state in timer.
 
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     BOOL currentState = [self isUserActive];
     if (self.lastState != currentState) {
       NSLog(@"Session state has been changed. (%s)", currentState ? "active" : "inactive");

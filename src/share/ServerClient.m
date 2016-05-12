@@ -1,5 +1,6 @@
 #import "ServerClient.h"
 #import "SharedKeys.h"
+#import "weakify.h"
 
 @interface ServerClient ()
 
@@ -20,8 +21,13 @@
   return self.connection;
 }
 
-- (void)observer_NSConnectionDidDieNotification:(NSNotification*)notification {
+- (void)observer_NSConnectionDidDieNotification:(NSNotification*)__unused notification {
+  @weakify(self);
+
   dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
     dispatch_sync(self.connectionQueue, ^{
       NSLog(@"observer_NSConnectionDidDieNotification is called");
       self.connection = nil;
