@@ -76,6 +76,7 @@
 
   self.preferencesModel.currentProfileIndex = index;
   [self savePreferencesModel];
+  [self.client.proxy updateStatusBar];
 }
 
 - (void)main {
@@ -158,6 +159,7 @@
         NSString* value = arguments[2];
         [self.preferencesModel addProfile:value];
         [self savePreferencesModel];
+        [self.client.proxy updateStatusBar];
 
       } else if ([command isEqualToString:@"rename"]) {
         if ([arguments count] != 4) {
@@ -168,6 +170,7 @@
 
         [self.preferencesModel renameProfile:[index integerValue] name:value];
         [self savePreferencesModel];
+        [self.client.proxy updateStatusBar];
 
       } else if ([command isEqualToString:@"delete"]) {
         if ([arguments count] != 3) {
@@ -180,6 +183,7 @@
         } else {
           [self.preferencesModel deleteProfile:[index integerValue]];
           [self savePreferencesModel];
+          [self.client.proxy updateStatusBar];
         }
 
       } else if ([command isEqualToString:@"set"]) {
