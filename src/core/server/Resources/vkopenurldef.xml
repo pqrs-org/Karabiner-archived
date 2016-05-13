@@ -216,6 +216,11 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_APP_Instruments</name>
+    <url type="file">/Applications/Xcode.app/Contents/Applications/Instruments.app</url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_APP_iOS_Simulator</name>
     <url type="file">/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app</url>
   </vkopenurldef>
