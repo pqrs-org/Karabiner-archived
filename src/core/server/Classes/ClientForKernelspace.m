@@ -85,10 +85,6 @@
         if ([urlType isEqualToString:@"shell"]) {
           [[NSTask launchedTaskWithLaunchPath:@"/bin/sh" arguments:@[ @"-c", url ]] waitUntilExit];
         } else {
-          // [NSWorkspace openFile] and [NSWorkspace openURL] cause memory leak.
-          // (due to NSWorkspaceLaunchAsync?)
-          // So we use [NSWorkspace openURLs].
-
           NSArray* urls = nil;
           if ([urlType isEqualToString:@"file"]) {
             urls = @[
@@ -101,7 +97,7 @@
           }
 
           if (urls) {
-            NSWorkspaceLaunchOptions options = 0;
+            NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault;
             if ([self.xmlCompiler urlIsBackground:option]) {
               options |= NSWorkspaceLaunchWithoutActivation;
             }
