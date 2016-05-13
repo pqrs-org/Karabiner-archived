@@ -17,7 +17,9 @@ public:
                                   isRepeatEnabled_(true),
                                   lastPhysicalEventType_(PhysicalEventType::DOWN),
                                   delayUntilRepeat_(-1),
-                                  keyRepeat_(-1) {}
+                                  keyRepeat_(-1),
+                                  delayedActionMilliseconds_(-1),
+                                  millisecondsTarget_(MillisecondsTarget::NONE) {}
 
   virtual ~KeyToKey(void) {
     if (target_ == this) {
@@ -100,6 +102,11 @@ private:
     }
   }
 
+  enum class MillisecondsTarget {
+    NONE,
+    KEYTOKEY_DELAYED_ACTION_MILLISECONDS,
+  };
+
   size_t index_;
 
   FromEvent fromEvent_;
@@ -125,6 +132,9 @@ private:
 
   int delayUntilRepeat_;
   int keyRepeat_;
+  int delayedActionMilliseconds_;
+
+  MillisecondsTarget millisecondsTarget_;
 };
 }
 }

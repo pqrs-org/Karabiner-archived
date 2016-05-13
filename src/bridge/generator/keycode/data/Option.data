@@ -21,6 +21,7 @@ KEYTOKEY_AFTER_KEYUP                           --AUTO--
 KEYTOKEY_DELAYED_ACTION                        --AUTO--
 KEYTOKEY_DELAYED_ACTION_CANCELED_BY            --AUTO--
 KEYTOKEY_DELAYED_ACTION_CANCELED_DEFAULT       --AUTO--
+KEYTOKEY_DELAYED_ACTION_MILLISECONDS           --AUTO--
 
 // Increase modifier flags when key is pressed.
 KEYTOKEY_INCREASE_MODIFIER_FLAGS               --AUTO--

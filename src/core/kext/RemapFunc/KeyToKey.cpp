@@ -83,6 +83,8 @@ void KeyToKey::add(AddDataType datatype, AddValue newval) {
       Vector_ToEvent v;
       delayedActionCanceledByKeys_.push_back(v);
       currentToEvent_ = CurrentToEvent::DELAYED_ACTION_CANCELED_BY_KEYS;
+    } else if (Option::KEYTOKEY_DELAYED_ACTION_MILLISECONDS == option) {
+      millisecondsTarget_ = MillisecondsTarget::KEYTOKEY_DELAYED_ACTION_MILLISECONDS;
     } else if (Option::KEYTOKEY_INCREASE_MODIFIER_FLAGS == option) {
       increaseModifierFlags_.push_back(ToEvent(KeyCode::VK_NONE));
       currentToEvent_ = CurrentToEvent::INCREASE_MODIFIER_FLAGS;
@@ -106,6 +108,17 @@ void KeyToKey::add(AddDataType datatype, AddValue newval) {
     keyRepeat_ = max(newval, 1);
     break;
   }
+
+  case BRIDGE_DATATYPE_MILLISECOND:
+  case BRIDGE_DATATYPE_THRESHOLDMILLISECOND:
+    switch (millisecondsTarget_) {
+    case MillisecondsTarget::NONE:
+      break;
+    case MillisecondsTarget::KEYTOKEY_DELAYED_ACTION_MILLISECONDS:
+      delayedActionMilliseconds_ = newval;
+      break;
+    }
+    break;
 
   default:
     IOLOG_ERROR("KeyToKey::add invalid datatype:%u\n", static_cast<unsigned int>(datatype));
@@ -221,6 +234,9 @@ bool KeyToKey::remap(RemapParams& remapParams) {
         !delayedActionCanceledDefaultKeys_.empty() ||
         !delayedActionCanceledByKeys_.empty()) {
       auto timeout = Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_parameter_keytokey_delayed_action_timeout);
+      if (delayedActionMilliseconds_ > 0) {
+        timeout = delayedActionMilliseconds_;
+      }
 
       target_ = this;
       fire_timer_.setTimeoutMS(timeout);
