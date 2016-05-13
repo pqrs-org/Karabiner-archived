@@ -359,9 +359,13 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
   if (self.currentProfileIndex != index) {
     ProfileModel* profileModel = [self profile:index];
     if (profileModel) {
+      NSString* identifier = self.currentProfileIdentifier;
+
       NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
       [profiles removeObjectAtIndex:index];
       self.profiles = profiles;
+
+      [self profileSelectByIdentifier:identifier];
     }
   }
 }
