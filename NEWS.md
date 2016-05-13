@@ -7,6 +7,7 @@
   * The device disconnect handling has been improved.
   * Updates for people who add new settings by oneself:
     * `<bundleidentifieroverridedef>` has been introduced.
+    * `Option::KEYTOKEY_DELAYED_ACTION_MILLISECONDS` has been added.
     * The following filters have been added.
       * `<deviceexists_not>`
       * `<deviceexists_only>`
