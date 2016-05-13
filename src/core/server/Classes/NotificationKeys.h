@@ -3,4 +3,3 @@
 #define kConfigXMLReloadedNotification @"ConfigXMLReloaded"
 #define kProfileChangedNotification @"kProfileChangedNotification"
 #define kPreferencesChangedNotification @"PreferencesChanged"
-#define kStatusBarConfigurationChangedNotification @"kStatusBarConfigurationChangedNotification"

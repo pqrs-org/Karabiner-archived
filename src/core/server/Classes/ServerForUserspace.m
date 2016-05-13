@@ -10,6 +10,7 @@
 #import "Relauncher.h"
 #import "ServerController.h"
 #import "SharedKeys.h"
+#import "StatusBar.h"
 #import "StatusMessageManager.h"
 #import "Updater.h"
 #import "XMLCompiler.h"
@@ -23,6 +24,7 @@
 @property(weak) IBOutlet PreferencesManager* preferencesManager;
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ServerController* serverController;
+@property(weak) IBOutlet StatusBar* statusBar;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 @property(weak) IBOutlet Updater* updater;
@@ -76,7 +78,7 @@
 }
 
 - (void)updateStatusBar {
-  [[NSNotificationCenter defaultCenter] postNotificationName:kStatusBarConfigurationChangedNotification object:nil];
+  [self.statusBar refresh];
 }
 
 - (void)updateStatusWindow {

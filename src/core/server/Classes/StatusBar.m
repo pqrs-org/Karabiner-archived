@@ -18,50 +18,6 @@
 
 @implementation StatusBar
 
-- (void)observer_PreferencesChanged:(NSNotification*)notification {
-  @weakify(self);
-
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self refresh];
-  });
-}
-
-- (void)observer_StatusBarConfigurationChangedNotification:(NSNotification*)notification {
-  @weakify(self);
-
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self refresh];
-  });
-}
-
-- (instancetype)init {
-  self = [super init];
-
-  if (self) {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_PreferencesChanged:)
-                                                 name:kPreferencesChangedNotification
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(observer_StatusBarConfigurationChangedNotification:)
-                                                 name:kStatusBarConfigurationChangedNotification
-                                               object:nil];
-  }
-
-  return self;
-}
-
-- (void)dealloc {
-  [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 - (void)refresh {
   if (!self.preferencesModel.statusBarEnabled) {
     if (self.statusItem) {
