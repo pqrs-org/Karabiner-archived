@@ -214,7 +214,7 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
     return NO;
   }
 
-  NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];
+  NSMutableDictionary* values = [profileModel.values mutableCopy];
   if (value == [essentialConfigurationDefaults_[name] integerValue]) {
     [values removeObjectForKey:name];
   } else {
@@ -235,7 +235,7 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
 
 - (void)clearNotSave {
   for (ProfileModel* profileModel in self.profiles) {
-    NSMutableDictionary* values = [NSMutableDictionary dictionaryWithDictionary:profileModel.values];
+    NSMutableDictionary* values = [profileModel.values mutableCopy];
     for (NSString* name in [values allKeys]) {
       if ([name hasPrefix:@"notsave."]) {
         [values removeObjectForKey:name];
