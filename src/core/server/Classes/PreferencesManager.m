@@ -93,7 +93,19 @@
   preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice];
 }
 
+- (NSString*)savedProfileIdentifier {
+  NSArray* profiles = [[NSUserDefaults standardUserDefaults] arrayForKey:kProfiles];
+  NSInteger index = [[NSUserDefaults standardUserDefaults] integerForKey:kCurrentProfileIndex];
+  if (0 <= index && index < (NSInteger)([profiles count])) {
+    NSDictionary* profile = profiles[index];
+    return profile[@"identify"];
+  }
+  return nil;
+}
+
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
+  NSString* oldProfileIdentifier = [self savedProfileIdentifier];
+
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.checkForUpdates) forKey:kCheckForUpdates];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.overrideKeyRepeat) forKey:kIsOverrideKeyRepeat];
@@ -114,8 +126,6 @@
 
   // ----------------------------------------
   // profiles
-  NSString* oldProfileIdentifier = self.preferencesModel.currentProfileIdentifier;
-
   NSMutableArray* profiles = [NSMutableArray new];
   for (ProfileModel* profileModel in preferencesModel.profiles) {
     [profiles addObject:@{
@@ -144,20 +154,17 @@
     [self loadPreferencesModel:self.preferencesModel];
   }
 
-  [self postPreferencesChangedNotifications:processIdentifier];
-
   // ----------------------------------------
-  if (![self.preferencesModel.currentProfileIdentifier isEqualToString:oldProfileIdentifier]) {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kProfileChangedNotification object:nil];
-  }
-}
-
-- (void)postPreferencesChangedNotifications:(int)processIdentifier {
+  // post notifications
   [[NSNotificationCenter defaultCenter] postNotificationName:kPreferencesChangedNotification object:nil];
   [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerPreferencesUpdatedNotification
                                                                  object:nil
                                                                userInfo:@{ @"processIdentifier" : @(processIdentifier) }
                                                      deliverImmediately:YES];
+
+  if (![self.preferencesModel.currentProfileIdentifier isEqualToString:oldProfileIdentifier]) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kProfileChangedNotification object:nil];
+  }
 }
 
 // ----------------------------------------
