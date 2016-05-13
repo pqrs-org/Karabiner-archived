@@ -63,7 +63,7 @@
   self.preferencesModel.currentProfileIndex = [idx intValue];
   [self.preferencesManager save];
 
-  [[NSNotificationCenter defaultCenter] postNotificationName:kProfileChangedNotification object:nil];
+  [self refresh];
 }
 
 - (void)menuNeedsUpdate:(NSMenu*)menu {
