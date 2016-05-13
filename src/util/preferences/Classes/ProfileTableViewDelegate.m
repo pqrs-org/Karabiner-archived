@@ -1,14 +1,15 @@
 #import "ProfileTableViewDelegate.h"
 #import "PreferencesClient.h"
 #import "PreferencesModel.h"
-#import "PreferencesWindowController.h"
 #import "ProfileCellView.h"
 #import "ProfileTableView.h"
+#import "ServerClient.h"
 
 @interface ProfileTableViewDelegate ()
 
 @property(weak) IBOutlet PreferencesClient* preferencesClient;
 @property(weak) IBOutlet ProfileTableView* profileTableView;
+@property(weak) IBOutlet ServerClient* client;
 
 @end
 
@@ -23,6 +24,7 @@
   ProfileCellView* result = [tableView makeViewWithIdentifier:@"ProfileCellView" owner:self];
   result.preferencesClient = self.preferencesClient;
   result.profileTableView = self.profileTableView;
+  result.client = self.client;
 
   if (profileModel.name) {
     result.textField.stringValue = profileModel.name;

@@ -348,6 +348,7 @@
 - (IBAction)addNewProfile:(id)sender {
   [self.preferencesClient.pm addProfile:@"New Profile"];
   [self.preferencesClient save];
+  [self.client.proxy updateStatusBar];
 
   [self.profileTableView reloadData];
 }
@@ -373,6 +374,7 @@
 
   [self.preferencesClient.pm sortProfilesByName];
   [self.preferencesClient save];
+  [self.client.proxy updateStatusBar];
 
   [self.profileTableView reloadData];
 }
@@ -382,6 +384,7 @@
 
   [self.preferencesClient.pm sortProfilesByAppendIndex];
   [self.preferencesClient save];
+  [self.client.proxy updateStatusBar];
 
   [self.profileTableView reloadData];
 }

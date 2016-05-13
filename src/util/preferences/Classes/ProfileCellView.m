@@ -2,6 +2,7 @@
 #import "PreferencesClient.h"
 #import "PreferencesModel.h"
 #import "ProfileTableView.h"
+#import "ServerClient.h"
 
 @implementation ProfileCellView
 
@@ -19,12 +20,15 @@
 
     [self.preferencesClient.pm renameProfile:self.profileIndex name:self.textField.stringValue];
     [self.preferencesClient save];
+    [self.client.proxy updateStatusBar];
   }
 }
 
 - (IBAction)deleteProfile:(id)sender {
   [self.preferencesClient.pm deleteProfile:self.profileIndex];
   [self.preferencesClient save];
+  [self.client.proxy updateStatusBar];
+
   [self.profileTableView reloadData];
 }
 
