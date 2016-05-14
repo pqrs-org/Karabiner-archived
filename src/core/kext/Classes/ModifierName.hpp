@@ -11,16 +11,26 @@ public:
   public:
     Item(void) {
       name_[0] = '\0';
+      symbol_[0] = '\0';
     }
 
-    Item(ModifierFlag modifierFlag, const char* name) : modifierFlag_(modifierFlag) {
+    Item(ModifierFlag modifierFlag, const char* name, const char* symbol) : modifierFlag_(modifierFlag) {
       if (name) {
         pqrs::strlcpy_utf8::strlcpy(name_, name, sizeof(name_));
+      } else {
+        name_[0] = '\0';
+      }
+
+      if (symbol) {
+        pqrs::strlcpy_utf8::strlcpy(symbol_, symbol, sizeof(symbol_));
+      } else {
+        symbol_[0] = '\0';
       }
     }
 
     ModifierFlag getModifierFlag(void) const { return modifierFlag_; }
     const char* getName(void) const { return name_; }
+    const char* getSymbol(void) const { return symbol_; }
 
   private:
     enum {
@@ -29,6 +39,7 @@ public:
 
     ModifierFlag modifierFlag_;
     char name_[MAXLEN];
+    char symbol_[MAXLEN];
   };
   DECLARE_VECTOR(Item);
 
@@ -39,10 +50,11 @@ public:
   static void clearVirtualModifiers(void);
 
   static void registerVirtualModifier(ModifierFlag modifierFlag, const char* name) {
-    items_.push_back(Item(modifierFlag, name));
+    items_.push_back(Item(modifierFlag, name, name));
   }
 
   static const char* getName(ModifierFlag modifierFlag);
+  static const char* getSymbol(ModifierFlag modifierFlag);
 
 private:
   static Vector_Item items_;
