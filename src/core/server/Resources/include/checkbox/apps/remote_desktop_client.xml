@@ -9,6 +9,7 @@
       <appendix>+ Send Windows key event when you pressed the command key alone.</appendix>
       <identifier>remap.app_rdc_command_to_control</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
+      <windowname_not>Remote_Desktop_Main_Window</windowname_not>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_L,
@@ -60,6 +61,7 @@
       <appendix>+ Send Windows key event when you pressed the command key alone.</appendix>
       <identifier>remap.app_rdc_command_to_control_keep_command_tab</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
+      <windowname_not>Remote_Desktop_Main_Window</windowname_not>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_L,
@@ -110,6 +112,7 @@
       <appendix>(only in Remote Desktop)</appendix>
       <identifier>remap.app_rdc_commandTab2optionTab</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
+      <windowname_not>Remote_Desktop_Main_Window</windowname_not>
       <autogen>__KeyToKey__ KeyCode::TAB, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::TAB, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
@@ -117,6 +120,7 @@
       <appendix>(Use the following "lazy command keys" together.)</appendix>
       <identifier>remap.app_rdc_commandXCVSZWF2controlXCVSZWF</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
+      <windowname_not>Remote_Desktop_Main_Window</windowname_not>
       <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::X, ModifierFlag::CONTROL_L</autogen>
       <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::C, ModifierFlag::CONTROL_L</autogen>
       <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::V, ModifierFlag::CONTROL_L</autogen>
@@ -131,12 +135,14 @@
       <appendix>(Use the following "lazy command keys" together.)</appendix>
       <identifier>remap.app_rdc_commandSpace2controlSpace</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
+      <windowname_not>Remote_Desktop_Main_Window</windowname_not>
       <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::SPACE, ModifierFlag::CONTROL_L</autogen>
     </item>
     <item>
       <name>Change command keys to lazy command keys.</name>
       <identifier>remap.app_rdc_command_to_lazy</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
+      <windowname_not>Remote_Desktop_Main_Window</windowname_not>
       <autogen>
         __KeyOverlaidModifier__
         KeyCode::COMMAND_L,
@@ -156,6 +162,7 @@
       <appendix>(Works well with CoRD.)</appendix>
       <identifier>remap.app_rdc_f12_to_insert</identifier>
       <only>REMOTEDESKTOPCONNECTION</only>
+      <windowname_not>Remote_Desktop_Main_Window</windowname_not>
       <autogen>__KeyToKey__ KeyCode::F12, KeyCode::PC_INSERT</autogen>
     </item>
   </item>
