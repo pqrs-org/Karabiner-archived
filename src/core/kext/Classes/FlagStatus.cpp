@@ -368,36 +368,72 @@ void FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
   CommonData::clear_statusmessage(statusMessageIndex);
 
   for (size_t i = 0; i < item_.size(); ++i) {
-    const char* name = ModifierName::getName(item_[i].flag_);
-    if (name) {
+    bool isName = false;
+    switch (statusMessageIndex) {
+    case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK_NAME:
+    case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK_NAME:
+    case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY_NAME:
+      isName = true;
+      break;
+
+    case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK_SYMBOL:
+    case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK_SYMBOL:
+    case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY_SYMBOL:
+      isName = false;
+      break;
+
+    default:
+      IOLOG_ERROR("Invalid statusMessageIndex (%d) in FlagStatus::updateStatusMessage.\n", statusMessageIndex);
+      break;
+    }
+
+    const char* string = nullptr;
+    if (isName) {
+      string = ModifierName::getName(item_[i].flag_);
+    } else {
+      string = ModifierName::getSymbol(item_[i].flag_);
+    }
+
+    if (string) {
       switch (statusMessageIndex) {
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK_NAME:
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK_SYMBOL:
         // Skip caps lock.
         if (item_[i].flag_ != ModifierFlag::CAPSLOCK) {
           if (item_[i].negative_lock_count_ > 0) {
             CommonData::append_statusmessage(statusMessageIndex, "-");
-            CommonData::append_statusmessage(statusMessageIndex, name);
-            CommonData::append_statusmessage(statusMessageIndex, " ");
+            CommonData::append_statusmessage(statusMessageIndex, string);
+            if (isName) {
+              CommonData::append_statusmessage(statusMessageIndex, " ");
+            }
           } else if (item_[i].lock_count_ > 0) {
-            CommonData::append_statusmessage(statusMessageIndex, name);
-            CommonData::append_statusmessage(statusMessageIndex, " ");
+            CommonData::append_statusmessage(statusMessageIndex, string);
+            if (isName) {
+              CommonData::append_statusmessage(statusMessageIndex, " ");
+            }
           }
         }
         break;
 
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK:
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK_NAME:
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK_SYMBOL:
         if (item_[i].flag_ == ModifierFlag::CAPSLOCK) {
           if (item_[i].lock_count_ > 0) {
-            CommonData::append_statusmessage(statusMessageIndex, name);
-            CommonData::append_statusmessage(statusMessageIndex, " ");
+            CommonData::append_statusmessage(statusMessageIndex, string);
+            if (isName) {
+              CommonData::append_statusmessage(statusMessageIndex, " ");
+            }
           }
         }
         break;
 
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY:
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY_NAME:
+      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY_SYMBOL:
         if (item_[i].sticky_count_ > 0) {
-          CommonData::append_statusmessage(statusMessageIndex, name);
-          CommonData::append_statusmessage(statusMessageIndex, " ");
+          CommonData::append_statusmessage(statusMessageIndex, string);
+          if (isName) {
+            CommonData::append_statusmessage(statusMessageIndex, " ");
+          }
         }
         break;
       }
@@ -407,9 +443,12 @@ void FlagStatus::updateStatusMessage(unsigned int statusMessageIndex) {
 
 void FlagStatus::updateStatusMessage(void) {
   int indexes[] = {
-      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
-      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK,
-      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK_NAME,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK_SYMBOL,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK_NAME,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK_SYMBOL,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY_NAME,
+      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY_SYMBOL,
   };
   for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
     int idx = indexes[i];
