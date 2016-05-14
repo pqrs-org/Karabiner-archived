@@ -27,6 +27,7 @@
       kCurrentProfileIndex : @0,
       kCheckForUpdates : @YES,
       kIsStatusWindowEnabled : @YES,
+      kIsStatusWindowUseModifierSymbols: @NO,
       kIsStatusWindowShowCapsLock : @NO,
       kIsStatusWindowShowStickyModifier : @NO,
       kIsStatusWindowShowPointingButtonLock : @YES,
@@ -60,6 +61,7 @@
   preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
   preferencesModel.currentProfileIndex = [[NSUserDefaults standardUserDefaults] integerForKey:kCurrentProfileIndex];
   preferencesModel.useStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowEnabled];
+  preferencesModel.useModifierSymbolsInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowUseModifierSymbols];
   preferencesModel.showCapsLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowCapsLock];
   preferencesModel.showStickyModifiersStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowStickyModifier];
   preferencesModel.showPointingButtonLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowPointingButtonLock];
@@ -114,6 +116,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.currentProfileIndex) forKey:kCurrentProfileIndex];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useStatusWindow) forKey:kIsStatusWindowEnabled];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useModifierSymbolsInStatusWindow) forKey:kIsStatusWindowUseModifierSymbols];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showCapsLockStateInStatusWindow) forKey:kIsStatusWindowShowCapsLock];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showStickyModifiersStateInStatusWindow) forKey:kIsStatusWindowShowStickyModifier];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showPointingButtonLockStateInStatusWindow) forKey:kIsStatusWindowShowPointingButtonLock];

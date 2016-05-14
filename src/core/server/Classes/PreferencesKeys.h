@@ -6,6 +6,7 @@
 #define kCurrentProfileIndex @"selectedIndex"
 #define kCheckForUpdates @"isCheckUpdate"
 #define kIsStatusWindowEnabled @"isStatusWindowEnabled"
+#define kIsStatusWindowUseModifierSymbols @"kIsStatusWindowUseModifierSymbols"
 #define kIsStatusWindowShowCapsLock @"isStatusWindowShowCapsLock"
 #define kIsStatusWindowShowStickyModifier @"isStatusWindowShowStickyModifier"
 #define kIsStatusWindowShowPointingButtonLock @"isStatusWindowShowPointingButtonLock"

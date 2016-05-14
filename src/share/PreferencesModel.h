@@ -36,6 +36,7 @@
 @property NSInteger currentProfileIndex;
 
 @property BOOL useStatusWindow;
+@property BOOL useModifierSymbolsInStatusWindow;
 @property BOOL showCapsLockStateInStatusWindow;
 @property BOOL showStickyModifiersStateInStatusWindow;
 @property BOOL showPointingButtonLockStateInStatusWindow;

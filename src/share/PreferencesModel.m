@@ -139,6 +139,7 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
     DECODE_INTEGER(currentProfileIndex);
 
     DECODE_BOOL(useStatusWindow);
+    DECODE_BOOL(useModifierSymbolsInStatusWindow);
     DECODE_BOOL(showCapsLockStateInStatusWindow);
     DECODE_BOOL(showStickyModifiersStateInStatusWindow);
     DECODE_BOOL(showPointingButtonLockStateInStatusWindow);
@@ -168,6 +169,7 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
   ENCODE_INTEGER(currentProfileIndex);
 
   ENCODE_BOOL(useStatusWindow);
+  ENCODE_BOOL(useModifierSymbolsInStatusWindow);
   ENCODE_BOOL(showCapsLockStateInStatusWindow);
   ENCODE_BOOL(showStickyModifiersStateInStatusWindow);
   ENCODE_BOOL(showPointingButtonLockStateInStatusWindow);
