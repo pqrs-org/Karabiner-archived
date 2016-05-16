@@ -5,6 +5,7 @@
     If you are using ThumbSense, please enable ThumbSense setting manually in multi-touch extension preferences.
 * New functions and improvements:
   * The device disconnect handling has been improved.
+  * `Use modifier symbols (⌘⌃⌥⇧⇪) in place of the modifier names` has been added into Karabiner Preferences > Status Message tab.
   * Updates for people who add new settings by oneself:
     * `<bundleidentifieroverridedef>` has been introduced.
     * `Option::KEYTOKEY_DELAYED_ACTION_MILLISECONDS` has been added.
