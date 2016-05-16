@@ -203,12 +203,17 @@
   }
   if ([self.statusMessageText.modifierStickyText length] > 0) {
     if (self.preferencesModel.useModifierSymbolsInStatusWindow) {
-      [statusMessage appendFormat:@"%@\n", self.statusMessageText.modifierStickyText];
+      [statusMessage appendFormat:@"%@", self.statusMessageText.modifierStickyText];
     } else {
       [statusMessage appendFormat:@"Sticky: %@\n", self.statusMessageText.modifierStickyText];
     }
   }
   if ([self.statusMessageText.pointingButtonLockText length] > 0) {
+    if (self.preferencesModel.useModifierSymbolsInStatusWindow) {
+      if ([statusMessage length] > 0) {
+        [statusMessage appendString:@"\n"];
+      }
+    }
     [statusMessage appendFormat:@"Click Lock: %@\n", self.statusMessageText.pointingButtonLockText];
   }
   [statusMessage appendString:self.statusMessageText.extraText];
