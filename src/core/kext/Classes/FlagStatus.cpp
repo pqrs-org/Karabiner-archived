@@ -284,14 +284,18 @@ DEFINE_METHODS(sticky_decrease)
 DEFINE_METHODS(sticky_toggle)
 #undef DEFINE_METHODS
 
-#define STICKY_ACTIVE_MODIFIERS_METHOD(METHOD)  \
-  {                                             \
-    for (size_t i = 0; i < item_.size(); ++i) { \
-      if (item_[i].sum(true) > 0) {             \
-        item_[i].METHOD();                      \
-      }                                         \
-    }                                           \
-    updateStatusMessage();                      \
+#define STICKY_ACTIVE_MODIFIERS_METHOD(METHOD)                       \
+  {                                                                  \
+    for (size_t i = 0; i < item_.size(); ++i) {                      \
+      /* ignore locked modifiers when increasing sticky count */     \
+      if (item_[i].lock_count_ > 0 && item_[i].sticky_count_ == 0) { \
+        continue;                                                    \
+      }                                                              \
+      if (item_[i].sum(true) > 0) {                                  \
+        item_[i].METHOD();                                           \
+      }                                                              \
+    }                                                                \
+    updateStatusMessage();                                           \
   }
 
 void FlagStatus::sticky_active_modifiers_toggle(void) { STICKY_ACTIVE_MODIFIERS_METHOD(sticky_toggle); }
