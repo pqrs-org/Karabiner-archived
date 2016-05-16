@@ -53,6 +53,12 @@
         <customObject id="606" customClass="StatusMessageManager">
             <connections>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="QU3-uN-Lq2"/>
+                <outlet property="statusMessageText" destination="Eme-HB-yZo" id="AnU-9S-zJq"/>
+            </connections>
+        </customObject>
+        <customObject id="Eme-HB-yZo" customClass="StatusMessageText">
+            <connections>
+                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="mxH-SP-Ttd"/>
             </connections>
         </customObject>
         <customObject id="552" customClass="StatusBar">

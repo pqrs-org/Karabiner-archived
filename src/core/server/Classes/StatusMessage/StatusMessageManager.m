@@ -1,19 +1,19 @@
 #import "StatusMessageManager.h"
 #import "NotificationKeys.h"
 #import "PreferencesModel.h"
+#import "StatusMessageText.h"
 #import "StatusMessageView_edge.h"
 #import "StatusMessageView_nano.h"
 #import "StatusMessageView_normal.h"
-#include "bridge.h"
 #import "weakify.h"
 
 @interface StatusMessageManager ()
 
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
+@property(weak) IBOutlet StatusMessageText* statusMessageText;
 
 @property BOOL showExampleStatusWindow;
 @property NSMutableArray* windowControllers;
-@property NSMutableArray* lines;
 
 @end
 
@@ -38,10 +38,6 @@
     self.showExampleStatusWindow = NO;
 
     self.windowControllers = [NSMutableArray new];
-    self.lines = [NSMutableArray new];
-    for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
-      [self.lines addObject:@""];
-    }
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_NSApplicationDidChangeScreenParametersNotification:)
@@ -198,63 +194,24 @@
   NSMutableString* statusMessage = [NSMutableString string];
 
   // ------------------------------------------------------------
-  // Modifier Message
-  int indexes[] = {
-      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK,
-      BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY,
-      BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK,
-  };
-  for (size_t i = 0; i < sizeof(indexes) / sizeof(indexes[0]); ++i) {
-    int idx = indexes[i];
-
-    // Skip message if configured as hide.
-    if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY) {
-      if (!self.preferencesModel.showStickyModifiersStateInStatusWindow) {
-        continue;
-      }
-    }
-    if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK) {
-      if (!self.preferencesModel.showPointingButtonLockStateInStatusWindow) {
-        continue;
-      }
-    }
-
-    NSString* message = self.lines[idx];
-
-    // append caps lock status to modifier lock.
-    if (self.preferencesModel.showCapsLockStateInStatusWindow) {
-      if (idx == BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK) {
-        NSString* capslock = self.lines[BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_CAPS_LOCK];
-        if ([capslock length] > 0) {
-          message = [NSString stringWithFormat:@"%@%@", capslock, message];
-        }
-      }
-    }
-
-    if ([message length] > 0) {
-      NSString* name = nil;
-      switch (idx) {
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_LOCK:
-        name = @"Lock";
-        break;
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_MODIFIER_STICKY:
-        name = @"Sticky";
-        break;
-      case BRIDGE_USERCLIENT_STATUS_MESSAGE_POINTING_BUTTON_LOCK:
-        name = @"Click Lock";
-        break;
-      }
-      if (name) {
-        [statusMessage appendFormat:@"%@: %@\n", name, message];
-      }
+  if ([self.statusMessageText.modifierLockText length] > 0) {
+    if (self.preferencesModel.useModifierSymbolsInStatusWindow) {
+      [statusMessage appendFormat:@"%@", self.statusMessageText.modifierLockText];
+    } else {
+      [statusMessage appendFormat:@"Lock: %@\n", self.statusMessageText.modifierLockText];
     }
   }
-
-  // ------------------------------------------------------------
-  // Extra Message
-  NSString* message = self.lines[BRIDGE_USERCLIENT_STATUS_MESSAGE_EXTRA];
-
-  [statusMessage appendString:message];
+  if ([self.statusMessageText.modifierStickyText length] > 0) {
+    if (self.preferencesModel.useModifierSymbolsInStatusWindow) {
+      [statusMessage appendFormat:@"%@\n", self.statusMessageText.modifierStickyText];
+    } else {
+      [statusMessage appendFormat:@"Sticky: %@\n", self.statusMessageText.modifierStickyText];
+    }
+  }
+  if ([self.statusMessageText.pointingButtonLockText length] > 0) {
+    [statusMessage appendFormat:@"Click Lock: %@\n", self.statusMessageText.pointingButtonLockText];
+  }
+  [statusMessage appendString:self.statusMessageText.extraText];
 
   // ------------------------------------------------------------
   // Show status message when Status Message on Preferences is shown.
@@ -279,15 +236,12 @@
 }
 
 - (void)resetStatusMessage {
-  for (NSUInteger i = 0; i < BRIDGE_USERCLIENT_STATUS_MESSAGE__END__; ++i) {
-    self.lines[i] = @"";
-  }
-
+  [self.statusMessageText reset];
   [self refresh];
 }
 
-- (void)setStatusMessage:(NSUInteger)lineIndex message:(NSString*)message {
-  self.lines[lineIndex] = message;
+- (void)setStatusMessage:(NSInteger)index message:(NSString*)message {
+  [self.statusMessageText updateText:index text:message];
   [self refresh];
 }
 

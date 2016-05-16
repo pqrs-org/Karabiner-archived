@@ -26,6 +26,7 @@
 		343A17D91529A5B400F2E968 /* symbol_map.xml in Resources */ = {isa = PBXBuildFile; fileRef = 343A17D81529A5B400F2E968 /* symbol_map.xml */; };
 		343B2459153DCC7C0023BA6E /* include in Resources */ = {isa = PBXBuildFile; fileRef = 343B2458153DCC7C0023BA6E /* include */; };
 		343BB0CA13E055B10037A81F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 343BB0C913E055B10037A81F /* app.icns */; };
+		3443F6CB1CE96C3E0087FC60 /* StatusMessageText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3443F6CA1CE96C3E0087FC60 /* StatusMessageText.m */; };
 		344F10261936539F00D240DC /* uielementroledef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 344F10251936539F00D240DC /* uielementroledef.xml */; };
 		3451A55114532D400030EAD7 /* deviceproductdef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3451A54F14532D400030EAD7 /* deviceproductdef.xml */; };
 		3451A55214532D400030EAD7 /* devicevendordef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3451A55014532D400030EAD7 /* devicevendordef.xml */; };
@@ -128,6 +129,8 @@
 		343A17D81529A5B400F2E968 /* symbol_map.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = symbol_map.xml; path = Resources/symbol_map.xml; sourceTree = "<group>"; };
 		343B2458153DCC7C0023BA6E /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = Resources/include; sourceTree = "<group>"; };
 		343BB0C913E055B10037A81F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../share/Resources/app.icns; sourceTree = "<group>"; };
+		3443F6C91CE96C3E0087FC60 /* StatusMessageText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatusMessageText.h; path = Classes/StatusMessage/StatusMessageText.h; sourceTree = "<group>"; };
+		3443F6CA1CE96C3E0087FC60 /* StatusMessageText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatusMessageText.m; path = Classes/StatusMessage/StatusMessageText.m; sourceTree = "<group>"; };
 		344F10251936539F00D240DC /* uielementroledef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = uielementroledef.xml; path = Resources/uielementroledef.xml; sourceTree = "<group>"; };
 		3451A54F14532D400030EAD7 /* deviceproductdef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = deviceproductdef.xml; path = Resources/deviceproductdef.xml; sourceTree = "<group>"; };
 		3451A55014532D400030EAD7 /* devicevendordef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = devicevendordef.xml; path = Resources/devicevendordef.xml; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 			children = (
 				34B682E81AC845AD00915847 /* StatusMessageManager.h */,
 				34B682E91AC845AD00915847 /* StatusMessageManager.m */,
+				3443F6C91CE96C3E0087FC60 /* StatusMessageText.h */,
+				3443F6CA1CE96C3E0087FC60 /* StatusMessageText.m */,
 				34A5573216EA1923000E5399 /* StatusMessageView_edge.h */,
 				34A5573316EA1923000E5399 /* StatusMessageView_edge.m */,
 				34A5572C16EA075E000E5399 /* StatusMessageView_nano.h */,
@@ -569,6 +574,7 @@
 				34DB980D1C74C29E00D90368 /* ServerObjects.m in Sources */,
 				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
 				34FB06511CDB366D00491F58 /* CheckboxTree.m in Sources */,
+				3443F6CB1CE96C3E0087FC60 /* StatusMessageText.m in Sources */,
 				3416745C1AFE5201005D6E58 /* SessionObserver.m in Sources */,
 				34AE71E11C78A7BB002EF8FF /* AXNotifierManager.m in Sources */,
 				345647361346A7AF00FD0C38 /* UserClient_userspace.m in Sources */,
