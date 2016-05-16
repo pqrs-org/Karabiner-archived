@@ -39,7 +39,7 @@ System requirements:
 * Xcode 7.2+
 * Command Line Tools for Xcode
 * Boost 1.56.0+ (header-only) http://www.boost.org/
-* CocoaPods http://cocoapods.org/ (`sudo gem install cocoapods && pod setup`)
+* CocoaPods http://cocoapods.org/ (`sudo gem install cocoapods -v 0.39  && pod setup`)
 
 Please install Boost into `/opt/local/include/boost`. (eg. `/opt/local/include/boost/version.hpp`)
 
