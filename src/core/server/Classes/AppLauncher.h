@@ -4,6 +4,7 @@
 
 @interface AppLauncher : NSObject
 
++ (void)openPreferences;
 + (void)openEventViewer;
 + (void)openMultiTouchExtension;
 + (void)openPrivateXMLDirectory;

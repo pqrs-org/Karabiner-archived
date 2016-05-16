@@ -482,10 +482,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (IBAction)openPreferences:(id)sender {
-  NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
-  if ([bundlePath length] > 0) {
-    [[NSWorkspace sharedWorkspace] openFile:[NSString stringWithFormat:@"%@/Contents/Applications/Karabiner Preferences.app", bundlePath]];
-  }
+  [AppLauncher openPreferences];
 }
 
 - (IBAction)checkForUpdatesStableOnly:(id)sender {

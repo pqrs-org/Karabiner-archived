@@ -3,6 +3,11 @@
 
 @implementation AppLauncher
 
++ (void)openPreferences {
+  NSString* path = @"/Applications/Karabiner.app/Contents/Applications/Karabiner Preferences.app";
+  [[NSWorkspace sharedWorkspace] launchApplication:path];
+}
+
 + (void)openEventViewer {
   NSString* path = @"/Applications/Karabiner.app/Contents/Applications/EventViewer.app";
   [[NSWorkspace sharedWorkspace] launchApplication:path];
