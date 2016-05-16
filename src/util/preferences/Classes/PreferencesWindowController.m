@@ -68,12 +68,14 @@
     @strongify(self);
     if (!self) return;
 
+    // always refresh enabled count
+    [self drawEnabledCount];
+
     if (notification.userInfo &&
         [notification.userInfo[@"processIdentifier"] intValue] != [NSProcessInfo processInfo].processIdentifier) {
       NSLog(@"PreferencesModel is changed in another process.");
       [self.preferencesClient load];
 
-      [self drawEnabledCount];
       [self refreshKeyRepeatTab];
 
       if ([self.checkbox_showEnabledOnly state] == NSOnState) {
