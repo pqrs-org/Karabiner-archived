@@ -1,4 +1,6 @@
-#include <gtest/gtest.h>
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <ostream>
 
 #include "Config.hpp"
@@ -9,127 +11,118 @@
 using namespace org_pqrs_Karabiner;
 Config config;
 
-std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const KeyboardType& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.getRawBits(); }
-std::ostream& operator<<(std::ostream& os, const Flags& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const KeyCode& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
-
 Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.getRawBits() | rhs.getRawBits()); }
 
-TEST(Generic, setUp) {
+TEST_CASE("setUp", "[Generic]") {
   KeyCodeModifierFlagPairs::clearVirtualModifiers();
 }
 
-TEST(FlagStatus, makeFlags) {
+TEST_CASE("makeFlags", "[FlagStatus]") {
   FlagStatus flagStatus;
-  EXPECT_EQ(Flags(), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags());
 
   flagStatus.set();
-  EXPECT_EQ(Flags(), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags());
 
   flagStatus.set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags());
 
   // down SHIFT_L
   flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   // no effect with ModifierFlag::NONE
   flagStatus.set(KeyCode::A, Flags(ModifierFlag::NONE));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   // down CONTROL_
   flagStatus.set(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L));
 
   // down A
   flagStatus.set(KeyCode::A, ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L));
 
   // up SHIFT_L
   flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L));
-  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CONTROL_L));
 
   // up CONTROL_L
   flagStatus.set(KeyCode::CONTROL_L, Flags(0));
-  EXPECT_EQ(Flags(), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags());
 
   // All flags
   flagStatus.reset();
   flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CAPSLOCK));
 
   flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::SHIFT_L, Flags(ModifierFlag::SHIFT_L));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::SHIFT_R, Flags(ModifierFlag::SHIFT_R));
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_R), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_R));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::CONTROL_L, Flags(ModifierFlag::CONTROL_L));
-  EXPECT_EQ(Flags(ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CONTROL_L));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::CONTROL_R, Flags(ModifierFlag::CONTROL_R));
-  EXPECT_EQ(Flags(ModifierFlag::CONTROL_R), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CONTROL_R));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::OPTION_L, Flags(ModifierFlag::OPTION_L));
-  EXPECT_EQ(Flags(ModifierFlag::OPTION_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::OPTION_L));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::OPTION_R, Flags(ModifierFlag::OPTION_R));
-  EXPECT_EQ(Flags(ModifierFlag::OPTION_R), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::OPTION_R));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::COMMAND_R, Flags(ModifierFlag::COMMAND_R));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_R), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_R));
 
   flagStatus.reset();
   flagStatus.set(KeyCode::FN, Flags(ModifierFlag::FN));
-  EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::FN));
 }
 
-TEST(FlagStatus, getFlag) {
+TEST_CASE("getFlag", "[FlagStatus]") {
   FlagStatus flagStatus;
 
-  EXPECT_EQ(ModifierFlag::CAPSLOCK, flagStatus.getFlag(0));
+  REQUIRE(flagStatus.getFlag(0) == ModifierFlag::CAPSLOCK);
 }
 
-TEST(FlagStatus, increase) {
+TEST_CASE("increase", "[FlagStatus]") {
   {
     FlagStatus flagStatus;
 
     // Do nothing with ModifierFlag::NONE.
     flagStatus.increase(ModifierFlag::NONE);
-    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(0));
 
     flagStatus.increase(ModifierFlag::SHIFT_L);
-    EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
     {
       Vector_ModifierFlag v;
       v.push_back(ModifierFlag::COMMAND_L);
       v.push_back(ModifierFlag::CONTROL_L);
       flagStatus.increase(v);
-      EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+      REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L));
     }
 
     flagStatus.increase(ModifierFlag::NONE);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L));
   }
 
   {
@@ -138,7 +131,7 @@ TEST(FlagStatus, increase) {
     v.push_back(ModifierFlag::COMMAND_L);
     v.push_back(ModifierFlag::CONTROL_L);
     flagStatus.increase(ModifierFlag::SHIFT_L, v);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L));
   }
   {
     FlagStatus flagStatus;
@@ -146,13 +139,13 @@ TEST(FlagStatus, increase) {
     v.push_back(ModifierFlag::COMMAND_L);
     v.push_back(ModifierFlag::CONTROL_L);
     flagStatus.increase(ModifierFlag::COMMAND_L, v);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L));
     flagStatus.decrease(v);
-    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(0));
   }
 }
 
-TEST(FlagStatus, decrease) {
+TEST_CASE("decrease", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   {
@@ -160,37 +153,37 @@ TEST(FlagStatus, decrease) {
     v.push_back(ModifierFlag::COMMAND_L);
     v.push_back(ModifierFlag::CONTROL_L);
     flagStatus.increase(v);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L));
   }
 
   flagStatus.decrease(ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 }
 
-TEST(FlagStatus, temporary_increase) {
+TEST_CASE("temporary_increase", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   // Do nothing with ModifierFlag::NONE.
   flagStatus.temporary_increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   {
     Vector_ModifierFlag v;
     v.push_back(ModifierFlag::COMMAND_L);
     v.push_back(ModifierFlag::CONTROL_L);
     flagStatus.increase(v);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L));
   }
 
   flagStatus.temporary_increase(ModifierFlag::OPTION_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L));
 
   // temporary_increase will reset by flagStatus.set
   flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L));
 }
 
-TEST(FlagStatus, temporary_decrease) {
+TEST_CASE("temporary_decrease", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   {
@@ -198,84 +191,84 @@ TEST(FlagStatus, temporary_decrease) {
     v.push_back(ModifierFlag::COMMAND_L);
     v.push_back(ModifierFlag::CONTROL_L);
     flagStatus.increase(v);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L));
   }
 
   flagStatus.temporary_decrease(ModifierFlag::CONTROL_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   // temporary_increase will reset by flagStatus.set
   flagStatus.set(KeyCode::COMMAND_L, Flags(ModifierFlag::COMMAND_L));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::CONTROL_L));
 }
 
-TEST(FlagStatus, lock_increase) {
+TEST_CASE("lock_increase", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   // Do nothing with ModifierFlag::NONE.
   flagStatus.lock_increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.lock_increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   // lock don't cancel by reset & set.
   flagStatus.reset();
   flagStatus.set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   flagStatus.lock_decrease(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags());
 }
 
-TEST(FlagStatus, negative_lock_increase) {
+TEST_CASE("negative_lock_increase", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   // ----------------------------------------
   flagStatus.negative_lock_increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   // ----------------------------------------
   // lock don't cancel by reset & set.
   flagStatus.reset();
   flagStatus.set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   // ----------------------------------------
   flagStatus.reset();
   flagStatus.negative_lock_decrease(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 }
 
-TEST(FlagStatus, lock_toggle) {
+TEST_CASE("lock_toggle", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   flagStatus.lock_increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   flagStatus.lock_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.lock_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 }
 
-TEST(FlagStatus, lock_clear) {
+TEST_CASE("lock_clear", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   {
@@ -284,19 +277,18 @@ TEST(FlagStatus, lock_clear) {
     v.push_back(ModifierFlag::FN);
     v.push_back(ModifierFlag::SHIFT_L);
     flagStatus.lock_increase(v);
-    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == (ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L));
   }
   {
     flagStatus.increase(ModifierFlag::CAPSLOCK);
-    EXPECT_EQ(ModifierFlag::CAPSLOCK | ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L,
-              flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == (ModifierFlag::CAPSLOCK | ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L));
   }
 
   flagStatus.lock_clear();
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 }
 
-TEST(FlagStatus, negative_lock_clear) {
+TEST_CASE("negative_lock_clear", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   {
@@ -305,58 +297,58 @@ TEST(FlagStatus, negative_lock_clear) {
     v.push_back(ModifierFlag::FN);
     v.push_back(ModifierFlag::SHIFT_L);
     flagStatus.negative_lock_increase(v);
-    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(0));
 
     flagStatus.increase(v);
-    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(0));
 
     flagStatus.increase(v);
-    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == (ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L));
 
     flagStatus.reset();
-    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(0));
 
     flagStatus.increase(v);
-    EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(0));
 
     flagStatus.negative_lock_clear();
-    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == (ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L));
   }
 }
 
-TEST(FlagStatus, sticky_increase) {
+TEST_CASE("sticky_increase", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   // Do nothing with ModifierFlag::NONE.
   flagStatus.sticky_increase(ModifierFlag::NONE);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   {
     Vector_ModifierFlag v;
     v.push_back(ModifierFlag::COMMAND_L);
     v.push_back(ModifierFlag::FN);
     flagStatus.sticky_increase(v);
-    EXPECT_EQ(Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN), flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L | ModifierFlag::FN));
   }
 
   flagStatus.sticky_decrease(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::FN), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::FN));
 }
 
-TEST(FlagStatus, sticky_toggle) {
+TEST_CASE("sticky_toggle", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   flagStatus.sticky_increase(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 
   flagStatus.sticky_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   flagStatus.sticky_toggle(ModifierFlag::COMMAND_L);
-  EXPECT_EQ(Flags(ModifierFlag::COMMAND_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::COMMAND_L));
 }
 
-TEST(FlagStatus, sticky_clear) {
+TEST_CASE("sticky_clear", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   {
@@ -365,106 +357,106 @@ TEST(FlagStatus, sticky_clear) {
     v.push_back(ModifierFlag::FN);
     v.push_back(ModifierFlag::SHIFT_L);
     flagStatus.sticky_increase(v);
-    EXPECT_EQ(ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L, flagStatus.makeFlags());
+    REQUIRE(flagStatus.makeFlags() == (ModifierFlag::COMMAND_L | ModifierFlag::FN | ModifierFlag::SHIFT_L));
   }
 
   flagStatus.sticky_clear();
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 }
 
-TEST(FlagStatus, lazy_increase) {
+TEST_CASE("lazy_increase", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   // +1 (total 1)
   flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   // +0 (total 1)
   flagStatus.lazy_enable();
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   // -1 (total 0)
   flagStatus.lazy_decrease(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 
   // +1 (total 1)
   flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   flagStatus.lazy_disable_if_off();
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   // +2 (total 2)
   flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   // -1 (total 1)
   flagStatus.lazy_decrease(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(ModifierFlag::SHIFT_L), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::SHIFT_L));
 
   // => 0 (lazy modifier is disabled when reset.)
   flagStatus.reset();
 
   // +1 (total 1)
   flagStatus.lazy_increase(ModifierFlag::SHIFT_L);
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 }
 
-TEST(FlagStatus, CapsLock) {
+TEST_CASE("CapsLock", "[FlagStatus]") {
   FlagStatus flagStatus;
 
   flagStatus.set(KeyCode::CAPSLOCK, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CAPSLOCK));
 
   flagStatus.reset();
 
   flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CAPSLOCK));
 
   // from other keyboard
   flagStatus.set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CAPSLOCK));
 
   flagStatus.set(KeyCode::A, Flags(ModifierFlag::CAPSLOCK));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CAPSLOCK));
 
   // reset
   flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
-  EXPECT_EQ(Flags(), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags());
 
   // soft caps
   flagStatus.lock_increase(ModifierFlag::CAPSLOCK);
   flagStatus.set(KeyCode::A, Flags(0));
-  EXPECT_EQ(Flags(ModifierFlag::CAPSLOCK), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(ModifierFlag::CAPSLOCK));
 
   // soft caps will be canceled by hardware caps
   flagStatus.set(KeyCode::CAPSLOCK, Flags(0));
-  EXPECT_EQ(Flags(0), flagStatus.makeFlags());
+  REQUIRE(flagStatus.makeFlags() == Flags(0));
 }
 
-TEST(FlagStatus, isOn) {
+TEST_CASE("isOn", "[FlagStatus]") {
   {
     FlagStatus flagStatus;
 
     {
       Vector_ModifierFlag modifierFlags;
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag(ModifierFlag::ZERO));
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::NONE);
       modifierFlags.push_back(ModifierFlag::ZERO);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
   }
 
@@ -475,24 +467,24 @@ TEST(FlagStatus, isOn) {
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_R);
-      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == false);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
       modifierFlags.push_back(ModifierFlag::ZERO);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
   }
 
@@ -504,31 +496,31 @@ TEST(FlagStatus, isOn) {
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_R);
-      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == false);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
       modifierFlags.push_back(ModifierFlag::ZERO);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
       modifierFlags.push_back(ModifierFlag::ZERO);
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
   }
 
@@ -541,18 +533,18 @@ TEST(FlagStatus, isOn) {
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == false);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_R);
-      EXPECT_FALSE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == false);
     }
     {
       Vector_ModifierFlag modifierFlags;
@@ -560,93 +552,93 @@ TEST(FlagStatus, isOn) {
       modifierFlags.push_back(ModifierFlag::CONTROL_R);
       modifierFlags.push_back(ModifierFlag::COMMAND_R);
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_TRUE(flagStatus.isOn(modifierFlags));
+      REQUIRE(flagStatus.isOn(modifierFlags) == true);
     }
   }
 }
 
-TEST(FlagStatus, isLocked) {
+TEST_CASE("isLocked", "[FlagStatus]") {
   {
     FlagStatus flagStatus;
 
     {
       Vector_ModifierFlag modifierFlags;
-      EXPECT_TRUE(flagStatus.isLocked(modifierFlags));
+      REQUIRE(flagStatus.isLocked(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag(ModifierFlag::ZERO));
-      EXPECT_TRUE(flagStatus.isLocked(modifierFlags));
+      REQUIRE(flagStatus.isLocked(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_TRUE(flagStatus.isLocked(modifierFlags));
+      REQUIRE(flagStatus.isLocked(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::NONE);
       modifierFlags.push_back(ModifierFlag::ZERO);
-      EXPECT_TRUE(flagStatus.isLocked(modifierFlags));
+      REQUIRE(flagStatus.isLocked(modifierFlags) == true);
     }
 
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
-      EXPECT_FALSE(flagStatus.isLocked(modifierFlags));
+      REQUIRE(flagStatus.isLocked(modifierFlags) == false);
 
       flagStatus.increase(ModifierFlag::SHIFT_L);
-      EXPECT_FALSE(flagStatus.isLocked(modifierFlags));
+      REQUIRE(flagStatus.isLocked(modifierFlags) == false);
 
       flagStatus.lock_increase(ModifierFlag::SHIFT_L);
-      EXPECT_TRUE(flagStatus.isLocked(modifierFlags));
+      REQUIRE(flagStatus.isLocked(modifierFlags) == true);
     }
   }
 }
 
-TEST(FlagStatus, isStuck) {
+TEST_CASE("isStuck", "[FlagStatus]") {
   {
     FlagStatus flagStatus;
 
     {
       Vector_ModifierFlag modifierFlags;
-      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag(ModifierFlag::ZERO));
-      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::NONE);
-      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == true);
     }
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::NONE);
       modifierFlags.push_back(ModifierFlag::ZERO);
-      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == true);
     }
 
     {
       Vector_ModifierFlag modifierFlags;
       modifierFlags.push_back(ModifierFlag::SHIFT_L);
-      EXPECT_FALSE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == false);
 
       flagStatus.increase(ModifierFlag::SHIFT_L);
-      EXPECT_FALSE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == false);
 
       flagStatus.sticky_increase(ModifierFlag::SHIFT_L);
-      EXPECT_TRUE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == true);
 
       flagStatus.sticky_clear();
-      EXPECT_FALSE(flagStatus.isStuck(modifierFlags));
+      REQUIRE(flagStatus.isStuck(modifierFlags) == false);
     }
   }
 }
 
-TEST(FlagStatus, subtract) {
+TEST_CASE("subtract", "[FlagStatus]") {
   FlagStatus flagStatus1;
   FlagStatus flagStatus2;
 
@@ -661,18 +653,18 @@ TEST(FlagStatus, subtract) {
 
   Vector_ModifierFlag v;
   flagStatus1.subtract(flagStatus2, v);
-  EXPECT_EQ(3, v.size());
-  EXPECT_EQ(ModifierFlag::OPTION_L, v[0]);
-  EXPECT_EQ(ModifierFlag::SHIFT_L, v[1]);
-  EXPECT_EQ(ModifierFlag::SHIFT_L, v[2]);
+  REQUIRE(v.size() == 3);
+  REQUIRE(v[0] == ModifierFlag::OPTION_L);
+  REQUIRE(v[1] == ModifierFlag::SHIFT_L);
+  REQUIRE(v[2] == ModifierFlag::SHIFT_L);
 
   flagStatus2.subtract(flagStatus1, v);
-  EXPECT_EQ(2, v.size());
-  EXPECT_EQ(ModifierFlag::COMMAND_R, v[0]);
-  EXPECT_EQ(ModifierFlag::FN, v[1]);
+  REQUIRE(v.size() == 2);
+  REQUIRE(v[0] == ModifierFlag::COMMAND_R);
+  REQUIRE(v[1] == ModifierFlag::FN);
 }
 
-TEST(FlagStatus, ScopedSetter) {
+TEST_CASE("ScopedSetter", "[FlagStatus]") {
   FlagStatus flagStatus1;
   FlagStatus flagStatus2;
 
@@ -687,28 +679,17 @@ TEST(FlagStatus, ScopedSetter) {
   flagStatus2.increase(ModifierFlag::FN);
 
   {
-    EXPECT_EQ(flagStatus1.makeFlags(),
-              ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L);
-    EXPECT_EQ(flagStatus2.makeFlags(),
-              ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
+    REQUIRE(flagStatus1.makeFlags() == (ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L));
+    REQUIRE(flagStatus2.makeFlags() == (ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN));
 
     {
       FlagStatus::ScopedSetter scopedSetter(flagStatus1, flagStatus2);
 
-      EXPECT_EQ(flagStatus1.makeFlags(),
-                ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
-      EXPECT_EQ(flagStatus2.makeFlags(),
-                ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
+      REQUIRE(flagStatus1.makeFlags() == (ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN));
+      REQUIRE(flagStatus2.makeFlags() == (ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN));
     }
 
-    EXPECT_EQ(flagStatus1.makeFlags(),
-              ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L);
-    EXPECT_EQ(flagStatus2.makeFlags(),
-              ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN);
+    REQUIRE(flagStatus1.makeFlags() == (ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L));
+    REQUIRE(flagStatus2.makeFlags() == (ModifierFlag::COMMAND_R | ModifierFlag::CONTROL_L | ModifierFlag::FN));
   }
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }
