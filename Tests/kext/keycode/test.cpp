@@ -1,4 +1,6 @@
-#include <gtest/gtest.h>
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <ostream>
 #include <vector>
 
@@ -9,124 +11,113 @@
 using namespace org_pqrs_Karabiner;
 Config config;
 
-std::ostream& operator<<(std::ostream& os, const EventType& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const KeyboardType& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ModifierFlag& v) { return os << v.getRawBits(); }
-std::ostream& operator<<(std::ostream& os, const Flags& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const KeyCode& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ConsumerKeyCode& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const PointingButton& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const Buttons& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const ScrollWheel& v) { return os << v.get(); }
-std::ostream& operator<<(std::ostream& os, const PointingRelative& v) { return os << v.get(); }
-
 Flags operator|(ModifierFlag lhs, ModifierFlag rhs) { return Flags(lhs.getRawBits() | rhs.getRawBits()); }
 
-TEST(Generic, setUp) {
+TEST_CASE("setUp", "[Generic]") {
   KeyCodeModifierFlagPairs::clearVirtualModifiers();
 }
 
-TEST(Generic, sizeof_) {
-  EXPECT_EQ(sizeof(unsigned int), sizeof(EventType));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(KeyboardType));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(ModifierFlag));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(Flags));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(KeyCode));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(ConsumerKeyCode));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(PointingButton));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(Buttons));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(ScrollWheel));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(PointingRelative));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(Option));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(ApplicationType));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(InputSource));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(DeviceVendor));
-  EXPECT_EQ(sizeof(unsigned int), sizeof(DeviceProduct));
+TEST_CASE("sizeof_", "[Generic]") {
+  REQUIRE(sizeof(EventType) == sizeof(unsigned int));
+  REQUIRE(sizeof(KeyboardType) == sizeof(unsigned int));
+  REQUIRE(sizeof(ModifierFlag) == sizeof(unsigned int));
+  REQUIRE(sizeof(Flags) == sizeof(unsigned int));
+  REQUIRE(sizeof(KeyCode) == sizeof(unsigned int));
+  REQUIRE(sizeof(ConsumerKeyCode) == sizeof(unsigned int));
+  REQUIRE(sizeof(PointingButton) == sizeof(unsigned int));
+  REQUIRE(sizeof(Buttons) == sizeof(unsigned int));
+  REQUIRE(sizeof(ScrollWheel) == sizeof(unsigned int));
+  REQUIRE(sizeof(PointingRelative) == sizeof(unsigned int));
+  REQUIRE(sizeof(Option) == sizeof(unsigned int));
+  REQUIRE(sizeof(ApplicationType) == sizeof(unsigned int));
+  REQUIRE(sizeof(InputSource) == sizeof(unsigned int));
+  REQUIRE(sizeof(DeviceVendor) == sizeof(unsigned int));
+  REQUIRE(sizeof(DeviceProduct) == sizeof(unsigned int));
 }
 
-TEST(EventType, isKeyDownOrModifierDown) {
-  EXPECT_TRUE(EventType::DOWN.isKeyDownOrModifierDown(KeyCode::A, Flags(0)));
-  EXPECT_FALSE(EventType::UP.isKeyDownOrModifierDown(KeyCode::A, Flags(0)));
+TEST_CASE("isKeyDownOrModifierDown", "[EventType]") {
+  REQUIRE(EventType::DOWN.isKeyDownOrModifierDown(KeyCode::A, Flags(0)) == true);
+  REQUIRE(EventType::UP.isKeyDownOrModifierDown(KeyCode::A, Flags(0)) == false);
 
-  EXPECT_TRUE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L));
-  EXPECT_FALSE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L)));
+  REQUIRE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L) == true);
+  REQUIRE(EventType::MODIFY.isKeyDownOrModifierDown(KeyCode::SHIFT_L, Flags(ModifierFlag::CONTROL_L)) == false);
 }
 
-TEST(Flags, add) {
+TEST_CASE("Flags.add", "[Flags]") {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
-  EXPECT_EQ(mask, flags.stripFN());
+  REQUIRE(flags.stripFN() == mask);
 
   flags.add(ModifierFlag::OPTION_L);
-  EXPECT_EQ(mask | ModifierFlag::OPTION_L, flags);
+  REQUIRE(flags == (mask | ModifierFlag::OPTION_L));
 
   flags.add(ModifierFlag::NONE);
-  EXPECT_EQ(mask | ModifierFlag::OPTION_L | ModifierFlag::NONE, flags);
+  REQUIRE(flags == (mask | ModifierFlag::OPTION_L | ModifierFlag::NONE));
 }
 
-TEST(Flags, remove) {
+TEST_CASE("Flags.remove", "[Flags]") {
   {
     Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
     Flags removed = ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
+    REQUIRE(flags.remove(ModifierFlag::SHIFT_L) == removed);
   }
   {
     Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::NONE;
     Flags removed = ModifierFlag::SHIFT_R | ModifierFlag::NUMPAD | ModifierFlag::NONE;
-    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L));
+    REQUIRE(flags.remove(ModifierFlag::SHIFT_L) == removed);
 
     flags.remove(ModifierFlag::NUMPAD);
     removed = ModifierFlag::SHIFT_R | ModifierFlag::NONE;
-    EXPECT_EQ(removed, flags);
+    REQUIRE(flags == removed);
 
     flags.remove(ModifierFlag::SHIFT_R);
     flags.remove(ModifierFlag::NONE);
     removed = Flags(0);
-    EXPECT_EQ(removed, flags);
+    REQUIRE(flags == removed);
 
     flags.remove(ModifierFlag::OPTION_L);
     flags.remove(ModifierFlag::COMMAND_R);
     removed = Flags(0);
-    EXPECT_EQ(removed, flags);
+    REQUIRE(flags == removed);
   }
   {
     // chain
     Flags flags = ModifierFlag::SHIFT_L | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
     Flags removed = ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
-    EXPECT_EQ(removed, flags.remove(ModifierFlag::SHIFT_L).remove(ModifierFlag::SHIFT_R));
+    REQUIRE(flags.remove(ModifierFlag::SHIFT_L).remove(ModifierFlag::SHIFT_R) == removed);
   }
 }
 
-TEST(Flags, stripFN) {
+TEST_CASE("stripFN", "[Flags]") {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
-  EXPECT_EQ(mask, flags.stripFN());
+  REQUIRE(flags.stripFN() == mask);
 
   flags.add(ModifierFlag::FN);
-  EXPECT_EQ(mask, flags.stripFN());
+  REQUIRE(flags.stripFN() == mask);
 }
 
-TEST(Flags, stripNUMPAD) {
+TEST_CASE("stripNUMPAD", "[Flags]") {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
-  EXPECT_EQ(mask, flags.stripNUMPAD());
+  REQUIRE(flags.stripNUMPAD() == mask);
 
   flags.add(ModifierFlag::NUMPAD);
-  EXPECT_EQ(mask, flags.stripNUMPAD());
+  REQUIRE(flags.stripNUMPAD() == mask);
 }
 
-TEST(Flags, isOn) {
+TEST_CASE("Flags.isOn", "[Flags]") {
   Flags mask = ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_R | ModifierFlag::COMMAND_R;
   Flags flags = mask;
 
-  EXPECT_TRUE(flags.isOn(ModifierFlag::SHIFT_L));
-  EXPECT_FALSE(flags.isOn(ModifierFlag::SHIFT_R));
+  REQUIRE(flags.isOn(ModifierFlag::SHIFT_L) == true);
+  REQUIRE(flags.isOn(ModifierFlag::SHIFT_R) == false);
 
   flags = Flags();
-  EXPECT_TRUE(flags.isOn(ModifierFlag::ZERO));
+  REQUIRE(flags.isOn(ModifierFlag::ZERO) == true);
 
   flags = Flags();
-  EXPECT_FALSE(flags.isOn(ModifierFlag::NONE));
+  REQUIRE(flags.isOn(ModifierFlag::NONE) == false);
 }
 
 namespace {
@@ -138,13 +129,13 @@ KeyCode cursors[][2] = {
 };
 }
 
-TEST(KeyCode, op) {
-  EXPECT_TRUE(KeyCode::A == KeyCode::A);
-  EXPECT_TRUE(KeyCode::VK_NONE > KeyCode::A);
+TEST_CASE("op", "[KeyCode]") {
+  REQUIRE(KeyCode::A == KeyCode::A);
+  REQUIRE(KeyCode::VK_NONE > KeyCode::A);
 }
 
-TEST(KeyCode, get) {
-  EXPECT_EQ(static_cast<unsigned int>(57), KeyCode::CAPSLOCK.get());
+TEST_CASE("get", "[KeyCode]") {
+  REQUIRE(KeyCode::CAPSLOCK.get() == static_cast<unsigned int>(57));
 }
 
 struct NormalizeItem {
@@ -157,7 +148,7 @@ struct NormalizeItem {
   KeyboardType keyboardType;
 };
 
-TEST(KeyCode, normalizeKey) {
+TEST_CASE("normalizeKey", "[KeyCode]") {
   std::vector<NormalizeItem> vec;
 
   // ----------------------------------------
@@ -208,14 +199,14 @@ TEST(KeyCode, normalizeKey) {
     // Down
     key = it->fromKeyCode;
     KeyCode::normalizeKey(key, it->fromFlags, EventType::DOWN, it->keyboardType);
-    EXPECT_EQ(it->toKeyCode, key);
-    EXPECT_EQ(it->fromFlags, it->toFlags);
+    REQUIRE(it->toKeyCode == key);
+    REQUIRE(it->fromFlags == it->toFlags);
 
     // Up
     key = it->fromKeyCode;
     KeyCode::normalizeKey(key, it->fromFlags, EventType::UP, it->keyboardType);
-    EXPECT_EQ(it->toKeyCode, key);
-    EXPECT_EQ(it->fromFlags, it->toFlags);
+    REQUIRE(it->toKeyCode == key);
+    REQUIRE(it->fromFlags == it->toFlags);
   }
 
   // ======================================================================
@@ -232,14 +223,14 @@ TEST(KeyCode, normalizeKey) {
     KeyCode key = KeyCode::END;
     Flags flags = Flags(ModifierFlag::FN);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, Flags(ModifierFlag::FN));
+    REQUIRE(key == KeyCode::CURSOR_RIGHT);
+    REQUIRE(flags == Flags(ModifierFlag::FN));
 
     key = KeyCode::END;
     flags = Flags(0);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, Flags(0));
+    REQUIRE(key == KeyCode::CURSOR_RIGHT);
+    REQUIRE(flags == Flags(0));
   }
 
   // Test case for the following key sequence.
@@ -255,18 +246,18 @@ TEST(KeyCode, normalizeKey) {
     KeyCode key = KeyCode::CURSOR_RIGHT;
     Flags flags = Flags(ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, Flags(0));
+    REQUIRE(key == KeyCode::CURSOR_RIGHT);
+    REQUIRE(flags == Flags(0));
 
     key = KeyCode::CURSOR_RIGHT;
     flags = Flags(ModifierFlag::FN | ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, Flags(ModifierFlag::FN));
+    REQUIRE(key == KeyCode::CURSOR_RIGHT);
+    REQUIRE(flags == Flags(ModifierFlag::FN));
   }
 }
 
-TEST(KeyCode, reverseNormalizeKey) {
+TEST_CASE("reverseNormalizeKey", "[KeyCode]") {
   std::vector<NormalizeItem> vec;
 
   // ENTER_POWERBOOK
@@ -329,15 +320,15 @@ TEST(KeyCode, reverseNormalizeKey) {
     key = it->fromKeyCode;
     KeyCode::normalizeKey(key, it->fromFlags, EventType::DOWN, it->keyboardType);
     KeyCode::reverseNormalizeKey(key, it->fromFlags, EventType::DOWN, it->keyboardType);
-    EXPECT_EQ(it->toKeyCode, key);
-    EXPECT_EQ(it->fromFlags, it->toFlags);
+    REQUIRE(it->toKeyCode == key);
+    REQUIRE(it->fromFlags == it->toFlags);
 
     // Up
     key = it->fromKeyCode;
     KeyCode::normalizeKey(key, it->fromFlags, EventType::UP, it->keyboardType);
     KeyCode::reverseNormalizeKey(key, it->fromFlags, EventType::UP, it->keyboardType);
-    EXPECT_EQ(it->toKeyCode, key);
-    EXPECT_EQ(it->fromFlags, it->toFlags);
+    REQUIRE(it->toKeyCode == key);
+    REQUIRE(it->fromFlags == it->toFlags);
   }
 
   // ======================================================================
@@ -355,15 +346,15 @@ TEST(KeyCode, reverseNormalizeKey) {
     Flags flags(ModifierFlag::FN);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::END);
-    EXPECT_EQ(flags, Flags(ModifierFlag::FN));
+    REQUIRE(key == KeyCode::END);
+    REQUIRE(flags == Flags(ModifierFlag::FN));
 
     key = KeyCode::END;
     flags = Flags(0);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::END);
-    EXPECT_EQ(flags, Flags(0));
+    REQUIRE(key == KeyCode::END);
+    REQUIRE(flags == Flags(0));
   }
 
   // Test case for the following key sequence.
@@ -380,186 +371,181 @@ TEST(KeyCode, reverseNormalizeKey) {
     Flags flags = Flags(ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::DOWN, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, Flags(ModifierFlag::NUMPAD));
+    REQUIRE(key == KeyCode::CURSOR_RIGHT);
+    REQUIRE(flags == Flags(ModifierFlag::NUMPAD));
 
     key = KeyCode::CURSOR_RIGHT;
     flags = Flags(ModifierFlag::FN | ModifierFlag::NUMPAD);
     KeyCode::normalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
     KeyCode::reverseNormalizeKey(key, flags, EventType::UP, KeyboardType::MACBOOK);
-    EXPECT_EQ(key, KeyCode::CURSOR_RIGHT);
-    EXPECT_EQ(flags, ModifierFlag::FN | ModifierFlag::NUMPAD);
+    REQUIRE(key == KeyCode::CURSOR_RIGHT);
+    REQUIRE(flags == (ModifierFlag::FN | ModifierFlag::NUMPAD));
   }
 }
 
-TEST(ModifierFlag, getKeyCode) {
-  EXPECT_EQ(KeyCode::CAPSLOCK, ModifierFlag::CAPSLOCK.getKeyCode());
-  EXPECT_EQ(KeyCode::SHIFT_L, ModifierFlag::SHIFT_L.getKeyCode());
-  EXPECT_EQ(KeyCode::SHIFT_R, ModifierFlag::SHIFT_R.getKeyCode());
-  EXPECT_EQ(KeyCode::CONTROL_L, ModifierFlag::CONTROL_L.getKeyCode());
-  EXPECT_EQ(KeyCode::CONTROL_R, ModifierFlag::CONTROL_R.getKeyCode());
-  EXPECT_EQ(KeyCode::OPTION_L, ModifierFlag::OPTION_L.getKeyCode());
-  EXPECT_EQ(KeyCode::OPTION_R, ModifierFlag::OPTION_R.getKeyCode());
-  EXPECT_EQ(KeyCode::COMMAND_L, ModifierFlag::COMMAND_L.getKeyCode());
-  EXPECT_EQ(KeyCode::COMMAND_R, ModifierFlag::COMMAND_R.getKeyCode());
-  EXPECT_EQ(KeyCode::FN, ModifierFlag::FN.getKeyCode());
+TEST_CASE("getKeyCode", "[ModifierFlag]") {
+  REQUIRE(ModifierFlag::CAPSLOCK.getKeyCode() == KeyCode::CAPSLOCK);
+  REQUIRE(ModifierFlag::SHIFT_L.getKeyCode() == KeyCode::SHIFT_L);
+  REQUIRE(ModifierFlag::SHIFT_R.getKeyCode() == KeyCode::SHIFT_R);
+  REQUIRE(ModifierFlag::CONTROL_L.getKeyCode() == KeyCode::CONTROL_L);
+  REQUIRE(ModifierFlag::CONTROL_R.getKeyCode() == KeyCode::CONTROL_R);
+  REQUIRE(ModifierFlag::OPTION_L.getKeyCode() == KeyCode::OPTION_L);
+  REQUIRE(ModifierFlag::OPTION_R.getKeyCode() == KeyCode::OPTION_R);
+  REQUIRE(ModifierFlag::COMMAND_L.getKeyCode() == KeyCode::COMMAND_L);
+  REQUIRE(ModifierFlag::COMMAND_R.getKeyCode() == KeyCode::COMMAND_R);
+  REQUIRE(ModifierFlag::FN.getKeyCode() == KeyCode::FN);
 
-  EXPECT_EQ(KeyCode::VK_NONE, ModifierFlag::NUMPAD.getKeyCode());
+  REQUIRE(ModifierFlag::NUMPAD.getKeyCode() == KeyCode::VK_NONE);
 }
 
-TEST(ModifierFlag, getRawBits) {
-  EXPECT_EQ(0x10000, ModifierFlag::CAPSLOCK.getRawBits());
-  EXPECT_EQ(0x100008, ModifierFlag::COMMAND_L.getRawBits());
-  EXPECT_EQ(0, ModifierFlag::ZERO.getRawBits());
-  EXPECT_EQ(0, ModifierFlag::NONE.getRawBits());
+TEST_CASE("getRawBits", "[ModifierFlag]") {
+  REQUIRE(ModifierFlag::CAPSLOCK.getRawBits() == 0x10000);
+  REQUIRE(ModifierFlag::COMMAND_L.getRawBits() == 0x100008);
+  REQUIRE(ModifierFlag::ZERO.getRawBits() == 0);
+  REQUIRE(ModifierFlag::NONE.getRawBits() == 0);
 }
 
-TEST(KeyCode, getModifierFlag) {
-  EXPECT_EQ(ModifierFlag::CAPSLOCK, KeyCode::CAPSLOCK.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::SHIFT_L, KeyCode::SHIFT_L.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::SHIFT_R, KeyCode::SHIFT_R.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::CONTROL_L, KeyCode::CONTROL_L.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::CONTROL_R, KeyCode::CONTROL_R.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::OPTION_L, KeyCode::OPTION_L.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::OPTION_R, KeyCode::OPTION_R.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::COMMAND_L, KeyCode::COMMAND_L.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::COMMAND_R, KeyCode::COMMAND_R.getModifierFlag());
-  EXPECT_EQ(ModifierFlag::FN, KeyCode::FN.getModifierFlag());
+TEST_CASE("getModifierFlag", "[KeyCode]") {
+  REQUIRE(KeyCode::CAPSLOCK.getModifierFlag() == ModifierFlag::CAPSLOCK);
+  REQUIRE(KeyCode::SHIFT_L.getModifierFlag() == ModifierFlag::SHIFT_L);
+  REQUIRE(KeyCode::SHIFT_R.getModifierFlag() == ModifierFlag::SHIFT_R);
+  REQUIRE(KeyCode::CONTROL_L.getModifierFlag() == ModifierFlag::CONTROL_L);
+  REQUIRE(KeyCode::CONTROL_R.getModifierFlag() == ModifierFlag::CONTROL_R);
+  REQUIRE(KeyCode::OPTION_L.getModifierFlag() == ModifierFlag::OPTION_L);
+  REQUIRE(KeyCode::OPTION_R.getModifierFlag() == ModifierFlag::OPTION_R);
+  REQUIRE(KeyCode::COMMAND_L.getModifierFlag() == ModifierFlag::COMMAND_L);
+  REQUIRE(KeyCode::COMMAND_R.getModifierFlag() == ModifierFlag::COMMAND_R);
+  REQUIRE(KeyCode::FN.getModifierFlag() == ModifierFlag::FN);
 
-  EXPECT_EQ(ModifierFlag::ZERO, KeyCode(KeyCode::A).getModifierFlag());
-  EXPECT_EQ(ModifierFlag::ZERO, KeyCode(KeyCode::VK_NONE).getModifierFlag());
+  REQUIRE(KeyCode(KeyCode::A).getModifierFlag() == ModifierFlag::ZERO);
+  REQUIRE(KeyCode(KeyCode::VK_NONE).getModifierFlag() == ModifierFlag::ZERO);
 }
 
-TEST(KeyCode, isModifier) {
-  EXPECT_EQ(true, KeyCode(KeyCode::CAPSLOCK).isModifier());
-  EXPECT_EQ(true, KeyCode(KeyCode::SHIFT_L).isModifier());
-  EXPECT_EQ(false, KeyCode(KeyCode::A).isModifier());
-  EXPECT_EQ(false, KeyCode(KeyCode::VK_NONE).isModifier());
+TEST_CASE("isModifier", "[KeyCode]") {
+  REQUIRE(KeyCode(KeyCode::CAPSLOCK).isModifier() == true);
+  REQUIRE(KeyCode(KeyCode::SHIFT_L).isModifier() == true);
+  REQUIRE(KeyCode(KeyCode::A).isModifier() == false);
+  REQUIRE(KeyCode(KeyCode::VK_NONE).isModifier() == false);
 }
 
-TEST(ConsumerKeyCode, isRepeatable) {
-  EXPECT_EQ(true, ConsumerKeyCode::BRIGHTNESS_DOWN.isRepeatable());
-  EXPECT_EQ(true, ConsumerKeyCode::BRIGHTNESS_UP.isRepeatable());
+TEST_CASE("isRepeatable", "[ConsumerKeyCode]") {
+  REQUIRE(ConsumerKeyCode::BRIGHTNESS_DOWN.isRepeatable() == true);
+  REQUIRE(ConsumerKeyCode::BRIGHTNESS_UP.isRepeatable() == true);
 
-  EXPECT_EQ(false, ConsumerKeyCode::KEYBOARDLIGHT_OFF.isRepeatable());
-  EXPECT_EQ(true, ConsumerKeyCode::KEYBOARDLIGHT_LOW.isRepeatable());
-  EXPECT_EQ(true, ConsumerKeyCode::KEYBOARDLIGHT_HIGH.isRepeatable());
+  REQUIRE(ConsumerKeyCode::KEYBOARDLIGHT_OFF.isRepeatable() == false);
+  REQUIRE(ConsumerKeyCode::KEYBOARDLIGHT_LOW.isRepeatable() == true);
+  REQUIRE(ConsumerKeyCode::KEYBOARDLIGHT_HIGH.isRepeatable() == true);
 
-  EXPECT_EQ(true, ConsumerKeyCode::MUSIC_PREV.isRepeatable());
-  EXPECT_EQ(false, ConsumerKeyCode::MUSIC_PLAY.isRepeatable());
-  EXPECT_EQ(true, ConsumerKeyCode::MUSIC_NEXT.isRepeatable());
+  REQUIRE(ConsumerKeyCode::MUSIC_PREV.isRepeatable() == true);
+  REQUIRE(ConsumerKeyCode::MUSIC_PLAY.isRepeatable() == false);
+  REQUIRE(ConsumerKeyCode::MUSIC_NEXT.isRepeatable() == true);
 
-  EXPECT_EQ(false, ConsumerKeyCode::VOLUME_MUTE.isRepeatable());
-  EXPECT_EQ(true, ConsumerKeyCode::VOLUME_DOWN.isRepeatable());
-  EXPECT_EQ(true, ConsumerKeyCode::VOLUME_UP.isRepeatable());
+  REQUIRE(ConsumerKeyCode::VOLUME_MUTE.isRepeatable() == false);
+  REQUIRE(ConsumerKeyCode::VOLUME_DOWN.isRepeatable() == true);
+  REQUIRE(ConsumerKeyCode::VOLUME_UP.isRepeatable() == true);
 
-  EXPECT_EQ(false, ConsumerKeyCode::EJECT.isRepeatable());
-  EXPECT_EQ(false, ConsumerKeyCode::POWER.isRepeatable());
-  EXPECT_EQ(false, ConsumerKeyCode::NUMLOCK.isRepeatable());
-  EXPECT_EQ(false, ConsumerKeyCode::VIDEO_MIRROR.isRepeatable());
+  REQUIRE(ConsumerKeyCode::EJECT.isRepeatable() == false);
+  REQUIRE(ConsumerKeyCode::POWER.isRepeatable() == false);
+  REQUIRE(ConsumerKeyCode::NUMLOCK.isRepeatable() == false);
+  REQUIRE(ConsumerKeyCode::VIDEO_MIRROR.isRepeatable() == false);
 }
 
-TEST(Buttons, add) {
+TEST_CASE("Buttons.add", "[Buttons]") {
   Buttons buttons;
   buttons.add(PointingButton::LEFT);
-  EXPECT_EQ(Buttons(PointingButton::LEFT), buttons);
+  REQUIRE(buttons == Buttons(PointingButton::LEFT));
 
   buttons.add(PointingButton::MIDDLE);
-  EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
+  REQUIRE(buttons == Buttons(PointingButton::LEFT | PointingButton::MIDDLE));
 
   // some PointingButton twice.
   buttons.add(PointingButton::LEFT);
-  EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
+  REQUIRE(buttons == Buttons(PointingButton::LEFT | PointingButton::MIDDLE));
 
   buttons = Buttons(0);
   buttons.add(PointingButton::LEFT | PointingButton::MIDDLE);
-  EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::MIDDLE), buttons);
+  REQUIRE(buttons == Buttons(PointingButton::LEFT | PointingButton::MIDDLE));
 }
 
-TEST(Buttons, remove) {
+TEST_CASE("Buttons.remove", "[Buttons]") {
   Buttons buttons(PointingButton::LEFT | PointingButton::MIDDLE);
   buttons.remove(PointingButton::LEFT);
-  EXPECT_EQ(Buttons(PointingButton::MIDDLE), buttons);
+  REQUIRE(buttons == Buttons(PointingButton::MIDDLE));
 
   // unexist PointingButton.
   buttons.remove(PointingButton::RIGHT);
-  EXPECT_EQ(Buttons(PointingButton::MIDDLE), buttons);
+  REQUIRE(buttons == Buttons(PointingButton::MIDDLE));
 
   buttons = PointingButton::LEFT | PointingButton::MIDDLE | PointingButton::RIGHT;
   buttons.remove(PointingButton::LEFT | PointingButton::RIGHT);
-  EXPECT_EQ(Buttons(PointingButton::MIDDLE), buttons);
+  REQUIRE(buttons == Buttons(PointingButton::MIDDLE));
 }
 
-TEST(Buttons, isOn) {
+TEST_CASE("Buttons.isOn", "[Buttons]") {
   Buttons buttons(PointingButton::LEFT | PointingButton::MIDDLE | PointingButton::BUTTON4);
-  EXPECT_TRUE(buttons.isOn(PointingButton::LEFT));
-  EXPECT_TRUE(buttons.isOn(PointingButton::LEFT | PointingButton::MIDDLE));
+  REQUIRE(buttons.isOn(PointingButton::LEFT) == true);
+  REQUIRE(buttons.isOn(PointingButton::LEFT | PointingButton::MIDDLE) == true);
 
-  EXPECT_FALSE(buttons.isOn(PointingButton::RIGHT));
-  EXPECT_FALSE(buttons.isOn(PointingButton::LEFT | PointingButton::RIGHT));
+  REQUIRE(buttons.isOn(PointingButton::RIGHT) == false);
+  REQUIRE(buttons.isOn(PointingButton::LEFT | PointingButton::RIGHT) == false);
 }
 
-TEST(Buttons, justPressed) {
+TEST_CASE("justPressed", "[Buttons]") {
   Buttons previous(PointingButton::LEFT | PointingButton::MIDDLE | PointingButton::BUTTON4);
   Buttons buttons(PointingButton::RIGHT | PointingButton::MIDDLE | PointingButton::BUTTON5);
 
-  EXPECT_EQ(Buttons(PointingButton::RIGHT | PointingButton::BUTTON5), buttons.justPressed(previous));
-  EXPECT_EQ(Buttons(PointingButton::LEFT | PointingButton::BUTTON4), buttons.justReleased(previous));
+  REQUIRE(buttons.justPressed(previous) == Buttons(PointingButton::RIGHT | PointingButton::BUTTON5));
+  REQUIRE(buttons.justReleased(previous) == Buttons(PointingButton::LEFT | PointingButton::BUTTON4));
 }
 
-TEST(Buttons, count) {
+TEST_CASE("count", "[Buttons]") {
   Buttons buttons0(0);
-  EXPECT_EQ(static_cast<unsigned int>(0), buttons0.count());
+  REQUIRE(buttons0.count() == static_cast<unsigned int>(0));
 
   Buttons buttons1(PointingButton::BUTTON4);
-  EXPECT_EQ(static_cast<unsigned int>(1), buttons1.count());
+  REQUIRE(buttons1.count() == static_cast<unsigned int>(1));
 
   Buttons buttons3(PointingButton::RIGHT | PointingButton::MIDDLE | PointingButton::BUTTON5);
-  EXPECT_EQ(static_cast<unsigned int>(3), buttons3.count());
+  REQUIRE(buttons3.count() == static_cast<unsigned int>(3));
 }
 
-TEST(ScrollWheel, getScrollWheelFromDelta) {
-  EXPECT_EQ(ScrollWheel::NONE, ScrollWheel::getScrollWheelFromDelta(0, 0));
+TEST_CASE("getScrollWheelFromDelta", "[ScrollWheel]") {
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(0, 0) == ScrollWheel::NONE);
 
-  EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(1, 0));
-  EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-1, 0));
-  EXPECT_EQ(ScrollWheel::LEFT, ScrollWheel::getScrollWheelFromDelta(0, 1));
-  EXPECT_EQ(ScrollWheel::RIGHT, ScrollWheel::getScrollWheelFromDelta(0, -1));
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(1, 0) == ScrollWheel::UP);
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(-1, 0) == ScrollWheel::DOWN);
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(0, 1) == ScrollWheel::LEFT);
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(0, -1) == ScrollWheel::RIGHT);
 
-  EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(10, 3));
-  EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-10, 3));
-  EXPECT_EQ(ScrollWheel::LEFT, ScrollWheel::getScrollWheelFromDelta(3, 10));
-  EXPECT_EQ(ScrollWheel::RIGHT, ScrollWheel::getScrollWheelFromDelta(3, -10));
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(10, 3) == ScrollWheel::UP);
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(-10, 3) == ScrollWheel::DOWN);
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(3, 10) == ScrollWheel::LEFT);
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(3, -10) == ScrollWheel::RIGHT);
 
-  EXPECT_EQ(ScrollWheel::UP, ScrollWheel::getScrollWheelFromDelta(10, 10));
-  EXPECT_EQ(ScrollWheel::DOWN, ScrollWheel::getScrollWheelFromDelta(-10, -10));
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(10, 10) == ScrollWheel::UP);
+  REQUIRE(ScrollWheel::getScrollWheelFromDelta(-10, -10) == ScrollWheel::DOWN);
 }
 
-TEST(PointingRelative, getPointingRelativeFromDelta) {
-  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(0, 0));
+TEST_CASE("getPointingRelativeFromDelta", "[PointingRelative]") {
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(0, 0) == PointingRelative::NONE);
 
-  EXPECT_EQ(PointingRelative::UP, PointingRelative::getPointingRelativeFromDelta(0, -10));
-  EXPECT_EQ(PointingRelative::DOWN, PointingRelative::getPointingRelativeFromDelta(0, 10));
-  EXPECT_EQ(PointingRelative::LEFT, PointingRelative::getPointingRelativeFromDelta(-10, 0));
-  EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(10, 0));
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(0, -10) == PointingRelative::UP);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(0, 10) == PointingRelative::DOWN);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(-10, 0) == PointingRelative::LEFT);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(10, 0) == PointingRelative::RIGHT);
 
-  EXPECT_EQ(PointingRelative::UP, PointingRelative::getPointingRelativeFromDelta(3, -10));
-  EXPECT_EQ(PointingRelative::DOWN, PointingRelative::getPointingRelativeFromDelta(3, 10));
-  EXPECT_EQ(PointingRelative::LEFT, PointingRelative::getPointingRelativeFromDelta(-10, 3));
-  EXPECT_EQ(PointingRelative::RIGHT, PointingRelative::getPointingRelativeFromDelta(10, 3));
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(3, -10) == PointingRelative::UP);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(3, 10) == PointingRelative::DOWN);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(-10, 3) == PointingRelative::LEFT);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(10, 3) == PointingRelative::RIGHT);
 
   // diagonal direction
-  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(10, -10));
-  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(-10, 10));
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(10, -10) == PointingRelative::NONE);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(-10, 10) == PointingRelative::NONE);
 
-  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(10, 8));
-  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(8, 10));
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(10, 8) == PointingRelative::NONE);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(8, 10) == PointingRelative::NONE);
 
-  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(10, 6));
-  EXPECT_EQ(PointingRelative::NONE, PointingRelative::getPointingRelativeFromDelta(6, 10));
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(10, 6) == PointingRelative::NONE);
+  REQUIRE(PointingRelative::getPointingRelativeFromDelta(6, 10) == PointingRelative::NONE);
 }
