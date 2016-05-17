@@ -1,4 +1,6 @@
-#include <gtest/gtest.h>
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <ostream>
 
 #include "FromEvent.hpp"
@@ -11,7 +13,7 @@ Params_KeyboardEventCallBack* up_return;
 Params_KeyboardEventCallBack* down_shift;
 Params_KeyboardEventCallBack* up_shift;
 
-TEST(Generic, setUp) {
+TEST_CASE("setUp", "[Generic]") {
   KeyCodeModifierFlagPairs::clearVirtualModifiers();
 
   down_return = new Params_KeyboardEventCallBack(
@@ -59,44 +61,44 @@ TEST(Generic, setUp) {
       false);
 }
 
-TEST(Generic, getModifierFlag) {
+TEST_CASE("getModifierFlag", "[Generic]") {
   {
     FromEvent fe(KeyCode::RETURN);
-    EXPECT_EQ(ModifierFlag::ZERO, fe.getModifierFlag());
+    REQUIRE(fe.getModifierFlag() == ModifierFlag::ZERO);
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
-    EXPECT_EQ(ModifierFlag::SHIFT_L, fe.getModifierFlag());
+    REQUIRE(fe.getModifierFlag() == ModifierFlag::SHIFT_L);
   }
   {
     FromEvent fe(ConsumerKeyCode::VOLUME_MUTE);
-    EXPECT_EQ(ModifierFlag::ZERO, fe.getModifierFlag());
+    REQUIRE(fe.getModifierFlag() == ModifierFlag::ZERO);
   }
   {
     FromEvent fe(PointingButton::LEFT);
-    EXPECT_EQ(ModifierFlag::ZERO, fe.getModifierFlag());
+    REQUIRE(fe.getModifierFlag() == ModifierFlag::ZERO);
   }
 }
 
-TEST(Generic, getPointingButton) {
+TEST_CASE("getPointingButton", "[Generic]") {
   {
     FromEvent fe(KeyCode::RETURN);
-    EXPECT_EQ(PointingButton::NONE, fe.getPointingButton());
+    REQUIRE(fe.getPointingButton() == PointingButton::NONE);
   }
   {
     FromEvent fe(ConsumerKeyCode::VOLUME_MUTE);
-    EXPECT_EQ(PointingButton::NONE, fe.getPointingButton());
+    REQUIRE(fe.getPointingButton() == PointingButton::NONE);
   }
   {
     FromEvent fe(PointingButton::LEFT);
-    EXPECT_EQ(PointingButton::LEFT, fe.getPointingButton());
+    REQUIRE(fe.getPointingButton() == PointingButton::LEFT);
   }
 }
 
-TEST(Generic, changePressingState) {
+TEST_CASE("changePressingState", "[Generic]") {
   {
     FromEvent fe(KeyCode::RETURN);
-    EXPECT_EQ(false, fe.isPressing());
+    REQUIRE(fe.isPressing() == false);
 
     // ----------------------------------------
     // Without Flags
@@ -105,17 +107,17 @@ TEST(Generic, changePressingState) {
       FlagStatus currentFlags;
       Vector_ModifierFlag fromFlags;
 
-      EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
-      EXPECT_EQ(true, fe.isPressing());
+      REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == true);
 
-      EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
+      REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == false);
 
       // Another event does not modify state
-      EXPECT_EQ(false, fe.changePressingState(*down_shift, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
-      EXPECT_EQ(false, fe.changePressingState(*up_shift, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
+      REQUIRE(fe.changePressingState(*down_shift, currentFlags, fromFlags) == false);
+      REQUIRE(fe.isPressing() == false);
+      REQUIRE(fe.changePressingState(*up_shift, currentFlags, fromFlags) == false);
+      REQUIRE(fe.isPressing() == false);
     }
 
     // ----------------------------------------
@@ -126,11 +128,11 @@ TEST(Generic, changePressingState) {
       FlagStatus currentFlags(f);
       Vector_ModifierFlag fromFlags;
 
-      EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
-      EXPECT_EQ(true, fe.isPressing());
+      REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == true);
 
-      EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
+      REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == false);
     }
 
     // ----------------------------------------
@@ -142,11 +144,11 @@ TEST(Generic, changePressingState) {
       fromFlags.push_back(ModifierFlag::SHIFT_L);
 
       // Does not change state if currentFlags lacks flags.
-      EXPECT_EQ(false, fe.changePressingState(*down_return, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
+      REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == false);
+      REQUIRE(fe.isPressing() == false);
 
-      EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
+      REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == false);
+      REQUIRE(fe.isPressing() == false);
     }
     {
       Flags f(ModifierFlag::SHIFT_L);
@@ -154,11 +156,11 @@ TEST(Generic, changePressingState) {
       Vector_ModifierFlag fromFlags;
       fromFlags.push_back(ModifierFlag::SHIFT_L);
 
-      EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
-      EXPECT_EQ(true, fe.isPressing());
+      REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == true);
 
-      EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
+      REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == false);
     }
     {
       Flags f(ModifierFlag::SHIFT_L);
@@ -166,8 +168,8 @@ TEST(Generic, changePressingState) {
       Vector_ModifierFlag fromFlags;
       fromFlags.push_back(ModifierFlag::SHIFT_L);
 
-      EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
-      EXPECT_EQ(true, fe.isPressing());
+      REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == true);
 
       // Change state even if currentFlags lacks flags when key is pressing.
       // This behavior is necessary for this case.
@@ -176,70 +178,65 @@ TEST(Generic, changePressingState) {
       // - shift up
       // - return up (shift-return is released.)
       currentFlags.reset();
-      EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
-      EXPECT_EQ(false, fe.isPressing());
+      REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == true);
+      REQUIRE(fe.isPressing() == false);
       // return false if call changePressingState once again.
-      EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
+      REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == false);
     }
   }
   {
     FromEvent fe(KeyCode::SPACE);
     FlagStatus currentFlags;
     Vector_ModifierFlag fromFlags;
-    EXPECT_EQ(false, fe.changePressingState(*down_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
+    REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == false);
+    REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == false);
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
     Flags f(ModifierFlag::SHIFT_L);
     FlagStatus currentFlags(f);
     Vector_ModifierFlag fromFlags;
-    EXPECT_EQ(true, fe.changePressingState(*down_shift, currentFlags, fromFlags));
-    EXPECT_EQ(true, fe.isPressing());
+    REQUIRE(fe.changePressingState(*down_shift, currentFlags, fromFlags) == true);
+    REQUIRE(fe.isPressing() == true);
 
     currentFlags.reset();
-    EXPECT_EQ(true, fe.changePressingState(*up_shift, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.isPressing());
+    REQUIRE(fe.changePressingState(*up_shift, currentFlags, fromFlags) == true);
+    REQUIRE(fe.isPressing() == false);
   }
   // multiple times
   {
     FromEvent fe(KeyCode::RETURN);
     FlagStatus currentFlags;
     Vector_ModifierFlag fromFlags;
-    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
-    EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
-    EXPECT_EQ(true, fe.changePressingState(*down_return, currentFlags, fromFlags));
-    EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
-    EXPECT_EQ(true, fe.changePressingState(*up_return, currentFlags, fromFlags));
-    EXPECT_EQ(false, fe.changePressingState(*up_return, currentFlags, fromFlags));
+    REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == false);
+    REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == true);
+    REQUIRE(fe.changePressingState(*down_return, currentFlags, fromFlags) == true);
+    REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == true);
+    REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == true);
+    REQUIRE(fe.changePressingState(*up_return, currentFlags, fromFlags) == false);
   }
 }
 
-TEST(Generic, isTargetDownEvent) {
+TEST_CASE("isTargetDownEvent", "[Generic]") {
   {
     FromEvent fe(KeyCode::RETURN);
-    EXPECT_EQ(true, fe.isTargetDownEvent(*down_return));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*down_return));
+    REQUIRE(fe.isTargetDownEvent(*down_return) == true);
+    REQUIRE(fe.isTargetUpEvent(*down_return) == false);
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(*up_return));
-    EXPECT_EQ(true, fe.isTargetUpEvent(*up_return));
+    REQUIRE(fe.isTargetDownEvent(*up_return) == false);
+    REQUIRE(fe.isTargetUpEvent(*up_return) == true);
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(*down_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*down_shift));
-    EXPECT_EQ(false, fe.isTargetDownEvent(*up_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*up_shift));
+    REQUIRE(fe.isTargetDownEvent(*down_shift) == false);
+    REQUIRE(fe.isTargetUpEvent(*down_shift) == false);
+    REQUIRE(fe.isTargetDownEvent(*up_shift) == false);
+    REQUIRE(fe.isTargetUpEvent(*up_shift) == false);
   }
   {
     FromEvent fe(KeyCode::SHIFT_L);
-    EXPECT_EQ(true, fe.isTargetDownEvent(*down_shift));
-    EXPECT_EQ(false, fe.isTargetUpEvent(*down_shift));
+    REQUIRE(fe.isTargetDownEvent(*down_shift) == true);
+    REQUIRE(fe.isTargetUpEvent(*down_shift) == false);
 
-    EXPECT_EQ(false, fe.isTargetDownEvent(*up_shift));
-    EXPECT_EQ(true, fe.isTargetUpEvent(*up_shift));
+    REQUIRE(fe.isTargetDownEvent(*up_shift) == false);
+    REQUIRE(fe.isTargetUpEvent(*up_shift) == true);
   }
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }
