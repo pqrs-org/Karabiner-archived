@@ -1,4 +1,6 @@
-#include <gtest/gtest.h>
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <ostream>
 
 #include "WeakPointer.hpp"
@@ -41,53 +43,48 @@ public:
 
 DEFINE_WEAKPOINTER(TestReuseAddrItem);
 
-TEST(WeakPointer, expired) {
+TEST_CASE("expired", "[WeakPointer]") {
   auto p1 = new TestItem();
   auto p2 = new TestItem();
 
   WeakPointer_TestItem wp1(p1);
   WeakPointer_TestItem wp2(p2);
 
-  EXPECT_FALSE(wp1.expired());
-  EXPECT_FALSE(wp2.expired());
+  REQUIRE(wp1.expired() == false);
+  REQUIRE(wp2.expired() == false);
 
-  EXPECT_EQ(1, wp1->succ());
-  EXPECT_EQ(1, wp2->succ());
-  EXPECT_EQ(2, wp1->succ());
-  EXPECT_EQ(2, wp2->succ());
+  REQUIRE(wp1->succ() == 1);
+  REQUIRE(wp2->succ() == 1);
+  REQUIRE(wp1->succ() == 2);
+  REQUIRE(wp2->succ() == 2);
 
   delete p1;
 
-  EXPECT_TRUE(wp1.expired());
-  EXPECT_FALSE(wp2.expired());
+  REQUIRE(wp1.expired() == true);
+  REQUIRE(wp2.expired() == false);
 
   delete p2;
 
-  EXPECT_TRUE(wp1.expired());
-  EXPECT_TRUE(wp2.expired());
+  REQUIRE(wp1.expired() == true);
+  REQUIRE(wp2.expired() == true);
 }
 
-TEST(WeakPointer, reuse_address) {
+TEST_CASE("reuse_address", "[WeakPointer]") {
   auto p1 = new TestReuseAddrItem();
 
   WeakPointer_TestReuseAddrItem wp1(dummyAddress);
 
-  EXPECT_FALSE(wp1.expired());
+  REQUIRE(wp1.expired() == false);
 
   delete p1;
 
-  EXPECT_TRUE(wp1.expired());
+  REQUIRE(wp1.expired() == true);
 
   auto p2 = new TestReuseAddrItem();
   WeakPointer_TestReuseAddrItem wp2(dummyAddress);
 
-  EXPECT_TRUE(wp1.expired());
-  EXPECT_FALSE(wp2.expired());
+  REQUIRE(wp1.expired() == true);
+  REQUIRE(wp2.expired() == false);
 
   delete p2;
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }
