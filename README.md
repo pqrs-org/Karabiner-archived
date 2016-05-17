@@ -20,7 +20,7 @@ Useful links
 * Mirror: http://tekezo.github.io/pqrs.org/
 * Google Group: https://groups.google.com/forum/#!forum/osx-karabiner
 
-You also can get the latest stable release package via fixed URL.
+You can also get the latest stable release package via fixed URL.
 
 ```
 $ curl -L -O https://pqrs.org/latest/karabiner-latest.dmg
