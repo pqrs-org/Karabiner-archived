@@ -1,14 +1,9 @@
 CXXFLAGS = \
-    -I../../Pods/Headers/Public/GoogleTest \
     -I/opt/local/include \
     -I/usr/local/include \
     -Wall -Werror \
     -O2 \
     -std=c++11
-
-LDFLAGS = \
-	-L../../Pods/build/Release/ \
-    -lGoogleTest
 
 SOURCES=$(wildcard *.cpp)
 OBJECTS=$(patsubst %.cpp,%.o,$(SOURCES))
