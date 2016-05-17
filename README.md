@@ -23,7 +23,7 @@ Useful links
 You also can get the latest stable release package via fixed URL.
 
 ```
-$ curl -L -o karabiner-latest.dmg https://pqrs.org/latest/karabiner
+$ curl -L -O https://pqrs.org/latest/karabiner-latest.dmg
 ```
 
 System requirements
