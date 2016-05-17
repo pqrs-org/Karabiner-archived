@@ -1,4 +1,6 @@
-#include <gtest/gtest.h>
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <ostream>
 #include <stdexcept>
 
@@ -6,53 +8,48 @@
 
 using namespace org_pqrs_Karabiner;
 
-TEST(DeltaBuffer, push) {
+TEST_CASE("push", "[DeltaBuffer]") {
   DeltaBuffer deltaBuffer;
 
-  EXPECT_EQ(0, deltaBuffer.sum());
+  REQUIRE(deltaBuffer.sum() == 0);
 
   deltaBuffer.push(-1);
-  EXPECT_EQ(-1, deltaBuffer.sum());
+  REQUIRE(deltaBuffer.sum() == -1);
 
   // fill buffer
-  EXPECT_TRUE(!deltaBuffer.isFull());
+  REQUIRE(deltaBuffer.isFull() == false);
   int sum = 0;
   for (;;) {
     deltaBuffer.push(-1);
     if (sum == deltaBuffer.sum()) break;
     sum = deltaBuffer.sum();
   }
-  EXPECT_TRUE(deltaBuffer.isFull());
+  REQUIRE(deltaBuffer.isFull() == true);
 
   deltaBuffer.push(-3); // replace -1 with -3.
   sum -= 2;
-  EXPECT_EQ(sum, deltaBuffer.sum());
+  REQUIRE(deltaBuffer.sum() == sum);
 
   deltaBuffer.push(0); // replace -1  with 0.
   sum += 1;
-  EXPECT_EQ(sum, deltaBuffer.sum());
+  REQUIRE(deltaBuffer.sum() == sum);
 
   // reverse direction
-  EXPECT_NE(sum, 0);
+  REQUIRE(sum != 0);
   deltaBuffer.push(1);
   sum = 1;
-  EXPECT_EQ(sum, deltaBuffer.sum());
-  EXPECT_TRUE(!deltaBuffer.isFull());
+  REQUIRE(deltaBuffer.sum() == sum);
+  REQUIRE(deltaBuffer.isFull() == false);
 
   // clear
   while (!deltaBuffer.isFull()) {
     deltaBuffer.push(1);
   }
-  EXPECT_NE(0, deltaBuffer.sum());
-  EXPECT_NE(0, deltaBuffer.isFull());
+  REQUIRE(deltaBuffer.sum() != 0);
+  REQUIRE(deltaBuffer.isFull() != 0);
 
   deltaBuffer.clear();
 
-  EXPECT_EQ(0, deltaBuffer.sum());
-  EXPECT_TRUE(!deltaBuffer.isFull());
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+  REQUIRE(deltaBuffer.sum() == 0);
+  REQUIRE(deltaBuffer.isFull() == false);
 }
