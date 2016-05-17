@@ -1,9 +1,11 @@
-#include <gtest/gtest.h>
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <ostream>
 
 #include "pqrs/vector.hpp"
 
-TEST(pqrs_vector, remove_empty_strings) {
+TEST_CASE("remove_empty_strings", "[pqrs_vector]") {
   std::vector<std::string> v;
   v.push_back("");
   v.push_back("A");
@@ -21,10 +23,10 @@ TEST(pqrs_vector, remove_empty_strings) {
   expected.push_back("B");
   expected.push_back("C");
 
-  EXPECT_EQ(expected, v);
+  REQUIRE(v == expected);
 }
 
-TEST(pqrs_vector, push_back) {
+TEST_CASE("push_back", "[pqrs_vector]") {
   std::vector<uint32_t> v1;
   v1.push_back(1);
   v1.push_back(2);
@@ -47,106 +49,106 @@ TEST(pqrs_vector, push_back) {
   expected.push_back(5);
   expected.push_back(6);
   expected.push_back(7);
-  EXPECT_EQ(expected, v1);
+  REQUIRE(v1 == expected);
 
   pqrs::vector::push_back(v1, v3);
-  EXPECT_EQ(expected, v1);
+  REQUIRE(v1 == expected);
 }
 
-TEST(pqrs_vector, make_combination) {
+TEST_CASE("make_combination", "[pqrs_vector]") {
   const char* seeds[] = {"A", "B", "C", "D"};
   std::vector<std::shared_ptr<std::vector<std::string>>> actual;
   pqrs::vector::make_combination(actual, seeds, sizeof(seeds) / sizeof(seeds[0]));
 
-  EXPECT_EQ(static_cast<uint32_t>(16), actual.size());
+  REQUIRE(actual.size() == static_cast<uint32_t>(16));
 
   { // 0
     std::vector<std::string> expected;
-    EXPECT_EQ(expected, *(actual[0]));
+    REQUIRE(*(actual[0]) == expected);
   }
   { // 1
     std::vector<std::string> expected;
     expected.push_back("A");
-    EXPECT_EQ(expected, *(actual[1]));
+    REQUIRE(*(actual[1]) == expected);
   }
   { // 2
     std::vector<std::string> expected;
     expected.push_back("B");
-    EXPECT_EQ(expected, *(actual[2]));
+    REQUIRE(*(actual[2]) == expected);
   }
   { // 3
     std::vector<std::string> expected;
     expected.push_back("A");
     expected.push_back("B");
-    EXPECT_EQ(expected, *(actual[3]));
+    REQUIRE(*(actual[3]) == expected);
   }
   { // 4
     std::vector<std::string> expected;
     expected.push_back("C");
-    EXPECT_EQ(expected, *(actual[4]));
+    REQUIRE(*(actual[4]) == expected);
   }
   { // 5
     std::vector<std::string> expected;
     expected.push_back("A");
     expected.push_back("C");
-    EXPECT_EQ(expected, *(actual[5]));
+    REQUIRE(*(actual[5]) == expected);
   }
   { // 6
     std::vector<std::string> expected;
     expected.push_back("B");
     expected.push_back("C");
-    EXPECT_EQ(expected, *(actual[6]));
+    REQUIRE(*(actual[6]) == expected);
   }
   { // 7
     std::vector<std::string> expected;
     expected.push_back("A");
     expected.push_back("B");
     expected.push_back("C");
-    EXPECT_EQ(expected, *(actual[7]));
+    REQUIRE(*(actual[7]) == expected);
   }
   { // 8
     std::vector<std::string> expected;
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[8]));
+    REQUIRE(*(actual[8]) == expected);
   }
   { // 9
     std::vector<std::string> expected;
     expected.push_back("A");
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[9]));
+    REQUIRE(*(actual[9]) == expected);
   }
   { // 10
     std::vector<std::string> expected;
     expected.push_back("B");
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[10]));
+    REQUIRE(*(actual[10]) == expected);
   }
   { // 11
     std::vector<std::string> expected;
     expected.push_back("A");
     expected.push_back("B");
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[11]));
+    REQUIRE(*(actual[11]) == expected);
   }
   { // 12
     std::vector<std::string> expected;
     expected.push_back("C");
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[12]));
+    REQUIRE(*(actual[12]) == expected);
   }
   { // 13
     std::vector<std::string> expected;
     expected.push_back("A");
     expected.push_back("C");
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[13]));
+    REQUIRE(*(actual[13]) == expected);
   }
   { // 14
     std::vector<std::string> expected;
     expected.push_back("B");
     expected.push_back("C");
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[14]));
+    REQUIRE(*(actual[14]) == expected);
   }
   { // 15
     std::vector<std::string> expected;
@@ -154,11 +156,6 @@ TEST(pqrs_vector, make_combination) {
     expected.push_back("B");
     expected.push_back("C");
     expected.push_back("D");
-    EXPECT_EQ(expected, *(actual[15]));
+    REQUIRE(*(actual[15]) == expected);
   }
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }
