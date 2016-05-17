@@ -1,107 +1,99 @@
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <boost/property_tree/xml_parser.hpp>
-#include <gtest/gtest.h>
 
 #include "bridge.h"
 #include "pqrs/xml_compiler.hpp"
 #include "pqrs/xml_compiler_bindings_clang.h"
 
-TEST(pqrs_xml_compiler, reload) {
+TEST_CASE("reload", "[pqrs_xml_compiler]") {
   pqrs::xml_compiler xml_compiler("data/system_xml", "data/private_xml");
   xml_compiler.reload();
-  EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
-  EXPECT_EQ("", xml_compiler.get_error_information().get_message());
+  REQUIRE(xml_compiler.get_error_information().get_count() == 0);
+  REQUIRE(xml_compiler.get_error_information().get_message() == "");
 
   {
     int v = 0;
     int space_is_ignored = 0;
 
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_modifier_definition"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_change_inputsource_definition"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_open_url_definition"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_private_sample"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_passthrough"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_remap_sample"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_include_test"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_style_test_important"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_style_test_caution"));
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_replacement"));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_modifier_definition") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_change_inputsource_definition") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::system_vk_open_url_definition") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_private_sample") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_passthrough") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::notsave_remap_sample") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_include_test") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_style_test_important") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_style_test_caution") == boost::optional<uint32_t>(v++));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_replacement") == boost::optional<uint32_t>(v++));
     space_is_ignored = v;
-    EXPECT_EQ(boost::optional<uint32_t>(v++), xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_space_is_ignored"));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConfigIndex::private_space_is_ignored") == boost::optional<uint32_t>(v++));
 
     std::string expected = "private.space_ is_ ignored";
-    EXPECT_EQ(boost::optional<const std::string&>(expected), xml_compiler.get_identifier(space_is_ignored));
-    EXPECT_EQ(boost::optional<int>(space_is_ignored), xml_compiler.get_config_index(expected));
+    REQUIRE(xml_compiler.get_identifier(space_is_ignored) == boost::optional<const std::string&>(expected));
+    REQUIRE(xml_compiler.get_config_index(expected) == boost::optional<int>(space_is_ignored));
   }
 
-  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map().get_optional("ModifierFlag::CAPSLOCK"));
-  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("ModifierFlag::SHIFT_L"));
-  EXPECT_EQ(boost::optional<uint32_t>(13), xml_compiler.get_symbol_map().get_optional("ModifierFlag::TEST1"));
-  EXPECT_NE(boost::none, xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_TEST1"));
-  EXPECT_EQ(boost::none, xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_SHIFT_L"));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("ModifierFlag::CAPSLOCK") == boost::optional<uint32_t>(1));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("ModifierFlag::SHIFT_L") == boost::optional<uint32_t>(2));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("ModifierFlag::TEST1") == boost::optional<uint32_t>(13));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_TEST1") != boost::none);
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_MODIFIER_SHIFT_L") == boost::none);
 
-  EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_123"));
-  EXPECT_EQ(boost::optional<uint32_t>(456), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_456"));
-  EXPECT_EQ(boost::optional<uint32_t>(654), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_654"));
-  EXPECT_EQ(boost::optional<uint32_t>(1), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT1"));
-  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT2"));
-  EXPECT_EQ(boost::optional<uint32_t>(3), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT3"));
-  EXPECT_EQ(boost::optional<uint32_t>(123), xml_compiler.get_symbol_map().get_optional("KeyCode::MY_LANG_KEY"));
-  EXPECT_EQ(boost::optional<uint32_t>(999), xml_compiler.get_symbol_map().get_optional("KeyCode::SPACE_IS_IGNORED"));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_123") == boost::optional<uint32_t>(123));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_456") == boost::optional<uint32_t>(456));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_654") == boost::optional<uint32_t>(654));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT1") == boost::optional<uint32_t>(1));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT2") == boost::optional<uint32_t>(2));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::MY_INCLUDE_TEST_PARENT3") == boost::optional<uint32_t>(3));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::MY_LANG_KEY") == boost::optional<uint32_t>(123));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::SPACE_IS_IGNORED") == boost::optional<uint32_t>(999));
 
   // ------------------------------------------------------------
   uint32_t vk_change_inputsource_base = 1241;
 
   // JAPANESE
-  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
-            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE"));
-  EXPECT_EQ(true,
-            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "ja",
-                                                          "com.apple.inputmethod.Kotoeri.Japanese",
-                                                          "com.apple.inputmethod.Japanese"));
-  EXPECT_EQ(false,
-            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "en",
-                                                          "com.apple.keylayout.US",
-                                                          ""));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE") == boost::optional<uint32_t>(vk_change_inputsource_base));
+  REQUIRE(xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                        "ja",
+                                                        "com.apple.inputmethod.Kotoeri.Japanese",
+                                                        "com.apple.inputmethod.Japanese") == true);
+  REQUIRE(xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                        "en",
+                                                        "com.apple.keylayout.US",
+                                                        "") == false);
   ++vk_change_inputsource_base;
 
   // DVORAK
-  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
-            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK"));
-  EXPECT_EQ(true,
-            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "en",
-                                                          "com.apple.keylayout.Dvorak",
-                                                          ""));
-  EXPECT_EQ(false,
-            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "en",
-                                                          "com.apple.keylayout.US",
-                                                          ""));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_DVORAK") == boost::optional<uint32_t>(vk_change_inputsource_base));
+  REQUIRE(xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                        "en",
+                                                        "com.apple.keylayout.Dvorak",
+                                                        "") == true);
+  REQUIRE(xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                        "en",
+                                                        "com.apple.keylayout.US",
+                                                        "") == false);
   ++vk_change_inputsource_base;
 
   // SWISS
-  EXPECT_EQ(boost::optional<uint32_t>(vk_change_inputsource_base),
-            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_SWISS"));
-  EXPECT_EQ(true,
-            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "en",
-                                                          "com.apple.keylayout.SwissFrench",
-                                                          ""));
-  EXPECT_EQ(false,
-            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "en",
-                                                          "com.apple.keylayout.US",
-                                                          ""));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CHANGE_INPUTSOURCE_SWISS") == boost::optional<uint32_t>(vk_change_inputsource_base));
+  REQUIRE(xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                        "en",
+                                                        "com.apple.keylayout.SwissFrench",
+                                                        "") == true);
+  REQUIRE(xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                        "en",
+                                                        "com.apple.keylayout.US",
+                                                        "") == false);
   ++vk_change_inputsource_base;
 
   // Invalid keycode
-  EXPECT_EQ(false,
-            xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
-                                                          "",
-                                                          "",
-                                                          ""));
+  REQUIRE(xml_compiler.is_vk_change_inputsource_matched(vk_change_inputsource_base,
+                                                        "",
+                                                        "",
+                                                        "") == false);
 
   // ------------------------------------------------------------
   // inputsourcedef
@@ -122,7 +114,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
 #if 0
@@ -132,8 +124,8 @@ TEST(pqrs_xml_compiler, reload) {
                                    "en",
                                    "com.apple.keylayout.Canadian",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::CANADIAN"), inputsource);
-    EXPECT_TRUE(xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH") != inputsource);
+REQUIRE(inputsource == xml_compiler.get_symbol_map().get_optional("InputSource::CANADIAN"));
+REQUIRE(xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH") != inputsource == true);
   }
 
   {
@@ -142,7 +134,7 @@ TEST(pqrs_xml_compiler, reload) {
                                    "",
                                    "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"), inputsource);
+REQUIRE(inputsource == xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"));
   }
 
   {
@@ -151,7 +143,7 @@ TEST(pqrs_xml_compiler, reload) {
                                    "",
                                    "com.apple.keyboardlayout.fr-dvorak-bepo.keylayout.FrenchDvorak-AzertyCmd",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"), inputsource);
+REQUIRE(inputsource == xml_compiler.get_symbol_map().get_optional("InputSource::BEPO"));
   }
 
   {
@@ -160,7 +152,7 @@ TEST(pqrs_xml_compiler, reload) {
                                    "ja",
                                    "com.apple.inputmethod.Kotoeri.Japanese",
                                    "com.apple.inputmethod.Japanese");
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::JAPANESE"), inputsource);
+REQUIRE(inputsource == xml_compiler.get_symbol_map().get_optional("InputSource::JAPANESE"));
   }
 
   {
@@ -169,7 +161,7 @@ TEST(pqrs_xml_compiler, reload) {
                                    "fr",
                                    "com.apple.keylayout.French",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH"), inputsource);
+REQUIRE(inputsource == xml_compiler.get_symbol_map().get_optional("InputSource::FRENCH"));
   }
 
   {
@@ -178,7 +170,7 @@ TEST(pqrs_xml_compiler, reload) {
                                    "en",
                                    "com.apple.keylayout.US",
                                    "");
-    EXPECT_EQ(xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH"), inputsource);
+REQUIRE(inputsource == xml_compiler.get_symbol_map().get_optional("InputSource::MY_ENGLISH"));
   }
 #endif
 
@@ -187,44 +179,37 @@ TEST(pqrs_xml_compiler, reload) {
   uint32_t vk_open_url_base = vk_change_inputsource_base;
 
   {
-    EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org") == boost::optional<uint32_t>(vk_open_url_base));
     ++vk_open_url_base;
   }
 
   {
-    EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_APP_TextEdit"));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_APP_TextEdit") == boost::optional<uint32_t>(vk_open_url_base));
     ++vk_open_url_base;
   }
 
   {
-    EXPECT_EQ(boost::optional<uint32_t>(vk_open_url_base),
-              xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy"));
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy") == boost::optional<uint32_t>(vk_open_url_base));
     ++vk_open_url_base;
   }
 
   // ------------------------------------------------------------
   uint32_t vk_config_base = vk_open_url_base;
-  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough"));
-  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_FORCE_ON_notsave_passthrough"));
-  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_FORCE_OFF_notsave_passthrough"));
-  EXPECT_EQ(boost::optional<uint32_t>(vk_config_base++),
-            xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_passthrough"));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_TOGGLE_notsave_passthrough") == boost::optional<uint32_t>(vk_config_base++));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_FORCE_ON_notsave_passthrough") == boost::optional<uint32_t>(vk_config_base++));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_FORCE_OFF_notsave_passthrough") == boost::optional<uint32_t>(vk_config_base++));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_passthrough") == boost::optional<uint32_t>(vk_config_base++));
 
-  EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("ConsumerKeyCode::BRIGHTNESS_UP"));
-  EXPECT_EQ("ConsumerKeyCode::BRIGHTNESS_UP", *(xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 2)));
-  EXPECT_EQ(boost::none, xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 12345));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("ConsumerKeyCode::BRIGHTNESS_UP") == boost::optional<uint32_t>(2));
+  REQUIRE(*(xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 2)) == "ConsumerKeyCode::BRIGHTNESS_UP");
+  REQUIRE(xml_compiler.get_symbol_map().get_name("ConsumerKeyCode", 12345) == boost::none);
 
   // system 6 + private 4 - duplicated 2 == 8
-  EXPECT_EQ(8, xml_compiler.get_app_vector_size());
+  REQUIRE(xml_compiler.get_app_vector_size() == 8);
   // system 70 + private 1 == 71
-  EXPECT_EQ(71, xml_compiler.get_inputsource_vector_size());
+  REQUIRE(xml_compiler.get_inputsource_vector_size() == 71);
   // system 2 + private 0 == 2
-  EXPECT_EQ(2, xml_compiler.get_window_name_vector_size());
+  REQUIRE(xml_compiler.get_window_name_vector_size() == 2);
 
   // ---------------------------------------
   {
@@ -240,7 +225,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -255,7 +240,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -269,7 +254,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -284,7 +269,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -298,7 +283,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -313,7 +298,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -328,7 +313,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -342,7 +327,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -357,7 +342,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -372,7 +357,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -386,7 +371,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   // ---------------------------------------
@@ -407,7 +392,7 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -426,53 +411,47 @@ TEST(pqrs_xml_compiler, reload) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
-  EXPECT_EQ(boost::optional<uint32_t>(6), xml_compiler.get_symbol_map().get_optional("ApplicationType::SPACE_IS_IGNORED"));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("ApplicationType::SPACE_IS_IGNORED") == boost::optional<uint32_t>(6));
 
-  EXPECT_EQ(boost::optional<uint32_t>(0x03f0), xml_compiler.get_symbol_map().get_optional("DeviceVendor::HEWLETT_PACKARD"));
-  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map().get_optional("DeviceVendor::SPACE_IS_IGNORED"));
-  EXPECT_EQ(boost::optional<uint32_t>(0x0224), xml_compiler.get_symbol_map().get_optional("DeviceProduct::MY_HP_KEYBOARD"));
-  EXPECT_EQ(boost::optional<uint32_t>(0x9999), xml_compiler.get_symbol_map().get_optional("DeviceProduct::SPACE_IS_IGNORED"));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("DeviceVendor::HEWLETT_PACKARD") == boost::optional<uint32_t>(0x03f0));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("DeviceVendor::SPACE_IS_IGNORED") == boost::optional<uint32_t>(0x9999));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("DeviceProduct::MY_HP_KEYBOARD") == boost::optional<uint32_t>(0x0224));
+  REQUIRE(xml_compiler.get_symbol_map().get_optional("DeviceProduct::SPACE_IS_IGNORED") == boost::optional<uint32_t>(0x9999));
 
-  EXPECT_EQ(boost::none, xml_compiler.get_url(0));
+  REQUIRE(xml_compiler.get_url(0) == boost::none);
 
-  EXPECT_EQ("https://pqrs.org/",
-            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org")))));
-  EXPECT_EQ(boost::none,
-            xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"))));
+  REQUIRE(*(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org")))) == "https://pqrs.org/");
+  REQUIRE(xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"))) == boost::none);
 
-  EXPECT_EQ("file:///Applications/TextEdit.app",
-            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_APP_TextEdit")))));
-  EXPECT_EQ(boost::none,
-            xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"))));
+  REQUIRE(*(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_APP_TextEdit")))) == "file:///Applications/TextEdit.app");
+  REQUIRE(xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_WEB_pqrs_org"))) == boost::none);
 
-  EXPECT_EQ("/bin/date | /usr/bin/pbcopy",
-            *(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy")))));
-  EXPECT_EQ("shell",
-            *(xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy")))));
+  REQUIRE(*(xml_compiler.get_url(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy")))) == "/bin/date | /usr/bin/pbcopy");
+  REQUIRE(*(xml_compiler.get_url_type(*(xml_compiler.get_symbol_map().get_optional("KeyCode::VK_OPEN_URL_SHELL_date_pbcopy")))) == "shell");
 
   auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
-  EXPECT_TRUE(node_tree.get_children() != nullptr);
+  REQUIRE(node_tree.get_children() != nullptr);
   {
     auto node_ptr = (*(node_tree.get_children()))[0];
-    EXPECT_EQ("Swap Space and Tab\n  appendix1\n\n  appendix123\n  appendix123_2", node_ptr->get_node().get_name());
+    REQUIRE(node_ptr->get_node().get_name() == "Swap Space and Tab\n  appendix1\n\n  appendix123\n  appendix123_2");
   }
   {
     auto node_ptr = (*(node_tree.get_children()))[1];
-    EXPECT_EQ("style test: important", node_ptr->get_node().get_name());
-    EXPECT_EQ("important", node_ptr->get_node().get_style());
+    REQUIRE(node_ptr->get_node().get_name() == "style test: important");
+    REQUIRE(node_ptr->get_node().get_style() == "important");
   }
   {
     auto node_ptr = (*(node_tree.get_children()))[2];
-    EXPECT_EQ("style test: caution", node_ptr->get_node().get_name());
-    EXPECT_EQ("caution", node_ptr->get_node().get_style());
+    REQUIRE(node_ptr->get_node().get_name() == "style test: caution");
+    REQUIRE(node_ptr->get_node().get_style() == "caution");
   }
 
   {
     std::vector<uint32_t> actual;
-    EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "remap.showstatusmessage"));
+    REQUIRE(xml_compiler.debug_get_initialize_vector(actual, "remap.showstatusmessage") == true);
 
     std::vector<uint32_t> expected;
 
@@ -490,12 +469,12 @@ TEST(pqrs_xml_compiler, reload) {
     expected.push_back(buffer[3]); // "G --"
     expected.push_back(buffer[4]); // \0
 
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
     std::vector<uint32_t> actual;
-    EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "remap.showstatusmessage_old_style"));
+    REQUIRE(xml_compiler.debug_get_initialize_vector(actual, "remap.showstatusmessage_old_style") == true);
 
     std::vector<uint32_t> expected;
 
@@ -513,12 +492,12 @@ TEST(pqrs_xml_compiler, reload) {
     expected.push_back(buffer[3]); // "4 - "
     expected.push_back(buffer[4]); // "--" \0\0
 
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
     std::vector<uint32_t> actual;
-    EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "remap.use_separator"));
+    REQUIRE(xml_compiler.debug_get_initialize_vector(actual, "remap.use_separator") == true);
 
     std::vector<uint32_t> expected;
 
@@ -554,12 +533,12 @@ TEST(pqrs_xml_compiler, reload) {
     expected.push_back(BRIDGE_DATATYPE_KEYCODE);
     expected.push_back(49); // space
 
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
     std::vector<uint32_t> actual;
-    EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "remap.without_separator"));
+    REQUIRE(xml_compiler.debug_get_initialize_vector(actual, "remap.without_separator") == true);
 
     std::vector<uint32_t> expected;
 
@@ -587,7 +566,7 @@ TEST(pqrs_xml_compiler, reload) {
     expected.push_back(BRIDGE_DATATYPE_KEYCODE);
     expected.push_back(49); // space
 
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   // ---------------------------------------
@@ -598,7 +577,7 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "AXTextField");
     std::string expected_string = "karabiner.remotedesktop-preferences";
     auto expected = boost::optional<const std::string&>(expected_string);
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
@@ -607,7 +586,7 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "AXWindow");
     std::string expected_string = "karabiner.remotedesktop";
     auto expected = boost::optional<const std::string&>(expected_string);
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
@@ -615,7 +594,7 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "Karabiner",
                                                           "AXTextField");
     boost::optional<const std::string&> expected = boost::none;
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
@@ -625,7 +604,7 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "AXTextField");
     std::string expected_string = "karabiner.test";
     auto expected = boost::optional<const std::string&>(expected_string);
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
@@ -635,7 +614,7 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "AXTextField");
     std::string expected_string = "karabiner.test";
     auto expected = boost::optional<const std::string&>(expected_string);
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
@@ -644,7 +623,7 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "ipsum dolor sit amet, consectetur adipisicing",
                                                           "AXTextField");
     boost::optional<const std::string&> expected = boost::none;
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 
   {
@@ -654,13 +633,13 @@ TEST(pqrs_xml_compiler, reload) {
                                                           "AXTextField");
     std::string expected_string = "karabiner.test";
     auto expected = boost::optional<const std::string&>(expected_string);
-    EXPECT_EQ(expected, actual);
+    REQUIRE(actual == expected);
   }
 }
 
-TEST(pqrs_xml_compiler, reload_bindings_clang) {
+TEST_CASE("reload_bindings_clang", "[pqrs_xml_compiler]") {
   pqrs_xml_compiler* p = nullptr;
-  EXPECT_EQ(0, pqrs_xml_compiler_initialize(&p, "data/system_xml", "data/private_xml"));
+  REQUIRE(pqrs_xml_compiler_initialize(&p, "data/system_xml", "data/private_xml") == 0);
   pqrs_xml_compiler_reload(p, "checkbox.xml");
 
   {
@@ -681,7 +660,7 @@ TEST(pqrs_xml_compiler, reload_bindings_clang) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   {
@@ -700,53 +679,49 @@ TEST(pqrs_xml_compiler, reload_bindings_clang) {
       }
     }
 
-    EXPECT_EQ(expect, actual);
+    REQUIRE(actual == expect);
   }
 
   pqrs_xml_compiler_terminate(&p);
 }
 
-TEST(pqrs_xml_compiler, reload_invalid_xml) {
+TEST_CASE("reload_invalid_xml", "[pqrs_xml_compiler]") {
   // ------------------------------------------------------------
   // invalid XML format
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/broken_xml");
     xml_compiler.reload();
-    EXPECT_EQ("<data/invalid_xml/broken_xml/private.xml>(4): expected element name",
-              xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(boost::optional<uint32_t>(2), xml_compiler.get_symbol_map().get_optional("ConsumerKeyCode::BRIGHTNESS_UP"));
+    REQUIRE(xml_compiler.get_error_information().get_message() == "<data/invalid_xml/broken_xml/private.xml>(4): expected element name");
+    REQUIRE(xml_compiler.get_symbol_map().get_optional("ConsumerKeyCode::BRIGHTNESS_UP") == boost::optional<uint32_t>(2));
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/broken_include");
     xml_compiler.reload();
-    EXPECT_EQ("<data/invalid_xml/broken_include/include.xml>(4): expected element name",
-              xml_compiler.get_error_information().get_message());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "<data/invalid_xml/broken_include/include.xml>(4): expected element name");
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/missing_include");
     xml_compiler.reload();
 
-    EXPECT_EQ(0, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_count() == 0);
 
     auto node_tree = xml_compiler.get_preferences_checkbox_node_tree();
-    EXPECT_TRUE(node_tree.get_children() != nullptr);
+    REQUIRE(node_tree.get_children() != nullptr);
 
     auto node_ptr = (*(node_tree.get_children()))[0];
-    EXPECT_EQ("Caution:\n  data/invalid_xml/missing_include/include.xml is not found.", node_ptr->get_node().get_name());
+    REQUIRE(node_ptr->get_node().get_name() == "Caution:\n  data/invalid_xml/missing_include/include.xml is not found.");
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/infinite_include_loop");
     xml_compiler.reload();
-    EXPECT_EQ("An infinite include loop is detected:\n"
-              "data/invalid_xml/infinite_include_loop/private.xml",
-              xml_compiler.get_error_information().get_message());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "An infinite include loop is detected:\n"
+                                                                  "data/invalid_xml/infinite_include_loop/private.xml");
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/infinite_include_loop2");
     xml_compiler.reload();
-    EXPECT_EQ("An infinite include loop is detected:\n"
-              "data/invalid_xml/infinite_include_loop2/include.xml",
-              xml_compiler.get_error_information().get_message());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "An infinite include loop is detected:\n"
+                                                                  "data/invalid_xml/infinite_include_loop2/include.xml");
   }
 
   // ------------------------------------------------------------
@@ -757,20 +732,20 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "Duplicated identifier:\n"
                           "\n"
                           "<identifier>private.swap_space_and_tab</identifier>";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/empty_identifier");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <identifier>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Empty <identifier>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 2);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/empty_identifier2");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <identifier>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Empty <identifier>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 2);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place");
@@ -778,8 +753,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "<identifier> must be placed directly under <item>:\n"
                           "\n"
                           "<identifier>private.swap_space_and_tab</identifier>";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 2);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place2");
@@ -787,16 +762,16 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "<identifier> must be placed directly under <item>:\n"
                           "\n"
                           "<identifier>private.swap_space_and_tab</identifier>";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 2);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/invalid_identifier_place3");
     xml_compiler.reload();
     const char* message = "You should not write <identifier> in <item> which has child <item> nodes.\n"
                           "Remove <identifier>private.invalid_identifier_place3</identifier>.";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -807,20 +782,20 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "Invalid <autogen>:\n"
                           "\n"
                           "<autogen>__KeyToKey2__ KeyCode::SPACE, VK_SHIFT, KeyCode::TAB</autogen>";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
 
     {
       std::vector<uint32_t> actual;
-      EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "private.swap_space_and_tab"));
+      REQUIRE(xml_compiler.debug_get_initialize_vector(actual, "private.swap_space_and_tab") == true);
 
       // empty if error
       std::vector<uint32_t> expected;
-      EXPECT_EQ(expected, actual);
+      REQUIRE(actual == expected);
     }
     {
       std::vector<uint32_t> actual;
-      EXPECT_TRUE(xml_compiler.debug_get_initialize_vector(actual, "private.swap_space_and_tab2"));
+      REQUIRE(xml_compiler.debug_get_initialize_vector(actual, "private.swap_space_and_tab2") == true);
 
       std::vector<uint32_t> expected;
 
@@ -872,7 +847,7 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
       expected.push_back(BRIDGE_DATATYPE_KEYCODE);
       expected.push_back(49); // KeyCode::SPACE
 
-      EXPECT_EQ(expected, actual);
+      REQUIRE(actual == expected);
     }
   }
   {
@@ -881,8 +856,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "Cannot connect(|) except ModifierFlag:\n"
                           "\n"
                           "KeyCode::SPACE|KeyCode::TAB";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -890,8 +865,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_symbol_map");
     xml_compiler.reload();
-    EXPECT_EQ("Unknown symbol:\n\nKeyCode::MY_UNKNOWN_KEY", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Unknown symbol:\n\nKeyCode::MY_UNKNOWN_KEY");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -899,8 +874,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/unknown_data_type");
     xml_compiler.reload();
-    EXPECT_EQ("Unknown symbol:\n\nKeyCode2::SPACE", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Unknown symbol:\n\nKeyCode2::SPACE");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -908,39 +883,38 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_no_name", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("No <replacementname> within <replacementdef>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "No <replacementname> within <replacementdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_empty_name", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <replacementname> within <replacementdef>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Empty <replacementname> within <replacementdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name1", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(60): unexpected end of data",
-              xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(2, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "<data/invalid_xml/replacementdef_invalid_name1/replacementdef.xml>(60): unexpected end of data");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 2);
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_invalid_name2", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("Do not use '{{' and '}}' within <replacementname>:\n\nVI_}}J", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Do not use '{{' and '}}' within <replacementname>:\n\nVI_}}J");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_no_value", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("No <replacementvalue> within <replacementdef>:\n\nVI_J", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "No <replacementvalue> within <replacementdef>:\n\nVI_J");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/invalid_xml/replacementdef_not_found", "data/private_xml");
     xml_compiler.reload();
-    EXPECT_EQ("Warning - \"APPDEF_REPLACEMENT\" is not found in replacement.\n", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Warning - \"APPDEF_REPLACEMENT\" is not found in replacement.\n");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -948,38 +922,38 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_no_type");
     xml_compiler.reload();
-    EXPECT_EQ("No 'type' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "No 'type' Attribute within <symbol_map>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_empty_type");
     xml_compiler.reload();
-    EXPECT_EQ("Empty 'type' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Empty 'type' Attribute within <symbol_map>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No 'name' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "No 'name' Attribute within <symbol_map>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty 'name' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Empty 'name' Attribute within <symbol_map>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_no_value");
     xml_compiler.reload();
-    EXPECT_EQ("No 'value' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "No 'value' Attribute within <symbol_map>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_empty_value");
     xml_compiler.reload();
-    EXPECT_EQ("Empty 'value' Attribute within <symbol_map>.", xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == "Empty 'value' Attribute within <symbol_map>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/symbol_map_xml_invalid_value");
@@ -987,8 +961,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "Invalid 'value' Attribute within <symbol_map>:\n"
                           "\n"
                           "<symbol_map type=\"ConsumerKeyCode\" name=\"BRIGHTNESS_UP\" value=\"XXX\" />";
-    EXPECT_EQ(message, xml_compiler.get_error_information().get_message());
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(xml_compiler.get_error_information().get_message() == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -996,15 +970,14 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/modifierdef_empty");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <modifierdef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <modifierdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/modifierdef_invalid_notify");
     xml_compiler.reload();
-    EXPECT_EQ("Invalid 'notify' attribute within <modifierdef>: falsee",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Invalid 'notify' attribute within <modifierdef>: falsee");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -1012,14 +985,14 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/appdef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <appname> within <appdef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <appname> within <appdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/appdef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <appname> within <appdef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <appname> within <appdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -1027,14 +1000,14 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/windownamedef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <name> within <windownamedef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <name> within <windownamedef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/windownamedef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <name> within <windownamedef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <name> within <windownamedef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -1042,8 +1015,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/uielementroledef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <uielementroledef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <uielementroledef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -1051,26 +1024,26 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <vendorname> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <vendorname> within <devicevendordef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <vendorname> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <vendorname> within <devicevendordef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_no_value");
     xml_compiler.reload();
-    EXPECT_EQ("No <vendorid> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <vendorid> within <devicevendordef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_empty_value");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <vendorid> within <devicevendordef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <vendorid> within <devicevendordef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/devicevendordef_invalid_value");
@@ -1078,8 +1051,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "Invalid <vendorid> within <devicevendordef>:\n"
                           "\n"
                           "<vendorid>XXX</vendorid>";
-    EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -1087,26 +1060,26 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <productname> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <productname> within <deviceproductdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <productname> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <productname> within <deviceproductdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_no_value");
     xml_compiler.reload();
-    EXPECT_EQ("No <productid> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <productid> within <deviceproductdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_empty_value");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <productid> within <deviceproductdef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <productid> within <deviceproductdef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/deviceproductdef_invalid_value");
@@ -1114,8 +1087,8 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
     const char* message = "Invalid <productid> within <deviceproductdef>:\n"
                           "\n"
                           "<productid>XXX</productid>";
-    EXPECT_EQ(message, std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == message);
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   // ------------------------------------------------------------
@@ -1123,51 +1096,51 @@ TEST(pqrs_xml_compiler, reload_invalid_xml) {
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <name> within <vkchangeinputsourcedef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <name> within <vkchangeinputsourcedef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/vkchangeinputsourcedef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("<name> within <vkchangeinputsourcedef> must start with \"KeyCode::VK_CHANGE_INPUTSOURCE_\":\n"
-              "\n"
-              "<name></name>",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    const char* expected = "<name> within <vkchangeinputsourcedef> must start with \"KeyCode::VK_CHANGE_INPUTSOURCE_\":\n"
+                           "\n"
+                           "<name></name>";
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == expected);
+
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/inputsourcedef_no_name");
     xml_compiler.reload();
-    EXPECT_EQ("No <name> within <inputsourcedef>.", std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "No <name> within <inputsourcedef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
   {
     pqrs::xml_compiler xml_compiler("data/system_xml", "data/invalid_xml/inputsourcedef_empty_name");
     xml_compiler.reload();
-    EXPECT_EQ("Empty <name> within <inputsourcedef>.",
-              std::string(xml_compiler.get_error_information().get_message()));
-    EXPECT_EQ(1, xml_compiler.get_error_information().get_count());
+    REQUIRE(std::string(xml_compiler.get_error_information().get_message()) == "Empty <name> within <inputsourcedef>.");
+    REQUIRE(xml_compiler.get_error_information().get_count() == 1);
   }
 }
 
-TEST(pqrs_xml_compiler_symbol_map, add) {
+TEST_CASE("symbol_map.add", "[pqrs_xml_compiler_symbol_map]") {
   pqrs::xml_compiler::symbol_map s;
   s.add("KeyCode", "SPACE", 36);
   s.add("KeyCode", "VK__AUTOINDEX__BEGIN__", 1024);
   s.add("KeyCode", "VK_NEW1");
   s.add("KeyCode", "VK_NEW2");
 
-  EXPECT_EQ(static_cast<uint32_t>(1024), s.get("KeyCode::VK_NEW1"));
-  EXPECT_EQ(static_cast<uint32_t>(1025), s.get("KeyCode::VK_NEW2"));
+  REQUIRE(s.get("KeyCode::VK_NEW1") == static_cast<uint32_t>(1024));
+  REQUIRE(s.get("KeyCode::VK_NEW2") == static_cast<uint32_t>(1025));
 }
 
-TEST(pqrs_xml_compiler_remapclasses_initialize_vector, get) {
+TEST_CASE("get", "[pqrs_xml_compiler_remapclasses_initialize_vector]") {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
-  EXPECT_EQ(1, v.get().size());
+  REQUIRE(v.get().size() == 1);
 }
 
-TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add) {
+TEST_CASE("remapclasses_initialize_vector.add", "[pqrs_xml_compiler_remapclasses_initialize_vector]") {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
   v.clear();
   v.start(1, "remap.empty");
@@ -1199,10 +1172,10 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add) {
   expected.push_back(1); // configindex:2
   expected.push_back(2);
 
-  EXPECT_EQ(expected, v.get());
+  REQUIRE(v.get() == expected);
 }
 
-TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial) {
+TEST_CASE("add_partial", "[pqrs_xml_compiler_remapclasses_initialize_vector]") {
   pqrs::xml_compiler::remapclasses_initialize_vector v;
   v.clear();
   v.start(1, "remap.empty");
@@ -1241,10 +1214,10 @@ TEST(pqrs_xml_compiler_remapclasses_initialize_vector, add_partial) {
   expected.push_back(1); // configindex:3
   expected.push_back(3);
 
-  EXPECT_EQ(expected, v.get());
+  REQUIRE(v.get() == expected);
 }
 
-TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
+TEST_CASE("filter_vector", "[pqrs_xml_compiler_filter_vector]") {
   pqrs::xml_compiler::symbol_map s;
   s.add("ApplicationType", "APP1", 1);
   s.add("ApplicationType", "APP2", 2);
@@ -1624,11 +1597,6 @@ TEST(pqrs_xml_compiler_filter_vector, filter_vector) {
     expected.push_back(BRIDGE_FILTERTYPE_PRESSINGPHYSICALKEYS_LESSTHAN);
     expected.push_back(2);
 
-    EXPECT_EQ(expected, fv.get());
+    REQUIRE(fv.get() == expected);
   }
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
 }
