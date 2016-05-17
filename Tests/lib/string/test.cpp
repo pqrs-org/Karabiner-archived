@@ -1,22 +1,24 @@
+#define CATCH_CONFIG_MAIN
+#include "../../include/catch.hpp"
+
 #include <boost/lexical_cast.hpp>
-#include <gtest/gtest.h>
 #include <ostream>
 
 #include "pqrs/string.hpp"
 
-TEST(pqrs_string, string_from_file) {
+TEST_CASE("string_from_file", "[pqrs_string]") {
   std::string actual;
   int error = 0;
   error = pqrs::string::string_from_file(actual, "data/sample");
-  EXPECT_EQ("{{AAA}} {{BBB}} {{ CCC }}\n", actual);
-  EXPECT_EQ(0, error);
+  REQUIRE(actual == "{{AAA}} {{BBB}} {{ CCC }}\n");
+  REQUIRE(error == 0);
 
   error = pqrs::string::string_from_file(actual, "data/noexists");
-  EXPECT_EQ("", actual);
-  EXPECT_EQ(-1, error);
+  REQUIRE(actual == "");
+  REQUIRE(error == -1);
 }
 
-TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file) {
+TEST_CASE("string_by_replacing_double_curly_braces_from_file", "[pqrs_string]") {
   pqrs::string::replacement replacement;
   replacement["AAA"] = "1";
   replacement["BBB"] = "2222";
@@ -26,14 +28,14 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file) {
   std::string actual;
   int error = 0;
   error = pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, replacement_warnings, "data/sample", replacement);
-  EXPECT_EQ("1 2222 \n", actual);
-  EXPECT_TRUE(replacement_warnings.empty());
-  EXPECT_EQ(0, error);
+  REQUIRE(actual == "1 2222 \n");
+  REQUIRE(replacement_warnings.empty() == true);
+  REQUIRE(error == 0);
 
   error = pqrs::string::string_by_replacing_double_curly_braces_from_file(actual, replacement_warnings, "data/noexists", replacement);
-  EXPECT_EQ("", actual);
-  EXPECT_TRUE(replacement_warnings.empty());
-  EXPECT_EQ(-1, error);
+  REQUIRE(actual == "");
+  REQUIRE(replacement_warnings.empty() == true);
+  REQUIRE(error == -1);
 
   // performance test
   {
@@ -46,7 +48,7 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_file) {
   }
 }
 
-TEST(pqrs_string, string_by_replacing_double_curly_braces_from_string) {
+TEST_CASE("string_by_replacing_double_curly_braces_from_string", "[pqrs_string]") {
   pqrs::string::replacement replacement;
   replacement["AAA"] = "1";
   replacement["BBB"] = "2222";
@@ -60,138 +62,133 @@ TEST(pqrs_string, string_by_replacing_double_curly_braces_from_string) {
 
   // no replacing
   pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "abc", replacement);
-  EXPECT_EQ("abc", actual);
-  EXPECT_TRUE(replacement_warnings.empty());
+  REQUIRE(actual == "abc");
+  REQUIRE(replacement_warnings.empty() == true);
 
   // normal replacing
   pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{AAA}} {{BBB}} !{{ CCC }}!{{ DDD }}", replacement);
-  EXPECT_EQ("1 2222 !!44444444444444444444", actual);
-  EXPECT_TRUE(replacement_warnings.empty());
+  REQUIRE(actual == "1 2222 !!44444444444444444444");
+  REQUIRE(replacement_warnings.empty() == true);
 
   // unknown replacing
   pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{UNKNOWN}}", replacement);
-  EXPECT_EQ("", actual);
-  EXPECT_EQ("Warning - \"UNKNOWN\" is not found in replacement.\n", replacement_warnings);
+  REQUIRE(actual == "");
+  REQUIRE(replacement_warnings == "Warning - \"UNKNOWN\" is not found in replacement.\n");
   replacement_warnings.clear();
 
   // "} }" is not end.
   pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{AAA} } BBB}} XXX", replacement);
-  EXPECT_EQ(" XXX", actual);
-  EXPECT_EQ("Warning - \"AAA} } BBB\" is not found in replacement.\n", replacement_warnings);
+  REQUIRE(actual == " XXX");
+  REQUIRE(replacement_warnings == "Warning - \"AAA} } BBB\" is not found in replacement.\n");
   replacement_warnings.clear();
 
   // no }}
   pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "AAA {{AAA}", replacement);
-  EXPECT_EQ("AAA ", actual);
-  EXPECT_TRUE(replacement_warnings.empty());
+  REQUIRE(actual == "AAA ");
+  REQUIRE(replacement_warnings.empty() == true);
 
   // no }}
   pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{ AAA }", replacement);
-  EXPECT_EQ("", actual);
-  EXPECT_TRUE(replacement_warnings.empty());
+  REQUIRE(actual == "");
+  REQUIRE(replacement_warnings.empty() == true);
 
   // looped replacing
   pqrs::string::string_by_replacing_double_curly_braces_from_string(actual, replacement_warnings, "{{ LOOP1 }}{{ LOOP2 }}", replacement);
-  EXPECT_EQ("{{ LOOP1 }}   {{ LOOP2 }}    ", actual);
-  EXPECT_TRUE(replacement_warnings.empty());
+  REQUIRE(actual == "{{ LOOP1 }}   {{ LOOP2 }}    ");
+  REQUIRE(replacement_warnings.empty() == true);
 }
 
-TEST(pqrs_string, to_uint32_t) {
+TEST_CASE("to_uint32_t", "[pqrs_string]") {
   boost::optional<uint32_t> actual;
 
   actual = pqrs::string::to_uint32_t("123456");
-  EXPECT_TRUE(static_cast<bool>(actual));
-  EXPECT_EQ(static_cast<uint32_t>(123456), *actual);
+  REQUIRE(static_cast<bool>(actual) == true);
+  REQUIRE(*actual == static_cast<uint32_t>(123456));
 
   actual = pqrs::string::to_uint32_t("0");
-  EXPECT_TRUE(static_cast<bool>(actual));
-  EXPECT_EQ(static_cast<uint32_t>(0), *actual);
+  REQUIRE(static_cast<bool>(actual) == true);
+  REQUIRE(*actual == static_cast<uint32_t>(0));
 
   // oct
   actual = pqrs::string::to_uint32_t("0100");
-  EXPECT_TRUE(static_cast<bool>(actual));
-  EXPECT_EQ(static_cast<uint32_t>(64), *actual);
+  REQUIRE(static_cast<bool>(actual) == true);
+  REQUIRE(*actual == static_cast<uint32_t>(64));
 
   // hex
   actual = pqrs::string::to_uint32_t("0x123456");
-  EXPECT_TRUE(static_cast<bool>(actual));
-  EXPECT_EQ(static_cast<uint32_t>(1193046), *actual);
+  REQUIRE(static_cast<bool>(actual) == true);
+  REQUIRE(*actual == static_cast<uint32_t>(1193046));
 
   actual = pqrs::string::to_uint32_t("");
-  EXPECT_FALSE(static_cast<bool>(actual));
+  REQUIRE(static_cast<bool>(actual) == false);
 
   actual = pqrs::string::to_uint32_t("0xG");
-  EXPECT_FALSE(static_cast<bool>(actual));
+  REQUIRE(static_cast<bool>(actual) == false);
 
   actual = pqrs::string::to_uint32_t("abc");
-  EXPECT_FALSE(static_cast<bool>(actual));
+  REQUIRE(static_cast<bool>(actual) == false);
 
   // boost::optional<std::string>
   actual = pqrs::string::to_uint32_t(boost::none);
-  EXPECT_FALSE(static_cast<bool>(actual));
+  REQUIRE(static_cast<bool>(actual) == false);
 
   actual = pqrs::string::to_uint32_t(boost::optional<std::string>("123"));
-  EXPECT_EQ(static_cast<uint32_t>(123), *actual);
+  REQUIRE(*actual == static_cast<uint32_t>(123));
 }
 
-TEST(pqrs_string, tokenizer) {
+TEST_CASE("tokenizer", "[pqrs_string]") {
   {
     std::string string = "A,B,,C";
     pqrs::string::tokenizer tokenizer(string, ',');
     std::string actual;
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("A", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "A");
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("B", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "B");
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("C", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "C");
 
-    EXPECT_FALSE(tokenizer.split_removing_empty(actual));
+    REQUIRE(tokenizer.split_removing_empty(actual) == false);
   }
   {
     std::string string = ",";
     pqrs::string::tokenizer tokenizer(string, ',');
     std::string actual;
 
-    EXPECT_FALSE(tokenizer.split_removing_empty(actual));
+    REQUIRE(tokenizer.split_removing_empty(actual) == false);
   }
   {
     std::string string = ",,,A,B,,C,D, ,  E E  ,,";
     pqrs::string::tokenizer tokenizer(string, ',');
     std::string actual;
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("A", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "A");
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("B", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "B");
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("C", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "C");
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("D", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "D");
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ(" ", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == " ");
 
-    EXPECT_TRUE(tokenizer.split_removing_empty(actual));
-    EXPECT_EQ("  E E  ", actual);
+    REQUIRE(tokenizer.split_removing_empty(actual) == true);
+    REQUIRE(actual == "  E E  ");
 
-    EXPECT_FALSE(tokenizer.split_removing_empty(actual));
+    REQUIRE(tokenizer.split_removing_empty(actual) == false);
   }
 }
 
-TEST(pqrs_string, remove_whitespaces) {
+TEST_CASE("remove_whitespaces", "[pqrs_string]") {
   std::string actual = " A B C \r\n \t D ";
   pqrs::string::remove_whitespaces(actual);
-  EXPECT_EQ("ABCD", actual);
-}
-
-int main(int argc, char** argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+  REQUIRE(actual == "ABCD");
 }
