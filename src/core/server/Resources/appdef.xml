@@ -560,11 +560,13 @@
   <appdef>
     <appname>Karabiner</appname>
     <equal>org.pqrs.Karabiner</equal>
+    <equal>org.pqrs.Karabiner-Preferences</equal>
   </appdef>
 
   <appdef>
     <appname>Seil</appname>
     <equal>org.pqrs.Seil</equal>
+    <equal>org.pqrs.Seil-Preferences</equal>
   </appdef>
 
   <appdef>
