@@ -623,6 +623,11 @@
     <equal>com.apple.systemuiserver</equal>
   </appdef>
 
+  <appdef>
+    <appname>Photos</appname>
+    <equal>com.apple.Photos</equal>
+  </appdef>
+
   <!-- fallback -->
   <appdef>
     <appname>JetBrainsApps</appname>
