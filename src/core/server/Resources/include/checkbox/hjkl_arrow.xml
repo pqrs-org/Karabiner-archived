@@ -7,7 +7,7 @@
     <item>
       <name>Enable in some standard apps.</name>
       <appendix>Supported Applications:</appendix>
-      <appendix>- Finder, iPhoto, iTunes, Mail.app.</appendix>
+      <appendix>- Finder, iTunes, Photos.</appendix>
       <appendix>- Activity Monitor.</appendix>
       <appendix>- System Preferences, Karabiner, Seil.</appendix>
       <identifier>remap.hjkl_arrow</identifier>
@@ -16,7 +16,7 @@
 
       <block>
         <only>
-          FINDER, IPHOTO, ITUNES, SYSTEM_PREFERENCES,
+          FINDER, Photos, ITUNES, SYSTEM_PREFERENCES,
           Activity_Monitor,
           Karabiner, Seil,
         </only>
@@ -31,21 +31,23 @@
         <autogen>__KeyToKey__ {{ VI_K }}, KeyCode::CURSOR_UP</autogen>
         <autogen>__KeyToKey__ {{ VI_L }}, KeyCode::CURSOR_RIGHT</autogen>
       </block>
+    </item>
 
-      <block>
-        <only>MAIL</only>
-        <!-- Mail body editor is AXWebArea -->
-        <uielementrole_not>AXTextField, AXTextArea, AXWebArea</uielementrole_not>
-        <modifier_only>
-          ModifierFlag::NONE,
-          ModifierFlag::SHIFT_L | ModifierFlag::NONE,
-          ModifierFlag::SHIFT_R | ModifierFlag::NONE,
-        </modifier_only>
-        <autogen>__KeyToKey__ {{ VI_H }}, KeyCode::CURSOR_LEFT</autogen>
-        <autogen>__KeyToKey__ {{ VI_J }}, KeyCode::CURSOR_DOWN</autogen>
-        <autogen>__KeyToKey__ {{ VI_K }}, KeyCode::CURSOR_UP</autogen>
-        <autogen>__KeyToKey__ {{ VI_L }}, KeyCode::CURSOR_RIGHT</autogen>
-      </block>
+    <item>
+      <name>Enable in Mail.</name>
+      <identifier>remap.hjkl_arrow_mail</identifier>
+      <only>MAIL</only>
+      <!-- Mail body editor is AXWebArea -->
+      <uielementrole_not>AXTextField, AXTextArea, AXWebArea</uielementrole_not>
+      <modifier_only>
+        ModifierFlag::NONE,
+        ModifierFlag::SHIFT_L | ModifierFlag::NONE,
+        ModifierFlag::SHIFT_R | ModifierFlag::NONE,
+      </modifier_only>
+      <autogen>__KeyToKey__ {{ VI_H }}, KeyCode::CURSOR_LEFT</autogen>
+      <autogen>__KeyToKey__ {{ VI_J }}, KeyCode::CURSOR_DOWN</autogen>
+      <autogen>__KeyToKey__ {{ VI_K }}, KeyCode::CURSOR_UP</autogen>
+      <autogen>__KeyToKey__ {{ VI_L }}, KeyCode::CURSOR_RIGHT</autogen>
     </item>
 
     <item>
