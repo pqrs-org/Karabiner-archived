@@ -4,6 +4,7 @@
 
 @class CheckboxBackgroundView;
 @class PreferencesClient;
+@class PreferencesWindowController;
 
 @interface CheckboxCellView : NSTableCellView
 
@@ -11,6 +12,7 @@
 @property(weak) IBOutlet NSLayoutConstraint* labelTopSpace;
 @property(weak) IBOutlet NSLayoutConstraint* labelBottomSpace;
 @property(weak) PreferencesClient* preferencesClient;
+@property(weak) PreferencesWindowController* preferencesWindowController;
 @property CheckboxBackgroundView* backgroundView;
 @property NSButton* checkbox;
 @property(copy) NSString* settingIdentifier;

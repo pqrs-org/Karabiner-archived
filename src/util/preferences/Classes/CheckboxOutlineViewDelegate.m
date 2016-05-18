@@ -16,6 +16,7 @@
 
 @property(weak) IBOutlet NSTextField* wrappedTextHeightCalculator;
 @property(weak) IBOutlet PreferencesClient* preferencesClient;
+@property(weak) IBOutlet PreferencesWindowController* preferencesWindowController;
 @property NSFont* font;
 @property NSMutableDictionary* heightCache;
 @property dispatch_queue_t textsHeightQueue;
@@ -56,6 +57,7 @@
 
   CheckboxCellView* result = [outlineView makeViewWithIdentifier:@"CheckboxCellView" owner:self];
   result.preferencesClient = self.preferencesClient;
+  result.preferencesWindowController = self.preferencesWindowController;
   result.settingIdentifier = tree.node.identifier;
 
   result.textField.stringValue = tree.node.name;

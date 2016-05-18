@@ -10,5 +10,6 @@
 
 - (void)setup;
 - (void)show;
+- (void)drawEnabledCount;
 
 @end

@@ -1,6 +1,7 @@
 #import "CheckboxCellView.h"
 #import "CheckboxBackgroundView.h"
 #import "PreferencesClient.h"
+#import "PreferencesWindowController.h"
 #import "ServerClient.h"
 
 @implementation CheckboxCellView
@@ -59,6 +60,7 @@
     int value = (self.checkbox.state == NSOnState);
 
     [self.preferencesClient setValue:value forName:self.settingIdentifier];
+    [self.preferencesWindowController drawEnabledCount];
   }
 }
 
