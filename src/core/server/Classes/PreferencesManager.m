@@ -27,7 +27,7 @@
       kCurrentProfileIndex : @0,
       kCheckForUpdates : @YES,
       kIsStatusWindowEnabled : @YES,
-      kIsStatusWindowUseModifierSymbols: @NO,
+      kIsStatusWindowUseModifierSymbols : @NO,
       kIsStatusWindowShowCapsLock : @NO,
       kIsStatusWindowShowStickyModifier : @NO,
       kIsStatusWindowShowPointingButtonLock : @YES,
