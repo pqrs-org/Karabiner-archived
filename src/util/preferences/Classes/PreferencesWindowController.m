@@ -150,6 +150,8 @@
 
   [self expandParameterOutlineView:self];
   [self drawEnabledCount];
+
+  [self show];
 }
 
 - (void)dealloc {

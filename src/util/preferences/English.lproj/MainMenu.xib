@@ -42,7 +42,7 @@
                 <outlet property="preferencesClient" destination="DhH-Gv-Z3N" id="O9s-iF-Gb0"/>
             </connections>
         </customObject>
-        <window title="Karabiner Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="tcO-xA-vhE" userLabel="Preferences">
+        <window title="Karabiner Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="tcO-xA-vhE" userLabel="Preferences">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <rect key="contentRect" x="398" y="285" width="800" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
