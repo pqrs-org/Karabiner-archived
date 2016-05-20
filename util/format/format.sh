@@ -7,4 +7,6 @@ find ../../* \
     ! -ipath '*/build/*' \
     ! -ipath '*/Tests/include/catch.hpp' \
     \
-    | xargs clang-format -i
+    | while read f; do
+    clang-format -i "$f"
+done
