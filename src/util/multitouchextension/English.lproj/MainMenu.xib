@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -799,7 +799,6 @@ when you touch fingers to trackpad.
         </window>
         <customObject id="494" customClass="AppDelegate">
             <connections>
-                <outlet property="client" destination="535" id="5c7-Tf-G59"/>
                 <outlet property="ignoredAreaView" destination="595" id="785-Yu-v7w"/>
                 <outlet property="preferences" destination="533" id="ZRM-zd-u7p"/>
                 <outlet property="preferencesClient" destination="WZO-R1-287" id="h1K-lq-ASc"/>
@@ -809,8 +808,8 @@ when you touch fingers to trackpad.
         <customObject id="533" customClass="PreferencesController">
             <connections>
                 <outlet property="client" destination="535" id="jkG-1K-QAI"/>
-                <outlet property="preferencesWindow" destination="371" id="yAG-OS-Pk9"/>
                 <outlet property="preferencesClient" destination="WZO-R1-287" id="R8o-eu-B9X"/>
+                <outlet property="preferencesWindow" destination="371" id="yAG-OS-Pk9"/>
                 <outlet property="startAtLoginCheckbox" destination="537" id="ykL-VB-wsX"/>
             </connections>
         </customObject>

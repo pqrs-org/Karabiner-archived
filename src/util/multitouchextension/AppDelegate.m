@@ -27,7 +27,6 @@ static NSTimer* reset_timer_;
 @property(weak) IBOutlet IgnoredAreaView* ignoredAreaView;
 @property(weak) IBOutlet PreferencesClient* preferencesClient;
 @property(weak) IBOutlet PreferencesController* preferences;
-@property(weak) IBOutlet ServerClient* client;
 @property(copy) NSArray* mtdevices;
 @property IONotificationPortRef notifyport;
 @property CFRunLoopSourceRef loopsource;
@@ -98,7 +97,6 @@ void MTDeviceStop(MTDeviceRef, int);
 
 static AppDelegate* global_self_ = nil;
 static IgnoredAreaView* global_ignoredAreaView_ = nil;
-static ServerClient* global_client_ = nil;
 static PreferencesClient* global_preferencesClient_ = nil;
 
 - (void)setValueFromTimer:(NSTimer*)timer {
@@ -108,7 +106,7 @@ static PreferencesClient* global_preferencesClient_ = nil;
 }
 
 static void setPreference(int fingers, int newvalue) {
-  @synchronized(global_client_) {
+  @synchronized(global_preferencesClient_) {
     NSString* name = [PreferencesController getSettingName:fingers];
     if ([name length] > 0) {
       @try {
@@ -506,7 +504,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   global_self_ = self;
   global_ignoredAreaView_ = self.ignoredAreaView;
-  global_client_ = self.client;
   global_preferencesClient_ = self.preferencesClient;
 
   self.sessionObserver = [[SessionObserver alloc] init:1
