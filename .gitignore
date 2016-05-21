@@ -23,6 +23,7 @@ src/util/EventViewer/Info.plist
 src/util/cli/Info.plist
 src/util/multitouchextension/Info.plist
 src/util/preferences/Info.plist
+src/util/updater/Karabiner Updater/Info.plist
 
 ### Emacs ###
 # flymake-mode
