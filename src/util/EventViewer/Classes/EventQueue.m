@@ -256,7 +256,7 @@ enum {
     }
   }
 
-  NSString* keyCodeName = [[self.client proxy] symbolMapName:@"KeyCode" value:(int)([event keyCode])];
+  NSString* keyCodeName = [self.client symbolMapName:@"KeyCode" value:(int)([event keyCode])];
   // Show `characters` at last because `characters` might be newline. (== newline truncates message.)
   NSString* misc = [NSString stringWithFormat:@"%@\t characters:%@",
                                               keyCodeName ? keyCodeName : @"",
@@ -297,7 +297,7 @@ enum {
       }
     }
 
-    NSString* keyCodeName = [[self.client proxy] symbolMapName:@"ConsumerKeyCode" value:keyCode];
+    NSString* keyCodeName = [self.client symbolMapName:@"ConsumerKeyCode" value:keyCode];
     NSString* misc = keyCodeName ? keyCodeName : @"";
 
     [self push:eventType
@@ -314,8 +314,8 @@ enum {
         name:[self buttonToString:event]
        flags:[self modifierFlagsToString:[event modifierFlags]]
         misc:[NSString stringWithFormat:@"%@\t {%d,%d} %d",
-                                        [[self.client proxy] symbolMapName:@"PointingButton"
-                                                                     value:[self buttonToKernelValue:event]],
+                                        [self.client symbolMapName:@"PointingButton"
+                                                             value:[self buttonToKernelValue:event]],
                                         (int)([event locationInWindow].x), (int)([event locationInWindow].y),
                                         (int)([event clickCount])]];
 }

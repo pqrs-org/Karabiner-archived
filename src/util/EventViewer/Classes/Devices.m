@@ -40,7 +40,7 @@
                           @[ @"Pointing", @(BRIDGE_USERCLIENT_TYPE_GET_DEVICE_INFORMATION_POINTING) ] ]) {
       NSInteger type = [a[1] integerValue];
       @try {
-        for (NSDictionary* d in [[self.client proxy] device_information:type]) {
+        for (NSDictionary* d in [self.client device_information:type]) {
           NSMutableDictionary* newdict = [NSMutableDictionary dictionaryWithDictionary:d];
           newdict[@"deviceType"] = a[0];
           [self.devices addObject:newdict];

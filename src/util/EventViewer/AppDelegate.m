@@ -35,7 +35,7 @@
   NSMutableString* result = [NSMutableString new];
 
   for (NSNumber* n in ids) {
-    NSString* name = [[self.client proxy] symbolMapName:type value:[n intValue]];
+    NSString* name = [self.client symbolMapName:type value:[n intValue]];
     if (name) {
       if ([result length] > 0) {
         [result appendString:@", "];
@@ -58,7 +58,7 @@
     static NSNumber* lastMtime = nil;
 
     @try {
-      NSDictionary* information = [[self.client proxy] focused_uielement_information];
+      NSDictionary* information = [self.client focused_uielement_information];
       if (information[@"mtime"] && ![lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
@@ -67,10 +67,10 @@
         // ----------------------------------------
         // set labels
         [self.label_appnames setStringValue:[self joinNamesFromIds:@"ApplicationType"
-                                                               ids:[[self.client proxy] workspace_app_ids]]];
+                                                               ids:[self.client workspace_app_ids]]];
 
         [self.label_windownames setStringValue:[self joinNamesFromIds:@"WindowName"
-                                                                  ids:[[self.client proxy] workspace_window_name_ids]]];
+                                                                  ids:[self.client workspace_window_name_ids]]];
       }
     }
     @catch (NSException* exception) {
@@ -84,7 +84,7 @@
     static NSNumber* lastMtime = nil;
 
     @try {
-      NSDictionary* information = [[self.client proxy] inputsource_information];
+      NSDictionary* information = [self.client inputsource_information];
       if (information[@"mtime"] && ![lastMtime isEqualToNumber:information[@"mtime"]]) {
         lastMtime = information[@"mtime"];
 
@@ -93,7 +93,7 @@
         [self.otherInformationStore setInputModeID:information[@"inputModeID"]];
 
         [self.label_input_sources setStringValue:[self joinNamesFromIds:@"InputSource"
-                                                                    ids:[[self.client proxy] workspace_inputsource_ids]]];
+                                                                    ids:[self.client workspace_inputsource_ids]]];
       }
     }
     @catch (NSException* exception) {
