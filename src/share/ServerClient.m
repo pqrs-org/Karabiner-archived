@@ -4,18 +4,29 @@
 
 @interface ServerClient ()
 
-@property NSDistantObject<ServerClientProtocol>* connection;
 @property dispatch_queue_t connectionQueue;
+@property NSDistantObject<ServerClientProtocol>* connection;
+@property(readonly) NSDistantObject<ServerClientProtocol>* proxy;
 
 @end
 
 @implementation ServerClient
 
 - (NSDistantObject<ServerClientProtocol>*)proxy {
+  @weakify(self);
+
   dispatch_sync(self.connectionQueue, ^{
+    @strongify(self);
+
     if (!self.connection) {
-      self.connection = (NSDistantObject<ServerClientProtocol>*)([NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil]);
-      [self.connection setProtocolForProxy:@protocol(ServerClientProtocol)];
+      // We should catch NSInvalidReceivePortException in block.
+      @try {
+        self.connection = (NSDistantObject<ServerClientProtocol>*)([NSConnection rootProxyForConnectionWithRegisteredName:kKarabinerConnectionName host:nil]);
+        [self.connection setProtocolForProxy:@protocol(ServerClientProtocol)];
+      } @catch (...) {
+        //NSLog(@"catch exception in [ServerClient proxy]");
+        self.connection = nil;
+      }
     }
   });
   return self.connection;
@@ -24,14 +35,11 @@
 - (void)observer_NSConnectionDidDieNotification:(NSNotification*)__unused notification {
   @weakify(self);
 
-  dispatch_async(dispatch_get_main_queue(), ^{
+  dispatch_sync(self.connectionQueue, ^{
     @strongify(self);
-    if (!self) return;
 
-    dispatch_sync(self.connectionQueue, ^{
-      NSLog(@"observer_NSConnectionDidDieNotification is called");
-      self.connection = nil;
-    });
+    NSLog(@"observer_NSConnectionDidDieNotification is called");
+    self.connection = nil;
   });
 }
 
@@ -57,11 +65,15 @@
 
 #pragma mark - ServerClientProtocol
 
-/* Ignore NSInvalidReceivePortException */
-#define NOEXCEPTION(CODE)              \
-  @try {                               \
-    CODE;                              \
-  } @catch (NSException * exception) { \
+/*
+  Ignore NSInvalidReceivePortException.
+  We have to catch NSInvalidReceivePortException in both [ServerClient proxy] and here.
+*/
+#define NOEXCEPTION(CODE)                           \
+  @try {                                            \
+    CODE;                                           \
+  } @catch (...) {                                  \
+    /* NSLog(@"catch exception in NOEXCEPTION"); */ \
   }
 
 - (NSString*)bundleVersion {
