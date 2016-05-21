@@ -209,7 +209,10 @@ send:
 
 - (void)setupAXApplicationObserverManager {
   // Get AXNotifierPreferencesModel only (not entire PreferencesModel) in order to continue running AXNotifier when PreferencesModel is updated.
-  AXNotifierPreferencesModel* axNotifierPreferencesModel = [self.client.proxy axNotifierPreferencesModel];
+  AXNotifierPreferencesModel* axNotifierPreferencesModel = [self.client axNotifierPreferencesModel];
+  if (!axNotifierPreferencesModel) {
+    [NSApp terminate:self];
+  }
   [axNotifierPreferencesModel log];
   self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithAXNotifierPreferencesModel:axNotifierPreferencesModel];
 }
