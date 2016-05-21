@@ -3,7 +3,7 @@
 @import Cocoa;
 #import "ServerClientProtocol.h"
 
-@interface ServerClient : NSObject
+@interface ServerClient : NSObject <ServerClientProtocol>
 
 - (NSDistantObject<ServerClientProtocol>*)proxy;
 
