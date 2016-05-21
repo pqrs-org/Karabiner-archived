@@ -11,17 +11,19 @@
 @implementation PreferencesClient
 
 - (void)load {
-  self.pm = [self.client.proxy preferencesModel];
+  self.pm = [self.client preferencesModel];
 }
 
 - (void)save {
-  [self.client.proxy savePreferencesModel:self.pm processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+  if (self.pm) {
+    [self.client savePreferencesModel:self.pm processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+  }
 }
 
 - (void)setValue:(int)newval forName:(NSString*)name {
   if ([self.pm setValue:newval forName:name]) {
     [self save];
-    [self.client.proxy updateKextValue:name];
+    [self.client updateKextValue:name];
   }
 }
 
