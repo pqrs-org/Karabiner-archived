@@ -12,7 +12,7 @@
 @implementation ParameterOutlineViewDataSource
 
 - (void)setup {
-  self.dataSource = [self.client.proxy parameterTree];
+  self.dataSource = [self.client parameterTree];
 }
 
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {

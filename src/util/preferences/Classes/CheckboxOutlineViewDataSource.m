@@ -64,7 +64,7 @@
 @implementation CheckboxOutlineViewDataSource
 
 - (void)setup {
-  self.dataSource = [self.client.proxy checkboxTree];
+  self.dataSource = [self.client checkboxTree];
   self.fullDataSource = self.dataSource;
   self.filterCondition = nil;
 }

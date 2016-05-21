@@ -20,14 +20,14 @@
 
     [self.preferencesClient.pm renameProfile:self.profileIndex name:self.textField.stringValue];
     [self.preferencesClient save];
-    [self.client.proxy updateStatusBar];
+    [self.client updateStatusBar];
   }
 }
 
 - (IBAction)deleteProfile:(id)sender {
   [self.preferencesClient.pm deleteProfile:self.profileIndex];
   [self.preferencesClient save];
-  [self.client.proxy updateStatusBar];
+  [self.client updateStatusBar];
 
   [self.profileTableView reloadData];
 }

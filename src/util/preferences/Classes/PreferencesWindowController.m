@@ -170,7 +170,7 @@
 }
 
 - (void)checkServerClient {
-  if ([[self.client.proxy bundleVersion] length] == 0) {
+  if ([[self.client bundleVersion] length] == 0) {
     NSLog(@"Karabiner server is not running.");
     [NSApp terminate:self];
   }
@@ -216,9 +216,9 @@
 /* ---------------------------------------------------------------------- */
 - (void)sendStatusWindowPreferencesNotification:(NSString*)identifier {
   if ([identifier isEqualToString:@"StatusMessage"]) {
-    [self.client.proxy showExampleStatusWindow:YES];
+    [self.client showExampleStatusWindow:YES];
   } else {
-    [self.client.proxy showExampleStatusWindow:NO];
+    [self.client showExampleStatusWindow:NO];
   }
 }
 
@@ -262,7 +262,7 @@
 
 - (IBAction)resumeAtLoginChanged:(id)sender {
   [self.preferencesClient save];
-  [self.client.proxy updateStartAtLogin];
+  [self.client updateStartAtLogin];
 }
 
 - (IBAction)checkboxFontConfigurationChanged:(id)sender {
@@ -279,17 +279,17 @@
 
 - (IBAction)statusBarConfigurationChanged:(id)sender {
   [self.preferencesClient save];
-  [self.client.proxy updateStatusBar];
+  [self.client updateStatusBar];
 }
 
 - (IBAction)statusWindowConfigurationChanged:(id)sender {
   [self.preferencesClient save];
-  [self.client.proxy updateStatusWindow];
+  [self.client updateStatusWindow];
 }
 
 - (IBAction)axNotifierConfigurationChanged:(id)sender {
   [self.preferencesClient save];
-  [self.client.proxy restartAXNotifier];
+  [self.client restartAXNotifier];
 }
 
 - (IBAction)focusSearchField:(id)sender {
@@ -298,12 +298,12 @@
 }
 
 - (IBAction)reloadXML:(id)sender {
-  [self.client.proxy reloadXML];
+  [self.client reloadXML];
 }
 
 - (IBAction)usePreparedSettingsConfigurationChanged:(id)sender {
   [self.preferencesClient save];
-  [self.client.proxy reloadXML];
+  [self.client reloadXML];
 }
 
 - (IBAction)filterCheckboxOutlineView:(id)sender {
@@ -331,7 +331,7 @@
 - (IBAction)quitWithConfirmation:(id)sender {
   if ([SharedUtilities confirmQuit]) {
     @try {
-      [self.client.proxy terminateServerProcess];
+      [self.client terminateServerProcess];
     } @catch (NSException* exception) {
     }
 
@@ -350,7 +350,7 @@
 - (IBAction)addNewProfile:(id)sender {
   [self.preferencesClient.pm addProfile:@"New Profile"];
   [self.preferencesClient save];
-  [self.client.proxy updateStatusBar];
+  [self.client updateStatusBar];
 
   [self.profileTableView reloadData];
 }
@@ -376,7 +376,7 @@
 
   [self.preferencesClient.pm sortProfilesByName];
   [self.preferencesClient save];
-  [self.client.proxy updateStatusBar];
+  [self.client updateStatusBar];
 
   [self.profileTableView reloadData];
 }
@@ -386,7 +386,7 @@
 
   [self.preferencesClient.pm sortProfilesByAppendIndex];
   [self.preferencesClient save];
-  [self.client.proxy updateStatusBar];
+  [self.client updateStatusBar];
 
   [self.profileTableView reloadData];
 }
@@ -426,7 +426,7 @@
 }
 
 - (IBAction)openSystemPreferencesKeyboard:(id)sender {
-  [self.client.proxy openSystemPreferencesKeyboard];
+  [self.client openSystemPreferencesKeyboard];
 }
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
@@ -449,31 +449,31 @@
     return;
   }
 
-  [self.client.proxy restartAXNotifier];
+  [self.client restartAXNotifier];
 }
 
 - (IBAction)checkForUpdatesStableOnly:(id)sender {
-  [self.client.proxy checkForUpdatesStableOnly];
+  [self.client checkForUpdatesStableOnly];
 }
 
 - (IBAction)checkForUpdatesWithBetaVersion:(id)sender {
-  [self.client.proxy checkForUpdatesWithBetaVersion];
+  [self.client checkForUpdatesWithBetaVersion];
 }
 
 - (IBAction)launchUninstaller:(id)sender {
-  [self.client.proxy openUninstaller];
+  [self.client openUninstaller];
 }
 
 - (IBAction)openPrivateXML:(id)sender {
-  [self.client.proxy openPrivateXMLDirectory];
+  [self.client openPrivateXMLDirectory];
 }
 
 - (IBAction)launchEventViewer:(id)sender {
-  [self.client.proxy openEventViewer];
+  [self.client openEventViewer];
 }
 
 - (IBAction)launchMultiTouchExtension:(id)sender {
-  [self.client.proxy openMultiTouchExtension];
+  [self.client openMultiTouchExtension];
 }
 
 - (IBAction)openConsoleApp:(id)sender {
@@ -482,7 +482,7 @@
 
 - (IBAction)toggleDebugMode:(id)sender {
   if ([self isDebugMode]) {
-    [self.client.proxy unsetDebugFlags];
+    [self.client unsetDebugFlags];
   } else {
     [[[NSAppleScript alloc] initWithSource:@"do shell script \"/usr/sbin/sysctl -w karabiner.debug=1\" with administrator privileges"] executeAndReturnError:nil];
   }

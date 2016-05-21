@@ -51,7 +51,7 @@ send:
   NSLog(@"%@", target);
 #endif
   @try {
-    [[self.client proxy] updateFocusedUIElementInformation:target];
+    [self.client updateFocusedUIElementInformation:target];
     self.previousSentInformation = target;
   }
   @catch (NSException* exception) {
