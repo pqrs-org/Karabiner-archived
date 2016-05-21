@@ -6,6 +6,7 @@ all:
 	$(MAKE) -C preferences
 	$(MAKE) -C post-hid-event
 	$(MAKE) -C warp-mouse-cursor-position
+	$(MAKE) -C updater
 
 clean:
 	$(MAKE) -C AXNotifier clean
@@ -15,3 +16,4 @@ clean:
 	$(MAKE) -C preferences clean
 	$(MAKE) -C post-hid-event clean
 	$(MAKE) -C warp-mouse-cursor-position clean
+	$(MAKE) -C updater clean
