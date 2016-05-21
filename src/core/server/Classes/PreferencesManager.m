@@ -106,6 +106,11 @@
 }
 
 - (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
+  if (!preferencesModel) {
+    return;
+  }
+
+  // ----------------------------------------
   NSString* oldProfileIdentifier = [self savedProfileIdentifier];
 
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
