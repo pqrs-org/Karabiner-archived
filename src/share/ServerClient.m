@@ -57,6 +57,7 @@
 
 #pragma mark - ServerClientProtocol
 
+/* Ignore NSInvalidReceivePortException */
 #define NOEXCEPTION(CODE)              \
   @try {                               \
     CODE;                              \
