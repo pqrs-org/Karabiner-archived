@@ -64,7 +64,7 @@
 }
 
 - (void)savePreferencesModel {
-  [self.client.proxy savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
+  [self.client savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
 }
 
 - (void)select:(NSInteger)index {
@@ -76,7 +76,7 @@
 
   self.preferencesModel.currentProfileIndex = index;
   [self savePreferencesModel];
-  [self.client.proxy updateStatusBar];
+  [self.client updateStatusBar];
 }
 
 - (void)main {
@@ -88,7 +88,7 @@
   } else {
     @try {
       self.client = [ServerClient new];
-      self.preferencesModel = [self.client.proxy preferencesModel];
+      self.preferencesModel = [self.client preferencesModel];
 
       NSString* command = arguments[1];
 
@@ -112,7 +112,7 @@
         }
 
       } else if ([command isEqualToString:@"reloadxml"]) {
-        [self.client.proxy reloadXML];
+        [self.client reloadXML];
 
       } else if ([command isEqualToString:@"export"]) {
         [self.preferencesModel clearNotSave];
@@ -130,7 +130,7 @@
         }
 
       } else if ([command isEqualToString:@"relaunch"]) {
-        [self.client.proxy relaunch];
+        [self.client relaunch];
 
       } else if ([command isEqualToString:@"select"]) {
         if ([arguments count] != 3) {
@@ -159,7 +159,7 @@
         NSString* value = arguments[2];
         [self.preferencesModel addProfile:value];
         [self savePreferencesModel];
-        [self.client.proxy updateStatusBar];
+        [self.client updateStatusBar];
 
       } else if ([command isEqualToString:@"rename"]) {
         if ([arguments count] != 4) {
@@ -170,7 +170,7 @@
 
         [self.preferencesModel renameProfile:[index integerValue] name:value];
         [self savePreferencesModel];
-        [self.client.proxy updateStatusBar];
+        [self.client updateStatusBar];
 
       } else if ([command isEqualToString:@"delete"]) {
         if ([arguments count] != 3) {
@@ -183,7 +183,7 @@
         } else {
           [self.preferencesModel deleteProfile:[index integerValue]];
           [self savePreferencesModel];
-          [self.client.proxy updateStatusBar];
+          [self.client updateStatusBar];
         }
 
       } else if ([command isEqualToString:@"set"]) {
@@ -194,7 +194,7 @@
         NSString* value = arguments[3];
         if ([self.preferencesModel setValue:[value integerValue] forName:identifier]) {
           [self savePreferencesModel];
-          [self.client.proxy updateKextValue:identifier];
+          [self.client updateKextValue:identifier];
         }
 
       } else if ([command isEqualToString:@"enable"]) {
@@ -204,7 +204,7 @@
         NSString* value = arguments[2];
         if ([self.preferencesModel setValue:1 forName:value]) {
           [self savePreferencesModel];
-          [self.client.proxy updateKextValue:value];
+          [self.client updateKextValue:value];
         }
 
       } else if ([command isEqualToString:@"disable"]) {
@@ -214,7 +214,7 @@
         NSString* value = arguments[2];
         if ([self.preferencesModel setValue:0 forName:value]) {
           [self savePreferencesModel];
-          [self.client.proxy updateKextValue:value];
+          [self.client updateKextValue:value];
         }
 
       } else if ([command isEqualToString:@"toggle"]) {
@@ -225,7 +225,7 @@
         NSInteger current = [self.preferencesModel value:value];
         if ([self.preferencesModel setValue:(!current) forName:value]) {
           [self savePreferencesModel];
-          [self.client.proxy updateKextValue:value];
+          [self.client updateKextValue:value];
         }
 
       } else if ([command isEqualToString:@"be_careful_to_use__clear_all_values_by_name"]) {
@@ -237,7 +237,7 @@
         if (profileModel) {
           profileModel.values = @{};
           [self savePreferencesModel];
-          [self.client.proxy updateKextValues];
+          [self.client updateKextValues];
           return;
         }
         [self output:[NSString stringWithFormat:@"\"%@\" is not found.\n", value]];
