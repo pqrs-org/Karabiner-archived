@@ -4,29 +4,33 @@ basedir=`dirname $0`
 
 ############################################################
 # xcodeproj
-for f in `find $basedir/../../* -name 'project.pbxproj' ! -ipath '*/Pods/*'`; do
+find $basedir/../../* -name 'project.pbxproj' ! -ipath '*/Pods/*' | while read f; do
     echo "Check $f"
 
-    plutil -convert json -o - "$f" | "$basedir/xcodeproj.rb"  || exit 1
+    plutil -convert json -o - "$f" | "$basedir/xcodeproj.rb" || exit 1
 done
 
-############################################################
+if [ $? -ne 0 ]; then
+    exit 1
+fi
+
+###########################################################
 # Info.plist.tmpl
-for f in `find $basedir/../../* -name 'Info.plist.tmpl'`; do
+find $basedir/../../* -name 'Info.plist.tmpl' | while read f; do
     echo "Check $f"
 
-    case "$(basename $(dirname $f))/$(basename $f)" in
+    basename=$(basename "$f")
+    dirname=$(dirname "$f")
+    dirbasename=$(basename "$dirname")
+    case "$dirbasename/$basename" in
         pkginfo/Info.plist.tmpl)
-            "$basedir/plist.rb" CFBundleIconFile < $f || exit 1
+            "$basedir/plist.rb" CFBundleIconFile < "$f" || exit 1
             ;;
         kext/Info.plist.tmpl)
-            "$basedir/plist.rb" CFBundleIconFile < $f || exit 1
-            ;;
-        prefpane/Info.plist.tmpl)
-            "$basedir/plist.rb" CFBundleIconFile < $f || exit 1
+            "$basedir/plist.rb" CFBundleIconFile < "$f" || exit 1
             ;;
         *)
-            "$basedir/plist.rb" < $f || exit 1
+            "$basedir/plist.rb" < "$f" || exit 1
             ;;
     esac
 done
