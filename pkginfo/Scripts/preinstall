@@ -5,6 +5,11 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin; export PATH
 
 # ----------------------------------------
 # unload before install
+
+# close all connections before unload
+killall -USR1 Karabiner
+sleep 3
+
 startup='/Library/Application Support/org.pqrs/Karabiner/startup.sh'
 [ -f "$startup" ] && "$startup" stop
 

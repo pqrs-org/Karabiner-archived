@@ -1,5 +1,7 @@
 #import "UserClient_userspace.h"
 #import "Relauncher.h"
+#import "weakify.h"
+
 #include "bridge.h"
 
 @interface UserClient_userspace ()
@@ -9,6 +11,9 @@
 @property IONotificationPortRef notifyport;
 @property CFRunLoopSourceRef loopsource;
 @property io_async_ref64_t* asyncref;
+@property BOOL terminated;
+@property dispatch_source_t dispatchSourceSIGUSR1;
+@property dispatch_source_t dispatchSourceSIGUSR2;
 
 @end
 
@@ -148,6 +153,54 @@ finish:
     self.service = IO_OBJECT_NULL;
     self.connect = IO_OBJECT_NULL;
     self.asyncref = asyncref;
+    self.terminated = NO;
+
+    // ----------------------------------------
+    // Usage of user defined signals:
+    //
+    // We use SIGUSR1 and SIGUSR2 for stable kext reloading.
+    // The kextunload will be failed if active connection is remaining.
+    // Therefore, we have to close all connections before unload kext.
+    //
+    // * SIGUSR1 handler: Close useclient and forbit reconnection.
+    // * SIGUSR2 handler: Restart process.
+    //
+    // We use signals in this procedure:
+    //
+    // (1) Send SIGUSR1 (close connection)
+    // (2) kextunload
+    // (3) kextload
+    // (4) Send SIGUSR2 (restart process)
+
+    @weakify(self);
+
+    signal(SIGUSR1, SIG_IGN);
+    signal(SIGUSR2, SIG_IGN);
+
+    self.dispatchSourceSIGUSR1 = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGUSR1, 0, dispatch_get_main_queue());
+    if (self.dispatchSourceSIGUSR1) {
+      dispatch_source_set_event_handler(self.dispatchSourceSIGUSR1, ^{
+        @strongify(self);
+        if (!self) return;
+
+        NSLog(@"closeUserClient by SIGUSR1");
+        self.terminated = YES;
+        [self disconnect_from_kext];
+      });
+      dispatch_resume(self.dispatchSourceSIGUSR1);
+    }
+
+    self.dispatchSourceSIGUSR2 = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGUSR2, 0, dispatch_get_main_queue());
+    if (self.dispatchSourceSIGUSR2) {
+      dispatch_source_set_event_handler(self.dispatchSourceSIGUSR2, ^{
+        @strongify(self);
+        if (!self) return;
+
+        NSLog(@"relaunch by SIGUSR2");
+        [Relauncher relaunch];
+      });
+      dispatch_resume(self.dispatchSourceSIGUSR2);
+    }
   }
 
   return self;
@@ -160,6 +213,11 @@ finish:
 
     self.service = IO_OBJECT_NULL;
     self.connect = IO_OBJECT_NULL;
+
+    // ----------------------------------------
+    if (self.terminated) {
+      return;
+    }
 
     // ----------------------------------------
     // setup IONotification

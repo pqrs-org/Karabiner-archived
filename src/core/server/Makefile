@@ -35,7 +35,7 @@ run: all
 	open ./build/Release/Karabiner.app
 
 relaunch:
-	/Applications/Karabiner.app/Contents/Library/bin/karabiner relaunch
+	killall -USR2 Karabiner
 
 podupdate:
 	pod update

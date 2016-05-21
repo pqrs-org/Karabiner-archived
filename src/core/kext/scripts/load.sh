@@ -11,3 +11,5 @@ bash ../../../files/extra/codesign.sh /tmp/Karabiner
 sudo chown -R root:wheel /tmp/Karabiner
 
 sudo kextutil -t /tmp/Karabiner/Karabiner.signed.kext
+
+sudo killall -USR2 Karabiner

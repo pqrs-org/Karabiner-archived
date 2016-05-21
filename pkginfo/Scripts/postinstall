@@ -14,10 +14,9 @@ for f in \
 done
 
 # ------------------------------------------------------------
-# relaunch Karabiner.app
+# relaunch Karabiner
 
-/Applications/Karabiner.app/Contents/Library/bin/karabiner \
-    relaunch
+killall -USR2 Karabiner
 
 # ------------------------------------------------------------
 # load kext
