@@ -17,6 +17,7 @@
 
   dispatch_sync(self.connectionQueue, ^{
     @strongify(self);
+    if (!self) return;
 
     if (!self.connection) {
       // We should catch NSInvalidReceivePortException in block.
@@ -37,6 +38,7 @@
 
   dispatch_sync(self.connectionQueue, ^{
     @strongify(self);
+    if (!self) return;
 
     NSLog(@"observer_NSConnectionDidDieNotification is called");
     self.connection = nil;
