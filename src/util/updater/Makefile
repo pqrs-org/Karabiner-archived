@@ -3,6 +3,7 @@ CONFIGURATION = Release
 
 all:
 	$(MAKE) -C ../../../pkginfo
+	(cd Pods && xcodebuild -configuration $(CONFIGURATION) SYMROOT=$(CURDIR)/build)
 	xcodebuild -alltargets -configuration $(CONFIGURATION) build
 
 clean:
@@ -15,7 +16,11 @@ clean:
 	rm -rf *.xcodeproj/project.xcworkspace/xcuserdata
 
 xcode:
-	open *.xcodeproj
+	open *.xcworkspace
 
 run: all
 	open "./build/Release/Karabiner.app"
+
+podupdate:
+	pod update
+	pod install --no-repo-update

@@ -1,0 +1,3 @@
+target 'Karabiner updater' do
+  pod 'Sparkle'
+end

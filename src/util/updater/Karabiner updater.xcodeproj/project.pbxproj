@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A6AD11506D42A3851B81934 /* libPods-Karabiner updater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EDFF18E8A82483FA95E18F /* libPods-Karabiner updater.a */; };
 		348223F51CEF0DF500A0D957 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 348223F41CEF0DF500A0D957 /* AppDelegate.m */; };
 		348223F81CEF0DF500A0D957 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 348223F71CEF0DF500A0D957 /* main.m */; };
 		348223FD1CEF0DF500A0D957 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 348223FB1CEF0DF500A0D957 /* MainMenu.xib */; };
@@ -21,6 +22,8 @@
 		348223FC1CEF0DF500A0D957 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		348223FE1CEF0DF500A0D957 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		348224051CF02F6D00A0D957 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
+		D1C0CE40DF9C6C6995936241 /* Pods-Karabiner updater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karabiner updater.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karabiner updater/Pods-Karabiner updater.release.xcconfig"; sourceTree = "<group>"; };
+		F7EDFF18E8A82483FA95E18F /* libPods-Karabiner updater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karabiner updater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A6AD11506D42A3851B81934 /* libPods-Karabiner updater.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -39,6 +43,8 @@
 			children = (
 				348223F21CEF0DF500A0D957 /* Karabiner updater */,
 				348223F11CEF0DF500A0D957 /* Products */,
+				4B9F47493467102D4FDF8215 /* Pods */,
+				5B1206245C3E072994C6896C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +85,22 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		4B9F47493467102D4FDF8215 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D1C0CE40DF9C6C6995936241 /* Pods-Karabiner updater.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5B1206245C3E072994C6896C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7EDFF18E8A82483FA95E18F /* libPods-Karabiner updater.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +108,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 348224011CEF0DF500A0D957 /* Build configuration list for PBXNativeTarget "Karabiner updater" */;
 			buildPhases = (
+				09674B0963DF0D603FD37610 /* 📦 Check Pods Manifest.lock */,
 				348223EC1CEF0DF500A0D957 /* Sources */,
 				348223ED1CEF0DF500A0D957 /* Frameworks */,
 				348223EE1CEF0DF500A0D957 /* Resources */,
+				C73D9F0EAD249481A76206AD /* 📦 Embed Pods Frameworks */,
+				57A11BC794BDCF811939F8F0 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,6 +167,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09674B0963DF0D603FD37610 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		57A11BC794BDCF811939F8F0 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karabiner updater/Pods-Karabiner updater-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C73D9F0EAD249481A76206AD /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karabiner updater/Pods-Karabiner updater-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		348223EC1CEF0DF500A0D957 /* Sources */ = {
@@ -217,6 +290,7 @@
 		};
 		348224031CEF0DF500A0D957 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1C0CE40DF9C6C6995936241 /* Pods-Karabiner updater.release.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Karabiner updater/Info.plist";
