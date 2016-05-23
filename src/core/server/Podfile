@@ -1,3 +1,0 @@
-target 'Karabiner_server' do
-  pod 'Sparkle'
-end
