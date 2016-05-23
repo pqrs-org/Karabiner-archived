@@ -15,16 +15,7 @@ static dispatch_queue_t queue_;
   return @"/Library/Application Support/org.pqrs/Karabiner/updater/Karabiner.app";
 }
 
-+ (void)terminateUpdaters {
-  NSString* bundleIdentifier = [[NSBundle bundleWithPath:self.path] bundleIdentifier];
-  NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
-  for (NSRunningApplication* runningApplication in applications) {
-    [runningApplication terminate];
-  }
-}
-
 + (void)launch:(NSString*)argument {
-  [UpdaterController terminateUpdaters];
   [[NSWorkspace sharedWorkspace] launchApplicationAtURL:[NSURL fileURLWithPath:self.path]
                                                 options:0
                                           configuration:@{ NSWorkspaceLaunchConfigurationArguments : @[ argument ] }
