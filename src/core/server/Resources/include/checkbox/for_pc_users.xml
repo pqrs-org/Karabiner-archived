@@ -367,7 +367,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikehomeend_emacs</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <include path="snippets/pcstyle_homeend_ignore_apps.xml" />
       <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
@@ -437,7 +437,7 @@
       </block>
       <block>
         <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-        {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+        <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
         <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_HOME, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::COMMAND_L</autogen>
         <autogen>__KeyToKey__ FROMKEYCODE_END,  MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_DOWN,  ModifierFlag::COMMAND_L</autogen>
@@ -458,7 +458,7 @@
         WORD, EXCEL, POWERPOINT, OUTLOOK,
         JetBrainsApps
       </not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ FROMKEYCODE_PAGEUP,   ModifierFlag::NONE, KeyCode::PAGEUP, ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ FROMKEYCODE_PAGEDOWN, ModifierFlag::NONE, KeyCode::PAGEDOWN, ModifierFlag::OPTION_L</autogen>
     </item>
@@ -469,7 +469,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pclikecontrolarrow_except_vm</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::CURSOR_UP,     MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_UP,    ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ KeyCode::CURSOR_DOWN,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_DOWN,  ModifierFlag::OPTION_L</autogen>
       <autogen>__KeyToKey__ KeyCode::CURSOR_LEFT,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::CURSOR_LEFT,  ModifierFlag::OPTION_L</autogen>
@@ -484,7 +484,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pc_style_copy_paste</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
@@ -510,7 +510,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.copy_paste_winstyle2</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::V, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::X, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
@@ -532,7 +532,7 @@
         TEAMVIEWER,
         CITRIX_XEN_APP_VIEWER,
       </not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::FORWARD_DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::X, ModifierFlag::COMMAND_L</autogen>
@@ -544,7 +544,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.copy_paste_winstyle_4</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::PC_INSERT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::C, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND</autogen>
     </item>
     <item>
@@ -558,7 +558,7 @@
         ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
       </modifier_not>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
 
       <block>
         <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
@@ -580,7 +580,7 @@
         ModifierFlag::CONTROL_L, ModifierFlag::CONTROL_R,
       </modifier_not>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
 
       <block>
         <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
@@ -614,7 +614,7 @@
 
       <block>
         <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-        {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+        <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
 
         <block>
           <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
@@ -646,7 +646,7 @@
         ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
       </modifier_not>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
 
       <block>
         <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
@@ -664,7 +664,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.save_winstyle_no_term</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::S, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::S, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -674,7 +674,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.new_winstyle_no_term</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::N, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -684,7 +684,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.copy_paste_winstyle_reload</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::R, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -694,7 +694,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.copy_paste_winstyle_new_tab</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -726,7 +726,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.find_winstyle_no_term</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::F, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::F, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::G, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::F3, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::G, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
@@ -739,7 +739,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pc_style_open</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::O, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | ModifierFlag::NONE,
@@ -753,7 +753,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_close</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
@@ -772,7 +772,7 @@
       </modifier_not>
 
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::Q, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
@@ -786,7 +786,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.control_delete_to_option_delete_winstyle</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::DELETE, ModifierFlag::OPTION_L</autogen>
     </item>
     <item>
@@ -798,7 +798,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_changeinputmethod1</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
     <item>
@@ -811,7 +811,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_changeinputmethod2</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION, KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
     </item>
@@ -822,7 +822,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_changeinputmethod3</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::SHIFT_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
     </item>
@@ -832,7 +832,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_command_shift_to_command_space</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
 
       <modifier_not>
         ModifierFlag::CONTROL_L,
@@ -882,7 +882,7 @@
       </block>
       <block>
         <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-        {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+        <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
 
         <block>
           <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
@@ -915,7 +915,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_command_Fn_shift_Fn</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::FN, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND,
@@ -942,7 +942,7 @@
         <!-- except for Microsoft applications which already have this built-in -->
         WORD, EXCEL, POWERPOINT, OUTLOOK, ENTOURAGE
       </not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
 
       <block>
         <inputsource_only>{{ PC_STYLE_BINDINGS_AZERTY_INPUT_SOURCES }}</inputsource_only>
@@ -970,7 +970,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_keypad_copy_and_paste</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_0,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::C, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_0,   MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,   KeyCode::V, ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,   KeyCode::X, ModifierFlag::COMMAND_L</autogen>
@@ -983,7 +983,7 @@
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_keypad_beg_end_document</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_7, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_UP,   ModifierFlag::COMMAND_L</autogen>
       <autogen>__KeyToKey__ KeyCode::KEYPAD_1, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND, KeyCode::CURSOR_DOWN, ModifierFlag::COMMAND_L</autogen>
     </item>
@@ -992,7 +992,7 @@
       <name>Ctrl+Alt+Delete or Ctrl+Alt+Del to show restart / sleep / shutdown dialog</name>
       <identifier>remap.pcstyle_ctrl_alt_del</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
@@ -1009,7 +1009,7 @@
       <appendix>(for PC Users who swapped Control and Command)</appendix>
       <identifier>remap.pcstyle_ctrl_alt_del_swapped</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
-      {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
+      <not>{{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}</not>
       <autogen>
         __KeyToKey__
         KeyCode::DELETE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
