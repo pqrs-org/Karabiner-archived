@@ -70,6 +70,10 @@ do
     cp -R "$f" "$basedir"
 done
 
+basedir="pkgroot/Library/Application Support/org.pqrs/Karabiner/updater"
+mkdir -p "$basedir"
+cp -R src/util/updater/build/Release/Karabiner.app "$basedir"
+
 # Sign with Developer ID
 bash files/extra/codesign.sh "pkgroot"
 
