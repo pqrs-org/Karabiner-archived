@@ -12,7 +12,7 @@
 #import "SharedKeys.h"
 #import "StatusBar.h"
 #import "StatusMessageManager.h"
-#import "Updater.h"
+#import "UpdaterController.h"
 #import "XMLCompiler.h"
 #import "weakify.h"
 
@@ -27,7 +27,6 @@
 @property(weak) IBOutlet StatusBar* statusBar;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
-@property(weak) IBOutlet Updater* updater;
 @property NSConnection* connection;
 
 @end
@@ -121,7 +120,7 @@
     @strongify(self);
     if (!self) return;
 
-    [self.updater checkForUpdatesStableOnly];
+    [UpdaterController checkForUpdatesStableOnly];
   });
 }
 
@@ -132,7 +131,7 @@
     @strongify(self);
     if (!self) return;
 
-    [self.updater checkForUpdatesWithBetaVersion];
+    [UpdaterController checkForUpdatesWithBetaVersion];
   });
 }
 

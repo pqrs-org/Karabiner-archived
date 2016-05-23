@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
@@ -24,7 +24,6 @@
                 <outlet property="serverObjects" destination="IVB-c7-TsL" id="2tF-0E-05U"/>
                 <outlet property="statusMessageManager" destination="606" id="vjd-va-ZKm"/>
                 <outlet property="statusbar" destination="552" id="dgH-mQ-NNG"/>
-                <outlet property="updater" destination="588" id="Iln-Cd-QUf"/>
                 <outlet property="workSpaceData" destination="596" id="kqt-tP-OpL"/>
                 <outlet property="xmlCompiler" destination="591" id="VFc-Dx-zkN"/>
             </connections>
@@ -46,7 +45,6 @@
                 <outlet property="preferencesManager" destination="592" id="BOL-JN-afJ"/>
                 <outlet property="serverForUserspace" destination="593" id="LPh-oh-KPf"/>
                 <outlet property="statusMessageManager" destination="606" id="0gp-nD-Cxc"/>
-                <outlet property="updater" destination="588" id="AVr-Nt-LFt"/>
                 <outlet property="xmlCompiler" destination="591" id="SQx-uN-mJn"/>
             </connections>
         </customObject>
@@ -66,11 +64,6 @@
                 <outlet property="menu" destination="553" id="a0C-6W-4wB"/>
                 <outlet property="preferencesManager" destination="592" id="jAD-zS-2a2"/>
                 <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Dzg-ok-soY"/>
-            </connections>
-        </customObject>
-        <customObject id="588" customClass="Updater">
-            <connections>
-                <outlet property="preferencesModel" destination="bZI-C0-0rU" id="Oo0-Ke-83N"/>
             </connections>
         </customObject>
         <customObject id="591" customClass="XMLCompiler">
@@ -97,7 +90,6 @@
                 <outlet property="serverController" destination="F7g-QL-0Bv" id="4oW-rE-k0T"/>
                 <outlet property="statusBar" destination="552" id="eX8-S2-iPO"/>
                 <outlet property="statusMessageManager" destination="606" id="P7L-QV-UR3"/>
-                <outlet property="updater" destination="588" id="w9f-In-7Jq"/>
                 <outlet property="xmlCompiler" destination="591" id="Sxi-i0-3U2"/>
             </connections>
         </customObject>

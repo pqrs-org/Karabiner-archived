@@ -20,7 +20,7 @@
 #import "StartAtLoginUtilities.h"
 #import "StatusBar.h"
 #import "StatusMessageManager.h"
-#import "Updater.h"
+#import "UpdaterController.h"
 #import "WorkSpaceData.h"
 #import "XMLCompiler.h"
 #import "weakify.h"
@@ -39,7 +39,6 @@
 @property(weak) IBOutlet ServerObjects* serverObjects;
 @property(weak) IBOutlet StatusBar* statusbar;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
-@property(weak) IBOutlet Updater* updater;
 @property(weak) IBOutlet WorkSpaceData* workSpaceData;
 @property(weak) IBOutlet XMLCompiler* xmlCompiler;
 
@@ -380,7 +379,11 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
   // ------------------------------------------------------------
   if (relaunchedCount == 0) {
-    [self.updater checkForUpdatesInBackground];
+    if (!self.preferencesModel.checkForUpdates) {
+      NSLog(@"skip checkForUpdates");
+    } else {
+      [UpdaterController checkForUpdatesInBackground];
+    }
   } else {
     NSLog(@"Skip checkForUpdatesInBackground in the relaunched process.");
   }
@@ -486,7 +489,7 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 }
 
 - (IBAction)checkForUpdatesStableOnly:(id)sender {
-  [self.updater checkForUpdatesStableOnly];
+  [UpdaterController checkForUpdatesStableOnly];
 }
 
 - (IBAction)quitWithConfirmation:(id)sender {
