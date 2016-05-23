@@ -58,6 +58,7 @@
         AXTextField,
         AXTextArea,
         AXComboBox,
+        AXMenuItem, <!-- https://github.com/tekezo/Karabiner/issues/642 -->
       </uielementrole_not>
       <modifier_only>
         ModifierFlag::NONE,
