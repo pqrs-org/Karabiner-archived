@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A6AD11506D42A3851B81934 /* libPods-Karabiner updater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EDFF18E8A82483FA95E18F /* libPods-Karabiner updater.a */; };
+		34127DED1CF29EFC00B2DF12 /* SparkleDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34127DEC1CF29EFC00B2DF12 /* SparkleDelegate.m */; };
 		348223F51CEF0DF500A0D957 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 348223F41CEF0DF500A0D957 /* AppDelegate.m */; };
 		348223F81CEF0DF500A0D957 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 348223F71CEF0DF500A0D957 /* main.m */; };
 		348223FD1CEF0DF500A0D957 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 348223FB1CEF0DF500A0D957 /* MainMenu.xib */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34127DEB1CF29EFC00B2DF12 /* SparkleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparkleDelegate.h; path = Classes/SparkleDelegate.h; sourceTree = "<group>"; };
+		34127DEC1CF29EFC00B2DF12 /* SparkleDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkleDelegate.m; path = Classes/SparkleDelegate.m; sourceTree = "<group>"; };
 		348223F01CEF0DF500A0D957 /* Karabiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karabiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		348223F31CEF0DF500A0D957 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		348223F41CEF0DF500A0D957 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -38,6 +41,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34127DEA1CF29EF200B2DF12 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				34127DEB1CF29EFC00B2DF12 /* SparkleDelegate.h */,
+				34127DEC1CF29EFC00B2DF12 /* SparkleDelegate.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		348223E71CEF0DF500A0D957 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +73,7 @@
 			children = (
 				348223F31CEF0DF500A0D957 /* AppDelegate.h */,
 				348223F41CEF0DF500A0D957 /* AppDelegate.m */,
+				34127DEA1CF29EF200B2DF12 /* Classes */,
 				348223FE1CEF0DF500A0D957 /* Info.plist */,
 				348223FB1CEF0DF500A0D957 /* MainMenu.xib */,
 				348224041CF02F5A00A0D957 /* Resources */,
@@ -223,6 +236,7 @@
 			files = (
 				348223F81CEF0DF500A0D957 /* main.m in Sources */,
 				348223F51CEF0DF500A0D957 /* AppDelegate.m in Sources */,
+				34127DED1CF29EFC00B2DF12 /* SparkleDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +309,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = "Karabiner updater/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.pqrs.updater.Karabiner;
+				PRODUCT_BUNDLE_IDENTIFIER = org.pqrs.Karabiner.updater;
 				PRODUCT_NAME = Karabiner;
 			};
 			name = Release;
