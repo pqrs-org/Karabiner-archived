@@ -12,17 +12,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
-            <connections>
-                <outlet property="suUpdater" destination="y5m-XI-8l6" id="sNg-RX-04Y"/>
-            </connections>
-        </customObject>
-        <customObject id="gti-LZ-XFV" customClass="SparkleDelegate"/>
-        <customObject id="y5m-XI-8l6" customClass="SUUpdater">
-            <connections>
-                <outlet property="delegate" destination="gti-LZ-XFV" id="uBB-RP-ZHk"/>
-            </connections>
-        </customObject>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6"/>
     </objects>
 </document>

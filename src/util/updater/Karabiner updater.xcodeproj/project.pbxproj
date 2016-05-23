@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0A6AD11506D42A3851B81934 /* libPods-Karabiner updater.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7EDFF18E8A82483FA95E18F /* libPods-Karabiner updater.a */; };
-		34127DED1CF29EFC00B2DF12 /* SparkleDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34127DEC1CF29EFC00B2DF12 /* SparkleDelegate.m */; };
 		341ED3081CF2A31E008123B6 /* karabiner_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 341ED3071CF2A31E008123B6 /* karabiner_pub.pem */; };
 		348223F51CEF0DF500A0D957 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 348223F41CEF0DF500A0D957 /* AppDelegate.m */; };
 		348223F81CEF0DF500A0D957 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 348223F71CEF0DF500A0D957 /* main.m */; };
@@ -17,8 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		34127DEB1CF29EFC00B2DF12 /* SparkleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SparkleDelegate.h; path = Classes/SparkleDelegate.h; sourceTree = "<group>"; };
-		34127DEC1CF29EFC00B2DF12 /* SparkleDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SparkleDelegate.m; path = Classes/SparkleDelegate.m; sourceTree = "<group>"; };
 		341ED3071CF2A31E008123B6 /* karabiner_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = karabiner_pub.pem; path = Resources/karabiner_pub.pem; sourceTree = "<group>"; };
 		348223F01CEF0DF500A0D957 /* Karabiner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Karabiner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		348223F31CEF0DF500A0D957 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -27,6 +24,7 @@
 		348223FC1CEF0DF500A0D957 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		348223FE1CEF0DF500A0D957 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		348224051CF02F6D00A0D957 /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
+		34E6657A1CF2E2250077D877 /* weakify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = weakify.h; path = ../../../share/weakify.h; sourceTree = "<group>"; };
 		D1C0CE40DF9C6C6995936241 /* Pods-Karabiner updater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Karabiner updater.release.xcconfig"; path = "Pods/Target Support Files/Pods-Karabiner updater/Pods-Karabiner updater.release.xcconfig"; sourceTree = "<group>"; };
 		F7EDFF18E8A82483FA95E18F /* libPods-Karabiner updater.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Karabiner updater.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -43,15 +41,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		34127DEA1CF29EF200B2DF12 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				34127DEB1CF29EFC00B2DF12 /* SparkleDelegate.h */,
-				34127DEC1CF29EFC00B2DF12 /* SparkleDelegate.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
 		348223E71CEF0DF500A0D957 = {
 			isa = PBXGroup;
 			children = (
@@ -75,10 +64,10 @@
 			children = (
 				348223F31CEF0DF500A0D957 /* AppDelegate.h */,
 				348223F41CEF0DF500A0D957 /* AppDelegate.m */,
-				34127DEA1CF29EF200B2DF12 /* Classes */,
 				348223FE1CEF0DF500A0D957 /* Info.plist */,
 				348223FB1CEF0DF500A0D957 /* MainMenu.xib */,
 				348224041CF02F5A00A0D957 /* Resources */,
+				34E665791CF2E2180077D877 /* share */,
 				348223F61CEF0DF500A0D957 /* Supporting Files */,
 			);
 			path = "Karabiner updater";
@@ -99,6 +88,14 @@
 				348224051CF02F6D00A0D957 /* app.icns */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		34E665791CF2E2180077D877 /* share */ = {
+			isa = PBXGroup;
+			children = (
+				34E6657A1CF2E2250077D877 /* weakify.h */,
+			);
+			name = share;
 			sourceTree = "<group>";
 		};
 		4B9F47493467102D4FDF8215 /* Pods */ = {
@@ -240,7 +237,6 @@
 			files = (
 				348223F81CEF0DF500A0D957 /* main.m in Sources */,
 				348223F51CEF0DF500A0D957 /* AppDelegate.m in Sources */,
-				34127DED1CF29EFC00B2DF12 /* SparkleDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

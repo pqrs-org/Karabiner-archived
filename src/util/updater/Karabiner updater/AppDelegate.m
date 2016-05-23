@@ -1,15 +1,19 @@
 #import "AppDelegate.h"
+#import "weakify.h"
 @import Sparkle;
 
 @interface AppDelegate ()
 
-@property(weak) IBOutlet SUUpdater* suUpdater;
+@property SUUpdater* suUpdater;
+@property dispatch_source_t timer;
 
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  self.suUpdater = [SUUpdater new];
+
   NSArray* arguments = [[NSProcessInfo processInfo] arguments];
 
   if ([arguments count] == 2) {
@@ -49,6 +53,7 @@
   [self.suUpdater setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
   [self.suUpdater checkForUpdatesInBackground];
+  [self setTerminationTimer];
 }
 
 - (void)checkForUpdatesStableOnly {
@@ -56,6 +61,7 @@
   [self.suUpdater setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
   [self.suUpdater checkForUpdates:nil];
+  [self setTerminationTimer];
 }
 
 - (void)checkForUpdatesWithBetaVersion {
@@ -63,6 +69,24 @@
   [self.suUpdater setFeedURL:[NSURL URLWithString:url]];
   NSLog(@"checkForUpdates %@", url);
   [self.suUpdater checkForUpdates:nil];
+  [self setTerminationTimer];
+}
+
+- (void)setTerminationTimer {
+  @weakify(self);
+
+  self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+  if (self.timer) {
+    dispatch_source_set_timer(self.timer, dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), 1.0 * NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(self.timer, ^{
+        @strongify(self);
+
+        if (!self.suUpdater.updateInProgress) {
+          [NSApp terminate:self];
+        }
+      });
+    dispatch_resume(self.timer);
+  }
 }
 
 @end
