@@ -16,7 +16,7 @@
   self = [super init];
 
   if (self) {
-    self.devices = [NSMutableArray new];
+    _devices = [NSMutableArray new];
   }
 
   return self;

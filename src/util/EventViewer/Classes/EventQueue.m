@@ -20,7 +20,7 @@ enum {
   self = [super init];
 
   if (self) {
-    self.queue = [NSMutableArray new];
+    _queue = [NSMutableArray new];
   }
 
   return self;
