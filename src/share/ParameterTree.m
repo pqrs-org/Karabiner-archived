@@ -20,11 +20,11 @@
   self = [super init];
 
   if (self) {
-    self.name = name ? @(name) : @"";
-    self.identifier = identifier ? @(identifier) : @"";
-    self.defaultValue = defaultValue;
-    self.step = step;
-    self.baseUnit = baseUnit ? @(baseUnit) : @"";
+    _name = name ? @(name) : @"";
+    _identifier = identifier ? @(identifier) : @"";
+    _defaultValue = defaultValue;
+    _step = step;
+    _baseUnit = baseUnit ? @(baseUnit) : @"";
   }
 
   return self;
@@ -43,11 +43,11 @@
   self = [super init];
 
   if (self) {
-    self.name = [decoder decodeObjectForKey:@"name"];
-    self.identifier = [decoder decodeObjectForKey:@"identifier"];
-    self.defaultValue = [decoder decodeIntegerForKey:@"defaultValue"];
-    self.step = [decoder decodeIntegerForKey:@"step"];
-    self.baseUnit = [decoder decodeObjectForKey:@"baseUnit"];
+    _name = [decoder decodeObjectForKey:@"name"];
+    _identifier = [decoder decodeObjectForKey:@"identifier"];
+    _defaultValue = [decoder decodeIntegerForKey:@"defaultValue"];
+    _step = [decoder decodeIntegerForKey:@"step"];
+    _baseUnit = [decoder decodeObjectForKey:@"baseUnit"];
   }
 
   return self;
@@ -91,8 +91,8 @@
   self = [super init];
 
   if (self) {
-    self.node = node;
-    self.children = children;
+    _node = node;
+    _children = children;
   }
 
   return self;
@@ -111,8 +111,8 @@
   self = [super init];
 
   if (self) {
-    self.node = [decoder decodeObjectForKey:@"node"];
-    self.children = [decoder decodeObjectForKey:@"children"];
+    _node = [decoder decodeObjectForKey:@"node"];
+    _children = [decoder decodeObjectForKey:@"children"];
   }
 
   return self;

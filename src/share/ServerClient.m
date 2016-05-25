@@ -49,7 +49,7 @@
   self = [super init];
 
   if (self) {
-    self.connectionQueue = dispatch_queue_create("org.pqrs.Karabiner.ServerClient.connectionQueue", NULL);
+    _connectionQueue = dispatch_queue_create("org.pqrs.Karabiner.ServerClient.connectionQueue", NULL);
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_NSConnectionDidDieNotification:)

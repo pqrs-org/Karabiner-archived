@@ -20,16 +20,16 @@
   self = [super init];
 
   if (self) {
-    self.lastState = NO;
-    self.active = active;
-    self.inactive = inactive;
+    _lastState = NO;
+    _active = active;
+    _inactive = inactive;
 
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                  target:self
-                                                selector:@selector(timerFireMethod:)
-                                                userInfo:nil
-                                                 repeats:YES];
-    [self.timer fire];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:1
+                                              target:self
+                                            selector:@selector(timerFireMethod:)
+                                            userInfo:nil
+                                             repeats:YES];
+    [_timer fire];
   }
 
   return self;
