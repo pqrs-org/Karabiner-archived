@@ -159,20 +159,20 @@
   self = [super init];
 
   if (self) {
-    self.xmlCompilerReloadQueue = dispatch_queue_create("org.pqrs.Karabiner.XMLCompiler.xmlCompilerReloadQueue", NULL);
+    _xmlCompilerReloadQueue = dispatch_queue_create("org.pqrs.Karabiner.XMLCompiler.xmlCompilerReloadQueue", NULL);
 
     pqrs_xml_compiler* p = NULL;
     pqrs_xml_compiler_initialize(&p,
                                  [[[NSBundle mainBundle] resourcePath] UTF8String],
                                  [[[XMLCompiler get_private_xml_path] stringByDeletingLastPathComponent] UTF8String]);
-    self.pqrs_xml_compiler = p;
+    _pqrs_xml_compiler = p;
   }
 
   return self;
 }
 
 - (void)dealloc {
-  pqrs_xml_compiler* p = self.pqrs_xml_compiler;
+  pqrs_xml_compiler* p = _pqrs_xml_compiler;
   pqrs_xml_compiler_terminate(&p);
 }
 

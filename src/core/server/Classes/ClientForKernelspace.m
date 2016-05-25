@@ -158,11 +158,11 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   self = [super init];
 
   if (self) {
-    self.asyncref = (io_async_ref64_t*)(malloc(sizeof(io_async_ref64_t)));
-    (*(self.asyncref))[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(static_callback_NotificationFromKext);
-    (*(self.asyncref))[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
+    _asyncref = (io_async_ref64_t*)(malloc(sizeof(io_async_ref64_t)));
+    (*_asyncref)[kIOAsyncCalloutFuncIndex] = (io_user_reference_t)(static_callback_NotificationFromKext);
+    (*_asyncref)[kIOAsyncCalloutRefconIndex] = (io_user_reference_t)(self);
 
-    self.userClient_userspace = [[UserClient_userspace alloc] init:self.asyncref];
+    _userClient_userspace = [[UserClient_userspace alloc] init:_asyncref];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_ConfigXMLReloaded:)

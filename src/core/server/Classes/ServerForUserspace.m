@@ -37,7 +37,7 @@
   self = [super init];
 
   if (self) {
-    self.connection = [NSConnection new];
+    _connection = [NSConnection new];
   }
 
   return self;

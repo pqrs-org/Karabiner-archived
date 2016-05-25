@@ -35,9 +35,9 @@
   self = [super init];
 
   if (self) {
-    self.showExampleStatusWindow = NO;
+    _showExampleStatusWindow = NO;
 
-    self.windowControllers = [NSMutableArray new];
+    _windowControllers = [NSMutableArray new];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_NSApplicationDidChangeScreenParametersNotification:)

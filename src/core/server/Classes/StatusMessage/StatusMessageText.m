@@ -24,13 +24,13 @@ enum StatusMessageTextType {
   self = [super init];
 
   if (self) {
-    self.texts = [NSMutableArray new];
+    _texts = [NSMutableArray new];
     NSDictionary* dictionary = @{
       @"name" : @"",
       @"symbol" : @"",
     };
     for (int i = 0; i < StatusMessageTextType_End_; ++i) {
-      [self.texts addObject:[dictionary mutableCopy]];
+      [_texts addObject:[dictionary mutableCopy]];
     }
   }
 

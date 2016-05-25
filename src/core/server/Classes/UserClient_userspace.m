@@ -150,10 +150,10 @@ finish:
   self = [super init];
 
   if (self) {
-    self.service = IO_OBJECT_NULL;
-    self.connect = IO_OBJECT_NULL;
-    self.asyncref = asyncref;
-    self.terminated = NO;
+    _service = IO_OBJECT_NULL;
+    _connect = IO_OBJECT_NULL;
+    _asyncref = asyncref;
+    _terminated = NO;
 
     // ----------------------------------------
     // Usage of user defined signals:
@@ -177,9 +177,9 @@ finish:
     signal(SIGUSR1, SIG_IGN);
     signal(SIGUSR2, SIG_IGN);
 
-    self.dispatchSourceSIGUSR1 = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGUSR1, 0, dispatch_get_main_queue());
-    if (self.dispatchSourceSIGUSR1) {
-      dispatch_source_set_event_handler(self.dispatchSourceSIGUSR1, ^{
+    _dispatchSourceSIGUSR1 = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGUSR1, 0, dispatch_get_main_queue());
+    if (_dispatchSourceSIGUSR1) {
+      dispatch_source_set_event_handler(_dispatchSourceSIGUSR1, ^{
         @strongify(self);
         if (!self) return;
 
@@ -187,19 +187,19 @@ finish:
         self.terminated = YES;
         [self disconnect_from_kext];
       });
-      dispatch_resume(self.dispatchSourceSIGUSR1);
+      dispatch_resume(_dispatchSourceSIGUSR1);
     }
 
-    self.dispatchSourceSIGUSR2 = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGUSR2, 0, dispatch_get_main_queue());
-    if (self.dispatchSourceSIGUSR2) {
-      dispatch_source_set_event_handler(self.dispatchSourceSIGUSR2, ^{
+    _dispatchSourceSIGUSR2 = dispatch_source_create(DISPATCH_SOURCE_TYPE_SIGNAL, SIGUSR2, 0, dispatch_get_main_queue());
+    if (_dispatchSourceSIGUSR2) {
+      dispatch_source_set_event_handler(_dispatchSourceSIGUSR2, ^{
         @strongify(self);
         if (!self) return;
 
         NSLog(@"relaunch by SIGUSR2");
         [Relauncher relaunch];
       });
-      dispatch_resume(self.dispatchSourceSIGUSR2);
+      dispatch_resume(_dispatchSourceSIGUSR2);
     }
   }
 
