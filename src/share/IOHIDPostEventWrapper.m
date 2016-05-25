@@ -14,7 +14,7 @@
   self = [super init];
 
   if (self) {
-    self.eventFlags = 0;
+    _eventFlags = 0;
 
     // ------------------------------------------------------------
     // Getting eventDriver
@@ -38,7 +38,7 @@
     kr = IOServiceOpen(service, mach_task_self(), kIOHIDParamConnectType, &ev);
     if (KERN_SUCCESS != kr) goto finish;
 
-    self.eventDriver = ev;
+    _eventDriver = ev;
 
   finish:
     if (service) {

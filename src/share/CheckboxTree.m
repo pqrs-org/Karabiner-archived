@@ -18,10 +18,10 @@ static NSInteger checkboxItemId_ = 0;
 
   if (self) {
     ++checkboxItemId_;
-    self.id = @(checkboxItemId_);
-    self.name = name ? @(name) : @"";
-    self.style = style ? @(style) : @"";
-    self.identifier = identifier ? @(identifier) : @"";
+    _id = @(checkboxItemId_);
+    _name = name ? @(name) : @"";
+    _style = style ? @(style) : @"";
+    _identifier = identifier ? @(identifier) : @"";
   }
 
   return self;
@@ -48,10 +48,10 @@ static NSInteger checkboxItemId_ = 0;
   self = [super init];
 
   if (self) {
-    self.id = [decoder decodeObjectForKey:@"id"];
-    self.name = [decoder decodeObjectForKey:@"name"];
-    self.style = [decoder decodeObjectForKey:@"style"];
-    self.identifier = [decoder decodeObjectForKey:@"identifier"];
+    _id = [decoder decodeObjectForKey:@"id"];
+    _name = [decoder decodeObjectForKey:@"name"];
+    _style = [decoder decodeObjectForKey:@"style"];
+    _identifier = [decoder decodeObjectForKey:@"identifier"];
   }
 
   return self;
@@ -93,8 +93,8 @@ static NSInteger checkboxItemId_ = 0;
   self = [super init];
 
   if (self) {
-    self.node = node;
-    self.children = children;
+    _node = node;
+    _children = children;
   }
 
   return self;
@@ -113,8 +113,8 @@ static NSInteger checkboxItemId_ = 0;
   self = [super init];
 
   if (self) {
-    self.node = [decoder decodeObjectForKey:@"node"];
-    self.children = [decoder decodeObjectForKey:@"children"];
+    _node = [decoder decodeObjectForKey:@"node"];
+    _children = [decoder decodeObjectForKey:@"children"];
   }
 
   return self;
