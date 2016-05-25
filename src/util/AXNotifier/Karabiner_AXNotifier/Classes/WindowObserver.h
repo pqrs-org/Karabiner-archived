@@ -3,7 +3,4 @@
 @import Cocoa;
 
 @interface WindowObserver : NSObject
-
-- (instancetype)init;
-
 @end

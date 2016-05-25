@@ -66,28 +66,28 @@
   self = [super init];
 
   if (self) {
-    self.shown = [NSMutableDictionary new];
-    self.targetWindows = [NSMutableDictionary new];
+    _shown = [NSMutableDictionary new];
+    _targetWindows = [NSMutableDictionary new];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(observer_kFocusedUIElementChanged:)
                                                  name:kFocusedUIElementChanged
                                                object:nil];
 
-    self.refreshWindowIDsTimer = [NSTimer scheduledTimerWithTimeInterval:10
-                                                                  target:self
-                                                                selector:@selector(refreshWindowIDsTimerFireMethod:)
-                                                                userInfo:nil
-                                                                 repeats:YES];
+    _refreshWindowIDsTimer = [NSTimer scheduledTimerWithTimeInterval:10
+                                                              target:self
+                                                            selector:@selector(refreshWindowIDsTimerFireMethod:)
+                                                            userInfo:nil
+                                                             repeats:YES];
 
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                  target:self
-                                                selector:@selector(timerFireMethod:)
-                                                userInfo:nil
-                                                 repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                              target:self
+                                            selector:@selector(timerFireMethod:)
+                                            userInfo:nil
+                                             repeats:YES];
 
-    [self.refreshWindowIDsTimer fire];
-    [self.timer fire];
+    [_refreshWindowIDsTimer fire];
+    [_timer fire];
   }
 
   return self;

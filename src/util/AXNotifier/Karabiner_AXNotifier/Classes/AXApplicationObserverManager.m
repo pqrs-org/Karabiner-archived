@@ -209,9 +209,9 @@
   self = [super init];
 
   if (self) {
-    self.axNotifierPreferencesModel = axNotifierPreferencesModel;
+    _axNotifierPreferencesModel = axNotifierPreferencesModel;
 
-    self.systemApplicationObservers = [NSMutableDictionary new];
+    _systemApplicationObservers = [NSMutableDictionary new];
 
     [[[NSWorkspace sharedWorkspace] notificationCenter] addObserver:self
                                                            selector:@selector(observer_NSWorkspaceDidActivateApplicationNotification:)
@@ -219,21 +219,21 @@
                                                              object:nil];
 
     // ----------------------------------------
-    self.systemApplicationObserversRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:3
-                                                                                   target:self
-                                                                                 selector:@selector(systemApplicationObserversRefreshTimerFireMethod:)
-                                                                                 userInfo:nil
-                                                                                  repeats:YES];
-    [self.systemApplicationObserversRefreshTimer fire];
+    _systemApplicationObserversRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:3
+                                                                               target:self
+                                                                             selector:@selector(systemApplicationObserversRefreshTimerFireMethod:)
+                                                                             userInfo:nil
+                                                                              repeats:YES];
+    [_systemApplicationObserversRefreshTimer fire];
 
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                  target:self
-                                                selector:@selector(timerFireMethod:)
-                                                userInfo:nil
-                                                 repeats:YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.5
+                                              target:self
+                                            selector:@selector(timerFireMethod:)
+                                            userInfo:nil
+                                             repeats:YES];
 
-    self.runningApplicationForAXApplicationObserver = [[NSWorkspace sharedWorkspace] frontmostApplication];
-    [self.timer fire];
+    _runningApplicationForAXApplicationObserver = [[NSWorkspace sharedWorkspace] frontmostApplication];
+    [_timer fire];
   }
 
   return self;
