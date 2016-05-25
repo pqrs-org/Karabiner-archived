@@ -178,12 +178,12 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
 }
 
 - (void)dealloc {
-  [self.timer invalidate];
+  [_timer invalidate];
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  if (self.asyncref) {
-    free(self.asyncref);
-    self.asyncref = NULL;
+  if (_asyncref) {
+    free(_asyncref);
+    _asyncref = NULL;
   }
 }
 

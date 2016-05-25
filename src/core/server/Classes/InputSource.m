@@ -41,8 +41,8 @@
 }
 
 - (void)dealloc {
-  if (self.inputSource) {
-    CFRelease(self.inputSource);
+  if (_inputSource) {
+    CFRelease(_inputSource);
   }
 }
 

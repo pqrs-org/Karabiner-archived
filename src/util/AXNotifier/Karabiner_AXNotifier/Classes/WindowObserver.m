@@ -96,10 +96,18 @@
 - (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-  [self.timer invalidate];
+  [_timer invalidate];
 
-  [self.targetWindows removeAllObjects];
-  [self updateCfWindowIDs];
+  [_targetWindows removeAllObjects];
+
+  if (_cfWindowIDs) {
+    CFRelease(_cfWindowIDs);
+    _cfWindowIDs = NULL;
+  }
+  if (_rawWindowIDs) {
+    free(_rawWindowIDs);
+    _rawWindowIDs = NULL;
+  }
 }
 
 - (void)updateCfWindowIDs {

@@ -36,7 +36,7 @@
 }
 
 - (void)dealloc {
-  [self.timer invalidate];
+  [_timer invalidate];
 }
 
 - (void)timerFireMethod:(NSTimer*)timer {

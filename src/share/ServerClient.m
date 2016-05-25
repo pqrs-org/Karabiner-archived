@@ -61,7 +61,6 @@
 }
 
 - (void)dealloc {
-  // Call removeObserver first because observer may refresh connection.
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
