@@ -28,12 +28,12 @@
 
   if (self) {
     if (ref) {
-      self.inputSource = ref;
-      CFRetain(self.inputSource);
+      _inputSource = ref;
+      CFRetain(_inputSource);
 
-      self.languagecode = [InputSource getLanguageCode:self.inputSource];
-      self.inputSourceID = (__bridge NSString*)(TISGetInputSourceProperty(self.inputSource, kTISPropertyInputSourceID));
-      self.inputModeID = (__bridge NSString*)(TISGetInputSourceProperty(self.inputSource, kTISPropertyInputModeID));
+      _languagecode = [InputSource getLanguageCode:_inputSource];
+      _inputSourceID = (__bridge NSString*)(TISGetInputSourceProperty(_inputSource, kTISPropertyInputSourceID));
+      _inputModeID = (__bridge NSString*)(TISGetInputSourceProperty(_inputSource, kTISPropertyInputModeID));
     }
   }
 
