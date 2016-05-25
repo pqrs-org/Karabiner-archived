@@ -22,8 +22,7 @@
   self = [super init];
 
   if (self) {
-    self.items = [NSMutableArray new];
-    [self clear];
+    _items = [NSMutableArray new];
   }
 
   return self;

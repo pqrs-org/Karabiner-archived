@@ -49,7 +49,7 @@
   self = [super init];
 
   if (self) {
-    self.oldSettings = [NSMutableArray new];
+    _oldSettings = [NSMutableArray new];
   }
 
   return self;

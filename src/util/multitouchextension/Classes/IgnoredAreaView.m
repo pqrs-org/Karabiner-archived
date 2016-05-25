@@ -38,7 +38,7 @@
   self = [super initWithFrame:frameRect];
 
   if (self) {
-    self.fingers = [NSMutableArray new];
+    _fingers = [NSMutableArray new];
   }
 
   return self;
