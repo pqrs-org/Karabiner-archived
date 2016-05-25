@@ -31,6 +31,7 @@
 		34AF0F30194AFD5300C1EF75 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		34E8FBBB194AFE4800C94B30 /* ServerClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerClient.h; path = ../../../share/ServerClient.h; sourceTree = "<group>"; };
 		34E8FBBC194AFE4800C94B30 /* ServerClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerClient.m; path = ../../../share/ServerClient.m; sourceTree = "<group>"; };
+		34F046FA1CF365CC004247A0 /* weakify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = weakify.h; path = ../../../share/weakify.h; sourceTree = "<group>"; };
 		34FB06181CD82F4500491F58 /* PreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesModel.h; path = ../../../share/PreferencesModel.h; sourceTree = "<group>"; };
 		34FB06191CD82F4500491F58 /* PreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesModel.m; path = ../../../share/PreferencesModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +89,7 @@
 				34FB06191CD82F4500491F58 /* PreferencesModel.m */,
 				34E8FBBB194AFE4800C94B30 /* ServerClient.h */,
 				34E8FBBC194AFE4800C94B30 /* ServerClient.m */,
+				34F046FA1CF365CC004247A0 /* weakify.h */,
 			);
 			name = share;
 			sourceTree = "<group>";
