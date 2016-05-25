@@ -233,9 +233,9 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        ProfileModel* profileModel = [self.preferencesModel profile:[self.preferencesModel profileIndexByName:value]];
-        if (profileModel) {
-          profileModel.values = @{};
+        NSInteger profileIndex = [self.preferencesModel profileIndexByName:value];
+        if (profileIndex >= 0) {
+          [self.preferencesModel clearValues:profileIndex];
           [self savePreferencesModel];
           [self.client updateKextValues];
           return;

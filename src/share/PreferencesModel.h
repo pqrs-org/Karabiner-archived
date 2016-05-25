@@ -7,7 +7,12 @@
 @property(copy) NSString* name;
 @property(copy) NSString* identifier;
 @property NSInteger appendIndex;
-@property(copy) NSDictionary* values;
+@property(copy, readonly) NSDictionary* values;
+
+- (instancetype)initWithName:(NSString*)name
+                  identifier:(NSString*)identifier
+                 appendIndex:(NSInteger)appendIndex
+                      values:(NSDictionary*)values;
 
 @end
 
@@ -32,7 +37,7 @@
 @property BOOL showProfileNameInStatusBar;
 @property BOOL usePreparedSettings;
 
-@property(copy) NSArray* profiles;
+@property(copy, readonly) NSArray* profiles;
 @property NSInteger currentProfileIndex;
 
 @property BOOL useStatusWindow;
@@ -60,11 +65,13 @@
 - (BOOL)setValue:(NSInteger)value forName:(NSString*)name;
 - (NSInteger)defaultValue:(NSString*)identifier;
 - (void)clearNotSave;
+- (void)clearValues:(NSInteger)profileIndex;
 @property(copy, readonly) NSArray* essentialConfigurations;
 - (NSInteger)essentialConfigurationIndex:(NSString*)identifier;
 
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;
+- (void)replaceProfiles:(NSArray*)profiles;
 - (void)addProfile:(NSString*)name;
 - (void)renameProfile:(NSInteger)index name:(NSString*)name;
 - (void)deleteProfile:(NSInteger)index;

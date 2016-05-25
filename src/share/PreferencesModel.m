@@ -1,15 +1,38 @@
 #import "PreferencesModel.h"
+#import "weakify.h"
 #include <sys/time.h>
 
-#define DECODE_BOOL(KEY) self.KEY = [decoder decodeBoolForKey:@ #KEY];
-#define DECODE_INTEGER(KEY) self.KEY = [decoder decodeIntegerForKey:@ #KEY];
-#define DECODE_OBJECT(KEY) self.KEY = [decoder decodeObjectForKey:@ #KEY];
+#define DECODE_BOOL(KEY) _##KEY = [decoder decodeBoolForKey:@ #KEY];
+#define DECODE_INTEGER(KEY) _##KEY = [decoder decodeIntegerForKey:@ #KEY];
+#define DECODE_OBJECT(KEY) _##KEY = [decoder decodeObjectForKey:@ #KEY];
 
 #define ENCODE_BOOL(KEY) [encoder encodeBool:self.KEY forKey:@ #KEY];
 #define ENCODE_INTEGER(KEY) [encoder encodeInteger:self.KEY forKey:@ #KEY];
 #define ENCODE_OBJECT(KEY) [encoder encodeObject:self.KEY forKey:@ #KEY];
 
+@interface ProfileModel()
+
+@property(copy, readwrite) NSDictionary* values;
+
+@end
+
 @implementation ProfileModel
+
+- (instancetype)initWithName:(NSString*)name
+                  identifier:(NSString*)identifier
+                 appendIndex:(NSInteger)appendIndex
+                      values:(NSDictionary*)values {
+  self = [super init];
+
+  if (self) {
+    _name = name;
+    _identifier = identifier;
+    _appendIndex = appendIndex;
+    _values = values;
+  }
+
+  return self;
+}
 
 #pragma mark - NSObject
 
@@ -98,14 +121,23 @@
 
 @end
 
+static dispatch_queue_t profileModelQueue_;
 static NSDictionary* essentialConfigurationDefaults_ = nil;
 static NSArray* essentialConfigurationIdentifiers_ = nil;
+
+@interface PreferencesModel ()
+
+@property(copy, readwrite) NSArray* profiles;
+
+@end
 
 @implementation PreferencesModel
 
 + (void)initialize {
   static dispatch_once_t once;
   dispatch_once(&once, ^{
+    profileModelQueue_ = dispatch_queue_create("org.pqrs.Karabiner.PreferencesModel.profileModelQueue_", NULL);
+
     essentialConfigurationDefaults_ = @{
 #include "../bridge/output/include.bridge_essential_configuration_default_values.m"
     };
@@ -203,29 +235,33 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
 }
 
 - (BOOL)setValue:(NSInteger)value forName:(NSString*)name {
-  if ([name length] == 0) {
-    return NO;
-  }
+  @weakify(self);
 
-  ProfileModel* profileModel = [self profile:self.currentProfileIndex];
-  if (!profileModel) {
-    return NO;
-  }
+  __block BOOL result = NO;
 
-  if ([profileModel.values[name] integerValue] == value) {
-    return NO;
-  }
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
 
-  NSMutableDictionary* values = [profileModel.values mutableCopy];
-  if (value == [essentialConfigurationDefaults_[name] integerValue]) {
-    [values removeObjectForKey:name];
-  } else {
-    values[name] = @(value);
-  }
+    if ([name length] > 0) {
+      ProfileModel* profileModel = [self profile:self.currentProfileIndex];
+      if (profileModel) {
+        if ([profileModel.values[name] integerValue] != value) {
+          NSMutableDictionary* values = [profileModel.values mutableCopy];
+          if (value == [essentialConfigurationDefaults_[name] integerValue]) {
+            [values removeObjectForKey:name];
+          } else {
+            values[name] = @(value);
+          }
 
-  profileModel.values = values;
+          profileModel.values = values;
+          result = YES;
+        }
+      }
+    }
+  });
 
-  return YES;
+  return result;
 }
 
 - (NSInteger)defaultValue:(NSString*)identifier {
@@ -236,15 +272,36 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
 }
 
 - (void)clearNotSave {
-  for (ProfileModel* profileModel in self.profiles) {
-    NSMutableDictionary* values = [profileModel.values mutableCopy];
-    for (NSString* name in [values allKeys]) {
-      if ([name hasPrefix:@"notsave."]) {
-        [values removeObjectForKey:name];
+  @weakify(self);
+
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
+
+    for (ProfileModel* profileModel in self.profiles) {
+      NSMutableDictionary* values = [profileModel.values mutableCopy];
+      for (NSString* name in [values allKeys]) {
+        if ([name hasPrefix:@"notsave."]) {
+          [values removeObjectForKey:name];
+        }
       }
+      profileModel.values = values;
     }
-    profileModel.values = values;
-  }
+  });
+}
+
+- (void)clearValues:(NSInteger)profileIndex {
+  @weakify(self);
+
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
+
+    if (0 <= profileIndex && profileIndex < (NSInteger)([self.profiles count])) {
+      ProfileModel* profileModel = self.profiles[profileIndex];
+      profileModel.values = @{};
+    }
+  });
 }
 
 - (NSArray*)essentialConfigurations {
@@ -333,67 +390,113 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
   return -1;
 }
 
+- (void)replaceProfiles:(NSArray*)profiles {
+  @weakify(self);
+
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
+
+    self.profiles = profiles;
+  });
+}
+
 - (void)addProfile:(NSString*)name {
-  NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
+  @weakify(self);
 
-  struct timeval tm;
-  gettimeofday(&tm, NULL);
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
 
-  ProfileModel* profileModel = [ProfileModel new];
-  profileModel.name = name ? name : @"New Profile";
-  profileModel.identifier = [NSString stringWithFormat:@"config_%ld_%ld", (time_t)(tm.tv_sec), (time_t)(tm.tv_usec)];
-  profileModel.appendIndex = [self profileMaxAppendIndex] + 1;
-  profileModel.values = @{};
+    NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
 
-  [profiles addObject:profileModel];
+    struct timeval tm;
+    gettimeofday(&tm, NULL);
 
-  self.profiles = profiles;
+    ProfileModel* profileModel = [ProfileModel new];
+    profileModel.name = name ? name : @"New Profile";
+    profileModel.identifier = [NSString stringWithFormat:@"config_%ld_%ld", (time_t)(tm.tv_sec), (time_t)(tm.tv_usec)];
+    profileModel.appendIndex = [self profileMaxAppendIndex] + 1;
+    profileModel.values = @{};
+
+    [profiles addObject:profileModel];
+
+    self.profiles = profiles;
+  });
 }
 
 - (void)renameProfile:(NSInteger)index name:(NSString*)name {
-  ProfileModel* profileModel = [self profile:index];
-  if (profileModel) {
-    profileModel.name = name;
-  }
+  @weakify(self);
+
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
+
+    ProfileModel* profileModel = [self profile:index];
+    if (profileModel) {
+      profileModel.name = name;
+    }
+  });
 }
 
 - (void)deleteProfile:(NSInteger)index {
-  if (self.currentProfileIndex != index) {
-    ProfileModel* profileModel = [self profile:index];
-    if (profileModel) {
-      NSString* identifier = self.currentProfileIdentifier;
+  @weakify(self);
 
-      NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
-      [profiles removeObjectAtIndex:index];
-      self.profiles = profiles;
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
 
-      [self profileSelectByIdentifier:identifier];
+    if (self.currentProfileIndex != index) {
+      ProfileModel* profileModel = [self profile:index];
+      if (profileModel) {
+        NSString* identifier = self.currentProfileIdentifier;
+
+        NSMutableArray* profiles = [NSMutableArray arrayWithArray:self.profiles];
+        [profiles removeObjectAtIndex:index];
+        self.profiles = profiles;
+
+        [self profileSelectByIdentifier:identifier];
+      }
     }
-  }
+  });
 }
 
 - (void)sortProfilesByAppendIndex {
-  // get current identifier before sort.
-  NSString* identifier = self.currentProfileIdentifier;
+  @weakify(self);
 
-  NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
-    return obj1.appendIndex - obj2.appendIndex;
-  }];
-  self.profiles = sorted;
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
 
-  [self profileSelectByIdentifier:identifier];
+    // get current identifier before sort.
+    NSString* identifier = self.currentProfileIdentifier;
+
+    NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
+      return obj1.appendIndex - obj2.appendIndex;
+    }];
+    self.profiles = sorted;
+
+    [self profileSelectByIdentifier:identifier];
+  });
 }
 
 - (void)sortProfilesByName {
-  // get current identifier before sort.
-  NSString* identifier = self.currentProfileIdentifier;
+  @weakify(self);
 
-  NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
-    return [obj1.name compare:obj2.name options:NSCaseInsensitiveSearch];
-  }];
-  self.profiles = sorted;
+  dispatch_sync(profileModelQueue_, ^{
+    @strongify(self);
+    if (!self) return;
 
-  [self profileSelectByIdentifier:identifier];
+    // get current identifier before sort.
+    NSString* identifier = self.currentProfileIdentifier;
+
+    NSArray* sorted = [self.profiles sortedArrayUsingComparator:^NSComparisonResult(ProfileModel* obj1, ProfileModel* obj2) {
+      return [obj1.name compare:obj2.name options:NSCaseInsensitiveSearch];
+    }];
+    self.profiles = sorted;
+
+    [self profileSelectByIdentifier:identifier];
+  });
 }
 
 @end

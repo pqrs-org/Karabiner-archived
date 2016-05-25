@@ -76,14 +76,17 @@
   // profiles
   NSMutableArray* profiles = [NSMutableArray new];
   for (NSDictionary* profile in [[NSUserDefaults standardUserDefaults] arrayForKey:kProfiles]) {
-    ProfileModel* profileModel = [ProfileModel new];
-    profileModel.name = profile[@"name"];
-    profileModel.identifier = profile[@"identify"];
-    profileModel.appendIndex = [profile[@"appendIndex"] integerValue];
-    profileModel.values = [[NSUserDefaults standardUserDefaults] dictionaryForKey:profileModel.identifier];
+    NSString* name = profile[@"name"];
+    NSString* identifier = profile[@"identify"];
+    NSInteger appendIndex = [profile[@"appendIndex"] integerValue];
+    NSDictionary* values = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+    ProfileModel* profileModel = [[ProfileModel alloc] initWithName:name
+                                                         identifier:identifier
+                                                        appendIndex:appendIndex
+                                                             values:values];
     [profiles addObject:profileModel];
   }
-  preferencesModel.profiles = profiles;
+  [preferencesModel replaceProfiles:profiles];
 
   // ----------------------------------------
   // axNotifier
