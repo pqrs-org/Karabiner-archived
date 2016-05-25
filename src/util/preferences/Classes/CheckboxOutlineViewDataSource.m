@@ -20,8 +20,8 @@
   self = [super init];
 
   if (self) {
-    self.isEnabledOnly = isEnabledOnly;
-    self.string = string;
+    _isEnabledOnly = isEnabledOnly;
+    _string = string;
   }
 
   return self;

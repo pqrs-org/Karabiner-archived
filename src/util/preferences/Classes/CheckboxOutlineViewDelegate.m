@@ -29,8 +29,8 @@
   self = [super init];
 
   if (self) {
-    self.textsHeightQueue = dispatch_queue_create("org.pqrs.Karabiner.CheckboxOutlineViewDelegate.textsHeightQueue", NULL);
-    self.heightCache = [NSMutableDictionary new];
+    _textsHeightQueue = dispatch_queue_create("org.pqrs.Karabiner.CheckboxOutlineViewDelegate.textsHeightQueue", NULL);
+    _heightCache = [NSMutableDictionary new];
   }
 
   return self;
