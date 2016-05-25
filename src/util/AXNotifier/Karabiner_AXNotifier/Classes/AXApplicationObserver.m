@@ -54,190 +54,191 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   });
 }
 
-- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication axNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
+- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication {
   self = [super init];
 
   if (self) {
-    self.runningApplication = runningApplication;
-    self.title = @"";
-    self.role = @"";
-
-    // ----------------------------------------
-    bool observable = YES;
-    if (!AXIsProcessTrusted()) {
-      observable = NO;
-    }
-
-    // We do not need to observe EventViewer because all events in EventViewer will be ignored in Karabiner.app.
-    if ([[runningApplication bundleIdentifier] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) {
-      observable = NO;
-    }
-
-    // Java apps will be crashed if observe. (We confirm crash in SQLDeveloper.)
-    if (axNotifierPreferencesModel.disableAXNotifierInJavaApps) {
-      if ([[[runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
-          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
-          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
-
-          // Eclipse
-          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/eclipse"] ||
-
-          // LibreOffice
-          // https://github.com/tekezo/Karabiner/issues/243
-          [[runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"] ||
-
-          // Matlab
-          // https://github.com/tekezo/Karabiner/issues/259
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"] ||
-
-          // IntelliJ IDEA (com.jetbrains.intellij*)
-          // PhpStorm (com.jetbrains.PhpStorm)
-          // RubyMine (com.jetbrains.rubymine)
-          // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
-          //
-          // We treat JetBrains's products are made by Java.
-          [[runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."] ||
-
-          // Android Studio
-          // https://github.com/tekezo/Karabiner/issues/255
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.google.android.studio"] ||
-
-          // Screencast-O-Matic
-          // https://github.com/tekezo/Karabiner/issues/337
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.screencastomatic.app"] ||
-
-          // RazorSQL
-          // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.razorsql.RazorSQL"] ||
-
-          // EditRocket
-          // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.editrocket.EditRocket"] ||
-
-          // Spine
-          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/SpineTrial"] ||
-          [[[runningApplication executableURL] absoluteString] hasSuffix:@"/Spine"] ||
-
-          // Fiji
-          // https://github.com/tekezo/Karabiner/issues/522
-          [[runningApplication bundleIdentifier] isEqualToString:@"org.fiji"] ||
-
-          // Putting false in order to allow tailing || in the last valid item.
-          false) {
-        observable = NO;
-      }
-    }
-
-    // Qt apps will be crashed if observe.
-    if (axNotifierPreferencesModel.disableAXNotifierInQtApps) {
-      if ([[[runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
-          false) {
-        observable = NO;
-      }
-    }
-
-    // Preview.app will be slow when opening large pdf if Preview.app is observed.
-    // eg. http://web.mit.edu/rsi/www/pdfs/beamer-tutorial.pdf
-    if (axNotifierPreferencesModel.disableAXNotifierInPreview) {
-      if ([[runningApplication bundleIdentifier] isEqualToString:@"com.apple.Preview"]) {
-        observable = NO;
-      }
-    }
-
-    // Microsoft Excel.app will reset scrolling by scroll wheel if it is observed.
-    if (axNotifierPreferencesModel.disableAXNotifierInMicrosoftOffice) {
-      if ([[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Excel"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Powerpoint"] ||
-          [[runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Word"] ||
-          false) {
-        observable = NO;
-      }
-    }
-
-    // ----------------------------------------
-    if (observable) {
-      pid_t pid = [self.runningApplication processIdentifier];
-
-      // ----------------------------------------
-      // Create applicationElement
-
-      self.applicationElement = AXUIElementCreateApplication(pid);
-      if (!self.applicationElement) {
-        @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                       reason:@"AXUIElementCreateApplication is failed."
-                                     userInfo:@{ @"runningApplication" : self.runningApplication }];
-      }
-
-      // ----------------------------------------
-      // Create observer
-
-      {
-        AXObserverRef o;
-        AXError error = AXObserverCreate(pid, observerCallback, &o);
-        if (error != kAXErrorSuccess) {
-          @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                         reason:@"AXObserverCreate is failed."
-                                       userInfo:@{ @"runningApplication" : self.runningApplication,
-                                                   @"error" : @(error) }];
-        }
-        self.observer = o;
-      }
-
-      // ----------------------------------------
-      // Observe notifications
-
-      // AXObserverAddNotification might be failed when just application launched.
-      if (![self observeAXNotification:self.applicationElement notification:kAXFocusedUIElementChangedNotification add:YES]) {
-        @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                       reason:@"Failed to observe kAXFocusedUIElementChangedNotification."
-                                     userInfo:@{ @"runningApplication" : self.runningApplication }];
-      }
-      if (![self observeAXNotification:self.applicationElement notification:kAXFocusedWindowChangedNotification add:YES]) {
-        @throw [NSException exceptionWithName:@"AXApplicationObserverException"
-                                       reason:@"Failed to observe kAXFocusedWindowChangedNotification."
-                                     userInfo:@{ @"runningApplication" : self.runningApplication }];
-      }
-
-      [self updateTitle];
-      [self updateRole:NULL];
-
-      // ----------------------------------------
-      CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                         AXObserverGetRunLoopSource(self.observer),
-                         kCFRunLoopDefaultMode);
-    }
-
-    // Log ignoredApps_
-    {
-      if (!observable) {
-        NSString* path = [[runningApplication executableURL] absoluteString];
-        if (!ignoredApps_[path]) {
-          ignoredApps_[path] = @YES;
-          NSLog(@"Ignore app: %@", path);
-        }
-      }
-    }
+    _runningApplication = runningApplication;
+    _title = @"";
+    _role = @"";
   }
 
   return self;
 }
 
 - (void)dealloc {
-  if (self.observer) {
+  if (_observer) {
     CFRunLoopRemoveSource(CFRunLoopGetCurrent(),
-                          AXObserverGetRunLoopSource(self.observer),
+                          AXObserverGetRunLoopSource(_observer),
                           kCFRunLoopDefaultMode);
-    CFRelease(self.observer);
-    self.observer = NULL;
+    CFRelease(_observer);
+    _observer = NULL;
   }
 
-  if (self.applicationElement) {
-    CFRelease(self.applicationElement);
-    self.applicationElement = NULL;
+  if (_applicationElement) {
+    CFRelease(_applicationElement);
+    _applicationElement = NULL;
   }
-  if (self.focusedWindowElementForAXTitleChangedNotification) {
-    CFRelease(self.focusedWindowElementForAXTitleChangedNotification);
-    self.focusedWindowElementForAXTitleChangedNotification = NULL;
+  if (_focusedWindowElementForAXTitleChangedNotification) {
+    CFRelease(_focusedWindowElementForAXTitleChangedNotification);
+    _focusedWindowElementForAXTitleChangedNotification = NULL;
+  }
+}
+
+- (void)observe:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
+  bool observable = YES;
+  if (!AXIsProcessTrusted()) {
+    observable = NO;
+  }
+
+  // We do not need to observe EventViewer because all events in EventViewer will be ignored in Karabiner.app.
+  if ([[self.runningApplication bundleIdentifier] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) {
+    observable = NO;
+  }
+
+  // Java apps will be crashed if observe. (We confirm crash in SQLDeveloper.)
+  if (axNotifierPreferencesModel.disableAXNotifierInJavaApps) {
+    if ([[[self.runningApplication executableURL] absoluteString] hasSuffix:@"/java"] ||
+        [[[self.runningApplication executableURL] absoluteString] hasSuffix:@"/JavaApplicationStub"] ||
+        [[[self.runningApplication executableURL] absoluteString] hasSuffix:@"/JavaAppLauncher"] ||
+
+        // Eclipse
+        [[[self.runningApplication executableURL] absoluteString] hasSuffix:@"/eclipse"] ||
+
+        // LibreOffice
+        // https://github.com/tekezo/Karabiner/issues/243
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"org.libreoffice.script"] ||
+
+        // Matlab
+        // https://github.com/tekezo/Karabiner/issues/259
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"com.mathworks.matlab"] ||
+
+        // IntelliJ IDEA (com.jetbrains.intellij*)
+        // PhpStorm (com.jetbrains.PhpStorm)
+        // RubyMine (com.jetbrains.rubymine)
+        // https://groups.google.com/d/msg/osx-karabiner/Ma0Bt2I2D-k/WiajWwueUQkJ
+        //
+        // We treat JetBrains's products are made by Java.
+        [[self.runningApplication bundleIdentifier] hasPrefix:@"com.jetbrains."] ||
+
+        // Android Studio
+        // https://github.com/tekezo/Karabiner/issues/255
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"com.google.android.studio"] ||
+
+        // Screencast-O-Matic
+        // https://github.com/tekezo/Karabiner/issues/337
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"com.screencastomatic.app"] ||
+
+        // RazorSQL
+        // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"com.razorsql.RazorSQL"] ||
+
+        // EditRocket
+        // https://groups.google.com/d/msg/osx-karabiner/Q--m95davC4/vIpKpkpUongJ
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"com.editrocket.EditRocket"] ||
+
+        // Spine
+        [[[self.runningApplication executableURL] absoluteString] hasSuffix:@"/SpineTrial"] ||
+        [[[self.runningApplication executableURL] absoluteString] hasSuffix:@"/Spine"] ||
+
+        // Fiji
+        // https://github.com/tekezo/Karabiner/issues/522
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"org.fiji"] ||
+
+        // Putting false in order to allow tailing || in the last valid item.
+        false) {
+      observable = NO;
+    }
+  }
+
+  // Qt apps will be crashed if observe.
+  if (axNotifierPreferencesModel.disableAXNotifierInQtApps) {
+    if ([[[self.runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
+        false) {
+      observable = NO;
+    }
+  }
+
+  // Preview.app will be slow when opening large pdf if Preview.app is observed.
+  // eg. http://web.mit.edu/rsi/www/pdfs/beamer-tutorial.pdf
+  if (axNotifierPreferencesModel.disableAXNotifierInPreview) {
+    if ([[self.runningApplication bundleIdentifier] isEqualToString:@"com.apple.Preview"]) {
+      observable = NO;
+    }
+  }
+
+  // Microsoft Excel.app will reset scrolling by scroll wheel if it is observed.
+  if (axNotifierPreferencesModel.disableAXNotifierInMicrosoftOffice) {
+    if ([[self.runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Excel"] ||
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Powerpoint"] ||
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"com.microsoft.Word"] ||
+        false) {
+      observable = NO;
+    }
+  }
+
+  // ----------------------------------------
+  if (observable) {
+    pid_t pid = [self.runningApplication processIdentifier];
+
+    // ----------------------------------------
+    // Create applicationElement
+
+    self.applicationElement = AXUIElementCreateApplication(pid);
+    if (!self.applicationElement) {
+      @throw [NSException exceptionWithName:@"AXApplicationObserverException"
+                                     reason:@"AXUIElementCreateApplication is failed."
+                                   userInfo:@{ @"runningApplication" : self.runningApplication }];
+    }
+
+    // ----------------------------------------
+    // Create observer
+
+    {
+      AXObserverRef o;
+      AXError error = AXObserverCreate(pid, observerCallback, &o);
+      if (error != kAXErrorSuccess) {
+        @throw [NSException exceptionWithName:@"AXApplicationObserverException"
+                                       reason:@"AXObserverCreate is failed."
+                                     userInfo:@{ @"runningApplication" : self.runningApplication,
+                                                 @"error" : @(error) }];
+      }
+      self.observer = o;
+    }
+
+    // ----------------------------------------
+    // Observe notifications
+
+    // AXObserverAddNotification might be failed when just application launched.
+    if (![self observeAXNotification:self.applicationElement notification:kAXFocusedUIElementChangedNotification add:YES]) {
+      @throw [NSException exceptionWithName:@"AXApplicationObserverException"
+                                     reason:@"Failed to observe kAXFocusedUIElementChangedNotification."
+                                   userInfo:@{ @"runningApplication" : self.runningApplication }];
+    }
+    if (![self observeAXNotification:self.applicationElement notification:kAXFocusedWindowChangedNotification add:YES]) {
+      @throw [NSException exceptionWithName:@"AXApplicationObserverException"
+                                     reason:@"Failed to observe kAXFocusedWindowChangedNotification."
+                                   userInfo:@{ @"runningApplication" : self.runningApplication }];
+    }
+
+    [self updateTitle];
+    [self updateRole:NULL];
+
+    // ----------------------------------------
+    CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                       AXObserverGetRunLoopSource(self.observer),
+                       kCFRunLoopDefaultMode);
+  }
+
+  // Log ignoredApps_
+  {
+    if (!observable) {
+      NSString* path = [[self.runningApplication executableURL] absoluteString];
+      if (!ignoredApps_[path]) {
+        ignoredApps_[path] = @YES;
+        NSLog(@"Ignore app: %@", path);
+      }
+    }
   }
 }
 

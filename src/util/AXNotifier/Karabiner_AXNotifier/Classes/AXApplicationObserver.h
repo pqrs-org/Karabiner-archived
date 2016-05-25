@@ -8,8 +8,8 @@
 
 @property(readonly) NSRunningApplication* runningApplication;
 
-- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication
-                axNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel;
+- (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication;
+- (void)observe:(AXNotifierPreferencesModel*)axNotifierPreferencesModel;
 
 // You have to observe kAXTitleChangedNotification by hand because
 // you generally want to observe the notification only in the front application.
