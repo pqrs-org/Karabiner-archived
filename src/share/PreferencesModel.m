@@ -10,7 +10,7 @@
 #define ENCODE_INTEGER(KEY) [encoder encodeInteger:self.KEY forKey:@ #KEY];
 #define ENCODE_OBJECT(KEY) [encoder encodeObject:self.KEY forKey:@ #KEY];
 
-@interface ProfileModel()
+@interface ProfileModel ()
 
 @property(copy, readwrite) NSDictionary* values;
 
