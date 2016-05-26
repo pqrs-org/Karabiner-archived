@@ -7,8 +7,6 @@
 #import "XMLCompiler.h"
 #import "weakify.h"
 
-static dispatch_queue_t userDefaultsQueue_;
-
 @interface PreferencesManager ()
 
 @property(weak) IBOutlet ClientForKernelspace* clientForKernelspace;
@@ -52,8 +50,6 @@ static dispatch_queue_t userDefaultsQueue_;
       kKarabinerPreferencesCheckboxFont : @0,
     };
     [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
-
-    userDefaultsQueue_ = dispatch_queue_create("org.pqrs.Karabiner.PreferencesManager.userDefaultsQueue_", NULL);
   });
 }
 
@@ -91,7 +87,7 @@ static dispatch_queue_t userDefaultsQueue_;
                                                              values:values];
     [profiles addObject:profileModel];
   }
-  [preferencesModel replaceProfiles:profiles];
+  preferencesModel.profiles = profiles;
 
   // ----------------------------------------
   // axNotifier

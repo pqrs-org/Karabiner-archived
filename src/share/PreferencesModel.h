@@ -37,7 +37,7 @@
 @property BOOL showProfileNameInStatusBar;
 @property BOOL usePreparedSettings;
 
-@property(copy, readonly) NSArray* profiles;
+@property(copy) NSArray* profiles;
 @property NSInteger currentProfileIndex;
 
 @property BOOL useStatusWindow;
@@ -71,7 +71,6 @@
 
 - (ProfileModel*)profile:(NSInteger)index;
 - (NSInteger)profileIndexByName:(NSString*)name;
-- (void)replaceProfiles:(NSArray*)profiles;
 - (void)addProfile:(NSString*)name;
 - (void)renameProfile:(NSInteger)index name:(NSString*)name;
 - (void)deleteProfile:(NSInteger)index;

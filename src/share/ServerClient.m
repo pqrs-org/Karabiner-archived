@@ -92,7 +92,7 @@
   return nil;
 }
 
-- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
+- (void)savePreferencesModel:(bycopy PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   NOEXCEPTION(return [self.proxy savePreferencesModel:preferencesModel processIdentifier:processIdentifier]);
 }
 

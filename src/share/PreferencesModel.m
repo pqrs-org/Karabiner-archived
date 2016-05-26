@@ -1,5 +1,4 @@
 #import "PreferencesModel.h"
-#import "weakify.h"
 #include <sys/time.h>
 
 #define DECODE_BOOL(KEY) _##KEY = [decoder decodeBoolForKey:@ #KEY];
@@ -126,12 +125,6 @@
 
 static NSDictionary* essentialConfigurationDefaults_ = nil;
 static NSArray* essentialConfigurationIdentifiers_ = nil;
-
-@interface PreferencesModel ()
-
-@property(copy, readwrite) NSArray* profiles;
-
-@end
 
 @implementation PreferencesModel
 
@@ -372,10 +365,6 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
     ++index;
   }
   return -1;
-}
-
-- (void)replaceProfiles:(NSArray*)profiles {
-  self.profiles = profiles;
 }
 
 - (void)addProfile:(NSString*)name {
