@@ -62,13 +62,10 @@
 
 - (void)savePreferencesModel:(bycopy PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   @weakify(self);
-  @weakify(preferencesModel);
 
   dispatch_async(dispatch_get_main_queue(), ^{
     @strongify(self);
-    @strongify(preferencesModel);
     if (!self) return;
-    if (!preferencesModel) return;
 
     [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
   });
