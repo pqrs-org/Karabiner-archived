@@ -14,24 +14,20 @@
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
   self.suUpdater = [SUUpdater new];
 
+  NSString* mode = @"checkForUpdatesInBackground";
+
   NSArray* arguments = [[NSProcessInfo processInfo] arguments];
-
   if ([arguments count] == 2) {
-    NSString* mode = arguments[1];
-
-    if ([mode isEqualToString:@"checkForUpdatesInBackground"]) {
-      [self checkForUpdatesInBackground];
-      return;
-    } else if ([mode isEqualToString:@"checkForUpdatesStableOnly"]) {
-      [self checkForUpdatesStableOnly];
-      return;
-    } else if ([mode isEqualToString:@"checkForUpdatesWithBetaVersion"]) {
-      [self checkForUpdatesWithBetaVersion];
-      return;
-    }
+    mode = arguments[1];
   }
 
-  NSLog(@"Usage: Karabiner.app checkForUpdatesInBackground|checkForUpdatesStableOnly|checkForUpdatesWithBetaVersion");
+  if ([mode isEqualToString:@"checkForUpdatesStableOnly"]) {
+    [self checkForUpdatesStableOnly];
+  } else if ([mode isEqualToString:@"checkForUpdatesWithBetaVersion"]) {
+    [self checkForUpdatesWithBetaVersion];
+  } else {
+    [self checkForUpdatesInBackground];
+  }
 }
 
 - (NSString*)getFeedURL:(BOOL)includingBetaVersions {
