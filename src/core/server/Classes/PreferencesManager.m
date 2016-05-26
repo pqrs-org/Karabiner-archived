@@ -5,6 +5,9 @@
 #import "PreferencesModel.h"
 #import "SharedKeys.h"
 #import "XMLCompiler.h"
+#import "weakify.h"
+
+static dispatch_queue_t userDefaultsQueue_;
 
 @interface PreferencesManager ()
 
@@ -49,53 +52,62 @@
       kKarabinerPreferencesCheckboxFont : @0,
     };
     [[NSUserDefaults standardUserDefaults] registerDefaults:dict];
+
+    userDefaultsQueue_ = dispatch_queue_create("org.pqrs.Karabiner.PreferencesManager.userDefaultsQueue_", NULL);
   });
 }
 
 - (void)loadPreferencesModel:(PreferencesModel*)preferencesModel {
-  preferencesModel.resumeAtLogin = [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin];
-  preferencesModel.checkForUpdates = [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
-  preferencesModel.overrideKeyRepeat = [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverrideKeyRepeat];
-  preferencesModel.statusBarEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kStatusBarEnabled];
-  preferencesModel.showProfileNameInStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:kShowProfileNameInStatusBar];
-  preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
-  preferencesModel.currentProfileIndex = [[NSUserDefaults standardUserDefaults] integerForKey:kCurrentProfileIndex];
-  preferencesModel.useStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowEnabled];
-  preferencesModel.useModifierSymbolsInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowUseModifierSymbols];
-  preferencesModel.showCapsLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowCapsLock];
-  preferencesModel.showStickyModifiersStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowStickyModifier];
-  preferencesModel.showPointingButtonLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowPointingButtonLock];
-  preferencesModel.statusWindowType = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType];
-  preferencesModel.statusWindowTheme = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowTheme];
-  preferencesModel.statusWindowOpacity = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowOpacity];
-  preferencesModel.statusWindowFontSize = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowFontSize];
-  preferencesModel.statusWindowPosition = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowPosition];
-  preferencesModel.preferencesCheckboxFont = [[NSUserDefaults standardUserDefaults] integerForKey:kKarabinerPreferencesCheckboxFont];
+  @weakify(self);
 
-  // ----------------------------------------
-  // profiles
-  NSMutableArray* profiles = [NSMutableArray new];
-  for (NSDictionary* profile in [[NSUserDefaults standardUserDefaults] arrayForKey:kProfiles]) {
-    NSString* name = profile[@"name"];
-    NSString* identifier = profile[@"identify"];
-    NSInteger appendIndex = [profile[@"appendIndex"] integerValue];
-    NSDictionary* values = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
-    ProfileModel* profileModel = [[ProfileModel alloc] initWithName:name
-                                                         identifier:identifier
-                                                        appendIndex:appendIndex
-                                                             values:values];
-    [profiles addObject:profileModel];
-  }
-  [preferencesModel replaceProfiles:profiles];
+  dispatch_sync(userDefaultsQueue_, ^{
+    @strongify(self);
+    if (!self) return;
 
-  // ----------------------------------------
-  // axNotifier
-  preferencesModel.axNotifier = [AXNotifierPreferencesModel new];
-  preferencesModel.axNotifier.useAXNotifier = [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled];
-  preferencesModel.axNotifier.disableAXNotifierInJavaApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps];
-  preferencesModel.axNotifier.disableAXNotifierInQtApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps];
-  preferencesModel.axNotifier.disableAXNotifierInPreview = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview];
-  preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice];
+    preferencesModel.resumeAtLogin = [[NSUserDefaults standardUserDefaults] boolForKey:kResumeAtLogin];
+    preferencesModel.checkForUpdates = [[NSUserDefaults standardUserDefaults] boolForKey:kCheckForUpdates];
+    preferencesModel.overrideKeyRepeat = [[NSUserDefaults standardUserDefaults] boolForKey:kIsOverrideKeyRepeat];
+    preferencesModel.statusBarEnabled = [[NSUserDefaults standardUserDefaults] boolForKey:kStatusBarEnabled];
+    preferencesModel.showProfileNameInStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:kShowProfileNameInStatusBar];
+    preferencesModel.usePreparedSettings = [[NSUserDefaults standardUserDefaults] boolForKey:kUsePreparedSettings];
+    preferencesModel.currentProfileIndex = [[NSUserDefaults standardUserDefaults] integerForKey:kCurrentProfileIndex];
+    preferencesModel.useStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowEnabled];
+    preferencesModel.useModifierSymbolsInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowUseModifierSymbols];
+    preferencesModel.showCapsLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowCapsLock];
+    preferencesModel.showStickyModifiersStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowStickyModifier];
+    preferencesModel.showPointingButtonLockStateInStatusWindow = [[NSUserDefaults standardUserDefaults] boolForKey:kIsStatusWindowShowPointingButtonLock];
+    preferencesModel.statusWindowType = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowType];
+    preferencesModel.statusWindowTheme = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowTheme];
+    preferencesModel.statusWindowOpacity = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowOpacity];
+    preferencesModel.statusWindowFontSize = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowFontSize];
+    preferencesModel.statusWindowPosition = [[NSUserDefaults standardUserDefaults] integerForKey:kStatusWindowPosition];
+    preferencesModel.preferencesCheckboxFont = [[NSUserDefaults standardUserDefaults] integerForKey:kKarabinerPreferencesCheckboxFont];
+
+    // ----------------------------------------
+    // profiles
+    NSMutableArray* profiles = [NSMutableArray new];
+    for (NSDictionary* profile in [[NSUserDefaults standardUserDefaults] arrayForKey:kProfiles]) {
+      NSString* name = profile[@"name"];
+      NSString* identifier = profile[@"identify"];
+      NSInteger appendIndex = [profile[@"appendIndex"] integerValue];
+      NSDictionary* values = [[NSUserDefaults standardUserDefaults] dictionaryForKey:identifier];
+      ProfileModel* profileModel = [[ProfileModel alloc] initWithName:name
+                                                           identifier:identifier
+                                                          appendIndex:appendIndex
+                                                               values:values];
+      [profiles addObject:profileModel];
+    }
+    [preferencesModel replaceProfiles:profiles];
+
+    // ----------------------------------------
+    // axNotifier
+    preferencesModel.axNotifier = [AXNotifierPreferencesModel new];
+    preferencesModel.axNotifier.useAXNotifier = [[NSUserDefaults standardUserDefaults] boolForKey:kIsAXNotifierEnabled];
+    preferencesModel.axNotifier.disableAXNotifierInJavaApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInJavaApps];
+    preferencesModel.axNotifier.disableAXNotifierInQtApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps];
+    preferencesModel.axNotifier.disableAXNotifierInPreview = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview];
+    preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice];
+  });
 }
 
 - (NSString*)savedProfileIdentifier {
@@ -113,51 +125,60 @@
     return;
   }
 
-  // ----------------------------------------
-  NSString* oldProfileIdentifier = [self savedProfileIdentifier];
-
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.checkForUpdates) forKey:kCheckForUpdates];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.overrideKeyRepeat) forKey:kIsOverrideKeyRepeat];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusBarEnabled) forKey:kStatusBarEnabled];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showProfileNameInStatusBar) forKey:kShowProfileNameInStatusBar];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.currentProfileIndex) forKey:kCurrentProfileIndex];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useStatusWindow) forKey:kIsStatusWindowEnabled];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useModifierSymbolsInStatusWindow) forKey:kIsStatusWindowUseModifierSymbols];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showCapsLockStateInStatusWindow) forKey:kIsStatusWindowShowCapsLock];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showStickyModifiersStateInStatusWindow) forKey:kIsStatusWindowShowStickyModifier];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showPointingButtonLockStateInStatusWindow) forKey:kIsStatusWindowShowPointingButtonLock];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowType) forKey:kStatusWindowType];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowTheme) forKey:kStatusWindowTheme];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowOpacity) forKey:kStatusWindowOpacity];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowFontSize) forKey:kStatusWindowFontSize];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowPosition) forKey:kStatusWindowPosition];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.preferencesCheckboxFont) forKey:kKarabinerPreferencesCheckboxFont];
+  __block NSString* oldProfileIdentifier = nil;
 
   // ----------------------------------------
-  // profiles
-  NSMutableArray* profiles = [NSMutableArray new];
-  for (ProfileModel* profileModel in preferencesModel.profiles) {
-    [profiles addObject:@{
-      @"name" : profileModel.name ? profileModel.name : @"",
-      @"identify" : profileModel.identifier ? profileModel.identifier : @"",
-      @"appendIndex" : @(profileModel.appendIndex),
-    }];
+  @weakify(self);
 
-    if (profileModel.identifier && profileModel.values) {
-      [[NSUserDefaults standardUserDefaults] setObject:profileModel.values forKey:profileModel.identifier];
+  dispatch_sync(userDefaultsQueue_, ^{
+    @strongify(self);
+    if (!self) return;
+
+    oldProfileIdentifier = [self savedProfileIdentifier];
+
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.resumeAtLogin) forKey:kResumeAtLogin];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.checkForUpdates) forKey:kCheckForUpdates];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.overrideKeyRepeat) forKey:kIsOverrideKeyRepeat];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusBarEnabled) forKey:kStatusBarEnabled];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showProfileNameInStatusBar) forKey:kShowProfileNameInStatusBar];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.usePreparedSettings) forKey:kUsePreparedSettings];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.currentProfileIndex) forKey:kCurrentProfileIndex];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useStatusWindow) forKey:kIsStatusWindowEnabled];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.useModifierSymbolsInStatusWindow) forKey:kIsStatusWindowUseModifierSymbols];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showCapsLockStateInStatusWindow) forKey:kIsStatusWindowShowCapsLock];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showStickyModifiersStateInStatusWindow) forKey:kIsStatusWindowShowStickyModifier];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.showPointingButtonLockStateInStatusWindow) forKey:kIsStatusWindowShowPointingButtonLock];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowType) forKey:kStatusWindowType];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowTheme) forKey:kStatusWindowTheme];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowOpacity) forKey:kStatusWindowOpacity];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowFontSize) forKey:kStatusWindowFontSize];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.statusWindowPosition) forKey:kStatusWindowPosition];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.preferencesCheckboxFont) forKey:kKarabinerPreferencesCheckboxFont];
+
+    // ----------------------------------------
+    // profiles
+    NSMutableArray* profiles = [NSMutableArray new];
+    for (ProfileModel* profileModel in preferencesModel.profiles) {
+      [profiles addObject:@{
+        @"name" : profileModel.name ? profileModel.name : @"",
+        @"identify" : profileModel.identifier ? profileModel.identifier : @"",
+        @"appendIndex" : @(profileModel.appendIndex),
+      }];
+
+      if (profileModel.identifier && profileModel.values) {
+        [[NSUserDefaults standardUserDefaults] setObject:profileModel.values forKey:profileModel.identifier];
+      }
     }
-  }
-  [[NSUserDefaults standardUserDefaults] setObject:profiles forKey:kProfiles];
+    [[NSUserDefaults standardUserDefaults] setObject:profiles forKey:kProfiles];
 
-  // ----------------------------------------
-  // axNotifier
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.useAXNotifier) forKey:kIsAXNotifierEnabled];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInPreview) forKey:kAXNotifierDisabledInPreview];
-  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice) forKey:kAXNotifierDisabledInMicrosoftOffice];
+    // ----------------------------------------
+    // axNotifier
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.useAXNotifier) forKey:kIsAXNotifierEnabled];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInJavaApps) forKey:kAXNotifierDisabledInJavaApps];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInPreview) forKey:kAXNotifierDisabledInPreview];
+    [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice) forKey:kAXNotifierDisabledInMicrosoftOffice];
+  });
 
   // ----------------------------------------
   // refresh local model.
