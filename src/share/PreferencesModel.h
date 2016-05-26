@@ -4,9 +4,9 @@
 
 @interface ProfileModel : NSObject <NSCoding>
 
-@property(copy) NSString* name;
-@property(copy) NSString* identifier;
-@property NSInteger appendIndex;
+@property(copy, readonly) NSString* name;
+@property(copy, readonly) NSString* identifier;
+@property(readonly) NSInteger appendIndex;
 @property(copy, readonly) NSDictionary* values;
 
 - (instancetype)initWithName:(NSString*)name

@@ -12,6 +12,9 @@
 
 @interface ProfileModel ()
 
+@property(copy, readwrite) NSString* name;
+@property(copy, readwrite) NSString* identifier;
+@property(readwrite) NSInteger appendIndex;
 @property(copy, readwrite) NSDictionary* values;
 
 @end
