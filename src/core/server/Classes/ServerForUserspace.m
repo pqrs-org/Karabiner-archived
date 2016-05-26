@@ -60,7 +60,7 @@
   return self.preferencesModel.axNotifier;
 }
 
-- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
+- (void)savePreferencesModel:(bycopy PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
 }
 

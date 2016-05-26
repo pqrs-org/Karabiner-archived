@@ -13,7 +13,7 @@
 
 - (bycopy PreferencesModel*)preferencesModel;
 - (bycopy AXNotifierPreferencesModel*)axNotifierPreferencesModel;
-- (void)savePreferencesModel:(PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
+- (void)savePreferencesModel:(bycopy PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier;
 
 - (void)updateKextValue:(NSString*)name;
 - (void)updateKextValues;
