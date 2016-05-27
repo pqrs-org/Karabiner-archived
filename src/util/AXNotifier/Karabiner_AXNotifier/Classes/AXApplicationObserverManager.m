@@ -180,7 +180,7 @@
 
         } @catch (NSException* e) {
 #if 0
-          NSLog(@"%@", e);
+          NSLog(@"Exception: %@", e);
 #endif
           ++(self.retryCounter);
         }
