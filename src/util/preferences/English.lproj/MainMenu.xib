@@ -1412,13 +1412,13 @@ Choose a profile from menu bar.</string>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="KZP-9O-XTU">
-                                            <rect key="frame" x="14" y="99" width="726" height="371"/>
+                                            <rect key="frame" x="14" y="75" width="726" height="395"/>
                                             <view key="contentView" id="Rew-AE-iyO">
-                                                <rect key="frame" x="1" y="1" width="724" height="355"/>
+                                                <rect key="frame" x="1" y="1" width="724" height="379"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="qED-J5-8Co">
-                                                        <rect key="frame" x="15" y="329" width="210" height="18"/>
+                                                        <rect key="frame" x="15" y="353" width="210" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Enable AXNotifier (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="K9U-OU-T6A">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1429,7 +1429,7 @@ Choose a profile from menu bar.</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="XEz-JM-m3X">
-                                                        <rect key="frame" x="25" y="305" width="444" height="18"/>
+                                                        <rect key="frame" x="25" y="329" width="444" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Java apps. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="3vf-6F-hdr">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1440,7 +1440,7 @@ Choose a profile from menu bar.</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="8sl-7i-IUk">
-                                                        <rect key="frame" x="25" y="281" width="431" height="18"/>
+                                                        <rect key="frame" x="25" y="305" width="431" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Qt apps. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="O7F-Zr-toQ">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1451,7 +1451,7 @@ Choose a profile from menu bar.</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="MJc-0x-DiR">
-                                                        <rect key="frame" x="25" y="257" width="457" height="18"/>
+                                                        <rect key="frame" x="25" y="281" width="457" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Preview.app. (Default: On)" bezelStyle="regularSquare" imagePosition="left" alignment="left" state="on" inset="2" id="jKa-3L-qAx">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1462,7 +1462,7 @@ Choose a profile from menu bar.</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="r0Y-Nx-SJ0">
-                                                        <rect key="frame" x="25" y="233" width="482" height="18"/>
+                                                        <rect key="frame" x="25" y="257" width="482" height="18"/>
                                                         <buttonCell key="cell" type="check" title="Disable window name and role observation in Microsoft Office. (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ja7-DR-gBY">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
@@ -1470,6 +1470,17 @@ Choose a profile from menu bar.</string>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="0cj-x4-sGx" id="UXz-2d-OQf"/>
                                                             <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disableAXNotifierInMicrosoftOffice" id="0Wl-pG-XPm"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="N6g-XN-6ZT">
+                                                        <rect key="frame" x="25" y="233" width="251" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Enable a debugging log. (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7Ob-3Q-5UW">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="axNotifierConfigurationChanged:" target="0cj-x4-sGx" id="MlV-hn-uKZ"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.enableDebuggingLog" id="aEc-WL-goj"/>
                                                         </connections>
                                                     </button>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-u8-agA">
@@ -1515,14 +1526,16 @@ The following settings will not work properly if you disable AXNotifier.
                                                     <constraint firstItem="r0Y-Nx-SJ0" firstAttribute="leading" secondItem="MJc-0x-DiR" secondAttribute="leading" id="Ff6-Nf-0MG"/>
                                                     <constraint firstItem="qED-J5-8Co" firstAttribute="top" secondItem="Rew-AE-iyO" secondAttribute="top" constant="10" id="HAe-cr-551"/>
                                                     <constraint firstItem="r0Y-Nx-SJ0" firstAttribute="top" secondItem="MJc-0x-DiR" secondAttribute="bottom" constant="10" id="ISf-KK-0GU"/>
+                                                    <constraint firstItem="Zd8-u8-agA" firstAttribute="top" secondItem="N6g-XN-6ZT" secondAttribute="bottom" constant="10" id="N3r-Bv-UJi"/>
+                                                    <constraint firstItem="N6g-XN-6ZT" firstAttribute="leading" secondItem="r0Y-Nx-SJ0" secondAttribute="leading" id="Rq7-DQ-zKd"/>
                                                     <constraint firstItem="MJc-0x-DiR" firstAttribute="top" secondItem="8sl-7i-IUk" secondAttribute="bottom" constant="10" id="UeR-Vv-ckV"/>
                                                     <constraint firstItem="XEz-JM-m3X" firstAttribute="top" secondItem="qED-J5-8Co" secondAttribute="bottom" constant="10" id="V88-vZ-Fve"/>
                                                     <constraint firstAttribute="trailing" secondItem="syu-iP-MYS" secondAttribute="trailing" constant="17" id="VE6-Sb-sc3"/>
                                                     <constraint firstAttribute="bottom" secondItem="syu-iP-MYS" secondAttribute="bottom" constant="10" id="VTC-PX-oo9"/>
                                                     <constraint firstItem="Tvg-oL-rhC" firstAttribute="top" secondItem="Zd8-u8-agA" secondAttribute="bottom" constant="10" id="YCk-V3-MVX"/>
-                                                    <constraint firstItem="Zd8-u8-agA" firstAttribute="top" secondItem="r0Y-Nx-SJ0" secondAttribute="bottom" constant="10" id="YLa-Fl-KbG"/>
                                                     <constraint firstItem="8sl-7i-IUk" firstAttribute="top" secondItem="XEz-JM-m3X" secondAttribute="bottom" constant="10" id="YfL-os-8Qk"/>
                                                     <constraint firstItem="syu-iP-MYS" firstAttribute="leading" secondItem="Tvg-oL-rhC" secondAttribute="trailing" constant="10" id="dEF-lg-SDC"/>
+                                                    <constraint firstItem="N6g-XN-6ZT" firstAttribute="top" secondItem="r0Y-Nx-SJ0" secondAttribute="bottom" constant="10" id="kg1-EM-zxn"/>
                                                     <constraint firstItem="Tvg-oL-rhC" firstAttribute="leading" secondItem="Rew-AE-iyO" secondAttribute="leading" constant="17" id="mA3-Na-Vlw"/>
                                                     <constraint firstItem="8sl-7i-IUk" firstAttribute="leading" secondItem="XEz-JM-m3X" secondAttribute="leading" id="uZH-TK-QBH"/>
                                                     <constraint firstItem="Zd8-u8-agA" firstAttribute="leading" secondItem="Rew-AE-iyO" secondAttribute="leading" constant="17" id="wAf-T5-qRP"/>

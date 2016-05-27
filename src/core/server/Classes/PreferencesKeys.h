@@ -20,6 +20,7 @@
 #define kAXNotifierDisabledInQtApps @"kAXNotifierDisabledInQtApps"
 #define kAXNotifierDisabledInPreview @"kAXNotifierDisabledInPreview"
 #define kAXNotifierDisabledInMicrosoftOffice @"kAXNotifierDisabledInMicrosoftOffice"
+#define kAXNotifierEnableDebuggingLog @"kAXNotifierEnableDebuggingLog"
 #define kUsePreparedSettings @"kUsePreparedSettings"
 #define kIsMigratedIsOverwriteKeyRepeat @"kIsMigratedOverwriteKeyRepeat"
 #define kIsOverrideKeyRepeat @"kIsOverwriteKeyRepeat"

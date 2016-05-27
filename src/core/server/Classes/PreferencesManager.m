@@ -41,6 +41,7 @@
       kAXNotifierDisabledInQtApps : @YES,
       kAXNotifierDisabledInPreview : @YES,
       kAXNotifierDisabledInMicrosoftOffice : @YES,
+      kAXNotifierEnableDebuggingLog: @NO,
       kUsePreparedSettings : @YES,
       kIsMigratedIsOverwriteKeyRepeat : @NO,
       kIsOverrideKeyRepeat : @NO,
@@ -96,6 +97,7 @@
   preferencesModel.axNotifier.disableAXNotifierInQtApps = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInQtApps];
   preferencesModel.axNotifier.disableAXNotifierInPreview = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInPreview];
   preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierDisabledInMicrosoftOffice];
+  preferencesModel.axNotifier.enableDebuggingLog = [[NSUserDefaults standardUserDefaults] boolForKey:kAXNotifierEnableDebuggingLog];
 }
 
 - (NSString*)savedProfileIdentifier {
@@ -165,6 +167,7 @@
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInQtApps) forKey:kAXNotifierDisabledInQtApps];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInPreview) forKey:kAXNotifierDisabledInPreview];
   [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.disableAXNotifierInMicrosoftOffice) forKey:kAXNotifierDisabledInMicrosoftOffice];
+  [[NSUserDefaults standardUserDefaults] setObject:@(preferencesModel.axNotifier.enableDebuggingLog) forKey:kAXNotifierEnableDebuggingLog];
 
   // ----------------------------------------
   // refresh local model.
