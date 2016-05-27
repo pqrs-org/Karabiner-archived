@@ -304,7 +304,11 @@
         <name>セミコロン(;)は常に半角</name>
         <identifier>remap.jis_semicolon_roman</identifier>
         <inputsource_only>JAPANESE</inputsource_only>
-        <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::NONE, KeyCode::SEMICOLON,
+        <autogen>
+          __KeyToKey__
+          KeyCode::SEMICOLON, ModifierFlag::NONE,
+          KeyCode::SEMICOLON,
+
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::JIS_EISUU,
           Option::KEYTOKEY_AFTER_KEYUP, KeyCode::JIS_KANA
         </autogen>
@@ -486,7 +490,8 @@
         <appendix>EISUU + WER for Shift + 123</appendix>
         <appendix>EISUU + SDF for Shift + 456</appendix>
         <appendix>EISUU + XCV for Shift + 789</appendix>
-        <autogen>__KeyOverlaidModifier__
+        <autogen>
+          __KeyOverlaidModifier__
           KeyCode::JIS_EISUU,
           KeyCode::VK_MODIFIER_EXTRA2, KeyCode::JIS_EISUU
         </autogen>
@@ -507,7 +512,8 @@
         <appendix>EISUU + WER for Shift + 123</appendix>
         <appendix>EISUU + SDF for Shift + 456</appendix>
         <appendix>EISUU + XCVB for Shift + 7890</appendix>
-        <autogen>__KeyOverlaidModifier__
+        <autogen>
+          __KeyOverlaidModifier__
           KeyCode::JIS_EISUU,
           KeyCode::VK_MODIFIER_EXTRA2, KeyCode::JIS_EISUU
         </autogen>
@@ -645,7 +651,8 @@
         <appendix>KANA + YUIOP for 0123=</appendix>
         <appendix>KANA + HJKL; for +456*</appendix>
         <appendix>KANA + NM,./ for -789/</appendix>
-        <autogen>__KeyOverlaidModifier__
+        <autogen>
+          __KeyOverlaidModifier__
           KeyCode::JIS_KANA,
           KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_KANA
         </autogen>
@@ -785,36 +792,66 @@
         <name>英数+「スペース/かなキー」で「Return/ESC」</name>
         <identifier>remap.jis_enthumble_default</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
-        <autogen>__KeyToKey__KeyCode::SPACE,ModifierFlag::EXTRA1,
-          KeyCode::RETURN</autogen>
-        <autogen>__KeyToKey__KeyCode::JIS_KANA,ModifierFlag::EXTRA1,
-          KeyCode::ESCAPE</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::SPACE, ModifierFlag::EXTRA1,
+          KeyCode::RETURN,
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::JIS_KANA, ModifierFlag::EXTRA1,
+          KeyCode::ESCAPE,
+        </autogen>
       </item>
       <item>
         <name>英数+「N,M/",","."」で「BackSpace/Delete」</name>
         <identifier>remap.jis_enthumble_NC</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
-        <autogen>__KeyToKey__KeyCode::N,ModifierFlag::EXTRA1,
-          KeyCode::DELETE</autogen>
-        <autogen>__KeyToKey__KeyCode::M,ModifierFlag::EXTRA1,
-          KeyCode::DELETE</autogen>
-        <autogen>__KeyToKey__KeyCode::DOT,ModifierFlag::EXTRA1,
-          KeyCode::FORWARD_DELETE</autogen>
-        <autogen>__KeyToKey__KeyCode::COMMA,ModifierFlag::EXTRA1,
-          KeyCode::FORWARD_DELETE</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::N, ModifierFlag::EXTRA1,
+          KeyCode::DELETE
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::M, ModifierFlag::EXTRA1,
+          KeyCode::DELETE
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::DOT,ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::COMMA,ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE
+        </autogen>
       </item>
       <item>
         <name>英数+「Y,U/I,O」で「BackSpace/Delete」</name>
         <identifier>remap.jis_enthumble_YI</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU, KeyCode::VK_MODIFIER_EXTRA1, KeyCode::JIS_EISUU</autogen>
-        <autogen>__KeyToKey__KeyCode::Y,ModifierFlag::EXTRA1,
-          KeyCode::DELETE</autogen>
-        <autogen>__KeyToKey__KeyCode::U,ModifierFlag::EXTRA1,
-          KeyCode::DELETE</autogen>
-        <autogen>__KeyToKey__KeyCode::I,ModifierFlag::EXTRA1,
-          KeyCode::FORWARD_DELETE</autogen>
-        <autogen>__KeyToKey__KeyCode::O,ModifierFlag::EXTRA1,
-          KeyCode::FORWARD_DELETE</autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::Y, ModifierFlag::EXTRA1,
+          KeyCode::DELETE
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::U, ModifierFlag::EXTRA1,
+          KeyCode::DELETE
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::I, ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE
+        </autogen>
+        <autogen>
+          __KeyToKey__
+          KeyCode::O, ModifierFlag::EXTRA1,
+          KeyCode::FORWARD_DELETE
+        </autogen>
       </item>
       <item>
         <name>英数+IJKLを移動キーへ</name>
@@ -853,14 +890,27 @@
           <appendix>・英数キー（左コマンドキー）を押しながら「かなキー」で「エスケープ」</appendix>
           <appendix>・英数キー（左コマンドキー）を押しながら「右コマンドキー」で「エスケープ」</appendix>
           <identifier>remap.jis_enthumble</identifier>
-          <autogen>__KeyOverlaidModifier__ KeyCode::JIS_EISUU,
-            KeyCode::COMMAND_L, KeyCode::JIS_EISUU</autogen>
-          <autogen>__KeyToKey__KeyCode::SPACE,ModifierFlag::COMMAND_L,
-            KeyCode::RETURN</autogen>
-          <autogen>__KeyToKey__KeyCode::JIS_KANA,ModifierFlag::COMMAND_L,
-            KeyCode::ESCAPE</autogen>
-          <autogen>__KeyToKey__KeyCode::COMMAND_R,ModifierFlag::COMMAND_L,
-            KeyCode::ESCAPE</autogen>
+          <autogen>
+            __KeyOverlaidModifier__
+            KeyCode::JIS_EISUU,
+            KeyCode::COMMAND_L,
+            KeyCode::JIS_EISUU
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::SPACE, ModifierFlag::COMMAND_L,
+            KeyCode::RETURN
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::JIS_KANA, ModifierFlag::COMMAND_L,
+            KeyCode::ESCAPE
+          </autogen>
+          <autogen>
+            __KeyToKey__
+            KeyCode::COMMAND_R, ModifierFlag::COMMAND_L,
+            KeyCode::ESCAPE
+          </autogen>
         </item>
       </item>
     </item>
@@ -1082,17 +1132,33 @@
           <identifier>remap.jis_doublecontrol_to_quicksilver_mode_eisuu</identifier>
           <block>
             <inputsource_only>JAPANESE</inputsource_only>
-            <autogen>__DoublePressModifier__ KeyCode::CONTROL_L, KeyCode::CONTROL_L,
-              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
-            <autogen>__DoublePressModifier__ KeyCode::CONTROL_R, KeyCode::CONTROL_R,
-              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman</autogen>
+            <autogen>
+              __DoublePressModifier__
+              KeyCode::CONTROL_L,
+              KeyCode::CONTROL_L,
+              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman
+            </autogen>
+            <autogen>
+              __DoublePressModifier__
+              KeyCode::CONTROL_R,
+              KeyCode::CONTROL_R,
+              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_OFF_notsave_jis_quicksilver_mode_back_to_roman
+            </autogen>
           </block>
           <block>
             <inputsource_not>JAPANESE</inputsource_not>
-            <autogen>__DoublePressModifier__ KeyCode::CONTROL_L, KeyCode::CONTROL_L,
-              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman</autogen>
-            <autogen>__DoublePressModifier__ KeyCode::CONTROL_R, KeyCode::CONTROL_R,
-              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman</autogen>
+            <autogen>
+              __DoublePressModifier__
+              KeyCode::CONTROL_L,
+              KeyCode::CONTROL_L,
+              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman
+            </autogen>
+            <autogen>
+              __DoublePressModifier__
+              KeyCode::CONTROL_R,
+              KeyCode::CONTROL_R,
+              KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode, KeyCode::JIS_EISUU, KeyCode::VK_CONFIG_FORCE_ON_notsave_jis_quicksilver_mode_back_to_roman
+            </autogen>
           </block>
         </item>
         <item hidden="true">
@@ -1132,15 +1198,21 @@
         <item>
           <name>8+9 for Shift+Left</name>
           <identifier>remap.key8_plus_key9_for_shift_left</identifier>
-          <autogen>__SimultaneousKeyPresses__ KeyCode::KEY_8, KeyCode::KEY_9,
-            KeyCode::CURSOR_LEFT, ModifierFlag::SHIFT_L</autogen>
+          <autogen>
+            __SimultaneousKeyPresses__
+            KeyCode::KEY_8, KeyCode::KEY_9,
+            KeyCode::CURSOR_LEFT, ModifierFlag::SHIFT_L
+          </autogen>
         </item>
 
         <item>
           <name>9+0 for Shift+Right</name>
           <identifier>remap.key9_plus_key0_for_shift_right</identifier>
-          <autogen>__SimultaneousKeyPresses__ KeyCode::KEY_9, KeyCode::KEY_0,
-            KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L</autogen>
+          <autogen>
+            __SimultaneousKeyPresses__
+            KeyCode::KEY_9, KeyCode::KEY_0,
+            KeyCode::CURSOR_RIGHT, ModifierFlag::SHIFT_L
+          </autogen>
         </item>
 
         <item>
