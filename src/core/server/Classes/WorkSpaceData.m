@@ -1,6 +1,7 @@
 #import "WorkSpaceData.h"
 #import "InputSource.h"
 #import "XMLCompiler.h"
+#import "weakify.h"
 
 @interface WorkSpaceData ()
 
@@ -18,10 +19,19 @@
 
 // InputSource
 
-static NSMutableArray* enabledInputSources_ = nil;
+static dispatch_queue_t enabledInputSourcesQueue_;
+static NSMutableArray* enabledInputSources_;
+
++ (void)initialize {
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    enabledInputSourcesQueue_ = dispatch_queue_create("org.pqrs.Karabiner.WorkSpaceData.enabledInputSourcesQueue_", NULL);
+    enabledInputSources_ = nil;
+  });
+}
 
 + (void)refreshEnabledInputSources {
-  @synchronized(self) {
+  dispatch_sync(enabledInputSourcesQueue_, ^{
     CFDictionaryRef filter = NULL;
     CFArrayRef list = NULL;
 
@@ -76,18 +86,21 @@ static NSMutableArray* enabledInputSources_ = nil;
     if (list) {
       CFRelease(list);
     }
-  }
+  });
 }
 
 + (InputSource*)getCurrentInputSource {
-  @synchronized(self) {
+  __block InputSource* result = nil;
+
+  dispatch_sync(enabledInputSourcesQueue_, ^{
     for (InputSource* inputSource in enabledInputSources_) {
       if ([inputSource selected]) {
-        return inputSource;
+        result = inputSource;
       }
     }
-  }
-  return nil;
+  });
+
+  return result;
 }
 
 // ----------------------------------------------------------------------
@@ -122,21 +135,22 @@ static NSMutableArray* enabledInputSources_ = nil;
   //     * kTISPropertyInputSourceID: jp.sourceforge.inputmethod.aquaskk
   //     * kTISPropertyInputModeID:   com.apple.inputmethod.Japanese.Katakana
 
-  InputSource* matched = nil;
-  @synchronized(self) {
+  @weakify(self);
+
+  dispatch_sync(enabledInputSourcesQueue_, ^{
+    @strongify(self);
+    if (!self) return;
+
     for (InputSource* inputSource in enabledInputSources_) {
       if ([self.xmlCompiler is_vk_change_inputsource_matched:vk_keycode
                                                 languagecode:inputSource.languagecode
                                                inputSourceID:inputSource.inputSourceID
                                                  inputModeID:inputSource.inputModeID]) {
-        matched = inputSource;
+        [inputSource select];
         break;
       }
     }
-  }
-  if (matched) {
-    [matched select];
-  }
+  });
 }
 
 @end
