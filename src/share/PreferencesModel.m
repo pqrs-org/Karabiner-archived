@@ -80,10 +80,10 @@
   }
 
   LOG(useAXNotifier);
-  LOG(disableAXNotifierInJavaApps);
-  LOG(disableAXNotifierInQtApps);
-  LOG(disableAXNotifierInPreview);
-  LOG(disableAXNotifierInMicrosoftOffice);
+  LOG(disabledInJavaApps);
+  LOG(disabledInQtApps);
+  LOG(disabledInPreview);
+  LOG(disabledInMicrosoftOffice);
   LOG(debuggingLogEnabled);
 
   [string appendString:@"}\n"];
@@ -105,10 +105,10 @@
 
   if (self) {
     DECODE_BOOL(useAXNotifier);
-    DECODE_BOOL(disableAXNotifierInJavaApps);
-    DECODE_BOOL(disableAXNotifierInQtApps);
-    DECODE_BOOL(disableAXNotifierInPreview);
-    DECODE_BOOL(disableAXNotifierInMicrosoftOffice);
+    DECODE_BOOL(disabledInJavaApps);
+    DECODE_BOOL(disabledInQtApps);
+    DECODE_BOOL(disabledInPreview);
+    DECODE_BOOL(disabledInMicrosoftOffice);
     DECODE_BOOL(debuggingLogEnabled);
   }
 
@@ -117,10 +117,10 @@
 
 - (void)encodeWithCoder:(NSCoder*)encoder {
   ENCODE_BOOL(useAXNotifier);
-  ENCODE_BOOL(disableAXNotifierInJavaApps);
-  ENCODE_BOOL(disableAXNotifierInQtApps);
-  ENCODE_BOOL(disableAXNotifierInPreview);
-  ENCODE_BOOL(disableAXNotifierInMicrosoftOffice);
+  ENCODE_BOOL(disabledInJavaApps);
+  ENCODE_BOOL(disabledInQtApps);
+  ENCODE_BOOL(disabledInPreview);
+  ENCODE_BOOL(disabledInMicrosoftOffice);
   ENCODE_BOOL(debuggingLogEnabled);
 }
 

@@ -1436,7 +1436,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="0cj-x4-sGx" id="XyD-wy-Osw"/>
-                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disableAXNotifierInJavaApps" id="Hhd-GT-ry5"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disabledInJavaApps" id="Hhd-GT-ry5"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="8sl-7i-IUk">
@@ -1447,7 +1447,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="0cj-x4-sGx" id="UVo-hx-x6m"/>
-                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disableAXNotifierInQtApps" id="qdK-fB-dZ3"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disabledInQtApps" id="qdK-fB-dZ3"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="MJc-0x-DiR">
@@ -1458,7 +1458,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="0cj-x4-sGx" id="hrm-pB-G2y"/>
-                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disableAXNotifierInPreview" id="Lgu-Y5-May"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disabledInPreview" id="Lgu-Y5-May"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="r0Y-Nx-SJ0">
@@ -1469,7 +1469,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="0cj-x4-sGx" id="UXz-2d-OQf"/>
-                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disableAXNotifierInMicrosoftOffice" id="0Wl-pG-XPm"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.disabledInMicrosoftOffice" id="0Wl-pG-XPm"/>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="N6g-XN-6ZT">

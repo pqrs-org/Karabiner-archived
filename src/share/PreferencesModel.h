@@ -19,10 +19,10 @@
 @interface AXNotifierPreferencesModel : NSObject <NSCoding>
 
 @property BOOL useAXNotifier;
-@property BOOL disableAXNotifierInJavaApps;
-@property BOOL disableAXNotifierInQtApps;
-@property BOOL disableAXNotifierInPreview;
-@property BOOL disableAXNotifierInMicrosoftOffice;
+@property BOOL disabledInJavaApps;
+@property BOOL disabledInQtApps;
+@property BOOL disabledInPreview;
+@property BOOL disabledInMicrosoftOffice;
 @property BOOL debuggingLogEnabled;
 
 - (void)log;
