@@ -1,4 +1,5 @@
 #import "AXUtilities.h"
+#import "GlobalAXNotifierPreferencesModel.h"
 
 @implementation AXUtilities
 
@@ -34,9 +35,9 @@ finish:
                                                 kAXFocusedWindowAttribute,
                                                 (CFTypeRef*)(&result));
   if (error != kAXErrorSuccess) {
-#if 0
-    NSLog(@"copyFocusedWindow is failed. error:%d", error);
-#endif
+    if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+      NSLog(@"copyFocusedWindow is failed. error:%@", [AXUtilities errorString:error]);
+    }
     return NULL;
   }
   return result;
@@ -84,6 +85,32 @@ finish:
 + (NSString*)subroleOfUIElement:(AXUIElementRef)element {
   if (!element) return nil;
   return (NSString*)[AXUtilities valueOfAttribute:NSAccessibilitySubroleAttribute ofUIElement:element];
+}
+
++ (NSString*)errorString:(AXError)error {
+  switch (error) {
+#define TO_STRING(NAME) \
+  case NAME:            \
+    return @ #NAME;
+
+    TO_STRING(kAXErrorSuccess);
+    TO_STRING(kAXErrorFailure);
+    TO_STRING(kAXErrorIllegalArgument);
+    TO_STRING(kAXErrorInvalidUIElement);
+    TO_STRING(kAXErrorInvalidUIElementObserver);
+    TO_STRING(kAXErrorCannotComplete);
+    TO_STRING(kAXErrorAttributeUnsupported);
+    TO_STRING(kAXErrorActionUnsupported);
+    TO_STRING(kAXErrorNotificationUnsupported);
+    TO_STRING(kAXErrorNotImplemented);
+    TO_STRING(kAXErrorNotificationAlreadyRegistered);
+    TO_STRING(kAXErrorNotificationNotRegistered);
+    TO_STRING(kAXErrorAPIDisabled);
+    TO_STRING(kAXErrorNoValue);
+    TO_STRING(kAXErrorParameterizedAttributeUnsupported);
+    TO_STRING(kAXErrorNotEnoughPrecision);
+  }
+  return @"Unknown error";
 }
 
 @end
