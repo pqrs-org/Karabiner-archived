@@ -1,5 +1,6 @@
 #import "AXApplicationObserver.h"
 #import "AXUtilities.h"
+#import "GlobalAXNotifierPreferencesModel.h"
 #import "NotificationKeys.h"
 #import "PreferencesModel.h"
 
@@ -85,7 +86,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   }
 }
 
-- (void)observe:(AXNotifierPreferencesModel*)axNotifierPreferencesModel {
+- (void)observe {
   bool observable = YES;
   if (!AXIsProcessTrusted()) {
     observable = NO;
@@ -95,6 +96,8 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   if ([[self.runningApplication bundleIdentifier] isEqualToString:@"org.pqrs.Karabiner.EventViewer"]) {
     observable = NO;
   }
+
+  AXNotifierPreferencesModel* axNotifierPreferencesModel = [GlobalAXNotifierPreferencesModel get];
 
   // Java apps will be crashed if observe. (We confirm crash in SQLDeveloper.)
   if (axNotifierPreferencesModel.disableAXNotifierInJavaApps) {

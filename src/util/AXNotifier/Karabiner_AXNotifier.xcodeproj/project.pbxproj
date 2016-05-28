@@ -19,6 +19,7 @@
 		349909BF196069D200058C5F /* AXApplicationObserverManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 349909BE196069D200058C5F /* AXApplicationObserverManager.m */; };
 		34BD67F31956AFFD00587BE7 /* Relauncher.m in Sources */ = {isa = PBXBuildFile; fileRef = 34BD67F21956AFFD00587BE7 /* Relauncher.m */; };
 		34D05539192C6962001A4F4F /* app.icns in Resources */ = {isa = PBXBuildFile; fileRef = 34D05538192C6962001A4F4F /* app.icns */; };
+		34D7BF301CFA29980059C471 /* GlobalAXNotifierPreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D7BF2F1CFA29980059C471 /* GlobalAXNotifierPreferencesModel.m */; };
 		34E3507E1932FC690036B0D3 /* FrontmostWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E3507D1932FC690036B0D3 /* FrontmostWindow.m */; };
 		34FB0ED6192F97FB0038C1D5 /* AXUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB0ED5192F97FB0038C1D5 /* AXUtilities.m */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,8 @@
 		34BD67F21956AFFD00587BE7 /* Relauncher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Relauncher.m; path = ../../../share/Relauncher.m; sourceTree = "<group>"; };
 		34D05538192C6962001A4F4F /* app.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = app.icns; path = ../../../share/Resources/app.icns; sourceTree = "<group>"; };
 		34D0553A192C6E98001A4F4F /* SharedKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedKeys.h; path = ../../../share/SharedKeys.h; sourceTree = "<group>"; };
+		34D7BF2E1CFA29980059C471 /* GlobalAXNotifierPreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlobalAXNotifierPreferencesModel.h; path = Classes/GlobalAXNotifierPreferencesModel.h; sourceTree = "<group>"; };
+		34D7BF2F1CFA29980059C471 /* GlobalAXNotifierPreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlobalAXNotifierPreferencesModel.m; path = Classes/GlobalAXNotifierPreferencesModel.m; sourceTree = "<group>"; };
 		34E3507C1932FC690036B0D3 /* FrontmostWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FrontmostWindow.h; path = ../../../share/FrontmostWindow.h; sourceTree = "<group>"; };
 		34E3507D1932FC690036B0D3 /* FrontmostWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FrontmostWindow.m; path = ../../../share/FrontmostWindow.m; sourceTree = "<group>"; };
 		34FB0ED4192F97FB0038C1D5 /* AXUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AXUtilities.h; path = Classes/AXUtilities.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				349909BE196069D200058C5F /* AXApplicationObserverManager.m */,
 				34FB0ED4192F97FB0038C1D5 /* AXUtilities.h */,
 				34FB0ED5192F97FB0038C1D5 /* AXUtilities.m */,
+				34D7BF2E1CFA29980059C471 /* GlobalAXNotifierPreferencesModel.h */,
+				34D7BF2F1CFA29980059C471 /* GlobalAXNotifierPreferencesModel.m */,
 				34850A0D19605391006489BE /* NotificationKeys.h */,
 				348BBE611931839E00934FB7 /* PreferencesKeys.h */,
 				342C9FB81960534F00B4C740 /* WindowObserver.h */,
@@ -235,6 +240,7 @@
 			files = (
 				3403B0811930EF1F003E0CC1 /* ServerClient.m in Sources */,
 				349909BF196069D200058C5F /* AXApplicationObserverManager.m in Sources */,
+				34D7BF301CFA29980059C471 /* GlobalAXNotifierPreferencesModel.m in Sources */,
 				3401002B192C63AA00B0A3A5 /* AppDelegate.m in Sources */,
 				342C9FBB1960534F00B4C740 /* WindowObserver.m in Sources */,
 				342C9FBA1960534F00B4C740 /* AXApplicationObserver.m in Sources */,

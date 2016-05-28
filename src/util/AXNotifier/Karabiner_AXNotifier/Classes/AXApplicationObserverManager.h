@@ -2,10 +2,5 @@
 
 @import Cocoa;
 
-@class AXNotifierPreferencesModel;
-
 @interface AXApplicationObserverManager : NSObject
-
-- (instancetype)initWithAXNotifierPreferencesModel:(AXNotifierPreferencesModel*)axNotifierPreferencesModel;
-
 @end

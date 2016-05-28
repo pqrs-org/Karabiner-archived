@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "AXApplicationObserverManager.h"
+#import "GlobalAXNotifierPreferencesModel.h"
 #import "NotificationKeys.h"
 #import "PreferencesKeys.h"
 #import "PreferencesModel.h"
@@ -214,7 +215,9 @@ send:
     [NSApp terminate:self];
   }
   [axNotifierPreferencesModel log];
-  self.axApplicationObserverManager = [[AXApplicationObserverManager alloc] initWithAXNotifierPreferencesModel:axNotifierPreferencesModel];
+  [GlobalAXNotifierPreferencesModel set:axNotifierPreferencesModel];
+
+  self.axApplicationObserverManager = [AXApplicationObserverManager new];
 }
 
 @end
