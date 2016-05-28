@@ -1,5 +1,6 @@
 #import "AXApplicationObserverManager.h"
 #import "AXApplicationObserver.h"
+#import "GlobalAXNotifierPreferencesModel.h"
 #import "weakify.h"
 
 /*
@@ -132,9 +133,9 @@
               [observer observe];
               self.systemApplicationObservers[bundleIdentifier] = observer;
             } @catch (NSException* e) {
-#if 0
-              NSLog(@"%@", e);
-#endif
+              if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+                NSLog(@"Exception: %@", e);
+              }
             }
           }
         }
@@ -159,13 +160,13 @@
           self.runningApplicationForAXApplicationObserver = nil;
           return;
         }
-#if 0
-        if (self.retryCounter > 0) {
-          NSLog(@"AXApplicationObserverManager creates AXApplicationObserver for %@ (retryCounter:%d)",
-                self.runningApplicationForAXApplicationObserver,
-                self.retryCounter);
+        if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+          if (self.retryCounter > 0) {
+            NSLog(@"AXApplicationObserverManager creates AXApplicationObserver for %@ (retryCounter:%d)",
+                  self.runningApplicationForAXApplicationObserver,
+                  self.retryCounter);
+          }
         }
-#endif
 
         @try {
           self.observer = [[AXApplicationObserver alloc] initWithRunningApplication:self.runningApplicationForAXApplicationObserver];
@@ -177,9 +178,9 @@
           self.retryCounter = 0;
 
         } @catch (NSException* e) {
-#if 0
-          NSLog(@"Exception: %@", e);
-#endif
+          if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+            NSLog(@"Exception: %@", e);
+          }
           ++(self.retryCounter);
         }
       }

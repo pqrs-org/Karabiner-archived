@@ -41,16 +41,16 @@
       goto send;
     }
   }
-#if 0
-  NSLog(@"tellToServer skip");
-#endif
+  if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+    NSLog(@"tellToServer skipped");
+  }
   return;
 
 send:
   target[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
-#if 0
-  NSLog(@"%@", target);
-#endif
+  if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+    NSLog(@"%@", target);
+  }
   @try {
     [self.client updateFocusedUIElementInformation:target];
     self.previousSentInformation = target;

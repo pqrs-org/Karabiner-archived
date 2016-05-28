@@ -4,8 +4,6 @@
 #import "NotificationKeys.h"
 #import "PreferencesModel.h"
 
-static NSMutableDictionary* ignoredApps_ = nil;
-
 @interface AXApplicationObserver ()
 
 @property(readwrite) NSRunningApplication* runningApplication;
@@ -47,13 +45,6 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 }
 
 @implementation AXApplicationObserver
-
-+ (void)initialize {
-  static dispatch_once_t once;
-  dispatch_once(&once, ^{
-    ignoredApps_ = [NSMutableDictionary new];
-  });
-}
 
 - (instancetype)initWithRunningApplication:(NSRunningApplication*)runningApplication {
   self = [super init];
@@ -233,14 +224,10 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
                        kCFRunLoopDefaultMode);
   }
 
-  // Log ignoredApps_
-  {
+  if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
     if (!observable) {
       NSString* path = [[self.runningApplication executableURL] absoluteString];
-      if (!ignoredApps_[path]) {
-        ignoredApps_[path] = @YES;
-        NSLog(@"Ignore app: %@", path);
-      }
+      NSLog(@"Ignore app: %@", path);
     }
   }
 }
@@ -260,9 +247,9 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         // We ignore this error.
         return YES;
       }
-#if 0
-      NSLog(@"AXObserverAddNotification is failed: error:%d %@", error, self.runningApplication);
-#endif
+      if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+        NSLog(@"AXObserverAddNotification is failed: error:%@ %@", [AXUtilities errorString:error], self.runningApplication);
+      }
       return NO;
     }
 
@@ -277,9 +264,9 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         // We ignore this error.
         return YES;
       }
-#if 0
-      NSLog(@"AXObserverRemoveNotification is failed: error:%d %@", error, self.runningApplication);
-#endif
+      if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
+        NSLog(@"AXObserverRemoveNotification is failed: error:%@ %@", [AXUtilities errorString:error], self.runningApplication);
+      }
       return NO;
     }
   }
