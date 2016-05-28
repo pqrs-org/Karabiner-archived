@@ -41,7 +41,7 @@
       kAXNotifierDisabledInQtApps : @YES,
       kAXNotifierDisabledInPreview : @YES,
       kAXNotifierDisabledInMicrosoftOffice : @YES,
-      kAXNotifierEnableDebuggingLog: @NO,
+      kAXNotifierEnableDebuggingLog : @NO,
       kUsePreparedSettings : @YES,
       kIsMigratedIsOverwriteKeyRepeat : @NO,
       kIsOverrideKeyRepeat : @NO,
