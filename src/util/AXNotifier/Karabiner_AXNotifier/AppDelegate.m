@@ -49,14 +49,14 @@
 send:
   target[@"mtime"] = @((NSUInteger)([[NSDate date] timeIntervalSince1970] * 1000));
   if ([GlobalAXNotifierPreferencesModel debuggingLogEnabled]) {
-    NSLog(@"%@", target);
+    NSLog(@"tellToServer: %@", target);
   }
   @try {
     [self.client updateFocusedUIElementInformation:target];
     self.previousSentInformation = target;
   }
   @catch (NSException* exception) {
-    NSLog(@"%@", exception);
+    NSLog(@"Exception: %@", exception);
     self.previousSentInformation = nil;
   }
 }
