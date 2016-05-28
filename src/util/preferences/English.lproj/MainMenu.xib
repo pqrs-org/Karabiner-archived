@@ -1480,7 +1480,7 @@ Choose a profile from menu bar.</string>
                                                         </buttonCell>
                                                         <connections>
                                                             <action selector="axNotifierConfigurationChanged:" target="0cj-x4-sGx" id="MlV-hn-uKZ"/>
-                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.enableDebuggingLog" id="aEc-WL-goj"/>
+                                                            <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.debuggingLogEnabled" id="aEc-WL-goj"/>
                                                         </connections>
                                                     </button>
                                                     <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-u8-agA">

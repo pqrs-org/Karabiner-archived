@@ -23,7 +23,7 @@
 @property BOOL disableAXNotifierInQtApps;
 @property BOOL disableAXNotifierInPreview;
 @property BOOL disableAXNotifierInMicrosoftOffice;
-@property BOOL enableDebuggingLog;
+@property BOOL debuggingLogEnabled;
 
 - (void)log;
 

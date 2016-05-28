@@ -84,7 +84,7 @@
   LOG(disableAXNotifierInQtApps);
   LOG(disableAXNotifierInPreview);
   LOG(disableAXNotifierInMicrosoftOffice);
-  LOG(enableDebuggingLog);
+  LOG(debuggingLogEnabled);
 
   [string appendString:@"}\n"];
 
@@ -109,7 +109,7 @@
     DECODE_BOOL(disableAXNotifierInQtApps);
     DECODE_BOOL(disableAXNotifierInPreview);
     DECODE_BOOL(disableAXNotifierInMicrosoftOffice);
-    DECODE_BOOL(enableDebuggingLog);
+    DECODE_BOOL(debuggingLogEnabled);
   }
 
   return self;
@@ -121,7 +121,7 @@
   ENCODE_BOOL(disableAXNotifierInQtApps);
   ENCODE_BOOL(disableAXNotifierInPreview);
   ENCODE_BOOL(disableAXNotifierInMicrosoftOffice);
-  ENCODE_BOOL(enableDebuggingLog);
+  ENCODE_BOOL(debuggingLogEnabled);
 }
 
 @end
