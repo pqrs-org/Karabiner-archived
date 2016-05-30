@@ -139,6 +139,10 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
         // https://github.com/tekezo/Karabiner/issues/522
         [[self.runningApplication bundleIdentifier] isEqualToString:@"org.fiji"] ||
 
+        // SAP GUI for Java
+        // https://groups.google.com/d/msg/osx-karabiner/lD-2CZTPxjE/u_pHoCo5KwAJ
+        [[self.runningApplication bundleIdentifier] hasPrefix:@"com.sap."] ||
+
         // Putting false in order to allow tailing || in the last valid item.
         false) {
       observable = NO;
