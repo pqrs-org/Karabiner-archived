@@ -13,6 +13,7 @@
       * `<deviceexists_not>`
       * `<deviceexists_only>`
 * Fixed issues:
+  * Some Java apps might be crash when AXNotifier is enabled. (SAP GUI for Java)
   * The argument treatment in `warp-mouse-cursor-position` utility is wrong. <br />
     These adjustment values for `screen` and `front_window` were exchanged.
     For example, the vertical adjustment value for `screen` and `front_window` is used in horizontal adjustment.
