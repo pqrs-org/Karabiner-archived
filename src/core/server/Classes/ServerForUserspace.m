@@ -84,11 +84,25 @@
 }
 
 - (void)updateStatusBar {
-  [self.statusBar refresh];
+  @weakify(self);
+
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    [self.statusBar refresh];
+  });
 }
 
 - (void)updateStatusWindow {
-  [self.statusMessageManager refresh];
+  @weakify(self);
+
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    [self.statusMessageManager refresh];
+  });
 }
 
 - (void)restartAXNotifier {
