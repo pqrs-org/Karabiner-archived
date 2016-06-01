@@ -192,7 +192,7 @@
         }
         NSString* identifier = arguments[2];
         NSString* value = arguments[3];
-        if ([self.preferencesModel setValue:[value integerValue] forName:identifier]) {
+        if ([self.preferencesModel setValue:[value integerValue] forIdentifier:identifier]) {
           [self savePreferencesModel];
           [self.client updateKextValue:identifier];
         }
@@ -202,7 +202,7 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        if ([self.preferencesModel setValue:1 forName:value]) {
+        if ([self.preferencesModel setValue:1 forIdentifier:value]) {
           [self savePreferencesModel];
           [self.client updateKextValue:value];
         }
@@ -212,7 +212,7 @@
           [self usage];
         }
         NSString* value = arguments[2];
-        if ([self.preferencesModel setValue:0 forName:value]) {
+        if ([self.preferencesModel setValue:0 forIdentifier:value]) {
           [self savePreferencesModel];
           [self.client updateKextValue:value];
         }
@@ -223,7 +223,7 @@
         }
         NSString* value = arguments[2];
         NSInteger current = [self.preferencesModel value:value];
-        if ([self.preferencesModel setValue:(!current) forName:value]) {
+        if ([self.preferencesModel setValue:(!current) forIdentifier:value]) {
           [self savePreferencesModel];
           [self.client updateKextValue:value];
         }
