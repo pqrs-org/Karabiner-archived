@@ -102,6 +102,7 @@
 - (void)updateStatusBar {
   @weakify(self);
 
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
   dispatch_async(dispatch_get_main_queue(), ^{
     @strongify(self);
     if (!self) return;
@@ -113,6 +114,7 @@
 - (void)updateStatusWindow {
   @weakify(self);
 
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
   dispatch_async(dispatch_get_main_queue(), ^{
     @strongify(self);
     if (!self) return;
@@ -132,6 +134,7 @@
 - (void)terminateServerProcess {
   @weakify(self);
 
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
   dispatch_async(dispatch_get_main_queue(), ^{
     @strongify(self);
     if (!self) return;
@@ -141,10 +144,7 @@
 }
 
 - (void)relaunch {
-  // Use dispatch_async in order to avoid "disconnected from server".
-  //
-  // Example error message of disconnection:
-  //   "karabiner: connection went invalid while waiting for a reply because a mach port died"
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
   dispatch_async(dispatch_get_main_queue(), ^{
     [Relauncher relaunch];
   });
@@ -186,6 +186,7 @@
 - (void)showExampleStatusWindow:(BOOL)visibility {
   @weakify(self);
 
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
   dispatch_async(dispatch_get_main_queue(), ^{
     @strongify(self);
     if (!self) return;
