@@ -1,5 +1,6 @@
 #import "AXNotifierManager.h"
 #import "PreferencesModel.h"
+#import "weakify.h"
 
 static dispatch_queue_t queue_;
 
@@ -23,41 +24,44 @@ static dispatch_queue_t queue_;
 }
 
 - (void)launchNewAXNotifier {
-  dispatch_sync(queue_, ^{
-    NSString* path = self.AXNotifierPath;
-    NSURL* url = [NSURL fileURLWithPath:path];
-    // Set NSWorkspaceLaunchNewInstance because
-    // AXNotifier might be running (terminating) immediately after terminateAXNotifier.
-    NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault | NSWorkspaceLaunchNewInstance;
-    [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
-                                                  options:options
-                                            configuration:@{}
-                                                    error:nil];
-  });
+  NSString* path = self.AXNotifierPath;
+  NSURL* url = [NSURL fileURLWithPath:path];
+  // Set NSWorkspaceLaunchNewInstance because
+  // AXNotifier might be running (terminating) immediately after terminateAXNotifier.
+  NSWorkspaceLaunchOptions options = NSWorkspaceLaunchDefault | NSWorkspaceLaunchNewInstance;
+  [[NSWorkspace sharedWorkspace] launchApplicationAtURL:url
+                                                options:options
+                                          configuration:@{}
+                                                  error:nil];
 }
 
 - (void)terminateAXNotifiers {
-  dispatch_sync(queue_, ^{
-    NSString* path = self.AXNotifierPath;
-    NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
+  NSString* path = self.AXNotifierPath;
+  NSString* bundleIdentifier = [[NSBundle bundleWithPath:path] bundleIdentifier];
 
-    // If Karabiner has been moved into /Applications/Utilities, bundleIdentifier will be nil.
+  // If Karabiner has been moved into /Applications/Utilities, bundleIdentifier will be nil.
 
-    if (bundleIdentifier) {
-      NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
-      for (NSRunningApplication* runningApplication in applications) {
-        [runningApplication terminate];
-      }
+  if (bundleIdentifier) {
+    NSArray* applications = [NSRunningApplication runningApplicationsWithBundleIdentifier:bundleIdentifier];
+    for (NSRunningApplication* runningApplication in applications) {
+      [runningApplication terminate];
     }
-  });
+  }
 }
 
 - (void)restartAXNotifier {
-  [self terminateAXNotifiers];
+  @weakify(self);
 
-  if (self.preferencesModel.axNotifier.useAXNotifier) {
-    [self launchNewAXNotifier];
-  }
+  dispatch_sync(queue_, ^{
+    @strongify(self);
+    if (!self) return;
+
+    [self terminateAXNotifiers];
+
+    if (self.preferencesModel.axNotifier.useAXNotifier) {
+      [self launchNewAXNotifier];
+    }
+  });
 }
 
 @end
