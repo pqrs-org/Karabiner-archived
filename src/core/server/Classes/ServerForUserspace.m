@@ -72,11 +72,27 @@
 }
 
 - (void)updateKextValue:(NSString*)name {
-  [self.preferencesManager updateKextValue:name];
+  @weakify(self);
+
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    [self.preferencesManager updateKextValue:name];
+  });
 }
 
 - (void)updateKextValues {
-  [self.clientForKernelspace send_config_to_kext];
+  @weakify(self);
+
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    [self.clientForKernelspace send_config_to_kext];
+  });
 }
 
 - (void)updateStartAtLogin {
