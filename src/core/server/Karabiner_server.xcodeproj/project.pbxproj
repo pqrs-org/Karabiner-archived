@@ -63,7 +63,6 @@
 		34CE318F160EA045008A171D /* vkchangeinputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34CE318E160EA045008A171D /* vkchangeinputsourcedef.xml */; };
 		34D590271531983100160DFC /* number.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34D590261531983100160DFC /* number.xml */; };
 		34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D94448193217A80062E422 /* StartAtLoginUtilities.m */; };
-		34DB980D1C74C29E00D90368 /* ServerObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 34DB980C1C74C29E00D90368 /* ServerObjects.m */; };
 		34E665761CF2D3430077D877 /* UpdaterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E665751CF2D3430077D877 /* UpdaterController.m */; };
 		34F37D54149A2E7800D4694B /* inputsourcedef.xml in Resources */ = {isa = PBXBuildFile; fileRef = 34F37D53149A2E7800D4694B /* inputsourcedef.xml */; };
 		34FB06511CDB366D00491F58 /* CheckboxTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 34FB06501CDB366D00491F58 /* CheckboxTree.m */; };
@@ -182,8 +181,6 @@
 		34D590261531983100160DFC /* number.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = number.xml; path = Resources/number.xml; sourceTree = "<group>"; };
 		34D94447193217A80062E422 /* StartAtLoginUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StartAtLoginUtilities.h; path = ../../share/StartAtLoginUtilities.h; sourceTree = "<group>"; };
 		34D94448193217A80062E422 /* StartAtLoginUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StartAtLoginUtilities.m; path = ../../share/StartAtLoginUtilities.m; sourceTree = "<group>"; };
-		34DB980B1C74C29E00D90368 /* ServerObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerObjects.h; path = Classes/ServerObjects.h; sourceTree = "<group>"; };
-		34DB980C1C74C29E00D90368 /* ServerObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerObjects.m; path = Classes/ServerObjects.m; sourceTree = "<group>"; };
 		34E665741CF2D3430077D877 /* UpdaterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UpdaterController.h; path = Classes/UpdaterController.h; sourceTree = "<group>"; };
 		34E665751CF2D3430077D877 /* UpdaterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UpdaterController.m; path = Classes/UpdaterController.m; sourceTree = "<group>"; };
 		34F37D53149A2E7800D4694B /* inputsourcedef.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = inputsourcedef.xml; path = Resources/inputsourcedef.xml; sourceTree = "<group>"; };
@@ -240,8 +237,6 @@
 				347FC1611C89D4D6001E6953 /* ServerController.m */,
 				3401D0D41657A18C00CF962F /* ServerForUserspace.h */,
 				3401D0D51657A18C00CF962F /* ServerForUserspace.m */,
-				34DB980B1C74C29E00D90368 /* ServerObjects.h */,
-				34DB980C1C74C29E00D90368 /* ServerObjects.m */,
 				34D944401932164F0062E422 /* share */,
 				348C6A2C128E4504005F516D /* StatusBar.h */,
 				348C6A2D128E4504005F516D /* StatusBar.m */,
@@ -503,7 +498,6 @@
 				34E665761CF2D3430077D877 /* UpdaterController.m in Sources */,
 				34AE71E41C78AB94002EF8FF /* AppLauncher.m in Sources */,
 				34CB2F3019565E2B00A6E0E3 /* Relauncher.m in Sources */,
-				34DB980D1C74C29E00D90368 /* ServerObjects.m in Sources */,
 				34D94449193217A80062E422 /* StartAtLoginUtilities.m in Sources */,
 				34FB06511CDB366D00491F58 /* CheckboxTree.m in Sources */,
 				3443F6CB1CE96C3E0087FC60 /* StatusMessageText.m in Sources */,

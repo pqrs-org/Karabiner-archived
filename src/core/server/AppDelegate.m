@@ -13,7 +13,6 @@
 #import "Relauncher.h"
 #import "ServerController.h"
 #import "ServerForUserspace.h"
-#import "ServerObjects.h"
 #import "SessionObserver.h"
 #import "SharedKeys.h"
 #import "SharedUtilities.h"
@@ -36,7 +35,6 @@
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 @property(weak) IBOutlet ServerController* serverController;
 @property(weak) IBOutlet ServerForUserspace* serverForUserspace;
-@property(weak) IBOutlet ServerObjects* serverObjects;
 @property(weak) IBOutlet StatusBar* statusbar;
 @property(weak) IBOutlet StatusMessageManager* statusMessageManager;
 @property(weak) IBOutlet WorkSpaceData* workSpaceData;
