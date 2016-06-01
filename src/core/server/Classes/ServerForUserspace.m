@@ -63,6 +63,7 @@
 - (void)savePreferencesModel:(bycopy PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   @weakify(self);
 
+  // We have to use main queue for [PreferencesManager savePreferencesModel].
   dispatch_async(dispatch_get_main_queue(), ^{
     @strongify(self);
     if (!self) return;
@@ -96,7 +97,15 @@
 }
 
 - (void)updateStartAtLogin {
-  [self.serverController updateStartAtLogin:YES];
+  @weakify(self);
+
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    [self.serverController updateStartAtLogin:YES];
+  });
 }
 
 - (void)updateStatusBar {
@@ -124,7 +133,15 @@
 }
 
 - (void)restartAXNotifier {
-  [self.axNotifierManager restartAXNotifier];
+  @weakify(self);
+
+  // We should use main queue in order to keep call order of ServerClientProtocol methods.
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    [self.axNotifierManager restartAXNotifier];
+  });
 }
 
 - (void)unsetDebugFlags {
