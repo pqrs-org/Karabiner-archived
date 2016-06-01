@@ -20,6 +20,7 @@
 @property(readwrite) ParameterTree* parameterTree;
 
 @property pqrs_xml_compiler* pqrs_xml_compiler;
+@property NSInteger xmlNotificationsSequentialNumber;
 
 @end
 
@@ -177,6 +178,12 @@
 }
 
 - (void)reload {
+  ++(self.xmlNotificationsSequentialNumber);
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerXMLLoadingNotification
+                                                                 object:nil
+                                                               userInfo:@{ @"xmlNotificationsSequentialNumber" : @(self.xmlNotificationsSequentialNumber) }
+                                                     deliverImmediately:YES];
+
   __block NSString* errorMessage = nil;
 
   dispatch_sync(self.xmlCompilerReloadQueue, ^{
@@ -222,7 +229,12 @@
   // ------------------------------------------------------------
   // We need to send a notification outside synchronized block to prevent lock.
   [[NSNotificationCenter defaultCenter] postNotificationName:kConfigXMLReloadedNotification object:nil];
-  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerXMLReloadedNotification object:nil];
+
+  ++(self.xmlNotificationsSequentialNumber);
+  [[NSDistributedNotificationCenter defaultCenter] postNotificationName:kKarabinerXMLReloadedNotification
+                                                                 object:nil
+                                                               userInfo:@{ @"xmlNotificationsSequentialNumber" : @(self.xmlNotificationsSequentialNumber) }
+                                                     deliverImmediately:YES];
 }
 
 - (size_t)remapclasses_initialize_vector_size {

@@ -158,6 +158,9 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
+                                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="get-Bt-JJz">
+                                            <rect key="frame" x="598" y="534" width="16" height="16"/>
+                                        </progressIndicator>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JH3-o5-FZc">
                                             <rect key="frame" x="613" y="524" width="130" height="32"/>
                                             <buttonCell key="cell" type="push" title="Reload XML" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HKR-9t-Dap">
@@ -258,6 +261,8 @@
                                         <constraint firstAttribute="bottom" secondItem="FgN-gc-wfP" secondAttribute="bottom" constant="8" id="CQW-k9-zpz"/>
                                         <constraint firstItem="prY-PK-vGh" firstAttribute="leading" secondItem="j86-F1-zqB" secondAttribute="leading" constant="17" id="DUv-yO-V11"/>
                                         <constraint firstAttribute="bottom" secondItem="Kgj-O7-xVY" secondAttribute="bottom" constant="8" id="EQV-2c-Bpj"/>
+                                        <constraint firstItem="JH3-o5-FZc" firstAttribute="leading" secondItem="get-Bt-JJz" secondAttribute="trailing" constant="5" id="H1K-ou-oGm"/>
+                                        <constraint firstItem="get-Bt-JJz" firstAttribute="centerY" secondItem="JH3-o5-FZc" secondAttribute="centerY" id="IqF-m9-iJu"/>
                                         <constraint firstAttribute="trailing" secondItem="Dt3-E4-cDk" secondAttribute="trailing" constant="17" id="Kz9-ka-e3w"/>
                                         <constraint firstItem="Kgj-O7-xVY" firstAttribute="top" secondItem="Dt3-E4-cDk" secondAttribute="bottom" constant="4" id="TAF-cC-WkT"/>
                                         <constraint firstItem="FgN-gc-wfP" firstAttribute="top" secondItem="prY-PK-vGh" secondAttribute="bottom" constant="7" id="Ub8-UI-VJL"/>
@@ -1969,6 +1974,7 @@ Debug Mode Guide</string>
                 <outlet property="tabView" destination="qNw-ZI-ntf" id="kEb-HT-lQd"/>
                 <outlet property="versionText" destination="nZZ-l6-5mu" id="o2Z-cY-ywc"/>
                 <outlet property="window" destination="tcO-xA-vhE" id="XLY-4e-CCK"/>
+                <outlet property="xmlLoadingIndicator" destination="get-Bt-JJz" id="ikx-BW-h0i"/>
             </connections>
         </customObject>
         <customObject id="15L-X6-1Ch" customClass="ProfileTableViewDataSource">

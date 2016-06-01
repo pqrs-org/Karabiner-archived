@@ -29,6 +29,7 @@
 @property(weak) IBOutlet CheckboxOutlineViewDataSource* checkboxOutlineViewDataSource;
 @property(weak) IBOutlet CheckboxOutlineViewDelegate* checkboxOutlineViewDelegate;
 @property(weak) IBOutlet NSButton* checkbox_showEnabledOnly;
+@property(weak) IBOutlet NSProgressIndicator* xmlLoadingIndicator;
 @property(weak) IBOutlet NSSearchField* checkboxSearchText;
 @property(weak) IBOutlet NSSegmentedControl* checkboxFontSegmentedControl;
 @property(weak) IBOutlet NSStepper* delayUntilRepeatStepper;
@@ -52,6 +53,7 @@
 @property NSTimer* resizeTimer;
 @property dispatch_source_t debugModeObserverTimer;
 @property BOOL previousDebugMode;
+@property NSInteger xmlNotificationsSequentialNumber;
 
 @end
 
@@ -90,12 +92,39 @@
   });
 }
 
+- (void)observer_kKarabinerXMLLoadingNotification:(NSNotification*)notification {
+  @weakify(self);
+
+  dispatch_async(dispatch_get_main_queue(), ^{
+    @strongify(self);
+    if (!self) return;
+
+    if (!notification.userInfo) return;
+
+    // Ignore notifications that are fired before the last kKarabinerXMLReloadedNotification.
+    NSInteger number = [notification.userInfo[@"xmlNotificationsSequentialNumber"] integerValue];
+    if (number > self.xmlNotificationsSequentialNumber) {
+      self.xmlNotificationsSequentialNumber = number;
+
+      [self.xmlLoadingIndicator startAnimation:self];
+      self.xmlLoadingIndicator.hidden = NO;
+    }
+  });
+}
+
 - (void)observer_kKarabinerXMLReloadedNotification:(NSNotification*)notification {
   @weakify(self);
 
   dispatch_async(dispatch_get_main_queue(), ^{
     @strongify(self);
     if (!self) return;
+
+    if (!notification.userInfo) return;
+
+    self.xmlNotificationsSequentialNumber = [notification.userInfo[@"xmlNotificationsSequentialNumber"] integerValue];
+
+    self.xmlLoadingIndicator.hidden = YES;
+    [self.xmlLoadingIndicator stopAnimation:self];
 
     [self drawEnabledCount];
     // refreshKeyRepeatTab is not needed here.
@@ -132,6 +161,12 @@
                                             suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
 
   [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                      selector:@selector(observer_kKarabinerXMLLoadingNotification:)
+                                                          name:kKarabinerXMLLoadingNotification
+                                                        object:nil
+                                            suspensionBehavior:NSNotificationSuspensionBehaviorDeliverImmediately];
+
+  [[NSDistributedNotificationCenter defaultCenter] addObserver:self
                                                       selector:@selector(observer_kKarabinerXMLReloadedNotification:)
                                                           name:kKarabinerXMLReloadedNotification
                                                         object:nil
@@ -139,6 +174,8 @@
 
   NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   [self.versionText setStringValue:version];
+  self.xmlLoadingIndicator.hidden = YES;
+  self.xmlNotificationsSequentialNumber = -1;
 
   [self refreshKeyRepeatTab];
   [self updateDebugModeGuide];
