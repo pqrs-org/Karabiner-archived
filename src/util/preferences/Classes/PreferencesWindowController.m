@@ -50,6 +50,8 @@
 @property(weak) IBOutlet ProfileTableViewDelegate* profileTableViewDelegate;
 @property(weak) IBOutlet ServerClient* client;
 @property NSTimer* resizeTimer;
+@property dispatch_source_t debugModeObserverTimer;
+@property BOOL previousDebugMode;
 
 @end
 
@@ -139,6 +141,8 @@
   [self.versionText setStringValue:version];
 
   [self refreshKeyRepeatTab];
+  [self updateDebugModeGuide];
+  self.previousDebugMode = [self isDebugMode];
 
   [self.checkboxOutlineViewDataSource setup];
   [self.checkboxOutlineViewDelegate updateFont];
@@ -152,6 +156,27 @@
   [self drawEnabledCount];
 
   [self show];
+
+  {
+    // setup debugModeObserverTimer
+
+    @weakify(self);
+
+    self.debugModeObserverTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    if (self.debugModeObserverTimer) {
+      dispatch_source_set_timer(self.debugModeObserverTimer, dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC), 500 * NSEC_PER_MSEC, 0);
+      dispatch_source_set_event_handler(self.debugModeObserverTimer, ^{
+        @strongify(self);
+
+        BOOL isDebugMode = [self isDebugMode];
+        if (isDebugMode != self.previousDebugMode) {
+          self.previousDebugMode = isDebugMode;
+          [self updateDebugModeGuide];
+        }
+      });
+      dispatch_resume(self.debugModeObserverTimer);
+    }
+  }
 }
 
 - (void)dealloc {
@@ -160,7 +185,6 @@
 
 - (void)windowDidBecomeMain:(NSNotification*)notification {
   [self checkServerClient];
-  [self updateDebugModeGuide];
   [self sendStatusWindowPreferencesNotification:[[self.tabView selectedTabViewItem] identifier]];
 }
 
@@ -251,7 +275,6 @@
 
 /* ---------------------------------------------------------------------- */
 - (void)tabView:(NSTabView*)tabView didSelectTabViewItem:(NSTabViewItem*)tabViewItem {
-  [self updateDebugModeGuide];
   [self sendStatusWindowPreferencesNotification:[tabViewItem identifier]];
 }
 
@@ -486,7 +509,6 @@
   } else {
     [[[NSAppleScript alloc] initWithSource:@"do shell script \"/usr/sbin/sysctl -w karabiner.debug=1\" with administrator privileges"] executeAndReturnError:nil];
   }
-  [self updateDebugModeGuide];
 }
 
 - (BOOL)isDebugMode {
