@@ -8,7 +8,7 @@
 @implementation ParameterValueCellView
 
 - (void)updatePreferences {
-  [self.preferencesClient setValue:self.stepper.intValue forName:self.settingIdentifier];
+  [self.preferencesClient setValue:self.stepper.intValue forIdentifier:self.settingIdentifier];
   [[NSNotificationCenter defaultCenter] postNotificationName:kParameterValueChangedNotification object:nil];
 }
 

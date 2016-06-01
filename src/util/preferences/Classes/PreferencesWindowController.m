@@ -490,12 +490,12 @@
 }
 
 - (IBAction)changeDelayUntilRepeat:(id)sender {
-  [self.preferencesClient setValue:[sender intValue] forName:@"repeat.initial_wait"];
+  [self.preferencesClient setValue:[sender intValue] forIdentifier:@"repeat.initial_wait"];
   [self refreshKeyRepeatTab];
 }
 
 - (IBAction)changeKeyRepeat:(id)sender {
-  [self.preferencesClient setValue:[sender intValue] forName:@"repeat.wait"];
+  [self.preferencesClient setValue:[sender intValue] forIdentifier:@"repeat.wait"];
   [self refreshKeyRepeatTab];
 }
 

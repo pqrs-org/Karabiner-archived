@@ -59,7 +59,7 @@
   if (self.checkbox) {
     int value = (self.checkbox.state == NSOnState);
 
-    [self.preferencesClient setValue:value forName:self.settingIdentifier];
+    [self.preferencesClient setValue:value forIdentifier:self.settingIdentifier];
     [self.preferencesWindowController drawEnabledCount];
   }
 }
