@@ -20,10 +20,10 @@
   }
 }
 
-- (void)setValue:(int)newval forName:(NSString*)name {
-  if ([self.pm setValue:newval forName:name]) {
+- (void)setValue:(int)newval forIdentifier:(NSString*)identifier {
+  if ([self.pm setValue:newval forIdentifier:identifier]) {
     [self save];
-    [self.client updateKextValue:name];
+    [self.client updateKextValue:identifier];
   }
 }
 

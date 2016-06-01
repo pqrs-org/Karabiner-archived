@@ -11,6 +11,6 @@
 - (void)load;
 - (void)save;
 
-- (void)setValue:(int)newval forName:(NSString*)name;
+- (void)setValue:(int)newval forIdentifier:(NSString*)identifier;
 
 @end
