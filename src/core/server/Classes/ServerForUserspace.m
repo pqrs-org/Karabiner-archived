@@ -60,156 +60,115 @@
   return self.preferencesModel.axNotifier;
 }
 
+#define ASYNC_RUN_IN_MAIN_QUEUE(CODE)                                              \
+  {                                                                                \
+    @weakify(self);                                                                \
+                                                                                   \
+    /* We have to use main queue for [PreferencesManager savePreferencesModel]. */ \
+    dispatch_async(dispatch_get_main_queue(), ^{                                   \
+      @strongify(self);                                                            \
+      if (!self) return;                                                           \
+                                                                                   \
+      CODE;                                                                        \
+    });                                                                            \
+  }
+
 - (void)savePreferencesModel:(bycopy PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
-  @weakify(self);
-
   // We have to use main queue for [PreferencesManager savePreferencesModel].
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.preferencesManager savePreferencesModel:preferencesModel processIdentifier:processIdentifier];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.preferencesManager savePreferencesModel:preferencesModel
+                                  processIdentifier:processIdentifier]);
 }
 
 - (void)updateKextValue:(NSString*)name {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.preferencesManager updateKextValue:name];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.preferencesManager updateKextValue:name]);
 }
 
 - (void)updateKextValues {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.clientForKernelspace send_config_to_kext];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.clientForKernelspace send_config_to_kext]);
 }
 
 - (void)updateStartAtLogin {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.serverController updateStartAtLogin:YES];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.serverController updateStartAtLogin:YES]);
 }
 
 - (void)updateStatusBar {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.statusBar refresh];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.statusBar refresh]);
 }
 
 - (void)updateStatusWindow {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.statusMessageManager refresh];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.statusMessageManager refresh]);
 }
 
 - (void)restartAXNotifier {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.axNotifierManager restartAXNotifier];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.axNotifierManager restartAXNotifier]);
 }
 
 - (void)unsetDebugFlags {
-  [self.clientForKernelspace unset_debug_flags];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.clientForKernelspace unset_debug_flags]);
 }
 
 - (void)terminateServerProcess {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.serverController terminateServerProcess];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.serverController terminateServerProcess]);
 }
 
 - (void)relaunch {
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    [Relauncher relaunch];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [Relauncher relaunch]);
 }
 
 - (void)checkForUpdatesStableOnly {
-  [UpdaterController checkForUpdatesStableOnly];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [UpdaterController checkForUpdatesStableOnly]);
 }
 
 - (void)checkForUpdatesWithBetaVersion {
-  [UpdaterController checkForUpdatesWithBetaVersion];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [UpdaterController checkForUpdatesWithBetaVersion]);
 }
 
 - (void)reloadXML {
-  [self.xmlCompiler reload];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.xmlCompiler reload]);
 }
 
 - (void)openEventViewer {
-  [AppLauncher openEventViewer];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [AppLauncher openEventViewer]);
 }
 
 - (void)openMultiTouchExtension {
-  [AppLauncher openMultiTouchExtension];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [AppLauncher openMultiTouchExtension]);
 }
 
 - (void)openPrivateXMLDirectory {
-  [AppLauncher openPrivateXMLDirectory];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [AppLauncher openPrivateXMLDirectory]);
 }
 
 - (void)openSystemPreferencesKeyboard {
-  [AppLauncher openSystemPreferencesKeyboard];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [AppLauncher openSystemPreferencesKeyboard]);
 }
 
 - (void)openUninstaller {
-  [AppLauncher openUninstaller];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [AppLauncher openUninstaller]);
 }
 
 // ----------------------------------------------------------------------
 - (void)showExampleStatusWindow:(BOOL)visibility {
-  @weakify(self);
-
-  // We should use main queue in order to keep call order of ServerClientProtocol methods.
-  dispatch_async(dispatch_get_main_queue(), ^{
-    @strongify(self);
-    if (!self) return;
-
-    [self.statusMessageManager showExampleStatusWindow:visibility];
-  });
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      [self.statusMessageManager showExampleStatusWindow:visibility]);
 }
 
 // ----------------------------------------------------------------------
@@ -228,7 +187,8 @@
 
 // ----------------------------------------------------------------------
 - (void)updateFocusedUIElementInformation:(NSDictionary*)information {
-  return [self.appDelegate updateFocusedUIElementInformation:information];
+  ASYNC_RUN_IN_MAIN_QUEUE(
+      return [self.appDelegate updateFocusedUIElementInformation:information]);
 }
 
 // ----------------------------------------------------------------------
