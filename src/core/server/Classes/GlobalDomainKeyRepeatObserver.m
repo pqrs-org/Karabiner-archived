@@ -74,24 +74,24 @@
     if (self.previousInitialKeyRepeat != currentInitialKeyRepeat) {
       self.previousInitialKeyRepeat = currentInitialKeyRepeat;
 
-      NSString* name = @"repeat.initial_wait";
-      if ([self.preferencesModel value:name] != currentInitialKeyRepeat) {
-        NSLog(@"Set %@ from NSGlobalDomain.InitialKeyRepeat: %d milliseconds", name, currentInitialKeyRepeat);
-        if ([self.preferencesModel setValue:currentInitialKeyRepeat forName:name]) {
+      NSString* identifier = @"repeat.initial_wait";
+      if ([self.preferencesModel value:identifier] != currentInitialKeyRepeat) {
+        NSLog(@"Set %@ from NSGlobalDomain.InitialKeyRepeat: %d milliseconds", identifier, currentInitialKeyRepeat);
+        if ([self.preferencesModel setValue:currentInitialKeyRepeat forIdentifier:identifier]) {
           [self.preferencesManager save];
-          [self.preferencesManager updateKextValue:name];
+          [self.preferencesManager updateKextValue:identifier];
         }
       }
     }
     if (self.previousKeyRepeat != currentKeyRepeat) {
       self.previousKeyRepeat = currentKeyRepeat;
 
-      NSString* name = @"repeat.wait";
-      if ([self.preferencesModel value:name] != currentKeyRepeat) {
-        NSLog(@"Set %@ from NSGlobalDomain.KeyRepeat: %d milliseconds", name, currentKeyRepeat);
-        if ([self.preferencesModel setValue:currentKeyRepeat forName:name]) {
+      NSString* identifier = @"repeat.wait";
+      if ([self.preferencesModel value:identifier] != currentKeyRepeat) {
+        NSLog(@"Set %@ from NSGlobalDomain.KeyRepeat: %d milliseconds", identifier, currentKeyRepeat);
+        if ([self.preferencesModel setValue:currentKeyRepeat forIdentifier:identifier]) {
           [self.preferencesManager save];
-          [self.preferencesManager updateKextValue:name];
+          [self.preferencesManager updateKextValue:identifier];
         }
       }
     }

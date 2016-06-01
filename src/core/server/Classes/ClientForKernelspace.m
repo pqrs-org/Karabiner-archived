@@ -48,9 +48,9 @@
       if (![self.userClient_userspace synchronized_communication:&bridgestruct]) return;
 
       uint32_t configindex = option;
-      NSString* name = [self.xmlCompiler identifier:(int)(configindex)];
-      if (name) {
-        if ([self.preferencesModel setValue:enabled forName:name]) {
+      NSString* identifier = [self.xmlCompiler identifier:(int)(configindex)];
+      if (identifier) {
+        if ([self.preferencesModel setValue:enabled forIdentifier:identifier]) {
           [self.preferencesManager save];
           // Do not call `updateKextValue` here.
         }
@@ -300,7 +300,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkKirgudu]) {
       newvalue = 0;
     }
-    if ([self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_keyboard_device"]) {
+    if ([self.preferencesModel setValue:newvalue forIdentifier:@"notsave.automatically_enable_keyboard_device"]) {
       [self.preferencesManager save];
       // Do not call `updateKextValue` here.
     }
@@ -314,7 +314,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
     if ([EnvironmentChecker checkSmoothMouse]) {
       newvalue = 0;
     }
-    if ([self.preferencesModel setValue:newvalue forName:@"notsave.automatically_enable_pointing_device"]) {
+    if ([self.preferencesModel setValue:newvalue forIdentifier:@"notsave.automatically_enable_pointing_device"]) {
       [self.preferencesManager save];
       // Do not call `updateKextValue` here.
     }
