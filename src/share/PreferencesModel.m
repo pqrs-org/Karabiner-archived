@@ -212,8 +212,8 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
   ENCODE_OBJECT(axNotifier);
 }
 
-- (NSInteger)value:(NSString*)name {
-  if ([name length] == 0) {
+- (NSInteger)value:(NSString*)identifier {
+  if ([identifier length] == 0) {
     return 0;
   }
 
@@ -222,16 +222,16 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
     return 0;
   }
 
-  NSNumber* value = profileModel.values[name];
+  NSNumber* value = profileModel.values[identifier];
   if (!value) {
-    return [essentialConfigurationDefaults_[name] integerValue];
+    return [essentialConfigurationDefaults_[identifier] integerValue];
   }
 
   return [value integerValue];
 }
 
-- (BOOL)setValue:(NSInteger)value forName:(NSString*)name {
-  if ([name length] == 0) {
+- (BOOL)setValue:(NSInteger)value forIdentifier:(NSString*)identifier {
+  if ([identifier length] == 0) {
     return NO;
   }
 
@@ -240,15 +240,15 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
     return NO;
   }
 
-  if ([profileModel.values[name] integerValue] == value) {
+  if ([profileModel.values[identifier] integerValue] == value) {
     return NO;
   }
 
   NSMutableDictionary* values = [profileModel.values mutableCopy];
-  if (value == [essentialConfigurationDefaults_[name] integerValue]) {
-    [values removeObjectForKey:name];
+  if (value == [essentialConfigurationDefaults_[identifier] integerValue]) {
+    [values removeObjectForKey:identifier];
   } else {
-    values[name] = @(value);
+    values[identifier] = @(value);
   }
 
   profileModel.values = values;
@@ -266,9 +266,9 @@ static NSArray* essentialConfigurationIdentifiers_ = nil;
 - (void)clearNotSave {
   for (ProfileModel* profileModel in self.profiles) {
     NSMutableDictionary* values = [profileModel.values mutableCopy];
-    for (NSString* name in [values allKeys]) {
-      if ([name hasPrefix:@"notsave."]) {
-        [values removeObjectForKey:name];
+    for (NSString* identifier in [values allKeys]) {
+      if ([identifier hasPrefix:@"notsave."]) {
+        [values removeObjectForKey:identifier];
       }
     }
     profileModel.values = values;
