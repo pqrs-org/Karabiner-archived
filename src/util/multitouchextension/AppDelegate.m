@@ -102,13 +102,13 @@ static PreferencesClient* global_preferencesClient_ = nil;
 - (void)setValueFromTimer:(NSTimer*)timer {
   NSDictionary* dict = [timer userInfo];
   [global_preferencesClient_ load];
-  [global_preferencesClient_ setValue:[dict[@"value"] intValue] forName:dict[@"name"]];
+  [global_preferencesClient_ setValue:[dict[@"value"] intValue] forIdentifier:dict[@"identifier"]];
 }
 
 static void setPreference(int fingers, int newvalue) {
   @synchronized(global_preferencesClient_) {
-    NSString* name = [PreferencesController getSettingName:fingers];
-    if ([name length] > 0) {
+    NSString* identifier = [PreferencesController getSettingIdentifier:fingers];
+    if ([identifier length] > 0) {
       @try {
         if (global_timer_[fingers - 1]) {
           [global_timer_[fingers - 1] invalidate];
@@ -124,13 +124,13 @@ static void setPreference(int fingers, int newvalue) {
 
         if (delay == 0) {
           [global_preferencesClient_ load];
-          [global_preferencesClient_ setValue:newvalue forName:name];
+          [global_preferencesClient_ setValue:newvalue forIdentifier:identifier];
         } else {
           global_timer_[fingers - 1] = [NSTimer scheduledTimerWithTimeInterval:(1.0 * delay / 1000.0)
                                                                         target:global_self_
                                                                       selector:@selector(setValueFromTimer:)
                                                                       userInfo:@{
-                                                                        @"name" : name,
+                                                                        @"identifier" : identifier,
                                                                         @"value" : @(newvalue),
                                                                       }
                                                                        repeats:NO];

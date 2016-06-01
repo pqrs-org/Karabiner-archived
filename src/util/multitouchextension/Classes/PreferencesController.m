@@ -80,7 +80,7 @@
   return [[NSUserDefaults standardUserDefaults] boolForKey:[NSString stringWithFormat:@"targetSettingIsEnabled%d", (int)(fingers)]];
 }
 
-+ (NSString*)getSettingName:(NSInteger)fingers {
++ (NSString*)getSettingIdentifier:(NSInteger)fingers {
   return [[NSUserDefaults standardUserDefaults] stringForKey:[NSString stringWithFormat:@"targetSetting%d", (int)(fingers)]];
 }
 
@@ -89,9 +89,9 @@
   // disable old settings
   [self.preferencesClient load];
 
-  for (NSString* name in self.oldSettings) {
+  for (NSString* identifier in self.oldSettings) {
     @try {
-      [self.preferencesClient setValue:0 forName:name];
+      [self.preferencesClient setValue:0 forIdentifier:identifier];
     }
     @catch (NSException* exception) {
       NSLog(@"%@", exception);
@@ -101,7 +101,7 @@
   [self.oldSettings removeAllObjects];
   for (int i = 1; i <= 4; ++i) {
     if ([PreferencesController isSettingEnabled:i]) {
-      [self.oldSettings addObject:[PreferencesController getSettingName:i]];
+      [self.oldSettings addObject:[PreferencesController getSettingIdentifier:i]];
     }
   }
 }

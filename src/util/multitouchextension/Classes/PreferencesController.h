@@ -7,6 +7,6 @@
 - (void)load;
 - (void)show;
 + (BOOL)isSettingEnabled:(NSInteger)fingers;
-+ (NSString*)getSettingName:(NSInteger)fingers;
++ (NSString*)getSettingIdentifier:(NSInteger)fingers;
 
 @end
