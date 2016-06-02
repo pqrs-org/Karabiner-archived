@@ -160,6 +160,9 @@
           ^ : Move to the first non-blanck character of the line.
         </appendix>
         <appendix>
+          +/- : Move to the next/previous line's first character.
+        </appendix>
+        <appendix>
           w/e: Move to the next word
           (w: the beginning of the word, e: the end of the word).
         </appendix>
@@ -196,6 +199,12 @@
         <appendix>*(asterisk): Search the word under the cursor.</appendix>
         <appendix>ZZ: Save and Quit.</appendix>
         <appendix>ZQ: Quit.</appendix>
+      </item>
+      <item>
+        <name>Non text edit commands</name>
+        <appendix>zi: Zoom in.</appendix>
+        <appendix>zo: Zoom out.</appendix>
+        <appendix>z0: Zoom reset.</appendix>
       </item>
     </item>
     <item>
