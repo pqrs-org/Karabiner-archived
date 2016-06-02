@@ -13,6 +13,22 @@
       </replacementvalue>
     </replacementdef>
   </include>
+  <!-- MINUS -->
+  <include path="vim_emu_repeat.xml">
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_INPUT</replacementname>
+      <replacementvalue>KeyCode::MINUS, ModifierFlag::NONE,</replacementvalue>
+    </replacementdef>
+    <replacementdef>
+      <replacementname>VIM_EMU_REPEAT_OUTPUT</replacementname>
+      <replacementvalue>
+        KeyCode::CURSOR_UP, {{VIM_EMU_USE_SHIFT}}ModifierFlag::NONE,
+        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_COMMAND,
+        KeyCode::CURSOR_RIGHT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+        KeyCode::CURSOR_LEFT, {{VIM_EMU_USE_SHIFT}}VK_OPTION,
+      </replacementvalue>
+    </replacementdef>
+  </include>
   <!-- Ctrl-u -->
   <include path="vim_emu_repeat.xml">
     <replacementdef>

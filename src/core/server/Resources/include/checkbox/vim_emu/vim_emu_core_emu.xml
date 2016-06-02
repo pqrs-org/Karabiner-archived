@@ -133,15 +133,29 @@
         KeyCode::VK_LOCK_EXTRA2_FORCE_OFF,
         {{VIM_EMU_NORMAL_OFF}}
       </autogen>
-      <autogen> <!-- Escape from EXTRA2 -->
-        __KeyToKey__ KeyCode::ESCAPE, ModifierFlag::EXTRA2,
-        KeyCode::VK_LOCK_EXTRA2_FORCE_OFF
-      </autogen>
-      <autogen> <!-- Escape from EXTRA2 -->
-        __KeyToKey__ KeyCode::BRACKET_LEFT, VK_CONTROL|ModifierFlag::EXTRA2,
-        KeyCode::VK_LOCK_EXTRA2_FORCE_OFF
-      </autogen>
       <!-- Normal Mode: Save, Quit End -->
+
+      <!-- Normal Mode: Zoom begin -->
+      <autogen> <!-- Zoom Mode -->
+        __KeyToKey__ KeyCode::Z, ModifierFlag::NONE,
+        KeyCode::VK_LOCK_EXTRA3_FORCE_ON
+      </autogen>
+      <autogen> <!-- Zoom In -->
+        __KeyToKey__ KeyCode::I, ModifierFlag::EXTRA3|ModifierFlag::NONE,
+        KeyCode::EQUAL, VK_SHIFT|VK_COMMAND,
+        KeyCode::VK_LOCK_EXTRA3_FORCE_OFF,
+      </autogen>
+      <autogen> <!-- Zoom Out -->
+        __KeyToKey__ KeyCode::O, ModifierFlag::EXTRA3|ModifierFlag::NONE,
+        KeyCode::MINUS, VK_COMMAND,
+        KeyCode::VK_LOCK_EXTRA3_FORCE_OFF,
+      </autogen>
+      <autogen> <!-- Reset Zoom -->
+        __KeyToKey__ KeyCode::KEY_0, ModifierFlag::EXTRA3|ModifierFlag::NONE,
+        KeyCode::KEY_0, VK_COMMAND,
+        KeyCode::VK_LOCK_EXTRA3_FORCE_OFF,
+      </autogen>
+      <!-- Normal Mode: Zoom End -->
 
       <!-- Normal Mode: Search Begin -->
       <autogen>
@@ -676,18 +690,6 @@
       <autogen> <!-- Help -->
         __KeyToKey__ KeyCode::H, ModifierFlag::NONE,
         KeyCode::SLASH, VK_SHIFT|VK_COMMAND,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
-        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
-      </autogen>
-      <autogen> <!-- Escape from Command Mode -->
-        __KeyToKey__ KeyCode::ESCAPE, ModifierFlag::EXTRA1,
-        KeyCode::VK_LOCK_EXTRA1_FORCE_OFF,
-        KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
-        KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
-      </autogen>
-      <autogen> <!-- Escape from Command Mode -->
-        __KeyToKey__ KeyCode::BRACKET_LEFT, VK_CONTROL|ModifierFlag::EXTRA1,
-        KeyCode::VK_LOCK_EXTRA1_FORCE_OFF,
         KeyCode::VK_CONFIG_FORCE_OFF_notsave_vim_emu_command{{VIM_EMU_ALTCONFIG}},
         KeyCode::VK_CONFIG_FORCE_ON_notsave_vim_emu_normal{{VIM_EMU_ALTCONFIG}},
       </autogen>
