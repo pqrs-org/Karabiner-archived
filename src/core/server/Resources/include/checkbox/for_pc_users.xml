@@ -792,14 +792,44 @@
     <item>
       <name>Use PC Style "Change Input Source" #1</name>
       <appendix>Flip between input modes</appendix>
-      <appendix>(Option_L+Shift_L to Command+Space)</appendix>
-      <appendix>If you want to use Option_L+Shift_L as modifier, press Shift_L first. (then press Option_L.)</appendix>
+      <appendix>(Change option+shift to command+space)</appendix>
       <appendix></appendix>
       <appendix>{{ PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION }}</appendix>
       <identifier>remap.pcstyle_changeinputmethod1</identifier>
       <not>{{ PC_STYLE_BINDINGS_IGNORE_APPS }}</not>
       {{ PC_STYLE_BINDINGS_IGNORE_EXTRA }}
-      <autogen>__KeyToKey__ KeyCode::SHIFT_L, ModifierFlag::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_R,
+        ModifierFlag::CONTROL_L,
+        ModifierFlag::CONTROL_R,
+      </modifier_not>
+
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::SHIFT_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::SPACE, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SHIFT_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::SHIFT_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        KeyCode::SPACE, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::OPTION_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::OPTION_L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::SPACE, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::OPTION_R, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT,
+        KeyCode::SPACE, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
     <item>
       <name>Use PC Style "Change Input Source" #2</name>
