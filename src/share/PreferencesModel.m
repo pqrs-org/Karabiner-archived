@@ -2,10 +2,12 @@
 #include <sys/time.h>
 
 #define DECODE_BOOL(KEY) _##KEY = [decoder decodeBoolForKey:@ #KEY];
+#define DECODE_FLOAT(KEY) _##KEY = [decoder decodeFloatForKey:@ #KEY];
 #define DECODE_INTEGER(KEY) _##KEY = [decoder decodeIntegerForKey:@ #KEY];
 #define DECODE_OBJECT(KEY) _##KEY = [decoder decodeObjectForKey:@ #KEY];
 
 #define ENCODE_BOOL(KEY) [encoder encodeBool:self.KEY forKey:@ #KEY];
+#define ENCODE_FLOAT(KEY) [encoder encodeFloat:self.KEY forKey:@ #KEY];
 #define ENCODE_INTEGER(KEY) [encoder encodeInteger:self.KEY forKey:@ #KEY];
 #define ENCODE_OBJECT(KEY) [encoder encodeObject:self.KEY forKey:@ #KEY];
 
