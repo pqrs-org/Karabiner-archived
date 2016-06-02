@@ -52,14 +52,6 @@
 }
 
 // ----------------------------------------------------------------------
-- (NSString*)bundleVersion {
-  return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
-}
-
-- (bycopy AXNotifierPreferencesModel*)axNotifierPreferencesModel {
-  return self.preferencesModel.axNotifier;
-}
-
 #define ASYNC_RUN_IN_MAIN_QUEUE(CODE)                                              \
   {                                                                                \
     @weakify(self);                                                                \
@@ -72,6 +64,14 @@
       CODE;                                                                        \
     });                                                                            \
   }
+
+- (NSString*)bundleVersion {
+  return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
+}
+
+- (bycopy AXNotifierPreferencesModel*)axNotifierPreferencesModel {
+  return self.preferencesModel.axNotifier;
+}
 
 - (void)savePreferencesModel:(bycopy PreferencesModel*)preferencesModel processIdentifier:(int)processIdentifier {
   // We have to use main queue for [PreferencesManager savePreferencesModel].
