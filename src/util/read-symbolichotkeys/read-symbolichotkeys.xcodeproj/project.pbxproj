@@ -1,0 +1,201 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34383BAC1D017E0000DFA6FA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34383BAB1D017E0000DFA6FA /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		34383BA61D017E0000DFA6FA /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		34383BA81D017E0000DFA6FA /* read-symbolichotkeys */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "read-symbolichotkeys"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34383BAB1D017E0000DFA6FA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		34383BA51D017E0000DFA6FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34383B9F1D017E0000DFA6FA = {
+			isa = PBXGroup;
+			children = (
+				34383BAA1D017E0000DFA6FA /* read-symbolichotkeys */,
+				34383BA91D017E0000DFA6FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		34383BA91D017E0000DFA6FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34383BA81D017E0000DFA6FA /* read-symbolichotkeys */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34383BAA1D017E0000DFA6FA /* read-symbolichotkeys */ = {
+			isa = PBXGroup;
+			children = (
+				34383BAB1D017E0000DFA6FA /* main.m */,
+			);
+			path = "read-symbolichotkeys";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		34383BA71D017E0000DFA6FA /* read-symbolichotkeys */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34383BAF1D017E0000DFA6FA /* Build configuration list for PBXNativeTarget "read-symbolichotkeys" */;
+			buildPhases = (
+				34383BA41D017E0000DFA6FA /* Sources */,
+				34383BA51D017E0000DFA6FA /* Frameworks */,
+				34383BA61D017E0000DFA6FA /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "read-symbolichotkeys";
+			productName = "read-symbolichotkeys";
+			productReference = 34383BA81D017E0000DFA6FA /* read-symbolichotkeys */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		34383BA01D017E0000DFA6FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					34383BA71D017E0000DFA6FA = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 34383BA31D017E0000DFA6FA /* Build configuration list for PBXProject "read-symbolichotkeys" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 34383B9F1D017E0000DFA6FA;
+			productRefGroup = 34383BA91D017E0000DFA6FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				34383BA71D017E0000DFA6FA /* read-symbolichotkeys */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		34383BA41D017E0000DFA6FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34383BAC1D017E0000DFA6FA /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		34383BAE1D017E0000DFA6FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+				GCC_WARN_MISSING_PARENTHESES = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VALUE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		34383BB11D017E0000DFA6FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		34383BA31D017E0000DFA6FA /* Build configuration list for PBXProject "read-symbolichotkeys" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34383BAE1D017E0000DFA6FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34383BAF1D017E0000DFA6FA /* Build configuration list for PBXNativeTarget "read-symbolichotkeys" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34383BB11D017E0000DFA6FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 34383BA01D017E0000DFA6FA /* Project object */;
+}
