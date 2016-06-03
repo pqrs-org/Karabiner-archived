@@ -151,5 +151,7 @@
 @end
 
 int main(int argc, const char* argv[]) {
-  return [[WarpMouseCursorPosition new] main];
+  @autoreleasepool {
+    return [[WarpMouseCursorPosition new] main];
+  }
 }
