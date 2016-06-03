@@ -28,13 +28,13 @@
 
   NSDictionary* dictionary = [[NSUserDefaults standardUserDefaults] persistentDomainForName:@"com.apple.symbolichotkeys"];
   if (!dictionary) {
-    [self output:@"Error: com.apple.symbolichotkeys is not found."];
+    [self output:@"Error: com.apple.symbolichotkeys is not found.\n"];
     return 2;
   }
 
   NSDictionary* symbolichotkeys = dictionary[@"AppleSymbolicHotKeys"];
   if (!symbolichotkeys) {
-    [self output:@"Error: AppleSymbolicHotKeys is not found."];
+    [self output:@"Error: AppleSymbolicHotKeys is not found.\n"];
     return 2;
   }
 
@@ -46,13 +46,13 @@
 
   NSDictionary* value = symbolichotkey[@"value"];
   if (!value) {
-    [self output:@"Error: value is not found."];
+    [self output:@"Error: value is not found.\n"];
     return 2;
   }
 
   NSArray* parameters = value[@"parameters"];
   if (!parameters) {
-    [self output:@"Error: parameters is not found."];
+    [self output:@"Error: parameters is not found.\n"];
     return 2;
   }
 
