@@ -2,6 +2,7 @@
 
 #include <cstdio>
 #include <string>
+#include <sys/wait.h>
 
 namespace pqrs {
 class process final {
@@ -22,7 +23,8 @@ public:
       out += buffer;
     }
 
-    return pclose(fp);
+    int status = pclose(fp);
+    return WEXITSTATUS(status);
   }
 };
 }

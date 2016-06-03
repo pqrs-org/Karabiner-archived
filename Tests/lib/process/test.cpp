@@ -13,4 +13,6 @@ TEST_CASE("execute", "[pqrs_process]") {
   expected += "\n";
   REQUIRE(actual == expected);
   REQUIRE(exit_code == 0);
+
+  REQUIRE(pqrs::process::launch("/bin/echo hello | /usr/bin/grep world", actual) == 1);
 }
