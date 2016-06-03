@@ -257,6 +257,8 @@
 @end
 
 int main(int argc, const char* argv[]) {
-  [[KarabinerCLI new] main];
+  @autoreleasepool {
+    [[KarabinerCLI new] main];
+  }
   return 0;
 }
