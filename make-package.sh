@@ -42,6 +42,7 @@ cp -R files/Utilities/*.app "$basedir"
 basedir="pkgroot/Applications/Karabiner.app/Contents/Library/bin"
 mkdir -p "$basedir"
 cp -R src/util/cli/build/Release/karabiner "$basedir"
+cp -R src/util/read-symbolichotkeys/build/Release/read-symbolichotkeys "$basedir"
 
 basedir="pkgroot/Applications/Karabiner.app/Contents/Library/utilities/bin"
 mkdir -p "$basedir"
