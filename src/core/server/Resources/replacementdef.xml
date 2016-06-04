@@ -300,6 +300,7 @@
   <!-- ============================================================ -->
   <!-- Language/Korean -->
   <replacementdef>
+    <!-- HANENG_AT_MAC has been obsoleted. Please use ENV_Select_the_previous_input_source_shortcut instead. -->
     <replacementname>HANENG_AT_MAC</replacementname>
     <replacementvalue>KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</replacementvalue>
   </replacementdef>
