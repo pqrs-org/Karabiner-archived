@@ -21,7 +21,7 @@
         <block>
           <block>
             <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-            <autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ HANENG_AT_MAC }}</autogen>
+            <autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ ENV_Select_the_previous_input_source_shortcut }}</autogen>
           </block>
           <block>
             <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
@@ -51,7 +51,7 @@
         <identifier>remap.ksc_with_103_106_keyboard</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>__KeyToKey__ KeyCode::JIS_KANA, {{ HANENG_AT_MAC }}</autogen>
+          <autogen>__KeyToKey__ KeyCode::JIS_KANA, {{ ENV_Select_the_previous_input_source_shortcut }}</autogen>
           <autogen>__KeyToKey__ KeyCode::JIS_EISUU, {{ HANJA_AT_MAC }}</autogen>
         </block>
         <block>
@@ -70,7 +70,7 @@
         <identifier>remap.ksc_with_101_keyboard</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ HANENG_AT_MAC }}</autogen>
+          <autogen>__KeyToKey__ KeyCode::OPTION_R, {{ ENV_Select_the_previous_input_source_shortcut }}</autogen>
           <autogen>__KeyToKey__ KeyCode::CONTROL_R, {{ HANJA_AT_MAC }}</autogen>
         </block>
         <block>
@@ -91,7 +91,7 @@
         <identifier>remap.ksc_shiftSpace2haneng</identifier>
         <block>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
-          <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{ HANENG_AT_MAC }}</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{ ENV_Select_the_previous_input_source_shortcut }}</autogen>
         </block>
       </item>
 
@@ -140,16 +140,16 @@
       <item>
         <name style="slight">Make Command_R, Option_R as HanEng, Hanja keys (except virtual machine, RDC)</name>
         <item>
-          <name style="slight">Command_R to Command+Space</name>
+          <name style="slight">Change input source by right command</name>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <identifier>remap.ksc_commandR2commandSpace</identifier>
-          <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+          <autogen>__KeyToKey__ KeyCode::COMMAND_R, {{ ENV_Select_the_previous_input_source_shortcut }}, Option::NOREPEAT</autogen>
         </item>
         <item>
-          <name style="slight">Shift+Space to Command+Space</name>
+          <name style="slight">Change input source by shift-space</name>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <identifier>remap.ksc_shiftSpace2commandSpace</identifier>
-          <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ KeyCode::SPACE, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT, {{ ENV_Select_the_previous_input_source_shortcut }}</autogen>
         </item>
         <item>
           <name style="slight">Option_R to Option+Return</name>
@@ -191,9 +191,9 @@
       <item>
         <name style="slight">Make external keyboard HanEng, Hanja keys work in mac (except virtual machine, RDC)</name>
         <item>
-          <name style="slight">HanEng Key to Command+Space</name>
+          <name style="slight">Change input source by HanEng Key</name>
           <identifier>remap.ksc_haneng2commandSpace</identifier>
-          <autogen>__KeyToKey__ KeyCode::JIS_KANA, KeyCode::SPACE, ModifierFlag::COMMAND_L, Option::NOREPEAT</autogen>
+          <autogen>__KeyToKey__ KeyCode::JIS_KANA, {{ ENV_Select_the_previous_input_source_shortcut }}, Option::NOREPEAT</autogen>
         </item>
         <item>
           <name style="slight">Hanja Key to Option+Return</name>
