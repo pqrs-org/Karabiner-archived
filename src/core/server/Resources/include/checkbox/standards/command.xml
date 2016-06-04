@@ -259,15 +259,18 @@
         <name>Command_R to Command_R</name>
         <appendix>(+ When you type Command_R only, toggle IM)</appendix>
         <item>
-          <name>When you type Command_R only, send Command+Space</name>
-          <appendix>(except virtual machine, RDC)</appendix>
+          <name>In Mac apps</name>
           <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
           <identifier>remap.commandR2commandR_commandSpace</identifier>
-          <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::COMMAND_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+          <autogen>
+            __KeyOverlaidModifier__
+            KeyCode::COMMAND_R,
+            KeyCode::COMMAND_R,
+            {{ ENV_Select_the_previous_input_source_shortcut }},
+          </autogen>
         </item>
         <item>
-          <name>When you type Command_R only, send Option+Backquote</name>
-          <appendix>(only in virtual machine, RDC)</appendix>
+          <name>In virtual machine, RDC (Send option-backquote key to change input source)</name>
           <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
           <identifier>remap.commandR2commandR_optionBackquote_vm</identifier>
           <autogen>__KeyOverlaidModifier__ KeyCode::COMMAND_R, KeyCode::VK_LAZY_COMMAND_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
