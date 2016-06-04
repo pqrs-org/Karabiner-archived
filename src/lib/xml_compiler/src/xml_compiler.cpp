@@ -1,4 +1,5 @@
 #include "pqrs/xml_compiler.hpp"
+#include "pqrs/process.hpp"
 #include "pqrs/string.hpp"
 #include <exception>
 #include <iostream>
@@ -15,6 +16,23 @@ void xml_compiler::append_environments_to_replacement_(pqrs::string::replacement
   }
 
   r.emplace("ENV_Karabiner_Resources", system_xml_directory_);
+
+  {
+    std::string select_the_previous_input_source_shortcut;
+    int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 60",
+                                          select_the_previous_input_source_shortcut);
+    r.emplace("ENV_Select_the_previous_input_source_shortcut",
+              exit_code == 0 ? select_the_previous_input_source_shortcut
+                             : "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L");
+  }
+  {
+    std::string select_next_source_in_input_menu_shortcut;
+    int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 61",
+                                          select_next_source_in_input_menu_shortcut);
+    r.emplace("ENV_Select_next_source_in_input_menu_shortcut",
+              exit_code == 0 ? select_next_source_in_input_menu_shortcut
+                             : "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L");
+  }
 }
 
 void xml_compiler::reload(const std::string& checkbox_xml_file_name) {

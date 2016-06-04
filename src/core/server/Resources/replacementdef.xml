@@ -5,6 +5,8 @@
       Environment variables which you can use without replacementdef:
       * You can use {{ ENV_HOME }} to specify home directory.
       * You can use {{ ENV_Karabiner_Resources }} to specify "Karabiner.app/Contents/Resources" directory.
+      * You can use {{ ENV_Select_the_previous_input_source_shortcut }} to use "Select the previous input source" shortcut.
+      * You can use {{ ENV_Select_next_source_in_input_menu_shortcut }} to use "Select next source in input menu" shortcut.
   -->
 
   <!-- ============================================================ -->

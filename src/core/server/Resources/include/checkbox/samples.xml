@@ -2760,5 +2760,24 @@ Two Lines</autogen>
     <include path="samples/filters.xml" />
     <include path="samples/virtual_keycodes.xml" />
 
+    <item>
+      <name>Environment variables</name>
+      <item>
+        <name>ENV_HOME:</name>
+        <appendix>{{ ENV_HOME }}</appendix>
+      </item>
+      <item>
+        <name>ENV_Karabiner_Resources:</name>
+        <appendix>{{ ENV_Karabiner_Resources }}</appendix>
+      </item>
+      <item>
+        <name>ENV_Select_the_previous_input_source_shortcut:</name>
+        <appendix>{{ ENV_Select_the_previous_input_source_shortcut }}</appendix>
+      </item>
+      <item>
+        <name>ENV_Select_next_source_in_input_menu_shortcut:</name>
+        <appendix>{{ ENV_Select_next_source_in_input_menu_shortcut }}</appendix>
+      </item>
+    </item>
   </item>
 </root>
