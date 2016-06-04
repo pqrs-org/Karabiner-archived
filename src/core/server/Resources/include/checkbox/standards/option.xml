@@ -210,15 +210,13 @@
       <name>Option_R to Option_R</name>
       <appendix>(+ When you type Option_R only, toggle IM)</appendix>
       <item>
-        <name>When you type Option_R only, send Command+Space</name>
-        <appendix>(except virtual machine, RDC)</appendix>
+        <name>In Mac apps</name>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <identifier>remap.optionR2optionR_commandSpace</identifier>
-        <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::OPTION_R, {{ ENV_Select_the_previous_input_source_shortcut }}</autogen>
       </item>
       <item>
-        <name>When you type Option_R only, send Option+Backquote</name>
-        <appendix>(only in virtual machine, RDC)</appendix>
+        <name>In virtual machine, RDC (Send option-backquote key to change input source)</name>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
         <identifier>remap.optionR2optionR_optionBackquote_vm</identifier>
         <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_R, KeyCode::VK_LAZY_OPTION_R, KeyCode::BACKQUOTE, ModifierFlag::OPTION_R</autogen>
@@ -423,12 +421,13 @@
 
     <item>
       <name>Change Input Source while pressing right option key.</name>
-      <appendix>(Sending Command+Space when pressing/releasing right option key.)</appendix>
       <identifier>remap.option_r_language_switch</identifier>
-      <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
-      <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::VK_NONE,
-        Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
-        Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
+      <!-- Hack: Sending KeyCode::CONTROL_L after send control-space to release the control key -->
+      <autogen>
+        __KeyToKey__
+        KeyCode::OPTION_R, KeyCode::VK_NONE,
+        Option::KEYTOKEY_BEFORE_KEYDOWN, {{ ENV_Select_the_previous_input_source_shortcut }}, KeyCode::CONTROL_L,
+        Option::KEYTOKEY_AFTER_KEYUP,    {{ ENV_Select_the_previous_input_source_shortcut }},
       </autogen>
     </item>
 
