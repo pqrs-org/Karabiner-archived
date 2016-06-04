@@ -12,6 +12,9 @@
     * The following filters have been added.
       * `<deviceexists_not>`
       * `<deviceexists_only>`
+    * The following environment variables has been added into replacementdef.
+      * `{{ ENV_Select_the_previous_input_source_shortcut }}`
+      * `{{ ENV_Select_next_source_in_input_menu_shortcut }}`
 * Fixed issues:
   * Some Java apps might be crash when AXNotifier is enabled. (SAP GUI for Java)
   * The argument treatment in `warp-mouse-cursor-position` utility is wrong. <br />
