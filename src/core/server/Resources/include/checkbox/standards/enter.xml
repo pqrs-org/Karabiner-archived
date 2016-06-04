@@ -53,22 +53,25 @@
       <name>Enter to Option_L</name>
       <appendix>(+ When you type Enter only, toggle IM)</appendix>
       <item>
-        <name>When you type Enter only, send Command+Space</name>
-        <appendix>(except virtual machine, RDC)</appendix>
+        <name>In Mac apps</name>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <identifier>remap.enter2optionL_commandSpace</identifier>
-        <autogen>__KeyOverlaidModifier__
-          KeyCode::ENTER, KeyCode::OPTION_L,
-          KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::ENTER,
+          KeyCode::OPTION_L,
+          {{ ENV_Select_the_previous_input_source_shortcut }},
+        </autogen>
       </item>
       <item>
-        <name>When you type Enter only, send Option+Backquote</name>
-        <appendix>(only in virtual machine, RDC)</appendix>
+        <name>In virtual machine, RDC (Send option-backquote key to change input source)</name>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
         <identifier>remap.enter2optionL_optionBackquote_vm</identifier>
-        <autogen>__KeyOverlaidModifier__
+        <autogen>
+          __KeyOverlaidModifier__
           KeyCode::ENTER, KeyCode::VK_LAZY_OPTION_L,
-          KeyCode::BACKQUOTE, ModifierFlag::OPTION_L</autogen>
+          KeyCode::BACKQUOTE, ModifierFlag::OPTION_L,
+        </autogen>
       </item>
     </item>
     <item>
@@ -78,23 +81,27 @@
     </item>
     <item>
       <name>Enter to Option_R</name>
+      <appendix>Change input source when enter key is pressed alone.</appendix>
       <item>
-        <name>When you type Enter only, send Command+Space</name>
-        <appendix>(except virtual machine, RDC)</appendix>
+        <name>In Mac apps</name>
         <not>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</not>
         <identifier>remap.enter2optionR_commandSpace</identifier>
-        <autogen>__KeyOverlaidModifier__
-          KeyCode::ENTER, KeyCode::OPTION_R,
-          KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+        <autogen>
+          __KeyOverlaidModifier__
+          KeyCode::ENTER,
+          KeyCode::OPTION_R,
+          {{ ENV_Select_the_previous_input_source_shortcut }},
+        </autogen>
       </item>
       <item>
-        <name>When you type Enter only, send Option+Backquote</name>
-        <appendix>(only in virtual machine, RDC)</appendix>
+        <name>In virtual machine, RDC (Send option-backquote key to change input source)</name>
         <only>VIRTUALMACHINE, REMOTEDESKTOPCONNECTION</only>
         <identifier>remap.enter2optionR_optionBackquote_vm</identifier>
-        <autogen>__KeyOverlaidModifier__
+        <autogen>
+          __KeyOverlaidModifier__
           KeyCode::ENTER, KeyCode::VK_LAZY_OPTION_R,
-          KeyCode::BACKQUOTE, ModifierFlag::OPTION_R</autogen>
+          KeyCode::BACKQUOTE, ModifierFlag::OPTION_R
+        </autogen>
       </item>
     </item>
     <item>
