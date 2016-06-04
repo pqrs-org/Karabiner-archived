@@ -764,12 +764,12 @@ Two Lines</autogen>
           Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::C,
           Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::D
         </autogen>
-        <!-- Hack: Sending Command_L key event after send Command+Space to release Command key -->
+        <!-- Hack: Sending KeyCode::CONTROL_L after send control-space to release the control key -->
         <autogen>
           __KeyToKey__
           KeyCode::OPTION_R, KeyCode::VK_NONE,
-          Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L,
-          Option::KEYTOKEY_AFTER_KEYUP,    KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L
+          Option::KEYTOKEY_BEFORE_KEYDOWN, {{ ENV_Select_the_previous_input_source_shortcut }}, KeyCode::CONTROL_L,
+          Option::KEYTOKEY_AFTER_KEYUP,    {{ ENV_Select_the_previous_input_source_shortcut }},
         </autogen>
         <autogen>
           __SimultaneousKeyPresses__
