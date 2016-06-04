@@ -10,7 +10,7 @@
         KeyCode::OPTION_R,
         KeyCode::VK_NONE,
         Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CHANGE_INPUTSOURCE_GREEK, KeyCode::VK_WAIT_100MS,
-        Option::KEYTOKEY_AFTER_KEYUP, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::VK_WAIT_100MS,
+        Option::KEYTOKEY_AFTER_KEYUP, {{ ENV_Select_the_previous_input_source_shortcut }}, KeyCode::VK_WAIT_100MS,
       </autogen>
     </item>
     <item>
@@ -21,7 +21,7 @@
         KeyCode::OPTION_R,
         KeyCode::OPTION_R,
         Option::KEYTOKEY_BEFORE_KEYDOWN, KeyCode::VK_CHANGE_INPUTSOURCE_UNICODEHEXINPUT, KeyCode::VK_WAIT_100MS,
-        Option::KEYTOKEY_AFTER_KEYUP, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::VK_WAIT_100MS,
+        Option::KEYTOKEY_AFTER_KEYUP, {{ ENV_Select_the_previous_input_source_shortcut }}, KeyCode::VK_WAIT_100MS,
       </autogen>
     </item>
   </item>
