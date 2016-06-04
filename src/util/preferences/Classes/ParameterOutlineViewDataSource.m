@@ -15,6 +15,10 @@
   self.dataSource = [self.client parameterTree];
 }
 
+- (void)clear {
+  self.dataSource = [ParameterTree new];
+}
+
 - (NSInteger)outlineView:(NSOutlineView*)outlineView numberOfChildrenOfItem:(id)item {
   ParameterTree* tree = (ParameterTree*)(item);
   return tree ? [tree.children count] : [self.dataSource.children count];

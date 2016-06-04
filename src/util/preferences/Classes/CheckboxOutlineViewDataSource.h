@@ -10,6 +10,7 @@
 @property(readonly) CheckboxTree* fullDataSource;
 
 - (void)setup;
+- (void)clear;
 - (BOOL)filterDataSource:(BOOL)isEnabledOnly string:(NSString*)string;
 - (void)clearFilterCondition;
 

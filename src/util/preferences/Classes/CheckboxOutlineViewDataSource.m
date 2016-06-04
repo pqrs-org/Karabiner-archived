@@ -63,10 +63,22 @@
 
 @implementation CheckboxOutlineViewDataSource
 
-- (void)setup {
-  self.dataSource = [self.client checkboxTree];
+- (void)setup:(BOOL)clear {
+  if (clear) {
+    self.dataSource = [CheckboxTree new];
+  } else {
+    self.dataSource = [self.client checkboxTree];
+  }
   self.fullDataSource = self.dataSource;
   self.filterCondition = nil;
+}
+
+- (void)setup {
+  [self setup:NO];
+}
+
+- (void)clear {
+  [self setup:YES];
 }
 
 // return YES if we need to call [NSOutlineView reloadData]

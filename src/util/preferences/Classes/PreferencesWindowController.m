@@ -108,6 +108,12 @@
 
       [self.xmlLoadingIndicator startAnimation:self];
       self.xmlLoadingIndicator.hidden = NO;
+
+      [self.checkboxOutlineViewDataSource clear];
+      [self.parameterOutlineViewDataSource clear];
+
+      [self.checkboxOutlineView reloadData];
+      [self.parameterOutlineView reloadData];
     }
   });
 }
