@@ -47,7 +47,7 @@
             <rect key="contentRect" x="398" y="285" width="800" height="620"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <value key="minSize" type="size" width="800" height="620"/>
-            <view key="contentView" id="jyG-ZV-iGc">
+            <view key="contentView" wantsLayer="YES" id="jyG-ZV-iGc">
                 <rect key="frame" x="0.0" y="0.0" width="800" height="620"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -158,7 +158,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
-                                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="get-Bt-JJz">
+                                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="get-Bt-JJz">
                                             <rect key="frame" x="598" y="534" width="16" height="16"/>
                                         </progressIndicator>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JH3-o5-FZc">

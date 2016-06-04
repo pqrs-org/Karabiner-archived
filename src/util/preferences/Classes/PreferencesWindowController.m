@@ -107,7 +107,6 @@
       self.xmlNotificationsSequentialNumber = number;
 
       [self.xmlLoadingIndicator startAnimation:self];
-      self.xmlLoadingIndicator.hidden = NO;
 
       [self.checkboxOutlineViewDataSource clear];
       [self.parameterOutlineViewDataSource clear];
@@ -129,7 +128,6 @@
 
     self.xmlNotificationsSequentialNumber = [notification.userInfo[@"xmlNotificationsSequentialNumber"] integerValue];
 
-    self.xmlLoadingIndicator.hidden = YES;
     [self.xmlLoadingIndicator stopAnimation:self];
 
     [self drawEnabledCount];
@@ -180,7 +178,6 @@
 
   NSString* version = [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
   [self.versionText setStringValue:version];
-  self.xmlLoadingIndicator.hidden = YES;
   self.xmlNotificationsSequentialNumber = -1;
 
   [self refreshKeyRepeatTab];
