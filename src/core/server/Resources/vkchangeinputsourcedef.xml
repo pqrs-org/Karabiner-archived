@@ -217,7 +217,7 @@
       | But we cannot input Japanese. Our typing is interpreted as U.S.
       |
       | This issue is occurred on the input sources which has complex behavior such as Japanese.
-      | If you faced this issue, use command-option-space (Select next source in Input menu)
+      | If you faced this issue, use "Select next source in Input menu" shortcut
       | instead of KeyCode::VK_CHANGE_INPUTSOURCE_JAPANESE like this.
       |
       | <autogen>
@@ -227,7 +227,7 @@
       |
       |   KeyCode::VK_CHANGE_INPUTSOURCE_ENGLISH,
       |   KeyCode::VK_WAIT_100MS,
-      |   KeyCode::SPACE, ModifierFlag::COMMAND_L | ModifierFlag::OPTION_L,
+      |   {{ ENV_Select_next_source_in_input_menu_shortcut }}
       | </autogen>
       |
       | This autogen changes input source to english (previous item of Japanese) and
