@@ -45,6 +45,8 @@
 
     <windownames>
       <equal>Microsoft Remote Desktop</equal>
+      <equal></equal>
+      <equal>User Accounts</equal>
       <equal>Preferences</equal>
       <equal>Remote Resources</equal>
       <equal>Azure RemoteApp</equal>
