@@ -6,9 +6,8 @@ namespace pqrs {
 void xml_compiler::bundle_identifier_override::add_rule_equal(xml_compiler::bundle_identifier_override::rule_target target, const std::string& v) {
   if (target == rule_target::end) return;
 
-  if (!v.empty()) {
-    rules_equal_[static_cast<size_t>(target)].push_back(v);
-  }
+  // allow empty string for windownames
+  rules_equal_[static_cast<size_t>(target)].push_back(v);
 }
 
 void xml_compiler::bundle_identifier_override::add_rule_prefix(xml_compiler::bundle_identifier_override::rule_target target, const std::string& v) {
