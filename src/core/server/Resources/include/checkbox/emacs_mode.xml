@@ -46,13 +46,12 @@
       <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
     </item>
     <item>
-      <name>Control+I to Tab Delete (when no other modifiers are pressed)</name>
+      <name>Control+I to Tab (when no other modifiers are pressed or shift key is pressed)</name>
       <identifier>option.emacsmode_controlI_nomodifiers</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
       <modifier_not>
         ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
         ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
-        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
       </modifier_not>
       <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
     </item>
