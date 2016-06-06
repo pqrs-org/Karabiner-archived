@@ -72,13 +72,11 @@
   if (modifiers & 0x100000) {
     [modifierFlags addObject:@"ModifierFlag::COMMAND_L"];
   }
-
-  [self output:[NSString stringWithFormat:@"KeyCode::RawValue::0x%lx", [key integerValue]]];
-  if ([modifierFlags count] > 0) {
-    [self output:@", "];
-    [self output:[modifierFlags componentsJoinedByString:@" | "]];
+  if ([modifierFlags count] == 0) {
+    [modifierFlags addObject:@"ModifierFlag::ZERO"];
   }
-  [self output:@"\n"];
+
+  [self output:[NSString stringWithFormat:@"KeyCode::RawValue::0x%lx, %@\n", [key integerValue], [modifierFlags componentsJoinedByString:@" | "]]];
 
   return 0;
 }
