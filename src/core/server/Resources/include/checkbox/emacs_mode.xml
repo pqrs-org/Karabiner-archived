@@ -23,8 +23,7 @@
       <autogen>__KeyToKey__ KeyCode::D, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::FORWARD_DELETE</autogen>
     </item>
     <item>
-      <name>Control+D to Forward Delete</name>
-      <appendix>(when there are no other modifiers)</appendix>
+      <name>Control+D to Forward Delete (when no other modifiers are pressed)</name>
       <identifier>option.emacsmode_controlD_nomodifiers</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
       <modifier_not>
@@ -47,6 +46,17 @@
       <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
     </item>
     <item>
+      <name>Control+I to Tab Delete (when no other modifiers are pressed)</name>
+      <identifier>option.emacsmode_controlI_nomodifiers</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>__KeyToKey__ KeyCode::I, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::TAB</autogen>
+    </item>
+    <item>
       <name>Control+[ to Escape</name>
       <identifier>option.emacsmode_controlLeftbracket</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
@@ -59,6 +69,17 @@
       <autogen>__KeyToKey__ KeyCode::J, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
     </item>
     <item>
+      <name>Control+J to Return (when no other modifiers are pressed)</name>
+      <identifier>remap.controlJ2return_nomodifiers</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
+      <autogen>__KeyToKey__ KeyCode::J, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
+    </item>
+    <item>
       <name>Control+J to Enter</name>
       <identifier>remap.controlJ2enter</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
@@ -68,6 +89,17 @@
       <name>Control+M to Return</name>
       <identifier>option.emacsmode_controlM</identifier>
       <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
+    </item>
+    <item>
+      <name>Control+M to Return (when no other modifiers are pressed)</name>
+      <identifier>option.emacsmode_controlM_nomodifiers</identifier>
+      <not>{{EMACS_MODE_IGNORE_APPS}}</not>
+      <modifier_not>
+        ModifierFlag::COMMAND_L, ModifierFlag::COMMAND_R,
+        ModifierFlag::OPTION_L,  ModifierFlag::OPTION_R,
+        ModifierFlag::SHIFT_L,   ModifierFlag::SHIFT_R,
+      </modifier_not>
       <autogen>__KeyToKey__ KeyCode::M, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::RETURN</autogen>
     </item>
     <item>
