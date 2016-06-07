@@ -12,6 +12,8 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [[NSApplication sharedApplication] disableRelaunchOnLogin];
+
   [self.preferencesClient load];
 
   [self.preferencesWindowController setup];

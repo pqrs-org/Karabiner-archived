@@ -488,6 +488,9 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
 
 // ------------------------------------------------------------
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [[NSApplication sharedApplication] disableRelaunchOnLogin];
+
+  // ------------------------------------------------------------
   if ([MigrationUtilities migrate:@[ @"org.pqrs.KeyRemap4MacBook.multitouchextension" ]
            oldApplicationSupports:@[]
                          oldPaths:@[ @"/Applications/KeyRemap4MacBook.app/Contents/Applications/KeyRemap4MacBook_multitouchextension.app" ]]) {

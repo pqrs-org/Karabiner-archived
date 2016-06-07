@@ -152,6 +152,9 @@ send:
 #define kDescendantProcess @"org_pqrs_Karabiner_AXNotifier_DescendantProcess"
 
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
+  [[NSApplication sharedApplication] disableRelaunchOnLogin];
+
+  // ------------------------------------------------------------
   NSInteger isDescendantProcess = [[[NSProcessInfo processInfo] environment][kDescendantProcess] integerValue];
   setenv([kDescendantProcess UTF8String], "1", 1);
 
