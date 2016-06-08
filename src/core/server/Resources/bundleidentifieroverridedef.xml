@@ -57,6 +57,7 @@
   <!-- ======================================== -->
   <!-- karabiner.remotedesktop -->
 
+  <!-- Google Chrome Remote Desktop -->
   <bundleidentifieroverridedef>
     <newbundleidentifier>karabiner.remotedesktop</newbundleidentifier>
 
@@ -68,6 +69,19 @@
       <equal>Chrome Remote Desktop</equal>
       <regex>- Chrome Remote Desktop</regex>
     </windownames>
+  </bundleidentifieroverridedef>
+
+  <!-- Royal TSX Remote Desktop -->
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>karabiner.remotedesktop</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>com.lemonmojo.RoyalTSX.App</equal>
+    </bundleidentifiers>
+
+    <uielementroles>
+      <equal>AXScrollArea</equal>
+    </uielementroles>
   </bundleidentifieroverridedef>
 
 </root>
