@@ -1,4 +1,4 @@
-# Since Version 10.18.0
+# Version 10.19.0
 
 * Incompatibility changes:
   * The multi-touch extension default configuration has been changed. <br />
