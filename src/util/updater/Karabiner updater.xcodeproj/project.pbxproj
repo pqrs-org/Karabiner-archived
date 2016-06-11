@@ -121,12 +121,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 348224011CEF0DF500A0D957 /* Build configuration list for PBXNativeTarget "Karabiner updater" */;
 			buildPhases = (
-				09674B0963DF0D603FD37610 /* 📦 Check Pods Manifest.lock */,
+				09674B0963DF0D603FD37610 /* [CP] Check Pods Manifest.lock */,
 				348223EC1CEF0DF500A0D957 /* Sources */,
 				348223ED1CEF0DF500A0D957 /* Frameworks */,
 				348223EE1CEF0DF500A0D957 /* Resources */,
-				C73D9F0EAD249481A76206AD /* 📦 Embed Pods Frameworks */,
-				57A11BC794BDCF811939F8F0 /* 📦 Copy Pods Resources */,
+				C73D9F0EAD249481A76206AD /* [CP] Embed Pods Frameworks */,
+				57A11BC794BDCF811939F8F0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -183,14 +183,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09674B0963DF0D603FD37610 /* 📦 Check Pods Manifest.lock */ = {
+		09674B0963DF0D603FD37610 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,14 +198,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		57A11BC794BDCF811939F8F0 /* 📦 Copy Pods Resources */ = {
+		57A11BC794BDCF811939F8F0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,14 +213,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Karabiner updater/Pods-Karabiner updater-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C73D9F0EAD249481A76206AD /* 📦 Embed Pods Frameworks */ = {
+		C73D9F0EAD249481A76206AD /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
