@@ -23,18 +23,21 @@
   <!-- ======================================== -->
   <!-- karabiner.remotedesktop-preferences -->
 
-  <bundleidentifieroverridedef>
-    <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
-
-    <bundleidentifiers>
-      <equal>com.microsoft.rdc.mac</equal>
-    </bundleidentifiers>
-
-    <uielementroles>
-      <equal>AXTextArea</equal>
-      <equal>AXTextField</equal>
-    </uielementroles>
-  </bundleidentifieroverridedef>
+  <!--
+      | Remote Desktop does not change UI element role properly in the following situation.
+      |
+      |   (1) Select connection from the list.
+      |   (2) Enter user name and password.
+      |   (3) Remote Desktop is connected.
+      |
+      | UI element role will be AXTextField in (2) and should be empty in (3).
+      | But UI element role will be kept as AXTextField in (3) just only after (2).
+      |
+      | (UI element role will be set properly after RDC is switched from another process.)
+      |
+      | Therefore, we should not use uielementroles for karabiner.remotedesktop-preferences.
+      | We use windownames for karabiner.remotedesktop-preferences.
+  -->
 
   <bundleidentifieroverridedef>
     <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
@@ -45,6 +48,7 @@
 
     <windownames>
       <equal>Microsoft Remote Desktop</equal>
+      <equal>Verify Certificate</equal>
       <equal></equal>
       <equal>User Accounts</equal>
       <equal>Preferences</equal>
