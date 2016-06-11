@@ -1,3 +1,9 @@
+# Since Version 10.19.0
+
+* Fixed issues:
+  * Remote Desktop detection will be failed in some cases.
+
+
 # Version 10.19.0
 
 * Incompatibility changes:
