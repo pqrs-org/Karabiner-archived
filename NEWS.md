@@ -1,5 +1,8 @@
 # Since Version 10.19.0
 
+* New functions and improvements:
+  * Updates for people who add new settings by oneself:
+    * `Option::FLIPSCROLLWHEEL_HORIZONTAL` and `Option::FLIPSCROLLWHEEL_VERTICAL` have been supported in `__PointingRelativeToScroll__`.
 * Fixed issues:
   * Remote Desktop detection will be failed in some cases.
 

@@ -2513,6 +2513,37 @@ Two Lines</autogen>
         </autogen>
       </item>
 
+      <item>
+        <identifier>remap.samples_pointingrelativetoscroll_with_flipscrollwheel</identifier>
+        <name>With FlipScrollWheel</name>
+        <appendix>Option+CursorMove to ScrollWheel (Modifier)</appendix>
+        <appendix>+ (Flip vertically in Safari)</appendix>
+        <appendix>+ (Flip horizontally in Preview)</appendix>
+        <appendix></appendix>
+        <block>
+          <only>SAFARI</only>
+          <autogen>
+            __PointingRelativeToScroll__
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+            Option::FLIPSCROLLWHEEL_VERTICAL,
+          </autogen>
+        </block>
+        <block>
+          <only>PREVIEW</only>
+          <autogen>
+            __PointingRelativeToScroll__
+            MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+
+            Option::FLIPSCROLLWHEEL_HORIZONTAL,
+          </autogen>
+        </block>
+        <autogen>
+          __PointingRelativeToScroll__
+          MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION,
+        </autogen>
+      </item>
+
       <item hidden="true">
         <identifier vk_config="true">notsave.samples_pointing_relative_to_scroll</identifier>
         <autogen>__PointingRelativeToScroll__ PointingButton::NONE</autogen>

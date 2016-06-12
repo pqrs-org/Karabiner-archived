@@ -43,7 +43,7 @@ DROPSCROLLWHEEL_DROP_MOMENTUM_SCROLL           --AUTO--
 FLIPPOINTINGRELATIVE_HORIZONTAL                --AUTO--
 FLIPPOINTINGRELATIVE_VERTICAL                  --AUTO--
 
-// For __FlipScrollWheel__
+// For __FlipScrollWheel__ and __PointingRelativeToScroll__
 FLIPSCROLLWHEEL_HORIZONTAL                     --AUTO--
 FLIPSCROLLWHEEL_VERTICAL                       --AUTO--
 FLIPSCROLLWHEEL_ROTATE                         --AUTO--

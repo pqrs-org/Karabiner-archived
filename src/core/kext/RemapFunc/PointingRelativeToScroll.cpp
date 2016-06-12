@@ -15,6 +15,8 @@ namespace RemapFunc {
 List PointingRelativeToScroll::queue_;
 Vector_ModifierFlag PointingRelativeToScroll::currentFromModifierFlags_;
 Vector_ModifierFlag PointingRelativeToScroll::currentToModifierFlags_;
+bool PointingRelativeToScroll::currentFlipHorizontal_;
+bool PointingRelativeToScroll::currentFlipVertical_;
 AutogenId PointingRelativeToScroll::currentAutogenId_(0);
 PhysicalEventType PointingRelativeToScroll::lastPhysicalEventType_ = PhysicalEventType::DOWN;
 TimerWrapper PointingRelativeToScroll::timer_;
@@ -80,6 +82,12 @@ void PointingRelativeToScroll::add(AddDataType datatype, AddValue newval) {
     if (Option::POINTINGRELATIVETOSCROLL_TOKEYS == option) {
       index_type_ = INDEX_TYPE_TOKEYS;
       isToKeysDefined_ = true;
+    }
+    if (Option::FLIPSCROLLWHEEL_HORIZONTAL == option) {
+      flipHorizontal_ = true;
+    }
+    if (Option::FLIPSCROLLWHEEL_VERTICAL == option) {
+      flipVertical_ = true;
     }
     break;
   }
@@ -276,6 +284,8 @@ void PointingRelativeToScroll::toscroll(RemapParams& remapParams) {
 
   currentFromModifierFlags_ = fromModifierFlags_;
   currentToModifierFlags_ = toModifierFlags_;
+  currentFlipHorizontal_ = flipHorizontal_;
+  currentFlipVertical_ = flipVertical_;
   currentAutogenId_ = autogenId_;
   timer_.setTimeoutMS(SCROLL_INTERVAL_MS, false);
 }
@@ -300,10 +310,10 @@ void PointingRelativeToScroll::timer_callback(OSObject* owner, IOTimerEventSourc
   {
     int d1 = delta1;
     int d2 = delta2;
-    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_vertical_scrolling)) {
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_vertical_scrolling ) || currentFlipVertical_) {
       d1 = -d1;
     }
-    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_horizontal_scrolling)) {
+    if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_option_pointing_reverse_horizontal_scrolling) || currentFlipHorizontal_) {
       d2 = -d2;
     }
     EventOutputQueue::FireScrollWheel::fire(d1, d2, currentAutogenId_, lastPhysicalEventType_);

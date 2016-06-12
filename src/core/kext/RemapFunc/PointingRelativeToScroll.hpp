@@ -19,6 +19,8 @@ public:
                                                   index_type_(INDEX_TYPE_DEFAULT),
                                                   keytokey_(autogenId),
                                                   isToKeysDefined_(false),
+                                                  flipHorizontal_(false),
+                                                  flipVertical_(false),
                                                   absolute_distance_(0),
                                                   chained_delta1_(0),
                                                   chained_delta2_(0),
@@ -79,6 +81,8 @@ private:
   ToEvent toEvent_;
   KeyToKey keytokey_;
   bool isToKeysDefined_;
+  bool flipHorizontal_;
+  bool flipVertical_;
 
   // ----------
   unsigned int absolute_distance_;
@@ -97,6 +101,8 @@ private:
   static List queue_;
   static Vector_ModifierFlag currentFromModifierFlags_;
   static Vector_ModifierFlag currentToModifierFlags_;
+  static bool currentFlipHorizontal_;
+  static bool currentFlipVertical_;
   static AutogenId currentAutogenId_;
   static PhysicalEventType lastPhysicalEventType_;
   static TimerWrapper timer_;
