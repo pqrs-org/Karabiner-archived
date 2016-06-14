@@ -15,11 +15,8 @@ public:
       return -1;
     }
 
-    while (!feof(fp)) {
-      char buffer[256];
-      if (!fgets(buffer, sizeof(buffer), fp)) {
-        break;
-      }
+    char buffer[256];
+    while (fgets(buffer, sizeof(buffer), fp)) {
       out += buffer;
     }
 
