@@ -17,7 +17,7 @@ void xml_compiler::append_environments_to_replacement_(pqrs::string::replacement
 
   r.emplace("ENV_Karabiner_Resources", system_xml_directory_);
 
-  {
+  if (r.find("ENV_Select_the_previous_input_source_shortcut") == r.end()) {
     std::string select_the_previous_input_source_shortcut;
     int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 60",
                                           select_the_previous_input_source_shortcut);
@@ -25,7 +25,7 @@ void xml_compiler::append_environments_to_replacement_(pqrs::string::replacement
               exit_code == 0 ? select_the_previous_input_source_shortcut
                              : "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L");
   }
-  {
+  if (r.find("ENV_Select_next_source_in_input_menu_shortcut") == r.end()) {
     std::string select_next_source_in_input_menu_shortcut;
     int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 61",
                                           select_next_source_in_input_menu_shortcut);
