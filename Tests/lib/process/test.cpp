@@ -15,4 +15,9 @@ TEST_CASE("execute", "[pqrs_process]") {
   REQUIRE(exit_code == 0);
 
   REQUIRE(pqrs::process::launch("/bin/echo hello | /usr/bin/grep world", actual) == 1);
+
+  expected = "hello\nworld\n";
+  exit_code = pqrs::process::launch("/bin/echo hello; /bin/echo world", actual);
+  REQUIRE(actual == expected);
+  REQUIRE(exit_code == 0);
 }
