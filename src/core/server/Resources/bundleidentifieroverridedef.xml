@@ -39,11 +39,58 @@
       | We use windownames for karabiner.remotedesktop-preferences.
   -->
 
+  <!--
+      | RDC changes the window title even in Remote Desktop Window if we are using multiple monitors.
+      | Therefore, we treat AXWindow as karabiner.remotedesktop.
+      |
+      | BundleIdentifier: com.microsoft.rdc.mac
+      | WindowName:       Microsoft Remote Desktop
+      | UIElementRole:
+      |
+      | BundleIdentifier: com.microsoft.rdc.mac
+      | WindowName:       Verify Certificate
+      | UIElementRole:    AXWindow
+      |
+      | BundleIdentifier: com.microsoft.rdc.mac
+      | WindowName:       My Remote Windows Machine
+      | UIElementRole:    AXWindow
+      |
+      | BundleIdentifier: com.microsoft.rdc.mac
+      | WindowName:                                     (in RDC)
+      | UIElementRole:    AXWindow
+      |
+      | BundleIdentifier: com.microsoft.rdc.mac
+      | WindowName:       My Remote Windows Machine     (in RDC)
+      | UIElementRole:    AXWindow
+      |
+      | BundleIdentifier: com.microsoft.rdc.mac
+      | WindowName:                                     (in RDC)
+      | UIElementRole:    AXWindow
+      |
+      | BundleIdentifier: com.microsoft.rdc.mac
+      | WindowName:       Microsoft Remote Desktop      (in RDC)
+      | UIElementRole:    AXWindow
+  -->
+
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>karabiner.remotedesktop</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>com.microsoft.rdc.mac</equal>
+      <equal>com.microsoft.rdc.osx.beta</equal>
+    </bundleidentifiers>
+
+    <uielementroles>
+      <equal>AXWindow</equal>
+    </uielementroles>
+  </bundleidentifieroverridedef>
+
   <bundleidentifieroverridedef>
     <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
 
     <bundleidentifiers>
       <equal>com.microsoft.rdc.mac</equal>
+      <equal>com.microsoft.rdc.osx.beta</equal>
     </bundleidentifiers>
 
     <windownames>
