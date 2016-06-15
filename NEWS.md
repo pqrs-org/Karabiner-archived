@@ -1,4 +1,4 @@
-# Since Version 10.19.0
+# Version 10.20.0
 
 * New functions and improvements:
   * Updates for people who add new settings by oneself:
