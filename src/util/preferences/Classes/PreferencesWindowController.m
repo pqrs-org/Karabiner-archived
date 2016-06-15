@@ -207,6 +207,7 @@
       dispatch_source_set_timer(self.debugModeObserverTimer, dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC), 500 * NSEC_PER_MSEC, 0);
       dispatch_source_set_event_handler(self.debugModeObserverTimer, ^{
         @strongify(self);
+        if (!self) return;
 
         BOOL isDebugMode = [self isDebugMode];
         if (isDebugMode != self.previousDebugMode) {
