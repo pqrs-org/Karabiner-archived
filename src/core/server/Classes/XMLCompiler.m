@@ -7,6 +7,8 @@
 #import "PreferencesManager.h"
 #import "PreferencesModel.h"
 #import "SharedKeys.h"
+#import "weakify.h"
+
 #include "pqrs/xml_compiler_bindings_clang.h"
 
 @interface XMLCompiler ()
@@ -15,6 +17,7 @@
 @property(weak) IBOutlet PreferencesModel* preferencesModel;
 
 @property dispatch_queue_t xmlCompilerReloadQueue;
+@property dispatch_source_t needsReloadTimer;
 
 @property(readwrite) CheckboxTree* checkboxTree;
 @property(readwrite) ParameterTree* parameterTree;
@@ -167,6 +170,26 @@
                                  [[[NSBundle mainBundle] resourcePath] UTF8String],
                                  [[[XMLCompiler get_private_xml_path] stringByDeletingLastPathComponent] UTF8String]);
     _pqrs_xml_compiler = p;
+
+    _needsReloadTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    if (_needsReloadTimer) {
+      dispatch_source_set_timer(_needsReloadTimer, dispatch_time(DISPATCH_TIME_NOW, 5.0 * NSEC_PER_SEC), 5.0 * NSEC_PER_SEC, 0);
+      @weakify(self);
+      dispatch_source_set_event_handler(_needsReloadTimer, ^{
+        @strongify(self);
+        if (!self) return;
+
+        __block bool needsReload = NO;
+        dispatch_sync(self.xmlCompilerReloadQueue, ^{
+          needsReload = pqrs_xml_compiler_needs_reload(self.pqrs_xml_compiler);
+        });
+        if (needsReload) {
+          NSLog(@"Call reload in needsReloadTimer");
+          [self reload];
+        }
+      });
+      dispatch_resume(_needsReloadTimer);
+    }
   }
 
   return self;
