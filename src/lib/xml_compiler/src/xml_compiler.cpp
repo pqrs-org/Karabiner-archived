@@ -10,8 +10,8 @@ namespace pqrs {
 std::string xml_compiler::get_select_the_previous_input_source_shortcut(void) {
   std::string shortcut;
   int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 60", shortcut);
-  if (exit_code != 0) {
-    return "";
+  if (exit_code != 0 || shortcut.empty()) {
+    return "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L";
   }
   return shortcut;
 }
@@ -19,8 +19,8 @@ std::string xml_compiler::get_select_the_previous_input_source_shortcut(void) {
 std::string xml_compiler::get_select_next_source_in_input_menu_shortcut(void) {
   std::string shortcut;
   int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 61", shortcut);
-  if (exit_code != 0) {
-    return "";
+  if (exit_code != 0 || shortcut.empty()) {
+    return "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L";
   }
   return shortcut;
 }
@@ -38,16 +38,10 @@ void xml_compiler::append_environments_to_replacement_(pqrs::string::replacement
 
   if (r.find("ENV_Select_the_previous_input_source_shortcut") == r.end()) {
     std::string shortcut = get_select_the_previous_input_source_shortcut();
-    if (shortcut.empty()) {
-      shortcut = "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L";
-    }
     r.emplace("ENV_Select_the_previous_input_source_shortcut", shortcut);
   }
   if (r.find("ENV_Select_next_source_in_input_menu_shortcut") == r.end()) {
     std::string shortcut = get_select_next_source_in_input_menu_shortcut();
-    if (shortcut.empty()) {
-      shortcut = "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L";
-    }
     r.emplace("ENV_Select_next_source_in_input_menu_shortcut", shortcut);
   }
 }
