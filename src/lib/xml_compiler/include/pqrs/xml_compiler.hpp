@@ -53,6 +53,8 @@ public:
   void reload(const std::string& checkbox_xml_file_name);
   void reload(void) { reload("checkbox.xml"); }
 
+  bool needs_reload(void) const;
+
   const remapclasses_initialize_vector& get_remapclasses_initialize_vector(void) const {
     return remapclasses_initialize_vector_;
   }
@@ -103,6 +105,8 @@ public:
 
 private:
   void append_environments_to_replacement_(pqrs::string::replacement& r) const;
+  static std::string get_select_the_previous_input_source_shortcut(void);
+  static std::string get_select_next_source_in_input_menu_shortcut(void);
 
   void read_xml_(ptree_ptr& out,
                  const std::string& file_path,

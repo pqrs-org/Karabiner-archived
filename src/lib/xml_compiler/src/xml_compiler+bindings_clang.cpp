@@ -31,6 +31,13 @@ void pqrs_xml_compiler_reload(pqrs_xml_compiler* p, const char* checkbox_xml_fil
   xml_compiler->reload(checkbox_xml_file_name);
 }
 
+bool pqrs_xml_compiler_needs_reload(pqrs_xml_compiler* p) {
+  pqrs::xml_compiler* xml_compiler = reinterpret_cast<pqrs::xml_compiler*>(p);
+  if (!xml_compiler) return false;
+
+  return xml_compiler->needs_reload();
+}
+
 // ------------------------------------------------------------
 const char*
 pqrs_xml_compiler_get_error_message(const pqrs_xml_compiler* p) {

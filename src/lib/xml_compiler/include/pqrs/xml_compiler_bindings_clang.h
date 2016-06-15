@@ -16,6 +16,7 @@ void pqrs_xml_compiler_terminate(pqrs_xml_compiler** out);
 
 // ------------------------------------------------------------
 void pqrs_xml_compiler_reload(pqrs_xml_compiler* p, const char* checkbox_xml_file_name);
+bool pqrs_xml_compiler_needs_reload(pqrs_xml_compiler* p);
 
 // ------------------------------------------------------------
 const char* pqrs_xml_compiler_get_error_message(const pqrs_xml_compiler* p);
