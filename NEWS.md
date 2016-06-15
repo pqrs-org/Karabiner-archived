@@ -5,6 +5,7 @@
     * `Option::FLIPSCROLLWHEEL_HORIZONTAL` and `Option::FLIPSCROLLWHEEL_VERTICAL` have been supported in `__PointingRelativeToScroll__`.
 * Fixed issues:
   * Remote Desktop detection will be failed in some cases.
+  * Input source switching settings does not work in some environments.
 
 
 # Version 10.19.0
