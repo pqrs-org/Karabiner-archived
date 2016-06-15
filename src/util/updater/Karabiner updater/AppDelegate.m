@@ -76,6 +76,7 @@
     dispatch_source_set_timer(self.timer, dispatch_time(DISPATCH_TIME_NOW, 1.0 * NSEC_PER_SEC), 1.0 * NSEC_PER_SEC, 0);
     dispatch_source_set_event_handler(self.timer, ^{
       @strongify(self);
+      if (!self) return;
 
       if (!self.suUpdater.updateInProgress) {
         [NSApp terminate:self];
