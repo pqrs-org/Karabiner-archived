@@ -87,7 +87,22 @@
                                                              values:values];
     [profiles addObject:profileModel];
   }
+
+  if ([profiles count] == 0) {
+    // make default profile if needed.
+    ProfileModel* profileModel = [[ProfileModel alloc] initWithName:@"Default Profile"
+                                                         identifier:@"config_default"
+                                                        appendIndex:1
+                                                             values:@{}];
+    [profiles addObject:profileModel];
+  }
+
   preferencesModel.profiles = profiles;
+
+  // check currentProfileIndex
+  if (preferencesModel.currentProfileIndex < 0 || (NSInteger)([profiles count]) <= preferencesModel.currentProfileIndex) {
+    preferencesModel.currentProfileIndex = 0;
+  }
 
   // ----------------------------------------
   // axNotifier

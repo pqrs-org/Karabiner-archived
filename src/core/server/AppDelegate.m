@@ -319,12 +319,6 @@ static void observer_IONotification(void* refcon, io_iterator_t iterator) {
   [self.preferencesManager loadPreferencesModel:self.preferencesModel];
   [self.preferencesModel clearNotSave];
 
-  // make default profile if needed.
-  if ([self.preferencesModel.profiles count] == 0) {
-    [self.preferencesModel addProfile:@"Default Profile"];
-    [self.preferencesManager savePreferencesModel:self.preferencesModel processIdentifier:[NSProcessInfo processInfo].processIdentifier];
-  }
-
   [self.statusMessageManager setupStatusMessageManager];
   [self.statusbar refresh];
   [self.xmlCompiler reload];
