@@ -22,6 +22,12 @@ bool org_pqrs_driver_Karabiner::init(OSDictionary* dict) {
   IOLOG_INFO("init\n");
 
   bool res = super::init(dict);
+
+  notifier_hookKeyboard_ = nullptr;
+  notifier_unhookKeyboard_ = nullptr;
+  notifier_hookPointing_ = nullptr;
+  notifier_unhookPointing_ = nullptr;
+
   return res;
 }
 
