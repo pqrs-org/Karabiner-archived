@@ -138,4 +138,12 @@
     <replacementname>VIM_EMU_USE_SHIFT</replacementname>
     <replacementvalue></replacementvalue>
   </replacementdef>
+  <replacementdef>
+    <replacementname>VIM_EMU_CUSTOMIZE_KEY</replacementname>
+    <replacementvalue>KeyCode::ESCAPE</replacementvalue>
+  </replacementdef>
+  <replacementdef>
+    <replacementname>VIM_EMU_CUSTOMIZE_SIMULTANEOUS_KEY</replacementname>
+    <replacementvalue>KeyCode::O, KeyCode::P</replacementvalue>
+  </replacementdef>
 </root>
