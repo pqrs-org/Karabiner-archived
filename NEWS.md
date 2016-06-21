@@ -1,3 +1,8 @@
+# Since Version 10.20.0
+
+* Prepared settings have been updated.
+
+
 # Version 10.20.0
 
 * New functions and improvements:
