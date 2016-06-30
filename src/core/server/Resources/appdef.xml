@@ -458,6 +458,12 @@
   </appdef>
 
   <appdef>
+    <appname>Wine</appname>
+    <suffix>.wineskin.prefs</suffix>
+    <prefix>org.winehq.wine</prefix>
+  </appdef>
+
+  <appdef>
     <appname>MAYA</appname>
     <equal>com.autodesk.Maya.2010</equal>
   </appdef>
