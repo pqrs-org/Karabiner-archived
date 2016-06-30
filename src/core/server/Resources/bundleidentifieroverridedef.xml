@@ -73,20 +73,7 @@
   -->
 
   <bundleidentifieroverridedef>
-    <newbundleidentifier>karabiner.remotedesktop</newbundleidentifier>
-
-    <bundleidentifiers>
-      <equal>com.microsoft.rdc.mac</equal>
-      <equal>com.microsoft.rdc.osx.beta</equal>
-    </bundleidentifiers>
-
-    <uielementroles>
-      <equal>AXWindow</equal>
-    </uielementroles>
-  </bundleidentifieroverridedef>
-
-  <bundleidentifieroverridedef>
-    <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
+    <newbundleidentifier>microsoft.rdc.remotedesktop-preferences</newbundleidentifier>
 
     <bundleidentifiers>
       <equal>com.microsoft.rdc.mac</equal>
@@ -105,6 +92,16 @@
     </windownames>
   </bundleidentifieroverridedef>
 
+  <bundleidentifieroverridedef>
+    <newbundleidentifier>microsoft.rdc.remotedesktop</newbundleidentifier>
+
+    <bundleidentifiers>
+      <equal>com.microsoft.rdc.mac</equal>
+      <equal>com.microsoft.rdc.osx.beta</equal>
+    </bundleidentifiers>
+
+  </bundleidentifieroverridedef>
+  
   <!-- ======================================== -->
   <!-- karabiner.remotedesktop -->
 

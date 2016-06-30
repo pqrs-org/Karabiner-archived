@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Enable at only Microsoft Remote Desktop for Mac</name> 
+    <item>
+      <name>Specific Language Keyboards</name>
+        <include path="microsoft_remote_desktop/A1314.xml" />
+    </item>
+  </item>
+</root>

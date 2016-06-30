@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>French Mac keyboard A1314 using the Microsoft Remote Desktop App</name>
+    <identifier>remap.mac_A1314_keyboard_MRD_layout</identifier>
+    <only>RDCMAC</only>
+    <!-- Next keys by e-gaulue -->
+    <!-- KEY_6 to '§' -->
+    <autogen>__KeyToKey__ KeyCode::KEY_6, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::SHIFT_R</autogen>
+    <!-- KEY_8 to '!' -->
+    <autogen>__KeyToKey__ KeyCode::KEY_8, ModifierFlag::NONE, KeyCode::SLASH, ModifierFlag::NONE</autogen>
+    <!-- FRENCH_MINUS to '-' -->
+    <autogen>__KeyToKey__ KeyCode::FRENCH_MINUS, ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::NONE</autogen>
+    <!-- FRENCH_MINUS + Shift to '_' -->
+    <autogen>__KeyToKey__ KeyCode::FRENCH_MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::NONE</autogen>
+    <!-- FRENCH_@ to '@' -->
+    <autogen>__KeyToKey__ KeyCode::RawValue::0xa, ModifierFlag::NONE, KeyCode::KEY_0, ModifierFlag::OPTION_R</autogen>
+    <!-- FRENCH_@ + Shift to '#' -->
+    <autogen>__KeyToKey__ KeyCode::RawValue::0xa, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_3, ModifierFlag::OPTION_R</autogen>
+    <!-- FRENCH_DOLLAR + Shift to '*' -->
+    <autogen>__KeyToKey__ KeyCode::FRENCH_DOLLAR, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEYPAD_MULTIPLY, ModifierFlag::NONE</autogen>
+    <!-- FRENCH_DOLLAR + AltGr to '€' -->
+    <autogen>__KeyToKey__ KeyCode::FRENCH_DOLLAR, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::E, ModifierFlag::OPTION_R</autogen>
+    <!-- BACKSLASH to '`' -->
+    <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::NONE, KeyCode::KEY_7, ModifierFlag::OPTION_R</autogen>
+    <!-- BACKSLASH + Shift to '£' -->
+    <autogen>__KeyToKey__ KeyCode::BACKSLASH, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::FRENCH_DOLLAR, ModifierFlag::SHIFT_R</autogen>
+    <!-- FRENCH_EQUAL to '=' -->
+    <autogen>__KeyToKey__ KeyCode::FRENCH_EQUAL, ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::NONE</autogen>
+    <!-- FRENCH_EQUAL + Shift to '+' -->
+    <autogen>__KeyToKey__ KeyCode::FRENCH_EQUAL, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::EQUAL, ModifierFlag::SHIFT_R</autogen>
+    <!-- Next keys by tchabaud -->
+    <!-- ALT + Shift + DOT to '\' -->
+    <autogen>__KeyToKey__ KeyCode::DOT, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_8, ModifierFlag::OPTION_R | ModifierFlag::NONE</autogen>
+    <!-- ALT + Shift + l to '|' -->
+    <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_6, ModifierFlag::OPTION_R | ModifierFlag::NONE</autogen>
+    <!-- ALT + ( to '{' -->
+    <autogen>__KeyToKey__ KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::KEY_4, ModifierFlag::OPTION_R | ModifierFlag::NONE</autogen>
+    <!-- ALT + ) to '}' -->
+    <autogen>__KeyToKey__ KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::NONE</autogen>
+    <!-- ALT + Shift + ( to '[' -->
+    <autogen>__KeyToKey__ KeyCode::KEY_5, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::KEY_5, ModifierFlag::OPTION_R | ModifierFlag::NONE</autogen>
+    <!-- ALT + Shift + ) to ']' -->
+    <autogen>__KeyToKey__ KeyCode::MINUS, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_SHIFT | ModifierFlag::NONE, KeyCode::MINUS, ModifierFlag::OPTION_R | ModifierFlag::NONE</autogen>
+    <!-- ALT + n to '~' -->
+    <autogen>__KeyToKey__ KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_OPTION | ModifierFlag::NONE, KeyCode::KEY_2, ModifierFlag::OPTION_R | ModifierFlag::NONE</autogen>
+  </item>
+</root>
