@@ -258,7 +258,7 @@
   <replacementdef>
     <replacementname>PC_STYLE_BINDINGS_IGNORE_APPS_DESCRIPTION</replacementname>
     <replacementvalue>
-      (Except in Virtual Machine, RDC, VNC, TeamViewer, EMACS, TERMINAL, X11, Citrix Viewer)
+      (Except in Virtual Machine, RDC, VNC, TeamViewer, EMACS, TERMINAL, X11, Citrix Viewer, Wine)
     </replacementvalue>
   </replacementdef>
 

@@ -45,6 +45,7 @@
     <equal>org.virtualbox.app.VirtualBoxVM</equal>
     <prefix>com.vmware.proxyApp.</prefix>
     <prefix>com.parallels.winapp.</prefix>
+    <prefix>org.winehq.wine</prefix>
   </appdef>
 
   <appdef>
