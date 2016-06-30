@@ -73,7 +73,7 @@
   -->
 
   <bundleidentifieroverridedef>
-    <newbundleidentifier>karabiner.remotedesktop</newbundleidentifier>
+    <newbundleidentifier>karabiner.remotedesktop.microsoft</newbundleidentifier>
 
     <bundleidentifiers>
       <equal>com.microsoft.rdc.mac</equal>
@@ -86,7 +86,7 @@
   </bundleidentifieroverridedef>
 
   <bundleidentifieroverridedef>
-    <newbundleidentifier>karabiner.remotedesktop-preferences</newbundleidentifier>
+    <newbundleidentifier>karabiner.remotedesktop-preferences.microsoft</newbundleidentifier>
 
     <bundleidentifiers>
       <equal>com.microsoft.rdc.mac</equal>
