@@ -96,6 +96,7 @@
     <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/mucommander.xml" />
     <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/skim.xml" />
     <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/twitter.xml" />
+    <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/apps/microsoft_remote_desktop.xml" />
   </item>
 
   <include once="true" path="{{ ENV_Karabiner_Resources }}/include/checkbox/keyboard_layouts.xml" />

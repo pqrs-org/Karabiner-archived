@@ -48,6 +48,11 @@
   </appdef>
 
   <appdef>
+    <appname>RDCMAC</appname>
+    <equal>microsoft.rdc.remotedesktop</equal>
+  </appdef>
+
+  <appdef>
     <appname>REMOTEDESKTOPCONNECTION</appname>
     <equal>com.microsoft.rdc</equal>
     <equal>com.microsoft.rdc.mac</equal>
@@ -61,6 +66,7 @@
     <equal>com.vmware.horizon</equal>
     <equal>com.2X.Client.Mac</equal>
     <equal>karabiner.remotedesktop</equal>
+    <equal>microsoft.rdc.remotedesktop</equal>
   </appdef>
 
   <appdef>
