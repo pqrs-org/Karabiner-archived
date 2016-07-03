@@ -328,6 +328,13 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_pmset_displaysleepnow</name>
+    <url type="shell">
+      <![CDATA[    /usr/bin/pmset displaysleepnow  ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_SHELL_save_ps</name>
     <url type="shell">
       <![CDATA[    /bin/ps -a -v -w -x > ~/Desktop/ps.`date '+%s'`.txt    ]]>
