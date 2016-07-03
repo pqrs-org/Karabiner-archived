@@ -32,6 +32,9 @@
     _name = name;
     _identifier = identifier;
     _appendIndex = appendIndex;
+    if (!values) {
+      values = [NSDictionary new];
+    }
     _values = values;
   }
 
