@@ -1,5 +1,7 @@
 # Since Version 10.20.0
 
+* Fixed issues:
+  * Karabiner does not save preferences properly in an edge case.
 * Prepared settings have been updated.
 
 
