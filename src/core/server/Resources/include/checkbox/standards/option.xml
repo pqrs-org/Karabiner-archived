@@ -43,7 +43,8 @@
       <name>Option_L to Option_L</name>
       <appendix>(+ When you type Option_L only, send Command+Space)</appendix>
       <identifier>remap.optionL2optionL_commandSpace</identifier>
-      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L</autogen>
+      <!-- Hack: Sending KeyCode::COMMAND_L after control-space to release the command key -->
+      <autogen>__KeyOverlaidModifier__ KeyCode::OPTION_L, KeyCode::OPTION_L, KeyCode::SPACE, ModifierFlag::COMMAND_L, KeyCode::COMMAND_L</autogen>
     </item>
     <item>
       <name>Option_L to Option_L</name>
