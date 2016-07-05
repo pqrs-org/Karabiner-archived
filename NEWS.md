@@ -1,7 +1,7 @@
 # Version 10.21.0
 
 * Fixed issues:
-  * The key repeat rate will be set the slower value if you have not changed the system key repeat rate.
+  * The initial key repeat rate of Karabiner will be set the slower value if you have not changed the key repeat rate in System Preferences.
   * Karabiner does not save preferences properly in an edge case.
 * Prepared settings have been updated.
 
