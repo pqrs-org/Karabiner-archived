@@ -4,11 +4,11 @@
   <item hidden="true">
     <item>
       <name>Delay Until Repeat</name>
-      <identifier essential="true" default="583" step="100" baseunit="ms">repeat.initial_wait</identifier>
+      <identifier essential="true" default="500" step="100" baseunit="ms">repeat.initial_wait</identifier>
     </item>
     <item>
       <name>Key Repeat</name>
-      <identifier essential="true" default="100" step="10" baseunit="ms">repeat.wait</identifier>
+      <identifier essential="true" default="83" step="10" baseunit="ms">repeat.wait</identifier>
     </item>
   </item>
 
