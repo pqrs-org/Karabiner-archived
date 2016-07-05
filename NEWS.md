@@ -1,4 +1,4 @@
-# Since Version 10.20.0
+# Version 10.21.0
 
 * Fixed issues:
   * The key repeat rate will be set the slower value if you have not changed the system key repeat rate.
