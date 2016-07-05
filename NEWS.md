@@ -1,6 +1,7 @@
 # Since Version 10.20.0
 
 * Fixed issues:
+  * The key repeat rate will be set the slower value if you have not changed the system key repeat rate.
   * Karabiner does not save preferences properly in an edge case.
 * Prepared settings have been updated.
 
