@@ -981,7 +981,7 @@
       <autogen>
         __KeyToKey__
         KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_COMMAND | ModifierFlag::NONE,
-        KeyCode::VK_OPEN_URL_SHELL_sleep_with_delay,
+        KeyCode::VK_OPEN_URL_SHELL_lock_screen,
       </autogen>
     </item>
     <item>
