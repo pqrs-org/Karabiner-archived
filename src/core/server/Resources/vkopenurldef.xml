@@ -328,6 +328,13 @@
   </vkopenurldef>
 
   <vkopenurldef>
+    <name>KeyCode::VK_OPEN_URL_SHELL_lock_screen</name>
+    <url type="shell">
+      <![CDATA[    "/System/Library/CoreServices/Menu Extras/User.menu/Contents/Resources/CGSession" -suspend    ]]>
+    </url>
+  </vkopenurldef>
+
+  <vkopenurldef>
     <name>KeyCode::VK_OPEN_URL_SHELL_pmset_displaysleepnow</name>
     <url type="shell">
       <![CDATA[    /usr/bin/pmset displaysleepnow  ]]>
