@@ -1,3 +1,8 @@
+# Since 10.21.0
+
+* Prepared settings have been updated.
+
+
 # Version 10.21.0
 
 * Fixed issues:
