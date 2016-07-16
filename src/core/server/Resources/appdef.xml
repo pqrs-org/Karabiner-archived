@@ -32,6 +32,7 @@
     <equal>iTerm</equal>
     <equal>net.sourceforge.iTerm</equal>
     <equal>com.googlecode.iterm2</equal>
+    <equal>co.zeit.hyperterm</equal>
   </appdef>
 
   <appdef>
