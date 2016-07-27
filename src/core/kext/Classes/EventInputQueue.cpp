@@ -205,7 +205,7 @@ void EventInputQueue::push_KeyboardEventCallback(OSObject* target,
   // Device Hacks
 
   // Drop events if "Disable an internal keyboard while external keyboards are connected" is enabled.
-  if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_internal_keyboard_if_external_keyboard_exsits)) {
+  if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_internal_keyboard_if_external_keyboard_exists)) {
     if (ListHookedKeyboard::instance().isExternalDevicesConnected()) {
       ListHookedDevice::clearInternalKeyboardPressingPhysicalKeysCountAll();
       if (item->isInternalDevice()) {
@@ -340,7 +340,7 @@ void EventInputQueue::push_KeyboardSpecialEventCallback(OSObject* target,
   // Device Hacks
 
   // Drop events if "Disable an internal keyboard while external keyboards are connected" is enabled.
-  if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_internal_keyboard_if_external_keyboard_exsits)) {
+  if (Config::get_essential_config(BRIDGE_ESSENTIAL_CONFIG_INDEX_general_disable_internal_keyboard_if_external_keyboard_exists)) {
     if (ListHookedKeyboard::instance().isExternalDevicesConnected()) {
       ListHookedDevice::clearInternalKeyboardPressingPhysicalKeysCountAll();
       if (item->isInternalDevice()) {
