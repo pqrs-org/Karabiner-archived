@@ -603,6 +603,11 @@
   </appdef>
 
   <appdef>
+    <appname>WebStorm</appname>
+    <prefix>com.jetbrains.WebStorm</prefix>
+  </appdef>
+
+  <appdef>
     <appname>IntelliJ</appname>
     <prefix>com.jetbrains.intellij</prefix>
   </appdef>
