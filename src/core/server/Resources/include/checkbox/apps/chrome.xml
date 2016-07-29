@@ -79,7 +79,7 @@
     </item>
 
     <item>
-      <name>PC Style New Tab (Control+N, Control+Shift+N)</name>
+      <name>PC Style New Window (Control+N, Control+Shift+N)</name>
       <identifier>remap.app_google_chrome_controlN2commandN</identifier>
       <modifier_not>
         ModifierFlag::COMMAND_L,
@@ -96,7 +96,7 @@
     </item>
 
     <item>
-      <name>PC Style Open Tab (Control+T, Control+Shift+T)</name>
+      <name>PC Style New Tab (Control+T, Control+Shift+T)</name>
       <identifier>remap.app_google_chrome_controlT2commandT</identifier>
       <modifier_not>
         ModifierFlag::COMMAND_L,
