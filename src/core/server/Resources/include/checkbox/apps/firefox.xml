@@ -2,32 +2,110 @@
 <root>
   <item>
     <name>Enable at only Firefox</name>
+
     <item>
-      <name>Control+K to Command+K</name>
+      <name>PC Style Search (Control+K)</name>
       <identifier>remap.app_firefox_controlK2commandK</identifier>
-      <autogen>__KeyToKey__ KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::K, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::SHIFT_L,
+        ModifierFlag::SHIFT_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::K, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::K, ModifierFlag::COMMAND_L,
+      </autogen>
       <only>FIREFOX</only>
     </item>
+
     <item>
-      <name>Control+L to Command+L</name>
+      <name>PC Style Open Location (Control+L)</name>
       <identifier>remap.app_firefox_controlL2commandL</identifier>
-      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::L, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::SHIFT_L,
+        ModifierFlag::SHIFT_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::L, ModifierFlag::COMMAND_L,
+      </autogen>
       <only>FIREFOX</only>
     </item>
+
     <item>
-      <name>Control+T to Command+T</name>
-      <identifier>remap.app_firefox_controlT2commandT</identifier>
-      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+      <name>PC Style New Window (Control+N, Control+Shift+N)</name>
+      <identifier>remap.app_firefox_controlN2commandN</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::N, ModifierFlag::COMMAND_L,
+      </autogen>
       <only>FIREFOX</only>
     </item>
+
+    <item>
+      <name>PC Style New Tab (Control+T, Control+Shift+T)</name>
+      <identifier>remap.app_firefox_controlT2commandT</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::T, ModifierFlag::COMMAND_L,
+      </autogen>
+      <only>FIREFOX</only>
+    </item>
+
+    <item>
+      <name>PC Style Close (Control+W, Control+Shift+W)</name>
+      <identifier>remap.app_firefox_controlW2commandW</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::W, ModifierFlag::COMMAND_L,
+      </autogen>
+      <only>FIREFOX</only>
+    </item>
+
     <item>
       <name>Tilt Wheel to Back/Forward (Command+[, Command+])</name>
       <identifier>remap.app_firefox_tilt_to_back_forward</identifier>
       <only>FIREFOX</only>
-      <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT, ModifierFlag::NONE,
-        KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
-      <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ModifierFlag::NONE,
-        KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::LEFT, ModifierFlag::NONE,
+        KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L,
+      </autogen>
+      <autogen>
+        __ScrollWheelToKey__
+        ScrollWheel::RIGHT, ModifierFlag::NONE,
+        KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L,
+      </autogen>
     </item>
   </item>
 
