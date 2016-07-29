@@ -7,9 +7,9 @@
       <identifier>remap.app_google_chrome_tilt_to_back_forward</identifier>
       <only>GOOGLE_CHROME</only>
       <autogen>__ScrollWheelToKey__ ScrollWheel::LEFT, ModifierFlag::NONE,
-        KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+      KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
       <autogen>__ScrollWheelToKey__ ScrollWheel::RIGHT, ModifierFlag::NONE,
-        KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+      KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
     </item>
 
     <item>
@@ -60,23 +60,72 @@
     </item>
 
     <item>
-      <name>Control+L to Command+L</name>
+      <name>PC Style Open Location (Control+L)</name>
       <identifier>remap.app_google_chrome_controlL2commandL</identifier>
-      <autogen>__KeyToKey__ KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::L, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::SHIFT_L,
+        ModifierFlag::SHIFT_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::L, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::L, ModifierFlag::COMMAND_L,
+      </autogen>
       <only>GOOGLE_CHROME</only>
     </item>
 
     <item>
-      <name>Control+T to Command+T</name>
+      <name>PC Style New Tab (Control+N, Control+Shift+N)</name>
+      <identifier>remap.app_google_chrome_controlN2commandN</identifier>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::N, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::N, ModifierFlag::COMMAND_L,
+      </autogen>
+      <only>GOOGLE_CHROME</only>
+    </item>
+
+    <item>
+      <name>PC Style Open Tab (Control+T, Control+Shift+T)</name>
       <identifier>remap.app_google_chrome_controlT2commandT</identifier>
-      <autogen>__KeyToKey__ KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::T, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::T, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::T, ModifierFlag::COMMAND_L,
+      </autogen>
       <only>GOOGLE_CHROME</only>
     </item>
 
     <item>
-      <name>Control+W to Command+W</name>
+      <name>PC Style Close (Control+W, Control+Shift+W)</name>
       <identifier>remap.app_google_chrome_controlW2commandW</identifier>
-      <autogen>__KeyToKey__ KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL, KeyCode::W, ModifierFlag::COMMAND_L</autogen>
+      <modifier_not>
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::COMMAND_L,
+        ModifierFlag::OPTION_L,
+        ModifierFlag::OPTION_L,
+      </modifier_not>
+      <autogen>
+        __KeyToKey__
+        KeyCode::W, MODIFIERFLAG_EITHER_LEFT_OR_RIGHT_CONTROL,
+        KeyCode::W, ModifierFlag::COMMAND_L,
+      </autogen>
       <only>GOOGLE_CHROME</only>
     </item>
   </item>
