@@ -1,6 +1,8 @@
 # Since 10.21.0
 
 * Prepared settings have been updated.
+* Fixed issues:
+  * Some Qt apps might be crash when AXNotifier is enabled. (VirtualBox Preferences)
 
 
 # Version 10.21.0
