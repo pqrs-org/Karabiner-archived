@@ -152,6 +152,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   // Qt apps will be crashed if observe.
   if (axNotifierPreferencesModel.disabledInQtApps) {
     if ([[[self.runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
+        [[[self.runningApplication bundleIdentifier] lowercaseString] isEqualToString:@"org.virtualbox.app.VirtualBox"] ||
         false) {
       observable = NO;
     }
