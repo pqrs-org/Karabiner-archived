@@ -19,6 +19,7 @@ Useful links
 * Latest build: https://pqrs.org/osx/karabiner/
 * Mirror: http://tekezo.github.io/pqrs.org/
 * Google Group: https://groups.google.com/forum/#!forum/osx-karabiner
+* List of key names: https://github.com/tekezo/Karabiner/blob/master/src/bridge/generator/keycode/data/KeyCode.data
 
 You can also get the latest stable release package via fixed URL.
 
