@@ -142,6 +142,11 @@
   </devicevendordef>
 
   <devicevendordef>
+    <vendorname>Kinesis</vendorname>
+    <vendorid>0x29ea</vendorid>
+  </devicevendordef>
+
+  <devicevendordef>
     <vendorname>Corsair</vendorname>
     <vendorid>0x1b1c</vendorid>
   </devicevendordef>
