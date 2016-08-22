@@ -153,6 +153,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   if (axNotifierPreferencesModel.disabledInQtApps) {
     if ([[[self.runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
         [[self.runningApplication bundleIdentifier] hasPrefix:@"org.virtualbox."] ||
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"org.lyx.lyx"] ||
         false) {
       observable = NO;
     }
