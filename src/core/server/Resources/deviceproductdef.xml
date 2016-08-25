@@ -402,6 +402,11 @@
   </deviceproductdef>
 
   <deviceproductdef>
+    <productname>Advantage_2</productname>
+    <productid>0x0103</productid>
+  </deviceproductdef>
+
+  <deviceproductdef>
     <productname>Corsair_K65</productname>
     <productid>0x1b07</productid>
   </deviceproductdef>
