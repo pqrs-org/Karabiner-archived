@@ -9,7 +9,7 @@ namespace pqrs {
 
 std::string xml_compiler::get_select_the_previous_input_source_shortcut(void) {
   std::string shortcut;
-  int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 60", shortcut);
+  int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 60 2>/dev/null", shortcut);
   if (exit_code != 0 || shortcut.empty()) {
     return "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L";
   }
@@ -18,7 +18,7 @@ std::string xml_compiler::get_select_the_previous_input_source_shortcut(void) {
 
 std::string xml_compiler::get_select_next_source_in_input_menu_shortcut(void) {
   std::string shortcut;
-  int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 61", shortcut);
+  int exit_code = pqrs::process::launch("/Applications/Karabiner.app/Contents/Library/bin/read-symbolichotkeys 61 2>/dev/null", shortcut);
   if (exit_code != 0 || shortcut.empty()) {
     return "KeyCode::RawValue::0x31, ModifierFlag::CONTROL_L | ModifierFlag::OPTION_L";
   }
