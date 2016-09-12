@@ -2,7 +2,7 @@
 
 * Prepared settings have been updated.
 * Fixed issues:
-  * Some Qt apps might be crash when AXNotifier is enabled. (VirtualBox, LyX)
+  * Some Qt apps might be crash when AXNotifier is enabled. (LyX, VirtualBox, Wireshark)
 
 
 # Version 10.21.0
