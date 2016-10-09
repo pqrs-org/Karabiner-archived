@@ -227,6 +227,13 @@
           <config_only>option.tabmode_g_j_l_to_changespaces</config_only>
         </block>
         <block>
+          <config_only>option.tabmode_vi_keys</config_only>
+          <autogen>__KeyToKey__ {{ VI_J }}, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
+          <autogen>__KeyToKey__ {{ VI_K }}, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
+          <autogen>__KeyToKey__ {{ VI_L }}, KeyCode::BRACKET_RIGHT, VK_COMMAND, VK_SHIFT</autogen>
+          <autogen>__KeyToKey__ {{ VI_H }}, KeyCode::BRACKET_LEFT, VK_COMMAND, VK_SHIFT</autogen>
+        </block>
+        <block>
           <config_only>option.tabmode_jl</config_only>
           <autogen>__KeyToKey__ KeyCode::L, KeyCode::TAB, ModifierFlag::COMMAND_L</autogen>
           <autogen>__KeyToKey__ KeyCode::J, KeyCode::TAB, ModifierFlag::COMMAND_L | ModifierFlag::SHIFT_L</autogen>
@@ -306,6 +313,14 @@
         <autogen>__KeyOverlaidModifier__ KeyCode::TAB, KeyCode::VK_CONFIG_SYNC_KEYDOWNUP_notsave_tabmode , KeyCode::TAB</autogen>
       </item>
       <item><name>──────────────────────────────</name></item>
+      <item>
+        <name>[Option] Swich apps with VI_keys</name>
+        <appendix>J for next app</appendix>
+        <appendix>K for previous app</appendix>
+        <appendix>L for next tab in current app</appendix>
+        <appendix>H for previous tab in current app</appendix>
+        <identifier>option.tabmode_vi_keys</identifier>
+      </item>
       <item>
         <name>[Option] Switch apps with J/L</name>
         <appendix>For people who like jkli configuration</appendix>
