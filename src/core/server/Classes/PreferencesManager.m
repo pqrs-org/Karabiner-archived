@@ -40,7 +40,7 @@
       kAXNotifierDisabledInJavaApps : @YES,
       kAXNotifierDisabledInQtApps : @YES,
       kAXNotifierDisabledInPreview : @YES,
-      kAXNotifierDisabledInMicrosoftOffice : @YES,
+      kAXNotifierDisabledInMicrosoftOffice : @NO,
       kAXNotifierEnableDebuggingLog : @NO,
       kUsePreparedSettings : @YES,
       kIsMigratedIsOverwriteKeyRepeat : @NO,

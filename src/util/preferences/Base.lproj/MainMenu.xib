@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1440,8 +1441,8 @@ Choose a profile from menu bar.</string>
                                                         </connections>
                                                     </button>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="r0Y-Nx-SJ0">
-                                                        <rect key="frame" x="25" y="257" width="482" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Disable window name and role observation in Microsoft Office. (Default: On)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ja7-DR-gBY">
+                                                        <rect key="frame" x="25" y="257" width="483" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Disable window name and role observation in Microsoft Office. (Default: Off)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ja7-DR-gBY">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="system"/>
                                                         </buttonCell>
