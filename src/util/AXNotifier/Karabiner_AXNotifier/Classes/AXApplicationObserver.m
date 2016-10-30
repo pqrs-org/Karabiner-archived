@@ -150,10 +150,12 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
   }
 
   // Qt apps will be crashed if observe.
+  // See https://bugreports.qt.io/browse/QTBUG-49907
   if (axNotifierPreferencesModel.disabledInQtApps) {
     if ([[[self.runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
         [[self.runningApplication bundleIdentifier] hasPrefix:@"org.virtualbox."] ||
         [[self.runningApplication bundleIdentifier] isEqualToString:@"org.lyx.lyx"] ||
+        [[[self.runningApplication bundleIdentifier] lowercaseString] isEqualToString:@"org.wireshark.wireshark"] ||
         false) {
       observable = NO;
     }
