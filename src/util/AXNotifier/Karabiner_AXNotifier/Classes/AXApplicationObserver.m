@@ -155,7 +155,7 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
     if ([[[self.runningApplication bundleIdentifier] lowercaseString] hasPrefix:@"com.buhldata."] ||
         [[self.runningApplication bundleIdentifier] hasPrefix:@"org.virtualbox."] ||
         [[self.runningApplication bundleIdentifier] isEqualToString:@"org.lyx.lyx"] ||
-        [[[self.runningApplication bundleIdentifier] lowercaseString] isEqualToString:@"org.wireshark.wireshark"] ||
+        [[self.runningApplication bundleIdentifier] isEqualToString:@"org.wireshark.Wireshark"] ||
         false) {
       observable = NO;
     }
