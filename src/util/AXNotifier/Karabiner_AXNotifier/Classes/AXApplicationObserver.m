@@ -343,8 +343,18 @@ observerCallback(AXObserverRef observer, AXUIElementRef element, CFStringRef not
 }
 
 - (void)postNotification {
+  NSString* bundleIdentifier = self.runningApplication.bundleIdentifier;
+  if (!bundleIdentifier) {
+    NSString* executableName = self.runningApplication.executableURL.lastPathComponent;
+    if (!executableName) {
+      executableName = @"unknown";
+    }
+
+    bundleIdentifier = [NSString stringWithFormat:@"org.pqrs.unknownapp.%@", executableName];
+  }
+
   NSDictionary* userInfo = @{
-    @"bundleIdentifier" : [self.runningApplication bundleIdentifier],
+    @"bundleIdentifier" : bundleIdentifier,
     @"title" : self.title,
     @"role" : self.role,
   };
