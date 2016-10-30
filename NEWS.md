@@ -1,6 +1,7 @@
 # Since 10.21.0
 
 * Prepared settings have been updated.
+* Default setting of AXNotifier has been changed. (Enabled in Microsoft Office)
 * Fixed issues:
   * Some Qt apps might be crash when AXNotifier is enabled. (LyX, VirtualBox, Wireshark)
 
