@@ -385,7 +385,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   struct BridgeUserClientStruct bridgestruct;
   bridgestruct.type = BRIDGE_USERCLIENT_TYPE_SET_INITIALIZED;
   bridgestruct.option = 0;
-  bridgestruct.data = &value;
+  bridgestruct.data = (user_addr_t)(&value);
   bridgestruct.size = sizeof(value);
 
   [self.userClient_userspace synchronized_communication:&bridgestruct];
@@ -455,7 +455,7 @@ static void static_callback_NotificationFromKext(void* refcon, IOReturn result, 
   struct BridgeUserClientStruct bridgestruct;
   bridgestruct.type = BRIDGE_USERCLIENT_TYPE_UNSET_DEBUG_FLAGS;
   bridgestruct.option = 0;
-  bridgestruct.data = &dummy;
+  bridgestruct.data = (user_addr_t)(&dummy);
   bridgestruct.size = sizeof(dummy);
 
   [self.userClient_userspace synchronized_communication:&bridgestruct];
