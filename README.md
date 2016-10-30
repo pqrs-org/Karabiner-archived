@@ -42,7 +42,7 @@ How to build
 System requirements:
 
 * OS X 10.11+
-* Xcode 7.2+
+* Xcode 8+
 * Command Line Tools for Xcode
 * Boost 1.56.0+ (header-only) http://www.boost.org/
 
