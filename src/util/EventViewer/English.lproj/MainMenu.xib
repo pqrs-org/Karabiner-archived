@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EventViewerApplication">
@@ -48,7 +49,7 @@
                                     <rect key="frame" x="10" y="33" width="834" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="Keyboard &amp; Pointing events" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="614">
+                                        <box borderType="line" title="Keyboard &amp; Pointing events" translatesAutoresizingMaskIntoConstraints="NO" id="614">
                                             <rect key="frame" x="14" y="178" width="806" height="305"/>
                                             <view key="contentView" id="pJS-41-sBt">
                                                 <rect key="frame" x="1" y="1" width="804" height="289"/>
@@ -81,7 +82,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="565" id="564">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="753" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="753" height="214"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -166,7 +167,7 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </scroller>
                                                         <tableHeaderView key="headerView" autoresizesSubviews="NO" focusRingType="none" id="565">
-                                                            <rect key="frame" x="0.0" y="0.0" width="761" height="23"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="753" height="23"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                         </tableHeaderView>
                                                     </scrollView>
@@ -182,10 +183,8 @@
                                                     <constraint firstItem="561" firstAttribute="leading" secondItem="541" secondAttribute="leading" id="pfn-WU-u72"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Input Source" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="811">
+                                        <box borderType="line" title="Input Source" translatesAutoresizingMaskIntoConstraints="NO" id="811">
                                             <rect key="frame" x="14" y="6" width="636" height="166"/>
                                             <view key="contentView" id="t4H-Tn-FPs">
                                                 <rect key="frame" x="1" y="1" width="634" height="150"/>
@@ -249,11 +248,8 @@
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                     </textField>
-                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="adL-9z-q40">
+                                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="adL-9z-q40">
                                                         <rect key="frame" x="17" y="30" width="600" height="5"/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="system"/>
                                                     </box>
                                                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="HKW-al-9Bg">
                                                         <rect key="frame" x="15" y="10" width="115" height="17"/>
@@ -297,8 +293,6 @@
                                                     <constraint firstItem="606" firstAttribute="leading" secondItem="814" secondAttribute="leading" id="vUU-tb-P89"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="925" customClass="KeyResponder">
                                             <rect key="frame" x="657" y="10" width="160" height="160"/>
@@ -332,7 +326,7 @@
                                     <rect key="frame" x="10" y="33" width="834" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="Applications" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="879">
+                                        <box borderType="line" title="Applications" translatesAutoresizingMaskIntoConstraints="NO" id="879">
                                             <rect key="frame" x="14" y="152" width="806" height="331"/>
                                             <view key="contentView" id="bzT-ho-Y12">
                                                 <rect key="frame" x="1" y="1" width="804" height="315"/>
@@ -365,7 +359,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="886" id="884">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="753" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="753" height="240"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -430,7 +424,6 @@
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </clipView>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="885">
                                                             <rect key="frame" x="-100" y="-100" width="761" height="15"/>
@@ -457,10 +450,8 @@
                                                     <constraint firstItem="905" firstAttribute="leading" secondItem="882" secondAttribute="trailing" constant="10" id="xbq-IJ-T3W"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Karabiner internal" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="49z-lQ-jK7">
+                                        <box borderType="line" title="Karabiner internal" translatesAutoresizingMaskIntoConstraints="NO" id="49z-lQ-jK7">
                                             <rect key="frame" x="14" y="66" width="806" height="80"/>
                                             <view key="contentView" id="SVh-3q-mIt">
                                                 <rect key="frame" x="1" y="1" width="804" height="64"/>
@@ -512,8 +503,6 @@
                                                     <constraint firstItem="zOb-Ri-BOu" firstAttribute="top" secondItem="SVh-3q-mIt" secondAttribute="top" constant="10" id="ygC-vT-Efj"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                         <box borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="6BO-Yy-5kc">
                                             <rect key="frame" x="14" y="6" width="806" height="56"/>
@@ -548,8 +537,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <constraint firstItem="EYh-8r-92q" firstAttribute="leading" secondItem="d8G-TF-VNV" secondAttribute="trailing" constant="10" id="f3R-Vy-d2o"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -571,7 +558,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                     <rect key="frame" x="10" y="33" width="834" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="Device information" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="764">
+                                        <box borderType="line" title="Device information" translatesAutoresizingMaskIntoConstraints="NO" id="764">
                                             <rect key="frame" x="14" y="13" width="806" height="470"/>
                                             <view key="contentView" id="LNK-eL-ry6">
                                                 <rect key="frame" x="1" y="1" width="804" height="454"/>
@@ -604,7 +591,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" enabled="NO" rowHeight="14" headerView="752" id="750">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="753" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="753" height="379"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -695,7 +682,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </clipView>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="751">
                                                             <rect key="frame" x="-100" y="-100" width="761" height="15"/>
@@ -722,8 +708,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <constraint firstAttribute="trailing" secondItem="749" secondAttribute="trailing" constant="17" id="zvk-bh-PIh"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -739,7 +723,7 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                     <rect key="frame" x="10" y="33" width="834" height="493"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="Window behavior" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Qpe-gM-a7s">
+                                        <box borderType="line" title="Window behavior" translatesAutoresizingMaskIntoConstraints="NO" id="Qpe-gM-a7s">
                                             <rect key="frame" x="14" y="409" width="806" height="74"/>
                                             <view key="contentView" id="sxi-Co-MLe">
                                                 <rect key="frame" x="1" y="1" width="804" height="58"/>
@@ -776,10 +760,8 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <constraint firstItem="qpH-oY-yl0" firstAttribute="leading" secondItem="sxi-Co-MLe" secondAttribute="leading" constant="17" id="nmx-vo-XhA"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Others" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="lH0-6O-BWP">
+                                        <box borderType="line" title="Others" translatesAutoresizingMaskIntoConstraints="NO" id="lH0-6O-BWP">
                                             <rect key="frame" x="14" y="353" width="806" height="50"/>
                                             <view key="contentView" id="xoA-9x-cwN">
                                                 <rect key="frame" x="1" y="1" width="804" height="34"/>
@@ -802,8 +784,6 @@ If these values are empty, please permit accessibility features to Karabiner_AXN
                                                     <constraint firstAttribute="bottom" secondItem="cCs-zq-ovo" secondAttribute="bottom" constant="10" id="od8-gC-Cw7"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>

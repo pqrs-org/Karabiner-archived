@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -92,7 +92,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="25" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="OUp-MZ-5Nv" id="IQx-VK-0BP" customClass="CheckboxOutlineView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="703" height="455"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <size key="intercellSpacing" width="2" height="0.0"/>
                                                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -147,7 +147,6 @@
                                                         </connections>
                                                     </outlineView>
                                                 </subviews>
-                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </clipView>
                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="7uR-eY-12U">
                                                 <rect key="frame" x="-100" y="-100" width="718" height="15"/>
@@ -205,11 +204,8 @@
                                                 <binding destination="DhH-Gv-Z3N" name="selectedIndex" keyPath="self.pm.preferencesCheckboxFont" id="7JF-XT-f6R"/>
                                             </connections>
                                         </segmentedControl>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="uZp-Yu-pRy">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="uZp-Yu-pRy">
                                             <rect key="frame" x="17" y="32" width="499" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BJn-Ss-5R2">
                                             <rect key="frame" x="17" y="7" width="102" height="20"/>
@@ -242,11 +238,8 @@
                                                 <action selector="openPrivateXMLUsageURL:" target="0cj-x4-sGx" id="X5V-Pa-Lec"/>
                                             </connections>
                                         </button>
-                                        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="FgN-gc-wfP">
+                                        <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="FgN-gc-wfP">
                                             <rect key="frame" x="522" y="8" width="5" height="50"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -562,7 +555,7 @@
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="hgz-7r-ioV">
+                                        <box borderType="line" title="On/Off" translatesAutoresizingMaskIntoConstraints="NO" id="hgz-7r-ioV">
                                             <rect key="frame" x="14" y="491" width="726" height="50"/>
                                             <view key="contentView" id="fJy-yT-3Dc">
                                                 <rect key="frame" x="1" y="1" width="724" height="34"/>
@@ -586,10 +579,8 @@
                                                     <constraint firstItem="bLN-gu-cAr" firstAttribute="top" secondItem="fJy-yT-3Dc" secondAttribute="top" constant="10" id="x0G-3j-qWK"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Parameters" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="3RE-jL-mUj">
+                                        <box borderType="line" title="Parameters" translatesAutoresizingMaskIntoConstraints="NO" id="3RE-jL-mUj">
                                             <rect key="frame" x="14" y="221" width="726" height="254"/>
                                             <view key="contentView" id="29j-Xr-kpI">
                                                 <rect key="frame" x="1" y="1" width="724" height="238"/>
@@ -654,11 +645,8 @@
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                             </textFieldCell>
                                                                         </textField>
-                                                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="dEk-pl-RLS">
+                                                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="dEk-pl-RLS">
                                                                             <rect key="frame" x="0.0" y="78" width="690" height="5"/>
-                                                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                            <font key="titleFont" metaFont="system"/>
                                                                         </box>
                                                                         <imageView translatesAutoresizingMaskIntoConstraints="NO" id="e7z-Xp-YZp">
                                                                             <rect key="frame" x="0.0" y="38" width="32" height="32"/>
@@ -823,8 +811,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="250" id="7xz-DR-DzC"/>
                                             </constraints>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -842,7 +828,7 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="mXt-XE-noS">
+                                        <box borderType="line" title="On/Off" translatesAutoresizingMaskIntoConstraints="NO" id="mXt-XE-noS">
                                             <rect key="frame" x="14" y="395" width="726" height="146"/>
                                             <view key="contentView" id="8wI-xi-asr">
                                                 <rect key="frame" x="1" y="1" width="724" height="130"/>
@@ -918,10 +904,8 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="bw4-hN-nKP" firstAttribute="top" secondItem="QPe-cq-lVM" secondAttribute="bottom" constant="10" id="vcd-df-hn8"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Appearance" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Ici-c1-FYb">
+                                        <box borderType="line" title="Appearance" translatesAutoresizingMaskIntoConstraints="NO" id="Ici-c1-FYb">
                                             <rect key="frame" x="14" y="220" width="726" height="159"/>
                                             <view key="contentView" id="8YX-Wf-NF1">
                                                 <rect key="frame" x="1" y="1" width="724" height="143"/>
@@ -1102,10 +1086,8 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="6n2-at-fmW" secondAttribute="bottom" constant="10" id="Lep-5B-LUT"/>
                                             </constraints>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Position" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="Dmq-S2-JYr">
+                                        <box borderType="line" title="Position" translatesAutoresizingMaskIntoConstraints="NO" id="Dmq-S2-JYr">
                                             <rect key="frame" x="14" y="151" width="726" height="53"/>
                                             <view key="contentView" id="mdY-hd-geq">
                                                 <rect key="frame" x="1" y="1" width="724" height="37"/>
@@ -1150,8 +1132,6 @@ Thus, Karabiner takes about 2-5 seconds to reflect the system values in OS X 10.
                                                     <constraint firstItem="lS4-DH-izQ" firstAttribute="top" secondItem="mdY-hd-geq" secondAttribute="top" constant="10" id="WUe-Jg-s5e"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -1182,7 +1162,7 @@ Choose a profile from menu bar.</string>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box title="Configuration" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="MBL-XX-zun">
+                                        <box borderType="line" title="Configuration" translatesAutoresizingMaskIntoConstraints="NO" id="MBL-XX-zun">
                                             <rect key="frame" x="14" y="447" width="726" height="50"/>
                                             <view key="contentView" id="bzY-uB-aCM">
                                                 <rect key="frame" x="1" y="1" width="724" height="34"/>
@@ -1206,10 +1186,8 @@ Choose a profile from menu bar.</string>
                                                     <constraint firstItem="NNg-WK-SSR" firstAttribute="top" secondItem="bzY-uB-aCM" secondAttribute="top" constant="10" id="y6P-6e-yAT"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box autoresizesSubviews="NO" title="Profiles" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="nj2-Bh-b4D">
+                                        <box autoresizesSubviews="NO" borderType="line" title="Profiles" translatesAutoresizingMaskIntoConstraints="NO" id="nj2-Bh-b4D">
                                             <rect key="frame" x="14" y="13" width="726" height="428"/>
                                             <view key="contentView" id="tfn-tG-3bT">
                                                 <rect key="frame" x="1" y="1" width="724" height="412"/>
@@ -1222,7 +1200,7 @@ Choose a profile from menu bar.</string>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" viewBased="YES" id="VtD-5e-DMU" customClass="ProfileTableView">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="0.0"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="688" height="359"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1303,7 +1281,6 @@ Choose a profile from menu bar.</string>
                                                                     </connections>
                                                                 </tableView>
                                                             </subviews>
-                                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </clipView>
                                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ses-hY-KFw">
                                                             <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
@@ -1358,8 +1335,6 @@ Choose a profile from menu bar.</string>
                                                     <constraint firstItem="QLB-c2-Ot4" firstAttribute="centerY" secondItem="pkP-gg-otD" secondAttribute="centerY" id="zrt-bY-LpS"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -1380,7 +1355,7 @@ Choose a profile from menu bar.</string>
                                     <rect key="frame" x="10" y="33" width="754" height="558"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="Control" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="L2c-iq-57J">
+                                        <box borderType="line" title="Control" translatesAutoresizingMaskIntoConstraints="NO" id="L2c-iq-57J">
                                             <rect key="frame" x="14" y="486" width="726" height="55"/>
                                             <view key="contentView" id="GAI-kj-Djk">
                                                 <rect key="frame" x="1" y="1" width="724" height="39"/>
@@ -1413,10 +1388,8 @@ Choose a profile from menu bar.</string>
                                                     <constraint firstItem="Qy9-tr-9Wx" firstAttribute="top" secondItem="GAI-kj-Djk" secondAttribute="top" constant="10" id="nDe-1a-Mq7"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="On/Off" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="KZP-9O-XTU">
+                                        <box borderType="line" title="On/Off" translatesAutoresizingMaskIntoConstraints="NO" id="KZP-9O-XTU">
                                             <rect key="frame" x="14" y="75" width="726" height="395"/>
                                             <view key="contentView" id="Rew-AE-iyO">
                                                 <rect key="frame" x="1" y="1" width="724" height="379"/>
@@ -1488,11 +1461,8 @@ Choose a profile from menu bar.</string>
                                                             <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.axNotifier.debuggingLogEnabled" id="aEc-WL-goj"/>
                                                         </connections>
                                                     </button>
-                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-u8-agA">
+                                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-u8-agA">
                                                         <rect key="frame" x="17" y="222" width="690" height="5"/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="system"/>
                                                     </box>
                                                     <imageView translatesAutoresizingMaskIntoConstraints="NO" id="Tvg-oL-rhC">
                                                         <rect key="frame" x="17" y="182" width="32" height="32"/>
@@ -1546,8 +1516,6 @@ The following settings will not work properly if you disable AXNotifier.
                                                     <constraint firstItem="Zd8-u8-agA" firstAttribute="leading" secondItem="Rew-AE-iyO" secondAttribute="leading" constant="17" id="wAf-T5-qRP"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -1581,11 +1549,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="16n-3H-Ksc">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="16n-3H-Ksc">
                                             <rect key="frame" x="17" y="522" width="720" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tgW-YA-cNt">
                                             <rect key="frame" x="108" y="497" width="56" height="17"/>
@@ -1626,11 +1591,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <action selector="checkForUpdatesWithBetaVersion:" target="0cj-x4-sGx" id="HB6-lJ-au4"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="b4u-8T-mkH">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="b4u-8T-mkH">
                                             <rect key="frame" x="17" y="455" width="720" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oVQ-sE-4FJ">
                                             <rect key="frame" x="98" y="430" width="66" height="17"/>
@@ -1650,11 +1612,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <action selector="launchUninstaller:" target="0cj-x4-sGx" id="4cC-uZ-OFz"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="vhu-PP-yNK">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="vhu-PP-yNK">
                                             <rect key="frame" x="17" y="415" width="720" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVs-qr-d6K">
                                             <rect key="frame" x="55" y="390" width="109" height="17"/>
@@ -1685,11 +1644,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <binding destination="DhH-Gv-Z3N" name="value" keyPath="self.pm.usePreparedSettings" id="nX2-eh-ox5"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="RWk-QG-rdT">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="RWk-QG-rdT">
                                             <rect key="frame" x="17" y="351" width="720" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pul-5G-6sr">
                                             <rect key="frame" x="28" y="326" width="136" height="17"/>
@@ -1719,11 +1675,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <action selector="launchMultiTouchExtension:" target="0cj-x4-sGx" id="WX7-RM-Mph"/>
                                             </connections>
                                         </button>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="mAK-ar-kAE">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mAK-ar-kAE">
                                             <rect key="frame" x="17" y="280" width="720" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QMI-Dv-caT">
                                             <rect key="frame" x="91" y="255" width="73" height="17"/>
@@ -1761,11 +1714,8 @@ The following settings will not work properly if you disable AXNotifier.
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="sjK-yR-Xob">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="sjK-yR-Xob">
                                             <rect key="frame" x="17" y="209" width="720" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="saX-B6-z7T">
                                             <rect key="frame" x="113" y="184" width="51" height="17"/>
@@ -1805,11 +1755,8 @@ Debug Mode Guide</string>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="SbD-kZ-xTD">
+                                        <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="SbD-kZ-xTD">
                                             <rect key="frame" x="17" y="132" width="720" height="5"/>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="system"/>
                                         </box>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2gM-eR-fmV">
                                             <rect key="frame" x="63" y="107" width="101" height="17"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1108" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11542"/>
         <capability name="box content view" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -118,7 +118,7 @@
                                     <rect key="frame" x="10" y="33" width="514" height="432"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="Basic" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="580">
+                                        <box borderType="line" title="Basic" translatesAutoresizingMaskIntoConstraints="NO" id="580">
                                             <rect key="frame" x="14" y="332" width="486" height="90"/>
                                             <view key="contentView" id="hck-Mb-Jdu">
                                                 <rect key="frame" x="1" y="1" width="484" height="74"/>
@@ -157,10 +157,8 @@
                                             <constraints>
                                                 <constraint firstItem="537" firstAttribute="leading" secondItem="580" secondAttribute="leading" constant="10" id="fFV-Mc-PlD"/>
                                             </constraints>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Behavior" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="539">
+                                        <box borderType="line" title="Behavior" translatesAutoresizingMaskIntoConstraints="NO" id="539">
                                             <rect key="frame" x="14" y="55" width="486" height="271"/>
                                             <view key="contentView" id="tld-jM-dX7">
                                                 <rect key="frame" x="1" y="1" width="484" height="255"/>
@@ -204,11 +202,8 @@
                                                             </binding>
                                                         </connections>
                                                     </textField>
-                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="554">
+                                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="554">
                                                         <rect key="frame" x="14" y="189" width="415" height="5"/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="system"/>
                                                     </box>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="542">
                                                         <rect key="frame" x="15" y="165" width="345" height="18"/>
@@ -245,11 +240,8 @@
                                                             </binding>
                                                         </connections>
                                                     </textField>
-                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="555">
+                                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="555">
                                                         <rect key="frame" x="14" y="124" width="415" height="5"/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="system"/>
                                                     </box>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="544">
                                                         <rect key="frame" x="15" y="100" width="345" height="18"/>
@@ -286,11 +278,8 @@
                                                             </binding>
                                                         </connections>
                                                     </textField>
-                                                    <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="721">
+                                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="721">
                                                         <rect key="frame" x="14" y="59" width="415" height="5"/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="system"/>
                                                     </box>
                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="722">
                                                         <rect key="frame" x="15" y="35" width="345" height="18"/>
@@ -368,8 +357,6 @@
                                                     <constraint firstItem="722" firstAttribute="leading" secondItem="540" secondAttribute="leading" id="yVw-8A-Ng1"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
@@ -580,7 +567,7 @@
                                     <rect key="frame" x="10" y="33" width="514" height="432"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <box title="Increase stability by relaunching at wake up" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="774">
+                                        <box borderType="line" title="Increase stability by relaunching at wake up" translatesAutoresizingMaskIntoConstraints="NO" id="774">
                                             <rect key="frame" x="14" y="345" width="486" height="77"/>
                                             <view key="contentView" id="wCM-Of-Yhy">
                                                 <rect key="frame" x="1" y="1" width="484" height="61"/>
@@ -651,10 +638,8 @@
                                                     <constraint firstItem="791" firstAttribute="leading" secondItem="790" secondAttribute="trailing" id="idw-OG-UM9"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
-                                        <box title="Delay" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="803">
+                                        <box borderType="line" title="Delay" translatesAutoresizingMaskIntoConstraints="NO" id="803">
                                             <rect key="frame" x="14" y="181" width="486" height="158"/>
                                             <view key="contentView" id="gwU-bY-aIb">
                                                 <rect key="frame" x="1" y="1" width="484" height="142"/>
@@ -765,8 +750,6 @@ when you touch fingers to trackpad.
                                                     <constraint firstItem="823" firstAttribute="leading" secondItem="808" secondAttribute="leading" id="qu0-Tc-C69"/>
                                                 </constraints>
                                             </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </box>
                                     </subviews>
                                     <constraints>
