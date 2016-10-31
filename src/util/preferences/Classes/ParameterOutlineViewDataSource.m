@@ -27,8 +27,6 @@
 - (id)outlineView:(NSOutlineView*)outlineView child:(NSInteger)index ofItem:(id)item {
   ParameterTree* tree = (ParameterTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
-
-  if ((NSUInteger)(index) >= [a count]) return nil;
   return a[index];
 }
 

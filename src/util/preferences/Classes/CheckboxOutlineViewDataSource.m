@@ -201,8 +201,6 @@
 - (id)outlineView:(NSOutlineView*)outlineView child:(NSInteger)index ofItem:(id)item {
   CheckboxTree* tree = (CheckboxTree*)(item);
   NSArray* a = tree ? tree.children : self.dataSource.children;
-
-  if ((NSUInteger)(index) >= [a count]) return nil;
   return a[index];
 }
 
