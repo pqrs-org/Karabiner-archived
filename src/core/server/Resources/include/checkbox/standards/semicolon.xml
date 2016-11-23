@@ -38,7 +38,7 @@
       <autogen>__KeyOverlaidModifier__ KeyCode::SEMICOLON, KeyCode::SHIFT_L, KeyCode::VK_STICKY_SHIFT_L</autogen>
     </item>
     <item>
-      <name>Swap Semicolon and Colon</name>
+      <name>Swap Semicolon and Colon for US keyboard</name>
       <identifier>remap.swapcolons</identifier>
       <autogen>
         __KeyToKey__
@@ -52,7 +52,13 @@
       </autogen>
     </item>
     <item>
-      <name>Input colon(:) by pressing semicolon(;) twice.</name>
+      <name>Swap Semicolon and Colon for JIS keyboard</name>
+      <identifier>remap.swapcolons_for_jis</identifier>
+      <autogen> __KeyToKey__ KeyCode::SEMICOLON, KeyCode::JIS_COLON</autogen>
+      <autogen> __KeyToKey__ KeyCode::JIS_COLON, KeyCode::SEMICOLON</autogen>
+    </item>
+    <item>
+      <name>Input colon(:) by pressing semicolon(;) twice. for US keyboard</name>
       <identifier>remap.semicolon_x2_to_colon</identifier>
       <autogen>
         __KeyToKey__
@@ -64,6 +70,22 @@
 
         Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::SEMICOLON,
         KeyCode::SEMICOLON, ModifierFlag::SHIFT_L,
+        KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
+      </autogen>
+    </item>
+    <item>
+      <name>Input colon(:) by pressing semicolon(;) twice. for JIS keyboard</name>
+      <identifier>remap.semicolon_x2_to_colon_for_jis</identifier>
+      <autogen>
+        __KeyToKey__
+        KeyCode::SEMICOLON, ModifierFlag::NONE,
+        KeyCode::VK_NONE,
+
+        Option::KEYTOKEY_DELAYED_ACTION,
+        KeyCode::SEMICOLON,
+
+        Option::KEYTOKEY_DELAYED_ACTION_CANCELED_BY, KeyCode::SEMICOLON,
+        KeyCode::JIS_COLON,
         KeyCode::VK_KEYTOKEY_DELAYED_ACTION_DROP_EVENT,
       </autogen>
     </item>
