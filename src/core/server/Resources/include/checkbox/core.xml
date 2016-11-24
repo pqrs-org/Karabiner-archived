@@ -67,7 +67,7 @@
         <appendix>The receiver is detected as a composite device of keyboard and mouse.</appendix>
         <appendix>So, the receiver always disables an internal keyboard even if you are using only mouse.</appendix>
         <appendix>If you are not using Unifying keyboard devices, please enable a following option.</appendix>
-        <identifier essential="true">general.disable_internal_keyboard_if_external_keyboard_exsits</identifier>
+        <identifier essential="true">general.disable_internal_keyboard_if_external_keyboard_exists</identifier>
       </item>
 
       <item>
