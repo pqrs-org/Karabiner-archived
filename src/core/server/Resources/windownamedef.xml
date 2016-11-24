@@ -12,6 +12,11 @@
   </windownamedef>
 
   <windownamedef>
+    <name>Remote_Desktop_Main_Window</name>
+    <regex>^Microsoft Remote Desktop$</regex>
+  </windownamedef>
+
+  <windownamedef>
     <name>Gmail</name>
     <regex> - Gmail$</regex>
   </windownamedef>
