@@ -21,6 +21,7 @@
       <appendix>Option_R (AltGr) + - = * ... "key under esc" to ;</appendix>
       <identifier>remap.slovak_win_shortcuts_air</identifier>
       <not>X11</not>
+      <autogen>__KeyToKey__ KeyCode::DANISH_DOLLAR, KeyCode::SEMICOLON, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::DOT, ModifierFlag::OPTION_R, KeyCode::DOT, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::COMMA, ModifierFlag::OPTION_R, KeyCode::COMMA, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::OPTION_R, KeyCode::KEY_2, ModifierFlag::OPTION_R</autogen>
