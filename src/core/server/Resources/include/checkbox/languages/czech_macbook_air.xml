@@ -27,6 +27,8 @@
       <autogen>__KeyToKey__ KeyCode::V, ModifierFlag::OPTION_R, KeyCode::KEY_2, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::SEMICOLON, ModifierFlag::OPTION_R, KeyCode::KEY_4, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::SLASH, ModifierFlag::OPTION_R, KeyCode::KEY_8, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::SHIFT_R, KeyCode::QUOTE, ModifierFlag::OPTION_R</autogen>
+      <autogen>__KeyToKey__ KeyCode::BACKSLASH, ModifierFlag::SHIFT_L, KeyCode::QUOTE, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::A, ModifierFlag::OPTION_R, KeyCode::KEY_5, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::C, ModifierFlag::OPTION_R, KeyCode::KEY_7, ModifierFlag::OPTION_R</autogen>
       <autogen>__KeyToKey__ KeyCode::X, ModifierFlag::OPTION_R, KeyCode::KEY_3, ModifierFlag::OPTION_R</autogen>
