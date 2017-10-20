@@ -13,7 +13,7 @@ Karabiner is a powerful utility for keyboard customization.
 
 Prior to version 9.3.0, Karabiner was called *KeyRemap4MacBook*.
 
-** Please use [Karabiner-Elements](https://github.com/tekezo/Karabiner-Elements) on macOS Sierra (10.12) or later. **
+**Please use [Karabiner-Elements](https://github.com/tekezo/Karabiner-Elements) on macOS Sierra (10.12) or later.**
 
 We made Karabiner-Elements from scratch due to kernel architecture changes in macOS Sierra.
 
