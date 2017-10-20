@@ -231,7 +231,7 @@
       </item>
 
       <item>
-        <name>Enhance Logitech Trackman Marble</name>
+        <name>Enhance Logitech Trackman Marble (Right Handed)</name>
         <appendix><![CDATA[  Button4+Trackball -> ScrollWheel ]]></appendix>
         <appendix><![CDATA[  Button5 -> Move mouse cursor to the center of the frontmost app's window ]]></appendix>
         <appendix></appendix>
@@ -256,6 +256,53 @@
         <autogen>
           __KeyToKey__
           PointingButton::BUTTON5,
+          KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
+        </autogen>
+
+        <autogen>
+          __KeyOverlaidModifier__
+          PointingButton::RIGHT,
+          KeyCode::VK_MODIFIER_BUTTON2,
+          PointingButton::RIGHT,
+        </autogen>
+
+        <autogen>
+          __PointingRelativeToKey__
+          ModifierFlag::BUTTON2,
+
+          PointingRelative::UP,    KeyCode::MISSION_CONTROL,
+          PointingRelative::DOWN,  KeyCode::MISSION_CONTROL, ModifierFlag::COMMAND_L,
+          PointingRelative::LEFT,  KeyCode::CURSOR_RIGHT, ModifierFlag::CONTROL_L,
+          PointingRelative::RIGHT, KeyCode::CURSOR_LEFT,  ModifierFlag::CONTROL_L,
+        </autogen>
+      </item>
+      
+      <item>
+        <name>Enhance Logitech Trackman Marble (Left Handed)</name>
+        <appendix><![CDATA[  Button5+Trackball -> ScrollWheel ]]></appendix>
+        <appendix><![CDATA[  Button4 -> Move mouse cursor to the center of the frontmost app's window ]]></appendix>
+        <appendix></appendix>
+        <appendix>Right click+Trackball:</appendix>
+        <appendix>* Up: Mission Control</appendix>
+        <appendix>* Down: Show Desktop</appendix>
+        <appendix>* Left: Move right a space</appendix>
+        <appendix>* Right: Move left a space</appendix>
+        <appendix></appendix>
+        <appendix><![CDATA[ Press button5 alone -> middle click ]]></appendix>
+        <device_only>DeviceVendor::LOGITECH, DeviceProduct::Logitech_Trackman_Marble</device_only>
+        <identifier>remap.logitech_trackball_marble_hack.left_handed</identifier>
+
+        <autogen>
+          __PointingRelativeToScroll__
+          PointingButton::BUTTON5,
+
+          Option::POINTINGRELATIVETOSCROLL_TOKEYS,
+          PointingButton::MIDDLE,
+        </autogen>
+
+        <autogen>
+          __KeyToKey__
+          PointingButton::BUTTON4,
           KeyCode::VK_OPEN_URL_SHELL_warp_mouse_cursor_position_front_window_center,
         </autogen>
 
