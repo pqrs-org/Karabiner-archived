@@ -1,10 +1,10 @@
 [![Build Status](https://travis-ci.org/tekezo/Karabiner.svg?branch=master)](https://travis-ci.org/tekezo/Karabiner)
 [![License](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](https://github.com/tekezo/Karabiner/blob/master/LICENSE.md)
 
-Caution
-=======
+OBSOLETED
+=========
 
-Karabiner is obsoleted on macOS Sierra (10.12) or later.
+Karabiner is obsoleted on macOS Sierra (10.12) or later.<br />
 Please use [Karabiner-Elements](https://github.com/tekezo/Karabiner-Elements).
 
 Karabiner
