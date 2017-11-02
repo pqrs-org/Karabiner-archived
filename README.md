@@ -42,7 +42,7 @@ System requirements
 
 Karabiner works for all Mac products, including the MacBook series, iMac, Mac mini, and Mac Pro, with the requirement that the product runs OS X 10.9 (Mavericks) or higher, up until MacOS 10.12 (Sierra), which is not supported.
 
-* If you require Karabiner for MacOS 10.12, please use [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements).
+* If you require Karabiner for macOS 10.12, please use [Karabiner Elements](https://github.com/tekezo/Karabiner-Elements).
 * If you require Karabiner for OS X 10.6 - 10.8, please use KeyRemap4MacBook 8.4.0.
 * If you require Karabiner for OS X 10.4 - 10.5, please use KeyRemap4MacBook 5.1.0.
 
