@@ -43,7 +43,7 @@ Source code dependencies
 
 About event handling (kext)
 ---------------------------
-To prevent leakage of the input event, the modification of the input event is perfomed inside kernel entirely.
+To prevent leakage of the input event, the modification of the input event is performed inside kernel entirely.
 
 We set a hook function in the middle of hardware driver.
 And we modify the input event in the hook function.
@@ -61,7 +61,7 @@ Seil:      http://pqrs.org/osx/karabiner/seil.html
 
 1. Device sends the input event.
 1. Modify the input event by Seil.
-1. Modify the input event by "System Preferences > Keyboard > Modifier Keys..."
+1. Modify the input event by `System Preferences` > `Keyboard` > `Modifier Keys...
 1. Modify the input event by Karabiner.
 1. Send the input event to Applications.
 
